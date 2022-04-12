@@ -41,7 +41,6 @@ resource "observe_dataset" "base_pubsub_events" {
 
   stage {
     input    = "observation"
-    alias    = "from_pull_subscription"
     pipeline = <<-EOF
       filter OBSERVATION_KIND = "http"
       pick_col BUNDLE_TIMESTAMP,
@@ -50,29 +49,6 @@ resource "observe_dataset" "base_pubsub_events" {
         attributes:object(FIELDS.message.attributes),
         data:decode_base64(string(FIELDS.message.data)),
         subscription:string(FIELDS.subscription)
-    EOF
-  }
-
-  stage {
-    input    = "observation"
-    alias    = "from_push_subscription"
-    pipeline = <<-EOF
-      filter OBSERVATION_KIND = "pubsub"
-      pick_col BUNDLE_TIMESTAMP,
-        id:string(FIELDS.message.ID),
-        attributes:object(FIELDS.message.Attributes),
-        publishTime:parse_isotime(string(FIELDS.message.PublishTime)),
-        orderingKey:string(FIELDS.message.OrderingKey),
-        deliveryAttempt:FIELDS.message.DeliveryAttempt,
-        data:decode_base64(string(FIELDS.message.Data)),
-        subscription:string(FIELDS.subscription)
-    EOF
-  }
-
-  stage {
-    input    = "from_pull_subscription"
-    pipeline = <<-EOF
-      union @from_push_subscription
     EOF
   }
 }
@@ -91,8 +67,8 @@ resource "observe_dataset" "base_asset_inventory_records" {
     alias    = "feed_events"
     pipeline = <<-EOF
       filter is_null(attributes["logging.googleapis.com/timestamp"])
-      filter not is_null(data.window) and not is_null(data.asset)
       make_col data:parse_json(data)
+      filter not is_null(data.window) and not is_null(data.asset)
       
       make_col time:parse_isotime(string(startTime))
       set_valid_from options(max_time_diff:${var.max_time_diff}), time
@@ -106,7 +82,7 @@ resource "observe_dataset" "base_asset_inventory_records" {
         iam_policy:object(data.asset.iam_policy),
         org_policy:object(data.asset.org_policy),
         access_policy:object(data.asset.access_policy),
-        update_time:string(data.asset.update_time)
+        update_time:parse_isotime(string(data.asset.update_time))
     EOF
   }
 
@@ -130,7 +106,7 @@ resource "observe_dataset" "base_asset_inventory_records" {
         iam_policy:object(data.iam_policy),
         org_policy:object(data.org_policy),
         access_policy:object(data.access_policy),
-        update_time:string(data.update_time)
+        update_time:parse_isotime(string(data.update_time))
     EOF
   }
 }
@@ -147,6 +123,7 @@ resource "observe_dataset" "resource_asset_inventory_records" {
   stage {
     input    = "events"
     pipeline = <<-EOF
+      filter not is_null(resource)
       pick_col 
         time,
         asset_type,
@@ -178,7 +155,7 @@ resource "observe_dataset" "iam_policy_asset_inventory_records" {
         time,
         name,
         asset_type,
-        bindings:iam_policy.bindings,
+        bindings:object(iam_policy.bindings),
         etag:string(iam_policy.etag)
     EOF
   }
@@ -198,14 +175,17 @@ resource "observe_dataset" "logs" {
     pipeline = <<-EOF
       filter not is_null(attributes["logging.googleapis.com/timestamp"])
       make_col data:parse_json(data)
-      pick_col BUNDLE_TIMESTAMP,
-          timestamp:parse_isotime(string(data.timestamp)),
+
+      make_col timestamp:parse_isotime(string(data.timestamp))
+      set_valid_from options(max_time_diff:${var.max_time_diff}), timestamp
+
+      pick_col timestamp,
           receiveTimestamp:parse_isotime(string(data.receiveTimestamp)),
           logName:string(data.logName),
           severity:string(data.severity),
           textPayload:string(data.textPayload),
           protoPayload:object(data.protoPayload),
-          jsonPayload:data.jsonPayload,
+          jsonPayload:object(data.jsonPayload),
           labels:object(data.labels),
           resourceLabels:object(data.resource.labels),
           resourceType:string(data.resource.type),
@@ -213,9 +193,6 @@ resource "observe_dataset" "logs" {
           insertId:string(data.insertId),
           trace:string(data.trace),
           messageId:id
-          
-      set_valid_from options(max_time_diff:${var.max_time_diff}), timestamp
-      drop_col BUNDLE_TIMESTAMP
     EOF
   }
 }
@@ -229,25 +206,26 @@ resource "observe_dataset" "audit_logs" {
     "events" = observe_dataset.logs.oid
   }
 
+  // https://cloud.google.com/logging/docs/reference/audit/auditlog/rest/Shared.Types/AuditLog
   stage {
     input    = "events"
     pipeline = <<-EOF
-    filter logName = "projects/terraflood-345116/logs/cloudaudit.googleapis.com%2Factivity"
+    filter contains(logName, "/logs/cloudaudit.googleapis.com")
     pick_col 
       timestamp,
       logName,
       severity,
-      "@type":string(protoPayload['@type']),
+      type:string(protoPayload['@type']),
       serviceName:string(protoPayload.serviceName),
       methodName:string(protoPayload.methodName),
       resourceName:string(protoPayload.resourceName),
-      authenticationInfo:protoPayload.authenticationInfo,
-      authorizationInfo:protoPayload.authorizationInfo,
-      requestMetadata:protoPayload.requestMetadata,
-      request:protoPayload.request,
-      response:protoPayload.response,
-      serviceData:protoPayload.serviceData,
-      status:protoPayload.status
+      status:object(protoPayload.status),
+      authenticationInfo:object(protoPayload.authenticationInfo),
+      authorizationInfo:object(protoPayload.authorizationInfo),
+      requestMetadata:object(protoPayload.requestMetadata),
+      request:object(protoPayload.request),
+      response:object(protoPayload.response),
+      serviceData:object(protoPayload.serviceData)
     EOF
   }
 }
@@ -270,17 +248,18 @@ resource "observe_dataset" "metrics" {
         resource_type:string(FIELDS.timeseries.resource.type),
         resource_labels:object(FIELDS.timeseries.resource.labels),
         value_type:int64(FIELDS.timeseries.value_type),
-        points:FIELDS.timeseries.points
+        points:array(FIELDS.timeseries.points)
           
       make_col 
         metric_type:string(metric.type),
-        metric_labels:metric.labels
+        metric_labels:object(metric.labels)
       flatten_single points
       make_col start_time:timestamp_s(int64(@."_c_points_value".interval.start_time.seconds)) + duration(if_null(int64(@."_c_points_value".interval.start_time.nanos), 0)),
         end_time:timestamp_s(int64(@."_c_points_value".interval.end_time.seconds)) + duration(if_null(int64(@."_c_points_value".interval.end_time.nanos), 0)),
         value:@."_c_points_value".value
       set_valid_from options(max_time_diff:${var.max_time_diff}), start_time
       
+      // Note that value is null for Distribution and String metrics
       make_col value:coalesce(
           float64(value.Value.Int64Value),
           float64(value.Value.DoubleValue),
