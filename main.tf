@@ -39,15 +39,18 @@ resource "observe_dataset" "base_pubsub_events" {
     "observation" = local.observation_oid
   }
 
+  // https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#pubsubmessage
   stage {
     input    = "observation"
     pipeline = <<-EOF
-      filter OBSERVATION_KIND = "http"
+      filter OBSERVATION_KIND = "pubsub"
       pick_col BUNDLE_TIMESTAMP,
-        id:string(FIELDS.message.messageId),
-        publishTime:parse_isotime(string(FIELDS.message.publishTime)),
-        attributes:object(FIELDS.message.attributes),
-        data:decode_base64(string(FIELDS.message.data)),
+        id:string(FIELDS.message.ID),
+        attributes:object(FIELDS.message.Attributes),
+        publishTime:parse_isotime(string(FIELDS.message.PublishTime)),
+        orderingKey:string(FIELDS.message.OrderingKey),
+        deliveryAttempt:int64(FIELDS.message.DeliveryAttempt),
+        data:decode_base64(string(FIELDS.message.Data)),
         subscription:string(FIELDS.subscription)
     EOF
   }
@@ -62,6 +65,7 @@ resource "observe_dataset" "base_asset_inventory_records" {
     "events" = observe_dataset.base_pubsub_events.oid
   }
 
+  // https://cloud.google.com/asset-inventory/docs/reference/rpc/google.cloud.asset.v1#temporalasset
   stage {
     input    = "events"
     alias    = "feed_events"
@@ -69,23 +73,25 @@ resource "observe_dataset" "base_asset_inventory_records" {
       filter is_null(attributes["logging.googleapis.com/timestamp"])
       make_col data:parse_json(data)
       filter not is_null(data.window) and not is_null(data.asset)
-      
-      make_col time:parse_isotime(string(startTime))
+
+      make_col time:parse_isotime(string(data.window.startTime))
       set_valid_from options(max_time_diff:${var.max_time_diff}), time
 
       pick_col
         time,
+        deleted:bool(data.deleted),
+        update_time:parse_isotime(string(data.asset.updateTime)),
         ancestors:array(data.asset.ancestors),
-        asset_type:string(data.asset.asset_type),
+        asset_type:string(data.asset.assetType),
         name:string(data.asset.name),
         resource:object(data.asset.resource),
-        iam_policy:object(data.asset.iam_policy),
-        org_policy:object(data.asset.org_policy),
-        access_policy:object(data.asset.access_policy),
-        update_time:parse_isotime(string(data.asset.update_time))
+        iam_policy:object(data.asset.iamPolicy),
+        org_policy:array(data.asset.orgPolicy),
+        access_policy:object(data.asset.accessPolicy)
     EOF
   }
 
+  // https://cloud.google.com/asset-inventory/docs/reference/rpc/google.cloud.asset.v1#asset
   stage {
     input    = "events"
     alias    = "export_events"
@@ -99,14 +105,21 @@ resource "observe_dataset" "base_asset_inventory_records" {
 
       pick_col 
         time,
+        update_time:parse_isotime(string(data.update_time)),
         ancestors:array(data.ancestors),
         asset_type:string(data.asset_type),
         name:string(data.name),
         resource:object(data.resource),
         iam_policy:object(data.iam_policy),
-        org_policy:object(data.org_policy),
-        access_policy:object(data.access_policy),
-        update_time:parse_isotime(string(data.update_time))
+        org_policy:array(data.org_policy),
+        access_policy:object(data.access_policy)
+    EOF
+  }
+
+  stage {
+    input    = "export_events"
+    pipeline = <<-EOF
+      union @feed_events
     EOF
   }
 }
@@ -120,12 +133,14 @@ resource "observe_dataset" "resource_asset_inventory_records" {
     "events" = observe_dataset.base_asset_inventory_records.oid
   }
 
+  // https://cloud.google.com/asset-inventory/docs/reference/rpc/google.cloud.asset.v1#google.cloud.asset.v1.Resource
   stage {
     input    = "events"
     pipeline = <<-EOF
       filter not is_null(resource)
       pick_col 
         time,
+        deleted,
         asset_type,
         name,
         data:object(resource.data),
@@ -147,6 +162,7 @@ resource "observe_dataset" "iam_policy_asset_inventory_records" {
     "events" = observe_dataset.base_asset_inventory_records.oid
   }
 
+  // https://cloud.google.com/asset-inventory/docs/reference/rpc/google.iam.v1#google.iam.v1.Policy
   stage {
     input    = "events"
     pipeline = <<-EOF
@@ -239,11 +255,12 @@ resource "observe_dataset" "metrics" {
     "observation" = local.observation_oid
   }
 
+  // https://cloud.google.com/monitoring/api/ref_v3/rest/v3/TimeSeries
   stage {
     pipeline = <<-EOF
       filter OBSERVATION_KIND = "gcpmetrics"
 
-      make_col metric:FIELDS.timeseries.metric,
+      make_col metric:object(FIELDS.timeseries.metric),
         metric_kind:int64(FIELDS.timeseries.metric_kind),
         resource_type:string(FIELDS.timeseries.resource.type),
         resource_labels:object(FIELDS.timeseries.resource.labels),
@@ -287,15 +304,16 @@ resource "observe_dataset" "cloud_function" {
     "events" = observe_dataset.resource_asset_inventory_records.oid
   }
 
+  // https://cloud.google.com/functions/docs/reference/rest/v1/projects.locations.functions#CloudFunction
   stage {
     input    = "events"
     pipeline = <<-EOF
-      filter discovery_name = "CloudFunction"
+      filter asset_type = "cloudfunctions.googleapis.com/CloudFunction"
       make_col
         assetInventoryName:name,
         name:string(data.name)
       make_resource options(expiry:${var.max_expiry}),
-        assetInventoryName,
+        name,
         availableMemoryMb:int64(data.availableMemoryMb),
         buildId:string(data.buildId),
         buildName:string(data.buildName),
@@ -314,8 +332,11 @@ resource "observe_dataset" "cloud_function" {
         timeout:string(data.timeout),
         updateTime:parse_isotime(string(data.updateTime)),
         versionId:string(data.versionId),
-        primary_key(name)
-      
+        primary_key(assetInventoryName),
+        valid_for(if(deleted, 1ns, ${var.max_expiry}))
+
+      add_key name
+      set_label name
       extract_regex name, /projects\/(?P<projectId>[^\/+]+)\/locations\/(?P<region>[^\/+]+)\/functions\/(?P<functionName>[^\/+]+)/
       add_key projectId, region, functionName
     EOF
