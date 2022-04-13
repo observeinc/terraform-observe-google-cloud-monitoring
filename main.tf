@@ -34,6 +34,7 @@ resource "observe_dataset" "datastreams" {
 resource "observe_dataset" "base_pubsub_events" {
   workspace = var.workspace.oid
   name      = format(var.name_format, "base/PubSub Events")
+  freshness = var.freshness_default
 
   inputs = {
     "observation" = local.observation_oid
@@ -100,7 +101,7 @@ resource "observe_dataset" "base_asset_inventory_records" {
       make_col data:parse_json(data)
       filter not is_null(data.asset_type) and not is_null(data.name)
 
-      make_col time:publishTime
+      make_col time:timestamp_ns(int64(attributes.snapshotTime))
       set_valid_from options(max_time_diff:${var.max_time_diff}), time
 
       pick_col 
@@ -300,6 +301,8 @@ resource "observe_dataset" "metrics" {
 resource "observe_dataset" "cloud_function" {
   workspace = var.workspace.oid
   name      = format(var.name_format, "Cloud Function")
+  freshness = var.freshness_default
+
   inputs = {
     "events" = observe_dataset.resource_asset_inventory_records.oid
   }

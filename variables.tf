@@ -35,3 +35,21 @@ variable "max_time_diff" {
   description = "Maximum time difference for processing time window."
   default     = "4h"
 }
+
+variable "service_name_formats" {
+  type        = map(string)
+  description = "Override nested name_format for enabled services"
+  default     = {}
+}
+
+variable "feature_flags" {
+  type        = map(bool)
+  description = "Toggle features which are being rolled out or phased out."
+  default     = {}
+}
+
+variable "freshness_default" {
+  type        = string
+  description = "Default dataset freshness. Can be overridden with freshness input"
+  default     = "1m"
+}
