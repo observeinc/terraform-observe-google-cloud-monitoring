@@ -1,34 +1,6 @@
-locals {
-  observation_oid = (length(var.datastreams) == 0 ?
-    data.observe_dataset.observation[0].oid : (length(var.datastreams) == 1 ?
-  var.datastreams[0].dataset : observe_dataset.datastreams[0].oid))
-}
-
 data "observe_dataset" "observation" {
-  count = length(var.datastreams) == 0 ? 1 : 0
-
   workspace = var.workspace.oid
   name      = var.observation_dataset
-}
-
-resource "observe_dataset" "datastreams" {
-  count = length(var.datastreams) > 1 ? 1 : 0
-
-  workspace   = var.workspace.oid
-  name        = format(var.name_format, "Datastreams")
-  description = "Union of input datastreams"
-  freshness   = var.freshness_default
-
-  inputs = {
-    for i, datastream in var.datastreams : format("datastream%d", i) => datastream.dataset
-  }
-
-  stage {
-    input    = "datastream0"
-    pipeline = <<-EOF
-    ${join("\n", [for i, _ in var.datastreams : indent(2, format("union @datastream%d", i)) if i > 0])}
-    EOF
-  }
 }
 
 resource "observe_dataset" "base_pubsub_events" {
@@ -37,7 +9,7 @@ resource "observe_dataset" "base_pubsub_events" {
   freshness = var.freshness_default
 
   inputs = {
-    "observation" = local.observation_oid
+    "observation" = data.observe_dataset.observation.oid
   }
 
   // https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#pubsubmessage
@@ -253,7 +225,7 @@ resource "observe_dataset" "metrics" {
   freshness = var.freshness_default
 
   inputs = {
-    "observation" = local.observation_oid
+    "observation" = data.observe_dataset.observation.oid
   }
 
   // https://cloud.google.com/monitoring/api/ref_v3/rest/v3/TimeSeries

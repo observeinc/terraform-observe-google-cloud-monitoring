@@ -9,15 +9,6 @@ variable "observation_dataset" {
   default     = "Observation"
 }
 
-variable "datastreams" {
-  type        = list(object({ dataset = string }))
-  description = <<-EOF
-    Datastreams to derive AWS resources from. If more than one datastream is
-    provided, a dataset containing the union of all datastreams is created.
-  EOF
-  default     = []
-}
-
 variable "name_format" {
   type        = string
   description = "Format string to use for dataset names. Override to introduce a prefix or suffix."
