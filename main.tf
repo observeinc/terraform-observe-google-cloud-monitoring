@@ -1,15 +1,10 @@
-data "observe_dataset" "observation" {
-  workspace = var.workspace.oid
-  name      = var.observation_dataset
-}
-
 resource "observe_dataset" "base_pubsub_events" {
   workspace = var.workspace.oid
   name      = format(var.name_format, "base/PubSub Events")
   freshness = var.freshness_default
 
   inputs = {
-    "observation" = data.observe_dataset.observation.oid
+    "observation" = var.datastream.dataset
   }
 
   // https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#pubsubmessage
@@ -225,7 +220,7 @@ resource "observe_dataset" "metrics" {
   freshness = var.freshness_default
 
   inputs = {
-    "observation" = data.observe_dataset.observation.oid
+    "observation" = var.datastream.dataset
   }
 
   // https://cloud.google.com/monitoring/api/ref_v3/rest/v3/TimeSeries
@@ -265,7 +260,6 @@ resource "observe_dataset" "metrics" {
         resource_labels,
         value,
         value_type
-      interface "metric", metric:metric_type, value:value
     EOF
   }
 }
@@ -448,6 +442,7 @@ resource "observe_dataset" "cloud_function_metrics" {
         region,
         function_name
 
+      interface "metric", metric:metric_type, value:value
       ${join("\n\n", [for metric, options in local.cloud_function_metrics : indent(2, format("set_metric options(\n%s\n), %q", join(",\n", [for k, v in options : k == "interval" ? format("%s: %s", k, v) : format("%s: %q", k, v)]), metric))])}
     EOF
   }

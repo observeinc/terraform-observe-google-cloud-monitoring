@@ -3,10 +3,11 @@ variable "workspace" {
   description = "Workspace to apply module to."
 }
 
-variable "observation_dataset" {
-  type        = string
-  description = "Name of dataset to derive AWS resources from."
-  default     = "Observation"
+variable "datastream" {
+  type        = object({ dataset = string })
+  description = <<-EOF
+    Datastream to derive OTEL resources from.
+  EOF
 }
 
 variable "name_format" {
