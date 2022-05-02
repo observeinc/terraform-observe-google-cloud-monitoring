@@ -253,13 +253,22 @@ resource "observe_dataset" "metrics" {
         end_time:timestamp_s(int64(@."_c_points_value".interval.end_time.seconds)) + duration(if_null(int64(@."_c_points_value".interval.end_time.nanos), 0)),
         value:@."_c_points_value".value
       set_valid_from options(max_time_diff:${var.max_time_diff}), start_time
-      
+    EOF
+  }
+
+  stage {
+    pipeline = <<-EOF
       // Note that value is null for Distribution and String metrics
       make_col value:coalesce(
           float64(value.Value.Int64Value),
           float64(value.Value.DoubleValue),
-          float64(case(value.Value.BoolValue = true, 1, value.Value.BoolValue = false, 0)))
+          float64(case(value.Value.BoolValue = true, 1, value.Value.BoolValue = false, 0)),
+          float64(value.Value.DistributionValue.mean))
+    EOF
+  }
 
+  stage {
+    pipeline = <<-EOF
       pick_col
         start_time,
         end_time,
