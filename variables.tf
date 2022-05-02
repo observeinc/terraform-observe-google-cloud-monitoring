@@ -28,10 +28,10 @@ variable "max_time_diff" {
   default     = "4h"
 }
 
-variable "service_name_formats" {
-  type        = map(string)
-  description = "Override nested name_format for enabled services"
-  default     = {}
+variable "freshness_default" {
+  type        = string
+  description = "Default dataset freshness. Can be overridden with freshness input"
+  default     = "1m"
 }
 
 variable "feature_flags" {
@@ -40,8 +40,32 @@ variable "feature_flags" {
   default     = {}
 }
 
-variable "freshness_default" {
-  type        = string
-  description = "Default dataset freshness. Can be overridden with freshness input"
-  default     = "1m"
+variable "services" {
+  type        = map(bool)
+  description = "Map of services to enable."
+  default     = {}
+}
+
+variable "service_name_formats" {
+  type        = map(string)
+  description = "Override nested name_format for enabled services"
+  default     = {}
+}
+
+variable "enable_service_all" {
+  type        = bool
+  default     = false
+  description = <<-EOF
+    Enable all services.
+    If enabled, all services that are not explicitly set to false will be
+    configured.
+  EOF
+}
+
+variable "enable_service_cloudfunctions" {
+  type        = bool
+  default     = null
+  description = <<-EOF
+    Enable Cloud Functions service.
+  EOF
 }
