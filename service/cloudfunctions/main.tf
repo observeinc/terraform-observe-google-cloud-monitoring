@@ -192,16 +192,28 @@ resource "observe_dataset" "function_metrics" {
 }
 
 resource "observe_link" "function_metrics" {
-  workspace = var.workspace.oid
-  source    = observe_dataset.function_metrics[0].oid
-  target    = each.value.target
-  fields    = each.value.fields
-  label     = each.key
-
   for_each = length(observe_dataset.function_metrics) > 0 ? {
     "Cloud Function" = {
       target = observe_dataset.function.oid
       fields = ["project_id:projectId", "region", "function_name:functionName"]
     }
   } : {}
+
+  workspace = var.workspace.oid
+  source    = observe_dataset.function_metrics[0].oid
+  target    = each.value.target
+  fields    = each.value.fields
+  label     = each.key
+}
+
+resource "observe_board" "function" {
+  for_each = length(observe_dataset.function_metrics) > 0 ? toset(["set", "singleton"]) : toset([])
+
+  dataset = observe_dataset.function.oid
+  name    = "Monitoring"
+  json = templatefile("${path.module}/boards/monitoring.json", {
+    dataset_cloudFunctionsFunctionMetrics = observe_dataset.function_metrics[0].oid
+    dataset_cloudFunctionsFunction        = observe_dataset.function.oid
+  })
+  type = each.key
 }
