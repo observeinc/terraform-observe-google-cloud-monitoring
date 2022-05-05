@@ -262,7 +262,7 @@ resource "observe_dataset" "metrics" {
       make_col value:coalesce(
           float64(value.Value.Int64Value),
           float64(value.Value.DoubleValue),
-          float64(case(value.Value.BoolValue = true, 1, value.Value.BoolValue = false, 0)),
+          float64(if(bool(value.Value.BoolValue), 1, 0)),
           float64(value.Value.DistributionValue.mean))
     EOF
   }
