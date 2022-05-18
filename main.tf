@@ -251,7 +251,7 @@ resource "observe_dataset" "metric_points" {
       flatten_single points
       make_col start_time:timestamp_s(int64(@."_c_points_value".interval.start_time.seconds)) + duration(if_null(int64(@."_c_points_value".interval.start_time.nanos), 0)),
         end_time:timestamp_s(int64(@."_c_points_value".interval.end_time.seconds)) + duration(if_null(int64(@."_c_points_value".interval.end_time.nanos), 0)),
-      value:@."_c_points_value".value
+        value:@."_c_points_value".value
       set_valid_from options(max_time_diff:${var.max_time_diff}), start_time
     EOF
   }
@@ -266,32 +266,9 @@ resource "observe_dataset" "metrics" {
     "points" = observe_dataset.metric_points.oid
   }
 
-  # https://cloud.google.com/monitoring/api/ref_v3/rest/v3/TimeSeries
   stage {
     pipeline = <<-EOF
-      filter OBSERVATION_KIND = "gcpmetrics"
-
-      make_col metric:object(FIELDS.timeseries.metric),
-        metric_kind:int64(FIELDS.timeseries.metric_kind),
-        resource_type:string(FIELDS.timeseries.resource.type),
-        resource_labels:object(FIELDS.timeseries.resource.labels),
-        value_type:int64(FIELDS.timeseries.value_type),
-        points:array(FIELDS.timeseries.points)
-          
-      make_col 
-        metric_type:string(metric.type),
-        metric_labels:object(metric.labels)
-      flatten_single points
-      make_col start_time:timestamp_s(int64(@."_c_points_value".interval.start_time.seconds)) + duration(if_null(int64(@."_c_points_value".interval.start_time.nanos), 0)),
-        end_time:timestamp_s(int64(@."_c_points_value".interval.end_time.seconds)) + duration(if_null(int64(@."_c_points_value".interval.end_time.nanos), 0)),
-        value:@."_c_points_value".value
-      set_valid_from options(max_time_diff:${var.max_time_diff}), start_time
-    EOF
-  }
-
-  stage {
-    pipeline = <<-EOF
-      # Note that value is null for Distribution and String metrics
+      // Note that value is null for String metrics
       make_col value:coalesce(
           float64(value.Value.Int64Value),
           float64(value.Value.DoubleValue),
