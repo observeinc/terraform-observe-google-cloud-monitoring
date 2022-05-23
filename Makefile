@@ -1,4 +1,4 @@
-.PHONY: changelog release changelog-patch release-patch
+.PHONY: precommit-dependencies changelog release changelog-patch release-patch s3
 
 precommit-dependencies:
 	# github actions helper
@@ -17,3 +17,8 @@ changelog-patch:
 
 release-patch:
 	semtag final -s patch
+
+s3:
+	find . -type f -not -path '*/.*' -exec zip -r $(TMP) {} +
+	aws s3 cp $(TMP) s3://$(BUCKET)/$(notdir $(shell pwd))-$(TAG).zip
+	rm $(TMP)
