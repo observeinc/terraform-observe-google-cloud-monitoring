@@ -19,7 +19,7 @@ resource "observe_dataset" "base_pubsub_events" {
     "observation" = var.datastream.dataset
   }
 
-  // https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#pubsubmessage
+  # https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#pubsubmessage
   stage {
     input    = "observation"
     pipeline = <<-EOF
@@ -45,7 +45,7 @@ resource "observe_dataset" "base_asset_inventory_records" {
     "events" = observe_dataset.base_pubsub_events.oid
   }
 
-  // https://cloud.google.com/asset-inventory/docs/reference/rpc/google.cloud.asset.v1#temporalasset
+  # https://cloud.google.com/asset-inventory/docs/reference/rpc/google.cloud.asset.v1#temporalasset
   stage {
     input    = "events"
     alias    = "feed_events"
@@ -71,7 +71,7 @@ resource "observe_dataset" "base_asset_inventory_records" {
     EOF
   }
 
-  // https://cloud.google.com/asset-inventory/docs/reference/rpc/google.cloud.asset.v1#asset
+  # https://cloud.google.com/asset-inventory/docs/reference/rpc/google.cloud.asset.v1#asset
   stage {
     input    = "events"
     alias    = "export_events"
@@ -112,7 +112,7 @@ resource "observe_dataset" "resource_asset_inventory_records" {
     "events" = observe_dataset.base_asset_inventory_records.oid
   }
 
-  // https://cloud.google.com/asset-inventory/docs/reference/rpc/google.cloud.asset.v1#google.cloud.asset.v1.Resource
+  # https://cloud.google.com/asset-inventory/docs/reference/rpc/google.cloud.asset.v1#google.cloud.asset.v1.Resource
   stage {
     input    = "events"
     pipeline = <<-EOF
@@ -141,7 +141,7 @@ resource "observe_dataset" "iam_policy_asset_inventory_records" {
     "events" = observe_dataset.base_asset_inventory_records.oid
   }
 
-  // https://cloud.google.com/asset-inventory/docs/reference/rpc/google.iam.v1#google.iam.v1.Policy
+  # https://cloud.google.com/asset-inventory/docs/reference/rpc/google.iam.v1#google.iam.v1.Policy
   stage {
     pipeline = <<-EOF
       filter not is_null(iam_policy)
@@ -200,7 +200,7 @@ resource "observe_dataset" "audit_logs" {
     "events" = observe_dataset.logs.oid
   }
 
-  // https://cloud.google.com/logging/docs/reference/audit/auditlog/rest/Shared.Types/AuditLog
+  # https://cloud.google.com/logging/docs/reference/audit/auditlog/rest/Shared.Types/AuditLog
   stage {
     input    = "events"
     pipeline = <<-EOF
@@ -224,16 +224,16 @@ resource "observe_dataset" "audit_logs" {
   }
 }
 
-resource "observe_dataset" "metrics" {
+resource "observe_dataset" "metric_points" {
   workspace = var.workspace.oid
-  name      = format(var.name_format, "Metrics")
+  name      = format(var.name_format, "Metric Points")
   freshness = var.freshness_default
 
   inputs = {
     "observation" = var.datastream.dataset
   }
 
-  // https://cloud.google.com/monitoring/api/ref_v3/rest/v3/TimeSeries
+
   stage {
     pipeline = <<-EOF
       filter OBSERVATION_KIND = "gcpmetrics"
@@ -255,10 +255,20 @@ resource "observe_dataset" "metrics" {
       set_valid_from options(max_time_diff:${var.max_time_diff}), start_time
     EOF
   }
+}
+
+resource "observe_dataset" "metrics" {
+  workspace = var.workspace.oid
+  name      = format(var.name_format, "Metrics")
+  freshness = var.freshness_default
+
+  inputs = {
+    "points" = observe_dataset.metric_points.oid
+  }
 
   stage {
     pipeline = <<-EOF
-      // Note that value is null for Distribution and String metrics
+      // Note that value is null for String metrics
       make_col value:coalesce(
           float64(value.Value.Int64Value),
           float64(value.Value.DoubleValue),
@@ -279,6 +289,65 @@ resource "observe_dataset" "metrics" {
         resource_labels,
         value,
         value_type
+    EOF
+  }
+}
+
+resource "observe_dataset" "string_metrics" {
+  workspace = var.workspace.oid
+  name      = format(var.name_format, "String Metric Points")
+  freshness = var.freshness_default
+
+  inputs = {
+    "points" = observe_dataset.metric_points.oid
+  }
+
+  stage {
+    pipeline = <<-EOF
+      filter value_type = 4
+      make_col value:string(value.Value.StringValue)
+      pick_col
+        start_time,
+        end_time,
+        metric_type,
+        metric_kind,
+        metric_labels,
+        resource_type,
+        resource_labels,
+        value
+    EOF
+  }
+}
+
+resource "observe_dataset" "distribution_metrics" {
+  workspace = var.workspace.oid
+  name      = format(var.name_format, "Distribution Metric Points")
+  freshness = var.freshness_default
+
+  inputs = {
+    "points" = observe_dataset.metric_points.oid
+  }
+
+  # https://cloud.google.com/monitoring/api/ref_v3/rest/v3/TypedValue#Distribution
+  stage {
+    pipeline = <<-EOF
+      filter value_type = 5
+      make_col value:object(value.Value.DistributionValue)
+      pick_col
+        start_time,
+        end_time,
+        metric_type,
+        metric_kind,
+        metric_labels,
+        resource_type,
+        resource_labels,
+        count:int64(value.count),
+        mean:float64(value.mean),
+        range:object(value.range),
+        sum_of_squared_deviation:float64(value.sum_of_squared_deviation),
+        bucket_options:object(value.bucket_options),
+        bucket_counts:array(value.bucket_counts),
+        exemplars:object(value.exemplars)
     EOF
   }
 }

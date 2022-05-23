@@ -14,7 +14,7 @@ resource "observe_dataset" "function" {
     "events" = var.google.resource_asset_inventory_records.oid
   }
 
-  // https://cloud.google.com/functions/docs/reference/rest/v1/projects.locations.functions#CloudFunction
+  # https://cloud.google.com/functions/docs/reference/rest/v1/projects.locations.functions#CloudFunction
   stage {
     input    = "events"
     pipeline = <<-EOF
