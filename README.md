@@ -71,7 +71,16 @@ module "google" {
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_asset_inventory_records"></a> [asset\_inventory\_records](#output\_asset\_inventory\_records) | n/a |
+| <a name="output_audit_logs"></a> [audit\_logs](#output\_audit\_logs) | n/a |
+| <a name="output_cloud_functions"></a> [cloud\_functions](#output\_cloud\_functions) | n/a |
+| <a name="output_iam_policy_asset_inventory_records"></a> [iam\_policy\_asset\_inventory\_records](#output\_iam\_policy\_asset\_inventory\_records) | n/a |
+| <a name="output_logs"></a> [logs](#output\_logs) | n/a |
+| <a name="output_metrics"></a> [metrics](#output\_metrics) | n/a |
+| <a name="output_pubsub_events"></a> [pubsub\_events](#output\_pubsub\_events) | n/a |
+| <a name="output_resource_asset_inventory_records"></a> [resource\_asset\_inventory\_records](#output\_resource\_asset\_inventory\_records) | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## License
