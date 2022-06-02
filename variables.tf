@@ -69,3 +69,11 @@ variable "enable_service_cloudfunctions" {
     Enable Cloud Functions service.
   EOF
 }
+
+variable "enable_service_cloudsql" {
+  type        = bool
+  default     = null
+  description = <<-EOF
+    Enable Cloud SQL service.
+  EOF
+}
