@@ -1,4 +1,3 @@
-
 locals {
   enable_metrics = lookup(var.feature_flags, "metrics", true)
   # tflint-ignore: terraform_unused_declarations
@@ -45,18 +44,3 @@ resource "observe_dataset" "cloudsql" {
     EOF
   }
 }
-
-
-
-
-# resource "observe_board" "function" {
-#   for_each = length(observe_dataset.function_metrics) > 0 ? toset(["set", "singleton"]) : toset([])
-
-#   dataset = observe_dataset.function.oid
-#   name    = "Monitoring"
-#   json = templatefile("${path.module}/boards/monitoring.json", {
-#     dataset_cloudFunctionsFunctionMetrics = observe_dataset.function_metrics[0].oid
-#     dataset_cloudFunctionsFunction        = observe_dataset.function.oid
-#   })
-#   type = each.key
-# }
