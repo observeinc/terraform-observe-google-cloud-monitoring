@@ -117,6 +117,9 @@ resource "observe_dataset" "resource_asset_inventory_records" {
     input    = "events"
     pipeline = <<-EOF
       filter not is_null(resource)
+
+      make_col ttl: case(deleted, 1ns, true, ${var.max_expiry})
+
       pick_col 
         time,
         deleted,
@@ -127,7 +130,8 @@ resource "observe_dataset" "resource_asset_inventory_records" {
         discovery_name:string(resource.discovery_name),
         location:string(resource.location),
         parent:string(resource.parent),
-        version:string(resource.version)
+        version:string(resource.version),
+        ttl
     EOF
   }
 }
