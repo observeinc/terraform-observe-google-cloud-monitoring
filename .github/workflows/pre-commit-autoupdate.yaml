@@ -9,5 +9,6 @@ on:
 
 jobs:
   auto-update:
-    uses: observeinc/.github/.github/workflows/terraform-observe_pre-commit-autoupdate.yaml@main
+    if: github.repository == 'observeinc/terraform-observe-example'
+    uses: observeinc/.github/.github/workflows/pre-commit-autoupdate.yaml@main
     secrets: inherit
