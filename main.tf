@@ -223,7 +223,9 @@ resource "observe_dataset" "audit_logs" {
       requestMetadata:object(protoPayload.requestMetadata),
       request:object(protoPayload.request),
       response:object(protoPayload.response),
-      serviceData:object(protoPayload.serviceData)
+      serviceData:object(protoPayload.serviceData),
+      resourceLabels,
+      resourceType
     EOF
   }
 }

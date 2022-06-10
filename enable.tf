@@ -12,6 +12,13 @@ locals {
     lookup(var.services, "cloudsql", false)
   )
   name_format_cloudsql = lookup(var.service_name_formats, "cloudsql", "Cloud SQL %s")
+
+  enable_service_compute = (
+    var.enable_service_compute == true ||
+    (var.enable_service_all == true && var.enable_service_compute != false) ||
+    lookup(var.services, "compute", false)
+  )
+  name_format_compute = lookup(var.service_name_formats, "compute", "Compute %s")
 }
 
 module "cloudfunctions" {
@@ -33,6 +40,19 @@ module "cloudsql" {
   source            = "./service/cloudsql"
   workspace         = var.workspace
   name_format       = format(var.name_format, local.name_format_cloudsql)
+  max_expiry        = var.max_expiry
+  freshness_default = var.freshness_default
+  feature_flags     = var.feature_flags
+
+  google = local.base_module
+}
+
+module "compute" {
+  count = local.enable_service_compute ? 1 : 0
+
+  source            = "./service/compute"
+  workspace         = var.workspace
+  name_format       = format(var.name_format, local.name_format_compute)
   max_expiry        = var.max_expiry
   freshness_default = var.freshness_default
   feature_flags     = var.feature_flags

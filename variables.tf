@@ -77,3 +77,11 @@ variable "enable_service_cloudsql" {
     Enable Cloud SQL service.
   EOF
 }
+
+variable "enable_service_compute" {
+  type        = bool
+  default     = null
+  description = <<-EOF
+    Enable Compute service.
+  EOF
+}
