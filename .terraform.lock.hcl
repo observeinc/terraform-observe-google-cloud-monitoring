@@ -2,13 +2,13 @@
 # Manual edits may be lost in future updates.
 
 provider "terraform.observeinc.com/observeinc/observe" {
-  version     = "0.6.1"
+  version     = "0.6.2"
   constraints = "~> 0.6"
   hashes = [
-    "h1:1ei2ihjiesYo+9mz7Q5rYfjzBhLe7Daop9SbVbxIrS8=",
-    "zh:082835eb46a57d926743798bb44fc01f50555f6daa7eef279999532d7ee3ecc1",
-    "zh:2e3e614916ea6c0af0194fb490d398a4e43baba9560c7053d7588d3d9ba9d741",
-    "zh:4b247b38210bfa378f24a08205915f06c0c3b92df65d3fc681bd8adfc8de3c4c",
-    "zh:9c34e8b4c2748ccf6fead231630c1928e81018ae797962f750808d07693fa9c3",
+    "h1:h3L8jvLLdzD/x+xjHBZLZdhMDww6yOj3YkLbJsw+l0E=",
+    "zh:57d6fdb51c0a7e5771a98dab9293561647dac6dd8cd9dd6a6b3c85443d350259",
+    "zh:6faa20e2fc63b8aba9c6b3604b5f4bb07370b28647fe74976c5722aee75b173b",
+    "zh:a3a4da79a4bd2c0cf4d7edfc03e3cf804bb4c12859180ae2b33961daf0142b42",
+    "zh:dc4c35baf30f90672bb8440032fb1a989416ef834dbfbf9c69f5654e38fdb2e2",
   ]
 }
