@@ -16,5 +16,8 @@ s3:
 	aws s3 cp $(TMP) s3://$(BUCKET)/artifacts/v1/modules/namespace=observeinc/name=$(MODULE_NAME)/provider=$(MODULE_SYSTEM)/version=$(MODULE_VERSION)/observeinc-$(MODULE_NAME)-$(MODULE_SYSTEM)-$(MODULE_VERSION).zip
 	rm $(TMP)
 
+list-tests:
+	@scripts/tftest list
+
 test:
-	@scripts/terraform_tests.sh $(filter-out $@,$(MAKECMDGOALS))
+	@scripts/tftest run $(filter-out $@,$(MAKECMDGOALS))
