@@ -1,0 +1,100 @@
+#!/usr/bin/env bash
+#
+# tftest: utility for testing Observe terraform modules
+#
+# Use this script to manage the setup/teardown of a test submodule.
+#
+set -o errexit
+set -o pipefail
+
+COMMANDS=(
+    list
+    run
+)
+
+ERROR() { echo "::error::$*"; }
+INFO() { echo "::info::$*"; }
+DEBUG() { test -z "$VERBOSE" || echo "::debug::$*"; }
+
+check_env() {
+    if [[ -z $OBSERVE_CUSTOMER || -z $OBSERVE_DOMAIN || -z $OBSERVE_USER_EMAIL || -z $OBSERVE_USER_PASSWORD ]]; then
+      ERROR 'one or more OBSERVE_ environment variables are undefined'
+      exit 1
+    fi
+}
+
+usage() {
+    echo "tftest: utility for testing Observe terraform modules."
+    echo
+    echo "${B}$0 [-hvn] <command>${r}"
+    echo "  -h     this help"
+    echo
+    echo "  ${B}list${r}          List tests"
+    echo "  ${B}run <testdir>${r} Run test. If no dir provided, run all tests serially."
+    echo
+    exit 1
+}
+
+needle_in_haystack() {
+    local needle="$1"
+    shift
+    for arg in "$@"; do
+        [[ "${needle}" = "${arg}" ]] && return 0
+    done
+    return 1
+}
+
+do_list() {
+  DIRS="$(find . -path "*tftests/*" ! -path "*.terraform*" -type d )"
+  echo $DIRS
+}
+
+run_single() {
+  CMD="terraform -chdir=${1}"
+
+  cleanup() {
+      if [ "$1" != "0" ]; then
+          ERROR "encountered an error, running terraform destroy for cleanup"
+          ERROR "exit code $1 occurred on line $2"
+      fi
+      ${CMD} destroy -auto-approve -input=false
+  }
+
+  ${CMD} init
+  trap 'cleanup $? $LINENO' ERR
+  ${CMD} apply -auto-approve -input=false
+  ${CMD} destroy -auto-approve -input=false
+}
+
+do_run() {
+    check_env
+    DIRS=$@
+    if [ $# -eq 0 ]; then
+        DIRS=$(do_list)
+    fi
+
+    for DIR in $DIRS
+    do
+        run_single ${DIR}
+    done
+}
+
+while getopts 'h' OPTION; do
+    case $OPTION in
+        *) usage ;;
+    esac
+done
+shift $((OPTIND-1)); OPTIND=1
+
+if [[ $# -lt 1 ]]; then usage; fi # Requires 1+ arguments
+COMMAND="$1"
+shift
+
+if ! needle_in_haystack "${COMMAND}" "${COMMANDS[@]}"; then
+    # Only run the given command if it actually exists
+    echo "Unknown commmand '$COMMAND'"
+    echo
+    usage
+fi
+
+"do_${COMMAND//-/_}" "$@"
