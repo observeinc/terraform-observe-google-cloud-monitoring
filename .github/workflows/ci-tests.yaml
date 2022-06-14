@@ -19,3 +19,4 @@ jobs:
 
   pre-commits:
     uses: observeinc/.github/.github/workflows/terraform-observe_pre-commit.yaml@main
+    secrets: inherit

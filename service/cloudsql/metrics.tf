@@ -31,12 +31,14 @@ resource "observe_dataset" "cloudsql_metrics" {
         database_id
 
       interface "metric", metric:metric_type, value:value
+
       ${join("\n\n", [for metric, options in local.cloudsql_metrics : indent(2, format("set_metric options(\n%s\n), %q", join(",\n", [for k, v in options : k == "interval" ? format("%s: %s", k, v) : format("%s: %q", k, v) if k != "active" && k != "launchStage"]), metric)) if options.active == true])}
     EOF
   }
 }
 
 # use var instead of prop
+
 resource "observe_link" "cloudsql_metrics" {
   for_each = length(observe_dataset.cloudsql_metrics) > 0 ? {
     "Cloud Function" = {
