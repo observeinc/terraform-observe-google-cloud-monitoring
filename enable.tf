@@ -59,7 +59,3 @@ module "compute" {
 
   google = local.base_module
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 24c23d7 (feat: Compute - creation of compute content)
