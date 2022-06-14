@@ -20,6 +20,7 @@
 # Defaults
 input_file=descriptors.json
 output_file=metricslocal.tf
+local_var_name=metrics_definitions
 
 # Process input flags
     while [ $# -gt 0 ]; do
@@ -48,7 +49,7 @@ echo "Output file = $output_file"
 # jq creates object for every metric in terraform local variable but sets active to false for any metric that is not GA which is used as a filter when defining metrics
 
 echo "locals {" > "$output_file";
-echo " cloudsql_metrics = {" >> "$output_file";
+echo " $local_var_name = {" >> "$output_file";
 
 jq -r 'def activeFunc: if . =="GA" then "true" else "false" end; 
         def metricCaseFunc: . |= ascii_downcase; 

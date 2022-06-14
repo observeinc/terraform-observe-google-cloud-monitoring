@@ -32,7 +32,7 @@ resource "observe_dataset" "cloudsql_metrics" {
 
       interface "metric", metric:metric_type, value:value
 
-      ${join("\n\n", [for metric, options in local.cloudsql_metrics : indent(2, format("set_metric options(\n%s\n), %q", join(",\n", [for k, v in options : k == "interval" ? format("%s: %s", k, v) : format("%s: %q", k, v) if k != "active" && k != "launchStage"]), metric)) if options.active == true])}
+      ${join("\n\n", [for metric, options in local.metrics_definitions : indent(2, format("set_metric options(\n%s\n), %q", join(",\n", [for k, v in options : k == "interval" ? format("%s: %s", k, v) : format("%s: %q", k, v) if k != "active" && k != "launchStage"]), metric)) if options.active == true])}
     EOF
   }
 }
