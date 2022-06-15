@@ -157,3 +157,4 @@ resource "observe_dataset" "iam_policy_asset_inventory_records" {
         etag:string(iam_policy.etag)
     EOF
   }
+}
