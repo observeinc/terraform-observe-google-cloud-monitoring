@@ -46,4 +46,3 @@ resource "observe_dataset" "compute" {
     EOF
   }
 }
-
