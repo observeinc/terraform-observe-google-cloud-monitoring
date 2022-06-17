@@ -39,17 +39,17 @@ resource "observe_dataset" "compute_metrics" {
   }
 }
 
-# resource "observe_link" "compute_metrics" {
-#   for_each = length(observe_dataset.cloudsql_metrics) > 0 ? {
-#     "Cloud Function" = {
-#       target = observe_dataset.cloudsql.oid
-#       fields = ["project_id", "region", "database_id"]
-#     }
-#   } : {}
+resource "observe_link" "compute_metrics" {
+  for_each = length(observe_dataset.compute_metrics) > 0 ? {
+    "Cloud Function" = {
+      target = observe_dataset.compute.oid
+      fields = ["project_id", "region", "instance_id"]
+    }
+  } : {}
 
-#   workspace = var.workspace.oid
-#   source    = observe_dataset.cloudsql_metrics[0].oid
-#   target    = each.value.target
-#   fields    = each.value.fields
-#   label     = each.key
-# }
+  workspace = var.workspace.oid
+  source    = observe_dataset.compute_metrics[0].oid
+  target    = each.value.target
+  fields    = each.value.fields
+  label     = each.key
+}
