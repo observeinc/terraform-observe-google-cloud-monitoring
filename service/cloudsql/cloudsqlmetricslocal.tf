@@ -1,5 +1,5 @@
 locals {
-  cloudsql_metrics = {
+  metrics_definitions = {
     "cloudsql.googleapis.com/database/active_directory/domain_reachable" = {
       type        = "gauge"
       description = <<-EOF
