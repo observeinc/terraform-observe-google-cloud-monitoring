@@ -21,13 +21,8 @@ resource "observe_dataset" "cloudsql" {
       make_col
         assetInventoryName:name,
         name:string(data.name)
-        make_col ipAddressObject:pivot_array( array(data.ipAddresses), "type", "ipAddress" )
+        ipAddressObject:pivot_array( array(data.ipAddresses), "type", "ipAddress" )
 
-
-        make_col databaseFlags:data.settings.databaseFlags
-        make_col ipConfiguration:data.settings.ipConfiguration
-        make_col tier:string(data.settings.tier)
-        make_col state:string(data.state)
 
       make_resource options(expiry:${var.max_expiry}),
         name,
