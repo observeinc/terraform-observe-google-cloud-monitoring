@@ -20,8 +20,8 @@ resource "observe_dataset" "cloudsql" {
       filter asset_type = "sqladmin.googleapis.com/Instance"
       make_col
         assetInventoryName:name,
-        name:string(data.name)
-        ipAddressObject:pivot_array( array(data.ipAddresses), "type", "ipAddress" )
+        name:string(data.name),
+        ipAddressObject:pivot_array(array(data.ipAddresses), "type", "ipAddress" )
 
 
       make_resource options(expiry:${var.max_expiry}),
