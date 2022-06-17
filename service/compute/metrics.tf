@@ -13,9 +13,12 @@ resource "observe_dataset" "compute_metrics" {
     pipeline = <<-EOF
       filter resource_type = "gce_instance"
       make_col 
-          database_id:string(resource_labels.database_id),
-          project_id:string(resource_labels.project_id),
-          region:string(resource_labels.region)
+        instance_id:string(resource_labels.instance_id),
+        project_id:string(resource_labels.project_id),
+        zone:string(resource_labels.zone)
+
+      extract_regex zone, /(?P<region>[a-z]+[-]+[a-z,0-9]+)/
+    
 
       pick_col
         start_time,
@@ -26,8 +29,9 @@ resource "observe_dataset" "compute_metrics" {
         value,
         value_type,
         project_id,
+        zone,
         region,
-        database_id
+        instance_id
 
       interface "metric", metric:metric_type, value:value
       ${join("\n\n", [for metric, options in local.metrics_definitions : indent(2, format("set_metric options(\n%s\n), %q", join(",\n", [for k, v in options : k == "interval" ? format("%s: %s", k, v) : format("%s: %q", k, v) if k != "active" && k != "launchStage"]), metric)) if options.active == true])}
