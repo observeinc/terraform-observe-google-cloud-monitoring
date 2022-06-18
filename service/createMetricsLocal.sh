@@ -59,7 +59,8 @@ jq -r 'def activeFunc: if . =="GA" then "true" else "false" end; # returns true 
         def sampleFunc: if . | has("samplePeriod") then " Sampled every " + .samplePeriod + " and may take up to " + .ingestDelay + " to display." else "" end; # if has property then return concatenated string otherwise nothing
         def dataBaseParseFunc: if . | contains("mysql") then . elif . | contains("postgresql") then . elif . | contains("sqlserver") then . else "ALL" end;
         def dataBaseFunc: if . | contains("cloudsql.googleapis.com/database") then (. | capture("database/(?<keepafterdatabase>[^/]+)") | .keepafterdatabase | dataBaseParseFunc) else "false" end;    
-        
+        def intervalFunc: if . | has("samplePeriod") then "interval = \"" + (.samplePeriod) + "\"\n" else "" end; # if has property then return interval else nothing
+       
     .metricDescriptors[] | 
     "\"" + (.name | capture("metricDescriptors/(?<keepaftermetricDescriptors>.*)") | .keepaftermetricDescriptors) + "\" = { 
         type = \"" + (.metricKind | metricCaseFunc | metricTypeFunc) + "\" 
@@ -71,6 +72,8 @@ jq -r 'def activeFunc: if . =="GA" then "true" else "false" end; # returns true 
         aggregate   = \"sum\"
         active      = " + (.launchStage | activeFunc) + "
         dataBase = \"" +  (.name | dataBaseFunc) + "\"
+        " +
+        (.metadata | intervalFunc ) + "
         },"
     ' "$input_file" >> "$output_file";
 
