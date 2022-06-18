@@ -36,3 +36,15 @@ variable "google" {
   description = "Google base module"
 }
 
+variable "metric_launch_stages" {
+  type        = set(string)
+  default     = ["GA", "BETA"]
+  description = "Used by metric interface to pick metrics to include"
+}
+
+variable "metric_interface_fields" {
+  type        = set(string)
+  default     = ["type", "description", "rollup", "aggregate", "interval"]
+  description = "Used by metric interface to pick fields to map"
+}
+

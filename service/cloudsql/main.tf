@@ -45,7 +45,6 @@ resource "observe_dataset" "cloudsql" {
         ipAddressPrimary: ipAddressObject.PRIMARY,
         ipAddresses:string(data.ipAddresses),
         gceZone:string(data.gceZone),
-        settings:string(data.settings),
         primary_key(assetInventoryName),
         valid_for(ttl)
 

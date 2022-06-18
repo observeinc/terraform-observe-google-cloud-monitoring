@@ -51,7 +51,9 @@ echo "Output file = $output_file"
 echo "locals {" > "$output_file";
 echo " $local_var_name = {" >> "$output_file";
 
-jq -r 'def activeFunc: if . =="GA" then "true" else "false" end; 
+# in jq def is used to create a function that is then called in line
+
+jq -r 'def activeFunc: if . =="GA" then "true" else "false" end; # this set active to true for GA meterics
         def metricCaseFunc: . |= ascii_downcase; 
         def metricTypeFunc: if . == "cumulative" then "cumulativeCounter" else . end; 
         def sampleFunc: if . | has("samplePeriod") then " Sampled every " + .samplePeriod + " and may take up to " + .ingestDelay + " to display." else "" end;
