@@ -53,12 +53,15 @@ echo " $local_var_name = {" >> "$output_file";
 
 # in jq def is used to create a function that is then called in line
 
-jq -r 'def activeFunc: if . =="GA" then "true" else "false" end; # this set active to true for GA meterics
-        def metricCaseFunc: . |= ascii_downcase; 
-        def metricTypeFunc: if . == "cumulative" then "cumulativeCounter" else . end; 
-        def sampleFunc: if . | has("samplePeriod") then " Sampled every " + .samplePeriod + " and may take up to " + .ingestDelay + " to display." else "" end;
+jq -r 'def activeFunc: if . =="GA" then "true" else "false" end; # returns true if metric is GA
+        def metricCaseFunc: . |= ascii_downcase; # returns lowercase version of string
+        def metricTypeFunc: if . == "cumulative" then "cumulativeCounter" else . end; # transforms result if cumulitive otherwise return value passed to function
+        def sampleFunc: if . | has("samplePeriod") then " Sampled every " + .samplePeriod + " and may take up to " + .ingestDelay + " to display." else "" end; # if has property then return concatenated string otherwise nothing
+        def dataBaseParseFunc: if . | contains("mysql") then . elif . | contains("postgresql") then . elif . | contains("sqlserver") then . else "ALL" end;
+        def dataBaseFunc: if . | contains("cloudsql.googleapis.com/database") then (. | capture("database/(?<keepafterdatabase>[^/]+)") | .keepafterdatabase | dataBaseParseFunc) else "false" end;    
+        
     .metricDescriptors[] | 
-    "\"" + (.name | capture("projects/terraflood-345116/metricDescriptors/(?<idontwanthis>.*)") | .idontwanthis) + "\" = { 
+    "\"" + (.name | capture("metricDescriptors/(?<keepaftermetricDescriptors>.*)") | .keepaftermetricDescriptors) + "\" = { 
         type = \"" + (.metricKind | metricCaseFunc | metricTypeFunc) + "\" 
         description = <<-EOF
           " + (.description ) + (.metadata | sampleFunc ) + "
@@ -66,8 +69,8 @@ jq -r 'def activeFunc: if . =="GA" then "true" else "false" end; # this set acti
         launchStage = \"" + (.launchStage) + "\"
         rollup      = \"avg\"
         aggregate   = \"sum\"
-        active      = " + (.launchStage | activeFunc) +
-        "
+        active      = " + (.launchStage | activeFunc) + "
+        dataBase = \"" +  (.name | dataBaseFunc) + "\"
         },"
     ' "$input_file" >> "$output_file";
 
