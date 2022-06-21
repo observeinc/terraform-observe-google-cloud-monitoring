@@ -212,8 +212,8 @@ resource "observe_board" "function" {
   dataset = observe_dataset.function.oid
   name    = "Monitoring"
   json = templatefile("${path.module}/boards/monitoring.json", {
-    dataset_cloudFunctionsFunctionMetrics = observe_dataset.function_metrics[0].oid
-    dataset_cloudFunctionsFunction        = observe_dataset.function.oid
+    dataset_cloudFunctionsFunctionMetrics = observe_dataset.function_metrics[0].id
+    dataset_cloudFunctionsFunction        = observe_dataset.function.id
   })
   type = each.key
 }
