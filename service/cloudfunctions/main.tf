@@ -125,6 +125,7 @@ locals {
       EOF
       rollup      = "avg"
       aggregate   = "sum"
+      unit        = "ns"
     },
     "cloudfunctions.googleapis.com/function/instance_count" = {
       type        = "gauge"
@@ -141,6 +142,7 @@ locals {
       EOF
       rollup      = "rate"
       aggregate   = "sum"
+      unit        = "B"
     },
     "cloudfunctions.googleapis.com/function/user_memory_bytes" = {
       type        = "delta"
@@ -149,6 +151,7 @@ locals {
       EOF
       rollup      = "avg"
       aggregate   = "sum"
+      unit        = "B"
     },
   }
 }
