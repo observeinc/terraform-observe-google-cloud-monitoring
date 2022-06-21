@@ -9,8 +9,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
     "cloudsql.googleapis.com/database/active_directory/instance_available" = {
@@ -22,8 +23,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
     "cloudsql.googleapis.com/database/auto_failover_request_count" = {
@@ -35,8 +37,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
     "cloudsql.googleapis.com/database/available_for_failover" = {
@@ -48,8 +51,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
     "cloudsql.googleapis.com/database/cpu/reserved_cores" = {
@@ -61,8 +65,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
     "cloudsql.googleapis.com/database/cpu/usage_time" = {
@@ -74,8 +79,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
     "cloudsql.googleapis.com/database/cpu/utilization" = {
@@ -87,8 +93,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
     "cloudsql.googleapis.com/database/disk/bytes_used" = {
@@ -100,8 +107,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
     "cloudsql.googleapis.com/database/disk/bytes_used_by_data_type" = {
@@ -113,8 +121,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
     "cloudsql.googleapis.com/database/disk/quota" = {
@@ -126,8 +135,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
     "cloudsql.googleapis.com/database/disk/read_ops_count" = {
@@ -139,8 +149,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
     "cloudsql.googleapis.com/database/disk/utilization" = {
@@ -152,8 +163,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
     "cloudsql.googleapis.com/database/disk/write_ops_count" = {
@@ -165,8 +177,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
     "cloudsql.googleapis.com/database/instance_state" = {
@@ -189,8 +202,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
     "cloudsql.googleapis.com/database/memory/quota" = {
@@ -202,8 +216,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
     "cloudsql.googleapis.com/database/memory/total_usage" = {
@@ -215,8 +230,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
     "cloudsql.googleapis.com/database/memory/usage" = {
@@ -228,8 +244,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
     "cloudsql.googleapis.com/database/memory/utilization" = {
@@ -241,8 +258,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
     "cloudsql.googleapis.com/database/mysql/innodb_buffer_pool_pages_dirty" = {
@@ -254,8 +272,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "mysql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "mysql"
 
     },
     "cloudsql.googleapis.com/database/mysql/innodb_buffer_pool_pages_free" = {
@@ -267,8 +286,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "mysql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "mysql"
 
     },
     "cloudsql.googleapis.com/database/mysql/innodb_buffer_pool_pages_total" = {
@@ -280,8 +300,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "mysql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "mysql"
 
     },
     "cloudsql.googleapis.com/database/mysql/innodb_data_fsyncs" = {
@@ -293,8 +314,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "mysql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "mysql"
 
     },
     "cloudsql.googleapis.com/database/mysql/innodb_os_log_fsyncs" = {
@@ -306,8 +328,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "mysql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "mysql"
 
     },
     "cloudsql.googleapis.com/database/mysql/innodb_pages_read" = {
@@ -319,8 +342,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "mysql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "mysql"
 
     },
     "cloudsql.googleapis.com/database/mysql/innodb_pages_written" = {
@@ -332,8 +356,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "mysql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "mysql"
 
     },
     "cloudsql.googleapis.com/database/mysql/queries" = {
@@ -345,8 +370,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "mysql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "mysql"
 
     },
     "cloudsql.googleapis.com/database/mysql/questions" = {
@@ -358,8 +384,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "mysql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "mysql"
 
     },
     "cloudsql.googleapis.com/database/mysql/received_bytes_count" = {
@@ -371,8 +398,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "mysql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "mysql"
 
     },
     "cloudsql.googleapis.com/database/mysql/replication/available_for_failover" = {
@@ -384,8 +412,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
-      dataBase    = "mysql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "mysql"
 
     },
     "cloudsql.googleapis.com/database/mysql/replication/last_io_errno" = {
@@ -397,8 +426,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "mysql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "mysql"
 
     },
     "cloudsql.googleapis.com/database/mysql/replication/last_sql_errno" = {
@@ -410,8 +440,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "mysql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "mysql"
 
     },
     "cloudsql.googleapis.com/database/mysql/replication/seconds_behind_master" = {
@@ -423,8 +454,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "mysql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "mysql"
 
     },
     "cloudsql.googleapis.com/database/mysql/replication/slave_io_running" = {
@@ -436,8 +468,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "mysql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "mysql"
 
     },
     "cloudsql.googleapis.com/database/mysql/replication/slave_io_running_state" = {
@@ -449,8 +482,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "mysql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "mysql"
 
     },
     "cloudsql.googleapis.com/database/mysql/replication/slave_sql_running" = {
@@ -462,8 +496,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "mysql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "mysql"
 
     },
     "cloudsql.googleapis.com/database/mysql/replication/slave_sql_running_state" = {
@@ -475,8 +510,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "mysql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "mysql"
 
     },
     "cloudsql.googleapis.com/database/mysql/sent_bytes_count" = {
@@ -488,8 +524,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "mysql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "mysql"
 
     },
     "cloudsql.googleapis.com/database/network/connections" = {
@@ -501,8 +538,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
     "cloudsql.googleapis.com/database/network/received_bytes_count" = {
@@ -514,8 +552,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
     "cloudsql.googleapis.com/database/network/sent_bytes_count" = {
@@ -527,8 +566,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
     "cloudsql.googleapis.com/database/postgresql/blocks_read_count" = {
@@ -540,8 +580,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
-      dataBase    = "postgresql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/deadlock_count" = {
@@ -553,8 +594,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
-      dataBase    = "postgresql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/external_sync/initial_sync_complete" = {
@@ -566,8 +608,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
-      dataBase    = "postgresql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/external_sync/max_replica_byte_lag" = {
@@ -579,8 +622,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
-      dataBase    = "postgresql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/insights/aggregate/execution_time" = {
@@ -592,7 +636,8 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "postgresql"
+
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/insights/aggregate/io_time" = {
@@ -604,7 +649,8 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "postgresql"
+
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/insights/aggregate/latencies" = {
@@ -616,7 +662,8 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "postgresql"
+
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/insights/aggregate/lock_time" = {
@@ -628,7 +675,8 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "postgresql"
+
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/insights/aggregate/row_count" = {
@@ -640,7 +688,8 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "postgresql"
+
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/insights/aggregate/shared_blk_access_count" = {
@@ -652,7 +701,8 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "postgresql"
+
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/insights/perquery/execution_time" = {
@@ -664,7 +714,8 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "postgresql"
+
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/insights/perquery/io_time" = {
@@ -676,7 +727,8 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "postgresql"
+
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/insights/perquery/latencies" = {
@@ -688,7 +740,8 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "postgresql"
+
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/insights/perquery/lock_time" = {
@@ -700,7 +753,8 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "postgresql"
+
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/insights/perquery/row_count" = {
@@ -712,7 +766,8 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "postgresql"
+
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/insights/perquery/shared_blk_access_count" = {
@@ -724,7 +779,8 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "postgresql"
+
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/insights/pertag/execution_time" = {
@@ -736,7 +792,8 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "postgresql"
+
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/insights/pertag/io_time" = {
@@ -748,7 +805,8 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "postgresql"
+
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/insights/pertag/latencies" = {
@@ -760,7 +818,8 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "postgresql"
+
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/insights/pertag/lock_time" = {
@@ -772,7 +831,8 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "postgresql"
+
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/insights/pertag/row_count" = {
@@ -784,7 +844,8 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "postgresql"
+
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/insights/pertag/shared_blk_access_count" = {
@@ -796,7 +857,8 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "postgresql"
+
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/num_backends" = {
@@ -808,8 +870,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "postgresql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/num_backends_by_state" = {
@@ -821,8 +884,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
-      dataBase    = "postgresql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/replication/replica_byte_lag" = {
@@ -834,8 +898,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "postgresql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/transaction_count" = {
@@ -847,8 +912,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "postgresql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/transaction_id_count" = {
@@ -860,8 +926,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "postgresql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/transaction_id_utilization" = {
@@ -873,8 +940,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "postgresql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/tuple_size" = {
@@ -886,8 +954,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
-      dataBase    = "postgresql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/tuples_processed_count" = {
@@ -899,8 +968,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
-      dataBase    = "postgresql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/postgresql/vacuum/oldest_transaction_age" = {
@@ -912,8 +982,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "postgresql"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "postgresql"
 
     },
     "cloudsql.googleapis.com/database/replication/log_archive_failure_count" = {
@@ -925,8 +996,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
     "cloudsql.googleapis.com/database/replication/log_archive_success_count" = {
@@ -938,8 +1010,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
     "cloudsql.googleapis.com/database/replication/network_lag" = {
@@ -951,8 +1024,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
     "cloudsql.googleapis.com/database/replication/replica_lag" = {
@@ -964,8 +1038,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
     "cloudsql.googleapis.com/database/replication/state" = {
@@ -977,8 +1052,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
     "cloudsql.googleapis.com/database/sqlserver/audits_size" = {
@@ -990,8 +1066,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "sqlserver"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "sqlserver"
 
     },
     "cloudsql.googleapis.com/database/sqlserver/audits_upload_count" = {
@@ -1003,8 +1080,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "sqlserver"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "sqlserver"
 
     },
     "cloudsql.googleapis.com/database/sqlserver/external_sync/primary_to_replica_connection_health" = {
@@ -1016,8 +1094,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
-      dataBase    = "sqlserver"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "sqlserver"
 
     },
     "cloudsql.googleapis.com/database/state" = {
@@ -1036,8 +1115,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
     "cloudsql.googleapis.com/database/up" = {
@@ -1049,8 +1129,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
     "cloudsql.googleapis.com/database/uptime" = {
@@ -1062,8 +1143,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
-      dataBase    = "ALL"
-      interval    = "60s"
+
+      interval = "60s"
+      dataBase = "ALL"
 
     },
   }
