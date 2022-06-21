@@ -41,7 +41,7 @@ resource "observe_dataset" "cloudsql_metrics" {
 
 resource "observe_link" "cloudsql_metrics" {
   for_each = length(observe_dataset.cloudsql_metrics) > 0 ? {
-    "Cloud Function" = {
+    "Cloud SQL" = {
       target = observe_dataset.cloudsql.oid
       fields = ["project_id", "region", "database_id"]
     }
