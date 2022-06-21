@@ -1,0 +1,2558 @@
+{
+    "metricDescriptors": [
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/firewall/dropped_bytes_count",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Count of incoming bytes dropped by the firewall.",
+        "displayName": "Dropped bytes",
+        "type": "compute.googleapis.com/firewall/dropped_bytes_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/firewall/dropped_packets_count",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Count of incoming packets dropped by the firewall.",
+        "displayName": "Dropped packets",
+        "type": "compute.googleapis.com/firewall/dropped_packets_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/guest/cpu/load_15m",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "DOUBLE",
+        "unit": "1",
+        "description": "CPU Load (15 minute intervals). For Container-Optimized OS, or Ubuntu running GKE.",
+        "displayName": "CPU load average (15m)",
+        "type": "compute.googleapis.com/guest/cpu/load_15m",
+        "metadata": {
+          "launchStage": "ALPHA"
+        },
+        "launchStage": "ALPHA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/guest/cpu/load_1m",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "DOUBLE",
+        "unit": "1",
+        "description": "CPU Load (1 minute intervals). For Container-Optimized OS, or Ubuntu running GKE.",
+        "displayName": "CPU load average (1m)",
+        "type": "compute.googleapis.com/guest/cpu/load_1m",
+        "metadata": {
+          "launchStage": "ALPHA"
+        },
+        "launchStage": "ALPHA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/guest/cpu/load_5m",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "DOUBLE",
+        "unit": "1",
+        "description": "CPU Load (5 minute intervals).  For Container-Optimized OS, or Ubuntu running GKE.",
+        "displayName": "CPU load average (5m)",
+        "type": "compute.googleapis.com/guest/cpu/load_5m",
+        "metadata": {
+          "launchStage": "ALPHA"
+        },
+        "launchStage": "ALPHA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/guest/cpu/runnable_task_count",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "DOUBLE",
+        "unit": "1",
+        "description": "The average number of runnable tasks in the run-queue. For Container-Optimized OS, or Ubuntu running GKE.",
+        "displayName": "Runnable task count.",
+        "type": "compute.googleapis.com/guest/cpu/runnable_task_count",
+        "metadata": {
+          "launchStage": "BETA"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/guest/cpu/usage_time",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "state",
+            "description": "One of the following: idle, interrupt, nice, softirq, steal, system, user, wait."
+          }
+        ],
+        "metricKind": "CUMULATIVE",
+        "valueType": "DOUBLE",
+        "unit": "s{CPU}",
+        "description": "CPU usage, in seconds. For Container-Optimized OS, or Ubuntu running GKE.",
+        "displayName": "CPU usage",
+        "type": "compute.googleapis.com/guest/cpu/usage_time",
+        "metadata": {
+          "launchStage": "BETA"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/guest/disk/bytes_used",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "mountoption",
+            "description": "Mount options on the disk device."
+          },
+          {
+            "key": "mount_option",
+            "description": "Mount options on the disk device."
+          },
+          {
+            "key": "device_name",
+            "description": "The name of the disk device."
+          },
+          {
+            "key": "state",
+            "description": "Type of usage (free, used, reserved)"
+          },
+          {
+            "key": "fstype",
+            "description": "File system type of the disk device."
+          },
+          {
+            "key": "fs_type",
+            "description": "File system type of the disk device."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Number of bytes used on disk for file systems. For Container-Optimized OS, or Ubuntu running GKE.",
+        "displayName": "Disk usage",
+        "type": "compute.googleapis.com/guest/disk/bytes_used",
+        "metadata": {
+          "launchStage": "BETA"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/guest/disk/io_time",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "device_name",
+            "description": "The name of the disk device."
+          }
+        ],
+        "metricKind": "CUMULATIVE",
+        "valueType": "INT64",
+        "unit": "ms",
+        "description": "The cumulative time spent on the I/O operations that are in progress; that is, the actual time in queue and when disks were busy. Requests issued in parallel are counted as a single one. For Container-Optimized OS, or Ubuntu running GKE.",
+        "displayName": "IO Time",
+        "type": "compute.googleapis.com/guest/disk/io_time",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/guest/disk/merged_operation_count",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "device_name",
+            "description": "The name of the disk device."
+          },
+          {
+            "key": "direction",
+            "description": "Direction (read, write)."
+          }
+        ],
+        "metricKind": "CUMULATIVE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Merged disk operations count. Disk operations which are adjacent to each other may be merged by the kernel for efficiency. For Container-Optimized OS, or Ubuntu running GKE.",
+        "displayName": "Merged disk operations",
+        "type": "compute.googleapis.com/guest/disk/merged_operation_count",
+        "metadata": {
+          "launchStage": "BETA"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/guest/disk/operation_bytes_count",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "device_name",
+            "description": "The name of the disk device."
+          },
+          {
+            "key": "direction",
+            "description": "Direction (read, write)."
+          }
+        ],
+        "metricKind": "CUMULATIVE",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Bytes transferred in disk operations. For Container-Optimized OS, or Ubuntu running GKE.",
+        "displayName": "Disk bytes transferred",
+        "type": "compute.googleapis.com/guest/disk/operation_bytes_count",
+        "metadata": {
+          "launchStage": "BETA"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/guest/disk/operation_count",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "device_name",
+            "description": "The name of the disk device."
+          },
+          {
+            "key": "direction",
+            "description": "Direction (read, write)."
+          }
+        ],
+        "metricKind": "CUMULATIVE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Disk operations count. For Container-Optimized OS, or Ubuntu running GKE.",
+        "displayName": "Disk operations",
+        "type": "compute.googleapis.com/guest/disk/operation_count",
+        "metadata": {
+          "launchStage": "BETA"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/guest/disk/operation_time",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "device_name",
+            "description": "The name of the disk device."
+          },
+          {
+            "key": "direction",
+            "description": "Direction (read, write)."
+          }
+        ],
+        "metricKind": "CUMULATIVE",
+        "valueType": "INT64",
+        "unit": "ms",
+        "description": "Amount of time spent on the disk operations, by direction. This metric only includes time spent on completed operations. For Container-Optimized OS, or Ubuntu running GKE.",
+        "displayName": "Disk operation time",
+        "type": "compute.googleapis.com/guest/disk/operation_time",
+        "metadata": {
+          "launchStage": "BETA"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/guest/disk/queue_length",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "device_name",
+            "description": "The name of the disk device."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "DOUBLE",
+        "unit": "1",
+        "description": "The queue length on the disk averaged over the last 60 seconds. For Container-Optimized OS, or Ubuntu running GKE.",
+        "displayName": "Queue Length",
+        "type": "compute.googleapis.com/guest/disk/queue_length",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/guest/disk/weighted_io_time",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "device_name",
+            "description": "The name of the disk device."
+          }
+        ],
+        "metricKind": "CUMULATIVE",
+        "valueType": "INT64",
+        "unit": "ms",
+        "description": "The cumulative weighted IO time spent on the disk. For Container-Optimized OS, or Ubuntu running GKE.",
+        "displayName": "IO Time",
+        "type": "compute.googleapis.com/guest/disk/weighted_io_time",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/guest/memory/anonymous_used",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "state",
+            "description": "One of the following: active, inactive. Active means the memory has been used more recently."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Anonymous memory usage, in Bytes. Summing values of all states yields the total anonymous memory used. For Container-Optimized OS, or Ubuntu running GKE.",
+        "displayName": "Anonymous memory usage in Bytes",
+        "type": "compute.googleapis.com/guest/memory/anonymous_used",
+        "metadata": {
+          "launchStage": "BETA"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/guest/memory/bytes_used",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "state",
+            "description": "One of the following: buffered, cached, free, slab, used"
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Memory usage by each memory state, in Bytes. Summing values of all states yields the total memory on the machine. For Container-Optimized OS, or Ubuntu running GKE.",
+        "displayName": "Memory usage in Bytes",
+        "type": "compute.googleapis.com/guest/memory/bytes_used",
+        "metadata": {
+          "launchStage": "BETA"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/guest/memory/dirty_used",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "state",
+            "description": "One of the following: dirty, writeback. Dirty means the memory is waiting to be written back to disk, and writeback means the memory is actively being written back to disk."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Dirty pages usage, in Bytes. For Container-Optimized OS, or Ubuntu running GKE.",
+        "displayName": "Dirty pages usage in Bytes.",
+        "type": "compute.googleapis.com/guest/memory/dirty_used",
+        "metadata": {
+          "launchStage": "BETA"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/guest/memory/page_cache_used",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "state",
+            "description": "One of the following: active, inactive. Active means the memory has been used more recently and usually not reclaimed until needed."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Page cache memory usage, in Bytes. Summing values of all states yields the total anonymous memory used. For Container-Optimized OS, or Ubuntu running GKE.",
+        "displayName": "Page cache memory usage in Bytes",
+        "type": "compute.googleapis.com/guest/memory/page_cache_used",
+        "metadata": {
+          "launchStage": "BETA"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/guest/memory/unevictable_used",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Unevictable memory usage, in Bytes. For Container-Optimized OS, or Ubuntu running GKE.",
+        "displayName": "Unevictable memory usage in Bytes",
+        "type": "compute.googleapis.com/guest/memory/unevictable_used",
+        "metadata": {
+          "launchStage": "BETA"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/guest/system/os_feature_enabled",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "value",
+            "description": "Value for the features of the guest os system if present."
+          },
+          {
+            "key": "os_feature",
+            "description": "Features of the guest OS system."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "OS Features like GPU support, KTD kernel, third party modules as unknown modules. 1 if the feature is enabled and 0, if disabled.  For Container-Optimized OS, or Ubuntu running GKE.",
+        "displayName": "OS Feature",
+        "type": "compute.googleapis.com/guest/system/os_feature_enabled",
+        "metadata": {
+          "launchStage": "BETA",
+          "samplePeriod": "60s"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/guest/system/problem_count",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "reason",
+            "description": "Description of the type of the problem."
+          }
+        ],
+        "metricKind": "CUMULATIVE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Number of times a machine problem has happened. For Container-Optimized OS, or Ubuntu running GKE.",
+        "displayName": "Problem Count",
+        "type": "compute.googleapis.com/guest/system/problem_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/guest/system/problem_state",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "reason",
+            "description": "Description of the cause of the problem."
+          },
+          {
+            "key": "type",
+            "description": "Description of the type of the problem."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Whether a problem is affecting the system or not. The problem is affecting the system when set to 1 and is not affecting the system when set to 0. For Container-Optimized OS, or Ubuntu running GKE.",
+        "displayName": "Problem State",
+        "type": "compute.googleapis.com/guest/system/problem_state",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/guest/system/uptime",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "kernel_version",
+            "description": "The version of the operating system kernel."
+          },
+          {
+            "key": "os_version",
+            "description": "The version of the operating system."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "s",
+        "description": "Number of seconds that the operating system has been running for. For Container-Optimized OS, or Ubuntu running GKE.",
+        "displayName": "Uptime",
+        "type": "compute.googleapis.com/guest/system/uptime",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/cpu/guest_visible_vcpus",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "DOUBLE",
+        "unit": "1",
+        "description": "Number of vCPUs visible inside the guest. For many GCE machine types, the number of vCPUs visible inside the guest is equal to the `compute.googleapis.com/instance/cpu/reserved_cores` metric. For shared-core machine types, the number of guest-visible vCPUs differs from the number of resereved cores. For example, e2-small instances have two vCPUs visible inside the guest and 0.5 fractional vCPUs reserved. Therefore, for an e2-small instance,  `compute.googleapis.com/instance/cpu/guest_visible_vcpus` has a value of 2 and `compute.googleapis.com/instance/cpu/reserved_cores` has a value of 0.5.",
+        "displayName": "Guest Visible vCPUs",
+        "type": "compute.googleapis.com/instance/cpu/guest_visible_vcpus",
+        "metadata": {
+          "launchStage": "BETA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/cpu/reserved_cores",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "DOUBLE",
+        "unit": "1",
+        "description": "Number of vCPUs reserved on the host of the instance.",
+        "displayName": "Reserved vCPUs",
+        "type": "compute.googleapis.com/instance/cpu/reserved_cores",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/cpu/scheduler_wait_time",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "DOUBLE",
+        "unit": "s{idle}",
+        "description": "Wait time is the time a vCPU is ready to run, but unexpectedly not scheduled to run. The wait time returned here is the accumulated value for all vCPUs. The time interval for which the value was measured is returned by Monitoring in whole seconds as start_time and end_time. This metric is only available for VMs that belong to the e2 family or to overcommitted VMs on sole-tenant nodes.",
+        "displayName": "Scheduler Wait Time",
+        "type": "compute.googleapis.com/instance/cpu/scheduler_wait_time",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/cpu/usage_time",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "DOUBLE",
+        "unit": "s{CPU}",
+        "description": "Delta vCPU usage for all vCPUs, in vCPU-seconds. To compute the per-vCPU utilization fraction, divide this value by (end-start)*N, where end and start define this value's time interval and N is `compute.googleapis.com/instance/cpu/reserved_cores` at the end of the interval. This value is reported by the hypervisor for the VM and can differ from `agent.googleapis.com/cpu/usage_time`, which is reported from inside the VM.",
+        "displayName": "CPU usage",
+        "type": "compute.googleapis.com/instance/cpu/usage_time",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/cpu/utilization",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "DOUBLE",
+        "unit": "10^2.%",
+        "description": "Fractional utilization of allocated CPU on this instance. Values are typically numbers between 0.0 and 1.0 (but some machine types allow bursting above 1.0). Charts display the values as a percentage between 0% and 100% (or more). This metric is reported by the hypervisor for the VM and can differ from `agent.googleapis.com/cpu/utilization`, which is reported from inside the VM.",
+        "displayName": "CPU utilization",
+        "type": "compute.googleapis.com/instance/cpu/utilization",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/disk/max_read_bytes_count",
+        "labels": [
+          {
+            "key": "device_name",
+            "description": "The name of the disk device."
+          },
+          {
+            "key": "storage_type",
+            "description": "Storage type, one of [pd-standard, PD-Balanced, pd-ssd, PD-Extreme]."
+          },
+          {
+            "key": "device_type",
+            "description": "Disk type, one of [ephemeral, permanent]."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Disk's maximum per-second read throughput over a period of time specified by the user. The period must be one minute or longer.",
+        "displayName": "Peak disk read bytes",
+        "type": "compute.googleapis.com/instance/disk/max_read_bytes_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/disk/max_read_ops_count",
+        "labels": [
+          {
+            "key": "device_name",
+            "description": "The name of the disk device."
+          },
+          {
+            "key": "storage_type",
+            "description": "Storage type, one of [pd-standard, pd-ssd, PD-Balanced, PD-Extreme]."
+          },
+          {
+            "key": "device_type",
+            "description": "Disk type, one of [ephemeral, permanent]."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Disk's maximum per-second read requests count over a period of time specified by the user. The period must be one minute or longer.",
+        "displayName": "Peak disk read ops",
+        "type": "compute.googleapis.com/instance/disk/max_read_ops_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/disk/max_write_bytes_count",
+        "labels": [
+          {
+            "key": "device_name",
+            "description": "The name of the disk device."
+          },
+          {
+            "key": "storage_type",
+            "description": "Storage type, one of [pd-standard, PD-Balanced, pd-ssd, PD-Extreme]."
+          },
+          {
+            "key": "device_type",
+            "description": "Disk type, one of [ephemeral, permanent]."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Disk's maximum per-second write throughput over a period of time specified by the user. The period must be one minute or longer.",
+        "displayName": "Peak disk write bytes",
+        "type": "compute.googleapis.com/instance/disk/max_write_bytes_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/disk/max_write_ops_count",
+        "labels": [
+          {
+            "key": "device_name",
+            "description": "The name of the disk device."
+          },
+          {
+            "key": "storage_type",
+            "description": "Storage type, one of [pd-standard, PD-Balanced, pd-ssd, PD-Extreme]."
+          },
+          {
+            "key": "device_type",
+            "description": "Disk type, one of [ephemeral, permanent]."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Disk's maximum per-second write requests count over a period of time specified by the user. The period must be one minute or longer.",
+        "displayName": "Peak disk write ops",
+        "type": "compute.googleapis.com/instance/disk/max_write_ops_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/disk/read_bytes_count",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "device_name",
+            "description": "The name of the disk device."
+          },
+          {
+            "key": "storage_type",
+            "description": "Storage type, one of [pd-standard, pd-balanced, pd-ssd, pd-extreme, local-ssd]."
+          },
+          {
+            "key": "device_type",
+            "description": "Disk type, one of [ephemeral, permanent]."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Count of bytes read from disk.",
+        "displayName": "Disk read bytes",
+        "type": "compute.googleapis.com/instance/disk/read_bytes_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/disk/read_ops_count",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "device_name",
+            "description": "The name of the disk device."
+          },
+          {
+            "key": "storage_type",
+            "description": "Storage type, one of [pd-standard, pd-balanced, pd-ssd, pd-extreme, local-ssd]."
+          },
+          {
+            "key": "device_type",
+            "description": "Disk type, one of [ephemeral, permanent]."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Count of disk read IO operations.",
+        "displayName": "Disk read operations",
+        "type": "compute.googleapis.com/instance/disk/read_ops_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/disk/throttled_read_bytes_count",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "device_name",
+            "description": "The name of the disk device."
+          },
+          {
+            "key": "storage_type",
+            "description": "Storage type, one of [pd-standard, PD-Balanced, pd-ssd, PD-Extreme]."
+          },
+          {
+            "key": "device_type",
+            "description": "The disk type: `ephemeral` or `permanent`."
+          },
+          {
+            "key": "throttle_reason",
+            "description": "Limit that caused the throttling, one of [PER_GB, PER_VM, IOPS, EMERGENCY]. The EMERGENCY reason is deprecated but preserved for backward compatibility; the reported value is always 0."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Count of bytes in throttled read operations.",
+        "displayName": "Throttled read bytes",
+        "type": "compute.googleapis.com/instance/disk/throttled_read_bytes_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/disk/throttled_read_ops_count",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "device_name",
+            "description": "The name of the disk device."
+          },
+          {
+            "key": "storage_type",
+            "description": "Storage type, one of [pd-standard, PD-Balanced, pd-ssd, PD-Extreme]."
+          },
+          {
+            "key": "device_type",
+            "description": "The disk type: `ephemeral` or `permanent`."
+          },
+          {
+            "key": "throttle_reason",
+            "description": "Limit that caused the throttling, one of [PER_GB, PER_VM, IOPS, EMERGENCY]. The EMERGENCY reason is deprecated but preserved for backward compatibility; the reported value is always 0."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Count of throttled read operations.",
+        "displayName": "Throttled read operations",
+        "type": "compute.googleapis.com/instance/disk/throttled_read_ops_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/disk/throttled_write_bytes_count",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "device_name",
+            "description": "The name of the disk device."
+          },
+          {
+            "key": "storage_type",
+            "description": "Storage type, one of [pd-standard, PD-Balanced, pd-ssd, PD-Extreme]."
+          },
+          {
+            "key": "device_type",
+            "description": "Disk type, one of [ephemeral, permanent]."
+          },
+          {
+            "key": "throttle_reason",
+            "description": "Limit that caused the throttling, one of [PER_GB, PER_VM, IOPS, EMERGENCY]. The EMERGENCY reason is deprecated but preserved for backward compatibility; the reported value is always 0."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Count of bytes in throttled write operations.",
+        "displayName": "Throttled write bytes",
+        "type": "compute.googleapis.com/instance/disk/throttled_write_bytes_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/disk/throttled_write_ops_count",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "device_name",
+            "description": "The name of the disk device."
+          },
+          {
+            "key": "storage_type",
+            "description": "Storage type, one of [pd-standard, PD-Balanced, pd-ssd, PD-Extreme]."
+          },
+          {
+            "key": "device_type",
+            "description": "Disk type, one of [ephemeral, permanent]."
+          },
+          {
+            "key": "throttle_reason",
+            "description": "Limit that caused the throttling, one of [PER_GB, PER_VM, IOPS, EMERGENCY]. The EMERGENCY reason is deprecated but preserved for backward compatibility; the reported value is always 0."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Count of throttled write operations.",
+        "displayName": "Throttled write operations",
+        "type": "compute.googleapis.com/instance/disk/throttled_write_ops_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/disk/write_bytes_count",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "device_name",
+            "description": "The name of the disk device."
+          },
+          {
+            "key": "storage_type",
+            "description": "Storage type, one of [pd-standard, pd-balanced, pd-ssd, pd-extreme, local-ssd]."
+          },
+          {
+            "key": "device_type",
+            "description": "Disk type, one of [ephemeral, permanent]."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Count of bytes written to disk.",
+        "displayName": "Disk write bytes",
+        "type": "compute.googleapis.com/instance/disk/write_bytes_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/disk/write_ops_count",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "device_name",
+            "description": "The name of the disk device."
+          },
+          {
+            "key": "storage_type",
+            "description": "Storage type, one of [pd-standard, pd-balanced, pd-ssd, pd-extreme, local-ssd]."
+          },
+          {
+            "key": "device_type",
+            "description": "Disk type, one of [ephemeral, permanent]."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Count of disk write IO operations.",
+        "displayName": "Disk write operations",
+        "type": "compute.googleapis.com/instance/disk/write_ops_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/integrity/early_boot_validation_status",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "status",
+            "description": "One of \"passed\", \"failed\", or \"unknown\"."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "The validation status of early boot integrity policy.",
+        "displayName": "Early Boot Validation",
+        "type": "compute.googleapis.com/instance/integrity/early_boot_validation_status",
+        "metadata": {
+          "launchStage": "BETA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/integrity/late_boot_validation_status",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "status",
+            "description": "One of \"passed\", \"failed\", or \"unknown\"."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "The validation status of late boot integrity policy.",
+        "displayName": "Late Boot Validation",
+        "type": "compute.googleapis.com/instance/integrity/late_boot_validation_status",
+        "metadata": {
+          "launchStage": "BETA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/memory/balloon/ram_size",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "The total amount of memory in the VM. This metric is only available for VMs that belong to the e2 family.",
+        "displayName": "VM Memory Total",
+        "type": "compute.googleapis.com/instance/memory/balloon/ram_size",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/memory/balloon/ram_used",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Memory currently used in the VM. This metric is only available for VMs that belong to the e2 family.",
+        "displayName": "VM Memory Used",
+        "type": "compute.googleapis.com/instance/memory/balloon/ram_used",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/memory/balloon/swap_in_bytes_count",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "The amount of memory read into the guest from its own swap space. This metric is only available for VMs that belong to the e2 family.",
+        "displayName": "VM Swap In",
+        "type": "compute.googleapis.com/instance/memory/balloon/swap_in_bytes_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/memory/balloon/swap_out_bytes_count",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "The amount of memory written from the guest to its own swap space. This metric is only available for VMs that belong to the e2 family.",
+        "displayName": "VM Swap Out",
+        "type": "compute.googleapis.com/instance/memory/balloon/swap_out_bytes_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/network/received_bytes_count",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "loadbalanced",
+            "valueType": "BOOL",
+            "description": "Whether traffic was received by an L3 loadbalanced IP address assigned to the VM. Traffic that is externally routed to the VM's standard internal or external IP address, such as L7 loadbalanced traffic, is not considered to be loadbalanced in this metric."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Count of bytes received from the network.",
+        "displayName": "Received bytes",
+        "type": "compute.googleapis.com/instance/network/received_bytes_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/network/received_packets_count",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "loadbalanced",
+            "valueType": "BOOL",
+            "description": "Whether traffic was received by an L3 loadbalanced IP address assigned to the VM. Traffic that is externally routed to the VM's standard internal or external IP address, such as L7 loadbalanced traffic, is not considered to be loadbalanced in this metric."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Count of packets received from the network.",
+        "displayName": "Received packets",
+        "type": "compute.googleapis.com/instance/network/received_packets_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/network/sent_bytes_count",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "loadbalanced",
+            "valueType": "BOOL",
+            "description": "Whether traffic was sent from an L3 loadbalanced IP address assigned to the VM. Traffic that is externally routed from the VM's standard internal or external IP address, such as L7 loadbalanced traffic, is not considered to be loadbalanced in this metric."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Count of bytes sent over the network.",
+        "displayName": "Sent bytes",
+        "type": "compute.googleapis.com/instance/network/sent_bytes_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/network/sent_packets_count",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          },
+          {
+            "key": "loadbalanced",
+            "valueType": "BOOL",
+            "description": "Whether traffic was sent from an L3 loadbalanced IP address assigned to the VM. Traffic that is externally routed from the VM's standard internal or external IP address, such as L7 loadbalanced traffic, is not considered to be loadbalanced in this metric."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Count of packets sent over the network.",
+        "displayName": "Sent packets",
+        "type": "compute.googleapis.com/instance/network/sent_packets_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/uptime",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "DOUBLE",
+        "unit": "s{uptime}",
+        "description": "Delta of how long the VM has been running, in seconds. Note: to get the total number of seconds since VM start, use compute.googleapis.com/instance/uptime_total.",
+        "displayName": "Uptime",
+        "type": "compute.googleapis.com/instance/uptime",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance/uptime_total",
+        "labels": [
+          {
+            "key": "instance_name",
+            "description": "The name of the VM instance."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "s",
+        "description": "Elapsed time since the VM was started, in seconds.",
+        "displayName": "Uptime Total",
+        "type": "compute.googleapis.com/instance/uptime_total",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance_group/predicted_capacity",
+        "labels": [
+          {
+            "key": "metric_type",
+            "description": "Metric for which utilization target is used, e.g., cpu."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "DOUBLE",
+        "unit": "1",
+        "description": "Estimated capacity that the instance group will have if predictive autoscaling is enabled. Currently available only for autoscaled instance groups and equal to the predicted number of serving VMs multiplied by utilization target.",
+        "displayName": "Instance group capacity as predicted",
+        "type": "compute.googleapis.com/instance_group/predicted_capacity",
+        "metadata": {
+          "launchStage": "BETA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "instance_group"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance_group/predicted_size",
+        "labels": [
+          {
+            "key": "metric_type",
+            "description": "Metric for which utilization target is used, e.g., cpu."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Estimated number of VMs that the instance group will have if predictive autoscaling is enabled. Currently available only for autoscaled instance groups.",
+        "displayName": "Instance group size as predicted",
+        "type": "compute.googleapis.com/instance_group/predicted_size",
+        "metadata": {
+          "launchStage": "BETA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "instance_group"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance_group/predicted_utilization",
+        "labels": [
+          {
+            "key": "metric_type",
+            "description": "Metric for which utilization is predicted, e.g., cpu."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "DOUBLE",
+        "unit": "1",
+        "description": "The sum of the estimated values of the scaling metric for all serving VMs if predictive autoscaling is enabled. Currently available only for autoscaled instance groups.",
+        "displayName": "Instance group utilization as predicted",
+        "type": "compute.googleapis.com/instance_group/predicted_utilization",
+        "metadata": {
+          "launchStage": "BETA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "instance_group"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/instance_group/size",
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "The number of VMs in the instance group.",
+        "displayName": "Instance group size",
+        "type": "compute.googleapis.com/instance_group/size",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "instance_group"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/mirroring/dropped_packets_count",
+        "labels": [
+          {
+            "key": "reason",
+            "description": "The reason for the packet drop."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Count of dropped mirrored packets.",
+        "displayName": "Dropped packets",
+        "type": "compute.googleapis.com/mirroring/dropped_packets_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/mirroring/mirrored_bytes_count",
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Count of mirrored bytes.",
+        "displayName": "Mirrored bytes",
+        "type": "compute.googleapis.com/mirroring/mirrored_bytes_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/mirroring/mirrored_packets_count",
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Count of mirrored packets.",
+        "displayName": "Mirrored packets",
+        "type": "compute.googleapis.com/mirroring/mirrored_packets_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/nat/allocated_ports",
+        "labels": [
+          {
+            "key": "nat_project_number",
+            "description": "The project number to which the NAT gateway belongs."
+          },
+          {
+            "key": "router_id",
+            "description": "The Cloud Router ID to which the NAT gateway belongs."
+          },
+          {
+            "key": "nat_gateway_name",
+            "description": "The name of the NAT gateway."
+          },
+          {
+            "key": "nat_ip",
+            "description": "The NAT IP allocated to the NAT gateway."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "{port}",
+        "description": "Number of ports allocated to a VM by the NAT gateway.",
+        "displayName": "Allocated ports",
+        "type": "compute.googleapis.com/nat/allocated_ports",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "165s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/nat/closed_connections_count",
+        "labels": [
+          {
+            "key": "nat_project_number",
+            "description": "The project number to which the NAT gateway belongs."
+          },
+          {
+            "key": "router_id",
+            "description": "The Cloud Router ID to which the NAT gateway belongs."
+          },
+          {
+            "key": "nat_gateway_name",
+            "description": "The name of the NAT gateway."
+          },
+          {
+            "key": "ip_protocol",
+            "description": "The protocol of the connection. Can be TCP, UDP or ICMP."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "{connection}",
+        "description": "Count of connections closed over the NAT gateway.",
+        "displayName": "Closed connections count",
+        "type": "compute.googleapis.com/nat/closed_connections_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "165s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/nat/dropped_received_packets_count",
+        "labels": [
+          {
+            "key": "nat_project_number",
+            "description": "The project number to which the NAT gateway belongs."
+          },
+          {
+            "key": "router_id",
+            "description": "The Cloud Router ID to which the NAT gateway belongs."
+          },
+          {
+            "key": "nat_gateway_name",
+            "description": "The name of the NAT gateway."
+          },
+          {
+            "key": "ip_protocol",
+            "description": "The protocol of the connection. Can be TCP, UDP or ICMP."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "{packet}",
+        "description": "Count of received packets dropped by the NAT gateway.",
+        "displayName": "Received packets dropped count",
+        "type": "compute.googleapis.com/nat/dropped_received_packets_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "165s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/nat/dropped_sent_packets_count",
+        "labels": [
+          {
+            "key": "nat_project_number",
+            "description": "The project number to which the NAT gateway belongs."
+          },
+          {
+            "key": "router_id",
+            "description": "The Cloud Router ID to which the NAT gateway belongs."
+          },
+          {
+            "key": "nat_gateway_name",
+            "description": "The name of the NAT gateway."
+          },
+          {
+            "key": "ip_protocol",
+            "description": "The protocol of the connection. Can be TCP, UDP or ICMP."
+          },
+          {
+            "key": "reason",
+            "description": "The reason for the packet drop. Possible values are OUT_OF_RESOURCES, ENDPOINT_INDEPENDENCE_CONFLICT."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "{packet}",
+        "description": "Count of sent packets dropped by the NAT gateway.",
+        "displayName": "Sent packets dropped count",
+        "type": "compute.googleapis.com/nat/dropped_sent_packets_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "165s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/nat/new_connections_count",
+        "labels": [
+          {
+            "key": "nat_project_number",
+            "description": "The project number to which the NAT gateway belongs."
+          },
+          {
+            "key": "router_id",
+            "description": "The Cloud Router ID to which the NAT gateway belongs."
+          },
+          {
+            "key": "nat_gateway_name",
+            "description": "The name of the NAT gateway."
+          },
+          {
+            "key": "ip_protocol",
+            "description": "The protocol of the connection. Can be TCP, UDP or ICMP."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "{connection}",
+        "description": "Count of new connections created over the NAT gateway.",
+        "displayName": "New connections count",
+        "type": "compute.googleapis.com/nat/new_connections_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "165s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/nat/open_connections",
+        "labels": [
+          {
+            "key": "nat_project_number",
+            "description": "The project number to which the NAT gateway belongs."
+          },
+          {
+            "key": "router_id",
+            "description": "The Cloud Router ID to which the NAT gateway belongs."
+          },
+          {
+            "key": "nat_gateway_name",
+            "description": "The name of the NAT gateway."
+          },
+          {
+            "key": "ip_protocol",
+            "description": "The protocol of the connection. Can be TCP, UDP or ICMP."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "{connection}",
+        "description": "Number of connections currently open on the NAT gateway.",
+        "displayName": "Open connections",
+        "type": "compute.googleapis.com/nat/open_connections",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "165s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/nat/port_usage",
+        "labels": [
+          {
+            "key": "nat_project_number",
+            "description": "The project number to which the NAT gateway belongs."
+          },
+          {
+            "key": "router_id",
+            "description": "The Cloud Router ID to which the NAT gateway belongs."
+          },
+          {
+            "key": "nat_gateway_name",
+            "description": "The name of the NAT gateway."
+          },
+          {
+            "key": "ip_protocol",
+            "description": "The protocol of the connection. Can be TCP, UDP or ICMP."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "{port}",
+        "description": "Maximum number of connections from a VM to a single internet endpoint (IP:port).",
+        "displayName": "Port usage",
+        "type": "compute.googleapis.com/nat/port_usage",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "165s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/nat/received_bytes_count",
+        "labels": [
+          {
+            "key": "nat_project_number",
+            "description": "The project number to which the NAT gateway belongs."
+          },
+          {
+            "key": "router_id",
+            "description": "The Cloud Router ID to which the NAT gateway belongs."
+          },
+          {
+            "key": "nat_gateway_name",
+            "description": "The name of the NAT gateway."
+          },
+          {
+            "key": "ip_protocol",
+            "description": "The protocol of the connection. Can be TCP, UDP or ICMP."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Count of bytes received (Internet -\u003e VM) via the NAT gateway.",
+        "displayName": "Received bytes count",
+        "type": "compute.googleapis.com/nat/received_bytes_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "165s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/nat/received_packets_count",
+        "labels": [
+          {
+            "key": "nat_project_number",
+            "description": "The project number to which the NAT gateway belongs."
+          },
+          {
+            "key": "router_id",
+            "description": "The Cloud Router ID to which the NAT gateway belongs."
+          },
+          {
+            "key": "nat_gateway_name",
+            "description": "The name of the NAT gateway."
+          },
+          {
+            "key": "ip_protocol",
+            "description": "The protocol of the connection. Can be TCP, UDP or ICMP."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "{packet}",
+        "description": "Count of packets received (Internet -\u003e VM) via the NAT gateway.",
+        "displayName": "Received packets count",
+        "type": "compute.googleapis.com/nat/received_packets_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "165s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/nat/sent_bytes_count",
+        "labels": [
+          {
+            "key": "nat_project_number",
+            "description": "The project number to which the NAT gateway belongs."
+          },
+          {
+            "key": "router_id",
+            "description": "The Cloud Router ID to which the NAT gateway belongs."
+          },
+          {
+            "key": "nat_gateway_name",
+            "description": "The name of the NAT gateway."
+          },
+          {
+            "key": "ip_protocol",
+            "description": "The protocol of the connection. Can be TCP, UDP or ICMP."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Count of bytes sent (VM -\u003e Internet) over the NAT gateway.",
+        "displayName": "Sent bytes count",
+        "type": "compute.googleapis.com/nat/sent_bytes_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "165s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/nat/sent_packets_count",
+        "labels": [
+          {
+            "key": "nat_project_number",
+            "description": "The project number to which the NAT gateway belongs."
+          },
+          {
+            "key": "router_id",
+            "description": "The Cloud Router ID to which the NAT gateway belongs."
+          },
+          {
+            "key": "nat_gateway_name",
+            "description": "The name of the NAT gateway."
+          },
+          {
+            "key": "ip_protocol",
+            "description": "The protocol of the connection. Can be TCP, UDP or ICMP."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "{packet}",
+        "description": "Count of packets sent (VM -\u003e Internet) over the NAT gateway.",
+        "displayName": "Sent packets count",
+        "type": "compute.googleapis.com/nat/sent_packets_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "165s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "gce_instance"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/quota/instances_per_vpc_network/exceeded",
+        "labels": [
+          {
+            "key": "limit_name",
+            "description": "The limit name."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Number of attempts to exceed the limit on quota metric compute.googleapis.com/instances_per_vpc_network.",
+        "displayName": "Instances Per VPC Network quota exceeded error",
+        "type": "compute.googleapis.com/quota/instances_per_vpc_network/exceeded",
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "compute.googleapis.com/VpcNetwork"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/quota/instances_per_vpc_network/limit",
+        "labels": [
+          {
+            "key": "limit_name",
+            "description": "The limit name."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Current limit on quota metric compute.googleapis.com/instances_per_vpc_network.",
+        "displayName": "Instances Per VPC Network quota limit",
+        "type": "compute.googleapis.com/quota/instances_per_vpc_network/limit",
+        "metadata": {
+          "samplePeriod": "60s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "compute.googleapis.com/VpcNetwork"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/quota/instances_per_vpc_network/usage",
+        "labels": [
+          {
+            "key": "limit_name",
+            "description": "The limit name."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Current usage on quota metric compute.googleapis.com/instances_per_vpc_network.",
+        "displayName": "Instances Per VPC Network quota usage",
+        "type": "compute.googleapis.com/quota/instances_per_vpc_network/usage",
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "compute.googleapis.com/VpcNetwork"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/quota/internal_lb_forwarding_rules_per_vpc_network/exceeded",
+        "labels": [
+          {
+            "key": "limit_name",
+            "description": "The limit name."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Number of attempts to exceed the limit on quota metric compute.googleapis.com/internal_lb_forwarding_rules_per_vpc_network.",
+        "displayName": "Internal Load Balancer Forwarding Rules per VPC Network quota exceeded error",
+        "type": "compute.googleapis.com/quota/internal_lb_forwarding_rules_per_vpc_network/exceeded",
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "compute.googleapis.com/VpcNetwork"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/quota/internal_lb_forwarding_rules_per_vpc_network/limit",
+        "labels": [
+          {
+            "key": "limit_name",
+            "description": "The limit name."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Current limit on quota metric compute.googleapis.com/internal_lb_forwarding_rules_per_vpc_network.",
+        "displayName": "Internal Load Balancer Forwarding Rules per VPC Network quota limit",
+        "type": "compute.googleapis.com/quota/internal_lb_forwarding_rules_per_vpc_network/limit",
+        "metadata": {
+          "samplePeriod": "60s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "compute.googleapis.com/VpcNetwork"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/quota/internal_lb_forwarding_rules_per_vpc_network/usage",
+        "labels": [
+          {
+            "key": "limit_name",
+            "description": "The limit name."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Current usage on quota metric compute.googleapis.com/internal_lb_forwarding_rules_per_vpc_network.",
+        "displayName": "Internal Load Balancer Forwarding Rules per VPC Network quota usage",
+        "type": "compute.googleapis.com/quota/internal_lb_forwarding_rules_per_vpc_network/usage",
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "compute.googleapis.com/VpcNetwork"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/quota/internal_managed_forwarding_rules_per_vpc_network/exceeded",
+        "labels": [
+          {
+            "key": "limit_name",
+            "description": "The limit name."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Number of attempts to exceed the limit on quota metric compute.googleapis.com/internal_managed_forwarding_rules_per_vpc_network.",
+        "displayName": "Internal Managed Forwarding Rules per VPC Network quota exceeded error",
+        "type": "compute.googleapis.com/quota/internal_managed_forwarding_rules_per_vpc_network/exceeded",
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "compute.googleapis.com/VpcNetwork"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/quota/internal_managed_forwarding_rules_per_vpc_network/limit",
+        "labels": [
+          {
+            "key": "limit_name",
+            "description": "The limit name."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Current limit on quota metric compute.googleapis.com/internal_managed_forwarding_rules_per_vpc_network.",
+        "displayName": "Internal Managed Forwarding Rules per VPC Network quota limit",
+        "type": "compute.googleapis.com/quota/internal_managed_forwarding_rules_per_vpc_network/limit",
+        "metadata": {
+          "samplePeriod": "60s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "compute.googleapis.com/VpcNetwork"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/quota/internal_managed_forwarding_rules_per_vpc_network/usage",
+        "labels": [
+          {
+            "key": "limit_name",
+            "description": "The limit name."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Current usage on quota metric compute.googleapis.com/internal_managed_forwarding_rules_per_vpc_network.",
+        "displayName": "Internal Managed Forwarding Rules per VPC Network quota usage",
+        "type": "compute.googleapis.com/quota/internal_managed_forwarding_rules_per_vpc_network/usage",
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "compute.googleapis.com/VpcNetwork"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/quota/internal_protocol_forwarding_rules_per_vpc_network/exceeded",
+        "labels": [
+          {
+            "key": "limit_name",
+            "description": "The limit name."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Number of attempts to exceed the limit on quota metric compute.googleapis.com/internal_protocol_forwarding_rules_per_vpc_network.",
+        "displayName": "Internal Protocol Forwarding Rules per VPC Network quota exceeded error",
+        "type": "compute.googleapis.com/quota/internal_protocol_forwarding_rules_per_vpc_network/exceeded",
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "compute.googleapis.com/VpcNetwork"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/quota/internal_protocol_forwarding_rules_per_vpc_network/limit",
+        "labels": [
+          {
+            "key": "limit_name",
+            "description": "The limit name."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Current limit on quota metric compute.googleapis.com/internal_protocol_forwarding_rules_per_vpc_network.",
+        "displayName": "Internal Protocol Forwarding Rules per VPC Network quota limit",
+        "type": "compute.googleapis.com/quota/internal_protocol_forwarding_rules_per_vpc_network/limit",
+        "metadata": {
+          "samplePeriod": "60s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "compute.googleapis.com/VpcNetwork"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/quota/internal_protocol_forwarding_rules_per_vpc_network/usage",
+        "labels": [
+          {
+            "key": "limit_name",
+            "description": "The limit name."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Current usage on quota metric compute.googleapis.com/internal_protocol_forwarding_rules_per_vpc_network.",
+        "displayName": "Internal Protocol Forwarding Rules per VPC Network quota usage",
+        "type": "compute.googleapis.com/quota/internal_protocol_forwarding_rules_per_vpc_network/usage",
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "compute.googleapis.com/VpcNetwork"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/quota/ip_aliases_per_vpc_network/exceeded",
+        "labels": [
+          {
+            "key": "limit_name",
+            "description": "The limit name."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Number of attempts to exceed the limit on quota metric compute.googleapis.com/ip_aliases_per_vpc_network.",
+        "displayName": "IP Aliases per VPC Network quota exceeded error",
+        "type": "compute.googleapis.com/quota/ip_aliases_per_vpc_network/exceeded",
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "compute.googleapis.com/VpcNetwork"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/quota/ip_aliases_per_vpc_network/limit",
+        "labels": [
+          {
+            "key": "limit_name",
+            "description": "The limit name."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Current limit on quota metric compute.googleapis.com/ip_aliases_per_vpc_network.",
+        "displayName": "IP Aliases per VPC Network quota limit",
+        "type": "compute.googleapis.com/quota/ip_aliases_per_vpc_network/limit",
+        "metadata": {
+          "samplePeriod": "60s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "compute.googleapis.com/VpcNetwork"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/quota/ip_aliases_per_vpc_network/usage",
+        "labels": [
+          {
+            "key": "limit_name",
+            "description": "The limit name."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Current usage on quota metric compute.googleapis.com/ip_aliases_per_vpc_network.",
+        "displayName": "IP Aliases per VPC Network quota usage",
+        "type": "compute.googleapis.com/quota/ip_aliases_per_vpc_network/usage",
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "compute.googleapis.com/VpcNetwork"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/quota/psc_google_apis_forwarding_rules_per_vpc_network/exceeded",
+        "labels": [
+          {
+            "key": "limit_name",
+            "description": "The limit name."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Number of attempts to exceed the limit on quota metric compute.googleapis.com/psc_google_apis_forwarding_rules_per_vpc_network.",
+        "displayName": "PSC Google APIs Forwarding Rules per VPC Network quota exceeded error",
+        "type": "compute.googleapis.com/quota/psc_google_apis_forwarding_rules_per_vpc_network/exceeded",
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "compute.googleapis.com/VpcNetwork"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/quota/psc_google_apis_forwarding_rules_per_vpc_network/limit",
+        "labels": [
+          {
+            "key": "limit_name",
+            "description": "The limit name."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Current limit on quota metric compute.googleapis.com/psc_google_apis_forwarding_rules_per_vpc_network.",
+        "displayName": "PSC Google APIs Forwarding Rules per VPC Network quota limit",
+        "type": "compute.googleapis.com/quota/psc_google_apis_forwarding_rules_per_vpc_network/limit",
+        "metadata": {
+          "samplePeriod": "60s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "compute.googleapis.com/VpcNetwork"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/quota/psc_google_apis_forwarding_rules_per_vpc_network/usage",
+        "labels": [
+          {
+            "key": "limit_name",
+            "description": "The limit name."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Current usage on quota metric compute.googleapis.com/psc_google_apis_forwarding_rules_per_vpc_network.",
+        "displayName": "PSC Google APIs Forwarding Rules per VPC Network quota usage",
+        "type": "compute.googleapis.com/quota/psc_google_apis_forwarding_rules_per_vpc_network/usage",
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "compute.googleapis.com/VpcNetwork"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/quota/psc_ilb_consumer_forwarding_rules_per_producer_vpc_network/exceeded",
+        "labels": [
+          {
+            "key": "limit_name",
+            "description": "The limit name."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Number of attempts to exceed the limit on quota metric compute.googleapis.com/psc_ilb_consumer_forwarding_rules_per_producer_vpc_network.",
+        "displayName": "PSC ILB Consumer Forwarding Rules per Producer VPC Network quota exceeded error",
+        "type": "compute.googleapis.com/quota/psc_ilb_consumer_forwarding_rules_per_producer_vpc_network/exceeded",
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "compute.googleapis.com/VpcNetwork"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/quota/psc_ilb_consumer_forwarding_rules_per_producer_vpc_network/limit",
+        "labels": [
+          {
+            "key": "limit_name",
+            "description": "The limit name."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Current limit on quota metric compute.googleapis.com/psc_ilb_consumer_forwarding_rules_per_producer_vpc_network.",
+        "displayName": "PSC ILB Consumer Forwarding Rules per Producer VPC Network quota limit",
+        "type": "compute.googleapis.com/quota/psc_ilb_consumer_forwarding_rules_per_producer_vpc_network/limit",
+        "metadata": {
+          "samplePeriod": "60s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "compute.googleapis.com/VpcNetwork"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/quota/psc_ilb_consumer_forwarding_rules_per_producer_vpc_network/usage",
+        "labels": [
+          {
+            "key": "limit_name",
+            "description": "The limit name."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Current usage on quota metric compute.googleapis.com/psc_ilb_consumer_forwarding_rules_per_producer_vpc_network.",
+        "displayName": "PSC ILB Consumer Forwarding Rules per Producer VPC Network quota usage",
+        "type": "compute.googleapis.com/quota/psc_ilb_consumer_forwarding_rules_per_producer_vpc_network/usage",
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "compute.googleapis.com/VpcNetwork"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/quota/subnet_ranges_per_vpc_network/exceeded",
+        "labels": [
+          {
+            "key": "limit_name",
+            "description": "The limit name."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Number of attempts to exceed the limit on quota metric compute.googleapis.com/subnet_ranges_per_vpc_network.",
+        "displayName": "Subnetwork ranges per VPC Network quota exceeded error",
+        "type": "compute.googleapis.com/quota/subnet_ranges_per_vpc_network/exceeded",
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "compute.googleapis.com/VpcNetwork"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/quota/subnet_ranges_per_vpc_network/limit",
+        "labels": [
+          {
+            "key": "limit_name",
+            "description": "The limit name."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Current limit on quota metric compute.googleapis.com/subnet_ranges_per_vpc_network.",
+        "displayName": "Subnetwork ranges per VPC Network quota limit",
+        "type": "compute.googleapis.com/quota/subnet_ranges_per_vpc_network/limit",
+        "metadata": {
+          "samplePeriod": "60s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "compute.googleapis.com/VpcNetwork"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/compute.googleapis.com/quota/subnet_ranges_per_vpc_network/usage",
+        "labels": [
+          {
+            "key": "limit_name",
+            "description": "The limit name."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Current usage on quota metric compute.googleapis.com/subnet_ranges_per_vpc_network.",
+        "displayName": "Subnetwork ranges per VPC Network quota usage",
+        "type": "compute.googleapis.com/quota/subnet_ranges_per_vpc_network/usage",
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "compute.googleapis.com/VpcNetwork"
+        ]
+      }
+    ]
+  }
+  

@@ -18,7 +18,6 @@ resource "observe_dataset" "compute_metrics" {
         zone:string(resource_labels.zone)
 
       extract_regex zone, /(?P<region>[a-z]+[-]+[a-z,0-9]+)/
-    
 
       pick_col
         start_time,

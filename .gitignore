@@ -32,4 +32,6 @@ override.tf.json
 *.terraform.lock.hcl
 
 *.tf-e
+
 *metrics.json
+

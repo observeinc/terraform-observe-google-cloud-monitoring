@@ -31,7 +31,7 @@ resource "observe_dataset" "cloudsql_metrics" {
         database_id
 
       interface "metric", metric:metric_type, value:value
-
+      
       ${join("\n\n", [for metric, options in local.metrics_definitions : indent(2, format("set_metric options(\n%s\n), %q", join(",\n", [for k, v in options : k == "interval" ? format("%s: %s", k, v) : format("%s: %q", k, v) if contains(var.metric_interface_fields, k)]), metric)) if contains(var.metric_launch_stages, options.launchStage)])}
     EOF
   }
