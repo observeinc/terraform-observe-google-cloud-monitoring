@@ -18,8 +18,8 @@ DEBUG() { test -z "$VERBOSE" || echo "::debug::$*"; }
 
 check_env() {
     if [[ -z $OBSERVE_CUSTOMER || -z $OBSERVE_DOMAIN || -z $OBSERVE_USER_EMAIL || -z $OBSERVE_USER_PASSWORD ]]; then
-      ERROR 'one or more OBSERVE_ environment variables are undefined'
-      exit 1
+        ERROR 'one or more OBSERVE_ environment variables are undefined'
+        exit 1
     fi
 }
 
@@ -45,25 +45,27 @@ needle_in_haystack() {
 }
 
 do_list() {
-  DIRS="$(find . -path "*tftests/*" ! -path "*.terraform*" -type d )"
-  echo $DIRS
+    DIRS="$(find . -path "*tftests/*" ! -path "*.terraform*" -type d )"
+    echo $DIRS
 }
 
 run_single() {
-  CMD="terraform -chdir=${1}"
+    CMD="terraform -chdir=${1}"
 
-  cleanup() {
-      if [ "$1" != "0" ]; then
-          ERROR "encountered an error, running terraform destroy for cleanup"
-          ERROR "exit code $1 occurred on line $2"
-      fi
-      ${CMD} destroy -auto-approve -input=false
-  }
+    cleanup() {
+        if [ "$1" != "0" ]; then
+            ERROR "encountered an error, exit code $1 occurred on line $2"
+        fi
+        INFO "running terraform destroy for cleanup (this can take a while...)"
+        ${CMD} destroy -auto-approve -input=false | grep -C 1 "Destroy complete!"
+    }
 
-  ${CMD} init
-  trap 'cleanup $? $LINENO' ERR
-  ${CMD} apply -auto-approve -input=false
-  ${CMD} destroy -auto-approve -input=false
+    ${CMD} init
+    trap 'cleanup $? $LINENO' EXIT
+    ${CMD} apply -auto-approve -input=false
+    idempotent=$(${CMD} plan | grep -c "No changes.") || rv=$?
+    [[ $rv -eq 0 ]] ||  (ERROR "Apply is not idempotent" && exit 1)
+    ${CMD} destroy -auto-approve -input=false
 }
 
 do_run() {
