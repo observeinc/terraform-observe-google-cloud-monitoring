@@ -125,6 +125,7 @@ locals {
       EOF
       rollup      = "avg"
       aggregate   = "sum"
+      unit        = "ns"
     },
     "cloudfunctions.googleapis.com/function/instance_count" = {
       type        = "gauge"
@@ -141,6 +142,7 @@ locals {
       EOF
       rollup      = "rate"
       aggregate   = "sum"
+      unit        = "B"
     },
     "cloudfunctions.googleapis.com/function/user_memory_bytes" = {
       type        = "delta"
@@ -149,6 +151,7 @@ locals {
       EOF
       rollup      = "avg"
       aggregate   = "sum"
+      unit        = "B"
     },
   }
 }
@@ -212,8 +215,8 @@ resource "observe_board" "function" {
   dataset = observe_dataset.function.oid
   name    = "Monitoring"
   json = templatefile("${path.module}/boards/monitoring.json", {
-    dataset_cloudFunctionsFunctionMetrics = observe_dataset.function_metrics[0].oid
-    dataset_cloudFunctionsFunction        = observe_dataset.function.oid
+    dataset_cloudFunctionsFunctionMetrics = observe_dataset.function_metrics[0].id
+    dataset_cloudFunctionsFunction        = observe_dataset.function.id
   })
   type = each.key
 }
