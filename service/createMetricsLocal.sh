@@ -15,7 +15,7 @@
 # filter = metric.type = starts_with("compute.googleapis.com/")
 
 # to call script - ./createMetricsLocal.sh --input_file cloudsqldescriptors.json --output_file cloudsqlmetricslocal.tf
-# to call script - ./createMetricsLocal.sh --input_file computedescriptors.json --output_file computemetricslocal.tf
+# to call script - ./createMetricsLocal.sh --input_file compute/computedescriptors.json --output_file compute/computemetricslocal.tf
 
 # Defaults
 input_file=descriptors.json
@@ -57,10 +57,10 @@ jq -r 'def activeFunc: if . =="GA" then "true" else "false" end; # returns true 
         def metricCaseFunc: . |= ascii_downcase; # returns lowercase version of string
         def metricTypeFunc: if . == "cumulative" then "cumulativeCounter" else . end; # transforms result if cumulitive otherwise return value passed to function
         def sampleFunc: if . | has("samplePeriod") then " Sampled every " + .samplePeriod + " and may take up to " + .ingestDelay + " to display." else "" end; # if has property then return concatenated string otherwise nothing
-        def dataBaseParseFunc: if . | contains("mysql") then . elif . | contains("postgresql") then . elif . | contains("sqlserver") then . else "ALL" end;
-        def dataBaseFunc: if . | contains("cloudsql.googleapis.com/database") then (. | capture("database/(?<keepafterdatabase>[^/]+)") | .keepafterdatabase | dataBaseParseFunc) else "false" end;    
-        def intervalFunc: if . | has("samplePeriod") then "interval = \"" + (.samplePeriod) + "\"\n" else "" end; # if has property then return interval else nothing
-       
+        def dataBaseParseFunc: if . | contains("mysql") or contains("postgresql") or contains("sqlserver") then "dataBase = \"" + . + "\"" else "dataBase = \"ALL\"" end;
+        def dataBaseFunc: if . | contains("cloudsql.googleapis.com/database") then (. | capture("database/(?<keepafterdatabase>[^/]+)") | .keepafterdatabase | dataBaseParseFunc) else null end;    
+        def intervalFunc: if . | has("samplePeriod") then "interval = \"" + (.samplePeriod) + "\"\n" else null end; # if has property then return interval else nothing
+        def computeFunc: if . | contains("compute.googleapis.com/") or contains("agent.googleapis.com/") then (. | capture("googleapis.com/(?<keepafterapis>[^/]+)") | "metricBin = \"" + .keepafterapis + "\"") else null end; 
     .metricDescriptors[] | 
     "\"" + (.name | capture("metricDescriptors/(?<keepaftermetricDescriptors>.*)") | .keepaftermetricDescriptors) + "\" = { 
         type = \"" + (.metricKind | metricCaseFunc | metricTypeFunc) + "\" 
@@ -71,9 +71,11 @@ jq -r 'def activeFunc: if . =="GA" then "true" else "false" end; # returns true 
         rollup      = \"avg\"
         aggregate   = \"sum\"
         active      = " + (.launchStage | activeFunc) + "
-        dataBase = \"" +  (.name | dataBaseFunc) + "\"
-        " +
-        (.metadata | intervalFunc ) + "
+
+        " + (.metadata | intervalFunc ) 
+        + (.name | dataBaseFunc )
+        + (.name | computeFunc ) + "
+        
         },"
     ' "$input_file" >> "$output_file";
 
