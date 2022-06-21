@@ -9,6 +9,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "firewall"
+
     },
     "compute.googleapis.com/firewall/dropped_packets_count" = {
       type        = "delta"
@@ -19,6 +23,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "firewall"
+
     },
     "compute.googleapis.com/guest/cpu/load_15m" = {
       type        = "gauge"
@@ -29,6 +37,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
+
+      metricBin = "guest"
+
     },
     "compute.googleapis.com/guest/cpu/load_1m" = {
       type        = "gauge"
@@ -39,6 +50,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
+
+      metricBin = "guest"
+
     },
     "compute.googleapis.com/guest/cpu/load_5m" = {
       type        = "gauge"
@@ -49,6 +63,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
+
+      metricBin = "guest"
+
     },
     "compute.googleapis.com/guest/cpu/runnable_task_count" = {
       type        = "gauge"
@@ -59,6 +76,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
+
+      metricBin = "guest"
+
     },
     "compute.googleapis.com/guest/cpu/usage_time" = {
       type        = "cumulativeCounter"
@@ -69,6 +89,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
+
+      metricBin = "guest"
+
     },
     "compute.googleapis.com/guest/disk/bytes_used" = {
       type        = "gauge"
@@ -79,6 +102,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
+
+      metricBin = "guest"
+
     },
     "compute.googleapis.com/guest/disk/io_time" = {
       type        = "cumulativeCounter"
@@ -89,6 +115,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "guest"
+
     },
     "compute.googleapis.com/guest/disk/merged_operation_count" = {
       type        = "cumulativeCounter"
@@ -99,6 +129,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
+
+      metricBin = "guest"
+
     },
     "compute.googleapis.com/guest/disk/operation_bytes_count" = {
       type        = "cumulativeCounter"
@@ -109,6 +142,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
+
+      metricBin = "guest"
+
     },
     "compute.googleapis.com/guest/disk/operation_count" = {
       type        = "cumulativeCounter"
@@ -119,6 +155,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
+
+      metricBin = "guest"
+
     },
     "compute.googleapis.com/guest/disk/operation_time" = {
       type        = "cumulativeCounter"
@@ -129,6 +168,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
+
+      metricBin = "guest"
+
     },
     "compute.googleapis.com/guest/disk/queue_length" = {
       type        = "gauge"
@@ -139,6 +181,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "guest"
+
     },
     "compute.googleapis.com/guest/disk/weighted_io_time" = {
       type        = "cumulativeCounter"
@@ -149,6 +195,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "guest"
+
     },
     "compute.googleapis.com/guest/memory/anonymous_used" = {
       type        = "gauge"
@@ -159,6 +209,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
+
+      metricBin = "guest"
+
     },
     "compute.googleapis.com/guest/memory/bytes_used" = {
       type        = "gauge"
@@ -169,6 +222,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
+
+      metricBin = "guest"
+
     },
     "compute.googleapis.com/guest/memory/dirty_used" = {
       type        = "gauge"
@@ -179,6 +235,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
+
+      metricBin = "guest"
+
     },
     "compute.googleapis.com/guest/memory/page_cache_used" = {
       type        = "gauge"
@@ -189,6 +248,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
+
+      metricBin = "guest"
+
     },
     "compute.googleapis.com/guest/memory/unevictable_used" = {
       type        = "gauge"
@@ -199,6 +261,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
+
+      metricBin = "guest"
+
     },
     "compute.googleapis.com/guest/system/os_feature_enabled" = {
       type        = "gauge"
@@ -209,6 +274,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
+
+      interval  = "60s"
+      metricBin = "guest"
+
     },
     "compute.googleapis.com/guest/system/problem_count" = {
       type        = "cumulativeCounter"
@@ -219,6 +288,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "guest"
+
     },
     "compute.googleapis.com/guest/system/problem_state" = {
       type        = "gauge"
@@ -229,6 +302,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "guest"
+
     },
     "compute.googleapis.com/guest/system/uptime" = {
       type        = "gauge"
@@ -239,6 +316,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "guest"
+
     },
     "compute.googleapis.com/instance/cpu/guest_visible_vcpus" = {
       type        = "gauge"
@@ -249,6 +330,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance/cpu/reserved_cores" = {
       type        = "gauge"
@@ -259,6 +344,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance/cpu/scheduler_wait_time" = {
       type        = "delta"
@@ -269,6 +358,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance/cpu/usage_time" = {
       type        = "delta"
@@ -279,6 +372,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance/cpu/utilization" = {
       type        = "gauge"
@@ -289,6 +386,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance/disk/max_read_bytes_count" = {
       type        = "gauge"
@@ -299,6 +400,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance/disk/max_read_ops_count" = {
       type        = "gauge"
@@ -309,6 +414,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance/disk/max_write_bytes_count" = {
       type        = "gauge"
@@ -319,6 +428,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance/disk/max_write_ops_count" = {
       type        = "gauge"
@@ -329,6 +442,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance/disk/read_bytes_count" = {
       type        = "delta"
@@ -339,6 +456,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance/disk/read_ops_count" = {
       type        = "delta"
@@ -349,6 +470,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance/disk/throttled_read_bytes_count" = {
       type        = "delta"
@@ -359,6 +484,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance/disk/throttled_read_ops_count" = {
       type        = "delta"
@@ -369,6 +498,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance/disk/throttled_write_bytes_count" = {
       type        = "delta"
@@ -379,6 +512,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance/disk/throttled_write_ops_count" = {
       type        = "delta"
@@ -389,6 +526,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance/disk/write_bytes_count" = {
       type        = "delta"
@@ -399,6 +540,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance/disk/write_ops_count" = {
       type        = "delta"
@@ -409,6 +554,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance/integrity/early_boot_validation_status" = {
       type        = "gauge"
@@ -419,6 +568,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance/integrity/late_boot_validation_status" = {
       type        = "gauge"
@@ -429,6 +582,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance/memory/balloon/ram_size" = {
       type        = "gauge"
@@ -439,6 +596,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance/memory/balloon/ram_used" = {
       type        = "gauge"
@@ -449,6 +610,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance/memory/balloon/swap_in_bytes_count" = {
       type        = "delta"
@@ -459,6 +624,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance/memory/balloon/swap_out_bytes_count" = {
       type        = "delta"
@@ -469,6 +638,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance/network/received_bytes_count" = {
       type        = "delta"
@@ -479,6 +652,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance/network/received_packets_count" = {
       type        = "delta"
@@ -489,6 +666,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance/network/sent_bytes_count" = {
       type        = "delta"
@@ -499,6 +680,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance/network/sent_packets_count" = {
       type        = "delta"
@@ -509,6 +694,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance/uptime" = {
       type        = "delta"
@@ -519,6 +708,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance/uptime_total" = {
       type        = "gauge"
@@ -529,6 +722,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "instance"
+
     },
     "compute.googleapis.com/instance_group/predicted_capacity" = {
       type        = "gauge"
@@ -539,6 +736,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
+
+      interval  = "60s"
+      metricBin = "instance_group"
+
     },
     "compute.googleapis.com/instance_group/predicted_size" = {
       type        = "gauge"
@@ -549,6 +750,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
+
+      interval  = "60s"
+      metricBin = "instance_group"
+
     },
     "compute.googleapis.com/instance_group/predicted_utilization" = {
       type        = "gauge"
@@ -559,6 +764,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = false
+
+      interval  = "60s"
+      metricBin = "instance_group"
+
     },
     "compute.googleapis.com/instance_group/size" = {
       type        = "gauge"
@@ -569,6 +778,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "instance_group"
+
     },
     "compute.googleapis.com/mirroring/dropped_packets_count" = {
       type        = "delta"
@@ -579,6 +792,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "mirroring"
+
     },
     "compute.googleapis.com/mirroring/mirrored_bytes_count" = {
       type        = "delta"
@@ -589,6 +806,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "mirroring"
+
     },
     "compute.googleapis.com/mirroring/mirrored_packets_count" = {
       type        = "delta"
@@ -599,6 +820,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "mirroring"
+
     },
     "compute.googleapis.com/nat/allocated_ports" = {
       type        = "gauge"
@@ -609,6 +834,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "nat"
+
     },
     "compute.googleapis.com/nat/closed_connections_count" = {
       type        = "delta"
@@ -619,6 +848,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "nat"
+
     },
     "compute.googleapis.com/nat/dropped_received_packets_count" = {
       type        = "delta"
@@ -629,6 +862,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "nat"
+
     },
     "compute.googleapis.com/nat/dropped_sent_packets_count" = {
       type        = "delta"
@@ -639,6 +876,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "nat"
+
     },
     "compute.googleapis.com/nat/new_connections_count" = {
       type        = "delta"
@@ -649,6 +890,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "nat"
+
     },
     "compute.googleapis.com/nat/open_connections" = {
       type        = "gauge"
@@ -659,6 +904,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "nat"
+
     },
     "compute.googleapis.com/nat/port_usage" = {
       type        = "gauge"
@@ -669,6 +918,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "nat"
+
     },
     "compute.googleapis.com/nat/received_bytes_count" = {
       type        = "delta"
@@ -679,6 +932,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "nat"
+
     },
     "compute.googleapis.com/nat/received_packets_count" = {
       type        = "delta"
@@ -689,6 +946,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "nat"
+
     },
     "compute.googleapis.com/nat/sent_bytes_count" = {
       type        = "delta"
@@ -699,6 +960,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "nat"
+
     },
     "compute.googleapis.com/nat/sent_packets_count" = {
       type        = "delta"
@@ -709,6 +974,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "nat"
+
     },
     "compute.googleapis.com/quota/instances_per_vpc_network/exceeded" = {
       type        = "delta"
@@ -719,6 +988,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      metricBin = "quota"
+
     },
     "compute.googleapis.com/quota/instances_per_vpc_network/limit" = {
       type        = "gauge"
@@ -729,6 +1001,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "quota"
+
     },
     "compute.googleapis.com/quota/instances_per_vpc_network/usage" = {
       type        = "gauge"
@@ -739,6 +1015,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      metricBin = "quota"
+
     },
     "compute.googleapis.com/quota/internal_lb_forwarding_rules_per_vpc_network/exceeded" = {
       type        = "delta"
@@ -749,6 +1028,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      metricBin = "quota"
+
     },
     "compute.googleapis.com/quota/internal_lb_forwarding_rules_per_vpc_network/limit" = {
       type        = "gauge"
@@ -759,6 +1041,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "quota"
+
     },
     "compute.googleapis.com/quota/internal_lb_forwarding_rules_per_vpc_network/usage" = {
       type        = "gauge"
@@ -769,6 +1055,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      metricBin = "quota"
+
     },
     "compute.googleapis.com/quota/internal_managed_forwarding_rules_per_vpc_network/exceeded" = {
       type        = "delta"
@@ -779,6 +1068,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      metricBin = "quota"
+
     },
     "compute.googleapis.com/quota/internal_managed_forwarding_rules_per_vpc_network/limit" = {
       type        = "gauge"
@@ -789,6 +1081,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "quota"
+
     },
     "compute.googleapis.com/quota/internal_managed_forwarding_rules_per_vpc_network/usage" = {
       type        = "gauge"
@@ -799,6 +1095,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      metricBin = "quota"
+
     },
     "compute.googleapis.com/quota/internal_protocol_forwarding_rules_per_vpc_network/exceeded" = {
       type        = "delta"
@@ -809,6 +1108,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      metricBin = "quota"
+
     },
     "compute.googleapis.com/quota/internal_protocol_forwarding_rules_per_vpc_network/limit" = {
       type        = "gauge"
@@ -819,6 +1121,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "quota"
+
     },
     "compute.googleapis.com/quota/internal_protocol_forwarding_rules_per_vpc_network/usage" = {
       type        = "gauge"
@@ -829,6 +1135,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      metricBin = "quota"
+
     },
     "compute.googleapis.com/quota/ip_aliases_per_vpc_network/exceeded" = {
       type        = "delta"
@@ -839,6 +1148,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      metricBin = "quota"
+
     },
     "compute.googleapis.com/quota/ip_aliases_per_vpc_network/limit" = {
       type        = "gauge"
@@ -849,6 +1161,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "quota"
+
     },
     "compute.googleapis.com/quota/ip_aliases_per_vpc_network/usage" = {
       type        = "gauge"
@@ -859,6 +1175,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      metricBin = "quota"
+
     },
     "compute.googleapis.com/quota/psc_google_apis_forwarding_rules_per_vpc_network/exceeded" = {
       type        = "delta"
@@ -869,6 +1188,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      metricBin = "quota"
+
     },
     "compute.googleapis.com/quota/psc_google_apis_forwarding_rules_per_vpc_network/limit" = {
       type        = "gauge"
@@ -879,6 +1201,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "quota"
+
     },
     "compute.googleapis.com/quota/psc_google_apis_forwarding_rules_per_vpc_network/usage" = {
       type        = "gauge"
@@ -889,6 +1215,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      metricBin = "quota"
+
     },
     "compute.googleapis.com/quota/psc_ilb_consumer_forwarding_rules_per_producer_vpc_network/exceeded" = {
       type        = "delta"
@@ -899,6 +1228,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      metricBin = "quota"
+
     },
     "compute.googleapis.com/quota/psc_ilb_consumer_forwarding_rules_per_producer_vpc_network/limit" = {
       type        = "gauge"
@@ -909,6 +1241,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "quota"
+
     },
     "compute.googleapis.com/quota/psc_ilb_consumer_forwarding_rules_per_producer_vpc_network/usage" = {
       type        = "gauge"
@@ -919,6 +1255,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      metricBin = "quota"
+
     },
     "compute.googleapis.com/quota/subnet_ranges_per_vpc_network/exceeded" = {
       type        = "delta"
@@ -929,6 +1268,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      metricBin = "quota"
+
     },
     "compute.googleapis.com/quota/subnet_ranges_per_vpc_network/limit" = {
       type        = "gauge"
@@ -939,6 +1281,10 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      interval  = "60s"
+      metricBin = "quota"
+
     },
     "compute.googleapis.com/quota/subnet_ranges_per_vpc_network/usage" = {
       type        = "gauge"
@@ -949,6 +1295,9 @@ locals {
       rollup      = "avg"
       aggregate   = "sum"
       active      = true
+
+      metricBin = "quota"
+
     },
   }
 }
