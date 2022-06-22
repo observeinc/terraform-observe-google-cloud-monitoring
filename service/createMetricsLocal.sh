@@ -13,9 +13,11 @@
 # For compute metrics
 # name = projects/terraflood-345116
 # filter = metric.type = starts_with("compute.googleapis.com/")
+# filter = metric.type = starts_with("agent.googleapis.com/")
 
 # to call script - ./createMetricsLocal.sh --input_file cloudsqldescriptors.json --output_file cloudsqlmetricslocal.tf
 # to call script - ./createMetricsLocal.sh --input_file compute/computedescriptors.json --output_file compute/computemetricslocal.tf
+# to call script - ./createMetricsLocal.sh --input_file compute/agentmetrics.json --output_file compute/agentmetricslocal.tf --local_var_name agent_metrics_definitions
 
 # Defaults
 input_file=descriptors.json
