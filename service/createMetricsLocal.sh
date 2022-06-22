@@ -34,6 +34,9 @@ local_var_name=metrics_definitions
         --output_file)
           output_file="$2"
           ;;
+        --local_var_name)
+          local_var_name="$2"
+          ;;
         *)
           
       esac
