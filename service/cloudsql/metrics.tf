@@ -19,10 +19,12 @@ resource "observe_dataset" "cloudsql_metrics" {
         database_id:string(resource_labels.database_id),
         project_id:string(resource_labels.project_id),
         region:string(resource_labels.region),
-        metric_category: split_part(metric_type, '/', 3)
+        metric_category: split_part(metric_type, '/', 3),
+        metric_name: replace(replace(metric_type,'cloudsql.googleapis.com/',''),'/','_')
     
       make_col 
-        database_platform: if( in(metric_category, 'mysql', 'postgresql','sqlserver'), metric_category, 'ALL')
+        database_platform: if( in(metric_category, 'mysql', 'postgresql','sqlserver'), metric_category, 'ALL'),
+        database_id_check: database_id
 
       extract_regex metric_type, /(?P<label>[^\/]+$)/
 
@@ -30,6 +32,7 @@ resource "observe_dataset" "cloudsql_metrics" {
         start_time,
         end_time,
         metric_type,
+        metric_name,
         metric_kind,
         metric_category,
         database_platform,
@@ -39,9 +42,10 @@ resource "observe_dataset" "cloudsql_metrics" {
         value_type,
         project_id,
         region,
+        database_id_check,
         database_id
 
-      interface "metric", metric:metric_type, value:value
+      interface "metric", metric:metric_name, value:value
       ${join("\n\n",
     [for metric, options in local.metrics_definitions :
       indent(2,
