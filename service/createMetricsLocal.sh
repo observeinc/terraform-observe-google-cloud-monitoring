@@ -101,6 +101,8 @@ jq -r '# returns true if metric is GA
             else "none" end;
         def googleMetricPathFunc:
             (. | capture("metricDescriptors/(?<keepaftermetricDescriptors>.*)") | .keepaftermetricDescriptors);
+        def labelFunc:
+            (. | capture("(?<keepaftermetricDescriptors>[^/]+$)") | .keepaftermetricDescriptors);
     .metricDescriptors[] |  
     "\"" + (.name | nameFunc | sub("/"; "_") ) + "\" = { 
         type = \"" + (.metricKind | metricCaseFunc | metricTypeFunc) + "\" 
@@ -112,9 +114,10 @@ jq -r '# returns true if metric is GA
         aggregate   = \"sum\"
         metricCategory = \"" + (.name | metricCategoryFunc) + "\"
         googleMetricPath = \"" + (.name | googleMetricPathFunc) + "\"
+        label = \"" + (.name | labelFunc) + "\"
         active      = " + (.launchStage | activeFunc) + "
 
-        " + (.metadata | intervalFunc ) 
+        "  
         + (.name | dataBaseFunc )
         + (.name | computeFunc ) + "
         
@@ -125,6 +128,7 @@ echo "}" >> "$output_file";
 
 echo "}" >> "$output_file";
 
+# + (.metadata | intervalFunc )
 # certain characters make terraform explode
 # This tends to be super painful to debug export TF_LOG=DEBUG; terraform apply might help
 sed -i'' -e 's/>/greater than/g; s/(//g; s/)//g; s/&/and/g;' "$output_file"

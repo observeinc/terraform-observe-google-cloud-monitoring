@@ -21,8 +21,8 @@ resource "observe_dataset" "cloudsql" {
       make_col
         assetInventoryName:name,
         name:string(data.name),
-        ipAddressObject:pivot_array(array(data.ipAddresses), "type", "ipAddress" )
-
+        ipAddressObject:pivot_array(array(data.ipAddresses), "type", "ipAddress" ),
+        database_id: strcat(string(data.project),":",name)
 
       make_resource options(expiry:${var.max_expiry}),
         name,
@@ -31,7 +31,6 @@ resource "observe_dataset" "cloudsql" {
         databaseInstalledVersion: string(data.databaseInstalledVersion),
         project_id: string(data.project),
         region:  string(data.region),
-        database_id: strcat(string(data.project),":",name),
         backendType:string(data.backendType),
         backupConfiguration:data.settings.backupConfiguration,
         availabilityType:string(data.settings.availabilityType),
@@ -45,13 +44,13 @@ resource "observe_dataset" "cloudsql" {
         ipAddressPrimary: ipAddressObject.PRIMARY,
         ipAddresses:string(data.ipAddresses),
         gceZone:string(data.gceZone),
-        primary_key(assetInventoryName),
+        primary_key(database_id),
         valid_for(ttl)
 
       add_key name
       set_label label
 
-      add_key project_id, region, database_id
+      add_key project_id, region
     EOF
   }
 }

@@ -38,12 +38,19 @@ variable "google" {
 
 variable "metric_interface_fields" {
   type        = set(string)
-  default     = ["type", "description", "rollup", "aggregate", "interval"]
+  default     = ["type", "description", "rollup", "aggregate", "interval", "label"]
   description = "Used by metric interface to pick fields to map"
 }
 
 variable "metric_list" {
-  type        = set(string)
-  default     = ["cpu_utilization"]
+  type = set(string)
+  default = [
+    "cpu_utilization",
+    "memory_total_usage",
+    "network_connections",
+    "disk_read_ops_count",
+    "disk_write_ops_count",
+    "disk_bytes_used",
+  ]
   description = "Used by metric interface to pick metrics to include"
 }

@@ -10,9 +10,9 @@ locals {
       aggregate        = "sum"
       metricCategory   = "active_directory"
       googleMetricPath = "cloudsql.googleapis.com/database/active_directory/domain_reachable"
+      label            = "domain_reachable"
       active           = false
 
-      interval = "60s"
       dataBase = "ALL"
 
     },
@@ -26,9 +26,9 @@ locals {
       aggregate        = "sum"
       metricCategory   = "active_directory"
       googleMetricPath = "cloudsql.googleapis.com/database/active_directory/instance_available"
+      label            = "instance_available"
       active           = false
 
-      interval = "60s"
       dataBase = "ALL"
 
     },
@@ -42,9 +42,9 @@ locals {
       aggregate        = "sum"
       metricCategory   = "auto_failover_request_count"
       googleMetricPath = "cloudsql.googleapis.com/database/auto_failover_request_count"
+      label            = "auto_failover_request_count"
       active           = true
 
-      interval = "60s"
       dataBase = "ALL"
 
     },
@@ -58,9 +58,9 @@ locals {
       aggregate        = "sum"
       metricCategory   = "available_for_failover"
       googleMetricPath = "cloudsql.googleapis.com/database/available_for_failover"
+      label            = "available_for_failover"
       active           = true
 
-      interval = "60s"
       dataBase = "ALL"
 
     },
@@ -74,9 +74,9 @@ locals {
       aggregate        = "sum"
       metricCategory   = "cpu"
       googleMetricPath = "cloudsql.googleapis.com/database/cpu/reserved_cores"
+      label            = "reserved_cores"
       active           = true
 
-      interval = "60s"
       dataBase = "ALL"
 
     },
@@ -90,9 +90,9 @@ locals {
       aggregate        = "sum"
       metricCategory   = "cpu"
       googleMetricPath = "cloudsql.googleapis.com/database/cpu/usage_time"
+      label            = "usage_time"
       active           = true
 
-      interval = "60s"
       dataBase = "ALL"
 
     },
@@ -106,9 +106,9 @@ locals {
       aggregate        = "sum"
       metricCategory   = "cpu"
       googleMetricPath = "cloudsql.googleapis.com/database/cpu/utilization"
+      label            = "utilization"
       active           = true
 
-      interval = "60s"
       dataBase = "ALL"
 
     },
@@ -122,9 +122,9 @@ locals {
       aggregate        = "sum"
       metricCategory   = "disk"
       googleMetricPath = "cloudsql.googleapis.com/database/disk/bytes_used"
+      label            = "bytes_used"
       active           = true
 
-      interval = "60s"
       dataBase = "ALL"
 
     },
@@ -138,9 +138,9 @@ locals {
       aggregate        = "sum"
       metricCategory   = "disk"
       googleMetricPath = "cloudsql.googleapis.com/database/disk/bytes_used_by_data_type"
+      label            = "bytes_used_by_data_type"
       active           = false
 
-      interval = "60s"
       dataBase = "ALL"
 
     },
@@ -154,9 +154,9 @@ locals {
       aggregate        = "sum"
       metricCategory   = "disk"
       googleMetricPath = "cloudsql.googleapis.com/database/disk/quota"
+      label            = "quota"
       active           = true
 
-      interval = "60s"
       dataBase = "ALL"
 
     },
@@ -170,9 +170,9 @@ locals {
       aggregate        = "sum"
       metricCategory   = "disk"
       googleMetricPath = "cloudsql.googleapis.com/database/disk/read_ops_count"
+      label            = "read_ops_count"
       active           = true
 
-      interval = "60s"
       dataBase = "ALL"
 
     },
@@ -186,9 +186,9 @@ locals {
       aggregate        = "sum"
       metricCategory   = "disk"
       googleMetricPath = "cloudsql.googleapis.com/database/disk/utilization"
+      label            = "utilization"
       active           = true
 
-      interval = "60s"
       dataBase = "ALL"
 
     },
@@ -202,9 +202,9 @@ locals {
       aggregate        = "sum"
       metricCategory   = "disk"
       googleMetricPath = "cloudsql.googleapis.com/database/disk/write_ops_count"
+      label            = "write_ops_count"
       active           = true
 
-      interval = "60s"
       dataBase = "ALL"
 
     },
@@ -229,9 +229,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "instance_state"
       googleMetricPath = "cloudsql.googleapis.com/database/instance_state"
+      label            = "instance_state"
       active           = true
 
-      interval = "60s"
       dataBase = "ALL"
 
     },
@@ -245,9 +245,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "memory"
       googleMetricPath = "cloudsql.googleapis.com/database/memory/quota"
+      label            = "quota"
       active           = true
 
-      interval = "60s"
       dataBase = "ALL"
 
     },
@@ -261,9 +261,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "memory"
       googleMetricPath = "cloudsql.googleapis.com/database/memory/total_usage"
+      label            = "total_usage"
       active           = true
 
-      interval = "60s"
       dataBase = "ALL"
 
     },
@@ -277,9 +277,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "memory"
       googleMetricPath = "cloudsql.googleapis.com/database/memory/usage"
+      label            = "usage"
       active           = true
 
-      interval = "60s"
       dataBase = "ALL"
 
     },
@@ -293,9 +293,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "memory"
       googleMetricPath = "cloudsql.googleapis.com/database/memory/utilization"
+      label            = "utilization"
       active           = true
 
-      interval = "60s"
       dataBase = "ALL"
 
     },
@@ -309,9 +309,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "mysql"
       googleMetricPath = "cloudsql.googleapis.com/database/mysql/innodb_buffer_pool_pages_dirty"
+      label            = "innodb_buffer_pool_pages_dirty"
       active           = true
 
-      interval = "60s"
       dataBase = "mysql"
 
     },
@@ -325,9 +325,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "mysql"
       googleMetricPath = "cloudsql.googleapis.com/database/mysql/innodb_buffer_pool_pages_free"
+      label            = "innodb_buffer_pool_pages_free"
       active           = true
 
-      interval = "60s"
       dataBase = "mysql"
 
     },
@@ -341,9 +341,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "mysql"
       googleMetricPath = "cloudsql.googleapis.com/database/mysql/innodb_buffer_pool_pages_total"
+      label            = "innodb_buffer_pool_pages_total"
       active           = true
 
-      interval = "60s"
       dataBase = "mysql"
 
     },
@@ -357,9 +357,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "mysql"
       googleMetricPath = "cloudsql.googleapis.com/database/mysql/innodb_data_fsyncs"
+      label            = "innodb_data_fsyncs"
       active           = true
 
-      interval = "60s"
       dataBase = "mysql"
 
     },
@@ -373,9 +373,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "mysql"
       googleMetricPath = "cloudsql.googleapis.com/database/mysql/innodb_os_log_fsyncs"
+      label            = "innodb_os_log_fsyncs"
       active           = true
 
-      interval = "60s"
       dataBase = "mysql"
 
     },
@@ -389,9 +389,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "mysql"
       googleMetricPath = "cloudsql.googleapis.com/database/mysql/innodb_pages_read"
+      label            = "innodb_pages_read"
       active           = true
 
-      interval = "60s"
       dataBase = "mysql"
 
     },
@@ -405,9 +405,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "mysql"
       googleMetricPath = "cloudsql.googleapis.com/database/mysql/innodb_pages_written"
+      label            = "innodb_pages_written"
       active           = true
 
-      interval = "60s"
       dataBase = "mysql"
 
     },
@@ -421,9 +421,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "mysql"
       googleMetricPath = "cloudsql.googleapis.com/database/mysql/queries"
+      label            = "queries"
       active           = true
 
-      interval = "60s"
       dataBase = "mysql"
 
     },
@@ -437,9 +437,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "mysql"
       googleMetricPath = "cloudsql.googleapis.com/database/mysql/questions"
+      label            = "questions"
       active           = true
 
-      interval = "60s"
       dataBase = "mysql"
 
     },
@@ -453,9 +453,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "mysql"
       googleMetricPath = "cloudsql.googleapis.com/database/mysql/received_bytes_count"
+      label            = "received_bytes_count"
       active           = true
 
-      interval = "60s"
       dataBase = "mysql"
 
     },
@@ -469,9 +469,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "mysql"
       googleMetricPath = "cloudsql.googleapis.com/database/mysql/replication/available_for_failover"
+      label            = "available_for_failover"
       active           = false
 
-      interval = "60s"
       dataBase = "mysql"
 
     },
@@ -485,9 +485,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "mysql"
       googleMetricPath = "cloudsql.googleapis.com/database/mysql/replication/last_io_errno"
+      label            = "last_io_errno"
       active           = true
 
-      interval = "60s"
       dataBase = "mysql"
 
     },
@@ -501,9 +501,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "mysql"
       googleMetricPath = "cloudsql.googleapis.com/database/mysql/replication/last_sql_errno"
+      label            = "last_sql_errno"
       active           = true
 
-      interval = "60s"
       dataBase = "mysql"
 
     },
@@ -517,9 +517,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "mysql"
       googleMetricPath = "cloudsql.googleapis.com/database/mysql/replication/seconds_behind_master"
+      label            = "seconds_behind_master"
       active           = true
 
-      interval = "60s"
       dataBase = "mysql"
 
     },
@@ -533,9 +533,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "mysql"
       googleMetricPath = "cloudsql.googleapis.com/database/mysql/replication/slave_io_running"
+      label            = "slave_io_running"
       active           = true
 
-      interval = "60s"
       dataBase = "mysql"
 
     },
@@ -549,9 +549,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "mysql"
       googleMetricPath = "cloudsql.googleapis.com/database/mysql/replication/slave_io_running_state"
+      label            = "slave_io_running_state"
       active           = true
 
-      interval = "60s"
       dataBase = "mysql"
 
     },
@@ -565,9 +565,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "mysql"
       googleMetricPath = "cloudsql.googleapis.com/database/mysql/replication/slave_sql_running"
+      label            = "slave_sql_running"
       active           = true
 
-      interval = "60s"
       dataBase = "mysql"
 
     },
@@ -581,9 +581,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "mysql"
       googleMetricPath = "cloudsql.googleapis.com/database/mysql/replication/slave_sql_running_state"
+      label            = "slave_sql_running_state"
       active           = true
 
-      interval = "60s"
       dataBase = "mysql"
 
     },
@@ -597,9 +597,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "mysql"
       googleMetricPath = "cloudsql.googleapis.com/database/mysql/sent_bytes_count"
+      label            = "sent_bytes_count"
       active           = true
 
-      interval = "60s"
       dataBase = "mysql"
 
     },
@@ -613,9 +613,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "network"
       googleMetricPath = "cloudsql.googleapis.com/database/network/connections"
+      label            = "connections"
       active           = true
 
-      interval = "60s"
       dataBase = "ALL"
 
     },
@@ -629,9 +629,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "network"
       googleMetricPath = "cloudsql.googleapis.com/database/network/received_bytes_count"
+      label            = "received_bytes_count"
       active           = true
 
-      interval = "60s"
       dataBase = "ALL"
 
     },
@@ -645,9 +645,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "network"
       googleMetricPath = "cloudsql.googleapis.com/database/network/sent_bytes_count"
+      label            = "sent_bytes_count"
       active           = true
 
-      interval = "60s"
       dataBase = "ALL"
 
     },
@@ -661,9 +661,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/blocks_read_count"
+      label            = "blocks_read_count"
       active           = false
 
-      interval = "60s"
       dataBase = "postgresql"
 
     },
@@ -677,9 +677,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/deadlock_count"
+      label            = "deadlock_count"
       active           = false
 
-      interval = "60s"
       dataBase = "postgresql"
 
     },
@@ -693,9 +693,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/external_sync/initial_sync_complete"
+      label            = "initial_sync_complete"
       active           = false
 
-      interval = "60s"
       dataBase = "postgresql"
 
     },
@@ -709,9 +709,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/external_sync/max_replica_byte_lag"
+      label            = "max_replica_byte_lag"
       active           = false
 
-      interval = "60s"
       dataBase = "postgresql"
 
     },
@@ -725,6 +725,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/insights/aggregate/execution_time"
+      label            = "execution_time"
       active           = true
 
       dataBase = "postgresql"
@@ -740,6 +741,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/insights/aggregate/io_time"
+      label            = "io_time"
       active           = true
 
       dataBase = "postgresql"
@@ -755,6 +757,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/insights/aggregate/latencies"
+      label            = "latencies"
       active           = true
 
       dataBase = "postgresql"
@@ -770,6 +773,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/insights/aggregate/lock_time"
+      label            = "lock_time"
       active           = true
 
       dataBase = "postgresql"
@@ -785,6 +789,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/insights/aggregate/row_count"
+      label            = "row_count"
       active           = true
 
       dataBase = "postgresql"
@@ -800,6 +805,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/insights/aggregate/shared_blk_access_count"
+      label            = "shared_blk_access_count"
       active           = true
 
       dataBase = "postgresql"
@@ -815,6 +821,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/insights/perquery/execution_time"
+      label            = "execution_time"
       active           = true
 
       dataBase = "postgresql"
@@ -830,6 +837,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/insights/perquery/io_time"
+      label            = "io_time"
       active           = true
 
       dataBase = "postgresql"
@@ -845,6 +853,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/insights/perquery/latencies"
+      label            = "latencies"
       active           = true
 
       dataBase = "postgresql"
@@ -860,6 +869,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/insights/perquery/lock_time"
+      label            = "lock_time"
       active           = true
 
       dataBase = "postgresql"
@@ -875,6 +885,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/insights/perquery/row_count"
+      label            = "row_count"
       active           = true
 
       dataBase = "postgresql"
@@ -890,6 +901,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/insights/perquery/shared_blk_access_count"
+      label            = "shared_blk_access_count"
       active           = true
 
       dataBase = "postgresql"
@@ -905,6 +917,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/insights/pertag/execution_time"
+      label            = "execution_time"
       active           = true
 
       dataBase = "postgresql"
@@ -920,6 +933,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/insights/pertag/io_time"
+      label            = "io_time"
       active           = true
 
       dataBase = "postgresql"
@@ -935,6 +949,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/insights/pertag/latencies"
+      label            = "latencies"
       active           = true
 
       dataBase = "postgresql"
@@ -950,6 +965,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/insights/pertag/lock_time"
+      label            = "lock_time"
       active           = true
 
       dataBase = "postgresql"
@@ -965,6 +981,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/insights/pertag/row_count"
+      label            = "row_count"
       active           = true
 
       dataBase = "postgresql"
@@ -980,6 +997,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/insights/pertag/shared_blk_access_count"
+      label            = "shared_blk_access_count"
       active           = true
 
       dataBase = "postgresql"
@@ -995,9 +1013,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/num_backends"
+      label            = "num_backends"
       active           = true
 
-      interval = "60s"
       dataBase = "postgresql"
 
     },
@@ -1011,9 +1029,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/num_backends_by_state"
+      label            = "num_backends_by_state"
       active           = false
 
-      interval = "60s"
       dataBase = "postgresql"
 
     },
@@ -1027,9 +1045,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/replication/replica_byte_lag"
+      label            = "replica_byte_lag"
       active           = true
 
-      interval = "60s"
       dataBase = "postgresql"
 
     },
@@ -1043,9 +1061,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/transaction_count"
+      label            = "transaction_count"
       active           = true
 
-      interval = "60s"
       dataBase = "postgresql"
 
     },
@@ -1059,9 +1077,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/transaction_id_count"
+      label            = "transaction_id_count"
       active           = true
 
-      interval = "60s"
       dataBase = "postgresql"
 
     },
@@ -1075,9 +1093,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/transaction_id_utilization"
+      label            = "transaction_id_utilization"
       active           = true
 
-      interval = "60s"
       dataBase = "postgresql"
 
     },
@@ -1091,9 +1109,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/tuple_size"
+      label            = "tuple_size"
       active           = false
 
-      interval = "60s"
       dataBase = "postgresql"
 
     },
@@ -1107,9 +1125,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/tuples_processed_count"
+      label            = "tuples_processed_count"
       active           = false
 
-      interval = "60s"
       dataBase = "postgresql"
 
     },
@@ -1123,9 +1141,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "postgresql"
       googleMetricPath = "cloudsql.googleapis.com/database/postgresql/vacuum/oldest_transaction_age"
+      label            = "oldest_transaction_age"
       active           = true
 
-      interval = "60s"
       dataBase = "postgresql"
 
     },
@@ -1139,9 +1157,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "replication"
       googleMetricPath = "cloudsql.googleapis.com/database/replication/log_archive_failure_count"
+      label            = "log_archive_failure_count"
       active           = false
 
-      interval = "60s"
       dataBase = "ALL"
 
     },
@@ -1155,9 +1173,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "replication"
       googleMetricPath = "cloudsql.googleapis.com/database/replication/log_archive_success_count"
+      label            = "log_archive_success_count"
       active           = false
 
-      interval = "60s"
       dataBase = "ALL"
 
     },
@@ -1171,9 +1189,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "replication"
       googleMetricPath = "cloudsql.googleapis.com/database/replication/network_lag"
+      label            = "network_lag"
       active           = true
 
-      interval = "60s"
       dataBase = "ALL"
 
     },
@@ -1187,9 +1205,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "replication"
       googleMetricPath = "cloudsql.googleapis.com/database/replication/replica_lag"
+      label            = "replica_lag"
       active           = true
 
-      interval = "60s"
       dataBase = "ALL"
 
     },
@@ -1203,9 +1221,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "replication"
       googleMetricPath = "cloudsql.googleapis.com/database/replication/state"
+      label            = "state"
       active           = false
 
-      interval = "60s"
       dataBase = "ALL"
 
     },
@@ -1219,9 +1237,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "sqlserver"
       googleMetricPath = "cloudsql.googleapis.com/database/sqlserver/audits_size"
+      label            = "audits_size"
       active           = true
 
-      interval = "60s"
       dataBase = "sqlserver"
 
     },
@@ -1235,9 +1253,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "sqlserver"
       googleMetricPath = "cloudsql.googleapis.com/database/sqlserver/audits_upload_count"
+      label            = "audits_upload_count"
       active           = true
 
-      interval = "60s"
       dataBase = "sqlserver"
 
     },
@@ -1251,9 +1269,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "sqlserver"
       googleMetricPath = "cloudsql.googleapis.com/database/sqlserver/external_sync/primary_to_replica_connection_health"
+      label            = "primary_to_replica_connection_health"
       active           = false
 
-      interval = "60s"
       dataBase = "sqlserver"
 
     },
@@ -1274,9 +1292,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "state"
       googleMetricPath = "cloudsql.googleapis.com/database/state"
+      label            = "state"
       active           = true
 
-      interval = "60s"
       dataBase = "ALL"
 
     },
@@ -1290,9 +1308,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "up"
       googleMetricPath = "cloudsql.googleapis.com/database/up"
+      label            = "up"
       active           = true
 
-      interval = "60s"
       dataBase = "ALL"
 
     },
@@ -1306,9 +1324,9 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       aggregate        = "sum"
       metricCategory   = "uptime"
       googleMetricPath = "cloudsql.googleapis.com/database/uptime"
+      label            = "uptime"
       active           = true
 
-      interval = "60s"
       dataBase = "ALL"
 
     },

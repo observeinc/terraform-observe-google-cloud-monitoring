@@ -9,6 +9,8 @@ resource "observe_dataset" "cloudsql_metrics" {
     "metrics" = var.google.metrics.oid
   }
 
+  # the filter for metric list below can be configured several different ways depending on your needs
+  # look at local variable definition and decide
   stage {
     pipeline = <<-EOF
       filter resource_type = "cloudsql_database"
@@ -16,14 +18,23 @@ resource "observe_dataset" "cloudsql_metrics" {
       make_col 
         database_id:string(resource_labels.database_id),
         project_id:string(resource_labels.project_id),
-        region:string(resource_labels.region)
+        region:string(resource_labels.region),
+        metric_category: split_part(metric_type, '/', 3)
+    
+      make_col 
+        database_platform: if( in(metric_category, 'mysql', 'postgresql','sqlserver'), metric_category, 'ALL')
+
+      extract_regex metric_type, /(?P<label>[^\/]+$)/
 
       pick_col
         start_time,
         end_time,
         metric_type,
         metric_kind,
+        metric_category,
+        database_platform,
         metric_labels,
+        label,
         value,
         value_type,
         project_id,
@@ -31,7 +42,6 @@ resource "observe_dataset" "cloudsql_metrics" {
         database_id
 
       interface "metric", metric:metric_type, value:value
-      
       ${join("\n\n",
     [for metric, options in local.metrics_definitions :
       indent(2,
@@ -51,7 +61,7 @@ resource "observe_link" "cloudsql_metrics" {
   for_each = length(observe_dataset.cloudsql_metrics) > 0 ? {
     "Cloud SQL" = {
       target = observe_dataset.cloudsql.oid
-      fields = ["project_id", "region", "database_id"]
+      fields = ["database_id"]
     }
   } : {}
 

@@ -40,7 +40,7 @@ resource "observe_link" "sql_logs" {
   for_each = {
     "Database" = {
       target = observe_dataset.cloudsql.oid
-      fields = ["project_id", "region", "database_id"]
+      fields = ["database_id"]
     }
   }
 }
