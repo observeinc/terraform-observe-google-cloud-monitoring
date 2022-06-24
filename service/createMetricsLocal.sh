@@ -93,7 +93,7 @@ jq -r '# returns true if metric is GA
         # function for parsing metric name else contains default use elif to build case statement
         def nameFunc: 
             if . | contains("cloudsql.googleapis.com/database") 
-            then (. | capture("metricDescriptors/cloudsql.googleapis.com/database/(?<keepaftermetricDescriptors>.*)") | .keepaftermetricDescriptors) 
+            then (. | capture("metricDescriptors/cloudsql.googleapis.com/(?<keepaftermetricDescriptors>.*)") | .keepaftermetricDescriptors) 
             else (. | capture("metricDescriptors/[^/]+[/](?<keepaftermetricDescriptors>.*)") | .keepaftermetricDescriptors) end;
         def metricCategoryFunc:
             if . | contains("cloudsql.googleapis.com/database") 
@@ -104,7 +104,7 @@ jq -r '# returns true if metric is GA
         def labelFunc:
             (. | capture("(?<keepaftermetricDescriptors>[^/]+$)") | .keepaftermetricDescriptors);
     .metricDescriptors[] |  
-    "\"" + (.name | nameFunc | sub("/"; "_") ) + "\" = { 
+    "\"" + (.name | nameFunc | gsub("/"; "_") ) + "\" = { 
         type = \"" + (.metricKind | metricCaseFunc | metricTypeFunc) + "\" 
         description = <<-EOF
           " + (.description ) + (.metadata | sampleFunc ) + "
