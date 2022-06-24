@@ -22,14 +22,17 @@ resource "observe_dataset" "cloudsql" {
         assetInventoryName:name,
         name:string(data.name),
         ipAddressObject:pivot_array(array(data.ipAddresses), "type", "ipAddress" ),
-        database_id: strcat(string(data.project),":",name)
+        project_id: string(data.project)
+
+      make_col
+        database_id: strcat(project_id,":",name)
 
       make_resource options(expiry:${var.max_expiry}),
         name,
         databaseVersion: string(data.databaseVersion),
         label: strcat(string(data.databaseVersion),":",name),
         databaseInstalledVersion: string(data.databaseInstalledVersion),
-        project_id: string(data.project),
+        project_id,
         region:  string(data.region),
         backendType:string(data.backendType),
         backupConfiguration:data.settings.backupConfiguration,
