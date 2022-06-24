@@ -38,7 +38,7 @@ resource "observe_dataset" "cloudsql_metrics" {
         format("set_metric options(\n%s\n), %q",
           join(",\n",
       [for k, v in options : k == "interval" ? format("%s: %s", k, v) : format("%s: %q", k, v) if contains(var.metric_interface_fields, k)]), metric))
-    if contains(var.metric_launch_stages, options.launchStage)]
+    if contains(var.metric_list, metric)]
   )
 }
     EOF

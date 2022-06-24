@@ -15,7 +15,7 @@
 # filter = metric.type = starts_with("compute.googleapis.com/")
 # filter = metric.type = starts_with("agent.googleapis.com/")
 
-# to call script - ./createMetricsLocal.sh --input_file cloudsqldescriptors.json --output_file cloudsqlmetricslocal.tf
+# to call script - ./createMetricsLocal.sh --input_file cloudsql/cloudsqldescriptors.json --output_file cloudsql/cloudsqlmetricslocal.tf
 # to call script - ./createMetricsLocal.sh --input_file compute/computedescriptors.json --output_file compute/computemetricslocal.tf
 # to call script - ./createMetricsLocal.sh --input_file compute/agentmetrics.json --output_file compute/agentmetricslocal.tf --local_var_name agent_metrics_definitions
 
@@ -58,16 +58,51 @@ echo " $local_var_name = {" >> "$output_file";
 
 # in jq def is used to create a function that is then called in line
 
-jq -r 'def activeFunc: if . =="GA" then "true" else "false" end; # returns true if metric is GA
-        def metricCaseFunc: . |= ascii_downcase; # returns lowercase version of string
-        def metricTypeFunc: if . == "cumulative" then "cumulativeCounter" else . end; # transforms result if cumulitive otherwise return value passed to function
-        def sampleFunc: if . | has("samplePeriod") then " Sampled every " + .samplePeriod + " and may take up to " + .ingestDelay + " to display." else "" end; # if has property then return concatenated string otherwise nothing
-        def dataBaseParseFunc: if . | contains("mysql") or contains("postgresql") or contains("sqlserver") then "dataBase = \"" + . + "\"" else "dataBase = \"ALL\"" end;
-        def dataBaseFunc: if . | contains("cloudsql.googleapis.com/database") then (. | capture("database/(?<keepafterdatabase>[^/]+)") | .keepafterdatabase | dataBaseParseFunc) else null end;    
-        def intervalFunc: if . | has("samplePeriod") then "interval = \"" + (.samplePeriod) + "\"\n" else null end; # if has property then return interval else nothing
-        def computeFunc: if . | contains("compute.googleapis.com/") or contains("agent.googleapis.com/") then (. | capture("googleapis.com/(?<keepafterapis>[^/]+)") | "metricBin = \"" + .keepafterapis + "\"") else null end; 
-    .metricDescriptors[] | 
-    "\"" + (.name | capture("metricDescriptors/(?<keepaftermetricDescriptors>.*)") | .keepaftermetricDescriptors) + "\" = { 
+jq -r '# returns true if metric is GA
+        def activeFunc: 
+            if . =="GA" then "true" else "false" end; 
+        def metricCaseFunc: 
+            . |= ascii_downcase; # returns lowercase version of string
+        # transforms result if cumulitive otherwise return value passed to function
+        def metricTypeFunc: 
+            if . == "cumulative" 
+            then "cumulativeCounter" 
+            else . end; 
+        # if has property then return concatenated string otherwise nothing
+        def sampleFunc: 
+            if . | has("samplePeriod") 
+            then " Sampled every " + .samplePeriod + " and may take up to " + .ingestDelay + " to display." 
+            else "" end; 
+        def dataBaseParseFunc: 
+            if . | contains("mysql") or contains("postgresql") or contains("sqlserver") 
+            then "dataBase = \"" + . + "\"" 
+            else "dataBase = \"ALL\"" end;
+        def dataBaseFunc: 
+            if . | contains("cloudsql.googleapis.com/database") 
+            then (. | capture("database/(?<keepafterdatabase>[^/]+)") | .keepafterdatabase | dataBaseParseFunc) 
+            else null end;    
+        # if has property then return interval else nothing
+        def intervalFunc: 
+            if . | has("samplePeriod") 
+            then "interval = \"" + (.samplePeriod) + "\"\n" 
+            else null end; 
+        def computeFunc: 
+            if . | contains("compute.googleapis.com/") or contains("agent.googleapis.com/") 
+            then (. | capture("googleapis.com/(?<keepafterapis>[^/]+)") | "metricBin = \"" + .keepafterapis + "\"") 
+            else null end; 
+        # function for parsing metric name else contains default use elif to build case statement
+        def nameFunc: 
+            if . | contains("cloudsql.googleapis.com/database") 
+            then (. | capture("metricDescriptors/cloudsql.googleapis.com/database/(?<keepaftermetricDescriptors>.*)") | .keepaftermetricDescriptors) 
+            else (. | capture("metricDescriptors/[^/]+[/](?<keepaftermetricDescriptors>.*)") | .keepaftermetricDescriptors) end;
+        def metricCategoryFunc:
+            if . | contains("cloudsql.googleapis.com/database") 
+            then (. | capture("metricDescriptors/cloudsql.googleapis.com/database/(?<keepafter>[^/]+)") | .keepafter)  
+            else "none" end;
+        def googleMetricPathFunc:
+            (. | capture("metricDescriptors/(?<keepaftermetricDescriptors>.*)") | .keepaftermetricDescriptors);
+    .metricDescriptors[] |  
+    "\"" + (.name | nameFunc | sub("/"; "_") ) + "\" = { 
         type = \"" + (.metricKind | metricCaseFunc | metricTypeFunc) + "\" 
         description = <<-EOF
           " + (.description ) + (.metadata | sampleFunc ) + "
@@ -75,6 +110,8 @@ jq -r 'def activeFunc: if . =="GA" then "true" else "false" end; # returns true 
         launchStage = \"" + (.launchStage) + "\"
         rollup      = \"avg\"
         aggregate   = \"sum\"
+        metricCategory = \"" + (.name | metricCategoryFunc) + "\"
+        googleMetricPath = \"" + (.name | googleMetricPathFunc) + "\"
         active      = " + (.launchStage | activeFunc) + "
 
         " + (.metadata | intervalFunc ) 
