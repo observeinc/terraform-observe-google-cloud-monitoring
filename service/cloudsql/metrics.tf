@@ -31,17 +31,25 @@ resource "observe_dataset" "cloudsql_metrics" {
         database_id
 
       interface "metric", metric:metric_type, value:value
-
-      ${join("\n\n", [for metric, options in local.metrics_definitions : indent(2, format("set_metric options(\n%s\n), %q", join(",\n", [for k, v in options : k == "interval" ? format("%s: %s", k, v) : format("%s: %q", k, v) if k != "active" && k != "launchStage"]), metric)) if options.active == true])}
+      
+      ${join("\n\n",
+    [for metric, options in local.metrics_definitions :
+      indent(2,
+        format("set_metric options(\n%s\n), %q",
+          join(",\n",
+      [for k, v in options : k == "interval" ? format("%s: %s", k, v) : format("%s: %q", k, v) if contains(var.metric_interface_fields, k)]), metric))
+    if contains(var.metric_list, metric)]
+  )
+}
     EOF
-  }
+}
 }
 
-# use var instead of prop
+# use var instead of prop metric_interface_fields
 
 resource "observe_link" "cloudsql_metrics" {
   for_each = length(observe_dataset.cloudsql_metrics) > 0 ? {
-    "Cloud Function" = {
+    "Cloud SQL" = {
       target = observe_dataset.cloudsql.oid
       fields = ["project_id", "region", "database_id"]
     }

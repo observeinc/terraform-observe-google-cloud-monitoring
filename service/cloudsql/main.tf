@@ -20,7 +20,10 @@ resource "observe_dataset" "cloudsql" {
       filter asset_type = "sqladmin.googleapis.com/Instance"
       make_col
         assetInventoryName:name,
-        name:string(data.name)
+        name:string(data.name),
+        ipAddressObject:pivot_array(array(data.ipAddresses), "type", "ipAddress" )
+
+
       make_resource options(expiry:${var.max_expiry}),
         name,
         databaseVersion: string(data.databaseVersion),
@@ -30,10 +33,18 @@ resource "observe_dataset" "cloudsql" {
         region:  string(data.region),
         database_id: strcat(string(data.project),":",name),
         backendType:string(data.backendType),
+        backupConfiguration:data.settings.backupConfiguration,
+        availabilityType:string(data.settings.availabilityType),
+        dataDiskSizeGb:string(data.settings.dataDiskSizeGb),
+        dataDiskType:string(data.settings.dataDiskType),
+        databaseFlags:data.settings.databaseFlags,
+        ipConfiguration:data.settings.ipConfiguration,
+        tier:string(data.settings.tier),
+        state:string(data.state),
         createTime:string(data.createTime),
+        ipAddressPrimary: ipAddressObject.PRIMARY,
         ipAddresses:string(data.ipAddresses),
         gceZone:string(data.gceZone),
-        settings:string(data.settings),
         primary_key(assetInventoryName),
         valid_for(ttl)
 
