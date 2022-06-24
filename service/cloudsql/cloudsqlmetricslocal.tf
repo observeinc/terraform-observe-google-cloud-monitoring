@@ -1,6 +1,6 @@
 locals {
   metrics_definitions = {
-    "active_directory_domain_reachable" = {
+    "database_active_directory_domain_reachable" = {
       type             = "gauge"
       description      = <<-EOF
           Indicates whether the instance is able to ping a domain controller from the connected Managed Active Directory domain. If false, Windows Authentication may not work as expected. Sampled every 60s and may take up to 210s to display.
@@ -16,7 +16,7 @@ locals {
       dataBase = "ALL"
 
     },
-    "active_directory_instance_available" = {
+    "database_active_directory_instance_available" = {
       type             = "gauge"
       description      = <<-EOF
           Indicates whether the instance is currently available using Windows Authentication. Sampled every 60s and may take up to 210s to display.
@@ -32,7 +32,7 @@ locals {
       dataBase = "ALL"
 
     },
-    "auto_failover_request_count" = {
+    "database_auto_failover_request_count" = {
       type             = "delta"
       description      = <<-EOF
           Delta of number of instance auto-failover requests. Sampled every 60s and may take up to 210s to display.
@@ -48,7 +48,7 @@ locals {
       dataBase = "ALL"
 
     },
-    "available_for_failover" = {
+    "database_available_for_failover" = {
       type             = "gauge"
       description      = <<-EOF
           This is greater than 0 if the failover operation is available on the instance. Sampled every 60s and may take up to 210s to display.
@@ -64,7 +64,7 @@ locals {
       dataBase = "ALL"
 
     },
-    "cpu_reserved_cores" = {
+    "database_cpu_reserved_cores" = {
       type             = "gauge"
       description      = <<-EOF
           Number of cores reserved for the database. Sampled every 60s and may take up to 210s to display.
@@ -80,7 +80,7 @@ locals {
       dataBase = "ALL"
 
     },
-    "cpu_usage_time" = {
+    "database_cpu_usage_time" = {
       type             = "delta"
       description      = <<-EOF
           Cumulative CPU usage time in seconds. Sampled every 60s and may take up to 210s to display.
@@ -96,7 +96,7 @@ locals {
       dataBase = "ALL"
 
     },
-    "cpu_utilization" = {
+    "database_cpu_utilization" = {
       type             = "gauge"
       description      = <<-EOF
           Current CPU utilization represented as a percentage of the reserved CPU that is currently in use. Values are typically numbers between 0.0 and 1.0 but might exceed 1.0. Charts display the values as a percentage between 0% and 100% or more. Sampled every 60s and may take up to 210s to display.
@@ -112,7 +112,7 @@ locals {
       dataBase = "ALL"
 
     },
-    "disk_bytes_used" = {
+    "database_disk_bytes_used" = {
       type             = "gauge"
       description      = <<-EOF
           Data utilization in bytes. Sampled every 60s and may take up to 210s to display.
@@ -128,7 +128,7 @@ locals {
       dataBase = "ALL"
 
     },
-    "disk_bytes_used_by_data_type" = {
+    "database_disk_bytes_used_by_data_type" = {
       type             = "gauge"
       description      = <<-EOF
           Data utilization in bytes. Sampled every 60s and may take up to 210s to display.
@@ -144,7 +144,7 @@ locals {
       dataBase = "ALL"
 
     },
-    "disk_quota" = {
+    "database_disk_quota" = {
       type             = "gauge"
       description      = <<-EOF
           Maximum data disk size in bytes. Sampled every 60s and may take up to 210s to display.
@@ -160,7 +160,7 @@ locals {
       dataBase = "ALL"
 
     },
-    "disk_read_ops_count" = {
+    "database_disk_read_ops_count" = {
       type             = "delta"
       description      = <<-EOF
           Delta count of data disk read IO operations. Sampled every 60s and may take up to 210s to display.
@@ -176,7 +176,7 @@ locals {
       dataBase = "ALL"
 
     },
-    "disk_utilization" = {
+    "database_disk_utilization" = {
       type             = "gauge"
       description      = <<-EOF
           The fraction of the disk quota that is currently in use. Sampled every 60s and may take up to 210s to display.
@@ -192,7 +192,7 @@ locals {
       dataBase = "ALL"
 
     },
-    "disk_write_ops_count" = {
+    "database_disk_write_ops_count" = {
       type             = "delta"
       description      = <<-EOF
           Delta count of data disk write IO operations. Sampled every 60s and may take up to 210s to display.
@@ -208,7 +208,7 @@ locals {
       dataBase = "ALL"
 
     },
-    "instance_state" = {
+    "database_instance_state" = {
       type             = "gauge"
       description      = <<-EOF
           The current serving state of the Cloud SQL instance.
@@ -235,7 +235,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "ALL"
 
     },
-    "memory_quota" = {
+    "database_memory_quota" = {
       type             = "gauge"
       description      = <<-EOF
           Maximum RAM size in bytes. Sampled every 60s and may take up to 210s to display.
@@ -251,7 +251,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "ALL"
 
     },
-    "memory_total_usage" = {
+    "database_memory_total_usage" = {
       type             = "gauge"
       description      = <<-EOF
           Total RAM usage in bytes including buffer cache. Sampled every 60s and may take up to 210s to display.
@@ -267,7 +267,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "ALL"
 
     },
-    "memory_usage" = {
+    "database_memory_usage" = {
       type             = "gauge"
       description      = <<-EOF
           RAM usage in bytes. Sampled every 60s and may take up to 210s to display.
@@ -283,7 +283,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "ALL"
 
     },
-    "memory_utilization" = {
+    "database_memory_utilization" = {
       type             = "gauge"
       description      = <<-EOF
           The fraction of the memory quota that is currently in use. Sampled every 60s and may take up to 210s to display.
@@ -299,7 +299,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "ALL"
 
     },
-    "mysql_innodb_buffer_pool_pages_dirty" = {
+    "database_mysql_innodb_buffer_pool_pages_dirty" = {
       type             = "gauge"
       description      = <<-EOF
           Number of unflushed pages in the InnoDB buffer pool. Sampled every 60s and may take up to 210s to display.
@@ -315,7 +315,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "mysql"
 
     },
-    "mysql_innodb_buffer_pool_pages_free" = {
+    "database_mysql_innodb_buffer_pool_pages_free" = {
       type             = "gauge"
       description      = <<-EOF
           Number of unused pages in the InnoDB buffer pool. Sampled every 60s and may take up to 210s to display.
@@ -331,7 +331,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "mysql"
 
     },
-    "mysql_innodb_buffer_pool_pages_total" = {
+    "database_mysql_innodb_buffer_pool_pages_total" = {
       type             = "gauge"
       description      = <<-EOF
           Total number of pages in the InnoDB buffer pool. Sampled every 60s and may take up to 210s to display.
@@ -347,7 +347,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "mysql"
 
     },
-    "mysql_innodb_data_fsyncs" = {
+    "database_mysql_innodb_data_fsyncs" = {
       type             = "delta"
       description      = <<-EOF
           Delta count of InnoDB fsync calls. Sampled every 60s and may take up to 210s to display.
@@ -363,7 +363,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "mysql"
 
     },
-    "mysql_innodb_os_log_fsyncs" = {
+    "database_mysql_innodb_os_log_fsyncs" = {
       type             = "delta"
       description      = <<-EOF
           Delta count of InnoDB fsync calls to the log file. Sampled every 60s and may take up to 210s to display.
@@ -379,7 +379,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "mysql"
 
     },
-    "mysql_innodb_pages_read" = {
+    "database_mysql_innodb_pages_read" = {
       type             = "delta"
       description      = <<-EOF
           Delta count of InnoDB pages read. Sampled every 60s and may take up to 210s to display.
@@ -395,7 +395,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "mysql"
 
     },
-    "mysql_innodb_pages_written" = {
+    "database_mysql_innodb_pages_written" = {
       type             = "delta"
       description      = <<-EOF
           Delta count of InnoDB pages written. Sampled every 60s and may take up to 210s to display.
@@ -411,7 +411,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "mysql"
 
     },
-    "mysql_queries" = {
+    "database_mysql_queries" = {
       type             = "delta"
       description      = <<-EOF
           Delta count of statements executed by the server. Sampled every 60s and may take up to 210s to display.
@@ -427,7 +427,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "mysql"
 
     },
-    "mysql_questions" = {
+    "database_mysql_questions" = {
       type             = "delta"
       description      = <<-EOF
           Delta count of statements executed by the server sent by the client. Sampled every 60s and may take up to 210s to display.
@@ -443,7 +443,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "mysql"
 
     },
-    "mysql_received_bytes_count" = {
+    "database_mysql_received_bytes_count" = {
       type             = "delta"
       description      = <<-EOF
           Delta count of bytes received by MySQL process. Sampled every 60s and may take up to 210s to display.
@@ -459,7 +459,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "mysql"
 
     },
-    "mysql_replication/available_for_failover" = {
+    "database_mysql_replication_available_for_failover" = {
       type             = "gauge"
       description      = <<-EOF
           This is greater than 0 if the failover operation is available on the master instance.master. The metric is deprecated.  Please use cloudsql.googleapis.com/database/available_for_failover instead Sampled every 60s and may take up to 210s to display.
@@ -475,7 +475,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "mysql"
 
     },
-    "mysql_replication/last_io_errno" = {
+    "database_mysql_replication_last_io_errno" = {
       type             = "gauge"
       description      = <<-EOF
           The error number of the most recent error that caused the I/O thread to stop. Sampled every 60s and may take up to 210s to display.
@@ -491,7 +491,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "mysql"
 
     },
-    "mysql_replication/last_sql_errno" = {
+    "database_mysql_replication_last_sql_errno" = {
       type             = "gauge"
       description      = <<-EOF
           The error number of the most recent error that caused the SQL thread to stop. Sampled every 60s and may take up to 210s to display.
@@ -507,7 +507,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "mysql"
 
     },
-    "mysql_replication/seconds_behind_master" = {
+    "database_mysql_replication_seconds_behind_master" = {
       type             = "gauge"
       description      = <<-EOF
           Number of seconds the read replica is behind its primary approximation. Sampled every 60s and may take up to 210s to display.
@@ -523,7 +523,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "mysql"
 
     },
-    "mysql_replication/slave_io_running" = {
+    "database_mysql_replication_slave_io_running" = {
       type             = "gauge"
       description      = <<-EOF
           Indicates whether the I/O thread for reading the primary's binary log is running. Possible values are Yes, No and Connecting. Sampled every 60s and may take up to 60s to display.
@@ -539,7 +539,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "mysql"
 
     },
-    "mysql_replication/slave_io_running_state" = {
+    "database_mysql_replication_slave_io_running_state" = {
       type             = "gauge"
       description      = <<-EOF
           Indicates whether the I/O thread for reading the primary's binary log is running. Possible values are Yes, No and Connecting, and the values are exposed through the 'state' field. Sampled every 60s and may take up to 210s to display.
@@ -555,7 +555,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "mysql"
 
     },
-    "mysql_replication/slave_sql_running" = {
+    "database_mysql_replication_slave_sql_running" = {
       type             = "gauge"
       description      = <<-EOF
           Indicates whether the SQL thread for executing events in the relay log is running. Sampled every 60s and may take up to 60s to display.
@@ -571,7 +571,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "mysql"
 
     },
-    "mysql_replication/slave_sql_running_state" = {
+    "database_mysql_replication_slave_sql_running_state" = {
       type             = "gauge"
       description      = <<-EOF
           Indicates whether the SQL thread for executing events in the relay log is running. Possible values are Yes / No, and the values are exposed through the 'state' field. Sampled every 60s and may take up to 210s to display.
@@ -587,7 +587,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "mysql"
 
     },
-    "mysql_sent_bytes_count" = {
+    "database_mysql_sent_bytes_count" = {
       type             = "delta"
       description      = <<-EOF
           Delta count of bytes sent by MySQL process. Sampled every 60s and may take up to 210s to display.
@@ -603,7 +603,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "mysql"
 
     },
-    "network_connections" = {
+    "database_network_connections" = {
       type             = "gauge"
       description      = <<-EOF
           Number of connections to databases on the Cloud SQL instance. Only applicable to MySQL and SQL Server. Sampled every 60s and may take up to 210s to display.
@@ -619,7 +619,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "ALL"
 
     },
-    "network_received_bytes_count" = {
+    "database_network_received_bytes_count" = {
       type             = "delta"
       description      = <<-EOF
           Delta count of bytes received through the network. Sampled every 60s and may take up to 210s to display.
@@ -635,7 +635,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "ALL"
 
     },
-    "network_sent_bytes_count" = {
+    "database_network_sent_bytes_count" = {
       type             = "delta"
       description      = <<-EOF
           Delta count of bytes sent through the network. Sampled every 60s and may take up to 210s to display.
@@ -651,7 +651,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "ALL"
 
     },
-    "postgresql_blocks_read_count" = {
+    "database_postgresql_blocks_read_count" = {
       type             = "delta"
       description      = <<-EOF
           Number of disk blocks read by this database. The source field distingushes actual reads from disk versus reads from buffer cache. Sampled every 60s and may take up to 210s to display.
@@ -667,7 +667,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_deadlock_count" = {
+    "database_postgresql_deadlock_count" = {
       type             = "delta"
       description      = <<-EOF
           Number of deadlocks detected for this database. Sampled every 60s and may take up to 210s to display.
@@ -683,7 +683,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_external_sync/initial_sync_complete" = {
+    "database_postgresql_external_sync_initial_sync_complete" = {
       type             = "gauge"
       description      = <<-EOF
           Whether all databases on the Postgres External Server ES replica have completed the initial sync and are replicating changes from the source. Sampled every 60s and may take up to 210s to display.
@@ -699,7 +699,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_external_sync/max_replica_byte_lag" = {
+    "database_postgresql_external_sync_max_replica_byte_lag" = {
       type             = "gauge"
       description      = <<-EOF
           Replication lag in bytes for Postgres External Server ES replicas. Aggregated across all DBs on the replica. Sampled every 60s and may take up to 210s to display.
@@ -715,7 +715,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_insights/aggregate/execution_time" = {
+    "database_postgresql_insights_aggregate_execution_time" = {
       type             = "cumulativeCounter"
       description      = <<-EOF
           Accumulated query execution time per user per database. This is the sum of cpu time, io wait time, lock wait time, process context switch, and scheduling for all the processes involved in the query execution.
@@ -731,7 +731,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_insights/aggregate/io_time" = {
+    "database_postgresql_insights_aggregate_io_time" = {
       type             = "cumulativeCounter"
       description      = <<-EOF
           Accumulated IO time per user per database.
@@ -747,7 +747,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_insights/aggregate/latencies" = {
+    "database_postgresql_insights_aggregate_latencies" = {
       type             = "cumulativeCounter"
       description      = <<-EOF
           Query latency distribution per user per database.
@@ -763,7 +763,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_insights/aggregate/lock_time" = {
+    "database_postgresql_insights_aggregate_lock_time" = {
       type             = "cumulativeCounter"
       description      = <<-EOF
           Accumulated lock wait time per user per database.
@@ -779,7 +779,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_insights/aggregate/row_count" = {
+    "database_postgresql_insights_aggregate_row_count" = {
       type             = "cumulativeCounter"
       description      = <<-EOF
           Total number of rows affected during query execution.
@@ -795,7 +795,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_insights/aggregate/shared_blk_access_count" = {
+    "database_postgresql_insights_aggregate_shared_blk_access_count" = {
       type             = "cumulativeCounter"
       description      = <<-EOF
           Shared blocks regular tables and indexed accessed by statement execution.
@@ -811,7 +811,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_insights/perquery/execution_time" = {
+    "database_postgresql_insights_perquery_execution_time" = {
       type             = "cumulativeCounter"
       description      = <<-EOF
           Accumulated execution times per user per database per query.This is the sum of cpu time, io wait time, lock wait time, process context switch, and scheduling for all the processes involved in the query execution.
@@ -827,7 +827,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_insights/perquery/io_time" = {
+    "database_postgresql_insights_perquery_io_time" = {
       type             = "cumulativeCounter"
       description      = <<-EOF
           Accumulated IO time per user per database per query.
@@ -843,7 +843,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_insights/perquery/latencies" = {
+    "database_postgresql_insights_perquery_latencies" = {
       type             = "cumulativeCounter"
       description      = <<-EOF
           Query latency distribution per user per database per query.
@@ -859,7 +859,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_insights/perquery/lock_time" = {
+    "database_postgresql_insights_perquery_lock_time" = {
       type             = "cumulativeCounter"
       description      = <<-EOF
           Accumulated lock wait time per user per database per query.
@@ -875,7 +875,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_insights/perquery/row_count" = {
+    "database_postgresql_insights_perquery_row_count" = {
       type             = "cumulativeCounter"
       description      = <<-EOF
           Total number of rows affected during query execution.
@@ -891,7 +891,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_insights/perquery/shared_blk_access_count" = {
+    "database_postgresql_insights_perquery_shared_blk_access_count" = {
       type             = "cumulativeCounter"
       description      = <<-EOF
           Shared blocks regular tables and indexed accesssed by statement execution.
@@ -907,7 +907,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_insights/pertag/execution_time" = {
+    "database_postgresql_insights_pertag_execution_time" = {
       type             = "cumulativeCounter"
       description      = <<-EOF
           Accumulated execution times per user per database per tag.This is the sum of cpu time, io wait time, lock wait time, process context switch, and scheduling for all the processes involved in the query execution.
@@ -923,7 +923,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_insights/pertag/io_time" = {
+    "database_postgresql_insights_pertag_io_time" = {
       type             = "cumulativeCounter"
       description      = <<-EOF
           Accumulated IO write time per user per database per tag.
@@ -939,7 +939,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_insights/pertag/latencies" = {
+    "database_postgresql_insights_pertag_latencies" = {
       type             = "cumulativeCounter"
       description      = <<-EOF
           Query latency distribution per user per database per tag.
@@ -955,7 +955,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_insights/pertag/lock_time" = {
+    "database_postgresql_insights_pertag_lock_time" = {
       type             = "cumulativeCounter"
       description      = <<-EOF
           Accumulated lock wait time per user per database per tag.
@@ -971,7 +971,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_insights/pertag/row_count" = {
+    "database_postgresql_insights_pertag_row_count" = {
       type             = "cumulativeCounter"
       description      = <<-EOF
           Total number of rows affected during query execution.
@@ -987,7 +987,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_insights/pertag/shared_blk_access_count" = {
+    "database_postgresql_insights_pertag_shared_blk_access_count" = {
       type             = "cumulativeCounter"
       description      = <<-EOF
           Shared blocks regular tables and indexed accessed by statement execution.
@@ -1003,7 +1003,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_num_backends" = {
+    "database_postgresql_num_backends" = {
       type             = "gauge"
       description      = <<-EOF
           Number of connections to the Cloud SQL PostgreSQL instance. Sampled every 60s and may take up to 210s to display.
@@ -1019,7 +1019,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_num_backends_by_state" = {
+    "database_postgresql_num_backends_by_state" = {
       type             = "gauge"
       description      = <<-EOF
           Number of connections to the Cloud SQL PostgreSQL instance, grouped by its state. Sampled every 60s and may take up to 210s to display.
@@ -1035,7 +1035,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_replication/replica_byte_lag" = {
+    "database_postgresql_replication_replica_byte_lag" = {
       type             = "gauge"
       description      = <<-EOF
           Replication lag in bytes. Reported from the master per replica. Sampled every 60s and may take up to 210s to display.
@@ -1051,7 +1051,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_transaction_count" = {
+    "database_postgresql_transaction_count" = {
       type             = "delta"
       description      = <<-EOF
           Delta count of number of transactions. Sampled every 60s and may take up to 210s to display.
@@ -1067,7 +1067,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_transaction_id_count" = {
+    "database_postgresql_transaction_id_count" = {
       type             = "delta"
       description      = <<-EOF
           Delta count of transaction ID. Sampled every 60s and may take up to 210s to display.
@@ -1083,7 +1083,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_transaction_id_utilization" = {
+    "database_postgresql_transaction_id_utilization" = {
       type             = "gauge"
       description      = <<-EOF
           Current utilization represented as a percentage of transaction IDs consumed by the Cloud SQL PostgreSQL instance. Values are typically numbers between 0.0 and 1.0. Charts display the values as a percentage between 0% and 100%. Sampled every 60s and may take up to 210s to display.
@@ -1099,7 +1099,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_tuple_size" = {
+    "database_postgresql_tuple_size" = {
       type             = "gauge"
       description      = <<-EOF
           Number of tuples rows in the database. Sampled every 60s and may take up to 210s to display.
@@ -1115,7 +1115,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_tuples_processed_count" = {
+    "database_postgresql_tuples_processed_count" = {
       type             = "delta"
       description      = <<-EOF
           Number of tuplesrows processed for a given database for operations like  insert, update or delete. Sampled every 60s and may take up to 210s to display.
@@ -1131,7 +1131,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "postgresql_vacuum/oldest_transaction_age" = {
+    "database_postgresql_vacuum_oldest_transaction_age" = {
       type             = "gauge"
       description      = <<-EOF
           Age of the oldest transaction yet to be vacuumed in the Cloud SQL PostgreSQL instance, measured in number of transactions that have happened since the oldest transaction. Sampled every 60s and may take up to 210s to display.
@@ -1147,7 +1147,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "postgresql"
 
     },
-    "replication_log_archive_failure_count" = {
+    "database_replication_log_archive_failure_count" = {
       type             = "delta"
       description      = <<-EOF
           Number of failed attempts for archiving replication log files. Sampled every 60s and may take up to 210s to display.
@@ -1163,7 +1163,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "ALL"
 
     },
-    "replication_log_archive_success_count" = {
+    "database_replication_log_archive_success_count" = {
       type             = "delta"
       description      = <<-EOF
           Number of successful attempts for archiving replication log files. Sampled every 60s and may take up to 210s to display.
@@ -1179,7 +1179,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "ALL"
 
     },
-    "replication_network_lag" = {
+    "database_replication_network_lag" = {
       type             = "gauge"
       description      = <<-EOF
           Indicates time taken from primary binary log to IO thread on replica. Only applicable to replicas. Sampled every 60s and may take up to 210s to display.
@@ -1195,7 +1195,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "ALL"
 
     },
-    "replication_replica_lag" = {
+    "database_replication_replica_lag" = {
       type             = "gauge"
       description      = <<-EOF
           Number of seconds the read replica is behind its primary approximation. Sampled every 60s and may take up to 210s to display.
@@ -1211,7 +1211,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "ALL"
 
     },
-    "replication_state" = {
+    "database_replication_state" = {
       type             = "gauge"
       description      = <<-EOF
           The current serving state of replication. Sampled every 60s and may take up to 210s to display.
@@ -1227,7 +1227,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "ALL"
 
     },
-    "sqlserver_audits_size" = {
+    "database_sqlserver_audits_size" = {
       type             = "gauge"
       description      = <<-EOF
           Tracks the size in bytes of stored SQLServer audit files on an instance. Sampled every 60s and may take up to 210s to display.
@@ -1243,7 +1243,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "sqlserver"
 
     },
-    "sqlserver_audits_upload_count" = {
+    "database_sqlserver_audits_upload_count" = {
       type             = "delta"
       description      = <<-EOF
           Counts total number of SQLServer audit file uploads to a GCS bucket and whether or not an upload was successful. Sampled every 60s and may take up to 210s to display.
@@ -1259,7 +1259,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "sqlserver"
 
     },
-    "sqlserver_external_sync/primary_to_replica_connection_health" = {
+    "database_sqlserver_external_sync_primary_to_replica_connection_health" = {
       type             = "gauge"
       description      = <<-EOF
           Indicates whether there is connectivity from Primary to the Replica to push replication updates. Sampled every 60s and may take up to 210s to display.
@@ -1275,7 +1275,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "sqlserver"
 
     },
-    "state" = {
+    "database_state" = {
       type             = "gauge"
       description      = <<-EOF
           The current serving state of the Cloud SQL instance. This can be one of the following:
@@ -1298,7 +1298,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "ALL"
 
     },
-    "up" = {
+    "database_up" = {
       type             = "gauge"
       description      = <<-EOF
           Indicates if the server is up or not. Sampled every 60s and may take up to 210s to display.
@@ -1314,7 +1314,7 @@ UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may t
       dataBase = "ALL"
 
     },
-    "uptime" = {
+    "database_uptime" = {
       type             = "delta"
       description      = <<-EOF
           Delta count of the time in seconds the instance has been running. Sampled every 60s and may take up to 210s to display.
