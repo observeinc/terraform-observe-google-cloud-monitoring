@@ -8,6 +8,7 @@ locals {
     logs                               = observe_dataset.logs
     audit_logs                         = observe_dataset.audit_logs
     metrics                            = observe_dataset.metrics
+    string_metrics                     = observe_dataset.string_metrics
   }
 }
 resource "observe_dataset" "base_pubsub_events" {

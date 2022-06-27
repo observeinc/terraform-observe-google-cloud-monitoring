@@ -32,6 +32,7 @@ variable "google" {
     resource_asset_inventory_records = object({ oid = string })
     logs                             = object({ oid = string })
     metrics                          = object({ oid = string })
+    string_metrics                   = object({ oid = string })
   })
   description = "Google base module"
 }

@@ -10,7 +10,8 @@ resource "observe_dataset" "cloudsql" {
   freshness = var.freshness_default
 
   inputs = {
-    "events" = var.google.resource_asset_inventory_records.oid
+    "events"         = var.google.resource_asset_inventory_records.oid,
+    "string_metrics" = observe_dataset.cloudsql_string_metrics[0].oid
   }
 
   # https://cloud.google.com/sql/docs
@@ -26,7 +27,11 @@ resource "observe_dataset" "cloudsql" {
 
       make_col
         database_id: strcat(project_id,":",name)
+    EOF
+  }
 
+  stage {
+    pipeline = <<-EOF
       make_resource options(expiry:${var.max_expiry}),
         name,
         databaseVersion: string(data.databaseVersion),
@@ -54,6 +59,8 @@ resource "observe_dataset" "cloudsql" {
       set_label label
 
       add_key project_id, region
+
+      update_resource options(expiry:duration_hr(1)), database_id=@string_metrics.database_id, current_state:@string_metrics.value
     EOF
   }
 }
