@@ -35,3 +35,8 @@ override.tf.json
 
 *metrics.json
 
+service/cloudsql/translate_board.sh
+draft_tftest.sh
+service/cloudsql/cloudsqldescriptors.json
+service/cloudsql/boards/summary.txt
+service/cloudsql/boards/summary_notes.txt

@@ -24,6 +24,7 @@ input_file=descriptors.json
 output_file=metricslocal.tf
 local_var_name=metrics_definitions
 
+echo "PWD = $(pwd)"
 # Process input flags
     while [ $# -gt 0 ]; do
     echo "required inputs $1 $2 $# "
