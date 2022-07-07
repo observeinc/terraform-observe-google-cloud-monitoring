@@ -34,6 +34,12 @@ variable "freshness_default" {
   default     = "1m"
 }
 
+variable "freshness_overrides" {
+  type        = map(string)
+  description = "Freshness overrides by dataset. If absent, fall back to freshness_default"
+  default     = {}
+}
+
 variable "feature_flags" {
   type        = map(bool)
   description = "Toggle features which are being rolled out or phased out."
@@ -83,5 +89,13 @@ variable "enable_service_compute" {
   default     = null
   description = <<-EOF
     Enable Compute service.
+  EOF
+}
+
+variable "enable_service_storage" {
+  type        = bool
+  default     = null
+  description = <<-EOF
+    Enable Cloud Storage service.
   EOF
 }
