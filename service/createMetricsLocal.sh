@@ -104,6 +104,10 @@ jq -r '# returns true if metric is GA
             (. | capture("metricDescriptors/(?<keepaftermetricDescriptors>.*)") | .keepaftermetricDescriptors);
         def labelFunc:
             (. | capture("(?<keepaftermetricDescriptors>[^/]+$)") | .keepaftermetricDescriptors);
+        def unitParseFunc: 
+            if . != "1" then ("unit = \"" + . + "\"") else null end;
+        def unitFunc: 
+            if . | length > 0 then (. | unitParseFunc ) else null end;
     .metricDescriptors[] |  
     "\"" + (.name | nameFunc | gsub("/"; "_") ) + "\" = { 
         type = \"" + (.metricKind | metricCaseFunc | metricTypeFunc) + "\" 
@@ -115,11 +119,15 @@ jq -r '# returns true if metric is GA
         aggregate   = \"sum\"
         metricCategory = \"" + (.name | metricCategoryFunc) + "\"
         googleMetricPath = \"" + (.name | googleMetricPathFunc) + "\"
-        label = \"" + (.name | labelFunc) + "\"
+        label = \"" + (.displayName) + "\"
         active      = " + (.launchStage | activeFunc) + "
 
         "  
-        + (.name | dataBaseFunc )
+        + (.name | dataBaseFunc ) + "
+        "
+        + (.metadata | intervalFunc ) + "
+        "
+        + (.unit | unitFunc )
         + (.name | computeFunc ) + "
         
         },"

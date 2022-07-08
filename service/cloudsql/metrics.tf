@@ -3,7 +3,7 @@ resource "observe_dataset" "cloudsql_metrics" {
 
   workspace = var.workspace.oid
   name      = format(var.name_format, "Metrics")
-  freshness = var.freshness_default
+  freshness = lookup(local.freshness, "metrics", var.freshness_default)
 
   inputs = {
     "metrics" = var.google.metrics.oid
@@ -19,8 +19,8 @@ resource "observe_dataset" "cloudsql_metrics" {
         database_id:string(resource_labels.database_id),
         project_id:string(resource_labels.project_id),
         region:string(resource_labels.region),
-        metric_category: split_part(metric_type, '/', 3),
-        metric_name: replace(replace(metric_type,'cloudsql.googleapis.com/',''),'/','_')
+        metric_category: if(split_part(metric_type, '/', 1) = 'logging.googleapis.com',split_part(metric_type, '/', 2), split_part(metric_type, '/', 3)),
+        metric: replace(replace(metric_type,'cloudsql.googleapis.com/',''),'/','_')
     
       make_col 
         database_platform: if( in(metric_category, 'mysql', 'postgresql','sqlserver'), metric_category, 'ALL'),
@@ -34,35 +34,52 @@ resource "observe_dataset" "cloudsql_metrics" {
     pipeline = <<-EOF
       pick_col
         start_time,
-        end_time,
-        metric_type,
-        metric_name,
-        metric_kind,
+        metric,
+        value,
         metric_category,
+        label,
         database_platform,
         metric_labels,
-        label,
-        value,
-        value_type,
+        value_type_text,
+        database_id,
         project_id,
         region,
-        database_id_check,
-        database_id
+        metric_type,
+        metric_kind,
+        metric_kind_text,
+        value_type
+        
+ 
+      colshow metric_type: false, metric_kind: false, value_type: false
 
-      interface "metric", metric:metric_name, value:value
+      interface "metric", metric:metric, value:value
       ${join("\n\n",
     [for metric, options in local.metrics_definitions :
       indent(2,
         format("set_metric options(\n%s\n), %q",
           join(",\n",
-      [for k, v in options : k == "interval" ? format("%s: %s", k, v) : format("%s: %q", k, v) if contains(var.metric_interface_fields, k)]), metric))
-    if contains(var.metric_list, metric)]
+            [for k, v in options : k == "interval" ?
+              format("%s: %s", k, v)
+              :
+              format("%s: %q", k, v)
+      if contains(var.metric_interface_fields, k)]), metric))
+      #if contains(var.metric_list, metric)]
+    ]
   )
 }
     EOF
 }
 }
 
+# Basic units (UNIT)
+
+# bit bit
+# By byte
+# s second
+# min minute
+# h hour
+# d day
+# 1 dimensionless
 # use var instead of prop metric_interface_fields
 
 resource "observe_link" "cloudsql_metrics" {
@@ -86,7 +103,7 @@ resource "observe_dataset" "cloudsql_string_metrics" {
 
   workspace = var.workspace.oid
   name      = format(var.name_format, "String Metrics")
-  freshness = var.freshness_default
+  freshness = lookup(local.freshness, "metrics", var.freshness_default)
 
   inputs = {
     "metrics" = var.google.string_metrics.oid
@@ -118,6 +135,9 @@ resource "observe_dataset" "cloudsql_string_metrics" {
         pick_col
           start_time,
           end_time,
+          project_id,
+          region,
+          database_id,
           metric_type,
           metric_name,
           metric_kind,
@@ -125,11 +145,8 @@ resource "observe_dataset" "cloudsql_string_metrics" {
           database_platform,
           metric_labels,
           label,
-          value,
-          project_id,
-          region,
-          database_id_check,
-          database_id
+          value
+
       EOF
   }
 }

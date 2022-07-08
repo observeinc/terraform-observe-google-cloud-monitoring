@@ -1,5 +1,12 @@
 locals {
+  freshness = merge({
+    cloudsql = "5m",
+    metrics  = "1m",
+    logging  = "1m",
+  }, var.freshness_overrides)
+
   enable_metrics = lookup(var.feature_flags, "metrics", true)
+  # does it fail if we set to false - check this
   # tflint-ignore: terraform_unused_declarations
   enable_monitors = lookup(var.feature_flags, "monitors", true)
 }
@@ -7,7 +14,7 @@ locals {
 resource "observe_dataset" "cloudsql" {
   workspace = var.workspace.oid
   name      = format(var.name_format, "Instance")
-  freshness = var.freshness_default
+  freshness = lookup(local.freshness, "cloudsql", var.freshness_default)
 
   inputs = {
     "events"         = var.google.resource_asset_inventory_records.oid,
@@ -59,8 +66,8 @@ resource "observe_dataset" "cloudsql" {
       set_label label
 
       add_key project_id, region
-
-      update_resource options(expiry:duration_hr(1)), database_id=@string_metrics.database_id, current_state:@string_metrics.value
+      
+      update_resource options(expiry:${var.max_expiry}), database_id=@string_metrics.database_id, current_state:@string_metrics.value
     EOF
   }
 }

@@ -6,7 +6,13 @@ resource "observe_board" "database_monitoring" {
   name     = "Cloud SQL Instance Monitoring"
   type     = each.value
   json = templatefile("${path.module}/boards/SummaryBoard.json", {
-    summary_txt   = file("${path.module}/boards/summary.txt"),
-    summary_notes = file("${path.module}/boards/summary_notes.txt")
+    dataset_metrics  = regexall(":([^/:]*)(/|$)", observe_dataset.cloudsql_metrics[0].oid)[0][0],
+    dataset_resource = regexall(":([^/:]*)(/|$)", observe_dataset.cloudsql.oid)[0][0],
+    DOC_SECTION = templatefile("${path.module}/boards/DocumentationSection.json", {
+      summary_txt   = file("${path.module}/boards/summary.txt"),
+      summary_notes = file("${path.module}/boards/summary_notes.txt"),
+    })
+    SUMMARY_SECTION = templatefile("${path.module}/boards/SummarySection.json", {}),
+    METRICS_SECTION = templatefile("${path.module}/boards/MetricsSection.json", {})
   })
 }

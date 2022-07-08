@@ -18,7 +18,13 @@ variable "max_expiry" {
 variable "freshness_default" {
   type        = string
   description = "Default dataset freshness"
-  default     = "1m"
+  default     = "2m"
+}
+
+variable "freshness_overrides" {
+  type        = map(string)
+  description = "Freshness overrides by dataset. If absent, fall back to freshness_default"
+  default     = {}
 }
 
 variable "feature_flags" {
@@ -39,19 +45,19 @@ variable "google" {
 
 variable "metric_interface_fields" {
   type        = set(string)
-  default     = ["type", "description", "rollup", "aggregate", "interval", "label"]
+  default     = ["type", "description", "rollup", "aggregate", "interval", "label", "unit"]
   description = "Used by metric interface to pick fields to map"
 }
 
-variable "metric_list" {
-  type = set(string)
-  default = [
-    "cpu_utilization",
-    "memory_total_usage",
-    "network_connections",
-    "disk_read_ops_count",
-    "disk_write_ops_count",
-    "disk_bytes_used",
-  ]
-  description = "Used by metric interface to pick metrics to include"
-}
+# variable "metric_list" {
+#   type = set(string)
+#   default = [
+#     "cpu_utilization",
+#     "memory_total_usage",
+#     "network_connections",
+#     "disk_read_ops_count",
+#     "disk_write_ops_count",
+#     "disk_bytes_used",
+#   ]
+#   description = "Used by metric interface to pick metrics to include"
+# }

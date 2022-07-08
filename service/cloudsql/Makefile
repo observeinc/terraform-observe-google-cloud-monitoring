@@ -8,6 +8,8 @@ SUMMARY_BOARD_OUTPUT_FILE:=boards/summary.txt
 SUMMARY_BOARD_NOTES_SOURCE_FILE:=boards/summary_notes.md
 SUMMARY_BOARD_NOTES_OUTPUT_FILE:=boards/summary_notes.txt
 
+all: terraformLocalMetric summaryMarkdown summaryNotes
+
 terraformLocalMetric:
 	../createMetricsLocal.sh --input_file $(METRICS_INPUT_FILE) --output_file $(METRICS_OUTPUT_FILE)
 

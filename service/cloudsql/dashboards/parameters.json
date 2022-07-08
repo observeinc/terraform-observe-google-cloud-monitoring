@@ -1,0 +1,22 @@
+[
+    {
+      "id": "databases",
+      "name": "Databases",
+      "valueKind": {
+        "type": "DATASETREF"
+      },
+      "defaultValue": {
+        "datasetref": {
+          "stageId": "stage-4zx7thya"
+        }
+      }
+    },
+    {
+      "id": "test1",
+      "name": "Instance",
+      "valueKind": {
+        "type": "LINK",
+        "keyForDatasetId": "41068186"
+      }
+    }
+  ]
