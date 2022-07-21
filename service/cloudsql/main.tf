@@ -42,7 +42,7 @@ resource "observe_dataset" "cloudsql" {
       make_resource options(expiry:${var.max_expiry}),
         name,
         databaseVersion: string(data.databaseVersion),
-        label: strcat(string(data.databaseVersion),":",name),
+        //label: strcat(string(data.databaseVersion),":",name),
         databaseInstalledVersion: string(data.databaseInstalledVersion),
         project_id,
         region:  string(data.region),
@@ -63,7 +63,7 @@ resource "observe_dataset" "cloudsql" {
         valid_for(ttl)
 
       add_key name
-      set_label label
+      set_label name
 
       add_key project_id, region
       

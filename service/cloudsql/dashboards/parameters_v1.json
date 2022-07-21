@@ -1,0 +1,14 @@
+[
+  {
+    "id": "dbResource",
+    "name": "Cloud SQL Instance",
+    "defaultValue": {
+      "datasetref": {
+        "datasetId": "${dataset_gcp-101_cloudSQLInstance}"
+      }
+    },
+    "valueKind": {
+      "type": "DATASETREF"
+    }
+  }
+]

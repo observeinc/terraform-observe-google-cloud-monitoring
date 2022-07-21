@@ -63,7 +63,7 @@ resource "observe_dataset" "cloudsql_metrics" {
               :
               format("%s: %q", k, v)
       if contains(var.metric_interface_fields, k)]), metric))
-      #if contains(var.metric_list, metric)]
+      if contains(var.launch_stage, options.launchStage)
     ]
   )
 }

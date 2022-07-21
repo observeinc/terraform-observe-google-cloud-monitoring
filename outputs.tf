@@ -31,5 +31,5 @@ output "cloud_functions" {
 }
 
 output "cloud_sql" {
-  value = local.enable_service_cloudsql ? module.cloudsql[0] : null
+  value = local.enable_service_cloudfunctions ? module.cloudsql[0] : null
 }

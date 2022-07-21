@@ -61,3 +61,11 @@ variable "metric_interface_fields" {
 #   ]
 #   description = "Used by metric interface to pick metrics to include"
 # }
+
+variable "launch_stage" {
+  type = set(string)
+  default = [
+    "GA",
+  ]
+  description = "Used by metric interface to pick metrics to include"
+}
