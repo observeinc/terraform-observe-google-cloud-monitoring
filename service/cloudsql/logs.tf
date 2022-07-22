@@ -17,7 +17,11 @@ resource "observe_dataset" "sql_logs" {
         region:string(resourceLabels.region),
         log_Name: split_part(logName,"%2F",2),
         log_Source: split_part(split_part(logName,"%2F",1),'/', 4)
+    EOF
+  }
 
+  stage {
+    pipeline = <<-EOF
       pick_col 
         timestamp,
         receiveTimestamp,
