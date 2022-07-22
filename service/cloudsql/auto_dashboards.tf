@@ -1,5 +1,5 @@
 resource "observe_dashboard" "monitoring" {
-  workspace = data.observe_workspace.ws.oid
+  workspace = var.workspace.oid
   name      = "Cloud SQL Instance Monitoring Output"
   stages = templatefile("/Users/arthur/content_eng/terraform-observe-google/service/cloudsql/dashboards/stages_v1.json", {
     dataset_gcp-101_cloudSQLInstance = observe_dataset.cloudsql.id
