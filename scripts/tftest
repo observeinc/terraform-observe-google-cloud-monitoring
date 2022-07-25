@@ -63,8 +63,13 @@ run_single() {
     ${CMD} init
     trap 'cleanup $? $LINENO' EXIT
     ${CMD} apply -auto-approve -input=false
-    idempotent=$(${CMD} plan | grep -c "No changes.") || rv=$?
+
+    # check idemptotence
+    plan_output=$(${CMD} plan)
+    echo "$plan_output"
+    echo "$plan_output" | grep -c "No changes." > /dev/null || rv=$?
     [[ $rv -eq 0 ]] ||  (ERROR "Apply is not idempotent" && exit 1)
+
     ${CMD} destroy -auto-approve -input=false
 }
 

@@ -9,6 +9,7 @@ locals {
     audit_logs                         = observe_dataset.audit_logs
     metrics                            = observe_dataset.metrics
     string_metrics                     = observe_dataset.string_metrics
+    projects                           = observe_dataset.projects
   }
 }
 resource "observe_dataset" "base_pubsub_events" {
@@ -156,6 +157,38 @@ resource "observe_dataset" "iam_policy_asset_inventory_records" {
         asset_type,
         bindings:object(iam_policy.bindings),
         etag:string(iam_policy.etag)
+    EOF
+  }
+}
+
+resource "observe_dataset" "projects" {
+  workspace = var.workspace.oid
+  name      = format(var.name_format, "Projects")
+  freshness = lookup(var.freshness_overrides, "projects", var.freshness_default)
+
+  inputs = {
+    "events" = observe_dataset.base_asset_inventory_records.oid
+  }
+
+  stage {
+    pipeline = <<-EOF
+      make_col project:coalesce(string(resource.data.project),string(resource.data.projectId))
+      filter not is_null(project)
+      extract_regex string(ancestors), /\[(.*)"projects\/(?P<projectNumber>\d+)"(.*)/
+
+      pick_col 
+        time,
+        projectNumber,
+        project
+    EOF
+  }
+
+  stage {
+    pipeline = <<-EOF
+      make_resource 
+        project,
+        primary_key(projectNumber)
+      add_key project
     EOF
   }
 }
