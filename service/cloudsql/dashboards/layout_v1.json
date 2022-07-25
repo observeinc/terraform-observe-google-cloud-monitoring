@@ -282,7 +282,7 @@
             "card": {
               "cardType": "text",
               "id": "card-98advz0r",
-              "text": "### Notes\n\nHere I should give the end user some information about how ot implment this\n\n### Freshness\n\nDefaults:\n\n - cloudsql: 5m\n - metrics:  1m \n - logging:  1m\n\n### Metric Types\n\nA gauge metric, in which the value measures a specific instant in time. For example, metrics measuring CPU utilization are gauge metrics; each point records the CPU utilization at the time of measurement. Another example of a gauge metric is the current temperature.\n\nA delta metric, in which the value measures the change since it was last recorded. For example, metrics measuring request counts are delta metrics; each value records how many requests were received since the last data point was recorded.\n\nA cumulative metric, in which the value constantly increases over time. For example, a metric for sent bytes might be cumulative; each value records the total number of bytes sent by a service at that time.\n\n### Database Specific\n\nHere I will mention configs for specific platform",
+              "text": "### Notes\n\nTo use this application you must implement the terraform-google-collection and the terraform google module with either the enable_service_all or the enable_service_cloudsql set to true.\n\n### Freshness\n\nFreshness determines how often your data will be refreshed.\n\nDefaults:\n\n - cloudsql: 5m\n - metrics:  1m \n - logging:  1m\n\n### Metric Types\n\nA gauge metric, in which the value measures a specific instant in time. For example, metrics measuring CPU utilization are gauge metrics; each point records the CPU utilization at the time of measurement. Another example of a gauge metric is the current temperature.\n\nA delta metric, in which the value measures the change since it was last recorded. For example, metrics measuring request counts are delta metrics; each value records how many requests were received since the last data point was recorded.\n\nA cumulative metric, in which the value constantly increases over time. For example, a metric for sent bytes might be cumulative; each value records the total number of bytes sent by a service at that time.\n\n### Database Specific\n\nHere I will mention configs for specific platform",
               "title": "Untitled Text"
             },
             "layout": {
@@ -298,7 +298,7 @@
             }
           }
         ],
-        "lastModified": 1658502216672
+        "lastModified": 1658580540847
       }
     ]
   },
@@ -321,15 +321,14 @@
     ],
     "selectedStageId": "stage-x7k6k75e",
     "timeRange": {
-      "display": "Past 4 hours",
-      "endTime": null,
-      "millisFromCurrentTime": 14400000,
-      "originalDisplay": "Past 4 hours",
-      "startTime": null,
+      "display": "11th Jul 11:47:54 - 11:48:14",
+      "endTime": 1657558094704.564,
+      "millisFromCurrentTime": null,
+      "originalDisplay": "2022-07-11 09:47:54 ~ 2022-07-11 09:48:14",
+      "startTime": 1657558074819.4272,
       "timeRangeInfo": {
-        "key": "PRESETS",
-        "name": "Presets",
-        "presetType": "PAST_4_HOURS"
+        "key": "DATE_RANGE",
+        "name": "Date Range"
       },
       "timeZone": null
     }

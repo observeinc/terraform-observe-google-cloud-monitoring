@@ -1,0 +1,206 @@
+####################################################
+#                    README
+####################################################
+# DESCRIPTION
+####################################################
+# Make file to auto generate dashboard terraform with variabilized json files
+####################################################
+# USAGE
+####################################################
+# Critical variables unique to where you are: TERRAFORM_DIRECTORY and SERVICE_DIRECTORY
+
+# Assumes 
+
+SHELL=/bin/bash
+
+
+# Suffix for json files that will be created
+FILE_VERSION:=_v1
+
+# The directory where you are building google module - this should be a sample deployment of your service - https://github.com/observeinc/content-eng-gcp-example - main branch
+TERRAFORM_DIRECTORY:=/Users/arthur/content_eng/terraform-observe-google/service/cloudsql/example
+# The local directory with module code - your json and dashboard terraform will be placed here
+SERVICE_DIRECTORY:=Users/arthur/content_eng/terraform-observe-google/service/cloudsql
+
+# File created that will become a part of service definition
+PARAMETER_OUTPUT_FILE:=/$(SERVICE_DIRECTORY)/dashboards/parameters$(FILE_VERSION).json
+PARAMETER_OUTPUT_FILE_TF_PATH:=$${path.module}/dashboards/parameters$(FILE_VERSION).json
+# Output value from the dashboard used as template to create terraform definition
+PARAMETER_TF_OUTPUT:=db_parameters
+
+# File created that will become a part of service definition
+PARAMETER_VALUES_OUTPUT_FILE:=/$(SERVICE_DIRECTORY)/dashboards/parameterValues$(FILE_VERSION).json
+PARAMETER_VALUES_OUTPUT_FILE_TF_PATH:=$${path.module}/dashboards/parameterValues$(FILE_VERSION).json
+# Output value from the dashboard used as template to create terraform definition
+PARAMETER_VALUES_TF_OUTPUT:=db_parameter_values
+
+# File created that will become a part of service definition
+STAGES_OUTPUT_FILE:=/$(SERVICE_DIRECTORY)/dashboards/stages$(FILE_VERSION).json
+STAGES_OUTPUT_FILE_TF_PATH:=$${path.module}/dashboards/stages$(FILE_VERSION).json
+# Output value from the dashboard used as template to create terraform definition
+STAGES_TF_OUTPUT:=db_stages
+
+# File created that will become a part of service definition
+LAYOUT_OUTPUT_FILE:=/$(SERVICE_DIRECTORY)/dashboards/layout$(FILE_VERSION).json
+LAYOUT_OUTPUT_FILE_TF_PATH:=$${path.module}/dashboards/layout$(FILE_VERSION).json
+# Output value from the dashboard used as template to create terraform definition
+LAYOUT_TF_OUTPUT:=db_layout
+
+# Terraform file that will be created
+DASHBOARD_FILE:=/$(SERVICE_DIRECTORY)/auto_dashboards.tf
+# Directorcy it will be created in
+DASHBOARD_DIR:=$(SERVICE_DIRECTORY)/dashboards
+
+# Variables used in functions below
+# This will be variables inside of terraform template file set in dashboard terraform
+# This will also be used to replace any references to datasetids within json so that the files become dynamic
+CLOUDSQL_DATASET_STRING:=UNSET
+CLOUDSQL_LOGS_DATASET_STRING:=UNSET
+CLOUDSQL_METRICS_DATASET_STRING:=UNSET
+
+CLOUDSQL_DATASET_REFERENCE:=observe_dataset.cloudsql.id
+CLOUDSQL_LOGS_DATASET_REFERENCE:=observe_dataset.sql_logs.id
+CLOUDSQL_METRICS_DATASET_REFERENCE:=observe_dataset.cloudsql_metrics[0].id
+
+# Used in sed functions to replace ids
+CLOUDSQL_DATASET_STRING_REPLACE:=UNSET
+CLOUDSQL_LOGS_DATASET_STRING_REPLACE:=UNSET
+CLOUDSQL_METRICS_DATASET_STRING_REPLACE:=UNSET
+
+CLOUDSQL_DATASET_ID_REPLACE:=UNSET
+CLOUDSQL_LOGS_DATASET_ID_REPLACE:=UNSET
+CLOUDSQL_METRICS_DATASET_ID_REPLACE:=UNSET
+
+CLOUDSQL_DATASET_ID:=UNSET
+CLOUDSQL_LOGS_DATASET_ID:=UNSET
+CLOUDSQL_METRICS_DATASET_ID:=UNSET
+
+
+
+.PHONY: test
+
+
+all: get_outputs_set_variables parameters stages layout resource_def replace_static_references build_dashboard
+noupdate: parameters  stages layout resource_def build_dashboard
+test: get_outputs_set_variables replace_static_references
+
+# Run this step by itself if you have no json files or outputs
+create_data_state:
+	rm -f $(DASHBOARD_FILE);
+	cd $(TERRAFORM_DIRECTORY) \
+	terraform apply -auto-approve; 
+
+get_outputs_set_variables:
+	rm -f $(DASHBOARD_FILE);
+	cd $(TERRAFORM_DIRECTORY) \
+	terraform apply -refresh-only -auto-approve; 
+	
+	# Set makefile variables to terraform outputs values
+	$(eval CLOUDSQL_DATASET_STRING=$(shell cd $(TERRAFORM_DIRECTORY); terraform output -json cloudsql_datasets | jq -r '.cloudsql_dataset_string')) 
+	$(eval CLOUDSQL_LOGS_DATASET_STRING=$(shell cd $(TERRAFORM_DIRECTORY); terraform output -json cloudsql_datasets | jq -r '.cloudsql_logs_dataset_string')) 
+	$(eval CLOUDSQL_METRICS_DATASET_STRING=$(shell cd $(TERRAFORM_DIRECTORY); terraform output -json cloudsql_datasets | jq -r '.cloudsql_metrics_dataset_string')) 
+	
+	$(eval CLOUDSQL_DATASET_ID=$(shell cd $(TERRAFORM_DIRECTORY); terraform output -json cloudsql_datasets | jq -r '.cloudsql_dataset_id')) 
+	$(eval CLOUDSQL_LOGS_DATASET_ID=$(shell cd $(TERRAFORM_DIRECTORY); terraform output -json cloudsql_datasets | jq -r '.cloudsql_logs_dataset_id')) 
+	$(eval CLOUDSQL_METRICS_DATASET_ID=$(shell cd $(TERRAFORM_DIRECTORY); terraform output -json cloudsql_datasets | jq -r '.cloudsql_metrics_dataset_id'))
+
+	# Create terraform template file variable string to use instead of dataset reference
+	$(eval CLOUDSQL_DATASET_STRING_REPLACE={$(CLOUDSQL_DATASET_STRING)})
+	$(eval CLOUDSQL_LOGS_DATASET_STRING_REPLACE={$(CLOUDSQL_LOGS_DATASET_STRING)})
+	$(eval CLOUDSQL_METRICS_DATASET_STRING_REPLACE={$(CLOUDSQL_METRICS_DATASET_STRING)})
+
+# FUTURE USE - Not sure how to deal with nulls yet
+# parameter_values:
+# 	cd $(TERRAFORM_DIRECTORY); \
+# 	terraform output -json $(PARAMETER_VALUES_TF_OUTPUT) | jq -r '.' > $(PARAMETER_VALUES_OUTPUT_FILE)_TEMP;
+# 	cat $(PARAMETER_VALUES_OUTPUT_FILE)_TEMP | jq -r '.' > $(PARAMETER_VALUES_OUTPUT_FILE)
+# 	rm $(PARAMETER_VALUES_OUTPUT_FILE)_TEMP 
+
+# Create json file based on output value
+parameters:
+	cd $(TERRAFORM_DIRECTORY); \
+	terraform output -json $(PARAMETER_TF_OUTPUT) | jq -r '.' > $(PARAMETER_OUTPUT_FILE)_TEMP;
+	cat $(PARAMETER_OUTPUT_FILE)_TEMP | jq -r '.' > $(PARAMETER_OUTPUT_FILE);
+	rm $(PARAMETER_OUTPUT_FILE)_TEMP;
+
+# Create json file based on output value
+stages:
+	cd $(TERRAFORM_DIRECTORY); \
+	terraform output -json $(STAGES_TF_OUTPUT) | jq -r '.' > $(STAGES_OUTPUT_FILE)_TEMP;
+	cat $(STAGES_OUTPUT_FILE)_TEMP | jq -r '.' > $(STAGES_OUTPUT_FILE)
+	rm $(STAGES_OUTPUT_FILE)_TEMP 
+
+# Create json file based on output value
+layout:
+	cd $(TERRAFORM_DIRECTORY); \
+	terraform output -json $(LAYOUT_TF_OUTPUT) | jq -r '.' > $(LAYOUT_OUTPUT_FILE)_TEMP;
+	cat $(LAYOUT_OUTPUT_FILE)_TEMP | jq -r '.' > $(LAYOUT_OUTPUT_FILE)
+	rm $(LAYOUT_OUTPUT_FILE)_TEMP 
+
+# Terraform resource template variable
+define RESOURCE_DEF_VAR
+	resource "observe_dashboard" "monitoring" {
+			workspace = var.workspace.oid
+			name      = "Cloud SQL Instance Monitoring Output"
+			stages           = templatefile("$(STAGES_OUTPUT_FILE_TF_PATH)", {
+				$(CLOUDSQL_DATASET_STRING) = $(CLOUDSQL_DATASET_REFERENCE)
+				$(CLOUDSQL_METRICS_DATASET_STRING) = $(CLOUDSQL_METRICS_DATASET_REFERENCE)
+				$(CLOUDSQL_LOGS_DATASET_STRING) = $(CLOUDSQL_LOGS_DATASET_REFERENCE)
+			})
+			layout           = templatefile("$(LAYOUT_OUTPUT_FILE_TF_PATH)", {
+				$(CLOUDSQL_DATASET_STRING) = $(CLOUDSQL_DATASET_REFERENCE)
+				$(CLOUDSQL_METRICS_DATASET_STRING) = $(CLOUDSQL_METRICS_DATASET_REFERENCE)
+				$(CLOUDSQL_LOGS_DATASET_STRING) = $(CLOUDSQL_LOGS_DATASET_REFERENCE)
+			})
+			parameters       = templatefile("$(PARAMETER_OUTPUT_FILE_TF_PATH)", {
+				$(CLOUDSQL_DATASET_STRING) = $(CLOUDSQL_DATASET_REFERENCE)
+				$(CLOUDSQL_METRICS_DATASET_STRING) = $(CLOUDSQL_METRICS_DATASET_REFERENCE)
+				$(CLOUDSQL_LOGS_DATASET_STRING) = $(CLOUDSQL_LOGS_DATASET_REFERENCE)
+			})
+			# parameter_values = templatefile("$${path.module}/$(PARAMETER_VALUES_OUTPUT_FILE)", {
+			#
+			#})
+		}
+
+		# output "tfd_db" {
+		# 	value = observe_dashboard.monitoring
+		# }
+endef
+
+export RESOURCE_DEF_VAR 
+
+# Create terraform file for dashboard
+resource_def:
+	@echo "$$RESOURCE_DEF_VAR" > $(DASHBOARD_FILE)
+	cd /$(SERVICE_DIRECTORY); \
+	terraform fmt;
+
+# Apply terraform 
+build_dashboard:
+	cd $(TERRAFORM_DIRECTORY); \
+	terraform apply -auto-approve;
+
+# barf_check:
+# 	cd $(TERRAFORM_DIRECTORY); \
+# 	rm -f check/*; \
+# 	terraform output -json tfd_db  | jq -r '.layout' > check/BARF_TEMP_layout.json \
+# 	terraform output -json tfd_db  | jq -r '.stages' > check/BARF_TEMP_stages.json \
+# 	terraform output -json tfd_db  | jq -r '.parameters' > check/BARF_TEMP_parameters.json;
+
+
+replace_static_references:
+	echo CLOUDSQL_DATASET_STRING_REPLACE is $(CLOUDSQL_DATASET_STRING_REPLACE);
+	echo CLOUDSQL_LOGS_DATASET_STRING_REPLACE is $(CLOUDSQL_LOGS_DATASET_STRING_REPLACE);	
+	echo CLOUDSQL_METRICS_DATASET_STRING_REPLACE is $(CLOUDSQL_METRICS_DATASET_STRING_REPLACE);
+
+	echo CLOUDSQL_DATASET_ID is $(CLOUDSQL_METRICS_DATASET_ID);
+	echo CLOUDSQL_LOGS_DATASET_ID is $(CLOUDSQL_METRICS_DATASET_ID);
+	echo CLOUDSQL_METRICS_DATASET_ID is $(CLOUDSQL_METRICS_DATASET_ID);
+
+	sed -i '' "s:$(CLOUDSQL_DATASET_STRING):$(CLOUDSQL_DATASET_STRING_REPLACE):g" /$(DASHBOARD_DIR)/*; \
+	sed -i '' "s:$(CLOUDSQL_LOGS_DATASET_STRING):$(CLOUDSQL_LOGS_DATASET_STRING_REPLACE):g" /$(DASHBOARD_DIR)/*; \
+	sed -i '' "s:$(CLOUDSQL_METRICS_DATASET_STRING):$(CLOUDSQL_METRICS_DATASET_STRING_REPLACE):g" /$(DASHBOARD_DIR)/*; 
+
+	sed -i '' "s:$(CLOUDSQL_DATASET_ID):\$$$(CLOUDSQL_DATASET_STRING_REPLACE):g" /$(DASHBOARD_DIR)/*; \
+	sed -i '' "s:$(CLOUDSQL_LOGS_DATASET_ID):\$$$(CLOUDSQL_LOGS_DATASET_STRING_REPLACE):g" /$(DASHBOARD_DIR)/*; \
+	sed -i '' "s:$(CLOUDSQL_METRICS_DATASET_ID):\$$$(CLOUDSQL_METRICS_DATASET_STRING_REPLACE):g" /$(DASHBOARD_DIR)/*; 

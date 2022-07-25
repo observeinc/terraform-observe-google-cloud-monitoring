@@ -24,6 +24,7 @@ resource "observe_dataset" "cloudsql" {
   # https://cloud.google.com/sql/docs
   stage {
     input    = "events"
+    alias    = "make_columns"
     pipeline = <<-EOF
       filter asset_type = "sqladmin.googleapis.com/Instance"
       make_col
