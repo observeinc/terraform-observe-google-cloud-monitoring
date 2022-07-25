@@ -19,6 +19,12 @@ locals {
     lookup(var.services, "compute", false)
   )
   name_format_compute = lookup(var.service_name_formats, "compute", "Compute %s")
+  enable_service_storage = (
+    var.enable_service_storage == true ||
+    (var.enable_service_all == true && var.enable_service_storage != false) ||
+    lookup(var.services, "storage", false)
+  )
+  name_format_storage = lookup(var.service_name_formats, "storage", "Storage %s")
 }
 
 module "cloudfunctions" {
@@ -56,6 +62,20 @@ module "compute" {
   max_expiry        = var.max_expiry
   freshness_default = var.freshness_default
   feature_flags     = var.feature_flags
+
+  google = local.base_module
+}
+
+module "storage" {
+  count = local.enable_service_storage ? 1 : 0
+
+  source              = "./service/storage"
+  workspace           = var.workspace
+  name_format         = format(var.name_format, local.name_format_storage)
+  max_expiry          = var.max_expiry
+  freshness_default   = var.freshness_default
+  freshness_overrides = var.freshness_overrides
+  feature_flags       = var.feature_flags
 
   google = local.base_module
 }
