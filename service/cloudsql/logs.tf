@@ -63,7 +63,7 @@ resource "observe_dataset" "activity_logs" {
           code:int64(protoPayload.status.code)
 
       filter serviceName = "cloudsql.googleapis.com"
-      filter isnull(methodName) or (methodName != "cloudsql.instances.query")
+      filter is_null(methodName) or (methodName != "cloudsql.instances.query")
 
 
       make_col 
