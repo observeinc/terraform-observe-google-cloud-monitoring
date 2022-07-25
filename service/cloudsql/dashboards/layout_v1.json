@@ -308,7 +308,7 @@
       {
         "defaultValue": {
           "datasetref": {
-            "datasetId": "${dataset_gcp-101_cloudSQLInstance}"
+            "datasetId": "41079440"
           }
         },
         "id": "dbResource",
