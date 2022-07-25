@@ -6,7 +6,6 @@ variable "observe_domain" {
 
 variable "observe_customer_id" {
   type        = string
-  nullable    = false
   description = "the observe customer id"
 }
 
@@ -15,7 +14,6 @@ variable "observe_customer_id" {
 variable "resource_prefix" {
   type        = string
   description = "Common prefix for resource names"
-  nullable    = false
 }
 
 variable "observe_data_stream_name" {
@@ -27,5 +25,4 @@ variable "observe_data_stream_name" {
 variable "user_email" {
   type        = string
   description = "email used to login to observe"
-  nullable    = false
 }
