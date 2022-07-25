@@ -35,3 +35,10 @@ override.tf.json
 
 *metrics.json
 
+*.auto.tfvars
+*.tfstate
+.terraform
+
+service/cloudsql/translate_board.sh
+service/cloudsql/cloudsqldescriptors.json
+garbage

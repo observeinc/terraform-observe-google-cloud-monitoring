@@ -29,6 +29,12 @@ resource "observe_dataset" "compute" {
         name:string(data.name),
         instance_id:string(data.id)
 
+
+    EOF
+  }
+
+  stage {
+    pipeline = <<-EOF
       make_resource options(expiry:${var.max_expiry}),
         name,
         cpuPlatform: string(data.cpuPlatform),

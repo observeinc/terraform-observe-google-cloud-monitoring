@@ -1,0 +1,14 @@
+[
+  {
+    "id": "dbResource",
+    "name": "Cloud SQL Instance",
+    "defaultValue": {
+      "datasetref": {
+        "datasetId": "41079440"
+      }
+    },
+    "valueKind": {
+      "type": "DATASETREF"
+    }
+  }
+]

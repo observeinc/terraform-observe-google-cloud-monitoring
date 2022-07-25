@@ -24,6 +24,7 @@ input_file=descriptors.json
 output_file=metricslocal.tf
 local_var_name=metrics_definitions
 
+echo "PWD = $(pwd)"
 # Process input flags
     while [ $# -gt 0 ]; do
     echo "required inputs $1 $2 $# "
@@ -93,7 +94,7 @@ jq -r '# returns true if metric is GA
         # function for parsing metric name else contains default use elif to build case statement
         def nameFunc: 
             if . | contains("cloudsql.googleapis.com/database") 
-            then (. | capture("metricDescriptors/cloudsql.googleapis.com/database/(?<keepaftermetricDescriptors>.*)") | .keepaftermetricDescriptors) 
+            then (. | capture("metricDescriptors/cloudsql.googleapis.com/(?<keepaftermetricDescriptors>.*)") | .keepaftermetricDescriptors) 
             else (. | capture("metricDescriptors/[^/]+[/](?<keepaftermetricDescriptors>.*)") | .keepaftermetricDescriptors) end;
         def metricCategoryFunc:
             if . | contains("cloudsql.googleapis.com/database") 
@@ -101,8 +102,14 @@ jq -r '# returns true if metric is GA
             else "none" end;
         def googleMetricPathFunc:
             (. | capture("metricDescriptors/(?<keepaftermetricDescriptors>.*)") | .keepaftermetricDescriptors);
+        def labelFunc:
+            (. | capture("(?<keepaftermetricDescriptors>[^/]+$)") | .keepaftermetricDescriptors);
+        def unitParseFunc: 
+            if . != "1" then ("unit = \"" + . + "\"") else null end;
+        def unitFunc: 
+            if . | length > 0 then (. | unitParseFunc ) else null end;
     .metricDescriptors[] |  
-    "\"" + (.name | nameFunc | sub("/"; "_") ) + "\" = { 
+    "\"" + (.name | nameFunc | gsub("/"; "_") ) + "\" = { 
         type = \"" + (.metricKind | metricCaseFunc | metricTypeFunc) + "\" 
         description = <<-EOF
           " + (.description ) + (.metadata | sampleFunc ) + "
@@ -112,10 +119,15 @@ jq -r '# returns true if metric is GA
         aggregate   = \"sum\"
         metricCategory = \"" + (.name | metricCategoryFunc) + "\"
         googleMetricPath = \"" + (.name | googleMetricPathFunc) + "\"
+        label = \"" + (.displayName) + "\"
         active      = " + (.launchStage | activeFunc) + "
 
-        " + (.metadata | intervalFunc ) 
-        + (.name | dataBaseFunc )
+        "  
+        + (.name | dataBaseFunc ) + "
+        "
+        + (.metadata | intervalFunc ) + "
+        "
+        + (.unit | unitFunc )
         + (.name | computeFunc ) + "
         
         },"
@@ -125,6 +137,7 @@ echo "}" >> "$output_file";
 
 echo "}" >> "$output_file";
 
+# + (.metadata | intervalFunc )
 # certain characters make terraform explode
 # This tends to be super painful to debug export TF_LOG=DEBUG; terraform apply might help
 sed -i'' -e 's/>/greater than/g; s/(//g; s/)//g; s/&/and/g;' "$output_file"
