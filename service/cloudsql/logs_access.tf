@@ -1,6 +1,6 @@
 resource "observe_dataset" "postgres_data_access_logs" {
   workspace = var.workspace.oid
-  name      = format(var.name_format, "Postgres Data Access Logs")
+  name      = format(var.name_format, "Logs Postgres Data Access")
   freshness = lookup(local.freshness, "logging", var.freshness_default)
 
   inputs = {
@@ -63,7 +63,7 @@ resource "observe_dataset" "postgres_data_access_logs" {
 
 resource "observe_dataset" "mysql_data_access_logs" {
   workspace = var.workspace.oid
-  name      = format(var.name_format, "MySql Data Access Logs")
+  name      = format(var.name_format, "Logs MySql Data Access")
   freshness = lookup(local.freshness, "logging", var.freshness_default)
 
   inputs = {
