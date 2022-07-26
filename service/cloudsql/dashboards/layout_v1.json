@@ -298,7 +298,7 @@
             }
           }
         ],
-        "lastModified": 1658580540847
+        "lastModified": 1658812075590
       }
     ]
   },
@@ -308,7 +308,7 @@
       {
         "defaultValue": {
           "datasetref": {
-            "datasetId": "41079440"
+            "datasetId": "${CLOUDSQL_DATASET}"
           }
         },
         "id": "dbResource",
@@ -321,14 +321,15 @@
     ],
     "selectedStageId": "stage-x7k6k75e",
     "timeRange": {
-      "display": "11th Jul 11:47:54 - 11:48:14",
-      "endTime": 1657558094704.564,
-      "millisFromCurrentTime": null,
-      "originalDisplay": "2022-07-11 09:47:54 ~ 2022-07-11 09:48:14",
-      "startTime": 1657558074819.4272,
+      "display": "Past 4 hours",
+      "endTime": null,
+      "millisFromCurrentTime": 14400000,
+      "originalDisplay": "Past 4 hours",
+      "startTime": null,
       "timeRangeInfo": {
-        "key": "DATE_RANGE",
-        "name": "Date Range"
+        "key": "PRESETS",
+        "name": "Presets",
+        "presetType": "PAST_4_HOURS"
       },
       "timeZone": null
     }

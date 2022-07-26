@@ -9,4 +9,8 @@ module "google" {
   # enable_service_cloudsql = true
   # enable_service_cloudfunctions = true
   # enable_service_compute = true
+
+  feature_flags = {
+    "metrics" = true
+  }
 }
