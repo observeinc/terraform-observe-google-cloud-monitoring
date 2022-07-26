@@ -57,7 +57,6 @@ resource "observe_dataset" "audit_logs" {
   }
 
   stage {
-    input    = "events"
     pipeline = <<-EOF
     pick_col 
       timestamp,
