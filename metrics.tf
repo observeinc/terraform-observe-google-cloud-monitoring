@@ -84,6 +84,11 @@ resource "observe_dataset" "string_metrics" {
     pipeline = <<-EOF
       filter value_type = 4
       make_col value:string(value.Value.StringValue)
+    EOF
+  }
+
+  stage {
+    pipeline = <<-EOF
       pick_col
         start_time,
         end_time,

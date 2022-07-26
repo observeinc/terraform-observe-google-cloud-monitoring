@@ -16,6 +16,11 @@ resource "observe_dataset" "logs" {
       make_col timestamp:parse_isotime(string(data.timestamp))
       set_valid_from options(max_time_diff:${var.max_time_diff}), timestamp
 
+    EOF
+  }
+
+  stage {
+    pipeline = <<-EOF
       pick_col timestamp,
           receiveTimestamp:parse_isotime(string(data.receiveTimestamp)),
           logName:string(data.logName),
@@ -48,6 +53,11 @@ resource "observe_dataset" "audit_logs" {
     input    = "events"
     pipeline = <<-EOF
     filter contains(logName, "/logs/cloudaudit.googleapis.com")
+    EOF
+  }
+
+  stage {
+    pipeline = <<-EOF
     pick_col 
       timestamp,
       logName,
@@ -67,4 +77,5 @@ resource "observe_dataset" "audit_logs" {
       resourceType
     EOF
   }
+
 }
