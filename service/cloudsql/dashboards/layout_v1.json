@@ -22,32 +22,13 @@
           {
             "card": {
               "cardType": "stage",
-              "id": "card-ga1k7kxf",
-              "stageId": "stage-bdfgdhu5",
-              "title": "Database Count"
+              "id": "card-ceys4rth",
+              "stageId": "stage-zx1ijn1u",
+              "title": "Installed Version"
             },
             "layout": {
-              "h": 13,
-              "i": "card-ga1k7kxf",
-              "isDraggable": true,
-              "isResizable": true,
-              "moved": false,
-              "static": false,
-              "w": 3,
-              "x": 0,
-              "y": 0
-            }
-          },
-          {
-            "card": {
-              "cardType": "stage",
-              "id": "card-kv5pglg2",
-              "stageId": "stage-nnxn34y7",
-              "title": "Running Instances"
-            },
-            "layout": {
-              "h": 13,
-              "i": "card-kv5pglg2",
+              "h": 10,
+              "i": "card-ceys4rth",
               "isDraggable": true,
               "isResizable": true,
               "moved": false,
@@ -60,20 +41,57 @@
           {
             "card": {
               "cardType": "stage",
-              "id": "card-ceys4rth",
-              "stageId": "stage-zx1ijn1u",
-              "title": "Installed Version"
+              "id": "card-ficrlmsm",
+              "stageId": "stage-2iknse1z"
             },
             "layout": {
-              "h": 13,
-              "i": "card-ceys4rth",
+              "h": 10,
+              "i": "card-ficrlmsm",
               "isDraggable": true,
               "isResizable": true,
               "moved": false,
               "static": false,
               "w": 3,
-              "x": 6,
+              "x": 0,
               "y": 0
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-ga1k7kxf",
+              "stageId": "stage-bdfgdhu5",
+              "title": "Database Count"
+            },
+            "layout": {
+              "h": 8,
+              "i": "card-ga1k7kxf",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 3,
+              "x": 0,
+              "y": 10
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-kv5pglg2",
+              "stageId": "stage-nnxn34y7",
+              "title": "Running Instances"
+            },
+            "layout": {
+              "h": 8,
+              "i": "card-kv5pglg2",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 3,
+              "x": 3,
+              "y": 10
             }
           }
         ],
@@ -298,7 +316,7 @@
             }
           }
         ],
-        "lastModified": 1658812075590
+        "lastModified": 1658865128293
       }
     ]
   },
@@ -319,7 +337,7 @@
         "viewType": "input"
       }
     ],
-    "selectedStageId": "stage-x7k6k75e",
+    "selectedStageId": "stage-gcd1nb81",
     "timeRange": {
       "display": "Past 4 hours",
       "endTime": null,

@@ -3074,5 +3074,381 @@
       }
     },
     "pipeline": ""
+  },
+  {
+    "id": "stage-2iknse1z",
+    "input": [
+      {
+        "inputName": "dbResource",
+        "inputRole": "Data"
+      }
+    ],
+    "layout": {
+      "appearance": "VISIBLE",
+      "dataTableViewState": {
+        "autoTableHeight": true,
+        "columnFooterHeight": 0,
+        "columnHeaderHeight": 29,
+        "columnOrderOverride": {
+          "0": "name",
+          "2": "Valid From",
+          "3": "Valid To"
+        },
+        "columnVisibility": {},
+        "columnWidths": {},
+        "containerWidth": 1505,
+        "contextMenuXCoord": null,
+        "contextMenuYCoord": null,
+        "defaultColumnWidth": 70,
+        "disableFixedLeftColumns": false,
+        "eventLinkColumnId": null,
+        "fetchPageSize": 100,
+        "hasCalculatedColumnWidths": false,
+        "hasDoneAutoLayout": false,
+        "maxColumnWidth": 400,
+        "maxMeasuredColumnWidth": {},
+        "minColumnWidth": 60,
+        "minRowHeight": 30,
+        "preserveCellAndRowSelection": true,
+        "rowHeaderWidth": 20,
+        "rowHeights": {},
+        "rowSizeIncrement": 1,
+        "scrollToColumn": null,
+        "scrollToRow": 0,
+        "selection": {
+          "cells": {},
+          "columnSelectSequence": [],
+          "columns": {},
+          "highlightState": {},
+          "rows": {},
+          "selectionType": "table"
+        },
+        "shouldAutoLayout": false,
+        "summaryColumnOrderOverride": {},
+        "summaryColumnVisibility": {},
+        "tableHeight": 0,
+        "tableView": "TABULAR"
+      },
+      "index": 13,
+      "inputList": [
+        {
+          "inputName": "dbResource",
+          "inputRole": "Data",
+          "isUserInput": false,
+          "parameterId": "dbResource"
+        }
+      ],
+      "label": "Region",
+      "managers": [
+        {
+          "id": "db220a0d",
+          "isDisabled": true,
+          "isResourceCountEnabled": false,
+          "parentStageId": "stage-2iknse1z",
+          "type": "Timescrubber"
+        },
+        {
+          "id": "dvz5w7nq",
+          "isDisabled": false,
+          "parentStageId": "stage-2iknse1z",
+          "type": "Vis",
+          "vis": {
+            "config": {
+              "innerRadius": 0.6,
+              "legend": {
+                "placement": "right",
+                "type": "list",
+                "visible": true
+              },
+              "type": "arc"
+            },
+            "source": {
+              "table": {
+                "keyField": [
+                  "region"
+                ],
+                "statsBy": {
+                  "fn": "count"
+                },
+                "timechart": {
+                  "fn": "count",
+                  "resolution": "SINGLE"
+                },
+                "transformType": "timechart",
+                "type": "keyvalue",
+                "valueField": "region"
+              },
+              "type": "table"
+            },
+            "type": "circular"
+          }
+        }
+      ],
+      "queryPresentation": {
+        "initialRollupFilter": {
+          "mode": "Last"
+        },
+        "limit": 1000,
+        "linkify": true,
+        "loadEverything": false,
+        "progressive": true,
+        "resultKinds": [
+          "ResultKindSchema"
+        ],
+        "rollup": {}
+      },
+      "renderType": "TABLE",
+      "selectedStepId": null,
+      "serializable": true,
+      "steps": [
+        {
+          "columnStatsTable": {
+            "columnFunctions": {
+              "availabilityType": "count",
+              "backendType": "count",
+              "backupConfiguration": "count",
+              "createTime": "count",
+              "current_state": "count",
+              "dataDiskSizeGb": "count",
+              "dataDiskType": "count",
+              "databaseFlags": "count",
+              "databaseInstalledVersion": "count",
+              "databaseVersion": "count",
+              "database_id": "count",
+              "gceZone": "count",
+              "ipAddressPrimary": "count",
+              "ipAddresses": "count",
+              "ipConfiguration": "count",
+              "name": "count",
+              "project_id": "count",
+              "region": "count",
+              "state": "count",
+              "tier": "count"
+            },
+            "datasetQueryId": {
+              "ignoreCompress": false,
+              "queryId": "q-80j2510x",
+              "resultKinds": [
+                "ResultKindSchema",
+                "ResultKindData"
+              ],
+              "tableTypes": [
+                "TABULAR"
+              ]
+            }
+          },
+          "datasetQuery": null,
+          "datasetQueryId": {
+            "ignoreCompress": false,
+            "queryId": null,
+            "resultKinds": [
+              "ResultKindSchema",
+              "ResultKindData",
+              "ResultKindStats"
+            ],
+            "tableTypes": [
+              "TABULAR",
+              "SUMMARY"
+            ]
+          },
+          "id": "step-bfy3p9ar",
+          "index": 0,
+          "isPinned": false,
+          "name": "Input Step",
+          "opal": [],
+          "queryPresentation": {},
+          "renderType": null,
+          "summary": "dbResource (undefined)",
+          "type": "InputStep"
+        }
+      ],
+      "type": "table",
+      "viewModel": {
+        "consoleValue": null,
+        "railCollapseState": {
+          "inputsOutputs": false,
+          "minimap": false,
+          "note": true,
+          "script": true
+        },
+        "scriptTab": "SCRIPT",
+        "showTimeRuler": true,
+        "stageTab": "vis"
+      }
+    },
+    "pipeline": ""
+  },
+  {
+    "id": "stage-gcd1nb81",
+    "input": [
+      {
+        "inputName": "dbResource",
+        "inputRole": "Data"
+      }
+    ],
+    "layout": {
+      "appearance": "VISIBLE",
+      "dataTableViewState": {
+        "autoTableHeight": true,
+        "columnFooterHeight": 0,
+        "columnHeaderHeight": 29,
+        "columnOrderOverride": {
+          "0": "name",
+          "2": "Valid From",
+          "3": "Valid To"
+        },
+        "columnVisibility": {},
+        "columnWidths": {},
+        "contextMenuXCoord": null,
+        "contextMenuYCoord": null,
+        "defaultColumnWidth": 70,
+        "disableFixedLeftColumns": false,
+        "eventLinkColumnId": null,
+        "fetchPageSize": 100,
+        "hasCalculatedColumnWidths": false,
+        "hasDoneAutoLayout": false,
+        "maxColumnWidth": 400,
+        "maxMeasuredColumnWidth": {},
+        "minColumnWidth": 60,
+        "minRowHeight": 30,
+        "preserveCellAndRowSelection": true,
+        "rowHeaderWidth": 20,
+        "rowHeights": {},
+        "rowSizeIncrement": 1,
+        "scrollToColumn": null,
+        "scrollToRow": 0,
+        "selection": {
+          "anchoredCellSelection": null,
+          "anchoredColumnSelection": null,
+          "anchoredRowSelection": null,
+          "cells": {},
+          "columnSelectSequence": [],
+          "columns": {},
+          "highlightState": {},
+          "lastCellSelection": null,
+          "lastColumnSelection": null,
+          "lastRowSelection": null,
+          "rows": {},
+          "selectionType": "table"
+        },
+        "shouldAutoLayout": false,
+        "summaryColumnOrderOverride": {},
+        "summaryColumnVisibility": {},
+        "tableHeight": 0,
+        "tableView": "TABULAR"
+      },
+      "index": 14,
+      "inputList": [
+        {
+          "inputName": "dbResource",
+          "inputRole": "Data",
+          "isUserInput": false,
+          "parameterId": "dbResource"
+        }
+      ],
+      "label": "Project",
+      "managers": [
+        {
+          "id": "db220a0d",
+          "isDisabled": true,
+          "isResourceCountEnabled": false,
+          "parentStageId": "stage-gcd1nb81",
+          "type": "Timescrubber"
+        },
+        {
+          "id": "dvz5w7nq",
+          "isDisabled": false,
+          "parentStageId": "stage-gcd1nb81",
+          "type": "Vis",
+          "vis": {
+            "config": {
+              "innerRadius": 0.6,
+              "legend": {
+                "placement": "right",
+                "type": "list",
+                "visible": true
+              },
+              "type": "arc"
+            },
+            "source": {
+              "table": {
+                "keyField": [
+                  "project_id"
+                ],
+                "statsBy": {
+                  "fn": "count"
+                },
+                "timechart": {
+                  "fn": "count",
+                  "resolution": "SINGLE"
+                },
+                "transformType": "timechart",
+                "type": "keyvalue",
+                "valueField": "project_id"
+              },
+              "type": "table"
+            },
+            "type": "circular"
+          }
+        }
+      ],
+      "queryPresentation": {
+        "initialRollupFilter": {
+          "mode": "Last"
+        },
+        "limit": 1000,
+        "linkify": true,
+        "loadEverything": false,
+        "progressive": true,
+        "resultKinds": [
+          "ResultKindSchema"
+        ],
+        "rollup": {}
+      },
+      "renderType": "TABLE",
+      "selectedStepId": "step-gfn0yypc",
+      "serializable": true,
+      "steps": [
+        {
+          "datasetQuery": null,
+          "datasetQueryId": {
+            "ignoreCompress": false,
+            "queryId": null,
+            "resultKinds": [
+              "ResultKindSchema",
+              "ResultKindData",
+              "ResultKindStats"
+            ],
+            "tableTypes": [
+              "TABULAR",
+              "SUMMARY"
+            ]
+          },
+          "id": "step-gfn0yypc",
+          "index": 0,
+          "isPinned": false,
+          "name": "Input Step",
+          "opal": [],
+          "queryPresentation": {},
+          "renderType": null,
+          "summary": "dbResource (undefined)",
+          "type": "InputStep"
+        }
+      ],
+      "type": "table",
+      "viewModel": {
+        "consoleValue": null,
+        "railCollapseState": {
+          "inputsOutputs": false,
+          "minimap": false,
+          "note": true,
+          "script": true
+        },
+        "scriptTab": "SCRIPT",
+        "showTimeRuler": true,
+        "stageTab": "vis"
+      }
+    },
+    "pipeline": ""
   }
 ]
