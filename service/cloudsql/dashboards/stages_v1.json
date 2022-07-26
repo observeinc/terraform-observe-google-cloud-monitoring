@@ -3318,16 +3318,10 @@
         "scrollToColumn": null,
         "scrollToRow": 0,
         "selection": {
-          "anchoredCellSelection": null,
-          "anchoredColumnSelection": null,
-          "anchoredRowSelection": null,
           "cells": {},
           "columnSelectSequence": [],
           "columns": {},
           "highlightState": {},
-          "lastCellSelection": null,
-          "lastColumnSelection": null,
-          "lastRowSelection": null,
           "rows": {},
           "selectionType": "table"
         },
@@ -3406,7 +3400,7 @@
         "rollup": {}
       },
       "renderType": "TABLE",
-      "selectedStepId": "step-gfn0yypc",
+      "selectedStepId": null,
       "serializable": true,
       "steps": [
         {

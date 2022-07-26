@@ -22,25 +22,6 @@
           {
             "card": {
               "cardType": "stage",
-              "id": "card-ceys4rth",
-              "stageId": "stage-zx1ijn1u",
-              "title": "Installed Version"
-            },
-            "layout": {
-              "h": 10,
-              "i": "card-ceys4rth",
-              "isDraggable": true,
-              "isResizable": true,
-              "moved": false,
-              "static": false,
-              "w": 3,
-              "x": 3,
-              "y": 0
-            }
-          },
-          {
-            "card": {
-              "cardType": "stage",
               "id": "card-ficrlmsm",
               "stageId": "stage-2iknse1z"
             },
@@ -53,6 +34,43 @@
               "static": false,
               "w": 3,
               "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-4dhmql3r",
+              "stageId": "stage-gcd1nb81"
+            },
+            "layout": {
+              "h": 10,
+              "i": "card-4dhmql3r",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 3,
+              "x": 3,
+              "y": 0
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-ceys4rth",
+              "stageId": "stage-zx1ijn1u",
+              "title": "Installed Version"
+            },
+            "layout": {
+              "h": 10,
+              "i": "card-ceys4rth",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 3,
+              "x": 6,
               "y": 0
             }
           },
@@ -316,7 +334,7 @@
             }
           }
         ],
-        "lastModified": 1658865128293
+        "lastModified": 1658873880248
       }
     ]
   },
