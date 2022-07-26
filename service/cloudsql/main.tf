@@ -18,7 +18,7 @@ resource "observe_dataset" "cloudsql" {
 
   inputs = {
     "events"         = var.google.resource_asset_inventory_records.oid,
-    "string_metrics" = observe_dataset.cloudsql_string_metrics[0].oid
+    "string_metrics" = local.enable_metrics == true ? observe_dataset.cloudsql_string_metrics[0].oid : null
   }
 
   # https://cloud.google.com/sql/docs
@@ -43,7 +43,6 @@ resource "observe_dataset" "cloudsql" {
       make_resource options(expiry:${var.max_expiry}),
         name,
         databaseVersion: string(data.databaseVersion),
-        //label: strcat(string(data.databaseVersion),":",name),
         databaseInstalledVersion: string(data.databaseInstalledVersion),
         project_id,
         region:  string(data.region),
@@ -68,7 +67,12 @@ resource "observe_dataset" "cloudsql" {
 
       add_key project_id, region
       
-      update_resource options(expiry:${var.max_expiry}), database_id=@string_metrics.database_id, current_state:@string_metrics.value
     EOF
   }
+  stage {
+    pipeline = <<-EOF
+      ${local.enable_metrics == true ? "update_resource options(expiry:${var.max_expiry}), database_id=@string_metrics.database_id, current_state:@string_metrics.value" : ""}
+    EOF
+  }
+
 }
