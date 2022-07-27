@@ -4,7 +4,7 @@
     "name": "Cloud SQL Instance",
     "defaultValue": {
       "datasetref": {
-        "datasetId": "41079440"
+        "datasetId": "${CLOUDSQL_DATASET}"
       }
     },
     "valueKind": {

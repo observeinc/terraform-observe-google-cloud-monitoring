@@ -1,3 +1,20 @@
+resource "observe_dataset" "combined_error_logs" {
+  workspace = var.workspace.oid
+  name      = format(var.name_format, "Logs Error")
+  freshness = lookup(local.freshness, "logging", var.freshness_default)
+
+  inputs = {
+    "logs" = observe_dataset.sql_logs.oid
+  }
+
+  stage {
+    pipeline = <<-EOF
+        filter in(log_Name, "postgres.log","mysql.err","sqlserver.err")
+    EOF
+  }
+
+}
+
 resource "observe_dataset" "postgres_error_logs" {
   workspace = var.workspace.oid
   name      = format(var.name_format, "Logs Postgres Error")
@@ -100,6 +117,12 @@ resource "observe_link" "sql_error_logs" {
       target = observe_dataset.cloudsql.oid
       fields = ["database_id"]
       source = observe_dataset.sqlserver_error_logs.oid
+    }
+
+    "DatabaseErrors" = {
+      target = observe_dataset.cloudsql.oid
+      fields = ["database_id"]
+      source = observe_dataset.combined_error_logs.oid
     }
   }
 }
