@@ -22,13 +22,12 @@
           {
             "card": {
               "cardType": "stage",
-              "id": "card-ga1k7kxf",
-              "stageId": "stage-bdfgdhu5",
-              "title": "Database Count"
+              "id": "card-ficrlmsm",
+              "stageId": "stage-2iknse1z"
             },
             "layout": {
-              "h": 13,
-              "i": "card-ga1k7kxf",
+              "h": 10,
+              "i": "card-ficrlmsm",
               "isDraggable": true,
               "isResizable": true,
               "moved": false,
@@ -41,13 +40,12 @@
           {
             "card": {
               "cardType": "stage",
-              "id": "card-kv5pglg2",
-              "stageId": "stage-nnxn34y7",
-              "title": "Running Instances"
+              "id": "card-0ps6gj5i",
+              "stageId": "stage-h169l5vk"
             },
             "layout": {
-              "h": 13,
-              "i": "card-kv5pglg2",
+              "h": 10,
+              "i": "card-0ps6gj5i",
               "isDraggable": true,
               "isResizable": true,
               "moved": false,
@@ -60,13 +58,12 @@
           {
             "card": {
               "cardType": "stage",
-              "id": "card-ceys4rth",
-              "stageId": "stage-zx1ijn1u",
-              "title": "Installed Version"
+              "id": "card-4dhmql3r",
+              "stageId": "stage-gcd1nb81"
             },
             "layout": {
-              "h": 13,
-              "i": "card-ceys4rth",
+              "h": 10,
+              "i": "card-4dhmql3r",
               "isDraggable": true,
               "isResizable": true,
               "moved": false,
@@ -74,6 +71,61 @@
               "w": 3,
               "x": 6,
               "y": 0
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-ceys4rth",
+              "stageId": "stage-zx1ijn1u",
+              "title": "Installed Version"
+            },
+            "layout": {
+              "h": 10,
+              "i": "card-ceys4rth",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 3,
+              "x": 9,
+              "y": 0
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-w0jsqql7",
+              "stageId": "stage-pe9mq2em"
+            },
+            "layout": {
+              "h": 12,
+              "i": "card-w0jsqql7",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 12,
+              "x": 0,
+              "y": 10
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-icvxavrk",
+              "stageId": "stage-9e63b4hp"
+            },
+            "layout": {
+              "h": 11,
+              "i": "card-icvxavrk",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 12,
+              "x": 0,
+              "y": 22
             }
           }
         ],
@@ -298,7 +350,7 @@
             }
           }
         ],
-        "lastModified": 1658812075590
+        "lastModified": 1658877776252
       }
     ]
   },
@@ -319,7 +371,7 @@
         "viewType": "input"
       }
     ],
-    "selectedStageId": "stage-x7k6k75e",
+    "selectedStageId": "stage-h169l5vk",
     "timeRange": {
       "display": "Past 4 hours",
       "endTime": null,
