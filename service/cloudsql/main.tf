@@ -17,14 +17,11 @@ resource "observe_dataset" "cloudsql" {
   freshness = lookup(local.freshness, "cloudsql", var.freshness_default)
 
   inputs = {
-    "events"         = var.google.resource_asset_inventory_records.oid,
-    "string_metrics" = local.enable_metrics == true ? observe_dataset.cloudsql_string_metrics[0].oid : null
+    "events" = var.google.resource_asset_inventory_records.oid,
   }
 
   # https://cloud.google.com/sql/docs
   stage {
-    input    = "events"
-    alias    = "make_columns"
     pipeline = <<-EOF
       filter asset_type = "sqladmin.googleapis.com/Instance"
       make_col
