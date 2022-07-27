@@ -69,10 +69,4 @@ resource "observe_dataset" "cloudsql" {
       
     EOF
   }
-  stage {
-    pipeline = <<-EOF
-      ${local.enable_metrics == true ? "update_resource options(expiry:${var.max_expiry}), database_id=@string_metrics.database_id, current_state:@string_metrics.value" : ""}
-    EOF
-  }
-
 }

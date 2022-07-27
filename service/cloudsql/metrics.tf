@@ -1,8 +1,8 @@
-resource "observe_dataset" "cloudsql_metrics" {
+resource "observe_dataset" "cloudsql_metrics_base" {
   count = local.enable_metrics ? 1 : 0
 
   workspace = var.workspace.oid
-  name      = format(var.name_format, "Metrics")
+  name      = format(var.name_format, "Metrics Base")
   freshness = lookup(local.freshness, "metrics", var.freshness_default)
 
   inputs = {
@@ -24,13 +24,15 @@ resource "observe_dataset" "cloudsql_metrics" {
     
       make_col 
         database_platform: if( in(metric_category, 'mysql', 'postgresql','sqlserver'), metric_category, 'ALL'),
-        database_id_check: database_id
+        database_id_check: database_id,
+        instance_state_label: trim(string(metric_labels.state),'"') 
 
       extract_regex metric_type, /(?P<label>[^\/]+$)/
     EOF
   }
 
   stage {
+    alias    = "pick_columns"
     pipeline = <<-EOF
       pick_col
         start_time,
@@ -38,6 +40,7 @@ resource "observe_dataset" "cloudsql_metrics" {
         value,
         metric_category,
         label,
+        instance_state_label,
         database_platform,
         metric_labels,
         value_type_text,
@@ -51,7 +54,23 @@ resource "observe_dataset" "cloudsql_metrics" {
         
  
       colshow metric_type: false, metric_kind: false, value_type: false
+    EOF
+  }
+}
 
+
+resource "observe_dataset" "cloudsql_metrics" {
+  count = local.enable_metrics ? 1 : 0
+
+  workspace = var.workspace.oid
+  name      = format(var.name_format, "Metrics")
+  freshness = lookup(local.freshness, "metrics", var.freshness_default)
+
+  inputs = {
+    "metrics_base" = observe_dataset.cloudsql_metrics_base[0].oid
+  }
+  stage {
+    pipeline = <<-EOF
       interface "metric", metric:metric, value:value
       ${join("\n\n",
     [for metric, options in local.metrics_definitions :
@@ -67,8 +86,36 @@ resource "observe_dataset" "cloudsql_metrics" {
     ]
   )
 }
-    EOF
+  EOF
 }
+}
+resource "observe_dataset" "cloudsql_metrics_combo" {
+  count = local.enable_metrics ? 1 : 0
+
+  workspace = var.workspace.oid
+  name      = format(var.name_format, "Metrics Combo")
+  freshness = lookup(local.freshness, "metrics", var.freshness_default)
+
+  inputs = {
+    "metrics_base" = observe_dataset.cloudsql_metrics_base[0].oid
+  }
+  stage {
+    pipeline = <<-EOF
+      filter in(metric, "database_postgresql_num_backends","database_network_connections")
+      make_col combo_metric: "all_database_network_connections"
+
+      interface "metric", metric:combo_metric, value:value
+      set_metric options(
+        aggregate: "sum",
+        description: "Combination of network connection metrics.\n",
+        interval: 60s,
+        label: "Network Connections All",
+        rollup: "avg",
+        type: "gauge"
+        ), "all_database_network_connections"
+    EOF
+  }
+
 }
 
 # Basic units (UNIT)
@@ -84,14 +131,21 @@ resource "observe_dataset" "cloudsql_metrics" {
 
 resource "observe_link" "cloudsql_metrics" {
   for_each = length(observe_dataset.cloudsql_metrics) > 0 ? {
-    "Cloud SQL" = {
+    "Cloud SQL Metrics" = {
       target = observe_dataset.cloudsql.oid
       fields = ["database_id"]
+      source = observe_dataset.cloudsql_metrics[0].oid
+    }
+
+    "Cloud SQL Metrics Combo" = {
+      target = observe_dataset.cloudsql.oid
+      fields = ["database_id"]
+      source = observe_dataset.cloudsql_metrics_combo[0].oid
     }
   } : {}
 
   workspace = var.workspace.oid
-  source    = observe_dataset.cloudsql_metrics[0].oid
+  source    = each.value.source
   target    = each.value.target
   fields    = each.value.fields
   label     = each.key
