@@ -31,7 +31,9 @@ resource "observe_dataset" "cloudsql" {
         project_id: string(data.project)
 
       make_col
-        database_id: strcat(project_id,":",name)
+        database_id: strcat(project_id,":",name),
+        createTime: parse_isotime(string(data.createTime))
+
     EOF
   }
 
@@ -51,15 +53,17 @@ resource "observe_dataset" "cloudsql" {
         databaseFlags:data.settings.databaseFlags,
         ipConfiguration:data.settings.ipConfiguration,
         tier:string(data.settings.tier),
-        state:string(data.state),
-        createTime:string(data.createTime),
+        createTime,
         ipAddressPrimary: ipAddressObject.PRIMARY,
         ipAddresses:string(data.ipAddresses),
         gceZone:string(data.gceZone),
+        ttl,
+        deleted,
         primary_key(database_id),
         valid_for(ttl)
 
       add_key name
+
       set_label name
 
       add_key project_id, region

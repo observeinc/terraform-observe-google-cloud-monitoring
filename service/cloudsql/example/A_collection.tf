@@ -30,8 +30,8 @@ data "terraform_remote_state" "gcp" {
 
 locals {
   gcp_service_account_key = data.terraform_remote_state.gcp.outputs.observe_gcp_collection.service_account_key
-  cloud_resource_prefix   = data.terraform_remote_state.gcp.outputs.resource_prefix
-  cloud_project_id        = data.terraform_remote_state.gcp.outputs.project_id
+  # cloud_resource_prefix   = data.terraform_remote_state.gcp.outputs.resource_prefix
+  cloud_project_id = data.terraform_remote_state.gcp.outputs.project_id
 }
 
 ##########################################

@@ -42,3 +42,4 @@ override.tf.json
 service/cloudsql/translate_board.sh
 service/cloudsql/cloudsqldescriptors.json
 garbage
+service/cloudsql/e2e/README.md
