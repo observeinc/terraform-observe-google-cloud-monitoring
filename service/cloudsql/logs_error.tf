@@ -29,7 +29,6 @@ resource "observe_link" "sql_error_logs" {
       fields = ["database_id"]
       source = observe_dataset.combined_error_logs.oid
     }
-
     ## If we want to create an error log for each platform 
     # "PostGresDatabaseAccess" = {
     #   target = observe_dataset.cloudsql.oid
@@ -48,8 +47,6 @@ resource "observe_link" "sql_error_logs" {
     #   fields = ["database_id"]
     #   source = observe_dataset.sqlserver_error_logs.oid
     # }
-
-
   }
 }
 
