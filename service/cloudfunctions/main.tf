@@ -1,10 +1,3 @@
-
-locals {
-  enable_metrics = lookup(var.feature_flags, "metrics", true)
-  # tflint-ignore: terraform_unused_declarations
-  enable_monitors = lookup(var.feature_flags, "monitors", true)
-}
-
 resource "observe_dataset" "function" {
   workspace = var.workspace.oid
   name      = format(var.name_format, "Function")
@@ -209,14 +202,26 @@ resource "observe_link" "function_metrics" {
   label     = each.key
 }
 
-resource "observe_board" "function" {
-  for_each = length(observe_dataset.function_metrics) > 0 ? toset(["set", "singleton"]) : toset([])
 
-  dataset = observe_dataset.function.oid
-  name    = "Monitoring"
-  json = templatefile("${path.module}/boards/monitoring.json", {
-    dataset_cloudFunctionsFunctionMetrics = observe_dataset.function_metrics[0].id
-    dataset_cloudFunctionsFunction        = observe_dataset.function.id
-  })
-  type = each.key
+locals {
+  enable_metrics = lookup(var.feature_flags, "metrics", true)
+  # tflint-ignore: terraform_unused_declarations
+  enable_monitors = lookup(var.feature_flags, "monitors", true)
+
+  functions_dashboard = local.enable_metrics ? jsondecode(templatefile("${path.module}/dashboards/GCPFunctionsMonitoring.json", {
+    dataset_content-eng-1_cloudFunctionsFunction        = observe_dataset.function.id
+    dataset_content-eng-1_cloudFunctionsFunctionMetrics = observe_dataset.function_metrics[0].id
+    dataset_content-eng-1_cloudFunctionsFunctionLogs    = observe_dataset.function_logs.id
+  })) : jsondecode("{}")
+
+}
+
+resource "observe_dashboard" "host" {
+  count            = local.enable_metrics ? 1 : 0
+  name             = "GCP Functions Monitoring"
+  workspace        = var.workspace.oid
+  stages           = local.functions_dashboard.stages
+  layout           = local.functions_dashboard.layout
+  parameters       = local.functions_dashboard.parameters
+  parameter_values = local.functions_dashboard.parameter_values
 }
