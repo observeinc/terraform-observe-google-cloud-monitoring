@@ -11,6 +11,7 @@ module "google" {
   # enable_service_compute = true
 
   feature_flags = {
-    "metrics" = true
+    "metrics"  = true
+    "monitors" = true
   }
 }

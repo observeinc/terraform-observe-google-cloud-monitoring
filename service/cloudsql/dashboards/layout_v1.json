@@ -250,6 +250,42 @@
               "x": 0,
               "y": 27
             }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-237mdmxw",
+              "stageId": "stage-wy53129b"
+            },
+            "layout": {
+              "h": 12,
+              "i": "card-237mdmxw",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 12,
+              "x": 0,
+              "y": 35
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-n0hfgwy2",
+              "stageId": "stage-perdox7c"
+            },
+            "layout": {
+              "h": 12,
+              "i": "card-n0hfgwy2",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 12,
+              "x": 0,
+              "y": 47
+            }
           }
         ]
       },
@@ -367,7 +403,7 @@
             }
           }
         ],
-        "lastModified": 1659043693879
+        "lastModified": 1659129621842
       }
     ]
   },
@@ -388,7 +424,7 @@
         "viewType": "input"
       }
     ],
-    "selectedStageId": "stage-bxss6s26",
+    "selectedStageId": "stage-bv986tcd",
     "timeRange": {
       "display": "Past 4 hours",
       "endTime": null,

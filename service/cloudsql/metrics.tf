@@ -128,6 +128,8 @@ resource "observe_dataset" "cloudsql_metrics_combo" {
     "metrics_base" = observe_dataset.cloudsql_metrics_base[0].oid
   }
   stage {
+    # alias    = "all_database_network_connections"
+    # input    = "metrics_base"
     pipeline = <<-EOF
       filter in(metric, "database_postgresql_num_backends","database_network_connections")
       make_col combo_metric: "all_database_network_connections"
@@ -146,6 +148,115 @@ resource "observe_dataset" "cloudsql_metrics_combo" {
 
 }
 
+resource "observe_dataset" "cloudsql_metrics_wide" {
+  count = local.enable_metrics ? 1 : 0
+
+  workspace = var.workspace.oid
+  name      = format(var.name_format, "Metrics Wide")
+  freshness = lookup(local.freshness, "metrics", var.freshness_default)
+
+  inputs = {
+    "metrics_base" = observe_dataset.cloudsql_metrics[0].oid
+  }
+  stage {
+    pipeline = <<-EOF
+      filter in(metric, "database_disk_bytes_used","database_disk_quota")
+      //filter database_id = "terraflood-345116:con-gha-tom-g1-1-519-instance-wren"
+
+    EOF
+  }
+
+  stage {
+    pipeline = <<-EOF
+      align 60s,
+          used:avg(m("database_disk_bytes_used")),
+          quota:avg(m("database_disk_quota"))
+
+      aggregate
+          used:avg(used),
+          quota:avg(quota),
+          group_by( 
+                    metric_category,
+                    //label,
+                    //instance_state_label,
+                    database_platform,
+                   // metric_labels,
+                   // value_type_text,
+                    database_id,
+                    project_id,
+                    region
+                    //metric_type,
+                    //metric_kind,
+                    //metric_kind_text,
+                    //value_type
+                  )
+    EOF
+  }
+
+  stage {
+    pipeline = <<-EOF
+      make_event
+   
+    EOF
+  }
+
+  stage {
+    pipeline = <<-EOF
+      make_col
+        metrics:make_object(
+          percent_disk_used:float64(used/quota)
+        )
+      flatten_leaves metrics
+   
+    EOF
+  }
+
+  stage {
+    pipeline = <<-EOF
+      make_col metric:string(@."_c_metrics_path"),
+        value:float64(@."_c_metrics_value")
+    EOF
+  }
+
+  stage {
+    pipeline = <<-EOF
+      pick_col
+        valid_from,
+        valid_to,
+        metric,
+        value,
+        metric_category,
+        //label,
+        //instance_state_label,
+        database_platform,
+        //metric_labels,
+        //value_type_text,
+        database_id,
+        project_id,
+        region
+        //metric_type,
+        //metric_kind,
+        //metric_kind_text,
+        //value_type
+
+    EOF
+  }
+
+  stage {
+    pipeline = <<-EOF
+        interface "metric", metric:metric, value:value
+        set_metric options(
+          aggregate: "sum",
+          description: "Percentage of disk quota used\n",
+          interval: 60s,
+          label: "Percent Disk Used",
+          rollup: "avg",
+          type: "gauge"
+          ), "percent_disk_used"
+    EOF
+  }
+
+}
 # Basic units (UNIT)
 
 # bit bit
@@ -169,6 +280,13 @@ resource "observe_link" "cloudsql_metrics" {
       target = observe_dataset.cloudsql.oid
       fields = ["database_id"]
       source = observe_dataset.cloudsql_metrics_combo[0].oid
+    }
+
+
+    "Cloud SQL Metrics Wide" = {
+      target = observe_dataset.cloudsql.oid
+      fields = ["database_id"]
+      source = observe_dataset.cloudsql_metrics_wide[0].oid
     }
   } : {}
 
