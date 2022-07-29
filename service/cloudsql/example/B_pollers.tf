@@ -9,7 +9,7 @@ resource "observe_poller" "gcp_pubsub_poller" {
 
   pubsub {
     project_id      = local.cloud_project_id
-    subscription_id = local.cloud_resource_prefix
+    subscription_id = "arthur-observe"
     # json_key        = base64decode(google_service_account_key.mykey.private_key)
     json_key = base64decode(local.gcp_service_account_key.private_key)
   }

@@ -99,14 +99,32 @@
               "stageId": "stage-pe9mq2em"
             },
             "layout": {
-              "h": 12,
+              "h": 13,
               "i": "card-w0jsqql7",
               "isDraggable": true,
               "isResizable": true,
               "moved": false,
               "static": false,
-              "w": 12,
+              "w": 7,
               "x": 0,
+              "y": 10
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-9ma40tce",
+              "stageId": "stage-bv986tcd"
+            },
+            "layout": {
+              "h": 24,
+              "i": "card-9ma40tce",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 5,
+              "x": 7,
               "y": 10
             }
           },
@@ -123,9 +141,9 @@
               "isResizable": true,
               "moved": false,
               "static": false,
-              "w": 12,
+              "w": 7,
               "x": 0,
-              "y": 22
+              "y": 23
             }
           }
         ],
@@ -350,7 +368,7 @@
             }
           }
         ],
-        "lastModified": 1658877776252
+        "lastModified": 1659012928931
       }
     ]
   },
@@ -371,7 +389,7 @@
         "viewType": "input"
       }
     ],
-    "selectedStageId": "stage-h169l5vk",
+    "selectedStageId": "stage-bv986tcd",
     "timeRange": {
       "display": "Past 4 hours",
       "endTime": null,

@@ -110,10 +110,16 @@ resource "observe_link" "sql_logs" {
   label     = each.key
 
   for_each = {
-    "Database" = {
+    "sql_logs" = {
       target = observe_dataset.cloudsql.oid
       fields = ["database_id"]
       source = observe_dataset.sql_logs.oid
+    }
+
+    "activity_logs" = {
+      target = observe_dataset.cloudsql.oid
+      fields = ["database_id"]
+      source = observe_dataset.activity_logs.oid
     }
   }
 }

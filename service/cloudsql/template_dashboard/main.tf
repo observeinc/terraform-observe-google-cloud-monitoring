@@ -1,7 +1,7 @@
 # Dashboard used to create terraform definition
 data "observe_dashboard" "db" {
   workspace = data.observe_workspace.ws.oid
-  id        = "41098945"
+  id        = "41101169"
 }
 
 data "observe_workspace" "ws" {

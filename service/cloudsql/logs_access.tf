@@ -1,3 +1,8 @@
+# https://cloud.google.com/logging/docs/audit/configure-data-access#config-console-default
+# https://cloud.google.com/sql/docs/postgres/pg-audit
+# https://cloud.google.com/sql/docs/mysql/db-audit
+# https://cloud.google.com/sql/docs/mysql/use-db-audit
+
 resource "observe_dataset" "postgres_data_access_logs" {
   workspace = var.workspace.oid
   name      = format(var.name_format, "Logs Postgres Data Access")
@@ -40,22 +45,22 @@ resource "observe_dataset" "postgres_data_access_logs" {
       pick_col 
         timestamp,
         database_id,
-        log_Source,
-        log_Name,
-        severity,
-        protoPayload,
-        methodName,
         user,
         statement,
-        databaseSessionId,
         database,
         command,
+        methodName,
+        severity,
+        protoPayload,
+        databaseSessionId,
         auditType,
         auditClass,
         resourceName,
         serviceName,
         project_id,
-        region
+        region,
+        log_Source,
+        log_Name
 
     EOF
   }
