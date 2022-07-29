@@ -26,9 +26,9 @@ resource "observe_dataset" "cloudsql" {
       filter asset_type = "sqladmin.googleapis.com/Instance"
       make_col
         assetInventoryName:name,
-        name:string(data.name),
-        ipAddressObject:pivot_array(array(data.ipAddresses), "type", "ipAddress" ),
-        project_id: string(data.project)
+        project_id: split_part(name, "/",5),
+        name: split_part(name, "/",7),
+        ipAddressObject:pivot_array(array(data.ipAddresses), "type", "ipAddress" )
 
       make_col
         database_id: strcat(project_id,":",name),

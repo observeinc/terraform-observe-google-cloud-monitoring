@@ -929,11 +929,6 @@
       {
         "inputName": "dbResource",
         "inputRole": "Data"
-      },
-      {
-        "inputName": "Cloud SQL Instance",
-        "inputRole": "Data",
-        "datasetId": "${CLOUDSQL_DATASET}"
       }
     ],
     "layout": {
@@ -950,7 +945,7 @@
         },
         "columnVisibility": {},
         "columnWidths": {},
-        "containerWidth": 1313,
+        "containerWidth": 1505,
         "contextMenuXCoord": null,
         "contextMenuYCoord": null,
         "defaultColumnWidth": 70,
@@ -990,15 +985,9 @@
           "inputRole": "Data",
           "isUserInput": false,
           "parameterId": "dbResource"
-        },
-        {
-          "datasetId": "${CLOUDSQL_DATASET}",
-          "inputName": "Cloud SQL Instance",
-          "inputRole": "Data",
-          "isUserInput": true
         }
       ],
-      "label": "Network Connections - NEED TO INCLUDE POSTGRES",
+      "label": "Network Connections",
       "managers": [
         {
           "id": "nho29ja2",
@@ -1017,7 +1006,7 @@
               "color": "Default",
               "hideGridLines": true,
               "legend": {
-                "placement": "bottom",
+                "placement": "right",
                 "type": "list",
                 "visible": true
               },
@@ -1033,17 +1022,90 @@
             "source": {
               "metric": {
                 "aggregate": "sum",
-                "datasetId": "${CLOUDSQL_METRICS_DATASET}",
-                "description": "Number of connections to databases on the Cloud SQL instance. Only applicable to MySQL and SQL Server. Sampled every 60s and may take up to 210s to display.\n",
+                "datasetId": "41101670",
+                "description": "Combination of network connection metrics.\n",
                 "groupBy": [
-                  [
-                    "database_id"
-                  ]
+                  "database_id"
                 ],
-                "heuristics": null,
+                "heuristics": {
+                  "__typename": "MetricHeuristics",
+                  "tags": [
+                    {
+                      "__typename": "MetricTag",
+                      "column": "database_id",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "database_platform",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "label",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "metric",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "metric_category",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "metric_type",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "metric_kind",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "metric_kind_text",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "project_id",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "region",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "value_type",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "value_type_text",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "instance_state_label",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "metric_labels",
+                      "path": "database"
+                    }
+                  ],
+                  "validLinkLabels": []
+                },
                 "id": {
-                  "datasetId": "${CLOUDSQL_METRICS_DATASET}",
-                  "name": "database_network_connections"
+                  "datasetId": "41101670",
+                  "name": "all_database_network_connections"
                 },
                 "interval": 60000,
                 "link": {
@@ -1051,7 +1113,7 @@
                   "dstFields": [
                     "database_id"
                   ],
-                  "label": "Cloud SQL",
+                  "label": "Cloud SQL Metrics Combo",
                   "srcFields": [
                     "database_id"
                   ],
@@ -1059,7 +1121,7 @@
                   "targetStageLabel": null,
                   "type": "foreign"
                 },
-                "name": "database_network_connections",
+                "name": "all_database_network_connections",
                 "rollup": "avg",
                 "type": "gauge",
                 "unit": "",
@@ -1069,6 +1131,12 @@
             },
             "type": "timeseries"
           }
+        },
+        {
+          "id": "kgrs2a3q",
+          "isDisabled": true,
+          "parentStageId": "stage-bxss6s26",
+          "type": "Dashboard"
         }
       ],
       "queryPresentation": {
@@ -1150,6 +1218,42 @@
           "type": "InputStep"
         },
         {
+          "columnStatsTable": {
+            "columnFunctions": {
+              "availabilityType": "count",
+              "backendType": "count",
+              "backupConfiguration": "count",
+              "createTime": "count",
+              "current_state": "count",
+              "dataDiskSizeGb": "count",
+              "dataDiskType": "count",
+              "databaseFlags": "count",
+              "databaseInstalledVersion": "count",
+              "databaseVersion": "count",
+              "database_id": "count",
+              "gceZone": "count",
+              "ipAddressPrimary": "count",
+              "ipAddresses": "count",
+              "ipConfiguration": "count",
+              "label": "count",
+              "name": "count",
+              "project_id": "count",
+              "region": "count",
+              "state": "count",
+              "tier": "count"
+            },
+            "datasetQueryId": {
+              "ignoreCompress": false,
+              "queryId": "q-n083qp1o",
+              "resultKinds": [
+                "ResultKindSchema",
+                "ResultKindData"
+              ],
+              "tableTypes": [
+                "TABULAR"
+              ]
+            }
+          },
           "datasetQuery": null,
           "datasetQueryId": {
             "ignoreCompress": false,
@@ -1185,7 +1289,7 @@
           "note": true,
           "script": true
         },
-        "scriptTab": "SCRIPT",
+        "scriptTab": "INPUTS",
         "showTimeRuler": true,
         "stageTab": "vis"
       }

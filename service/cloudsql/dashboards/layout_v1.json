@@ -160,6 +160,24 @@
           {
             "card": {
               "cardType": "stage",
+              "id": "card-pfowjtb2",
+              "stageId": "stage-bxss6s26"
+            },
+            "layout": {
+              "h": 21,
+              "i": "card-pfowjtb2",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 7,
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
               "id": "card-5uhumddp",
               "stageId": "stage-urrvnw15",
               "title": "Network Bytes Sent"
@@ -173,25 +191,6 @@
               "static": false,
               "w": 5,
               "x": 7,
-              "y": 0
-            }
-          },
-          {
-            "card": {
-              "cardType": "stage",
-              "id": "card-3mtugbw0",
-              "stageId": "stage-bxss6s26",
-              "title": "Network Connections - NEED TO INCLUDE POSTGRES"
-            },
-            "layout": {
-              "h": 21,
-              "i": "card-3mtugbw0",
-              "isDraggable": true,
-              "isResizable": true,
-              "moved": false,
-              "static": false,
-              "w": 7,
-              "x": 0,
               "y": 0
             }
           },
@@ -352,7 +351,7 @@
             "card": {
               "cardType": "text",
               "id": "card-98advz0r",
-              "text": "### Notes\n\nTo use this application you must implement the terraform-google-collection and the terraform google module with either the enable_service_all or the enable_service_cloudsql set to true.\n\n### Freshness\n\nFreshness determines how often your data will be refreshed.\n\nDefaults:\n\n - cloudsql: 5m\n - metrics:  1m \n - logging:  1m\n\n### Metric Types\n\nA gauge metric, in which the value measures a specific instant in time. For example, metrics measuring CPU utilization are gauge metrics; each point records the CPU utilization at the time of measurement. Another example of a gauge metric is the current temperature.\n\nA delta metric, in which the value measures the change since it was last recorded. For example, metrics measuring request counts are delta metrics; each value records how many requests were received since the last data point was recorded.\n\nA cumulative metric, in which the value constantly increases over time. For example, a metric for sent bytes might be cumulative; each value records the total number of bytes sent by a service at that time.\n\n### Database Specific\n\nHere I will mention configs for specific platform",
+              "text": "### Notes\n\nTo use this application you must implement the terraform-google-collection and the terraform google module with either the enable_service_all or the enable_service_cloudsql set to true.\n\n### Freshness\n\nFreshness determines how often your data will be refreshed.\n\nDefaults:\n\n - cloudsql: 5m\n - metrics:  1m \n - logging:  1m\n\n### Metric Types\n\nA gauge metric, in which the value measures a specific instant in time. For example, metrics measuring CPU utilization are gauge metrics; each point records the CPU utilization at the time of measurement. Another example of a gauge metric is the current temperature.\n\nA delta metric, in which the value measures the change since it was last recorded. For example, metrics measuring request counts are delta metrics; each value records how many requests were received since the last data point was recorded.\n\nA cumulative metric, in which the value constantly increases over time. For example, a metric for sent bytes might be cumulative; each value records the total number of bytes sent by a service at that time.\n\n### Database Specific\n\nFor database specific metrics please graphlink to Cloud SQL Metrics table",
               "title": "Untitled Text"
             },
             "layout": {
@@ -368,7 +367,7 @@
             }
           }
         ],
-        "lastModified": 1659012928931
+        "lastModified": 1659043693879
       }
     ]
   },
@@ -389,7 +388,7 @@
         "viewType": "input"
       }
     ],
-    "selectedStageId": "stage-bv986tcd",
+    "selectedStageId": "stage-bxss6s26",
     "timeRange": {
       "display": "Past 4 hours",
       "endTime": null,

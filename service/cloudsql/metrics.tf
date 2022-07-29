@@ -70,6 +70,8 @@ resource "observe_dataset" "cloudsql_metrics" {
     "metrics_base" = observe_dataset.cloudsql_metrics_base[0].oid
   }
   stage {
+    input = "metrics_base"
+    alias = "all_metrics"
     pipeline = <<-EOF
       interface "metric", metric:metric, value:value
       ${join("\n\n",
@@ -88,7 +90,33 @@ resource "observe_dataset" "cloudsql_metrics" {
 }
   EOF
 }
+
+# stage {
+#   alias    = "combo_metrics"
+#   input    = "metrics_base"
+#   pipeline = <<-EOF
+#       filter in(metric, "database_postgresql_num_backends","database_network_connections")
+#       make_col combo_metric: "all_database_network_connections"
+
+#       interface "metric", metric:combo_metric, value:value
+#       set_metric options(
+#         aggregate: "sum",
+#         description: "Combination of network connection metrics.\n",
+#         interval: 60s,
+#         label: "Network Connections All",
+#         rollup: "avg",
+#         type: "gauge"
+#         ), "all_database_network_connections"
+#     EOF
+# }
+
+# stage {
+#   pipeline = <<-EOF
+#       union @all_metrics
+#     EOF
+# }
 }
+
 resource "observe_dataset" "cloudsql_metrics_combo" {
   count = local.enable_metrics ? 1 : 0
 
@@ -152,58 +180,58 @@ resource "observe_link" "cloudsql_metrics" {
 }
 
 
-resource "observe_dataset" "cloudsql_string_metrics" {
-  count = local.enable_metrics ? 1 : 0
+# resource "observe_dataset" "cloudsql_string_metrics" {
+#   count = local.enable_metrics ? 1 : 0
 
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "String Metrics")
-  freshness = lookup(local.freshness, "metrics", var.freshness_default)
+#   workspace = var.workspace.oid
+#   name      = format(var.name_format, "String Metrics")
+#   freshness = lookup(local.freshness, "metrics", var.freshness_default)
 
-  inputs = {
-    "metrics" = var.google.string_metrics.oid
-  }
+#   inputs = {
+#     "metrics" = var.google.string_metrics.oid
+#   }
 
-  # the filter for metric list below can be configured several different ways depending on your needs
-  # look at local variable definition and decide
-  stage {
-    pipeline = <<-EOF
-      filter resource_type = "cloudsql_database"
+#   # the filter for metric list below can be configured several different ways depending on your needs
+#   # look at local variable definition and decide
+#   stage {
+#     pipeline = <<-EOF
+#       filter resource_type = "cloudsql_database"
 
-      make_col 
-        database_id:string(resource_labels.database_id),
-        project_id:string(resource_labels.project_id),
-        region:string(resource_labels.region),
-        metric_category: split_part(metric_type, '/', 3),
-        metric_name: replace(replace(metric_type,'cloudsql.googleapis.com/',''),'/','_')
-    
-      make_col 
-        database_platform: if( in(metric_category, 'mysql', 'postgresql','sqlserver'), metric_category, 'ALL'),
-        database_id_check: database_id
+#       make_col 
+#         database_id:string(resource_labels.database_id),
+#         project_id:string(resource_labels.project_id),
+#         region:string(resource_labels.region),
+#         metric_category: split_part(metric_type, '/', 3),
+#         metric_name: replace(replace(metric_type,'cloudsql.googleapis.com/',''),'/','_')
 
-      extract_regex metric_type, /(?P<label>[^\/]+$)/
-    EOF
-  }
+#       make_col 
+#         database_platform: if( in(metric_category, 'mysql', 'postgresql','sqlserver'), metric_category, 'ALL'),
+#         database_id_check: database_id
 
-  stage {
-    pipeline = <<-EOF
-        pick_col
-          start_time,
-          end_time,
-          project_id,
-          region,
-          database_id,
-          metric_type,
-          metric_name,
-          metric_kind,
-          metric_category,
-          database_platform,
-          metric_labels,
-          label,
-          value
+#       extract_regex metric_type, /(?P<label>[^\/]+$)/
+#     EOF
+#   }
 
-      EOF
-  }
-}
+#   stage {
+#     pipeline = <<-EOF
+#         pick_col
+#           start_time,
+#           end_time,
+#           project_id,
+#           region,
+#           database_id,
+#           metric_type,
+#           metric_name,
+#           metric_kind,
+#           metric_category,
+#           database_platform,
+#           metric_labels,
+#           label,
+#           value
+
+#       EOF
+#   }
+# }
 
 # use var instead of prop metric_interface_fields
 
