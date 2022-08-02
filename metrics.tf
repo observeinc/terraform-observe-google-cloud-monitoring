@@ -43,13 +43,16 @@ resource "observe_dataset" "metrics" {
   stage {
     pipeline = <<-EOF
       // Note that value is null for String metrics
-      make_col value:coalesce(
+      //make_col value_buckets:value.Value.DistributionValue.bucket_counts
+      //flatten_single value_buckets
+      make_col 
+        value:coalesce(
           float64(value.Value.Int64Value),
           float64(value.Value.DoubleValue),
           float64(case(bool(value.Value.BoolValue) = true, 1, bool(value.Value.BoolValue) = false, 0)),
           float64(value.Value.DistributionValue.mean)),
-          value_type_text: case (value_type=1, 'BOOL', value_type=2, 'INT64', value_type=3, 'DOUBLE', value_type=4, 'STRING', value_type=5, 'DISTRIBUTION'),
-          metric_kind_text: case (metric_kind=1, 'GAUGE', metric_kind=2, 'DELTA', metric_kind=3, 'CUMULATIVE')
+        value_type_text: case (value_type=1, 'BOOL', value_type=2, 'INT64', value_type=3, 'DOUBLE', value_type=4, 'STRING', value_type=5, 'DISTRIBUTION'),
+        metric_kind_text: case (metric_kind=1, 'GAUGE', metric_kind=2, 'DELTA', metric_kind=3, 'CUMULATIVE')
     EOF
   }
 
@@ -84,11 +87,6 @@ resource "observe_dataset" "string_metrics" {
     pipeline = <<-EOF
       filter value_type = 4
       make_col value:string(value.Value.StringValue)
-    EOF
-  }
-
-  stage {
-    pipeline = <<-EOF
       pick_col
         start_time,
         end_time,
@@ -131,6 +129,70 @@ resource "observe_dataset" "distribution_metrics" {
         bucket_options:object(value.bucket_options),
         bucket_counts:array(value.bucket_counts),
         exemplars:object(value.exemplars)
+    EOF
+  }
+}
+
+resource "observe_dataset" "process_distribution_metrics" {
+  workspace = var.workspace.oid
+  name      = format(var.name_format, "Distribution Metrics")
+  freshness = var.freshness_default
+
+  inputs = {
+    "points" = observe_dataset.metric_points.oid
+  }
+
+  # https://cloud.google.com/monitoring/api/v3/distribution-metrics
+  stage {
+    pipeline = <<-EOF
+      filter not is_null(value.Value.DistributionValue.bucket_counts)
+
+      // get bucket_low/up values
+      make_col 
+        value_buckets:array(value.Value.DistributionValue.bucket_counts),
+        total_count:int64(value.Value.DistributionValue.count)
+      flatten_single value_buckets
+      make_col _c_value_buckets_path: int64(substring(@."_c_value_buckets_path",1, strlen(@."_c_value_buckets_path")-2))
+      filter @."_c_value_buckets_value" > 0
+      make_col 
+        bucket_low:if(_c_value_buckets_path=0,0,int64(value.Value.DistributionValue.bucket_options.Options.ExponentialBuckets.scale)*pow(float64(value.Value.DistributionValue.bucket_options.Options.ExponentialBuckets.growth_factor),_c_value_buckets_path-1)),
+        bucket_up:int64(value.Value.DistributionValue.bucket_options.Options.ExponentialBuckets.scale)*pow(float64(value.Value.DistributionValue.bucket_options.Options.ExponentialBuckets.growth_factor),_c_value_buckets_path),
+        value_buckets_for_p_low:array(value.Value.DistributionValue.bucket_counts)
+
+      // get p_low/up values
+      flatten_single value_buckets_for_p_low
+      make_col _c_value_buckets_for_p_low_path: int64(substring(@."_c_value_buckets_for_p_low_path",1, strlen(@."_c_value_buckets_for_p_low_path")-2))
+      filter _c_value_buckets_for_p_low_path <= _c_value_buckets_path
+
+      statsby counts_to_now:sum(int64(_c_value_buckets_for_p_low_value)), group_by(
+        value,
+        start_time,
+        metric_type,
+        metric_labels,
+        metric_kind,
+        resource_type,
+        value_type,
+        resource_labels,
+        end_time, 
+        _c_value_buckets_value, 
+        bucket_low,
+        bucket_up,
+        total_count)
+
+      make_col
+        value:float64(value.Value.DistributionValue.mean),
+        distribution_metadata:make_object(
+          p_up:float64(counts_to_now/total_count),
+          p_low:float64((counts_to_now - _c_value_buckets_value)/total_count),
+          bucket_up:bucket_up,
+          bucket_low:bucket_low)
+
+      /*
+      // example of how to calculate pN
+      make_col 
+        p99:if(p_low<=0.99 and 0.99<p_up, bucket_low + ((bucket_up - bucket_low)*(0.99-p_low)/(p_up-p_low)), float64_null()),
+        p50:if(p_low<=0.50 and 0.50<p_up, bucket_low + ((bucket_up - bucket_low)*(0.50-p_low)/(p_up-p_low)), float64_null())
+      */
     EOF
   }
 }

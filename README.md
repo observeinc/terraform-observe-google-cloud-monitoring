@@ -24,13 +24,13 @@ module "google" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.0 |
-| <a name="requirement_observe"></a> [observe](#requirement\_observe) | >= 0.7.0 |
+| <a name="requirement_observe"></a> [observe](#requirement\_observe) | ~> 0.8 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_observe"></a> [observe](#provider\_observe) | >= 0.7.0 |
+| <a name="provider_observe"></a> [observe](#provider\_observe) | ~> 0.8 |
 
 ## Modules
 
@@ -39,6 +39,7 @@ module "google" {
 | <a name="module_cloudfunctions"></a> [cloudfunctions](#module\_cloudfunctions) | ./service/cloudfunctions | n/a |
 | <a name="module_cloudsql"></a> [cloudsql](#module\_cloudsql) | ./service/cloudsql | n/a |
 | <a name="module_compute"></a> [compute](#module\_compute) | ./service/compute | n/a |
+| <a name="module_load_balancing"></a> [load\_balancing](#module\_load\_balancing) | ./service/loadbalancing | n/a |
 | <a name="module_storage"></a> [storage](#module\_storage) | ./service/storage | n/a |
 
 ## Resources
@@ -53,6 +54,7 @@ module "google" {
 | observe_dataset.logs | resource |
 | observe_dataset.metric_points | resource |
 | observe_dataset.metrics | resource |
+| observe_dataset.process_distribution_metrics | resource |
 | observe_dataset.projects | resource |
 | observe_dataset.resource_asset_inventory_records | resource |
 | observe_dataset.string_metrics | resource |
@@ -66,6 +68,7 @@ module "google" {
 | <a name="input_enable_service_cloudfunctions"></a> [enable\_service\_cloudfunctions](#input\_enable\_service\_cloudfunctions) | Enable Cloud Functions service. | `bool` | `null` | no |
 | <a name="input_enable_service_cloudsql"></a> [enable\_service\_cloudsql](#input\_enable\_service\_cloudsql) | Enable Cloud SQL service. | `bool` | `null` | no |
 | <a name="input_enable_service_compute"></a> [enable\_service\_compute](#input\_enable\_service\_compute) | Enable Compute service. | `bool` | `null` | no |
+| <a name="input_enable_service_load_balancing"></a> [enable\_service\_load\_balancing](#input\_enable\_service\_load\_balancing) | Enable Cloud Load Balancing service. | `bool` | `null` | no |
 | <a name="input_enable_service_storage"></a> [enable\_service\_storage](#input\_enable\_service\_storage) | Enable Cloud Storage service. | `bool` | `null` | no |
 | <a name="input_feature_flags"></a> [feature\_flags](#input\_feature\_flags) | Toggle features which are being rolled out or phased out. | `map(bool)` | `{}` | no |
 | <a name="input_freshness_default"></a> [freshness\_default](#input\_freshness\_default) | Default dataset freshness. Can be overridden with freshness input | `string` | `"1m"` | no |
@@ -85,9 +88,11 @@ module "google" {
 | <a name="output_audit_logs"></a> [audit\_logs](#output\_audit\_logs) | n/a |
 | <a name="output_cloud_functions"></a> [cloud\_functions](#output\_cloud\_functions) | n/a |
 | <a name="output_cloud_sql"></a> [cloud\_sql](#output\_cloud\_sql) | n/a |
+| <a name="output_distribution_metrics"></a> [distribution\_metrics](#output\_distribution\_metrics) | n/a |
 | <a name="output_iam_policy_asset_inventory_records"></a> [iam\_policy\_asset\_inventory\_records](#output\_iam\_policy\_asset\_inventory\_records) | n/a |
 | <a name="output_logs"></a> [logs](#output\_logs) | n/a |
 | <a name="output_metrics"></a> [metrics](#output\_metrics) | n/a |
+| <a name="output_projects"></a> [projects](#output\_projects) | n/a |
 | <a name="output_pubsub_events"></a> [pubsub\_events](#output\_pubsub\_events) | n/a |
 | <a name="output_resource_asset_inventory_records"></a> [resource\_asset\_inventory\_records](#output\_resource\_asset\_inventory\_records) | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

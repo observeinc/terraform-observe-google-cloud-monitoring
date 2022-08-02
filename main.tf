@@ -10,6 +10,7 @@ locals {
     metrics                            = observe_dataset.metrics
     string_metrics                     = observe_dataset.string_metrics
     projects                           = observe_dataset.projects
+    distribution_metrics               = observe_dataset.process_distribution_metrics
   }
 }
 resource "observe_dataset" "base_pubsub_events" {
@@ -26,11 +27,6 @@ resource "observe_dataset" "base_pubsub_events" {
     input    = "observation"
     pipeline = <<-EOF
       filter OBSERVATION_KIND = "pubsub"
-    EOF
-  }
-
-  stage {
-    pipeline = <<-EOF
       pick_col BUNDLE_TIMESTAMP,
         id:string(FIELDS.message.ID),
         attributes:object(FIELDS.message.Attributes),
