@@ -59,6 +59,14 @@ variable "enable_service_compute" {
   EOF
 }
 
+variable "enable_service_storage" {
+  type        = bool
+  default     = null
+  description = <<-EOF
+    Enable Cloud Storage service.
+  EOF
+}
+
 variable "collection" {
   type = list(object({
     project = string

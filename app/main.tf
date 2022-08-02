@@ -11,6 +11,7 @@ module "this" {
   enable_service_cloudfunctions = var.enable_service_cloudfunctions
   enable_service_cloudsql       = var.enable_service_cloudsql
   enable_service_compute        = var.enable_service_compute
+  enable_service_storage        = var.enable_service_storage
 
   collection = var.collection
 }
