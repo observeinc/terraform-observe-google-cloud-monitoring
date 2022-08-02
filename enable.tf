@@ -1,3 +1,9 @@
+# The following variables should be in sync:
+# - enable_service_* variable definitions in variables.tf
+# - enable_service_* local variable definitions in enable.tf
+# - enable_service_* local variable usages in enable.tf
+# - enable_service_* variable definitions in apps/variables.tf
+# - enable_service_* variable usages in apps/main.tf
 locals {
   enable_service_cloudfunctions = (
     var.enable_service_cloudfunctions == true ||

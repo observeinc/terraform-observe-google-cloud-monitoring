@@ -1,3 +1,7 @@
+# The following should be in-sync:
+# - outputs in outputs.tf
+# - outputs in app/outputs.tf
+
 output "pubsub_events" {
   value = observe_dataset.base_pubsub_events
 }
