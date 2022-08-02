@@ -9,7 +9,7 @@ variable "datastream" {
     dataset = string
   })
   description = <<-EOF
-    Datastream to derive OTEL resources from.
+    Datastream to derive resources from.
   EOF
 }
 
@@ -123,7 +123,7 @@ variable "collection" {
   EOF
 }
 
-variable "metrics_poller_interval" {
+variable "metrics_poller_interval_duration" {
   type        = string
   default     = "1m0s"
   description = <<-EOF

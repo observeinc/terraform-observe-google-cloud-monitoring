@@ -18,7 +18,7 @@ resource "observe_poller" "gcp_metrics" {
 
   workspace = var.workspace.oid
   name      = format(var.name_format, "${each.value.project} Metrics Poller")
-  interval  = var.metrics_poller_interval
+  interval  = var.interval_duration
 
   datastream = var.datastream.oid
 
@@ -26,7 +26,7 @@ resource "observe_poller" "gcp_metrics" {
     project_id = each.value.project
     json_key   = base64decode(each.value.service_account_key.private_key)
 
-    include_metric_type_prefixes = var.metrics_poller_include_metric_type_prefixes
-    exclude_metric_type_prefixes = var.metrics_poller_exclude_metric_type_prefixes
+    include_metric_type_prefixes = var.include_metric_type_prefixes
+    exclude_metric_type_prefixes = var.exclude_metric_type_prefixes
   }
 }
