@@ -4,7 +4,10 @@ variable "workspace" {
 }
 
 variable "datastream" {
-  type        = object({ dataset = string })
+  type = object({
+    oid     = string
+    dataset = string
+  })
   description = <<-EOF
     Datastream to derive OTEL resources from.
   EOF
@@ -99,3 +102,53 @@ variable "enable_service_storage" {
     Enable Cloud Storage service.
   EOF
 }
+
+variable "collection" {
+  type = list(object({
+    project = string
+    subscription = object({
+      name = string
+    })
+    service_account_key = object({
+      private_key = string
+    })
+  }))
+  default = []
+
+  description = <<-EOF
+    A list of observe/terraform-google-collection modules to pull data from.
+
+    A set of pollers will be created for each element of the array. Each element
+    in the array should describe a different GCP project.
+  EOF
+}
+
+variable "metrics_poller_interval" {
+  type        = string
+  default     = "1m0s"
+  description = <<-EOF
+    How frequently to poll for metrics from Google Cloud Monitoring.
+  EOF
+}
+
+variable "metrics_poller_include_metric_type_prefixes" {
+  type        = list(string)
+  default     = []
+  description = <<-EOF
+    Metrics with these Metric Types with these prefixes will be fetched.
+    
+    See https://cloud.google.com/monitoring/api/metrics_gcp for a list of Metric Types.
+  EOF
+}
+
+variable "metrics_poller_exclude_metric_type_prefixes" {
+  type        = list(string)
+  default     = []
+  description = <<-EOF
+    Metrics with these Metric Types with these prefixes will not be fetched. This
+    variable takes precendence over "metrics_poller_include_metric_type_prefixes".
+    
+    See https://cloud.google.com/monitoring/api/metrics_gcp for a list of Metric Types.
+  EOF
+}
+
