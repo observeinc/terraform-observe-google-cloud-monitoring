@@ -105,5 +105,3 @@ module "load_balancing" {
 
   google = local.base_module
 }
-
-

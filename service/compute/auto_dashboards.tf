@@ -23,8 +23,7 @@ resource "observe_dashboard" "monitoring" {
   #})
 }
 
-resource "observe_default_dashboard" "compute" {
-  dataset   = observe_dataset.compute.oid
-  dashboard = resource.observe_dashboard.monitoring[0].oid
-}
-
+# resource "observe_default_dashboard" "compute" {
+#   dataset   = observe_dataset.compute.oid
+#   dashboard = resource.observe_dashboard.monitoring[0].oid
+# }

@@ -1,7 +1,7 @@
 
 resource "observe_dataset" "load_balancing_logs" {
   workspace = var.workspace.oid
-  name      = format(var.name_format, "Logs")
+  name      = format(var.name_format, "Access Logs")
   freshness = lookup(var.freshness_overrides, "load_balancing_logs", var.freshness_default)
 
   inputs = {
@@ -13,15 +13,28 @@ resource "observe_dataset" "load_balancing_logs" {
       filter ends_with(resourceType, "_lb_rule") or ends_with(resourceType, "_load_balancer")
 
       make_col 
+        project_id:string(resourceLabels.project_id),
+        statusCode:int64(httpRequest.status),
         statusDetails:string(jsonPayload.statusDetails),
-        logType:string(jsonPayload."@type"),
+        latency:string(httpRequest.latency),
+        requestSize:string(httpRequest.requestSize),
+        responseSize:string(httpRequest.responseSize),
+        remoteIp:string(httpRequest.remoteIp),
+        serverIp:string(httpRequest.serverIp),
+        requestMethod:string(httpRequest.requestMethod),
+        requestUrl:string(httpRequest.requestUrl),
+        requestProtocol:string(coalesce(string(httpRequest.protocol), upper(split_part(string(httpRequest.requestUrl), ":", 1)))),
+        userAgent:string(httpRequest.userAgent),
+        referer:string(httpRequest.referer),
+        cacheLookup:bool(httpRequest.cacheLookup),
         backend_service_name:string(coalesce(resourceLabels.backend_service_name, resourceLabels.backend_target_name)),
         forwarding_rule_name:string(resourceLabels.forwarding_rule_name),
-        project_id:string(resourceLabels.project_id),
         target_proxy_name:string(resourceLabels.target_proxy_name),
         url_map_name:string(resourceLabels.url_map_name),
-        region:string(coalesce(resourceLabels.region, resourceLabels.zone)),
-        response_code:int64(httpRequest.status)
+        logType:string(jsonPayload."@type"),
+        region:string(coalesce(resourceLabels.region, resourceLabels.zone))
+      make_col
+        load_balancer:string(coalesce(url_map_name, backend_service_name))
     EOF
   }
 
@@ -29,21 +42,32 @@ resource "observe_dataset" "load_balancing_logs" {
     pipeline = <<-EOF
       pick_col 
         timestamp,
-        receiveTimestamp,
-        logName,
         severity,
         project_id,
-        region,
-        resourceType,
-        logType,
-        resourceLabels,
+        load_balancer,
+        statusCode,
+        statusDetails,
+        latency,
+        requestSize,
+        responseSize,
+        remoteIp,
+        serverIp,
+        requestMethod,
+        requestUrl,
+        requestProtocol,
+        userAgent,
+        referer,
+        cacheLookup,
+        trace,
         backend_service_name,
         forwarding_rule_name,
         target_proxy_name,
         url_map_name,
-        httpRequest,
-        response_code,
-        trace
+        resourceLabels,
+        region,
+        resourceType,
+        logName,
+        logType
     EOF
   }
 }
@@ -80,6 +104,42 @@ resource "observe_dataset" "health_check_logs" {
         resourceLabels,
         insertId,
         messageId
+    EOF
+  }
+}
+
+resource "observe_dataset" "audit_logs" {
+  workspace = var.workspace.oid
+  name      = format(var.name_format, "Config Audit Logs")
+  freshness = lookup(var.freshness_overrides, "audit_logs", var.freshness_default)
+
+  inputs = {
+    "logs" = var.google.logs.oid
+  }
+
+  stage {
+    input    = "logs"
+    alias    = "component_config_audit_logs"
+    pipeline = <<-EOF
+      filter ends_with(logName, "cloudaudit.googleapis.com%2Factivity")
+      make_col resourceName:string(coalesce(jsonPayload.resourceName, protoPayload.resourceName))
+      make_col 
+        resourceKind:split_part(resourceName, "/", -2),
+        resourceName:split_part(resourceName, "/", -1)
+      filter in(resourceKind, 
+        "urlMaps",
+        "regionUrlMap",
+        "forwardingRules",
+        "globalForwardingRules",
+        "targetHttpProxies",
+        "targetHttpsProxies",
+        "targetSslProxies",
+        "targetTcpProxies",
+        "targetGrpcProxies",
+        "backendServices",
+        "regionBackendServices",
+        "backendBuckets",
+        "healthChecks")
     EOF
   }
 }

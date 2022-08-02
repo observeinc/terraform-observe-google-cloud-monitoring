@@ -79,8 +79,6 @@ resource "observe_dataset" "metrics" {
   stage {
     pipeline = <<-EOF
       // Note that value is null for String metrics
-      //make_col value_buckets:value.Value.DistributionValue.bucket_counts
-      //flatten_single value_buckets
       make_col 
         value:coalesce(
           float64(value.Value.Int64Value),
@@ -177,43 +175,59 @@ resource "observe_dataset" "process_distribution_metrics" {
   # https://cloud.google.com/monitoring/api/v3/distribution-metrics
   stage {
     pipeline = <<-EOF
-      filter not is_null(value.Value.DistributionValue.bucket_counts)
+      // 0. These things should really be dropped from the upstream dataset. They are not useful to anyone.
+      // drop_col FIELDS, EXTRA, BUNDLE_ID, OBSERVATION_INDEX, BUNDLE_TIMESTAMP, end_time, OBSERVATION_KIND, metric, @."_c_points_path", @."_c_points_value", @."_c_points_flattenid"
+      drop_col metric, @."_c_points_path", @."_c_points_value", @."_c_points_flattenid"
 
-      // get bucket_low/up values
+      // 1. Only keep distribution metrics.
+      filter not is_null(value.Value.DistributionValue.bucket_counts)
+      // All distribution metric share the same metric_kind and value_type. Not useful. Dropping.
+      drop_col metric_kind, value_type
+
+      // 2. Prepare to extract each bucket reporting into a row
       make_col 
         value_buckets:array(value.Value.DistributionValue.bucket_counts),
-        total_count:int64(value.Value.DistributionValue.count)
+        total_count:int64(value.Value.DistributionValue.count),
+        bucket_options: value.Value.DistributionValue.bucket_options
+      drop_col value
 
+      // 3. Extract the value in each bucket into a row
+      make_col value_buckets_for_p_low: value_buckets
       flatten_single value_buckets
+      make_col
+        bucket_idx: int64(substring(@."_c_value_buckets_path",1, strlen(@."_c_value_buckets_path")-2)),
+        value: @."_c_value_buckets_value"
+      drop_col @."_c_value_buckets_path", @."_c_value_buckets_value", @."_c_value_buckets_flattenid"
 
-      make_col 
-        _c_value_buckets_path: int64(substring(@."_c_value_buckets_path",1, strlen(@."_c_value_buckets_path")-2))
+      // should we do this filter? I'm not sure yet.
+      // filter value > 0
       
-      filter @."_c_value_buckets_value" > 0
-      
+      // 4. Calculate bucket boundaries.
       make_col 
-        bucket_low:if(_c_value_buckets_path=0,0,int64(value.Value.DistributionValue.bucket_options.Options.ExponentialBuckets.scale)*pow(float64(value.Value.DistributionValue.bucket_options.Options.ExponentialBuckets.growth_factor),_c_value_buckets_path-1)),
-        bucket_up:int64(value.Value.DistributionValue.bucket_options.Options.ExponentialBuckets.scale)*pow(float64(value.Value.DistributionValue.bucket_options.Options.ExponentialBuckets.growth_factor),_c_value_buckets_path),
-        value_buckets_for_p_low:array(value.Value.DistributionValue.bucket_counts)
+        bucket_low:if(
+          bucket_idx=0,0,
+          int64(bucket_options.Options.ExponentialBuckets.scale)*pow(float64(bucket_options.Options.ExponentialBuckets.growth_factor), bucket_idx-1)),
+        bucket_up:int64(bucket_options.Options.ExponentialBuckets.scale)*pow(float64(bucket_options.Options.ExponentialBuckets.growth_factor), bucket_idx)
+      drop_col bucket_options
+
+      
+      // where did this go? make_col value_buckets_for_p_low:array(value.Value.DistributionValue.bucket_counts)
 
       // get p_low/up values
       flatten_single value_buckets_for_p_low
+      make_col
+        bucket_idx_2: int64(substring(@."_c_value_buckets_for_p_low_path",1, strlen(@."_c_value_buckets_for_p_low_path")-2)),
+        value_2: @."_c_value_buckets_for_p_low_value"
+      drop_col @."_c_value_buckets_for_p_low_path", @."_c_value_buckets_for_p_low_value", @."_c_value_buckets_for_p_low_flattenid"
+      filter bucket_idx_2 <= bucket_idx
 
-      make_col 
-        _c_value_buckets_for_p_low_path: int64(substring(@."_c_value_buckets_for_p_low_path",1, strlen(@."_c_value_buckets_for_p_low_path")-2))
-
-      filter _c_value_buckets_for_p_low_path <= _c_value_buckets_path
-
-      statsby counts_to_now:sum(int64(_c_value_buckets_for_p_low_value)), group_by(
+      timestats counts_to_now:sum(int64(value_2)), group_by(
         value,
         end_time,
         metric_type,
         metric_labels,
-        metric_kind,
         resource_type,
-        value_type,
         resource_labels,
-        _c_value_buckets_value, 
         bucket_low,
         bucket_up,
         total_count)
@@ -222,7 +236,7 @@ resource "observe_dataset" "process_distribution_metrics" {
         value:float64(value.Value.DistributionValue.mean),
         distribution_metadata:make_object(
           p_up:float64(counts_to_now/total_count),
-          p_low:float64((counts_to_now - _c_value_buckets_value)/total_count),
+          p_low:float64((counts_to_now - value)/total_count),
           bucket_up:bucket_up,
           bucket_low:bucket_low)
 

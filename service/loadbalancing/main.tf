@@ -62,7 +62,8 @@ resource "observe_dataset" "backend_services" {
   freshness = lookup(var.freshness_overrides, "backend_services", var.freshness_default)
 
   inputs = {
-    "events" = var.google.resource_asset_inventory_records.oid
+    "events"          = var.google.resource_asset_inventory_records.oid
+    "instance_groups" = observe_dataset.instance_groups.oid
   }
 
   # https://cloud.google.com/load-balancing/docs
@@ -91,6 +92,47 @@ resource "observe_dataset" "backend_services" {
         selfLink:string(data.selfLink),
         project_id:string(split_part(split_part(string(data.selfLink), "projects/", 2), "/", 1)),
         creationTimestamp:string(data.creationTimestamp)
+      filter not protocol = "GRPC" or is_null(protocol)
+
+      make_col each_backends:backends
+      flatten_single each_backends
+      make_col group:string(@."_c_each_backends_value".group)
+      lookup group=@instance_groups.selfLink, healthState:@instance_groups.healthState
+      make_col 
+        healthyGroups:if(healthState="HEALTHY",1,int64_null()),
+        unhealthyGroups:if(healthState="UNHEALTHY",1,int64_null()),
+        unknownGroups:if(healthState="UNKNOWN",1,int64_null()),
+        nullGroups:if(is_null(healthState),1,int64_null())
+
+      timestats 
+        healthyGroups:sum(healthyGroups),
+        unhealthyGroups:sum(unhealthyGroups),
+        unknownGroups:sum(unknownGroups),
+        nullGroups:sum(nullGroups),
+        group_by(
+          time,
+          deleted,
+          name,
+          backends,
+          connectionDraining,
+          description,
+          enableCDN,
+          healthChecks,
+          id,
+          location,
+          loadBalancingScheme,
+          localityLbPolicy,
+          logConfig,
+          port,
+          portName,
+          protocol,
+          sessionAffinity,
+          timeoutSec,
+          fingerprint,
+          selfLink,
+          project_id,
+          ttl,
+          creationTimestamp)
     EOF
   }
 
@@ -116,6 +158,10 @@ resource "observe_dataset" "backend_services" {
         fingerprint,
         timeoutSec,
         creationTimestamp,
+        healthyGroups,
+        unhealthyGroups,
+        unknownGroups,
+        nullGroups,
         primary_key(name),
         valid_for(ttl)
 
@@ -297,10 +343,25 @@ resource "observe_dataset" "instance_groups" {
   name      = format(var.name_format, "Instance Groups")
   freshness = lookup(var.freshness_overrides, "health_checks", var.freshness_default)
   inputs = {
-    "events" = var.google.resource_asset_inventory_records.oid
+    "events"            = var.google.resource_asset_inventory_records.oid
+    "Health Check Logs" = observe_dataset.health_check_logs.oid
   }
 
-  # https://cloud.google.com/load-balancing/docs
+  stage {
+    alias    = "Health_Check_Statuses"
+    input    = "Health Check Logs"
+    pipeline = <<-EOF
+      make_resource 
+        severity,
+        healthState,
+        resourceType,
+        jsonPayload,
+        resourceLabels,
+        primary_key(instance_group_name),
+        valid_for(${var.max_expiry})
+    EOF
+  }
+
   stage {
     alias    = "fields"
     input    = "events"
@@ -320,6 +381,30 @@ resource "observe_dataset" "instance_groups" {
         region:string(data.region),
         creationTimestamp:string(data.creationTimestamp),
         project_id:string(split_part(split_part(string(data.selfLink), "projects/", 2), "/", 1))
+      lookup name=@Health_Check_Statuses.instance_group_name, healthState:@Health_Check_Statuses.healthState
+    EOF
+  }
+
+  stage {
+    alias    = "resource"
+    pipeline = <<-EOF
+      make_resource 
+        project_id,
+        healthState:if_null(healthState, "HEALTHY"),
+        data,
+        description,
+        id,
+        selfLink,
+        namedPorts,
+        network,
+        subnetwork,
+        size,
+        location,
+        version,
+        primary_key(name),
+        valid_for(ttl)
+      set_label name
+      add_key selfLink
     EOF
   }
 }
@@ -330,7 +415,8 @@ resource "observe_dataset" "load_balancers" {
   freshness = lookup(var.freshness_overrides, "load_balancers", var.freshness_default)
 
   inputs = {
-    "events" = var.google.resource_asset_inventory_records.oid
+    "events"          = var.google.resource_asset_inventory_records.oid
+    "instance_groups" = observe_dataset.instance_groups.oid
   }
 
   # https://cloud.google.com/load-balancing/docs
@@ -392,7 +478,7 @@ resource "observe_dataset" "load_balancers" {
         logConfig:object(data.logConfig),
         port:int64(data.port),
         portName:string(data.portName),
-        protocol:string(data.protocol),
+        protocol:if(asset_type="compute.googleapis.com/BackendBucket", "bucket", string(data.protocol)),
         sessionAffinity:string(data.sessionAffinity),
         timeoutSec:int64(data.timeoutSec),
         fingerprint:string(data.fingerprint),
@@ -400,6 +486,45 @@ resource "observe_dataset" "load_balancers" {
         project_id:string(split_part(split_part(string(data.selfLink), "projects/", 2), "/", 1)),
         creationTimestamp:string(data.creationTimestamp)
       filter not protocol = "GRPC" or is_null(protocol)
+
+      make_col each_backends:backends
+      flatten_single each_backends
+      make_col group:string(@."_c_each_backends_value".group)
+      lookup group=@instance_groups.selfLink, healthState:@instance_groups.healthState
+      make_col 
+        healthyGroups:if(healthState="HEALTHY",1,int64_null()),
+        unhealthyGroups:if(healthState="UNHEALTHY",1,int64_null()),
+        unknownGroups:if(healthState="UNKNOWN",1,int64_null()),
+        nullGroups:if(is_null(healthState),1,int64_null())
+
+      timestats 
+        healthyGroups:sum(healthyGroups),
+        unhealthyGroups:sum(unhealthyGroups),
+        unknownGroups:sum(unknownGroups),
+        nullGroups:sum(nullGroups),
+        group_by(
+          time,
+          deleted,
+          name,
+          backends,
+          connectionDraining,
+          description,
+          enableCDN,
+          healthChecks,
+          id,
+          location,
+          loadBalancingScheme,
+          localityLbPolicy,
+          logConfig,
+          port,
+          portName,
+          protocol,
+          sessionAffinity,
+          timeoutSec,
+          fingerprint,
+          selfLink,
+          project_id,
+          creationTimestamp)
     EOF
   }
 
@@ -460,7 +585,13 @@ resource "observe_dataset" "load_balancers" {
         defaultServiceId:@BackendServices.id,
         defaultServiceRegion:@BackendServices.location,
         defaultServiceCreationTS:@BackendServices.creationTimestamp,
-        defaultServiceSelfLink:@BackendServices.selfLink
+        defaultServiceLogConfig:@BackendServices.logConfig,
+        defaultServiceSelfLink:@BackendServices.selfLink,
+        defaultServiceHealthyStatusGroups:@BackendServices.healthyGroups,
+        defaultServiceUnhealthyStatusGroups:@BackendServices.unhealthyGroups,
+        defaultServiceUnknownStatusGroups:@BackendServices.unknownGroups,
+        defaultServiceNullStatusGroups:@BackendServices.nullGroups
+
       filter not is_null(name) or not starts_with(defaultServiceProtocol, "HTTP")
       join selfLink=@TargetProxies.urlMap,
         targetProxy:@TargetProxies.selfLink,
@@ -484,6 +615,7 @@ resource "observe_dataset" "load_balancers" {
         id:if_null(id, defaultServiceId),
         region:if_null(region,defaultServiceRegion),
         creationTimestamp:if_null(creationTimestamp, defaultServiceCreationTS)
+
       make_resource 
         project_id,
         id,
@@ -503,6 +635,13 @@ resource "observe_dataset" "load_balancers" {
         networkTier,
         portRange,
         creationTimestamp,
+        defaultServiceLogConfig,
+        defaultServiceProtocol,
+        defaultServiceHeathchecks,
+        defaultServiceHealthyStatusGroups,
+        defaultServiceUnhealthyStatusGroups,
+        defaultServiceUnknownStatusGroups,
+        defaultServiceNullStatusGroups,
         primary_key(name),
         valid_for(ttl)
 
@@ -548,4 +687,10 @@ resource "observe_link" "forwarding_rule_to_target_proxy" {
   label     = "Target Proxy"
 }
 
-
+resource "observe_link" "load_balancer_to_project_id" {
+  workspace = var.workspace.oid
+  source    = observe_dataset.load_balancers.oid
+  target    = var.google.projects.oid
+  fields    = ["project_id"]
+  label     = "Project"
+}
