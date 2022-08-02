@@ -58,3 +58,23 @@ variable "enable_service_compute" {
     Enable Compute Engine service.
   EOF
 }
+
+variable "collection" {
+  type = list(object({
+    project = string
+    subscription = object({
+      name = string
+    })
+    service_account_key = object({
+      private_key = string
+    })
+  }))
+  default = []
+
+  description = <<-EOF
+    A list of observe/terraform-google-collection modules to pull data from.
+
+    A set of pollers will be created for each element of the array. Each element
+    in the array should describe a different GCP project.
+  EOF
+}
