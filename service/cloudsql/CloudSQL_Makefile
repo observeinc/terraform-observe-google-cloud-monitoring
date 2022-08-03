@@ -56,7 +56,7 @@ all: datasets ids finish
 
 datasets: get_template_dashboard parameters stages layout 
 
-ids: replace_cloudsql_id replace_cloudsqllog_id replace_cloudsqlmetric_id
+ids: replace_cloudsql_id replace_cloudsqllog_id replace_cloudsqlmetric_id replace_cloudsqlmetriccombo_id replace_cloudsqlerrorlog_id
 
 finish: resource_def build_dashboard
 

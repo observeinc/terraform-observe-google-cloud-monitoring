@@ -929,11 +929,6 @@
       {
         "inputName": "dbResource",
         "inputRole": "Data"
-      },
-      {
-        "inputName": "Cloud SQL Instance",
-        "inputRole": "Data",
-        "datasetId": "${CLOUDSQL_DATASET}"
       }
     ],
     "layout": {
@@ -950,7 +945,7 @@
         },
         "columnVisibility": {},
         "columnWidths": {},
-        "containerWidth": 1313,
+        "containerWidth": 1505,
         "contextMenuXCoord": null,
         "contextMenuYCoord": null,
         "defaultColumnWidth": 70,
@@ -990,15 +985,9 @@
           "inputRole": "Data",
           "isUserInput": false,
           "parameterId": "dbResource"
-        },
-        {
-          "datasetId": "${CLOUDSQL_DATASET}",
-          "inputName": "Cloud SQL Instance",
-          "inputRole": "Data",
-          "isUserInput": true
         }
       ],
-      "label": "Network Connections - NEED TO INCLUDE POSTGRES",
+      "label": "Network Connections",
       "managers": [
         {
           "id": "nho29ja2",
@@ -1017,7 +1006,7 @@
               "color": "Default",
               "hideGridLines": true,
               "legend": {
-                "placement": "bottom",
+                "placement": "right",
                 "type": "list",
                 "visible": true
               },
@@ -1033,17 +1022,90 @@
             "source": {
               "metric": {
                 "aggregate": "sum",
-                "datasetId": "${CLOUDSQL_METRICS_DATASET}",
-                "description": "Number of connections to databases on the Cloud SQL instance. Only applicable to MySQL and SQL Server. Sampled every 60s and may take up to 210s to display.\n",
+                "datasetId": "41101670",
+                "description": "Combination of network connection metrics.\n",
                 "groupBy": [
-                  [
-                    "database_id"
-                  ]
+                  "database_id"
                 ],
-                "heuristics": null,
+                "heuristics": {
+                  "__typename": "MetricHeuristics",
+                  "tags": [
+                    {
+                      "__typename": "MetricTag",
+                      "column": "database_id",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "database_platform",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "label",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "metric",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "metric_category",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "metric_type",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "metric_kind",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "metric_kind_text",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "project_id",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "region",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "value_type",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "value_type_text",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "instance_state_label",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "metric_labels",
+                      "path": "database"
+                    }
+                  ],
+                  "validLinkLabels": []
+                },
                 "id": {
-                  "datasetId": "${CLOUDSQL_METRICS_DATASET}",
-                  "name": "database_network_connections"
+                  "datasetId": "41101670",
+                  "name": "all_database_network_connections"
                 },
                 "interval": 60000,
                 "link": {
@@ -1051,7 +1113,7 @@
                   "dstFields": [
                     "database_id"
                   ],
-                  "label": "Cloud SQL",
+                  "label": "Cloud SQL Metrics Combo",
                   "srcFields": [
                     "database_id"
                   ],
@@ -1059,7 +1121,7 @@
                   "targetStageLabel": null,
                   "type": "foreign"
                 },
-                "name": "database_network_connections",
+                "name": "all_database_network_connections",
                 "rollup": "avg",
                 "type": "gauge",
                 "unit": "",
@@ -1069,6 +1131,12 @@
             },
             "type": "timeseries"
           }
+        },
+        {
+          "id": "kgrs2a3q",
+          "isDisabled": true,
+          "parentStageId": "stage-bxss6s26",
+          "type": "Dashboard"
         }
       ],
       "queryPresentation": {
@@ -1150,6 +1218,42 @@
           "type": "InputStep"
         },
         {
+          "columnStatsTable": {
+            "columnFunctions": {
+              "availabilityType": "count",
+              "backendType": "count",
+              "backupConfiguration": "count",
+              "createTime": "count",
+              "current_state": "count",
+              "dataDiskSizeGb": "count",
+              "dataDiskType": "count",
+              "databaseFlags": "count",
+              "databaseInstalledVersion": "count",
+              "databaseVersion": "count",
+              "database_id": "count",
+              "gceZone": "count",
+              "ipAddressPrimary": "count",
+              "ipAddresses": "count",
+              "ipConfiguration": "count",
+              "label": "count",
+              "name": "count",
+              "project_id": "count",
+              "region": "count",
+              "state": "count",
+              "tier": "count"
+            },
+            "datasetQueryId": {
+              "ignoreCompress": false,
+              "queryId": "q-n083qp1o",
+              "resultKinds": [
+                "ResultKindSchema",
+                "ResultKindData"
+              ],
+              "tableTypes": [
+                "TABULAR"
+              ]
+            }
+          },
           "datasetQuery": null,
           "datasetQueryId": {
             "ignoreCompress": false,
@@ -1185,7 +1289,7 @@
           "note": true,
           "script": true
         },
-        "scriptTab": "SCRIPT",
+        "scriptTab": "INPUTS",
         "showTimeRuler": true,
         "stageTab": "vis"
       }
@@ -3309,7 +3413,7 @@
         },
         "columnVisibility": {},
         "columnWidths": {},
-        "containerWidth": 622,
+        "containerWidth": 544,
         "contextMenuXCoord": null,
         "contextMenuYCoord": null,
         "defaultColumnWidth": 70,
@@ -3521,11 +3625,571 @@
           "note": true,
           "script": true
         },
-        "scriptTab": "SCRIPT",
+        "scriptTab": "INPUTS",
         "showTimeRuler": true,
         "stageTab": "table"
       }
     },
     "pipeline": "pick_col \n\tdatabase_id,\n    databaseVersion,\n    name,\n    @.\"Valid From\",\n    @.\"Valid To\"\n    \ncolshow database_id: false"
+  },
+  {
+    "id": "stage-perdox7c",
+    "input": [
+      {
+        "inputName": "dbResource",
+        "inputRole": "Data"
+      }
+    ],
+    "layout": {
+      "appearance": "VISIBLE",
+      "dataTableViewState": {
+        "autoTableHeight": true,
+        "columnFooterHeight": 0,
+        "columnHeaderHeight": 29,
+        "columnOrderOverride": {
+          "0": "name",
+          "2": "Valid From",
+          "3": "Valid To"
+        },
+        "columnVisibility": {},
+        "columnWidths": {},
+        "containerWidth": 1313,
+        "contextMenuXCoord": null,
+        "contextMenuYCoord": null,
+        "defaultColumnWidth": 70,
+        "disableFixedLeftColumns": false,
+        "eventLinkColumnId": null,
+        "fetchPageSize": 100,
+        "hasCalculatedColumnWidths": false,
+        "hasDoneAutoLayout": false,
+        "maxColumnWidth": 400,
+        "maxMeasuredColumnWidth": {},
+        "minColumnWidth": 60,
+        "minRowHeight": 30,
+        "preserveCellAndRowSelection": true,
+        "rowHeaderWidth": 20,
+        "rowHeights": {},
+        "rowSizeIncrement": 1,
+        "scrollToColumn": null,
+        "scrollToRow": 0,
+        "selection": {
+          "cells": {},
+          "columnSelectSequence": [],
+          "columns": {},
+          "highlightState": {},
+          "rows": {},
+          "selectionType": "table"
+        },
+        "shouldAutoLayout": false,
+        "summaryColumnOrderOverride": {},
+        "summaryColumnVisibility": {},
+        "tableHeight": 0,
+        "tableView": "TABULAR"
+      },
+      "index": 16,
+      "inputList": [
+        {
+          "inputName": "dbResource",
+          "inputRole": "Data",
+          "isUserInput": false,
+          "parameterId": "dbResource"
+        }
+      ],
+      "label": "Disk Usage By Type",
+      "managers": [
+        {
+          "id": "d7kdphj6",
+          "isDisabled": true,
+          "isResourceCountEnabled": false,
+          "parentStageId": "stage-perdox7c",
+          "type": "Timescrubber"
+        },
+        {
+          "id": "t6x5av1a",
+          "isDisabled": false,
+          "parentStageId": "stage-perdox7c",
+          "type": "Vis",
+          "vis": {
+            "config": {
+              "color": "Default",
+              "hideGridLines": true,
+              "legend": {
+                "placement": "right",
+                "type": "list",
+                "visible": true
+              },
+              "type": "xy",
+              "xConfig": {
+                "visible": true
+              },
+              "yConfig": {
+                "visible": true
+              }
+            },
+            "source": {
+              "metric": {
+                "aggregate": "sum",
+                "datasetId": "${CLOUDSQL_METRICS_DATASET}",
+                "description": "Auto Detected Metric",
+                "groupBy": [
+                  "metric_labels",
+                  "database_id"
+                ],
+                "heuristics": {
+                  "__typename": "MetricHeuristics",
+                  "tags": [
+                    {
+                      "__typename": "MetricTag",
+                      "column": "database_id",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "database_platform",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "label",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "metric_category",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "metric_kind",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "metric_kind_text",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "metric_type",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "project_id",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "region",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "value_type",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "value_type_text",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "instance_state_label",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "metric_labels",
+                      "path": "data_type"
+                    }
+                  ],
+                  "validLinkLabels": [
+                    "Cloud SQL Metrics"
+                  ]
+                },
+                "id": {
+                  "datasetId": "${CLOUDSQL_METRICS_DATASET}",
+                  "name": "database_disk_bytes_used_by_data_type"
+                },
+                "interval": null,
+                "link": {
+                  "__typename": "ForeignKey",
+                  "dstFields": [
+                    "database_id"
+                  ],
+                  "label": "Cloud SQL Metrics",
+                  "srcFields": [
+                    "database_id"
+                  ],
+                  "targetDataset": "${CLOUDSQL_DATASET}",
+                  "targetStageLabel": null,
+                  "type": "foreign"
+                },
+                "name": "database_disk_bytes_used_by_data_type",
+                "resolution": "AUTO",
+                "rollup": "sum",
+                "type": "gauge",
+                "unit": "bit",
+                "userDefined": false
+              },
+              "type": "metric"
+            },
+            "type": "timeseries"
+          }
+        }
+      ],
+      "queryPresentation": {
+        "initialRollupFilter": {
+          "mode": "Last"
+        },
+        "limit": 1000,
+        "linkify": true,
+        "loadEverything": false,
+        "progressive": true,
+        "resultKinds": [
+          "ResultKindSchema"
+        ],
+        "rollup": {}
+      },
+      "renderType": "TABLE",
+      "selectedStepId": null,
+      "serializable": true,
+      "steps": [
+        {
+          "columnStatsTable": {
+            "columnFunctions": {
+              "availabilityType": "count",
+              "backendType": "count",
+              "backupConfiguration": "count",
+              "dataDiskSizeGb": "count",
+              "dataDiskType": "count",
+              "databaseFlags": "count",
+              "databaseInstalledVersion": "count",
+              "databaseVersion": "count",
+              "database_id": "count",
+              "deleted": "count",
+              "gceZone": "count",
+              "ipAddressPrimary": "count",
+              "ipAddresses": "count",
+              "ipConfiguration": "count",
+              "name": "count",
+              "project_id": "count",
+              "region": "count",
+              "tier": "count",
+              "ttl": "count"
+            },
+            "datasetQueryId": {
+              "ignoreCompress": false,
+              "queryId": "q-d7bw0cc9",
+              "resultKinds": [
+                "ResultKindSchema",
+                "ResultKindData"
+              ],
+              "tableTypes": [
+                "TABULAR"
+              ]
+            }
+          },
+          "datasetQuery": null,
+          "datasetQueryId": {
+            "ignoreCompress": false,
+            "queryId": null,
+            "resultKinds": [
+              "ResultKindSchema",
+              "ResultKindData",
+              "ResultKindStats"
+            ],
+            "tableTypes": [
+              "TABULAR",
+              "SUMMARY"
+            ]
+          },
+          "id": "step-dh14h8pn",
+          "index": 0,
+          "isPinned": false,
+          "name": "Input Step",
+          "opal": [],
+          "queryPresentation": {},
+          "renderType": null,
+          "summary": "dbResource (undefined)",
+          "type": "InputStep"
+        }
+      ],
+      "type": "table",
+      "viewModel": {
+        "consoleValue": null,
+        "railCollapseState": {
+          "inputsOutputs": false,
+          "minimap": false,
+          "note": true,
+          "script": true
+        },
+        "scriptTab": "SCRIPT",
+        "showTimeRuler": true,
+        "stageTab": "vis"
+      }
+    },
+    "pipeline": ""
+  },
+  {
+    "id": "stage-wy53129b",
+    "input": [
+      {
+        "inputName": "dbResource",
+        "inputRole": "Data"
+      }
+    ],
+    "layout": {
+      "appearance": "VISIBLE",
+      "dataTableViewState": {
+        "autoTableHeight": true,
+        "columnFooterHeight": 0,
+        "columnHeaderHeight": 29,
+        "columnOrderOverride": {
+          "0": "name",
+          "2": "Valid From",
+          "3": "Valid To"
+        },
+        "columnVisibility": {},
+        "columnWidths": {},
+        "containerWidth": 1313,
+        "contextMenuXCoord": null,
+        "contextMenuYCoord": null,
+        "defaultColumnWidth": 70,
+        "disableFixedLeftColumns": false,
+        "eventLinkColumnId": null,
+        "fetchPageSize": 100,
+        "hasCalculatedColumnWidths": false,
+        "hasDoneAutoLayout": false,
+        "maxColumnWidth": 400,
+        "maxMeasuredColumnWidth": {},
+        "minColumnWidth": 60,
+        "minRowHeight": 30,
+        "preserveCellAndRowSelection": true,
+        "rowHeaderWidth": 20,
+        "rowHeights": {},
+        "rowSizeIncrement": 1,
+        "scrollToColumn": null,
+        "scrollToRow": 0,
+        "selection": {
+          "cells": {},
+          "columnSelectSequence": [],
+          "columns": {},
+          "highlightState": {},
+          "rows": {},
+          "selectionType": "table"
+        },
+        "shouldAutoLayout": false,
+        "summaryColumnOrderOverride": {},
+        "summaryColumnVisibility": {},
+        "tableHeight": 0,
+        "tableView": "TABULAR"
+      },
+      "index": 17,
+      "inputList": [
+        {
+          "inputName": "dbResource",
+          "inputRole": "Data",
+          "isUserInput": false,
+          "parameterId": "dbResource"
+        }
+      ],
+      "label": "Percent Disk Used",
+      "managers": [
+        {
+          "id": "7xb4iip9",
+          "isDisabled": true,
+          "isResourceCountEnabled": false,
+          "parentStageId": "stage-wy53129b",
+          "type": "Timescrubber"
+        },
+        {
+          "id": "kahpojid",
+          "isDisabled": false,
+          "parentStageId": "stage-wy53129b",
+          "type": "Vis",
+          "vis": {
+            "config": {
+              "color": "Default",
+              "hideGridLines": true,
+              "legend": {
+                "placement": "right",
+                "type": "list",
+                "visible": true
+              },
+              "type": "xy",
+              "xConfig": {
+                "visible": true
+              },
+              "yConfig": {
+                "unit": "",
+                "visible": true
+              }
+            },
+            "source": {
+              "metric": {
+                "aggregate": "sum",
+                "datasetId": "41101933",
+                "description": "Percentage of disk quota used\n",
+                "groupBy": [
+                  "database_id"
+                ],
+                "heuristics": {
+                  "__typename": "MetricHeuristics",
+                  "tags": [
+                    {
+                      "__typename": "MetricTag",
+                      "column": "database_id",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "database_platform",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "metric_category",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "project_id",
+                      "path": ""
+                    },
+                    {
+                      "__typename": "MetricTag",
+                      "column": "region",
+                      "path": ""
+                    }
+                  ],
+                  "validLinkLabels": [
+                    "Cloud SQL Metrics",
+                    "Cloud SQL Metrics Wide"
+                  ]
+                },
+                "id": {
+                  "datasetId": "41101933",
+                  "name": "percent_disk_used"
+                },
+                "interval": 60000,
+                "link": {
+                  "__typename": "ForeignKey",
+                  "dstFields": [
+                    "database_id"
+                  ],
+                  "label": "Cloud SQL Metrics Wide",
+                  "srcFields": [
+                    "database_id"
+                  ],
+                  "targetDataset": "${CLOUDSQL_DATASET}",
+                  "targetStageLabel": null,
+                  "type": "foreign"
+                },
+                "name": "percent_disk_used",
+                "rollup": "avg",
+                "type": "gauge",
+                "unit": "",
+                "userDefined": true
+              },
+              "type": "metric"
+            },
+            "type": "timeseries"
+          }
+        }
+      ],
+      "queryPresentation": {
+        "initialRollupFilter": {
+          "mode": "Last"
+        },
+        "limit": 1000,
+        "linkify": true,
+        "loadEverything": false,
+        "progressive": true,
+        "resultKinds": [
+          "ResultKindSchema"
+        ],
+        "rollup": {}
+      },
+      "renderType": "TABLE",
+      "selectedStepId": null,
+      "serializable": true,
+      "steps": [
+        {
+          "columnStatsTable": {
+            "columnFunctions": {
+              "availabilityType": "count",
+              "backendType": "count",
+              "backupConfiguration": "count",
+              "dataDiskSizeGb": "count",
+              "dataDiskType": "count",
+              "databaseFlags": "count",
+              "databaseInstalledVersion": "count",
+              "databaseVersion": "count",
+              "database_id": "count",
+              "deleted": "count",
+              "gceZone": "count",
+              "ipAddressPrimary": "count",
+              "ipAddresses": "count",
+              "ipConfiguration": "count",
+              "name": "count",
+              "project_id": "count",
+              "region": "count",
+              "tier": "count",
+              "ttl": "count"
+            },
+            "datasetQueryId": {
+              "ignoreCompress": false,
+              "queryId": "q-gxryzkot",
+              "resultKinds": [
+                "ResultKindSchema",
+                "ResultKindData"
+              ],
+              "tableTypes": [
+                "TABULAR"
+              ]
+            }
+          },
+          "datasetQuery": null,
+          "datasetQueryId": {
+            "ignoreCompress": false,
+            "queryId": null,
+            "resultKinds": [
+              "ResultKindSchema",
+              "ResultKindData",
+              "ResultKindStats"
+            ],
+            "tableTypes": [
+              "TABULAR",
+              "SUMMARY"
+            ]
+          },
+          "id": "step-nfimyv99",
+          "index": 0,
+          "isPinned": false,
+          "name": "Input Step",
+          "opal": [],
+          "queryPresentation": {},
+          "renderType": null,
+          "summary": "dbResource (undefined)",
+          "type": "InputStep"
+        }
+      ],
+      "type": "table",
+      "viewModel": {
+        "consoleValue": null,
+        "railCollapseState": {
+          "inputsOutputs": false,
+          "minimap": false,
+          "note": true,
+          "script": true
+        },
+        "scriptTab": "SCRIPT",
+        "showTimeRuler": true,
+        "stageTab": "vis"
+      }
+    },
+    "pipeline": ""
   }
 ]
