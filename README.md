@@ -39,6 +39,7 @@ module "google" {
 | <a name="module_cloudfunctions"></a> [cloudfunctions](#module\_cloudfunctions) | ./service/cloudfunctions | n/a |
 | <a name="module_cloudsql"></a> [cloudsql](#module\_cloudsql) | ./service/cloudsql | n/a |
 | <a name="module_compute"></a> [compute](#module\_compute) | ./service/compute | n/a |
+| <a name="module_pollers"></a> [pollers](#module\_pollers) | ./modules/pollers | n/a |
 | <a name="module_storage"></a> [storage](#module\_storage) | ./service/storage | n/a |
 
 ## Resources
@@ -61,7 +62,8 @@ module "google" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_datastream"></a> [datastream](#input\_datastream) | Datastream to derive OTEL resources from. | `object({ dataset = string })` | n/a | yes |
+| <a name="input_collection"></a> [collection](#input\_collection) | A list of observe/terraform-google-collection modules to pull data from.<br><br>A set of pollers will be created for each element of the array. Each element<br>in the array should describe a different GCP project. | <pre>list(object({<br>    project = string<br>    subscription = object({<br>      name = string<br>    })<br>    service_account_key = object({<br>      private_key = string<br>    })<br>  }))</pre> | `[]` | no |
+| <a name="input_datastream"></a> [datastream](#input\_datastream) | Datastream to derive resources from. | <pre>object({<br>    oid     = string<br>    dataset = string<br>  })</pre> | n/a | yes |
 | <a name="input_enable_service_all"></a> [enable\_service\_all](#input\_enable\_service\_all) | Enable all services.<br>If enabled, all services that are not explicitly set to false will be<br>configured. | `bool` | `false` | no |
 | <a name="input_enable_service_cloudfunctions"></a> [enable\_service\_cloudfunctions](#input\_enable\_service\_cloudfunctions) | Enable Cloud Functions service. | `bool` | `null` | no |
 | <a name="input_enable_service_cloudsql"></a> [enable\_service\_cloudsql](#input\_enable\_service\_cloudsql) | Enable Cloud SQL service. | `bool` | `null` | no |
@@ -72,6 +74,9 @@ module "google" {
 | <a name="input_freshness_overrides"></a> [freshness\_overrides](#input\_freshness\_overrides) | Freshness overrides by dataset. If absent, fall back to freshness\_default | `map(string)` | `{}` | no |
 | <a name="input_max_expiry"></a> [max\_expiry](#input\_max\_expiry) | Maximum expiry time for resources. | `string` | `"4h"` | no |
 | <a name="input_max_time_diff"></a> [max\_time\_diff](#input\_max\_time\_diff) | Maximum time difference for processing time window. | `string` | `"4h"` | no |
+| <a name="input_metrics_poller_exclude_metric_type_prefixes"></a> [metrics\_poller\_exclude\_metric\_type\_prefixes](#input\_metrics\_poller\_exclude\_metric\_type\_prefixes) | Metrics with these Metric Types with these prefixes will not be fetched. This<br>variable takes precendence over "metrics\_poller\_include\_metric\_type\_prefixes".<br><br>See https://cloud.google.com/monitoring/api/metrics_gcp for a list of Metric Types. | `list(string)` | `[]` | no |
+| <a name="input_metrics_poller_include_metric_type_prefixes"></a> [metrics\_poller\_include\_metric\_type\_prefixes](#input\_metrics\_poller\_include\_metric\_type\_prefixes) | Metrics with these Metric Types with these prefixes will be fetched.<br><br>See https://cloud.google.com/monitoring/api/metrics_gcp for a list of Metric Types. | `list(string)` | `[]` | no |
+| <a name="input_metrics_poller_interval_duration"></a> [metrics\_poller\_interval\_duration](#input\_metrics\_poller\_interval\_duration) | How frequently to poll for metrics from Google Cloud Monitoring. | `string` | `"1m0s"` | no |
 | <a name="input_name_format"></a> [name\_format](#input\_name\_format) | Format string to use for dataset names. Override to introduce a prefix or suffix. | `string` | `"%s"` | no |
 | <a name="input_service_name_formats"></a> [service\_name\_formats](#input\_service\_name\_formats) | Override nested name\_format for enabled services | `map(string)` | `{}` | no |
 | <a name="input_services"></a> [services](#input\_services) | Map of services to enable. | `map(bool)` | `{}` | no |
