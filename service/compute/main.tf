@@ -20,7 +20,7 @@ resource "observe_dataset" "compute" {
     pipeline = <<-EOF
       filter asset_namespace = "compute.googleapis.com"  and asset_sub_type = "Instance"
 
-      extract_regex name, /projects\/(?P<project_id>[^\/+]+)\/zones\/(?P<zone>[^\/+]+)\/instances\/(?P<instanceName>[^\/+]+)/
+      extract_regex name, /projects\/(?P<project_id>[^\/+]+)\/zones\/(?P<zone>[^\/+]+)\/instances\/(?P<instance_name>[^\/+]+)/
       
       extract_regex zone, /(?P<region>[a-z]+[-]+[a-z,0-9]+)/
 
@@ -28,8 +28,8 @@ resource "observe_dataset" "compute" {
 
       make_col
         assetInventoryName:string(name),
-        name:string(data.name),
         instance_id:string(data.id),
+        instance_key: strcat(project_id,":",name),
         status:if(deleted=true, "DELETED",string(data.status))
 
 
@@ -39,22 +39,23 @@ resource "observe_dataset" "compute" {
   stage {
     pipeline = <<-EOF
       make_resource options(expiry:${var.max_expiry}),
-        name,
+        instance_name,
+        instance_id,
         status,
         cpuPlatform: string(data.cpuPlatform),
         machineType,
         project_id, 
         region, 
-        instance_id,
+        zone,
         ttl,
         deleted,
-        primary_key(assetInventoryName),
+        primary_key(instance_key),
         valid_for(ttl)
 
-      add_key name
-      set_label name
+      add_key instance_name
+      set_label instance_name
 
-      add_key project_id, region, instance_id
+      add_key project_id, region, zone
     EOF
   }
 }

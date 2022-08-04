@@ -8,7 +8,89 @@
           "id": "section-di408x2m",
           "title": "Dashboard Content"
         },
+        "items": [],
+        "lastModified": 1659627562394
+      },
+      {
+        "card": {
+          "cardType": "section",
+          "closed": false,
+          "id": "card-4cs9otf1",
+          "title": "Overview"
+        },
         "items": [
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-brsnfhxe",
+              "stageId": "stage-fnyfu38e"
+            },
+            "layout": {
+              "h": 12,
+              "i": "card-brsnfhxe",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 2,
+              "x": 2,
+              "y": 0
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-l8t5cymv",
+              "stageId": "stage-4zw73l75"
+            },
+            "layout": {
+              "h": 12,
+              "i": "card-l8t5cymv",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 2,
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-1bqrigg8",
+              "stageId": "stage-xjztexw9"
+            },
+            "layout": {
+              "h": 12,
+              "i": "card-1bqrigg8",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 2,
+              "x": 4,
+              "y": 0
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-r1a2n89m",
+              "stageId": "stage-auesy2zu"
+            },
+            "layout": {
+              "h": 12,
+              "i": "card-r1a2n89m",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 2,
+              "x": 2,
+              "y": 12
+            }
+          },
           {
             "card": {
               "cardType": "stage",
@@ -22,12 +104,32 @@
               "isResizable": true,
               "moved": false,
               "static": false,
-              "w": 4,
+              "w": 2,
               "x": 0,
-              "y": 0
+              "y": 12
             }
           }
-        ]
+        ],
+        "lastModified": 1659628508007
+      },
+      {
+        "card": {
+          "cardType": "section",
+          "closed": false,
+          "id": "card-wu4dge2k",
+          "title": "Monitoring"
+        },
+        "items": []
+      },
+      {
+        "card": {
+          "cardType": "section",
+          "closed": false,
+          "id": "card-gif56xru",
+          "title": "Notes"
+        },
+        "items": [],
+        "lastModified": 1659649821934
       }
     ]
   },
@@ -48,7 +150,7 @@
         "viewType": "input"
       }
     ],
-    "selectedStageId": "stage-qr6xpot1",
+    "selectedStageId": "stage-c2xuj0kf",
     "timeRange": {
       "display": "Past 4 hours",
       "endTime": null,
