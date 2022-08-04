@@ -5,6 +5,13 @@
 # - enable_service_* variable definitions in apps/variables.tf
 # - enable_service_* variable usages in apps/main.tf
 locals {
+  enable_service_bigquery = (
+    var.enable_service_bigquery == true ||
+    (var.enable_service_all == true && var.enable_service_bigquery != false) ||
+    lookup(var.services, "bigquery", false)
+  )
+  name_format_bigquery = lookup(var.service_name_formats, "bigquery", "BigQuery %s")
+  
   enable_service_cloudfunctions = (
     var.enable_service_cloudfunctions == true ||
     (var.enable_service_all == true && var.enable_service_cloudfunctions != false) ||
@@ -103,5 +110,15 @@ module "load_balancing" {
   freshness_overrides = var.freshness_overrides
   feature_flags       = var.feature_flags
 
+  google = local.base_module
+}
+module "bigquery" {
+  source = "./service/bigquery"
+  workspace           = var.workspace
+  name_format         = format(var.name_format, local.name_format_bigquery)
+  max_expiry          = var.max_expiry
+  freshness_default   = var.freshness_default
+  # freshness_overrides = var.freshness_overrides
+  feature_flags       = var.feature_flags
   google = local.base_module
 }

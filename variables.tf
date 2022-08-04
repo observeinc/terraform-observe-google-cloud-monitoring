@@ -71,6 +71,15 @@ variable "enable_service_all" {
   EOF
 }
 
+variable "enable_service_bigquery" {
+  type        = bool
+  default     = null
+  description = <<-EOF
+    Enable BigQuery service.
+  EOF
+}
+
+
 variable "enable_service_cloudfunctions" {
   type        = bool
   default     = null
