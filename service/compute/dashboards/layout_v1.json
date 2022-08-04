@@ -1,0 +1,65 @@
+{
+  "gridLayout": {
+    "sections": [
+      {
+        "card": {
+          "cardType": "section",
+          "closed": false,
+          "id": "section-di408x2m",
+          "title": "Dashboard Content"
+        },
+        "items": [
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-v0w3t5cy",
+              "stageId": "stage-vq875azj"
+            },
+            "layout": {
+              "h": 12,
+              "i": "card-v0w3t5cy",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 4,
+              "x": 0,
+              "y": 0
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "stageListLayout": {
+    "isModified": false,
+    "parameters": [
+      {
+        "defaultValue": {
+          "datasetref": {
+            "datasetId": "${RESOURCE_DATASET}"
+          }
+        },
+        "id": "computeID",
+        "name": "Compute Instance",
+        "valueKind": {
+          "type": "DATASETREF"
+        },
+        "viewType": "input"
+      }
+    ],
+    "selectedStageId": "stage-qr6xpot1",
+    "timeRange": {
+      "display": "Past 4 hours",
+      "endTime": null,
+      "millisFromCurrentTime": 14400000,
+      "originalDisplay": "Past 4 hours",
+      "startTime": null,
+      "timeRangeInfo": {
+        "key": "PRESETS",
+        "name": "Presets"
+      },
+      "timeZone": null
+    }
+  }
+}

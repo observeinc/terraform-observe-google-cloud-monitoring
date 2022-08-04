@@ -1,0 +1,14 @@
+[
+  {
+    "id": "computeID",
+    "name": "Compute Instance",
+    "defaultValue": {
+      "datasetref": {
+        "datasetId": "${RESOURCE_DATASET}"
+      }
+    },
+    "valueKind": {
+      "type": "DATASETREF"
+    }
+  }
+]

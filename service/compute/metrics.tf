@@ -18,7 +18,10 @@ resource "observe_dataset" "compute_metrics" {
         zone:string(resource_labels.zone)
 
       extract_regex zone, /(?P<region>[a-z]+[-]+[a-z,0-9]+)/
-
+      EOF
+  }
+  stage {
+    pipeline = <<-EOF
       pick_col
         start_time,
         end_time,
@@ -31,7 +34,11 @@ resource "observe_dataset" "compute_metrics" {
         zone,
         region,
         instance_id
+      EOF
+  }
 
+  stage {
+    pipeline = <<-EOF
       interface "metric", metric:metric_type, value:value
       ${join("\n\n",
     [for metric, options in local.metrics_definitions :

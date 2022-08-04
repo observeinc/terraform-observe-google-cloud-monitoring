@@ -33,3 +33,7 @@ output "cloud_functions" {
 output "cloud_sql" {
   value = local.enable_service_cloudfunctions ? module.cloudsql[0] : null
 }
+
+output "compute" {
+  value = local.enable_service_compute ? module.compute[0] : null
+}
