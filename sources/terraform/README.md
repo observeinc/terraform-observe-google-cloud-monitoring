@@ -1,8 +1,8 @@
-Observe provides a [terraform module](https://github.com/observeinc/terraform-google-collection) which collects resource data from a a given GCP region. The following terraform snippet installs the GCP collection stack for the Project of the Google provider:
+Observe provides a [terraform module](https://github.com/observeinc/terraform-google-collection) which collects resource data from a a given GCP project. The following terraform snippet installs the GCP collection stack for the Project of the Google provider:
 
 ```
 module "observe" {
-  source           = "observeinc/collection/gcp"
+  source           = "observeinc/collection/google"
 }
 ```
 
