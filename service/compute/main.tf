@@ -29,7 +29,7 @@ resource "observe_dataset" "compute" {
       make_col
         assetInventoryName:string(name),
         instance_id:string(data.id),
-        instance_key: strcat(project_id,":",name),
+        instance_key: strcat(project_id,":",instance_name),
         status:if(deleted=true, "DELETED",string(data.status))
 
 
