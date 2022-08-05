@@ -49,7 +49,8 @@ resource "observe_dataset" "metrics" {
           float64(case(bool(value.Value.BoolValue) = true, 1, bool(value.Value.BoolValue) = false, 0)),
           float64(value.Value.DistributionValue.mean)),
           value_type_text: case (value_type=1, 'BOOL', value_type=2, 'INT64', value_type=3, 'DOUBLE', value_type=4, 'STRING', value_type=5, 'DISTRIBUTION'),
-          metric_kind_text: case (metric_kind=1, 'GAUGE', metric_kind=2, 'DELTA', metric_kind=3, 'CUMULATIVE')
+          metric_kind_text: case (metric_kind=1, 'GAUGE', metric_kind=2, 'DELTA', metric_kind=3, 'CUMULATIVE'),
+          metric_namespace: split_part(metric_type, '/', 1)
     EOF
   }
 
@@ -59,6 +60,7 @@ resource "observe_dataset" "metrics" {
         start_time,
         end_time,
         metric_type,
+        metric_namespace,
         metric_kind,
         metric_kind_text,
         metric_labels,
