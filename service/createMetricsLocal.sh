@@ -127,7 +127,8 @@ jq -r '# returns true if metric is GA
         "
         + (.metadata | intervalFunc ) + "
         "
-        + (.unit | unitFunc )
+        + (.unit | unitFunc ) + "
+        "
         + (.name | computeFunc ) + "
         
         },"
