@@ -1,5 +1,5 @@
 module "pollers" {
-  source                       = "./modules/pollers"
+  source                       = "../../modules/pollers"
   workspace                    = var.workspace
   datastream                   = var.datastream
   name_format                  = var.name_format
