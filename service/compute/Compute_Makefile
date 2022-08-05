@@ -63,6 +63,8 @@ METRICS_DATASET_ID:=UNSET
 
 all: datasets ids finish
 
+no_refresh: ids finish
+
 datasets: get_template_dashboard parameters stages layout 
 
 ids: replace_resource_id replace_log_id replace_metric_id
@@ -160,4 +162,12 @@ replace_metric_id:
 	$(eval METRICS_DATASET_ID=$(shell cd $(TERRAFORM_DIRECTORY); terraform output -json $(DATASET_ID_OUTPUT_NAME) | jq -r '.metrics_dataset_id'))
 	echo METRICS_DATASET_ID is $(METRICS_DATASET_ID);
 	sed -i '' "s:$(METRICS_DATASET_ID):"\$${METRICS_DATASET}":g" /$(DASHBOARD_DIR)/*; 
+
+replace_resource_id_manual:
+	sed -i '' "s:41109182:"\$${RESOURCE_DATASET}":g" /$(DASHBOARD_DIR)/*; 
+
+replace_metric_id_manual:
+	sed -i '' "s:41109184:"\$${METRICS_DATASET}":g" /$(DASHBOARD_DIR)/*; 
+
+	
 
