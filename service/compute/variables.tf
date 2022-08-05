@@ -45,6 +45,6 @@ variable "metric_launch_stages" {
 
 variable "metric_interface_fields" {
   type        = set(string)
-  default     = ["type", "description", "rollup", "aggregate", "interval"]
+  default     = ["type", "description", "rollup", "aggregate", "interval", "label", "unit"]
   description = "Used by metric interface to pick fields to map"
 }

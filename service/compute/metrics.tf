@@ -16,10 +16,11 @@ resource "observe_dataset" "compute_metrics" {
         instance_id:string(resource_labels.instance_id),
         project_id:string(resource_labels.project_id),
         zone:string(resource_labels.zone),
+        metric_subject: split_part(metric_type, '/', 2),
         metric_category: split_part(metric_type, '/', 3),
         metric: replace(replace(metric_type,'compute.googleapis.com/',''),'/','_')
 
-      filter metric_category = "instance" 
+      filter metric_subject = "instance" 
 
       make_col instance_name: string(metric_labels.instance_name)
 
