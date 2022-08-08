@@ -23,7 +23,6 @@ FILE_VERSION:=_v1
 RESOURCE_DATASET_NAME=compute
 METRIC_DATASET_NAME=compute_metrics
 LOGS_DATASET_NAME=compute_logs
-DASHBOARD_NAME="Compute Instance Monitoring"
 DATASET_ID_OUTPUT_NAME=compute_datasets_id
 ############################################
 
@@ -65,7 +64,7 @@ all: datasets ids finish
 
 no_refresh: ids finish
 
-datasets: get_template_dashboard parameters stages layout 
+datasets: get_template_dashboard parameters stages layout parameter_values
 
 ids: replace_resource_id replace_log_id replace_metric_id
 
@@ -105,13 +104,20 @@ layout:
 	cat $(LAYOUT_OUTPUT_FILE)_TEMP | jq -r '.' > $(LAYOUT_OUTPUT_FILE)
 	rm $(LAYOUT_OUTPUT_FILE)_TEMP 
 
+# Create json file based on output value
+parameter_values:
+	cd $(TEMPLATE_DASHBOARD_DIRECTORY); \
+	terraform output -json parameter_values | jq -r '.' > $(PARAMETER_VALUES_OUTPUT_FILE)_TEMP;
+	cat $(PARAMETER_VALUES_OUTPUT_FILE)_TEMP | jq -r '.' > $(PARAMETER_VALUES_OUTPUT_FILE)
+	rm $(PARAMETER_VALUES_OUTPUT_FILE)_TEMP 
+
 # Terraform resource template variable
 
 define RESOURCE_DEF_VAR
 	resource "observe_dashboard" "monitoring" {
 		  	count = local.enable_metrics ? 1 : 0
 			workspace = var.workspace.oid
-			name      = $(DASHBOARD_NAME)
+			name      = format(var.name_format, "Monitoring")
 			stages           = templatefile("$(STAGES_OUTPUT_FILE_TF_PATH)", {
 				RESOURCE_DATASET = observe_dataset.$(RESOURCE_DATASET_NAME).id
 				METRICS_DATASET = local.enable_metrics == true ? observe_dataset.$(METRIC_DATASET_NAME)[0].id : null

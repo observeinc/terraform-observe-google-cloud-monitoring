@@ -1,7 +1,7 @@
 resource "observe_dashboard" "monitoring" {
   count     = local.enable_metrics ? 1 : 0
   workspace = var.workspace.oid
-  name      = "Compute Instance Monitoring"
+  name      = format(var.name_format, "Monitoring")
   stages = templatefile("${path.module}/dashboards/stages_v1.json", {
     RESOURCE_DATASET = observe_dataset.compute.id
     METRICS_DATASET  = local.enable_metrics == true ? observe_dataset.compute_metrics[0].id : null
