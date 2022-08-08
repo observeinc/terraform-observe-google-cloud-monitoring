@@ -32,8 +32,8 @@
               "isResizable": true,
               "moved": false,
               "static": false,
-              "w": 2,
-              "x": 2,
+              "w": 3,
+              "x": 3,
               "y": 0
             }
           },
@@ -50,7 +50,7 @@
               "isResizable": true,
               "moved": false,
               "static": false,
-              "w": 2,
+              "w": 3,
               "x": 0,
               "y": 0
             }
@@ -68,8 +68,8 @@
               "isResizable": true,
               "moved": false,
               "static": false,
-              "w": 2,
-              "x": 4,
+              "w": 3,
+              "x": 6,
               "y": 0
             }
           },
@@ -86,8 +86,8 @@
               "isResizable": true,
               "moved": false,
               "static": false,
-              "w": 2,
-              "x": 2,
+              "w": 3,
+              "x": 3,
               "y": 12
             }
           },
@@ -104,7 +104,7 @@
               "isResizable": true,
               "moved": false,
               "static": false,
-              "w": 2,
+              "w": 3,
               "x": 0,
               "y": 12
             }
@@ -119,7 +119,80 @@
           "id": "card-wu4dge2k",
           "title": "Monitoring"
         },
-        "items": []
+        "items": [
+          {
+            "card": {
+              "cardType": "parameter",
+              "id": "card-ibn5icls",
+              "parameterId": "cpuMetric"
+            },
+            "layout": {
+              "h": 4,
+              "i": "card-ibn5icls",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 4,
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-mbqdgb90",
+              "stageId": "stage-vvo0iuyr"
+            },
+            "layout": {
+              "h": 14,
+              "i": "card-mbqdgb90",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 12,
+              "x": 0,
+              "y": 2
+            }
+          },
+          {
+            "card": {
+              "cardType": "parameter",
+              "id": "card-hcaos1xk",
+              "parameterId": "diskMetric"
+            },
+            "layout": {
+              "h": 4,
+              "i": "card-hcaos1xk",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 4,
+              "x": 0,
+              "y": 16
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-9cmsrv7d",
+              "stageId": "stage-pxi6rdt9"
+            },
+            "layout": {
+              "h": 14,
+              "i": "card-9cmsrv7d",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 12,
+              "x": 0,
+              "y": 20
+            }
+          }
+        ]
       },
       {
         "card": {
@@ -129,7 +202,7 @@
           "title": "Notes"
         },
         "items": [],
-        "lastModified": 1659654489467
+        "lastModified": 1659734807586
       }
     ]
   },
@@ -148,14 +221,55 @@
           "type": "DATASETREF"
         },
         "viewType": "input"
+      },
+      {
+        "defaultValue": {
+          "string": "instance_cpu_utilization"
+        },
+        "id": "cpuMetric",
+        "name": "CPU Metric",
+        "source": "CustomData",
+        "sourceCustomData": {
+          "Guest Visible CPUs": "instance_cpu_guest_visible_vcpus",
+          "Reserved Cores": "instance_cpu_reserved_cores",
+          "Scheduler Wait Time": "instance_cpu_scheduler_wait_time",
+          "Usage Time": "instance_cpu_usage_time",
+          "Utilization": "instance_cpu_utilization"
+        },
+        "valueKind": {
+          "type": "STRING"
+        },
+        "viewType": "single-select"
+      },
+      {
+        "defaultValue": {
+          "string": "instance_disk_write_ops_count"
+        },
+        "id": "diskMetric",
+        "name": "Disk Metric",
+        "source": "CustomData",
+        "sourceCustomData": {
+          "Read Bytes Count": "instance_disk_read_bytes_count",
+          "Read Ops Count": "instance_disk_read_ops_count",
+          "Throttled Read Bytes Count": "instance_disk_throttled_read_bytes_count",
+          "Throttled Read Ops Count": "instance_disk_throttled_read_ops_count",
+          "Throttled Write Bytes Count": "instance_disk_throttled_write_bytes_count",
+          "Throttled Write Ops Count": "instance_disk_throttled_write_ops_count",
+          "Write Bytes Count": "instance_disk_write_bytes_count",
+          "Write Ops Count": "instance_disk_write_ops_count"
+        },
+        "valueKind": {
+          "type": "STRING"
+        },
+        "viewType": "single-select"
       }
     ],
-    "selectedStageId": "stage-c2xuj0kf",
+    "selectedStageId": "stage-pxi6rdt9",
     "timeRange": {
-      "display": "Past 4 hours",
+      "display": "Today 09:18 - 13:18",
       "endTime": null,
       "millisFromCurrentTime": 14400000,
-      "originalDisplay": "Past 4 hours",
+      "originalDisplay": "Today 09:18 - 13:18",
       "startTime": null,
       "timeRangeInfo": {
         "key": "PRESETS",

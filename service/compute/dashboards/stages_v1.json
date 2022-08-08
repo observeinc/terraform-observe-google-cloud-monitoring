@@ -212,7 +212,7 @@
         },
         "columnVisibility": {},
         "columnWidths": {},
-        "containerWidth": 1505,
+        "containerWidth": 285,
         "contextMenuXCoord": null,
         "contextMenuYCoord": null,
         "defaultColumnWidth": 70,
@@ -1190,8 +1190,13 @@
     "pipeline": ""
   },
   {
-    "id": "stage-c2xuj0kf",
+    "id": "stage-vvo0iuyr",
     "input": [
+      {
+        "inputName": "resource",
+        "inputRole": "Data",
+        "datasetId": "41109753"
+      },
       {
         "inputName": "computeID",
         "inputRole": "Data"
@@ -1204,20 +1209,25 @@
         "columnFooterHeight": 0,
         "columnHeaderHeight": 29,
         "columnOrderOverride": {
-          "0": "instance_name",
-          "2": "Valid From",
-          "3": "Valid To"
+          "1": "valid_from",
+          "2": "valid_to"
         },
-        "columnVisibility": {},
-        "columnWidths": {},
-        "containerWidth": 1505,
+        "columnVisibility": {
+          "_c_bucket": true
+        },
+        "columnWidths": {
+          "instance_key": 185,
+          "metric_category": 180,
+          "metric_type": 193
+        },
+        "containerWidth": 2145,
         "contextMenuXCoord": null,
         "contextMenuYCoord": null,
         "defaultColumnWidth": 70,
         "disableFixedLeftColumns": false,
         "eventLinkColumnId": null,
         "fetchPageSize": 100,
-        "hasCalculatedColumnWidths": true,
+        "hasCalculatedColumnWidths": false,
         "hasDoneAutoLayout": false,
         "maxColumnWidth": 400,
         "maxMeasuredColumnWidth": {},
@@ -1246,25 +1256,24 @@
       "index": 6,
       "inputList": [
         {
+          "datasetId": "41109753",
+          "inputName": "resource",
+          "inputRole": "Data",
+          "isUserInput": false
+        },
+        {
           "inputName": "computeID",
           "inputRole": "Data",
-          "isUserInput": false,
+          "isUserInput": true,
           "parameterId": "computeID"
         }
       ],
-      "label": "Stage 7",
+      "label": "CPU Metrics",
       "managers": [
         {
-          "id": "b0hs184m",
-          "isDisabled": true,
-          "isResourceCountEnabled": false,
-          "parentStageId": "stage-c2xuj0kf",
-          "type": "Timescrubber"
-        },
-        {
-          "id": "pdpjw7cx",
+          "id": "9whbch9b",
           "isDisabled": false,
-          "parentStageId": "stage-c2xuj0kf",
+          "parentStageId": "stage-vvo0iuyr",
           "type": "Vis",
           "vis": {
             "config": {
@@ -1280,87 +1289,88 @@
                 "visible": true
               },
               "yConfig": {
-                "unit": "",
+                "hideUnits": true,
+                "unit": "10^2.%",
                 "visible": true
               }
             },
             "source": {
-              "metric": {
-                "aggregate": "sum",
-                "datasetId": "${METRICS_DATASET}",
-                "description": "Fractional utilization of allocated CPU on this instance. Values are typically numbers between 0.0 and 1.0 but some machine types allow bursting above 1.0. Charts display the values as a percentage between 0% and 100% or more. This metric is reported by the hypervisor for the VM and can differ from `agent.googleapis.com/cpu/utilization`, which is reported from inside the VM. Sampled every 60s and may take up to 240s to display.\n",
-                "groupBy": [
-                  "instance_name"
+              "table": {
+                "groupFields": [
+                  "instance_key"
                 ],
-                "heuristics": null,
-                "id": {
-                  "datasetId": "${METRICS_DATASET}",
-                  "name": "compute.googleapis.com/instance/cpu/utilization"
-                },
-                "interval": 60000,
-                "link": {
-                  "__typename": "ForeignKey",
-                  "dstFields": [
-                    "instance_key"
-                  ],
-                  "label": "Compute",
-                  "srcFields": [
-                    "instance_key"
-                  ],
-                  "targetDataset": "${RESOURCE_DATASET}",
-                  "targetStageLabel": null,
-                  "type": "foreign"
-                },
-                "name": "compute.googleapis.com/instance/cpu/utilization",
-                "rollup": "avg",
-                "type": "gauge",
-                "unit": "",
-                "userDefined": true
+                "statsBy": {},
+                "timechart": {},
+                "transformType": "none",
+                "type": "xy",
+                "x": "valid_from",
+                "y": "value"
               },
-              "type": "metric"
+              "type": "table"
             },
             "type": "timeseries"
           }
+        },
+        {
+          "id": "uf9bdall",
+          "isDisabled": true,
+          "isResourceCountEnabled": false,
+          "parentStageId": "stage-vvo0iuyr",
+          "type": "Timescrubber"
+        },
+        {
+          "columnId": "metric_category",
+          "id": "4fnyb254",
+          "isDisabled": true,
+          "parentStageId": "stage-vvo0iuyr",
+          "type": "FacetFilter"
         }
       ],
       "queryPresentation": {
         "initialRollupFilter": {
           "mode": "Last"
         },
-        "limit": 1000,
-        "linkify": true,
-        "loadEverything": false,
-        "progressive": true,
+        "linkify": false,
+        "loadEverything": true,
         "resultKinds": [
-          "ResultKindSchema",
-          "ResultKindData",
-          "ResultKindStats",
-          "ResultKindProgress"
+          "ResultKindSchema"
         ],
-        "rollup": {}
+        "rollup": null
       },
-      "renderType": "TABLE",
       "selectedStepId": null,
       "serializable": true,
       "steps": [
         {
+          "datasetQuery": null,
+          "datasetQueryId": {
+            "ignoreCompress": false,
+            "queryId": null,
+            "resultKinds": [
+              "ResultKindSchema",
+              "ResultKindData",
+              "ResultKindStats"
+            ],
+            "tableTypes": [
+              "TABULAR",
+              "SUMMARY"
+            ]
+          },
+          "id": "step-pt8gicnr",
+          "index": 0,
+          "isPinned": false,
+          "name": "Input Step",
+          "opal": [],
+          "queryPresentation": {},
+          "renderType": null,
+          "summary": "resource (41109753)",
+          "type": "InputStep"
+        },
+        {
           "columnStatsTable": {
-            "columnFunctions": {
-              "cpuPlatform": "count",
-              "deleted": "count",
-              "instance_id": "count",
-              "instance_key": "count",
-              "instance_name": "count",
-              "machineType": "count",
-              "project_id": "count",
-              "region": "count",
-              "status": "count",
-              "ttl": "count",
-              "zone": "count"
-            },
+            "columnFunctions": {},
             "datasetQueryId": {
               "ignoreCompress": false,
-              "queryId": "q-jvusqrf0",
+              "queryId": "q-40r2gsu8",
               "resultKinds": [
                 "ResultKindSchema",
                 "ResultKindData"
@@ -1384,15 +1394,21 @@
               "SUMMARY"
             ]
           },
-          "id": "step-60dxv8qk",
-          "index": 0,
+          "id": "step-5x0pwfzu",
+          "index": 1,
           "isPinned": false,
-          "name": "Input Step",
-          "opal": [],
+          "name": "filter (custom)",
+          "opal": [
+            "filter metric_category = \"cpu\"",
+            "filter metric = $cpuMetric",
+            "align 2m, frame(back: 1m), \"value\":avg(m(string($cpuMetric)))",
+            "exists instance_key = @computeID.instance_key",
+            "aggregate \"value\":sum(@.\"value\"), group_by(instance_key)",
+            "topk 100"
+          ],
           "queryPresentation": {},
           "renderType": null,
-          "summary": "computeID (undefined)",
-          "type": "InputStep"
+          "type": "unknown"
         }
       ],
       "type": "table",
@@ -1409,6 +1425,248 @@
         "stageTab": "vis"
       }
     },
-    "pipeline": ""
+    "pipeline": "filter metric_category = \"cpu\"\nfilter metric = $cpuMetric\nalign 2m, frame(back: 1m), \"value\":avg(m(string($cpuMetric)))\nexists instance_key = @computeID.instance_key\naggregate \"value\":sum(@.\"value\"), group_by(instance_key)\ntopk 100"
+  },
+  {
+    "id": "stage-pxi6rdt9",
+    "input": [
+      {
+        "inputName": "resource",
+        "inputRole": "Data",
+        "datasetId": "41109753"
+      },
+      {
+        "inputName": "computeID",
+        "inputRole": "Data"
+      }
+    ],
+    "layout": {
+      "appearance": "VISIBLE",
+      "dataTableViewState": {
+        "autoTableHeight": true,
+        "columnFooterHeight": 0,
+        "columnHeaderHeight": 29,
+        "columnOrderOverride": {
+          "1": "valid_from",
+          "2": "valid_to"
+        },
+        "columnVisibility": {
+          "_c_bucket": true
+        },
+        "columnWidths": {
+          "instance_key": 185,
+          "metric_category": 180,
+          "metric_type": 193
+        },
+        "containerWidth": 1313,
+        "contextMenuXCoord": null,
+        "contextMenuYCoord": null,
+        "defaultColumnWidth": 70,
+        "disableFixedLeftColumns": false,
+        "eventLinkColumnId": null,
+        "fetchPageSize": 100,
+        "hasCalculatedColumnWidths": false,
+        "hasDoneAutoLayout": false,
+        "maxColumnWidth": 400,
+        "maxMeasuredColumnWidth": {},
+        "minColumnWidth": 60,
+        "minRowHeight": 30,
+        "preserveCellAndRowSelection": true,
+        "rowHeaderWidth": 20,
+        "rowHeights": {},
+        "rowSizeIncrement": 1,
+        "scrollToColumn": null,
+        "scrollToRow": 0,
+        "selection": {
+          "cells": {},
+          "columnSelectSequence": [],
+          "columns": {},
+          "highlightState": {},
+          "rows": {},
+          "selectionType": "table"
+        },
+        "shouldAutoLayout": false,
+        "summaryColumnOrderOverride": {},
+        "summaryColumnVisibility": {},
+        "tableHeight": 0,
+        "tableView": "TABULAR"
+      },
+      "index": 7,
+      "inputList": [
+        {
+          "datasetId": "41109753",
+          "inputName": "resource",
+          "inputRole": "Data",
+          "isUserInput": false
+        },
+        {
+          "inputName": "computeID",
+          "inputRole": "Data",
+          "isUserInput": true,
+          "parameterId": "computeID"
+        }
+      ],
+      "label": "Disk Metrics",
+      "managers": [
+        {
+          "id": "9whbch9b",
+          "isDisabled": false,
+          "parentStageId": "stage-pxi6rdt9",
+          "type": "Vis",
+          "vis": {
+            "config": {
+              "color": "Default",
+              "hideGridLines": true,
+              "legend": {
+                "placement": "right",
+                "type": "list",
+                "visible": true
+              },
+              "type": "xy",
+              "xConfig": {
+                "visible": true
+              },
+              "yConfig": {
+                "hideUnits": true,
+                "unit": "10^2.%",
+                "visible": true
+              }
+            },
+            "source": {
+              "table": {
+                "groupFields": [
+                  [
+                    "instance_key"
+                  ]
+                ],
+                "statsBy": {},
+                "timechart": {},
+                "transformType": "none",
+                "type": "xy",
+                "x": "valid_from",
+                "y": "value"
+              },
+              "type": "table"
+            },
+            "type": "timeseries"
+          }
+        },
+        {
+          "id": "uf9bdall",
+          "isDisabled": true,
+          "isResourceCountEnabled": false,
+          "parentStageId": "stage-pxi6rdt9",
+          "type": "Timescrubber"
+        },
+        {
+          "columnId": "metric_category",
+          "id": "4fnyb254",
+          "isDisabled": true,
+          "parentStageId": "stage-pxi6rdt9",
+          "type": "FacetFilter"
+        }
+      ],
+      "queryPresentation": {
+        "initialRollupFilter": {
+          "mode": "Last"
+        },
+        "linkify": false,
+        "loadEverything": true,
+        "resultKinds": [
+          "ResultKindSchema"
+        ],
+        "rollup": null
+      },
+      "selectedStepId": null,
+      "serializable": true,
+      "steps": [
+        {
+          "datasetQuery": null,
+          "datasetQueryId": {
+            "ignoreCompress": false,
+            "queryId": null,
+            "resultKinds": [
+              "ResultKindSchema",
+              "ResultKindData",
+              "ResultKindStats"
+            ],
+            "tableTypes": [
+              "TABULAR",
+              "SUMMARY"
+            ]
+          },
+          "id": "step-z0pqfavw",
+          "index": 0,
+          "isPinned": false,
+          "name": "Input Step",
+          "opal": [],
+          "queryPresentation": {},
+          "renderType": null,
+          "summary": "resource (41109753)",
+          "type": "InputStep"
+        },
+        {
+          "columnStatsTable": {
+            "columnFunctions": {},
+            "datasetQueryId": {
+              "ignoreCompress": false,
+              "queryId": "q-daf2yuxt",
+              "resultKinds": [
+                "ResultKindSchema",
+                "ResultKindData"
+              ],
+              "tableTypes": [
+                "TABULAR"
+              ]
+            }
+          },
+          "datasetQuery": null,
+          "datasetQueryId": {
+            "ignoreCompress": false,
+            "queryId": null,
+            "resultKinds": [
+              "ResultKindSchema",
+              "ResultKindData",
+              "ResultKindStats"
+            ],
+            "tableTypes": [
+              "TABULAR",
+              "SUMMARY"
+            ]
+          },
+          "id": "step-70rbho0s",
+          "index": 1,
+          "isPinned": false,
+          "name": "filter (custom)",
+          "opal": [
+            "filter metric_category = \"disk\"",
+            "",
+            "filter metric = $diskMetric",
+            "",
+            "align 2m, frame(back: 1m), \"value\":avg(m($diskMetric))",
+            "exists instance_key = @computeID.instance_key",
+            "aggregate \"value\":sum(@.\"value\"), group_by(instance_key)",
+            "topk 100"
+          ],
+          "queryPresentation": {},
+          "renderType": null,
+          "type": "unknown"
+        }
+      ],
+      "type": "table",
+      "viewModel": {
+        "consoleValue": null,
+        "railCollapseState": {
+          "inputsOutputs": false,
+          "minimap": false,
+          "note": true,
+          "script": true
+        },
+        "scriptTab": "SCRIPT",
+        "showTimeRuler": true,
+        "stageTab": "vis"
+      }
+    },
+    "pipeline": "filter metric_category = \"disk\"\n\nfilter metric = $diskMetric\n\nalign 2m, frame(back: 1m), \"value\":avg(m($diskMetric))\nexists instance_key = @computeID.instance_key\naggregate \"value\":sum(@.\"value\"), group_by(instance_key)\ntopk 100"
   }
 ]
