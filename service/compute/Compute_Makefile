@@ -24,6 +24,7 @@ RESOURCE_DATASET_NAME=compute
 METRIC_DATASET_NAME=compute_metrics
 LOGS_DATASET_NAME=compute_logs
 DATASET_ID_OUTPUT_NAME=compute_datasets_id
+NAME_CLEANOUT=gcp-396/
 ############################################
 
 # The directory where you are building google module - this should be a sample deployment of your service - https://github.com/observeinc/content-eng-gcp-example - main branch
@@ -60,13 +61,15 @@ LOGS_DATASET_ID:=UNSET
 METRICS_DATASET_ID:=UNSET
 
 
-all: datasets ids finish
+all: datasets ids name_clean finish
 
 no_refresh: ids finish
 
 datasets: get_template_dashboard parameters stages layout parameter_values
 
-ids: replace_resource_id replace_log_id replace_metric_id
+ids: replace_resource_id replace_log_id replace_metric_id 
+
+name_clean: replace_name
 
 finish: resource_def build_dashboard
 
@@ -174,6 +177,9 @@ replace_resource_id_manual:
 
 replace_metric_id_manual:
 	sed -i '' "s:41109184:"\$${METRICS_DATASET}":g" /$(DASHBOARD_DIR)/*; 
+
+replace_name:
+	sed -i '' "s:$(NAME_CLEANOUT):"":g" /$(DASHBOARD_DIR)/*; 
 
 	
 
