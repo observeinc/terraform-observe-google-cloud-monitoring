@@ -22,18 +22,36 @@
           {
             "card": {
               "cardType": "stage",
-              "id": "card-brsnfhxe",
-              "stageId": "stage-fnyfu38e"
+              "id": "card-1bqrigg8",
+              "stageId": "stage-xjztexw9"
             },
             "layout": {
               "h": 12,
-              "i": "card-brsnfhxe",
+              "i": "card-1bqrigg8",
               "isDraggable": true,
               "isResizable": true,
               "moved": false,
               "static": false,
               "w": 3,
-              "x": 3,
+              "x": 9,
+              "y": 0
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-nc07vktx",
+              "stageId": "stage-i9te03n4"
+            },
+            "layout": {
+              "h": 12,
+              "i": "card-nc07vktx",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 3,
+              "x": 0,
               "y": 0
             }
           },
@@ -51,19 +69,19 @@
               "moved": false,
               "static": false,
               "w": 3,
-              "x": 0,
+              "x": 3,
               "y": 0
             }
           },
           {
             "card": {
               "cardType": "stage",
-              "id": "card-1bqrigg8",
-              "stageId": "stage-xjztexw9"
+              "id": "card-brsnfhxe",
+              "stageId": "stage-fnyfu38e"
             },
             "layout": {
               "h": 12,
-              "i": "card-1bqrigg8",
+              "i": "card-brsnfhxe",
               "isDraggable": true,
               "isResizable": true,
               "moved": false,
@@ -76,18 +94,18 @@
           {
             "card": {
               "cardType": "stage",
-              "id": "card-r1a2n89m",
-              "stageId": "stage-auesy2zu"
+              "id": "card-7k215juk",
+              "stageId": "stage-hk634e8f"
             },
             "layout": {
               "h": 12,
-              "i": "card-r1a2n89m",
+              "i": "card-7k215juk",
               "isDraggable": true,
               "isResizable": true,
               "moved": false,
               "static": false,
               "w": 3,
-              "x": 3,
+              "x": 0,
               "y": 12
             }
           },
@@ -105,12 +123,58 @@
               "moved": false,
               "static": false,
               "w": 3,
-              "x": 0,
+              "x": 3,
+              "y": 12
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-r1a2n89m",
+              "stageId": "stage-auesy2zu"
+            },
+            "layout": {
+              "h": 12,
+              "i": "card-r1a2n89m",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 3,
+              "x": 6,
               "y": 12
             }
           }
         ],
         "lastModified": 1659628508007
+      },
+      {
+        "card": {
+          "cardType": "section",
+          "closed": true,
+          "id": "card-lthicc23",
+          "title": "Instance Details"
+        },
+        "items": [
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-zde1vi58",
+              "stageId": "stage-vfqqg8en"
+            },
+            "layout": {
+              "h": 20,
+              "i": "card-zde1vi58",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 12,
+              "x": 0,
+              "y": 0
+            }
+          }
+        ]
       },
       {
         "card": {
@@ -191,6 +255,42 @@
               "x": 0,
               "y": 20
             }
+          },
+          {
+            "card": {
+              "cardType": "parameter",
+              "id": "card-rzk7g6q1",
+              "parameterId": "networkMetric"
+            },
+            "layout": {
+              "h": 4,
+              "i": "card-rzk7g6q1",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 4,
+              "x": 0,
+              "y": 34
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-5jf9uojg",
+              "stageId": "stage-f3xq77za"
+            },
+            "layout": {
+              "h": 15,
+              "i": "card-5jf9uojg",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 12,
+              "x": 0,
+              "y": 38
+            }
           }
         ]
       },
@@ -201,8 +301,47 @@
           "id": "card-gif56xru",
           "title": "Notes"
         },
-        "items": [],
-        "lastModified": 1659734807586
+        "items": [
+          {
+            "card": {
+              "cardType": "text",
+              "id": "card-mnikaigs",
+              "text": "### Notes\n\nTo use this application you must implement the terraform-google-collection and the terraform google module with either the enable_service_all or the enable_service_compute set to true.\n\n### Freshness\n\nFreshness determines how often your data will be refreshed.\n\nDefaults:\n\n - compute: 5m\n - metrics:  1m \n - logging:  1m\n\n### Metric Types\n\nA gauge metric, in which the value measures a specific instant in time. For example, metrics measuring CPU utilization are gauge metrics; each point records the CPU utilization at the time of measurement. Another example of a gauge metric is the current temperature.\n\nA delta metric, in which the value measures the change since it was last recorded. For example, metrics measuring request counts are delta metrics; each value records how many requests were received since the last data point was recorded.\n\nA cumulative metric, in which the value constantly increases over time. For example, a metric for sent bytes might be cumulative; each value records the total number of bytes sent by a service at that time.",
+              "title": "Untitled Text"
+            },
+            "layout": {
+              "h": 34,
+              "i": "card-mnikaigs",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 6,
+              "x": 6,
+              "y": 0
+            }
+          },
+          {
+            "card": {
+              "cardType": "text",
+              "id": "card-gphac4sh",
+              "text": "### Google Compute\n\n[https://cloud.google.com/compute/docs](https://cloud.google.com/compute/docs)\n\nCompute Engine is a computing and hosting service that lets you create and run virtual machines on Google infrastructure. Compute Engine offers scale, performance, and value that lets you easily launch large compute clusters on Google's infrastructure. There are no upfront investments, and you can run thousands of virtual CPUs on a system that offers quick, consistent performance.\n\n### What is a Compute instance?\n\nAn instance is a virtual machine (VM) hosted on Google's infrastructure. You can create an instance or create a group of managed instances by using the Google Cloud console, the Google Cloud CLI, or the Compute Engine API.\n\nCompute Engine instances can run the public images for Linux and Windows Server that Google provides as well as private custom images that you can create or import from your existing systems. You can also deploy Docker containers, which are automatically launched on instances running the Container-Optimized OS public image.",
+              "title": "Untitled Text"
+            },
+            "layout": {
+              "h": 34,
+              "i": "card-gphac4sh",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 6,
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "lastModified": 1660002431695
       }
     ]
   },
@@ -262,18 +401,37 @@
           "type": "STRING"
         },
         "viewType": "single-select"
+      },
+      {
+        "defaultValue": {
+          "string": "instance_network_sent_bytes_count"
+        },
+        "id": "networkMetric",
+        "name": "Network Metric",
+        "source": "CustomData",
+        "sourceCustomData": {
+          "Bytes Received": "instance_network_sent_bytes_count",
+          "Bytes Sent": "instance_network_sent_bytes_count",
+          "Packets Received": "instance_network_sent_bytes_count",
+          "Packets Sent": "instance_network_sent_bytes_count"
+        },
+        "valueKind": {
+          "type": "STRING"
+        },
+        "viewType": "single-select"
       }
     ],
-    "selectedStageId": "stage-pxi6rdt9",
+    "selectedStageId": "stage-6m12po2t",
     "timeRange": {
-      "display": "Today 09:18 - 13:18",
+      "display": "Past 15 minutes",
       "endTime": null,
-      "millisFromCurrentTime": 14400000,
-      "originalDisplay": "Today 09:18 - 13:18",
+      "millisFromCurrentTime": 900000,
+      "originalDisplay": "Past 15 minutes",
       "startTime": null,
       "timeRangeInfo": {
         "key": "PRESETS",
-        "name": "Presets"
+        "name": "Presets",
+        "presetType": "PAST_15_MINUTES"
       },
       "timeZone": null
     }

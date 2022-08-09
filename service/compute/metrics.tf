@@ -3,7 +3,7 @@ resource "observe_dataset" "compute_metrics" {
 
   workspace = var.workspace.oid
   name      = format(var.name_format, "Metrics")
-  freshness = var.freshness_default
+  freshness = lookup(local.freshness, "metrics", var.freshness_default)
 
   inputs = {
     "metrics" = var.google.metrics.oid

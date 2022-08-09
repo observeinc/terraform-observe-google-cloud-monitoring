@@ -15,10 +15,16 @@ variable "max_expiry" {
   default     = "4h"
 }
 
+variable "freshness_overrides" {
+  type        = map(string)
+  description = "Freshness overrides by dataset. If absent, fall back to freshness_default"
+  default     = {}
+}
+
 variable "freshness_default" {
   type        = string
   description = "Default dataset freshness"
-  default     = "1m"
+  default     = "2m"
 }
 
 variable "feature_flags" {

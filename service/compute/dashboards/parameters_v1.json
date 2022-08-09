@@ -30,5 +30,15 @@
     "valueKind": {
       "type": "STRING"
     }
+  },
+  {
+    "id": "networkMetric",
+    "name": "Network Metric",
+    "defaultValue": {
+      "string": "instance_network_sent_bytes_count"
+    },
+    "valueKind": {
+      "type": "STRING"
+    }
   }
 ]
