@@ -30,6 +30,10 @@ output "metrics" {
   value = observe_dataset.metrics
 }
 
+output "distribution_metrics" {
+  value = observe_dataset.process_distribution_metrics
+}
+
 output "cloud_functions" {
   value = local.enable_service_cloudfunctions ? module.cloudfunctions[0] : null
 }
@@ -37,3 +41,8 @@ output "cloud_functions" {
 output "cloud_sql" {
   value = local.enable_service_cloudsql ? module.cloudsql[0] : null
 }
+
+output "projects" {
+  value = observe_dataset.projects
+}
+

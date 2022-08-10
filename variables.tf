@@ -102,3 +102,11 @@ variable "enable_service_storage" {
     Enable Cloud Storage service.
   EOF
 }
+
+variable "enable_service_load_balancing" {
+  type        = bool
+  default     = null
+  description = <<-EOF
+    Enable Cloud Load Balancing service.
+  EOF
+}
