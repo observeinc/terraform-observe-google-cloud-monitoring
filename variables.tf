@@ -4,9 +4,12 @@ variable "workspace" {
 }
 
 variable "datastream" {
-  type        = object({ dataset = string })
+  type = object({
+    oid     = string
+    dataset = string
+  })
   description = <<-EOF
-    Datastream to derive OTEL resources from.
+    Datastream to derive resources from.
   EOF
 }
 
@@ -97,5 +100,13 @@ variable "enable_service_storage" {
   default     = null
   description = <<-EOF
     Enable Cloud Storage service.
+  EOF
+}
+
+variable "enable_service_load_balancing" {
+  type        = bool
+  default     = null
+  description = <<-EOF
+    Enable Cloud Load Balancing service.
   EOF
 }

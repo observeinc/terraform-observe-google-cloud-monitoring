@@ -1,3 +1,9 @@
+# The following variables should be in sync:
+# - enable_service_* variable definitions in variables.tf
+# - enable_service_* local variable definitions in enable.tf
+# - enable_service_* local variable usages in enable.tf
+# - enable_service_* variable definitions in apps/variables.tf
+# - enable_service_* variable usages in apps/main.tf
 locals {
   enable_service_cloudfunctions = (
     var.enable_service_cloudfunctions == true ||
@@ -25,6 +31,12 @@ locals {
     lookup(var.services, "storage", false)
   )
   name_format_storage = lookup(var.service_name_formats, "storage", "Storage %s")
+  enable_service_load_balancing = (
+    var.enable_service_storage == true ||
+    (var.enable_service_all == true && var.enable_service_load_balancing != false) ||
+    lookup(var.services, "storage", false)
+  )
+  name_format_load_balancing = lookup(var.service_name_formats, "load_balancing", "Load Balancing %s")
 }
 
 module "cloudfunctions" {
@@ -72,6 +84,20 @@ module "storage" {
   source              = "./service/storage"
   workspace           = var.workspace
   name_format         = format(var.name_format, local.name_format_storage)
+  max_expiry          = var.max_expiry
+  freshness_default   = var.freshness_default
+  freshness_overrides = var.freshness_overrides
+  feature_flags       = var.feature_flags
+
+  google = local.base_module
+}
+
+module "load_balancing" {
+  count = local.enable_service_load_balancing ? 1 : 0
+
+  source              = "./service/loadbalancing"
+  workspace           = var.workspace
+  name_format         = format(var.name_format, local.name_format_load_balancing)
   max_expiry          = var.max_expiry
   freshness_default   = var.freshness_default
   freshness_overrides = var.freshness_overrides
