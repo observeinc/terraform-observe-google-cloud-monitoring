@@ -49,19 +49,6 @@ variable "metric_interface_fields" {
   description = "Used by metric interface to pick fields to map"
 }
 
-# variable "metric_list" {
-#   type = set(string)
-#   default = [
-#     "cpu_utilization",
-#     "memory_total_usage",
-#     "network_connections",
-#     "disk_read_ops_count",
-#     "disk_write_ops_count",
-#     "disk_bytes_used",
-#   ]
-#   description = "Used by metric interface to pick metrics to include"
-# }
-
 variable "launch_stage" {
   type = set(string)
   default = [
@@ -76,12 +63,12 @@ variable "metric_thresholds" {
   default = {
     CPU = {
       compare_function = "greater",
-      value            = 0.04,
+      value            = 0.8,
       disabled         = false
     }
     Disk_Quota = {
       compare_function = "greater",
-      value            = 0.1,
+      value            = 0.8,
       disabled         = false
     }
 

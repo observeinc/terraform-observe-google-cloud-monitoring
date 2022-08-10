@@ -90,31 +90,6 @@ resource "observe_dataset" "cloudsql_metrics" {
 }
   EOF
 }
-
-# stage {
-#   alias    = "combo_metrics"
-#   input    = "metrics_base"
-#   pipeline = <<-EOF
-#       filter in(metric, "database_postgresql_num_backends","database_network_connections")
-#       make_col combo_metric: "all_database_network_connections"
-
-#       interface "metric", metric:combo_metric, value:value
-#       set_metric options(
-#         aggregate: "sum",
-#         description: "Combination of network connection metrics.\n",
-#         interval: 60s,
-#         label: "Network Connections All",
-#         rollup: "avg",
-#         type: "gauge"
-#         ), "all_database_network_connections"
-#     EOF
-# }
-
-# stage {
-#   pipeline = <<-EOF
-#       union @all_metrics
-#     EOF
-# }
 }
 
 resource "observe_dataset" "cloudsql_metrics_combo" {
@@ -226,19 +201,10 @@ resource "observe_dataset" "cloudsql_metrics_wide" {
         metric,
         value,
         metric_category,
-        //label,
-        //instance_state_label,
         database_platform,
-        //metric_labels,
-        //value_type_text,
         database_id,
         project_id,
         region
-        //metric_type,
-        //metric_kind,
-        //metric_kind_text,
-        //value_type
-
     EOF
   }
 
