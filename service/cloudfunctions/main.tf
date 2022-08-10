@@ -218,7 +218,7 @@ locals {
 
 resource "observe_dashboard" "host" {
   count            = local.enable_metrics ? 1 : 0
-  name             = "GCP Functions Monitoring"
+  name             = format(var.name_format, "Monitoring")
   workspace        = var.workspace.oid
   stages           = local.functions_dashboard.stages
   layout           = local.functions_dashboard.layout

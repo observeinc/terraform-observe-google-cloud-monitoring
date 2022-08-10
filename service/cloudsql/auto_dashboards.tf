@@ -1,7 +1,7 @@
 resource "observe_dashboard" "monitoring" {
   count     = local.enable_metrics ? 1 : 0
   workspace = var.workspace.oid
-  name      = "Cloud SQL Instance Monitoring"
+  name      = format(var.name_format, "Monitoring")
   stages = templatefile("${path.module}/dashboards/stages_v1.json", {
     CLOUDSQL_DATASET              = observe_dataset.cloudsql.id
     CLOUDSQL_METRICS_DATASET      = local.enable_metrics == true ? observe_dataset.cloudsql_metrics[0].id : null

@@ -1,0 +1,44 @@
+[
+  {
+    "id": "computeID",
+    "name": "Compute Instance",
+    "defaultValue": {
+      "datasetref": {
+        "datasetId": "${RESOURCE_DATASET}"
+      }
+    },
+    "valueKind": {
+      "type": "DATASETREF"
+    }
+  },
+  {
+    "id": "cpuMetric",
+    "name": "CPU Metric",
+    "defaultValue": {
+      "string": "instance_cpu_utilization"
+    },
+    "valueKind": {
+      "type": "STRING"
+    }
+  },
+  {
+    "id": "diskMetric",
+    "name": "Disk Metric",
+    "defaultValue": {
+      "string": "instance_disk_write_ops_count"
+    },
+    "valueKind": {
+      "type": "STRING"
+    }
+  },
+  {
+    "id": "networkMetric",
+    "name": "Network Metric",
+    "defaultValue": {
+      "string": "instance_network_sent_bytes_count"
+    },
+    "valueKind": {
+      "type": "STRING"
+    }
+  }
+]

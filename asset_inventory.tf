@@ -80,12 +80,17 @@ resource "observe_dataset" "resource_asset_inventory_records" {
     pipeline = <<-EOF
       filter not is_null(resource)
 
-      make_col ttl: case(deleted, 1ns, true, ${var.max_expiry})
+      make_col 
+        ttl: case(deleted, 1ns, true, ${var.max_expiry}),
+        asset_namespace: split_part(asset_type,'/', 1),
+        asset_sub_type: split_part(asset_type,'/', 2)
 
       pick_col 
         time,
         deleted,
         asset_type,
+        asset_namespace,
+        asset_sub_type,
         name,
         data:object(resource.data),
         discovery_document_uri:string(resource.discovery_document_uri),

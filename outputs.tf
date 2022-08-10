@@ -42,7 +42,10 @@ output "cloud_sql" {
   value = local.enable_service_cloudsql ? module.cloudsql[0] : null
 }
 
+output "compute" {
+  value = local.enable_service_compute ? module.compute[0] : null
+}
+
 output "projects" {
   value = observe_dataset.projects
 }
-

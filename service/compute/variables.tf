@@ -15,10 +15,16 @@ variable "max_expiry" {
   default     = "4h"
 }
 
+variable "freshness_overrides" {
+  type        = map(string)
+  description = "Freshness overrides by dataset. If absent, fall back to freshness_default"
+  default     = {}
+}
+
 variable "freshness_default" {
   type        = string
   description = "Default dataset freshness"
-  default     = "1m"
+  default     = "2m"
 }
 
 variable "feature_flags" {
@@ -45,7 +51,24 @@ variable "metric_launch_stages" {
 
 variable "metric_interface_fields" {
   type        = set(string)
-  default     = ["type", "description", "rollup", "aggregate", "interval"]
+  default     = ["type", "description", "rollup", "aggregate", "interval", "label", "unit"]
   description = "Used by metric interface to pick fields to map"
 }
 
+variable "metric_thresholds" {
+  description = "Variable for configuring thresholds on metrics"
+  type        = map(any)
+  default = {
+    CPU = {
+      compare_function = "greater",
+      value            = 0.5,
+      disabled         = false
+    }
+    Disk_Quota = {
+      compare_function = "greater",
+      value            = 0.1,
+      disabled         = false
+    }
+
+  }
+}

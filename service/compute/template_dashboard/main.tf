@@ -10,7 +10,7 @@ data "observe_workspace" "ws" {
 
 resource "observe_dashboard" "inbetween" {
   workspace        = data.observe_workspace.ws.oid
-  name             = "Cloud SQL Instance Monitoring BRIDGE"
+  name             = "Compute Instance Monitoring BRIDGE"
   stages           = data.observe_dashboard.db.stages
   layout           = data.observe_dashboard.db.layout
   parameters       = data.observe_dashboard.db.parameters

@@ -800,7 +800,7 @@
         "metadata": {
           "launchStage": "GA",
           "samplePeriod": "60s",
-          "ingestDelay": "120s"
+          "ingestDelay": "240s"
         },
         "launchStage": "GA",
         "monitoredResourceTypes": [
@@ -832,7 +832,7 @@
         "metadata": {
           "launchStage": "GA",
           "samplePeriod": "60s",
-          "ingestDelay": "120s"
+          "ingestDelay": "240s"
         },
         "launchStage": "GA",
         "monitoredResourceTypes": [
@@ -864,7 +864,7 @@
         "metadata": {
           "launchStage": "GA",
           "samplePeriod": "60s",
-          "ingestDelay": "120s"
+          "ingestDelay": "240s"
         },
         "launchStage": "GA",
         "monitoredResourceTypes": [
@@ -896,7 +896,7 @@
         "metadata": {
           "launchStage": "GA",
           "samplePeriod": "60s",
-          "ingestDelay": "120s"
+          "ingestDelay": "240s"
         },
         "launchStage": "GA",
         "monitoredResourceTypes": [
@@ -1006,11 +1006,11 @@
         "displayName": "Throttled read bytes",
         "type": "compute.googleapis.com/instance/disk/throttled_read_bytes_count",
         "metadata": {
-          "launchStage": "GA",
+          "launchStage": "DEPRECATED",
           "samplePeriod": "60s",
           "ingestDelay": "240s"
         },
-        "launchStage": "GA",
+        "launchStage": "DEPRECATED",
         "monitoredResourceTypes": [
           "gce_instance"
         ]
@@ -1046,11 +1046,11 @@
         "displayName": "Throttled read operations",
         "type": "compute.googleapis.com/instance/disk/throttled_read_ops_count",
         "metadata": {
-          "launchStage": "GA",
+          "launchStage": "DEPRECATED",
           "samplePeriod": "60s",
           "ingestDelay": "240s"
         },
-        "launchStage": "GA",
+        "launchStage": "DEPRECATED",
         "monitoredResourceTypes": [
           "gce_instance"
         ]
@@ -1086,11 +1086,11 @@
         "displayName": "Throttled write bytes",
         "type": "compute.googleapis.com/instance/disk/throttled_write_bytes_count",
         "metadata": {
-          "launchStage": "GA",
+          "launchStage": "DEPRECATED",
           "samplePeriod": "60s",
           "ingestDelay": "240s"
         },
-        "launchStage": "GA",
+        "launchStage": "DEPRECATED",
         "monitoredResourceTypes": [
           "gce_instance"
         ]
@@ -1126,11 +1126,11 @@
         "displayName": "Throttled write operations",
         "type": "compute.googleapis.com/instance/disk/throttled_write_ops_count",
         "metadata": {
-          "launchStage": "GA",
+          "launchStage": "DEPRECATED",
           "samplePeriod": "60s",
           "ingestDelay": "240s"
         },
-        "launchStage": "GA",
+        "launchStage": "DEPRECATED",
         "monitoredResourceTypes": [
           "gce_instance"
         ]
