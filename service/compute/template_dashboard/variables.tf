@@ -9,20 +9,13 @@ variable "observe_customer_id" {
   description = "the observe customer id"
 }
 
-# appended to resource names so you can find your stuff
-
-# variable "resource_prefix" {
-#   type        = string
-#   description = "Common prefix for resource names"
-# }
-
-# variable "observe_data_stream_name" {
-#   type        = string
-#   default     = "stand-alone"
-#   description = "sample data stream name to create for testing"
-# }
-
 variable "user_email" {
   type        = string
   description = "email used to login to observe"
+}
+
+variable "template_dashboard_id" {
+  type        = string
+  default     = "41117519"
+  description = "dashboard id used to create tf definition"
 }

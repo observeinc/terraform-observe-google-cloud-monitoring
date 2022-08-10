@@ -54,3 +54,21 @@ variable "metric_interface_fields" {
   default     = ["type", "description", "rollup", "aggregate", "interval", "label", "unit"]
   description = "Used by metric interface to pick fields to map"
 }
+
+variable "metric_thresholds" {
+  description = "Variable for configuring thresholds on metrics"
+  type        = map(any)
+  default = {
+    CPU = {
+      compare_function = "greater",
+      value            = 0.5,
+      disabled         = false
+    }
+    Disk_Quota = {
+      compare_function = "greater",
+      value            = 0.1,
+      disabled         = false
+    }
+
+  }
+}

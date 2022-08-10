@@ -1,5 +1,7 @@
 # observe_monitor.cloud-sql-metrics-threshold-database-id-check:
 resource "observe_monitor" "high_cpu" {
+  count = local.enable_both ? 1 : 0
+
   disabled = var.metric_thresholds["CPU"].disabled
 
   inputs = {
@@ -40,6 +42,7 @@ resource "observe_monitor" "high_cpu" {
 
 # observe_monitor.cloud-sql-disk-quota-used:
 resource "observe_monitor" "disk_quota" {
+  count    = local.enable_both ? 1 : 0
   disabled = var.metric_thresholds["Disk_Quota"].disabled
   inputs = {
     "Cloud SQL Metrics Wide" = observe_dataset.cloudsql_metrics_wide[0].oid

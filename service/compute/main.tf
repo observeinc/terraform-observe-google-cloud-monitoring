@@ -4,6 +4,8 @@ locals {
   # tflint-ignore: terraform_unused_declarations
   enable_monitors = lookup(var.feature_flags, "monitors", true)
 
+  enable_both = lookup(var.feature_flags, "monitors", true) && lookup(var.feature_flags, "metrics", true)
+
   freshness = merge({
     cloudsql = "5m",
     metrics  = "1m",

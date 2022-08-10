@@ -9,6 +9,8 @@ locals {
   # does it fail if we set to false - check this
   # tflint-ignore: terraform_unused_declarations
   enable_monitors = lookup(var.feature_flags, "monitors", true)
+
+  enable_both = lookup(var.feature_flags, "monitors", true) && lookup(var.feature_flags, "metrics", true)
 }
 
 resource "observe_dataset" "cloudsql" {

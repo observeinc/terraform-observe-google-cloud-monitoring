@@ -9,7 +9,7 @@ resource "observe_dataset" "compute_logs" {
 
   stage {
     pipeline = <<-EOF
-      filter resourceType = "gce_instance"
+      filter serviceName = "compute.googleapis.com"
 
       make_col
         instance_name: split_part(resourceName, '/', 6),

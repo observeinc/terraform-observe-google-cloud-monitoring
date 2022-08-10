@@ -22,18 +22,18 @@
           {
             "card": {
               "cardType": "stage",
-              "id": "card-1bqrigg8",
-              "stageId": "stage-xjztexw9"
+              "id": "card-7k215juk",
+              "stageId": "stage-hk634e8f"
             },
             "layout": {
-              "h": 12,
-              "i": "card-1bqrigg8",
+              "h": 7,
+              "i": "card-7k215juk",
               "isDraggable": true,
               "isResizable": true,
               "moved": false,
               "static": false,
-              "w": 3,
-              "x": 9,
+              "w": 6,
+              "x": 0,
               "y": 0
             }
           },
@@ -44,49 +44,13 @@
               "stageId": "stage-i9te03n4"
             },
             "layout": {
-              "h": 12,
+              "h": 7,
               "i": "card-nc07vktx",
               "isDraggable": true,
               "isResizable": true,
               "moved": false,
               "static": false,
-              "w": 3,
-              "x": 0,
-              "y": 0
-            }
-          },
-          {
-            "card": {
-              "cardType": "stage",
-              "id": "card-l8t5cymv",
-              "stageId": "stage-4zw73l75"
-            },
-            "layout": {
-              "h": 12,
-              "i": "card-l8t5cymv",
-              "isDraggable": true,
-              "isResizable": true,
-              "moved": false,
-              "static": false,
-              "w": 3,
-              "x": 3,
-              "y": 0
-            }
-          },
-          {
-            "card": {
-              "cardType": "stage",
-              "id": "card-brsnfhxe",
-              "stageId": "stage-fnyfu38e"
-            },
-            "layout": {
-              "h": 12,
-              "i": "card-brsnfhxe",
-              "isDraggable": true,
-              "isResizable": true,
-              "moved": false,
-              "static": false,
-              "w": 3,
+              "w": 6,
               "x": 6,
               "y": 0
             }
@@ -94,37 +58,37 @@
           {
             "card": {
               "cardType": "stage",
-              "id": "card-7k215juk",
-              "stageId": "stage-hk634e8f"
+              "id": "card-vb33hfgz",
+              "stageId": "stage-x2r9aqus"
             },
             "layout": {
-              "h": 12,
-              "i": "card-7k215juk",
+              "h": 10,
+              "i": "card-vb33hfgz",
               "isDraggable": true,
               "isResizable": true,
               "moved": false,
               "static": false,
-              "w": 3,
+              "w": 12,
               "x": 0,
-              "y": 12
+              "y": 7
             }
           },
           {
             "card": {
               "cardType": "stage",
-              "id": "card-v0w3t5cy",
-              "stageId": "stage-vq875azj"
+              "id": "card-1bqrigg8",
+              "stageId": "stage-xjztexw9"
             },
             "layout": {
-              "h": 12,
-              "i": "card-v0w3t5cy",
+              "h": 11,
+              "i": "card-1bqrigg8",
               "isDraggable": true,
               "isResizable": true,
               "moved": false,
               "static": false,
               "w": 3,
-              "x": 3,
-              "y": 12
+              "x": 6,
+              "y": 17
             }
           },
           {
@@ -134,19 +98,213 @@
               "stageId": "stage-auesy2zu"
             },
             "layout": {
-              "h": 12,
+              "h": 11,
               "i": "card-r1a2n89m",
               "isDraggable": true,
               "isResizable": true,
               "moved": false,
               "static": false,
               "w": 3,
-              "x": 6,
-              "y": 12
+              "x": 9,
+              "y": 17
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-l8t5cymv",
+              "stageId": "stage-4zw73l75"
+            },
+            "layout": {
+              "h": 11,
+              "i": "card-l8t5cymv",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 3,
+              "x": 0,
+              "y": 17
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-brsnfhxe",
+              "stageId": "stage-fnyfu38e"
+            },
+            "layout": {
+              "h": 11,
+              "i": "card-brsnfhxe",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 3,
+              "x": 3,
+              "y": 17
             }
           }
         ],
         "lastModified": 1659628508007
+      },
+      {
+        "card": {
+          "cardType": "section",
+          "closed": false,
+          "id": "card-wu4dge2k",
+          "title": "CPU"
+        },
+        "items": [
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-gkgyd2ye",
+              "stageId": "stage-pmsu1uzz"
+            },
+            "layout": {
+              "h": 12,
+              "i": "card-gkgyd2ye",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 12,
+              "x": 0,
+              "y": 0
+            }
+          }
+        ]
+      },
+      {
+        "card": {
+          "cardType": "section",
+          "closed": false,
+          "id": "card-2s9x370q",
+          "title": "Disk"
+        },
+        "items": [
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-0q2x67lm",
+              "stageId": "stage-j7trzfmb"
+            },
+            "lastModified": 1660097976859,
+            "layout": {
+              "h": 10,
+              "i": "card-0q2x67lm---1660097976859",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 12,
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-mjkh4ngo",
+              "stageId": "stage-kmd3xtah"
+            },
+            "lastModified": 1660097976859,
+            "layout": {
+              "h": 10,
+              "i": "card-mjkh4ngo---1660097976859",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 12,
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-bgz05bnl",
+              "stageId": "stage-7schdd0k"
+            },
+            "layout": {
+              "h": 10,
+              "i": "card-bgz05bnl",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 12,
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-winlpmqz",
+              "stageId": "stage-d4h31odg"
+            },
+            "layout": {
+              "h": 9,
+              "i": "card-winlpmqz",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 12,
+              "x": 0,
+              "y": 0
+            }
+          }
+        ]
+      },
+      {
+        "card": {
+          "cardType": "section",
+          "closed": false,
+          "id": "card-gu5msvjd",
+          "title": "Network"
+        },
+        "items": [
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-sm9216iy",
+              "stageId": "stage-3ks89dsy"
+            },
+            "layout": {
+              "h": 10,
+              "i": "card-sm9216iy",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 12,
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-x70d6v1z",
+              "stageId": "stage-q8h3nsju"
+            },
+            "layout": {
+              "h": 10,
+              "i": "card-x70d6v1z",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 12,
+              "x": 0,
+              "y": 0
+            }
+          }
+        ]
       },
       {
         "card": {
@@ -180,124 +338,6 @@
         "card": {
           "cardType": "section",
           "closed": false,
-          "id": "card-wu4dge2k",
-          "title": "Monitoring"
-        },
-        "items": [
-          {
-            "card": {
-              "cardType": "parameter",
-              "id": "card-ibn5icls",
-              "parameterId": "cpuMetric"
-            },
-            "layout": {
-              "h": 4,
-              "i": "card-ibn5icls",
-              "isDraggable": true,
-              "isResizable": true,
-              "moved": false,
-              "static": false,
-              "w": 4,
-              "x": 0,
-              "y": 0
-            }
-          },
-          {
-            "card": {
-              "cardType": "stage",
-              "id": "card-mbqdgb90",
-              "stageId": "stage-vvo0iuyr"
-            },
-            "layout": {
-              "h": 14,
-              "i": "card-mbqdgb90",
-              "isDraggable": true,
-              "isResizable": true,
-              "moved": false,
-              "static": false,
-              "w": 12,
-              "x": 0,
-              "y": 2
-            }
-          },
-          {
-            "card": {
-              "cardType": "parameter",
-              "id": "card-hcaos1xk",
-              "parameterId": "diskMetric"
-            },
-            "layout": {
-              "h": 4,
-              "i": "card-hcaos1xk",
-              "isDraggable": true,
-              "isResizable": true,
-              "moved": false,
-              "static": false,
-              "w": 4,
-              "x": 0,
-              "y": 16
-            }
-          },
-          {
-            "card": {
-              "cardType": "stage",
-              "id": "card-9cmsrv7d",
-              "stageId": "stage-pxi6rdt9"
-            },
-            "layout": {
-              "h": 14,
-              "i": "card-9cmsrv7d",
-              "isDraggable": true,
-              "isResizable": true,
-              "moved": false,
-              "static": false,
-              "w": 12,
-              "x": 0,
-              "y": 20
-            }
-          },
-          {
-            "card": {
-              "cardType": "parameter",
-              "id": "card-rzk7g6q1",
-              "parameterId": "networkMetric"
-            },
-            "layout": {
-              "h": 4,
-              "i": "card-rzk7g6q1",
-              "isDraggable": true,
-              "isResizable": true,
-              "moved": false,
-              "static": false,
-              "w": 4,
-              "x": 0,
-              "y": 34
-            }
-          },
-          {
-            "card": {
-              "cardType": "stage",
-              "id": "card-5jf9uojg",
-              "stageId": "stage-f3xq77za"
-            },
-            "layout": {
-              "h": 15,
-              "i": "card-5jf9uojg",
-              "isDraggable": true,
-              "isResizable": true,
-              "moved": false,
-              "static": false,
-              "w": 12,
-              "x": 0,
-              "y": 38
-            }
-          }
-        ]
-      },
-      {
-        "card": {
-          "cardType": "section",
-          "closed": false,
           "id": "card-gif56xru",
           "title": "Notes"
         },
@@ -305,27 +345,8 @@
           {
             "card": {
               "cardType": "text",
-              "id": "card-mnikaigs",
-              "text": "### Notes\n\nTo use this application you must implement the terraform-google-collection and the terraform google module with either the enable_service_all or the enable_service_compute set to true.\n\n### Freshness\n\nFreshness determines how often your data will be refreshed.\n\nDefaults:\n\n - compute: 5m\n - metrics:  1m \n - logging:  1m\n\n### Metric Types\n\nA gauge metric, in which the value measures a specific instant in time. For example, metrics measuring CPU utilization are gauge metrics; each point records the CPU utilization at the time of measurement. Another example of a gauge metric is the current temperature.\n\nA delta metric, in which the value measures the change since it was last recorded. For example, metrics measuring request counts are delta metrics; each value records how many requests were received since the last data point was recorded.\n\nA cumulative metric, in which the value constantly increases over time. For example, a metric for sent bytes might be cumulative; each value records the total number of bytes sent by a service at that time.",
-              "title": "Untitled Text"
-            },
-            "layout": {
-              "h": 34,
-              "i": "card-mnikaigs",
-              "isDraggable": true,
-              "isResizable": true,
-              "moved": false,
-              "static": false,
-              "w": 6,
-              "x": 6,
-              "y": 0
-            }
-          },
-          {
-            "card": {
-              "cardType": "text",
               "id": "card-gphac4sh",
-              "text": "### Google Compute\n\n[https://cloud.google.com/compute/docs](https://cloud.google.com/compute/docs)\n\nCompute Engine is a computing and hosting service that lets you create and run virtual machines on Google infrastructure. Compute Engine offers scale, performance, and value that lets you easily launch large compute clusters on Google's infrastructure. There are no upfront investments, and you can run thousands of virtual CPUs on a system that offers quick, consistent performance.\n\n### What is a Compute instance?\n\nAn instance is a virtual machine (VM) hosted on Google's infrastructure. You can create an instance or create a group of managed instances by using the Google Cloud console, the Google Cloud CLI, or the Compute Engine API.\n\nCompute Engine instances can run the public images for Linux and Windows Server that Google provides as well as private custom images that you can create or import from your existing systems. You can also deploy Docker containers, which are automatically launched on instances running the Container-Optimized OS public image.",
+              "text": "### Using this dashboard\n\nThis dashboard is designed to be used within the Compute resource dataset.\n\nChange the dropdown in top left corner of honeycomb to select attributes to group resources.\n\n### Google Compute\n\n[https://cloud.google.com/compute/docs](https://cloud.google.com/compute/docs)\n\nCompute Engine is a computing and hosting service that lets you create and run virtual machines on Google infrastructure. Compute Engine offers scale, performance, and value that lets you easily launch large compute clusters on Google's infrastructure. There are no upfront investments, and you can run thousands of virtual CPUs on a system that offers quick, consistent performance.\n\n### What is a Compute instance?\n\nAn instance is a virtual machine (VM) hosted on Google's infrastructure. You can create an instance or create a group of managed instances by using the Google Cloud console, the Google Cloud CLI, or the Compute Engine API.\n\nCompute Engine instances can run the public images for Linux and Windows Server that Google provides as well as private custom images that you can create or import from your existing systems. You can also deploy Docker containers, which are automatically launched on instances running the Container-Optimized OS public image.",
               "title": "Untitled Text"
             },
             "layout": {
@@ -339,9 +360,28 @@
               "x": 0,
               "y": 0
             }
+          },
+          {
+            "card": {
+              "cardType": "text",
+              "id": "card-mnikaigs",
+              "text": "### Notes\nMetrics are sampled every 60s and may take up to 240s to display.\n\nTo use this application you must implement the terraform-google-collection and the terraform google module with either the enable_service_all or the enable_service_compute set to true.\n\nIf you are looking to monitor the **operating systems or processes running on these GCP instances**, then you want to look into the [Host Monitoring](https://docs.observeinc.com/en/latest/content/integrations/linux/linux.html) module instead.\n\n### Metric Types\n\nA gauge metric, in which the value measures a specific instant in time. For example, metrics measuring CPU utilization are gauge metrics; each point records the CPU utilization at the time of measurement. Another example of a gauge metric is the current temperature.\n\nA delta metric, in which the value measures the change since it was last recorded. For example, metrics measuring request counts are delta metrics; each value records how many requests were received since the last data point was recorded.\n\nA cumulative metric, in which the value constantly increases over time. For example, a metric for sent bytes might be cumulative; each value records the total number of bytes sent by a service at that time.",
+              "title": "Untitled Text"
+            },
+            "layout": {
+              "h": 34,
+              "i": "card-mnikaigs",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 6,
+              "x": 6,
+              "y": 0
+            }
           }
         ],
-        "lastModified": 1660002431695
+        "lastModified": 1660168323769
       }
     ]
   },
@@ -421,17 +461,17 @@
         "viewType": "single-select"
       }
     ],
-    "selectedStageId": "stage-6m12po2t",
+    "selectedStageId": "stage-x2r9aqus",
     "timeRange": {
-      "display": "Past 15 minutes",
+      "display": "Past 4 hours",
       "endTime": null,
-      "millisFromCurrentTime": 900000,
-      "originalDisplay": "Past 15 minutes",
+      "millisFromCurrentTime": 14400000,
+      "originalDisplay": "Past 4 hours",
       "startTime": null,
       "timeRangeInfo": {
         "key": "PRESETS",
         "name": "Presets",
-        "presetType": "PAST_15_MINUTES"
+        "presetType": "PAST_4_HOURS"
       },
       "timeZone": null
     }
