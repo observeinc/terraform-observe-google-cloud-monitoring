@@ -21,6 +21,12 @@ variable "freshness_default" {
   default     = "1m"
 }
 
+variable "freshness_overrides" {
+  type        = map(string)
+  description = "Freshness overrides by dataset. If absent, fall back to freshness_default"
+  default     = {}
+}
+
 variable "feature_flags" {
   type        = map(bool)
   description = "Toggle features which are being rolled out or phased out."
@@ -32,7 +38,21 @@ variable "google" {
     resource_asset_inventory_records = object({ oid = string })
     logs                             = object({ oid = string })
     metrics                          = object({ oid = string })
+     projects                          = object({ oid = string })
   })
   description = "Google base module"
 }
 
+variable "metric_interface_fields" {
+  type        = set(string)
+  default     = ["type", "description", "rollup", "aggregate", "interval", "label", "unit"]
+  description = "Used by metric interface to pick fields to map"
+}
+
+variable "launch_stage" {
+  type = set(string)
+  default = [
+    "GA",
+  ]
+  description = "Used by metric interface to pick metrics to include"
+}

@@ -11,8 +11,8 @@ resource "observe_dataset" "bigquery_dataset" {
     input    = "events"
     pipeline = <<-EOF
         filter asset_type = "bigquery.googleapis.com/Dataset"
-        make_col datasetId:string(data.datasetReference.datasetId),
-            projectId:string(data.datasetReference.projectId),
+        make_col dataset_id:string(data.datasetReference.datasetId),
+            project_id:string(data.datasetReference.projectId),
             creationTime:from_milliseconds(int64(data.creationTime)),
             defaultTableExpirationMs:int64(data.defaultTableExpirationMs),
             id:string(data.id),
@@ -24,9 +24,9 @@ resource "observe_dataset" "bigquery_dataset" {
             lastModifiedTime,
             defaultTableExpirationMs,
             location,
-            primary_key(datasetId, projectId)
+            primary_key(dataset_id, project_id)
 
-        set_label datasetId 
+        set_label dataset_id 
     EOF
   }
 }
@@ -45,9 +45,9 @@ resource "observe_dataset" "bigquery_table" {
     pipeline = <<-EOF
         filter contains(asset_type, "bigquery")
         filter asset_type = "bigquery.googleapis.com/Table"
-        make_col datasetId:string(data.tableReference.datasetId),
-            projectId:string(data.tableReference.projectId),
-            tableId:string(data.tableReference.tableId),
+        make_col dataset_id:string(data.tableReference.datasetId),
+            project_id:string(data.tableReference.projectId),
+            table_id:string(data.tableReference.tableId),
             schema:data.schema,
             expirationTime:from_milliseconds(int64(data.expirationTime)),
             creationTime:from_milliseconds(int64(data.creationTime))
@@ -57,9 +57,9 @@ resource "observe_dataset" "bigquery_table" {
             expirationTime,
             schema,
             location,
-            primary_key(tableId, datasetId, projectId)
+            primary_key(table_id, dataset_id, project_id)
             
-        set_label tableId
+        set_label table_id
     EOF
   }
 }

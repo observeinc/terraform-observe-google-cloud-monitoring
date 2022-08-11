@@ -32,6 +32,8 @@ output "metrics" {
 
 output "distribution_metrics" {
   value = observe_dataset.process_distribution_metrics
+output "projects" {
+  value = observe_dataset.projects
 }
 
 output "cloud_functions" {
