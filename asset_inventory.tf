@@ -82,12 +82,18 @@ resource "observe_dataset" "resource_asset_inventory_records" {
 
       make_col 
         ttl: case(deleted, 1ns, true, ${var.max_expiry}),
+        parent:string(resource.parent),
         asset_namespace: split_part(asset_type,'/', 1),
         asset_sub_type: split_part(asset_type,'/', 2)
+        
+      extract_regex name, /projects\/(?P<project_id>[^\/+]+)/
+      extract_regex parent, /projects\/(?P<parent_project_id>[^\/+]+)/
 
       pick_col 
         time,
         deleted,
+        parent_project_id,
+        project_id: if_null(project_id,parent_project_id),
         asset_type,
         asset_namespace,
         asset_sub_type,
@@ -96,7 +102,7 @@ resource "observe_dataset" "resource_asset_inventory_records" {
         discovery_document_uri:string(resource.discovery_document_uri),
         discovery_name:string(resource.discovery_name),
         location:string(resource.location),
-        parent:string(resource.parent),
+        parent,
         version:string(resource.version),
         ttl
     EOF

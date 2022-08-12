@@ -35,7 +35,6 @@ resource "observe_dataset" "compute_metrics" {
   stage {
     pipeline = <<-EOF
       pick_col
-        start_time,
         end_time,
         instance_key,
         metric,

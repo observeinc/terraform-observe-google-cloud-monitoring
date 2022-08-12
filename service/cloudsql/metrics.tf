@@ -35,7 +35,7 @@ resource "observe_dataset" "cloudsql_metrics_base" {
     alias    = "pick_columns"
     pipeline = <<-EOF
       pick_col
-        start_time,
+        end_time,
         metric,
         value,
         metric_category,
@@ -299,7 +299,7 @@ resource "observe_link" "cloudsql_metrics" {
 #   stage {
 #     pipeline = <<-EOF
 #         pick_col
-#           start_time,
+#           end_time,
 #           end_time,
 #           project_id,
 #           region,
