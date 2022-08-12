@@ -170,7 +170,6 @@ resource "observe_dataset" "function_metrics" {
         region:string(resource_labels.region)
 
       pick_col
-        start_time,
         end_time,
         metric_type,
         metric_kind,

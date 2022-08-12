@@ -40,7 +40,6 @@ resource "observe_dataset" "load_balancing_metrics" {
           "region"))
             
       pick_col 
-        start_time,
         end_time,
         metric,
         metric_kind,

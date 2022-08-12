@@ -21,7 +21,6 @@ resource "observe_dataset" "storage_metrics" {
         metric: replace(split_part(metric_type, "googleapis.com/", 2), "/", "_")
 
       pick_col
-        start_time,
         end_time,
         metric,
         metric_kind,

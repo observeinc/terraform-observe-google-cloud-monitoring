@@ -508,7 +508,7 @@ locals {
     "instance_cpu_scheduler_wait_time" = {
       type             = "delta"
       description      = <<-EOF
-          Wait time is the time a vCPU is ready to run, but unexpectedly not scheduled to run. The wait time returned here is the accumulated value for all vCPUs. The time interval for which the value was measured is returned by Monitoring in whole seconds as start_time and end_time. This metric is only available for VMs that belong to the e2 family or to overcommitted VMs on sole-tenant nodes. Sampled every 60s and may take up to 240s to display.
+          Wait time is the time a vCPU is ready to run, but unexpectedly not scheduled to run. The wait time returned here is the accumulated value for all vCPUs. The time interval for which the value was measured is returned by Monitoring in whole seconds as end_time and end_time. This metric is only available for VMs that belong to the e2 family or to overcommitted VMs on sole-tenant nodes. Sampled every 60s and may take up to 240s to display.
       EOF
       launchStage      = "GA"
       rollup           = "avg"

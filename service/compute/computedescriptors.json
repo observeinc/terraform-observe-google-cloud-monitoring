@@ -714,7 +714,7 @@
         "metricKind": "DELTA",
         "valueType": "DOUBLE",
         "unit": "s{idle}",
-        "description": "Wait time is the time a vCPU is ready to run, but unexpectedly not scheduled to run. The wait time returned here is the accumulated value for all vCPUs. The time interval for which the value was measured is returned by Monitoring in whole seconds as start_time and end_time. This metric is only available for VMs that belong to the e2 family or to overcommitted VMs on sole-tenant nodes.",
+        "description": "Wait time is the time a vCPU is ready to run, but unexpectedly not scheduled to run. The wait time returned here is the accumulated value for all vCPUs. The time interval for which the value was measured is returned by Monitoring in whole seconds as end_time and end_time. This metric is only available for VMs that belong to the e2 family or to overcommitted VMs on sole-tenant nodes.",
         "displayName": "Scheduler Wait Time",
         "type": "compute.googleapis.com/instance/cpu/scheduler_wait_time",
         "metadata": {

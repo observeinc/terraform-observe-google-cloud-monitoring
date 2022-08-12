@@ -5,12 +5,9 @@ locals {
     logging  = "1m",
   }, var.freshness_overrides)
 
-  enable_metrics = lookup(var.feature_flags, "metrics", true)
-  # does it fail if we set to false - check this
-  # tflint-ignore: terraform_unused_declarations
+  enable_metrics  = lookup(var.feature_flags, "metrics", true)
   enable_monitors = lookup(var.feature_flags, "monitors", true)
-
-  enable_both = lookup(var.feature_flags, "monitors", true) && lookup(var.feature_flags, "metrics", true)
+  enable_both     = local.enable_monitors && local.enable_metrics
 }
 
 resource "observe_dataset" "cloudsql" {
