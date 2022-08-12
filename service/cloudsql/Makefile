@@ -17,6 +17,17 @@ SHELL=/bin/bash
 # Suffix for json files that will be created
 FILE_VERSION:=_v1
 
+############################################
+# These variables are set for new dashboard
+############################################
+RESOURCE_DATASET_NAME=cloudsql
+METRIC_DATASET_NAME=cloudsql_metrics
+LOGS_DATASET_NAME=sql_logs
+ERROR_LOGS_DATASET_NAME=combined_error_logs
+DATASET_ID_OUTPUT_NAME=cloudsql_datasets_id
+NAME_CLEANOUT=gcp-396/
+############################################
+
 # The directory where you are building google module - this should be a sample deployment of your service - https://github.com/observeinc/content-eng-gcp-example - main branch
 TERRAFORM_DIRECTORY:=/Users/arthur/content_eng/content-eng-gcp-example/example
 # The local directory with module code - your json and dashboard terraform will be placed here
@@ -52,11 +63,13 @@ CLOUDSQL_METRICS_DATASET_ID:=UNSET
 CLOUDSQL_ERRORLOGS_DATASET_ID:=UNSET
 CLOUDSQL_COMBOMETRICS_DATASET_ID:=UNSET
 
-all: datasets ids finish
+all: datasets ids name_clean finish
 
 datasets: get_template_dashboard parameters stages layout 
 
-ids: replace_cloudsql_id replace_cloudsqllog_id replace_cloudsqlmetric_id replace_cloudsqlmetriccombo_id replace_cloudsqlerrorlog_id
+ids: replace_resource_id replace_log_id replace_errorlog_id replace_metric_id replace_metriccombo_id 
+
+name_clean: replace_name
 
 finish: resource_def build_dashboard
 
@@ -102,31 +115,36 @@ define RESOURCE_DEF_VAR
 			workspace = var.workspace.oid
 			name      = format(var.name_format, "Monitoring")
 			stages           = templatefile("$(STAGES_OUTPUT_FILE_TF_PATH)", {
-				CLOUDSQL_DATASET = observe_dataset.cloudsql.id
-				CLOUDSQL_METRICS_DATASET = local.enable_metrics == true ? observe_dataset.cloudsql_metrics[0].id : null
-				CLOUDSQL_COMBOMETRICS_DATASET = local.enable_metrics == true ? observe_dataset.cloudsql_metrics_combo[0].id : null
-				CLOUDSQL_LOGS_DATASET = observe_dataset.sql_logs.id
-				CLOUDSQL_ERRORLOGS_DATASET = observe_dataset.combined_error_logs.id
+				RESOURCE_DATASET = observe_dataset.$(RESOURCE_DATASET_NAME).id
+				METRICS_DATASET = local.enable_metrics == true ? observe_dataset.$(METRIC_DATASET_NAME)[0].id : null
+				COMBOMETRICS_DATASET = local.enable_metrics == true ? observe_dataset.$(METRIC_DATASET_NAME)_combo[0].id : null
+				LOGS_DATASET = observe_dataset.$(LOGS_DATASET_NAME).id
+				ERRORLOGS_DATASET = observe_dataset.$(ERROR_LOGS_DATASET_NAME).id
 			})
 			layout           = templatefile("$(LAYOUT_OUTPUT_FILE_TF_PATH)", {
-				CLOUDSQL_DATASET = observe_dataset.cloudsql.id
-				CLOUDSQL_METRICS_DATASET = local.enable_metrics == true ? observe_dataset.cloudsql_metrics[0].id : null
-				CLOUDSQL_COMBOMETRICS_DATASET = local.enable_metrics == true ? observe_dataset.cloudsql_metrics_combo[0].id : null
-				CLOUDSQL_LOGS_DATASET = observe_dataset.sql_logs.id
-				CLOUDSQL_ERRORLOGS_DATASET = observe_dataset.combined_error_logs.id
+				RESOURCE_DATASET = observe_dataset.$(RESOURCE_DATASET_NAME).id
+				METRICS_DATASET = local.enable_metrics == true ? observe_dataset.$(METRIC_DATASET_NAME)[0].id : null
+				COMBOMETRICS_DATASET = local.enable_metrics == true ? observe_dataset.$(METRIC_DATASET_NAME)_combo[0].id : null
+				LOGS_DATASET = observe_dataset.$(LOGS_DATASET_NAME).id
+				ERRORLOGS_DATASET = observe_dataset.$(ERROR_LOGS_DATASET_NAME).id
 			})
 			parameters       = templatefile("$(PARAMETER_OUTPUT_FILE_TF_PATH)", {
-				CLOUDSQL_DATASET = observe_dataset.cloudsql.id
-				CLOUDSQL_METRICS_DATASET = local.enable_metrics == true ? observe_dataset.cloudsql_metrics[0].id : null
-				CLOUDSQL_COMBOMETRICS_DATASET = local.enable_metrics == true ? observe_dataset.cloudsql_metrics_combo[0].id : null
-				CLOUDSQL_LOGS_DATASET = observe_dataset.sql_logs.id
-				CLOUDSQL_ERRORLOGS_DATASET = observe_dataset.combined_error_logs.id
+				RESOURCE_DATASET = observe_dataset.$(RESOURCE_DATASET_NAME).id
+				METRICS_DATASET = local.enable_metrics == true ? observe_dataset.$(METRIC_DATASET_NAME)[0].id : null
+				COMBOMETRICS_DATASET = local.enable_metrics == true ? observe_dataset.$(METRIC_DATASET_NAME)_combo[0].id : null
+				LOGS_DATASET = observe_dataset.$(LOGS_DATASET_NAME).id
+				ERRORLOGS_DATASET = observe_dataset.$(ERROR_LOGS_DATASET_NAME).id
 			})
 
 			# parameter_values = templatefile("$${path.module}/$(PARAMETER_VALUES_OUTPUT_FILE)", {
 			#
 			#})
 		}
+
+	resource "observe_default_dashboard" "cloudsql" {
+		dataset = observe_dataset.$(RESOURCE_DATASET_NAME).oid
+		dashboard = resource.observe_dashboard.monitoring[0].oid
+	}
 
 endef
 
@@ -143,27 +161,32 @@ build_dashboard:
 	cd $(TERRAFORM_DIRECTORY); \
 	terraform apply -auto-approve;
 
-replace_cloudsql_id:
-	$(eval CLOUDSQL_DATASET_ID=$(shell cd $(TERRAFORM_DIRECTORY); terraform output -json cloudsql_datasets_id | jq -r '.cloudsql_dataset_id')) 
-	echo CLOUDSQL_DATASET_ID is $(CLOUDSQL_DATASET_ID);
-	sed -i '' "s:$(CLOUDSQL_DATASET_ID):"\$${CLOUDSQL_DATASET}":g" /$(DASHBOARD_DIR)/*; 
+replace_resource_id:
+	$(eval RESOURCE_DATASET_ID=$(shell cd $(TERRAFORM_DIRECTORY); terraform output -json $(DATASET_ID_OUTPUT_NAME) | jq -r '.resource_dataset_id')) 
+	echo RESOURCE_DATASET_ID is $(RESOURCE_DATASET_ID);
+	sed -i '' "s:$(RESOURCE_DATASET_ID):"\$${RESOURCE_DATASET}":g" /$(DASHBOARD_DIR)/*; 
 
-replace_cloudsqllog_id:
-	$(eval CLOUDSQL_LOGS_DATASET_ID=$(shell cd $(TERRAFORM_DIRECTORY); terraform output -json cloudsql_datasets_id | jq -r '.cloudsql_logs_dataset_id')) 
-	echo CLOUDSQL_LOGS_DATASET_ID is $(CLOUDSQL_LOGS_DATASET_ID);
-	sed -i '' "s:$(CLOUDSQL_LOGS_DATASET_ID):"\$${CLOUDSQL_LOGS_DATASET}":g" /$(DASHBOARD_DIR)/*; 
+replace_log_id:
+	$(eval LOGS_DATASET_ID=$(shell cd $(TERRAFORM_DIRECTORY); terraform output -json $(DATASET_ID_OUTPUT_NAME) | jq -r '.logs_dataset_id')) 
+	echo LOGS_DATASET_ID is $(LOGS_DATASET_ID);
+	sed -i '' "s:$(LOGS_DATASET_ID):"\$${LOGS_DATASET}":g" /$(DASHBOARD_DIR)/*; 
 
-replace_cloudsqlmetric_id:
-	$(eval CLOUDSQL_METRICS_DATASET_ID=$(shell cd $(TERRAFORM_DIRECTORY); terraform output -json cloudsql_datasets_id | jq -r '.cloudsql_metrics_dataset_id'))
-	echo CLOUDSQL_METRICS_DATASET_ID is $(CLOUDSQL_METRICS_DATASET_ID);
-	sed -i '' "s:$(CLOUDSQL_METRICS_DATASET_ID):"\$${CLOUDSQL_METRICS_DATASET}":g" /$(DASHBOARD_DIR)/*; 
+replace_errorlog_id:
+	$(eval ERRORLOGS_DATASET_ID=$(shell cd $(TERRAFORM_DIRECTORY); terraform output -json cloudsql_datasets_id | jq -r '.error_logs_dataset_id')) 
+	echo ERRORLOGS_DATASET_ID is $(ERRORLOGS_DATASET_ID);
+	sed -i '' "s:$(ERRORLOGS_DATASET_ID):"\$${ERRORLOGS_DATASET}":g" /$(DASHBOARD_DIR)/*; 
 
-replace_cloudsqlmetriccombo_id:
-	$(eval CLOUDSQL_COMBOMETRICS_DATASET_ID=$(shell cd $(TERRAFORM_DIRECTORY); terraform output -json cloudsql_datasets_id | jq -r '.cloudsql_metrics_dataset_id'))
-	echo CLOUDSQL_COMBOMETRICS_DATASET_ID is $(CLOUDSQL_COMBOMETRICS_DATASET_ID);
-	sed -i '' "s:$(CLOUDSQL_COMBOMETRICS_DATASET_ID):"\$${CLOUDSQL_COMBOMETRICS_DATASET}":g" /$(DASHBOARD_DIR)/*; 
+replace_metric_id:
+	$(eval METRICS_DATASET_ID=$(shell cd $(TERRAFORM_DIRECTORY); terraform output -json $(DATASET_ID_OUTPUT_NAME) | jq -r '.metrics_dataset_id'))
+	echo METRICS_DATASET_ID is $(METRICS_DATASET_ID);
+	sed -i '' "s:$(METRICS_DATASET_ID):"\$${METRICS_DATASET}":g" /$(DASHBOARD_DIR)/*; 
 
-replace_cloudsqlerrorlog_id:
-	$(eval CLOUDSQL_ERRORLOGS_DATASET_ID=$(shell cd $(TERRAFORM_DIRECTORY); terraform output -json cloudsql_datasets_id | jq -r '.cloudsql_logs_dataset_id')) 
-	echo CLOUDSQL_ERRORLOGS_DATASET_ID is $(CLOUDSQL_ERRORLOGS_DATASET_ID);
-	sed -i '' "s:$(CLOUDSQL_ERRORLOGS_DATASET_ID):"\$${CLOUDSQL_ERRORLOGS_DATASET}":g" /$(DASHBOARD_DIR)/*; 
+replace_metriccombo_id:
+	$(eval COMBOMETRICS_DATASET_ID=$(shell cd $(TERRAFORM_DIRECTORY); terraform output -json cloudsql_datasets_id | jq -r '.combo_metrics_dataset_id'))
+	echo COMBOMETRICS_DATASET_ID is $(COMBOMETRICS_DATASET_ID);
+	sed -i '' "s:$(COMBOMETRICS_DATASET_ID):"\$${COMBOMETRICS_DATASET}":g" /$(DASHBOARD_DIR)/*; 
+
+replace_name:
+	sed -i '' "s:$(NAME_CLEANOUT):"":g" /$(DASHBOARD_DIR)/*; 
+
+	
