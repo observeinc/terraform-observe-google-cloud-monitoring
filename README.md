@@ -46,6 +46,7 @@ module "google" {
 
 | Name | Type |
 |------|------|
+| observe_dashboard.monitoring | resource |
 | observe_dataset.audit_logs | resource |
 | observe_dataset.base_asset_inventory_records | resource |
 | observe_dataset.base_pubsub_events | resource |

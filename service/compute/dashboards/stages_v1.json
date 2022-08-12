@@ -1676,7 +1676,7 @@
       {
         "inputName": "Compute Metrics",
         "inputRole": "Data",
-        "datasetId": "41109753"
+        "datasetId": "${METRICS_DATASET}"
       },
       {
         "inputName": "computeID",
@@ -1731,7 +1731,7 @@
       "index": 8,
       "inputList": [
         {
-          "datasetId": "41109753",
+          "datasetId": "${METRICS_DATASET}",
           "inputName": "Compute Metrics",
           "inputRole": "Data",
           "isUserInput": false
@@ -1837,7 +1837,7 @@
           "opal": [],
           "queryPresentation": {},
           "renderType": null,
-          "summary": "Compute Metrics (41109753)",
+          "summary": "Compute Metrics (${METRICS_DATASET})",
           "type": "InputStep"
         },
         {
@@ -1896,7 +1896,7 @@
       {
         "inputName": "Compute Metrics",
         "inputRole": "Data",
-        "datasetId": "41109753"
+        "datasetId": "${METRICS_DATASET}"
       },
       {
         "inputName": "computeID",
@@ -1951,7 +1951,7 @@
       "index": 9,
       "inputList": [
         {
-          "datasetId": "41109753",
+          "datasetId": "${METRICS_DATASET}",
           "inputName": "Compute Metrics",
           "inputRole": "Data",
           "isUserInput": false
@@ -2057,7 +2057,7 @@
           "opal": [],
           "queryPresentation": {},
           "renderType": null,
-          "summary": "Compute Metrics (41109753)",
+          "summary": "Compute Metrics (${METRICS_DATASET})",
           "type": "InputStep"
         },
         {
@@ -2116,7 +2116,7 @@
       {
         "inputName": "resource",
         "inputRole": "Data",
-        "datasetId": "41109753"
+        "datasetId": "${METRICS_DATASET}"
       },
       {
         "inputName": "computeID",
@@ -2177,7 +2177,7 @@
       "index": 10,
       "inputList": [
         {
-          "datasetId": "41109753",
+          "datasetId": "${METRICS_DATASET}",
           "inputName": "resource",
           "inputRole": "Data",
           "isUserInput": false
@@ -2285,7 +2285,7 @@
           "opal": [],
           "queryPresentation": {},
           "renderType": null,
-          "summary": "resource (41109753)",
+          "summary": "resource (${METRICS_DATASET})",
           "type": "InputStep"
         },
         {
@@ -2359,7 +2359,7 @@
       {
         "inputName": "Compute Metrics",
         "inputRole": "Data",
-        "datasetId": "41109753"
+        "datasetId": "${METRICS_DATASET}"
       },
       {
         "inputName": "computeID",
@@ -2415,7 +2415,7 @@
       "index": 11,
       "inputList": [
         {
-          "datasetId": "41109753",
+          "datasetId": "${METRICS_DATASET}",
           "inputName": "Compute Metrics",
           "inputRole": "Data",
           "isUserInput": false
@@ -2519,7 +2519,7 @@
           "opal": [],
           "queryPresentation": {},
           "renderType": null,
-          "summary": "Compute Metrics (41109753)",
+          "summary": "Compute Metrics (${METRICS_DATASET})",
           "type": "InputStep"
         },
         {
@@ -2592,7 +2592,7 @@
       {
         "inputName": "Compute Metrics",
         "inputRole": "Data",
-        "datasetId": "41109753"
+        "datasetId": "${METRICS_DATASET}"
       },
       {
         "inputName": "computeID",
@@ -2648,7 +2648,7 @@
       "index": 12,
       "inputList": [
         {
-          "datasetId": "41109753",
+          "datasetId": "${METRICS_DATASET}",
           "inputName": "Compute Metrics",
           "inputRole": "Data",
           "isUserInput": false
@@ -2752,7 +2752,7 @@
           "opal": [],
           "queryPresentation": {},
           "renderType": null,
-          "summary": "Compute Metrics (41109753)",
+          "summary": "Compute Metrics (${METRICS_DATASET})",
           "type": "InputStep"
         },
         {
@@ -2825,7 +2825,7 @@
       {
         "inputName": "Compute Metrics",
         "inputRole": "Data",
-        "datasetId": "41109753"
+        "datasetId": "${METRICS_DATASET}"
       },
       {
         "inputName": "computeID",
@@ -2881,7 +2881,7 @@
       "index": 13,
       "inputList": [
         {
-          "datasetId": "41109753",
+          "datasetId": "${METRICS_DATASET}",
           "inputName": "Compute Metrics",
           "inputRole": "Data",
           "isUserInput": false
@@ -2987,7 +2987,7 @@
           "opal": [],
           "queryPresentation": {},
           "renderType": null,
-          "summary": "Compute Metrics (41109753)",
+          "summary": "Compute Metrics (${METRICS_DATASET})",
           "type": "InputStep"
         },
         {
@@ -3062,7 +3062,7 @@
       {
         "inputName": "Compute Metrics",
         "inputRole": "Data",
-        "datasetId": "41109753"
+        "datasetId": "${METRICS_DATASET}"
       },
       {
         "inputName": "computeID",
@@ -3117,7 +3117,7 @@
       "index": 14,
       "inputList": [
         {
-          "datasetId": "41109753",
+          "datasetId": "${METRICS_DATASET}",
           "inputName": "Compute Metrics",
           "inputRole": "Data",
           "isUserInput": false
@@ -3223,7 +3223,7 @@
           "opal": [],
           "queryPresentation": {},
           "renderType": null,
-          "summary": "Compute Metrics (41109753)",
+          "summary": "Compute Metrics (${METRICS_DATASET})",
           "type": "InputStep"
         },
         {
@@ -3282,7 +3282,7 @@
       {
         "inputName": "Compute Metrics",
         "inputRole": "Data",
-        "datasetId": "41109753"
+        "datasetId": "${METRICS_DATASET}"
       },
       {
         "inputName": "computeID",
@@ -3337,7 +3337,7 @@
       "index": 15,
       "inputList": [
         {
-          "datasetId": "41109753",
+          "datasetId": "${METRICS_DATASET}",
           "inputName": "Compute Metrics",
           "inputRole": "Data",
           "isUserInput": false
@@ -3443,7 +3443,7 @@
           "opal": [],
           "queryPresentation": {},
           "renderType": null,
-          "summary": "Compute Metrics (41109753)",
+          "summary": "Compute Metrics (${METRICS_DATASET})",
           "type": "InputStep"
         },
         {
