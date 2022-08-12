@@ -403,7 +403,7 @@
             }
           }
         ],
-        "lastModified": 1659129621842
+        "lastModified": 1660322018001
       }
     ]
   },
@@ -413,7 +413,7 @@
       {
         "defaultValue": {
           "datasetref": {
-            "datasetId": "${CLOUDSQL_DATASET}"
+            "datasetId": "${RESOURCE_DATASET}"
           }
         },
         "id": "dbResource",

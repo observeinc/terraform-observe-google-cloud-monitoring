@@ -1,0 +1,84 @@
+{
+  "gridLayout": {
+    "sections": [
+      {
+        "card": {
+          "cardType": "section",
+          "closed": false,
+          "id": "section-qipfuqhh",
+          "title": "Dashboard Content"
+        },
+        "items": [
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-rbdukq7y",
+              "stageId": "stage-itglsq8u"
+            },
+            "layout": {
+              "h": 12,
+              "i": "card-rbdukq7y",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 4,
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-46y4bc0u",
+              "stageId": "stage-n2y1mgeg"
+            },
+            "layout": {
+              "h": 12,
+              "i": "card-46y4bc0u",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 4,
+              "x": 0,
+              "y": 12
+            }
+          }
+        ],
+        "lastModified": 1660330165004
+      }
+    ]
+  },
+  "stageListLayout": {
+    "isModified": false,
+    "parameters": [
+      {
+        "defaultValue": {
+          "datasetref": {
+            "datasetId": "${RESOURCE_DATASET}"
+          }
+        },
+        "id": "projectID",
+        "name": "Projects",
+        "valueKind": {
+          "type": "DATASETREF"
+        },
+        "viewType": "input"
+      }
+    ],
+    "selectedStageId": "stage-itglsq8u",
+    "timeRange": {
+      "display": "Past 4 hours",
+      "endTime": null,
+      "millisFromCurrentTime": 14400000,
+      "originalDisplay": "Past 4 hours",
+      "startTime": null,
+      "timeRangeInfo": {
+        "key": "PRESETS",
+        "name": "Presets"
+      },
+      "timeZone": null
+    }
+  }
+}

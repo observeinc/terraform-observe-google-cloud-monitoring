@@ -1,0 +1,24 @@
+[
+  {
+    "id": "projectID",
+    "name": "Projects",
+    "defaultValue": {
+      "bool": null,
+      "float64": null,
+      "int64": null,
+      "string": null,
+      "array": null,
+      "link": null,
+      "datasetref": {
+        "datasetId": "${RESOURCE_DATASET}",
+        "datasetPath": null,
+        "stageId": null
+      }
+    },
+    "valueKind": {
+      "type": "DATASETREF",
+      "keyForDatasetId": null,
+      "arrayItemType": null
+    }
+  }
+]

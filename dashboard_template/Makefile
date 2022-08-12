@@ -20,19 +20,19 @@ FILE_VERSION:=_v1
 ############################################
 # These variables are set for new dashboard
 ############################################
-RESOURCE_DATASET_NAME=compute
-METRIC_DATASET_NAME=compute_metrics
-LOGS_DATASET_NAME=compute_logs
-DATASET_ID_OUTPUT_NAME=compute_datasets_id
+RESOURCE_DATASET_NAME=projects
+# METRIC_DATASET_NAME=compute_metrics
+# LOGS_DATASET_NAME=compute_logs
+DATASET_ID_OUTPUT_NAME=project_datasets_id
 NAME_CLEANOUT=gcp-396/
 ############################################
 
 # The directory where you are building google module - this should be a sample deployment of your service - https://github.com/observeinc/content-eng-gcp-example - main branch
 TERRAFORM_DIRECTORY:=/Users/arthur/content_eng/content-eng-gcp-example/example
 # The local directory with module code - your json and dashboard terraform will be placed here
-SERVICE_DIRECTORY:=Users/arthur/content_eng/terraform-observe-google/service/compute
+SERVICE_DIRECTORY:=Users/arthur/content_eng/terraform-observe-google
 
-TEMPLATE_DASHBOARD_DIRECTORY:=/Users/arthur/content_eng/terraform-observe-google/service/compute/template_dashboard
+TEMPLATE_DASHBOARD_DIRECTORY:=/Users/arthur/content_eng/terraform-observe-google/dashboard_template
 
 # File created that will become a part of service definition
 PARAMETER_OUTPUT_FILE:=/$(SERVICE_DIRECTORY)/dashboards/parameters$(FILE_VERSION).json
@@ -51,7 +51,7 @@ LAYOUT_OUTPUT_FILE:=/$(SERVICE_DIRECTORY)/dashboards/layout$(FILE_VERSION).json
 LAYOUT_OUTPUT_FILE_TF_PATH:=$${path.module}/dashboards/layout$(FILE_VERSION).json
 
 # Terraform file that will be created
-DASHBOARD_FILE:=/$(SERVICE_DIRECTORY)/auto_dashboards.tf
+DASHBOARD_FILE:=/$(SERVICE_DIRECTORY)/auto_project_dashboards.tf
 # Directorcy it will be created in
 DASHBOARD_DIR:=$(SERVICE_DIRECTORY)/dashboards
 
@@ -67,7 +67,7 @@ no_refresh: ids finish
 
 datasets: get_template_dashboard parameters stages layout parameter_values
 
-ids: replace_resource_id replace_log_id replace_metric_id 
+ids: replace_resource_id random_wtf#replace_log_id replace_metric_id 
 
 name_clean: replace_name
 
@@ -118,29 +118,27 @@ parameter_values:
 
 define RESOURCE_DEF_VAR
 	resource "observe_dashboard" "monitoring" {
-		  	count = local.enable_metrics ? 1 : 0
 			workspace = var.workspace.oid
-			name      = format(var.name_format, "Monitoring")
+			name      = format(var.name_format, "Projects Summary")
 			stages           = templatefile("$(STAGES_OUTPUT_FILE_TF_PATH)", {
 				RESOURCE_DATASET = observe_dataset.$(RESOURCE_DATASET_NAME).id
-				METRICS_DATASET = local.enable_metrics == true ? observe_dataset.$(METRIC_DATASET_NAME)[0].id : null
-				LOGS_DATASET = observe_dataset.$(LOGS_DATASET_NAME).id
 			})
 			layout           = templatefile("$(LAYOUT_OUTPUT_FILE_TF_PATH)", {
 				RESOURCE_DATASET = observe_dataset.$(RESOURCE_DATASET_NAME).id
-				METRICS_DATASET = local.enable_metrics == true ? observe_dataset.$(METRIC_DATASET_NAME)[0].id : null
-				LOGS_DATASET = observe_dataset.$(LOGS_DATASET_NAME).id
 			})
 			parameters       = templatefile("$(PARAMETER_OUTPUT_FILE_TF_PATH)", {
 				RESOURCE_DATASET = observe_dataset.$(RESOURCE_DATASET_NAME).id
-				METRICS_DATASET = local.enable_metrics == true ? observe_dataset.$(METRIC_DATASET_NAME)[0].id : null
-				LOGS_DATASET = observe_dataset.$(LOGS_DATASET_NAME).id
 			})
 
 			# parameter_values = templatefile("$${path.module}/$(PARAMETER_VALUES_OUTPUT_FILE)", {
 			#
 			#})
 		}
+
+	# resource "observe_default_dashboard" "compute" {
+	# 	dataset = observe_dataset.$(RESOURCE_DATASET_NAME).oid
+	# 	dashboard = resource.observe_dashboard.monitoring.oid
+	# }
 
 endef
 
@@ -162,24 +160,28 @@ replace_resource_id:
 	echo RESOURCE_DATASET_ID is $(RESOURCE_DATASET_ID);
 	sed -i '' "s:$(RESOURCE_DATASET_ID):"\$${RESOURCE_DATASET}":g" /$(DASHBOARD_DIR)/*; 
 
-replace_log_id:
-	$(eval LOGS_DATASET_ID=$(shell cd $(TERRAFORM_DIRECTORY); terraform output -json $(DATASET_ID_OUTPUT_NAME) | jq -r '.logs_dataset_id')) 
-	echo LOGS_DATASET_ID is $(LOGS_DATASET_ID);
-	sed -i '' "s:$(LOGS_DATASET_ID):"\$${LOGS_DATASET}":g" /$(DASHBOARD_DIR)/*; 
+# replace_log_id:
+# 	$(eval LOGS_DATASET_ID=$(shell cd $(TERRAFORM_DIRECTORY); terraform output -json $(DATASET_ID_OUTPUT_NAME) | jq -r '.logs_dataset_id')) 
+# 	echo LOGS_DATASET_ID is $(LOGS_DATASET_ID);
+# 	sed -i '' "s:$(LOGS_DATASET_ID):"\$${LOGS_DATASET}":g" /$(DASHBOARD_DIR)/*; 
 
-replace_metric_id:
-	$(eval METRICS_DATASET_ID=$(shell cd $(TERRAFORM_DIRECTORY); terraform output -json $(DATASET_ID_OUTPUT_NAME) | jq -r '.metrics_dataset_id'))
-	echo METRICS_DATASET_ID is $(METRICS_DATASET_ID);
-	sed -i '' "s:$(METRICS_DATASET_ID):"\$${METRICS_DATASET}":g" /$(DASHBOARD_DIR)/*; 
+# replace_metric_id:
+# 	$(eval METRICS_DATASET_ID=$(shell cd $(TERRAFORM_DIRECTORY); terraform output -json $(DATASET_ID_OUTPUT_NAME) | jq -r '.metrics_dataset_id'))
+# 	echo METRICS_DATASET_ID is $(METRICS_DATASET_ID);
+# 	sed -i '' "s:$(METRICS_DATASET_ID):"\$${METRICS_DATASET}":g" /$(DASHBOARD_DIR)/*; 
 
-replace_resource_id_manual:
-	sed -i '' "s:41109182:"\$${RESOURCE_DATASET}":g" /$(DASHBOARD_DIR)/*; 
+# replace_resource_id_manual:
+# 	sed -i '' "s:41109182:"\$${RESOURCE_DATASET}":g" /$(DASHBOARD_DIR)/*; 
 
-replace_metric_id_manual:
-	sed -i '' "s:41109184:"\$${METRICS_DATASET}":g" /$(DASHBOARD_DIR)/*; 
+# replace_metric_id_manual:
+# 	sed -i '' "s:41109184:"\$${METRICS_DATASET}":g" /$(DASHBOARD_DIR)/*; 
 
 replace_name:
 	sed -i '' "s:$(NAME_CLEANOUT):"":g" /$(DASHBOARD_DIR)/*; 
+
+random_wtf:
+	sed -i '' "s:\"params\"\: null,:"":g" /$(DASHBOARD_DIR)/*; 
+	    
 
 	
 
