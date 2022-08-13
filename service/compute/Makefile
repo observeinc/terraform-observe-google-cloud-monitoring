@@ -61,7 +61,7 @@ LOGS_DATASET_ID:=UNSET
 METRICS_DATASET_ID:=UNSET
 
 
-all: datasets ids name_clean finish
+all: datasets ids name_clean finish check_dataset_id
 
 no_refresh: ids finish
 
@@ -114,6 +114,10 @@ parameter_values:
 	cat $(PARAMETER_VALUES_OUTPUT_FILE)_TEMP | jq -r '.' > $(PARAMETER_VALUES_OUTPUT_FILE)
 	rm $(PARAMETER_VALUES_OUTPUT_FILE)_TEMP 
 
+check_dataset_id:
+	cd /$(SERVICE_DIRECTORY); \
+	grep -nr "datasetId" .
+
 # Terraform resource template variable
 
 define RESOURCE_DEF_VAR
@@ -142,10 +146,11 @@ define RESOURCE_DEF_VAR
 			#})
 		}
 
-	resource "observe_default_dashboard" "compute" {
-		dataset = observe_dataset.$(RESOURCE_DATASET_NAME).oid
-		dashboard = resource.observe_dashboard.monitoring[0].oid
-	}
+	# resource "observe_default_dashboard" "compute" {
+	# 	count = local.enable_metrics ? 1 : 0
+	# 	dataset = observe_dataset.$(RESOURCE_DATASET_NAME).oid
+	# 	dashboard = resource.observe_dashboard.monitoring[0].oid
+	# }
 
 endef
 

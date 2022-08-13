@@ -21,3 +21,13 @@ list-tests:
 
 test:
 	@scripts/tftest run $(filter-out $@,$(MAKECMDGOALS))
+
+init:
+	terraform init -upgrade; 
+
+	for dir in service/*; do \
+		echo "$$dir"; \
+		if [ -d "$$dir" ]; then \
+			terraform -chdir="$$dir" init -upgrade; \
+		fi; \
+	 done;
