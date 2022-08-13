@@ -61,7 +61,7 @@ LOGS_DATASET_ID:=UNSET
 METRICS_DATASET_ID:=UNSET
 
 
-all: datasets ids name_clean finish
+all: datasets ids name_clean finish check_dataset_id
 
 no_refresh: ids finish
 
@@ -113,6 +113,10 @@ parameter_values:
 	terraform output -json parameter_values | jq -r '.' > $(PARAMETER_VALUES_OUTPUT_FILE)_TEMP;
 	cat $(PARAMETER_VALUES_OUTPUT_FILE)_TEMP | jq -r '.' > $(PARAMETER_VALUES_OUTPUT_FILE)
 	rm $(PARAMETER_VALUES_OUTPUT_FILE)_TEMP 
+
+check_dataset_id:
+	cd /$(SERVICE_DIRECTORY); \
+	grep -nr "datasetId" .
 
 # Terraform resource template variable
 

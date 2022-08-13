@@ -63,11 +63,11 @@ CLOUDSQL_METRICS_DATASET_ID:=UNSET
 CLOUDSQL_ERRORLOGS_DATASET_ID:=UNSET
 CLOUDSQL_COMBOMETRICS_DATASET_ID:=UNSET
 
-all: datasets ids name_clean finish
+all: datasets ids name_clean finish check_dataset_id
 
 datasets: get_template_dashboard parameters stages layout 
 
-ids: replace_resource_id replace_log_id replace_errorlog_id replace_metric_id replace_metriccombo_id 
+ids: replace_resource_id replace_log_id replace_errorlog_id replace_metric_id replace_metriccombo_id replace_metricwide_id
 
 name_clean: replace_name
 
@@ -85,7 +85,9 @@ get_template_dashboard:
 	cd $(TEMPLATE_DASHBOARD_DIRECTORY); \
 	terraform apply -auto-approve; 
 
-
+check_dataset_id:
+	cd /$(SERVICE_DIRECTORY); \
+	grep -nr "datasetId" .
 # Create json file based on output value
 parameters:
 	cd $(TEMPLATE_DASHBOARD_DIRECTORY); \
@@ -107,7 +109,7 @@ layout:
 	cat $(LAYOUT_OUTPUT_FILE)_TEMP | jq -r '.' > $(LAYOUT_OUTPUT_FILE)
 	rm $(LAYOUT_OUTPUT_FILE)_TEMP 
 
-# Terraform resource template variable
+
 
 define RESOURCE_DEF_VAR
 	resource "observe_dashboard" "monitoring" {
@@ -118,6 +120,7 @@ define RESOURCE_DEF_VAR
 				RESOURCE_DATASET = observe_dataset.$(RESOURCE_DATASET_NAME).id
 				METRICS_DATASET = local.enable_metrics == true ? observe_dataset.$(METRIC_DATASET_NAME)[0].id : null
 				COMBOMETRICS_DATASET = local.enable_metrics == true ? observe_dataset.$(METRIC_DATASET_NAME)_combo[0].id : null
+				WIDEMETRICS_DATASET = local.enable_metrics == true ? observe_dataset.$(METRIC_DATASET_NAME)_wide[0].id : null
 				LOGS_DATASET = observe_dataset.$(LOGS_DATASET_NAME).id
 				ERRORLOGS_DATASET = observe_dataset.$(ERROR_LOGS_DATASET_NAME).id
 			})
@@ -125,6 +128,7 @@ define RESOURCE_DEF_VAR
 				RESOURCE_DATASET = observe_dataset.$(RESOURCE_DATASET_NAME).id
 				METRICS_DATASET = local.enable_metrics == true ? observe_dataset.$(METRIC_DATASET_NAME)[0].id : null
 				COMBOMETRICS_DATASET = local.enable_metrics == true ? observe_dataset.$(METRIC_DATASET_NAME)_combo[0].id : null
+				WIDEMETRICS_DATASET = local.enable_metrics == true ? observe_dataset.$(METRIC_DATASET_NAME)_wide[0].id : null
 				LOGS_DATASET = observe_dataset.$(LOGS_DATASET_NAME).id
 				ERRORLOGS_DATASET = observe_dataset.$(ERROR_LOGS_DATASET_NAME).id
 			})
@@ -132,6 +136,7 @@ define RESOURCE_DEF_VAR
 				RESOURCE_DATASET = observe_dataset.$(RESOURCE_DATASET_NAME).id
 				METRICS_DATASET = local.enable_metrics == true ? observe_dataset.$(METRIC_DATASET_NAME)[0].id : null
 				COMBOMETRICS_DATASET = local.enable_metrics == true ? observe_dataset.$(METRIC_DATASET_NAME)_combo[0].id : null
+				WIDEMETRICS_DATASET = local.enable_metrics == true ? observe_dataset.$(METRIC_DATASET_NAME)_wide[0].id : null
 				LOGS_DATASET = observe_dataset.$(LOGS_DATASET_NAME).id
 				ERRORLOGS_DATASET = observe_dataset.$(ERROR_LOGS_DATASET_NAME).id
 			})
@@ -141,10 +146,10 @@ define RESOURCE_DEF_VAR
 			#})
 		}
 
-	resource "observe_default_dashboard" "cloudsql" {
-		dataset = observe_dataset.$(RESOURCE_DATASET_NAME).oid
-		dashboard = resource.observe_dashboard.monitoring[0].oid
-	}
+	# resource "observe_default_dashboard" "cloudsql" {
+	# 	dataset = observe_dataset.$(RESOURCE_DATASET_NAME).oid
+	# 	dashboard = resource.observe_dashboard.monitoring[0].oid
+	# }
 
 endef
 
@@ -172,7 +177,7 @@ replace_log_id:
 	sed -i '' "s:$(LOGS_DATASET_ID):"\$${LOGS_DATASET}":g" /$(DASHBOARD_DIR)/*; 
 
 replace_errorlog_id:
-	$(eval ERRORLOGS_DATASET_ID=$(shell cd $(TERRAFORM_DIRECTORY); terraform output -json cloudsql_datasets_id | jq -r '.error_logs_dataset_id')) 
+	$(eval ERRORLOGS_DATASET_ID=$(shell cd $(TERRAFORM_DIRECTORY); terraform output -json $(DATASET_ID_OUTPUT_NAME) | jq -r '.error_logs_dataset_id')) 
 	echo ERRORLOGS_DATASET_ID is $(ERRORLOGS_DATASET_ID);
 	sed -i '' "s:$(ERRORLOGS_DATASET_ID):"\$${ERRORLOGS_DATASET}":g" /$(DASHBOARD_DIR)/*; 
 
@@ -182,11 +187,18 @@ replace_metric_id:
 	sed -i '' "s:$(METRICS_DATASET_ID):"\$${METRICS_DATASET}":g" /$(DASHBOARD_DIR)/*; 
 
 replace_metriccombo_id:
-	$(eval COMBOMETRICS_DATASET_ID=$(shell cd $(TERRAFORM_DIRECTORY); terraform output -json cloudsql_datasets_id | jq -r '.combo_metrics_dataset_id'))
+	$(eval COMBOMETRICS_DATASET_ID=$(shell cd $(TERRAFORM_DIRECTORY); terraform output -json $(DATASET_ID_OUTPUT_NAME) | jq -r '.combo_metrics_dataset_id'))
 	echo COMBOMETRICS_DATASET_ID is $(COMBOMETRICS_DATASET_ID);
 	sed -i '' "s:$(COMBOMETRICS_DATASET_ID):"\$${COMBOMETRICS_DATASET}":g" /$(DASHBOARD_DIR)/*; 
+
+replace_metricwide_id:
+	$(eval WIDEMETRICS_DATASET_ID=$(shell cd $(TERRAFORM_DIRECTORY); terraform output -json $(DATASET_ID_OUTPUT_NAME) | jq -r '.wide_metrics_dataset_id'))
+	echo WIDEMETRICS_DATASET_ID is $(WIDEMETRICS_DATASET_ID);
+	sed -i '' "s:$(WIDEMETRICS_DATASET_ID):"\$${WIDEMETRICS_DATASET}":g" /$(DASHBOARD_DIR)/*; 
+	
 
 replace_name:
 	sed -i '' "s:$(NAME_CLEANOUT):"":g" /$(DASHBOARD_DIR)/*; 
 
-	
+replace_metric_id_manual:
+	sed -i '' "s:41101933:"\$${WIDEMETRICS_DATASET}":g" /$(DASHBOARD_DIR)/*; 
