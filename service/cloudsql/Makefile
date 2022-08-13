@@ -147,6 +147,7 @@ define RESOURCE_DEF_VAR
 		}
 
 	# resource "observe_default_dashboard" "cloudsql" {
+		# count = local.enable_metrics ? 1 : 0
 	# 	dataset = observe_dataset.$(RESOURCE_DATASET_NAME).oid
 	# 	dashboard = resource.observe_dashboard.monitoring[0].oid
 	# }

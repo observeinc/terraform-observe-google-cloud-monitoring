@@ -146,10 +146,11 @@ define RESOURCE_DEF_VAR
 			#})
 		}
 
-	resource "observe_default_dashboard" "compute" {
-		dataset = observe_dataset.$(RESOURCE_DATASET_NAME).oid
-		dashboard = resource.observe_dashboard.monitoring[0].oid
-	}
+	# resource "observe_default_dashboard" "compute" {
+	# 	count = local.enable_metrics ? 1 : 0
+	# 	dataset = observe_dataset.$(RESOURCE_DATASET_NAME).oid
+	# 	dashboard = resource.observe_dashboard.monitoring[0].oid
+	# }
 
 endef
 
