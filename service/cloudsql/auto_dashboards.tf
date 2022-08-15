@@ -33,7 +33,6 @@ resource "observe_dashboard" "monitoring" {
 }
 
 # resource "observe_default_dashboard" "cloudsql" {
-# 	dataset = observe_dataset.cloudsql.oid
-# 	dashboard = resource.observe_dashboard.monitoring[0].oid
+#   dataset   = observe_dataset.cloudsql.oid
+#   dashboard = resource.observe_dashboard.monitoring[0].oid
 # }
-

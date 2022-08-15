@@ -1,3 +1,4 @@
+/*
 resource "observe_dashboard" "monitoring" {
   workspace = var.workspace.oid
   name      = format(var.name_format, "Projects Summary")
@@ -15,6 +16,7 @@ resource "observe_dashboard" "monitoring" {
   #
   #})
 }
+*/
 
 # resource "observe_default_dashboard" "compute" {
 # 	dataset = observe_dataset.projects.oid
