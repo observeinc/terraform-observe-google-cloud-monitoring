@@ -4,7 +4,8 @@ resource "observe_dataset" "base_asset_inventory_records" {
   freshness = var.freshness_default
 
   inputs = {
-    "events" = observe_dataset.base_pubsub_events.oid
+    "observation" = var.datastream.dataset
+    "events"      = observe_dataset.base_pubsub_events.oid
   }
 
   # https://cloud.google.com/asset-inventory/docs/reference/rpc/google.cloud.asset.v1#temporalasset
@@ -35,19 +36,16 @@ resource "observe_dataset" "base_asset_inventory_records" {
 
   # https://cloud.google.com/asset-inventory/docs/reference/rpc/google.cloud.asset.v1#asset
   stage {
-    input    = "events"
+    input    = "observation"
     alias    = "export_events"
     pipeline = <<-EOF
-      filter is_null(attributes["logging.googleapis.com/timestamp"])
-      make_col data:parse_json(data)
+      filter OBSERVATION_KIND = "gcpassets"
+      make_col data:FIELDS
       filter not is_null(data.asset_type) and not is_null(data.name)
 
-      make_col time:timestamp_ns(int64(attributes.snapshotTime))
-      set_valid_from options(max_time_diff:${var.max_time_diff}), time
-
       pick_col 
-        time,
-        update_time:parse_isotime(string(data.update_time)),
+        time:BUNDLE_TIMESTAMP,
+        update_time:timestamp_s(int64(data.update_time.seconds)) + if_null(duration(int64(data.update_time.nanos)), 0s),
         ancestors:array(data.ancestors),
         asset_type:string(data.asset_type),
         name:string(data.name),
