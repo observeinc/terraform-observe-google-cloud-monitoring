@@ -6,6 +6,7 @@ resource "observe_dashboard" "monitoring" {
     RESOURCE_DATASET     = observe_dataset.cloudsql.id
     METRICS_DATASET      = local.enable_metrics == true ? observe_dataset.cloudsql_metrics[0].id : null
     COMBOMETRICS_DATASET = local.enable_metrics == true ? observe_dataset.cloudsql_metrics_combo[0].id : null
+    WIDEMETRICS_DATASET  = local.enable_metrics == true ? observe_dataset.cloudsql_metrics_wide[0].id : null
     LOGS_DATASET         = observe_dataset.sql_logs.id
     ERRORLOGS_DATASET    = observe_dataset.combined_error_logs.id
   })
@@ -13,6 +14,7 @@ resource "observe_dashboard" "monitoring" {
     RESOURCE_DATASET     = observe_dataset.cloudsql.id
     METRICS_DATASET      = local.enable_metrics == true ? observe_dataset.cloudsql_metrics[0].id : null
     COMBOMETRICS_DATASET = local.enable_metrics == true ? observe_dataset.cloudsql_metrics_combo[0].id : null
+    WIDEMETRICS_DATASET  = local.enable_metrics == true ? observe_dataset.cloudsql_metrics_wide[0].id : null
     LOGS_DATASET         = observe_dataset.sql_logs.id
     ERRORLOGS_DATASET    = observe_dataset.combined_error_logs.id
   })
@@ -20,6 +22,7 @@ resource "observe_dashboard" "monitoring" {
     RESOURCE_DATASET     = observe_dataset.cloudsql.id
     METRICS_DATASET      = local.enable_metrics == true ? observe_dataset.cloudsql_metrics[0].id : null
     COMBOMETRICS_DATASET = local.enable_metrics == true ? observe_dataset.cloudsql_metrics_combo[0].id : null
+    WIDEMETRICS_DATASET  = local.enable_metrics == true ? observe_dataset.cloudsql_metrics_wide[0].id : null
     LOGS_DATASET         = observe_dataset.sql_logs.id
     ERRORLOGS_DATASET    = observe_dataset.combined_error_logs.id
   })

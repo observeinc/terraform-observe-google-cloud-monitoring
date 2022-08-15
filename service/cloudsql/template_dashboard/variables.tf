@@ -14,7 +14,7 @@ variable "user_email" {
 }
 
 variable "template_dashboard_id" {
-  default     = "41121205"
+  default     = "41122113"
   description = "dashboard id used to create tf definition"
   type        = string
 }
