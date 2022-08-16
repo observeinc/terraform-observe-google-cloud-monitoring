@@ -10,7 +10,7 @@
       "array": null,
       "link": null,
       "datasetref": {
-        "datasetId": "41109129",
+        "datasetId": "${RESOURCE_DATASET}",
         "datasetPath": null,
         "stageId": null
       }

@@ -30,7 +30,7 @@
         "disableFixedLeftColumns": false,
         "eventLinkColumnId": null,
         "fetchPageSize": 100,
-        "hasCalculatedColumnWidths": true,
+        "hasCalculatedColumnWidths": false,
         "hasDoneAutoLayout": false,
         "maxColumnWidth": 400,
         "maxMeasuredColumnWidth": {},
@@ -420,7 +420,7 @@
       {
         "inputName": "resource_asset_inventory_records",
         "inputRole": "Data",
-        "datasetId": "41109130",
+        "datasetId": "${RESOURCE_ASSET_INVENTORY_DATASET}",
         "datasetPath": null,
         "stageId": null
       }
@@ -449,7 +449,7 @@
         "disableFixedLeftColumns": false,
         "eventLinkColumnId": null,
         "fetchPageSize": 100,
-        "hasCalculatedColumnWidths": true,
+        "hasCalculatedColumnWidths": false,
         "hasDoneAutoLayout": false,
         "maxColumnWidth": 400,
         "maxMeasuredColumnWidth": {},
@@ -484,7 +484,7 @@
           "parameterId": "projectID"
         },
         {
-          "datasetId": "41109130",
+          "datasetId": "${RESOURCE_ASSET_INVENTORY_DATASET}",
           "inputName": "resource_asset_inventory_records",
           "inputRole": "Data",
           "isUserInput": true
@@ -669,7 +669,7 @@
       {
         "inputName": "ComputeInstance",
         "inputRole": "Data",
-        "datasetId": "41109752",
+        "datasetId": "${COMPUTE_DATASET}",
         "datasetPath": null,
         "stageId": null
       }
@@ -730,7 +730,7 @@
           "parameterId": "projectID"
         },
         {
-          "datasetId": "41109752",
+          "datasetId": "${COMPUTE_DATASET}",
           "inputName": "ComputeInstance",
           "inputRole": "Data",
           "isUserInput": true
@@ -849,6 +849,48 @@
           "type": "InputStep"
         },
         {
+          "columnStatsTable": {
+            "columnFunctions": {
+              "cpuPlatform": "count",
+              "createTime": "count",
+              "creationTime": "count",
+              "deleted": "count",
+              "deletionProtection": "count",
+              "instance_group": "count",
+              "instance_id": "count",
+              "instance_key": "count",
+              "instance_name": "count",
+              "label": "count",
+              "labels": "count",
+              "lifecycleState": "count",
+              "machineType": "count",
+              "name": "count",
+              "network": "count",
+              "networkIP": "count",
+              "parent": "count",
+              "parentId": "count",
+              "parentType": "count",
+              "projectNumber": "count",
+              "publicIP": "count",
+              "region": "count",
+              "status": "count",
+              "subnetwork": "count",
+              "tags": "count",
+              "ttl": "count",
+              "zone": "count"
+            },
+            "datasetQueryId": {
+              "ignoreCompress": false,
+              "queryId": "q-e8shy03v",
+              "resultKinds": [
+                "ResultKindSchema",
+                "ResultKindData"
+              ],
+              "tableTypes": [
+                "TABULAR"
+              ]
+            }
+          },
           "datasetQuery": null,
           "datasetQueryId": {
             "ignoreCompress": false,
@@ -885,7 +927,7 @@
           "note": true,
           "script": true
         },
-        "scriptTab": "INPUTS",
+        "scriptTab": "SCRIPT",
         "showTimeRuler": true,
         "stageTab": "vis"
       }
@@ -905,7 +947,7 @@
       {
         "inputName": "StorageBuckets",
         "inputRole": "Data",
-        "datasetId": "41109835",
+        "datasetId": "${STORAGE_DATASET}",
         "datasetPath": null,
         "stageId": null
       }
@@ -966,7 +1008,7 @@
           "parameterId": "projectID"
         },
         {
-          "datasetId": "41109835",
+          "datasetId": "${STORAGE_DATASET}",
           "inputName": "StorageBuckets",
           "inputRole": "Data",
           "isUserInput": true
@@ -1133,7 +1175,7 @@
       {
         "inputName": "CloudSQLInstance",
         "inputRole": "Data",
-        "datasetId": "41109178",
+        "datasetId": "${CLOUD_SQL_DATASET}",
         "datasetPath": null,
         "stageId": null
       }
@@ -1197,7 +1239,7 @@
           "parameterId": "projectID"
         },
         {
-          "datasetId": "41109178",
+          "datasetId": "${CLOUD_SQL_DATASET}",
           "inputName": "CloudSQLInstance",
           "inputRole": "Data",
           "isUserInput": true
@@ -1364,7 +1406,7 @@
       {
         "inputName": "FunctionInstance",
         "inputRole": "Data",
-        "datasetId": "41109187",
+        "datasetId": "${FUNCTION_DATASET}",
         "datasetPath": null,
         "stageId": null
       }
@@ -1428,7 +1470,7 @@
           "parameterId": "projectID"
         },
         {
-          "datasetId": "41109187",
+          "datasetId": "${FUNCTION_DATASET}",
           "inputName": "FunctionInstance",
           "inputRole": "Data",
           "isUserInput": true

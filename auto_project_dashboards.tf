@@ -26,8 +26,11 @@ resource "observe_dashboard" "monitoring" {
     FUNCTION_DATASET                 = module.cloudfunctions[0] == null ? null : module.cloudfunctions[0].function.id
   })
 
-  # parameter_values = templatefile("${path.module}//Users/arthur/content_eng/terraform-observe-google/dashboards/parameterValues_v1.json", {
-  #
-  #})
+  parameter_values = null
+}
+
+resource "observe_default_dashboard" "project" {
+  dataset   = observe_dataset.projects.oid
+  dashboard = resource.observe_dashboard.monitoring.oid
 }
 

@@ -23,6 +23,7 @@ FILE_VERSION:=_v1
 
 DATASET_ID_OUTPUT_NAME=project_datasets_id
 NAME_CLEANOUT=gcp-396/
+INPUT_DASHBOARD_ID=41124888
 
 # Variables used in functions below
 RESOURCE_DATASET_ID:=UNSET
@@ -80,6 +81,13 @@ replace_ids:
 	sed -i '' "s:$(CLOUD_SQL_DATASET_ID):"\$${CLOUD_SQL_DATASET}":g" /$(DASHBOARD_DIR)/*; 
 	sed -i '' "s:$(FUNCTION_DATASET_ID):"\$${FUNCTION_DATASET}":g" /$(DASHBOARD_DIR)/*; 
 
+manual_replace:
+	sed -i '' "s:41109129:"\$${RESOURCE_DATASET}":g" /$(DASHBOARD_DIR)/*; 
+	sed -i '' "s:41109130:"\$${RESOURCE_ASSET_INVENTORY_DATASET}":g" /$(DASHBOARD_DIR)/*; 
+	sed -i '' "s:41109752:"\$${COMPUTE_DATASET}":g" /$(DASHBOARD_DIR)/*; 
+	sed -i '' "s:41109835:"\$${STORAGE_DATASET}":g" /$(DASHBOARD_DIR)/*; 
+	sed -i '' "s:41109178:"\$${CLOUD_SQL_DATASET}":g" /$(DASHBOARD_DIR)/*; 
+	sed -i '' "s:41109187:"\$${FUNCTION_DATASET}":g" /$(DASHBOARD_DIR)/*; 
 ############################################
 
 # The directory where you are building google module - this should be a sample deployment of your service - https://github.com/observeinc/content-eng-gcp-example - main branch
@@ -147,9 +155,12 @@ define RESOURCE_DEF_VAR
 				$(subVars)
 			})
 
-			# parameter_values = templatefile("$${path.module}/$(PARAMETER_VALUES_OUTPUT_FILE)", {
-			#
-			#})
+			parameter_values = null
+		}
+
+		resource "observe_default_dashboard" "project" {
+			dataset = observe_dataset.projects.oid
+			dashboard = resource.observe_dashboard.monitoring.oid
 		}
 
 endef
@@ -255,7 +266,7 @@ variable "user_email" {
 
 variable "template_dashboard_id" {
   type        = string
-  default     = "41121209"
+  default     = "$(INPUT_DASHBOARD_ID)"
   description = "dashboard id used to create tf definition"
 }
 
@@ -299,7 +310,7 @@ terraform {
   required_providers {
     observe = {
       source  = "terraform.observeinc.com/observeinc/observe"
-      version = ">= 0.7.0"
+      version = ">= 0.10.0"
     }
     aws = {
       source  = "hashicorp/aws"

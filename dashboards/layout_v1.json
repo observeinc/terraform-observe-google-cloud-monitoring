@@ -8,7 +8,26 @@
           "id": "section-qipfuqhh",
           "title": "Dashboard Content"
         },
-        "items": [],
+        "items": [
+          {
+            "card": {
+              "cardType": "parameter",
+              "id": "card-e032ltiu",
+              "parameterId": "projectID"
+            },
+            "layout": {
+              "h": 4,
+              "i": "card-e032ltiu",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 4,
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
         "lastModified": 1660607115818
       },
       {
@@ -146,7 +165,7 @@
             }
           }
         ],
-        "lastModified": 1660608341195
+        "lastModified": 1660614275834
       }
     ]
   },
@@ -156,7 +175,7 @@
       {
         "defaultValue": {
           "datasetref": {
-            "datasetId": "41109129"
+            "datasetId": "${RESOURCE_DATASET}"
           }
         },
         "id": "projectID",
@@ -167,7 +186,7 @@
         "viewType": "input"
       }
     ],
-    "selectedStageId": "stage-697rttwo",
+    "selectedStageId": "stage-dib7b4bb",
     "timeRange": {
       "display": "Past 4 hours",
       "endTime": null,
