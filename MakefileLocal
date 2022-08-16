@@ -1,0 +1,21 @@
+SHELL=/bin/bash
+
+remove_lock:
+	rm -f .terraform.lock.hcl
+
+	for dir in service/*; do \
+		echo "$$dir"; \
+		if [ -d "$$dir" ]; then \
+			rm -f "$$dir/.terraform.lock.hcl"; \
+		fi; \
+	 done;
+
+init:
+	terraform init -upgrade; 
+
+	for dir in service/*; do \
+		echo "$$dir"; \
+		if [ -d "$$dir" ]; then \
+			terraform -chdir="$$dir" init -upgrade; \
+		fi; \
+	 done;
