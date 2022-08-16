@@ -35,7 +35,7 @@ variable "feature_flags" {
 
 variable "google" {
   type = object({
-    resource_asset_inventory_records = object({ oid = string })
+    resource_asset_inventory_records = object({ oid = string, id = string })
     logs                             = object({ oid = string })
     metrics                          = object({ oid = string })
     projects                         = object({ oid = string, id = string })

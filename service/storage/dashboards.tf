@@ -1,10 +1,11 @@
 
 locals {
   overview_json = local.enable_metrics ? jsondecode(templatefile("${path.module}/json/overview_dashboard.json", {
-    dataset_id_storage_buckets = observe_dataset.storage.id
-    dataset_id_storage_metrics = observe_dataset.storage_metrics[0].id
-    dataset_id_storage_logs    = observe_dataset.storage_logs.id
-    dataset_id_projects        = var.google.projects.id
+    dataset_google_storage_buckets         = observe_dataset.storage.id
+    dataset_google_storage_metrics         = observe_dataset.storage_metrics[0].id
+    dataset_google_storage_logs            = observe_dataset.storage_logs.id
+    dataset_google_projects                = var.google.projects.id
+    dataset_google_asset_inventory_records = var.google.resource_asset_inventory_records.id
   })) : jsondecode("{}")
 }
 
