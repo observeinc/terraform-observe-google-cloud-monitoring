@@ -16,7 +16,7 @@ locals {
 resource "observe_dataset" "compute" {
   workspace = var.workspace.oid
   name      = format(var.name_format, "Instance")
-  freshness = lookup(local.freshness, "cloudsql", var.freshness_default)
+  freshness = lookup(local.freshness, "compute", var.freshness_default)
 
   inputs = {
     "events" = var.google.resource_asset_inventory_records.oid
@@ -131,6 +131,21 @@ resource "observe_dataset" "compute" {
     EOF
   }
 }
+resource "observe_link" "project" {
+  for_each = {
+    "Projects" = {
+      target = var.google.projects.oid
+      fields = ["project_id"]
+    }
+  }
+
+  workspace = var.workspace.oid
+  source    = observe_dataset.compute.oid
+  target    = each.value.target
+  fields    = each.value.fields
+  label     = each.key
+}
+
 
 # resource "observe_dataset" "compute_group" {
 #   workspace = var.workspace.oid

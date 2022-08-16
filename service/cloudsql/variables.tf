@@ -39,6 +39,7 @@ variable "google" {
     logs                             = object({ oid = string })
     metrics                          = object({ oid = string })
     string_metrics                   = object({ oid = string })
+    projects                         = object({ oid = string })
   })
   description = "Google base module"
 }

@@ -43,7 +43,7 @@ resource "observe_dataset" "projects" {
 
 resource "observe_link" "project" {
   for_each = length(observe_dataset.projects) > 0 ? {
-    "Compute" = {
+    "AssetInventory" = {
       target = observe_dataset.resource_asset_inventory_records.oid
       fields = ["project_id"]
     }
