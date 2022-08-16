@@ -27,11 +27,11 @@ variable "freshness_overrides" {
   default     = {}
 }
 
-# variable "feature_flags" {
-#   type        = map(bool)
-#   description = "Toggle features which are being rolled out or phased out."
-#   default     = {}
-# }
+variable "feature_flags" {
+  type        = map(bool)
+  description = "Toggle features which are being rolled out or phased out."
+  default     = {}
+}
 
 variable "google" {
   type = object({
@@ -44,8 +44,14 @@ variable "google" {
   description = "Google base module"
 }
 
-# variable "metric_interface_fields" {
-#   type        = set(string)
-#   default     = ["type", "description", "rollup", "aggregate", "interval"]
-#   description = "Used by metric interface to pick fields to map"
-# }
+variable "metric_interface_fields" {
+  type        = set(string)
+  default     = ["type", "description", "rollup", "aggregate", "interval"]
+  description = "Used by metric interface to pick fields to map"
+}
+
+variable "metric_launch_stages" {
+  type        = set(string)
+  default     = ["GA", "BETA"]
+  description = "Used by metric interface to pick metrics to include"
+}

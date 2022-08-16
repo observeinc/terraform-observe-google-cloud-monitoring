@@ -37,6 +37,14 @@ locals {
     lookup(var.services, "storage", false)
   )
   name_format_load_balancing = lookup(var.service_name_formats, "load_balancing", "Load Balancing %s")
+
+  enable_service_pubsub = (
+    var.enable_service_pubsub == true ||
+    (var.enable_service_all == true && var.enable_service_pubsub != false) ||
+    lookup(var.services, "pubsub", false)
+  )
+  name_format_pubsub = lookup(var.service_name_formats, "pubsub", "PubSub %s")
+
 }
 
 module "cloudfunctions" {
@@ -98,6 +106,20 @@ module "load_balancing" {
   source              = "./service/loadbalancing"
   workspace           = var.workspace
   name_format         = format(var.name_format, local.name_format_load_balancing)
+  max_expiry          = var.max_expiry
+  freshness_default   = var.freshness_default
+  freshness_overrides = var.freshness_overrides
+  feature_flags       = var.feature_flags
+
+  google = local.base_module
+}
+
+module "pubsub" {
+  count = local.enable_service_pubsub ? 1 : 0
+
+  source              = "./service/pubsub"
+  workspace           = var.workspace
+  name_format         = format(var.name_format, local.name_format_pubsub)
   max_expiry          = var.max_expiry
   freshness_default   = var.freshness_default
   freshness_overrides = var.freshness_overrides

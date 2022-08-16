@@ -1,0 +1,1405 @@
+{
+    "metricDescriptors": [
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/snapshot/backlog_bytes",
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Total byte size of the messages retained in a snapshot.",
+        "displayName": "Snapshot backlog bytes",
+        "type": "pubsub.googleapis.com/snapshot/backlog_bytes",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_snapshot"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/snapshot/backlog_bytes_by_region",
+        "labels": [
+          {
+            "key": "region",
+            "description": "The Cloud region in which messages are persisted."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Total byte size of the messages retained in a snapshot, broken down by Cloud region.",
+        "displayName": "Snapshot backlog bytes by region",
+        "type": "pubsub.googleapis.com/snapshot/backlog_bytes_by_region",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_snapshot"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/snapshot/config_updates_count",
+        "labels": [
+          {
+            "key": "response_code",
+            "description": "Operation response code string, derived as a string representation of a status code (e.g., 'success', 'not_found', 'unavailable')."
+          },
+          {
+            "key": "operation_type",
+            "description": "Type of operation performed."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Cumulative count of configuration changes, grouped by operation type and result.",
+        "displayName": "Snapshot updates",
+        "type": "pubsub.googleapis.com/snapshot/config_updates_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_snapshot"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/snapshot/num_messages",
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Number of messages retained in a snapshot.",
+        "displayName": "Snapshot messages",
+        "type": "pubsub.googleapis.com/snapshot/num_messages",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_snapshot"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/snapshot/num_messages_by_region",
+        "labels": [
+          {
+            "key": "region",
+            "description": "The Cloud region in which messages are persisted."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Number of messages retained in a snapshot, broken down by Cloud region.",
+        "displayName": "Snapshot messages by region",
+        "type": "pubsub.googleapis.com/snapshot/num_messages_by_region",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_snapshot"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/snapshot/oldest_message_age",
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "s",
+        "description": "Age (in seconds) of the oldest message retained in a snapshot.",
+        "displayName": "Oldest snapshot message age",
+        "type": "pubsub.googleapis.com/snapshot/oldest_message_age",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_snapshot"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/snapshot/oldest_message_age_by_region",
+        "labels": [
+          {
+            "key": "region",
+            "description": "The Cloud region in which messages are persisted."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "s",
+        "description": "Age (in seconds) of the oldest message retained in a snapshot, broken down by Cloud region.",
+        "displayName": "Oldest snapshot message age by region",
+        "type": "pubsub.googleapis.com/snapshot/oldest_message_age_by_region",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_snapshot"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/ack_latencies",
+        "labels": [
+          {
+            "key": "delivery_type",
+            "description": "Delivery mechanism: push, pull or streaming pull."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "DISTRIBUTION",
+        "unit": "ms",
+        "description": "Distribution of ack latencies in milliseconds. The ack latency is the time between when Cloud Pub/Sub sends a message to a subscriber client and when Cloud Pub/Sub receives an Acknowledge request for that message.",
+        "displayName": "Ack latency",
+        "type": "pubsub.googleapis.com/subscription/ack_latencies",
+        "metadata": {
+          "launchStage": "BETA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/ack_message_count",
+        "labels": [
+          {
+            "key": "delivery_type",
+            "description": "Delivery mechanism: push, pull, streaming pull, or filter."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Cumulative count of messages acknowledged by Acknowledge requests, grouped by delivery type.",
+        "displayName": "Ack message count",
+        "type": "pubsub.googleapis.com/subscription/ack_message_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/backlog_bytes",
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Total byte size of the unacknowledged messages (a.k.a. backlog messages) in a subscription.",
+        "displayName": "Backlog size",
+        "type": "pubsub.googleapis.com/subscription/backlog_bytes",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/byte_cost",
+        "labels": [
+          {
+            "key": "operation_type",
+            "description": "Type of operation performed."
+          },
+          {
+            "key": "response_code",
+            "description": "Operation response code string, derived as a string representation of a status code (e.g., 'success', 'not_found', 'unavailable')."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Cumulative cost of operations, measured in bytes. This is used to measure quota utilization.",
+        "displayName": "Subscription byte cost",
+        "type": "pubsub.googleapis.com/subscription/byte_cost",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/config_updates_count",
+        "labels": [
+          {
+            "key": "response_code",
+            "description": "Operation response code string, derived as a string representation of a status code (e.g., 'success', 'not_found', 'unavailable')."
+          },
+          {
+            "key": "operation_type",
+            "description": "Type of operation performed."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Cumulative count of configuration changes for each subscription, grouped by operation type and result.",
+        "displayName": "Subscription updates",
+        "type": "pubsub.googleapis.com/subscription/config_updates_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/dead_letter_message_count",
+        "labels": [
+          {
+            "key": "response_code",
+            "description": "Operation response code string, derived as a string representation of a status code (e.g., 'success', 'not_found', 'unavailable')."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Cumulative count of messages published to dead letter topic, grouped by result.",
+        "displayName": "Dead letter message count",
+        "type": "pubsub.googleapis.com/subscription/dead_letter_message_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/delivery_latency_health_score",
+        "labels": [
+          {
+            "key": "criteria",
+            "description": "Criteria of the health score. Possible values are ack_latency, expired_ack_deadlines, nack_requests, seek_requests, and utilization."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "BOOL",
+        "unit": "1",
+        "description": "A score that measures the health of a subscription over a 10 minute rolling window.",
+        "displayName": "Delivery latency health score",
+        "type": "pubsub.googleapis.com/subscription/delivery_latency_health_score",
+        "metadata": {
+          "launchStage": "BETA",
+          "samplePeriod": "60s",
+          "ingestDelay": "360s"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/exactly_once_warning_count",
+        "labels": [
+          {
+            "key": "delivery_type",
+            "description": "Delivery mechanism: push, pull or streaming pull."
+          },
+          {
+            "key": "reason",
+            "description": "Cause of the possible redelivery."
+          },
+          {
+            "key": "operation_type",
+            "description": "Type of operation performed. One of [ack, modack]."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Count of instances (acks and modacks that may have failed) that may lead to message redeliveries.",
+        "displayName": "Exactly once delivery warning",
+        "type": "pubsub.googleapis.com/subscription/exactly_once_warning_count",
+        "metadata": {
+          "launchStage": "BETA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/expired_ack_deadlines_count",
+        "labels": [
+          {
+            "key": "delivery_type",
+            "description": "Delivery mechanism: push, pull or streaming pull."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Cumulative count of messages whose ack deadline expired while the message was outstanding to a subscriber client.",
+        "displayName": "Expired ack deadlines count",
+        "type": "pubsub.googleapis.com/subscription/expired_ack_deadlines_count",
+        "metadata": {
+          "launchStage": "BETA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/mod_ack_deadline_message_count",
+        "labels": [
+          {
+            "key": "delivery_type",
+            "description": "Delivery mechanism: push, pull or streaming pull."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Cumulative count of messages whose deadline was updated by ModifyAckDeadline requests, grouped by delivery type.",
+        "displayName": "Mod ack deadline message count",
+        "type": "pubsub.googleapis.com/subscription/mod_ack_deadline_message_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/mod_ack_deadline_message_operation_count",
+        "labels": [
+          {
+            "key": "response_code",
+            "description": "Operation response code string, derived as a string representation of a status code (e.g., 'success', 'not_found', 'unavailable')."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Cumulative count of ModifyAckDeadline message operations, grouped by result. This metric is deprecated. Use subscription/mod_ack_deadline_request_count instead.",
+        "displayName": "ModifyAckDeadline message operations",
+        "type": "pubsub.googleapis.com/subscription/mod_ack_deadline_message_operation_count",
+        "metadata": {
+          "launchStage": "DEPRECATED",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "DEPRECATED",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/mod_ack_deadline_request_count",
+        "labels": [
+          {
+            "key": "response_class",
+            "description": "A classification group for the response code. It can be one of ['success', 'invalid', 'internal']."
+          },
+          {
+            "key": "response_code",
+            "description": "Operation response code string, derived as a string representation of a status code (e.g., 'success', 'not_found', 'unavailable')."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Cumulative count of ModifyAckDeadline requests, grouped by result.",
+        "displayName": "ModifyAckDeadline requests",
+        "type": "pubsub.googleapis.com/subscription/mod_ack_deadline_request_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/num_outstanding_messages",
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Number of messages delivered to a subscription's push endpoint, but not yet acknowledged.",
+        "displayName": "Outstanding push messages",
+        "type": "pubsub.googleapis.com/subscription/num_outstanding_messages",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/num_retained_acked_messages",
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Number of acknowledged messages retained in a subscription.",
+        "displayName": "Retained acked messages",
+        "type": "pubsub.googleapis.com/subscription/num_retained_acked_messages",
+        "metadata": {
+          "launchStage": "ALPHA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "ALPHA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/num_retained_acked_messages_by_region",
+        "labels": [
+          {
+            "key": "region",
+            "description": "The Cloud region in which messages are persisted."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Number of acknowledged messages retained in a subscription, broken down by Cloud region.",
+        "displayName": "Retained acked messages by region",
+        "type": "pubsub.googleapis.com/subscription/num_retained_acked_messages_by_region",
+        "metadata": {
+          "launchStage": "BETA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/num_unacked_messages_by_region",
+        "labels": [
+          {
+            "key": "region",
+            "description": "The Cloud region in which messages are persisted."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Number of unacknowledged messages in a subscription, broken down by Cloud region.",
+        "displayName": "Unacked messages by region",
+        "type": "pubsub.googleapis.com/subscription/num_unacked_messages_by_region",
+        "metadata": {
+          "launchStage": "BETA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/num_undelivered_messages",
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Number of unacknowledged messages (a.k.a. backlog messages) in a subscription.",
+        "displayName": "Unacked messages",
+        "type": "pubsub.googleapis.com/subscription/num_undelivered_messages",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/oldest_retained_acked_message_age",
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "s",
+        "description": "Age (in seconds) of the oldest acknowledged message retained in a subscription.",
+        "displayName": "Oldest retained acked message age",
+        "type": "pubsub.googleapis.com/subscription/oldest_retained_acked_message_age",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/oldest_retained_acked_message_age_by_region",
+        "labels": [
+          {
+            "key": "region",
+            "description": "The Cloud region in which messages are persisted."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "s",
+        "description": "Age (in seconds) of the oldest acknowledged message retained in a subscription, broken down by Cloud region.",
+        "displayName": "Oldest retained acked message age by region",
+        "type": "pubsub.googleapis.com/subscription/oldest_retained_acked_message_age_by_region",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/oldest_unacked_message_age",
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "s",
+        "description": "Age (in seconds) of the oldest unacknowledged message (a.k.a. backlog message) in a subscription.",
+        "displayName": "Oldest unacked message age",
+        "type": "pubsub.googleapis.com/subscription/oldest_unacked_message_age",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/oldest_unacked_message_age_by_region",
+        "labels": [
+          {
+            "key": "region",
+            "description": "The Cloud region in which messages are persisted."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "s",
+        "description": "Age (in seconds) of the oldest unacknowledged message in a subscription, broken down by Cloud region.",
+        "displayName": "Oldest unacked message age by region",
+        "type": "pubsub.googleapis.com/subscription/oldest_unacked_message_age_by_region",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/pull_ack_message_operation_count",
+        "labels": [
+          {
+            "key": "response_code",
+            "description": "Operation response code string, derived as a string representation of a status code (e.g., 'success', 'not_found', 'unavailable')."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Cumulative count of acknowledge message operations, grouped by result. This metric is deprecated. Use subscription/pull_ack_request_count instead.",
+        "displayName": "Acknowledge message operations",
+        "type": "pubsub.googleapis.com/subscription/pull_ack_message_operation_count",
+        "metadata": {
+          "launchStage": "DEPRECATED",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "DEPRECATED",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/pull_ack_request_count",
+        "labels": [
+          {
+            "key": "response_class",
+            "description": "A classification group for the response code. It can be one of ['success', 'invalid', 'internal']."
+          },
+          {
+            "key": "response_code",
+            "description": "Operation response code string, derived as a string representation of a status code (e.g., 'success', 'not_found', 'unavailable')."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Cumulative count of acknowledge requests, grouped by result.",
+        "displayName": "Acknowledge requests",
+        "type": "pubsub.googleapis.com/subscription/pull_ack_request_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/pull_message_operation_count",
+        "labels": [
+          {
+            "key": "response_code",
+            "description": "Operation response code string, derived as a string representation of a status code (e.g., 'success', 'not_found', 'unavailable')."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Cumulative count of pull message operations, grouped by result. This metric is deprecated. Use subscription/pull_request_count instead.",
+        "displayName": "Pull operations",
+        "type": "pubsub.googleapis.com/subscription/pull_message_operation_count",
+        "metadata": {
+          "launchStage": "DEPRECATED",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "DEPRECATED",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/pull_request_count",
+        "labels": [
+          {
+            "key": "response_class",
+            "description": "A classification group for the response code. It can be one of ['success', 'invalid', 'internal']."
+          },
+          {
+            "key": "response_code",
+            "description": "Operation response code string, derived as a string representation of a status code (e.g., 'success', 'not_found', 'unavailable')."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Cumulative count of pull requests, grouped by result.",
+        "displayName": "Pull requests",
+        "type": "pubsub.googleapis.com/subscription/pull_request_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/push_request_count",
+        "labels": [
+          {
+            "key": "response_class",
+            "description": "A classification group for the response code. It can be one of ['ack', 'deadline_exceeded', 'internal', 'invalid', 'remote_server_4xx', 'remote_server_5xx', 'unreachable']."
+          },
+          {
+            "key": "response_code",
+            "description": "Operation response code string, derived as a string representation of a status code (e.g., 'success', 'not_found', 'unavailable')."
+          },
+          {
+            "key": "delivery_type",
+            "description": "Push delivery mechanism."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Cumulative count of push attempts, grouped by result. Unlike pulls, the push server implementation does not batch user messages. So each request only contains one user message. The push server retries on errors, so a given user message can appear multiple times.",
+        "displayName": "Push requests",
+        "type": "pubsub.googleapis.com/subscription/push_request_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/push_request_latencies",
+        "labels": [
+          {
+            "key": "response_code",
+            "description": "Operation response code string, derived as a string representation of a status code (e.g., 'success', 'not_found', 'unavailable')."
+          },
+          {
+            "key": "delivery_type",
+            "description": "Push delivery mechanism."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "DISTRIBUTION",
+        "unit": "us",
+        "description": "Distribution of push request latencies (in microseconds), grouped by result.",
+        "displayName": "Push latency",
+        "type": "pubsub.googleapis.com/subscription/push_request_latencies",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/retained_acked_bytes",
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Total byte size of the acknowledged messages retained in a subscription.",
+        "displayName": "Retained acked bytes",
+        "type": "pubsub.googleapis.com/subscription/retained_acked_bytes",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/retained_acked_bytes_by_region",
+        "labels": [
+          {
+            "key": "region",
+            "description": "The Cloud region in which messages are persisted."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Total byte size of the acknowledged messages retained in a subscription, broken down by Cloud region.",
+        "displayName": "Retained acked bytes by region",
+        "type": "pubsub.googleapis.com/subscription/retained_acked_bytes_by_region",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/seek_request_count",
+        "labels": [
+          {
+            "key": "response_code",
+            "description": "Operation response code string, derived as a string representation of a status code (e.g., 'success', 'not_found', 'unavailable')."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Cumulative count of seek attempts, grouped by result.",
+        "displayName": "Seek requests",
+        "type": "pubsub.googleapis.com/subscription/seek_request_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/sent_message_count",
+        "labels": [
+          {
+            "key": "delivery_type",
+            "description": "Delivery mechanism: push, pull or streaming pull."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Cumulative count of messages sent by Cloud Pub/Sub to subscriber clients, grouped by delivery type.",
+        "displayName": "Sent message count",
+        "type": "pubsub.googleapis.com/subscription/sent_message_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/streaming_pull_ack_message_operation_count",
+        "labels": [
+          {
+            "key": "response_code",
+            "description": "Operation response code string, derived as a string representation of a status code (e.g., 'success', 'unavailable')."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Cumulative count of StreamingPull acknowledge message operations, grouped by result. This metric is deprecated. Use subscription/streaming_pull_ack_request_count instead.",
+        "displayName": "StreamingPull Acknowledge message operations",
+        "type": "pubsub.googleapis.com/subscription/streaming_pull_ack_message_operation_count",
+        "metadata": {
+          "launchStage": "DEPRECATED",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "DEPRECATED",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/streaming_pull_ack_request_count",
+        "labels": [
+          {
+            "key": "response_class",
+            "description": "A classification group for the response code. It can be one of ['success', 'invalid', 'internal']."
+          },
+          {
+            "key": "response_code",
+            "description": "Operation response code string, derived as a string representation of a status code (e.g., 'success', 'unavailable')."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Cumulative count of streaming pull requests with non-empty acknowledge ids, grouped by result.",
+        "displayName": "StreamingPull Acknowledge requests",
+        "type": "pubsub.googleapis.com/subscription/streaming_pull_ack_request_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/streaming_pull_message_operation_count",
+        "labels": [
+          {
+            "key": "response_code",
+            "description": "Operation response code string, derived as a string representation of a status code (e.g., 'success', 'unavailable')."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Cumulative count of streaming pull message operations, grouped by result. This metric is deprecated. Use subscription/streaming_pull_response_count instead.",
+        "displayName": "StreamingPull message operations",
+        "type": "pubsub.googleapis.com/subscription/streaming_pull_message_operation_count",
+        "metadata": {
+          "launchStage": "DEPRECATED",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "DEPRECATED",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/streaming_pull_mod_ack_deadline_message_operation_count",
+        "labels": [
+          {
+            "key": "response_code",
+            "description": "Operation response code string, derived as a string representation of a status code (e.g., 'success', 'unavailable')."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Cumulative count of StreamingPull ModifyAckDeadline operations, grouped by result. This metric is deprecated. Use subscription/streaming_pull_mod_ack_deadline_request_count instead.",
+        "displayName": "StreamingPull ModifyAckDeadline message operations",
+        "type": "pubsub.googleapis.com/subscription/streaming_pull_mod_ack_deadline_message_operation_count",
+        "metadata": {
+          "launchStage": "DEPRECATED",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "DEPRECATED",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/streaming_pull_mod_ack_deadline_request_count",
+        "labels": [
+          {
+            "key": "response_class",
+            "description": "A classification group for the response code. It can be one of ['success', 'invalid', 'internal']."
+          },
+          {
+            "key": "response_code",
+            "description": "Operation response code string, derived as a string representation of a status code (e.g., 'success', 'unavailable')."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Cumulative count of streaming pull requests with non-empty ModifyAckDeadline fields, grouped by result.",
+        "displayName": "StreamingPull ModifyAckDeadline requests",
+        "type": "pubsub.googleapis.com/subscription/streaming_pull_mod_ack_deadline_request_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/streaming_pull_response_count",
+        "labels": [
+          {
+            "key": "response_class",
+            "description": "A classification group for the response code. It can be one of ['success', 'invalid', 'internal']."
+          },
+          {
+            "key": "response_code",
+            "description": "Operation response code string, derived as a string representation of a status code (e.g., 'success', 'unavailable')."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Cumulative count of streaming pull responses, grouped by result.",
+        "displayName": "StreamingPull responses",
+        "type": "pubsub.googleapis.com/subscription/streaming_pull_response_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/subscription/unacked_bytes_by_region",
+        "labels": [
+          {
+            "key": "region",
+            "description": "The Cloud region in which messages are persisted."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Total byte size of the unacknowledged messages in a subscription, broken down by Cloud region.",
+        "displayName": "Unacked bytes by region",
+        "type": "pubsub.googleapis.com/subscription/unacked_bytes_by_region",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_subscription"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/topic/byte_cost",
+        "labels": [
+          {
+            "key": "operation_type",
+            "description": "Type of operation performed."
+          },
+          {
+            "key": "response_code",
+            "description": "Operation response code string, derived as a string representation of a status code (e.g., 'success', 'not_found', 'unavailable')."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Cost of operations, measured in bytes. This is used to measure utilization for quotas.",
+        "displayName": "Topic byte cost",
+        "type": "pubsub.googleapis.com/topic/byte_cost",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_topic"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/topic/config_updates_count",
+        "labels": [
+          {
+            "key": "response_code",
+            "description": "Operation response code string, derived as a string representation of a status code (e.g., 'success', 'not_found', 'unavailable')."
+          },
+          {
+            "key": "operation_type",
+            "description": "Type of operation performed."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Cumulative count of configuration changes, grouped by operation type and result.",
+        "displayName": "Topic updates",
+        "type": "pubsub.googleapis.com/topic/config_updates_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_topic"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/topic/message_sizes",
+        "metricKind": "DELTA",
+        "valueType": "DISTRIBUTION",
+        "unit": "By",
+        "description": "Distribution of publish message sizes (in bytes).",
+        "displayName": "Publish message size",
+        "type": "pubsub.googleapis.com/topic/message_sizes",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_topic"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/topic/num_retained_acked_messages_by_region",
+        "labels": [
+          {
+            "key": "region",
+            "description": "The Cloud region in which messages are persisted."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Number of acknowledged messages retained in a topic, broken down by Cloud region.",
+        "displayName": "Retained acked messages by region",
+        "type": "pubsub.googleapis.com/topic/num_retained_acked_messages_by_region",
+        "metadata": {
+          "launchStage": "BETA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "pubsub_topic"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/topic/num_retained_messages",
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Number of messages retained in a topic.",
+        "displayName": "Retained messages",
+        "type": "pubsub.googleapis.com/topic/num_retained_messages",
+        "metadata": {
+          "launchStage": "BETA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "pubsub_topic"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/topic/num_unacked_messages_by_region",
+        "labels": [
+          {
+            "key": "region",
+            "description": "The Cloud region in which messages are persisted."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Number of unacknowledged messages in a topic, broken down by Cloud region.",
+        "displayName": "Unacked messages by region",
+        "type": "pubsub.googleapis.com/topic/num_unacked_messages_by_region",
+        "metadata": {
+          "launchStage": "BETA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "pubsub_topic"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/topic/oldest_retained_acked_message_age_by_region",
+        "labels": [
+          {
+            "key": "region",
+            "description": "The Cloud region in which messages are persisted."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "s",
+        "description": "Age (in seconds) of the oldest acknowledged message retained in a topic, broken down by Cloud region.",
+        "displayName": "Oldest retained acked message age by region",
+        "type": "pubsub.googleapis.com/topic/oldest_retained_acked_message_age_by_region",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_topic"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/topic/oldest_retained_message_age",
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "s",
+        "description": "Age (in seconds) of the oldest message retained in a topic.",
+        "displayName": "Oldest retained message age",
+        "type": "pubsub.googleapis.com/topic/oldest_retained_message_age",
+        "metadata": {
+          "launchStage": "BETA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "pubsub_topic"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/topic/oldest_unacked_message_age_by_region",
+        "labels": [
+          {
+            "key": "region",
+            "description": "The Cloud region in which messages are persisted."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "s",
+        "description": "Age (in seconds) of the oldest unacknowledged message in a topic, broken down by Cloud region.",
+        "displayName": "Oldest unacked message age by region",
+        "type": "pubsub.googleapis.com/topic/oldest_unacked_message_age_by_region",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_topic"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/topic/retained_acked_bytes_by_region",
+        "labels": [
+          {
+            "key": "region",
+            "description": "The Cloud region in which messages are persisted."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Total byte size of the acknowledged messages retained in a topic, broken down by Cloud region.",
+        "displayName": "Retained acked bytes by region",
+        "type": "pubsub.googleapis.com/topic/retained_acked_bytes_by_region",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_topic"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/topic/retained_bytes",
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Total byte size of the messages retained in a topic.",
+        "displayName": "Retained bytes",
+        "type": "pubsub.googleapis.com/topic/retained_bytes",
+        "metadata": {
+          "launchStage": "BETA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "BETA",
+        "monitoredResourceTypes": [
+          "pubsub_topic"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/topic/send_message_operation_count",
+        "labels": [
+          {
+            "key": "response_code",
+            "description": "Operation response code string, derived as a string representation of a status code (e.g., 'success', 'not_found', 'unavailable')."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Cumulative count of publish message operations, grouped by result. This metric is deprecated. Apply a count aggregator on topic/message_sizes instead.",
+        "displayName": "Publish message operations",
+        "type": "pubsub.googleapis.com/topic/send_message_operation_count",
+        "metadata": {
+          "launchStage": "DEPRECATED",
+          "samplePeriod": "60s",
+          "ingestDelay": "240s"
+        },
+        "launchStage": "DEPRECATED",
+        "monitoredResourceTypes": [
+          "pubsub_topic"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/topic/send_request_count",
+        "labels": [
+          {
+            "key": "response_class",
+            "description": "A classification group for the response code. It can be one of ['success', 'invalid', 'internal']."
+          },
+          {
+            "key": "response_code",
+            "description": "Operation response code string, derived as a string representation of a status code (e.g., 'success', 'not_found', 'unavailable')."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Cumulative count of publish requests, grouped by result.",
+        "displayName": "Publish requests",
+        "type": "pubsub.googleapis.com/topic/send_request_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_topic"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/pubsub.googleapis.com/topic/unacked_bytes_by_region",
+        "labels": [
+          {
+            "key": "region",
+            "description": "The Cloud region in which messages are persisted."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "By",
+        "description": "Total byte size of the unacknowledged messages in a topic, broken down by Cloud region.",
+        "displayName": "Unacked bytes by region",
+        "type": "pubsub.googleapis.com/topic/unacked_bytes_by_region",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "120s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "pubsub_topic"
+        ]
+      }
+    ]
+  }
+  

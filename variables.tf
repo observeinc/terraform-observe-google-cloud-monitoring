@@ -110,3 +110,11 @@ variable "enable_service_load_balancing" {
     Enable Cloud Load Balancing service.
   EOF
 }
+
+variable "enable_service_pubsub" {
+  type        = bool
+  default     = null
+  description = <<-EOF
+    Enable PubSub service.
+  EOF
+}
