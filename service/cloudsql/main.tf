@@ -70,3 +70,18 @@ resource "observe_dataset" "cloudsql" {
     EOF
   }
 }
+
+resource "observe_link" "project" {
+  for_each = {
+    "Projects" = {
+      target = var.google.projects.oid
+      fields = ["project_id"]
+    }
+  }
+
+  workspace = var.workspace.oid
+  source    = observe_dataset.cloudsql.oid
+  target    = each.value.target
+  fields    = each.value.fields
+  label     = each.key
+}
