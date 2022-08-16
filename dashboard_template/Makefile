@@ -158,11 +158,6 @@ define RESOURCE_DEF_VAR
 			parameter_values = null
 		}
 
-		# resource "observe_default_dashboard" "project" {
-		# 	dataset = observe_dataset.projects.oid
-		# 	dashboard = resource.observe_dashboard.monitoring.oid
-		# }
-
 endef
 
 export RESOURCE_DEF_VAR 
