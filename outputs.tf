@@ -49,3 +49,7 @@ output "compute" {
 output "projects" {
   value = observe_dataset.projects
 }
+
+output "storage" {
+  value = local.enable_service_storage ? module.storage[0] : null
+}

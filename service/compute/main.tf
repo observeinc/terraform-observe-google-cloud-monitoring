@@ -131,6 +131,21 @@ resource "observe_dataset" "compute" {
     EOF
   }
 }
+resource "observe_link" "project" {
+  for_each = {
+    "AssetInventory" = {
+      target = var.google.projects.oid
+      fields = ["project_id"]
+    }
+  }
+
+  workspace = var.workspace.oid
+  source    = observe_dataset.compute.oid
+  target    = each.value.target
+  fields    = each.value.fields
+  label     = each.key
+}
+
 
 # resource "observe_dataset" "compute_group" {
 #   workspace = var.workspace.oid

@@ -8,7 +8,35 @@
           "id": "section-qipfuqhh",
           "title": "Dashboard Content"
         },
+        "items": [],
+        "lastModified": 1660607115818
+      },
+      {
+        "card": {
+          "cardType": "section",
+          "closed": false,
+          "id": "card-dwc5jebr",
+          "title": "Summary"
+        },
         "items": [
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-wtw3iex7",
+              "stageId": "stage-whogxc6v"
+            },
+            "layout": {
+              "h": 7,
+              "i": "card-wtw3iex7",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 2,
+              "x": 5,
+              "y": 0
+            }
+          },
           {
             "card": {
               "cardType": "stage",
@@ -16,15 +44,69 @@
               "stageId": "stage-itglsq8u"
             },
             "layout": {
-              "h": 12,
+              "h": 14,
               "i": "card-rbdukq7y",
               "isDraggable": true,
               "isResizable": true,
               "moved": false,
               "static": false,
-              "w": 4,
+              "w": 3,
               "x": 0,
               "y": 0
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-qo9v94bu",
+              "stageId": "stage-dib7b4bb"
+            },
+            "layout": {
+              "h": 7,
+              "i": "card-qo9v94bu",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 2,
+              "x": 3,
+              "y": 0
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-1gw3klsx",
+              "stageId": "stage-kcxx3zmn"
+            },
+            "layout": {
+              "h": 7,
+              "i": "card-1gw3klsx",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 2,
+              "x": 3,
+              "y": 7
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-y7zdbems",
+              "stageId": "stage-697rttwo"
+            },
+            "layout": {
+              "h": 7,
+              "i": "card-y7zdbems",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 2,
+              "x": 5,
+              "y": 7
             }
           },
           {
@@ -34,19 +116,37 @@
               "stageId": "stage-n2y1mgeg"
             },
             "layout": {
-              "h": 12,
+              "h": 10,
               "i": "card-46y4bc0u",
               "isDraggable": true,
               "isResizable": true,
               "moved": false,
               "static": false,
-              "w": 4,
+              "w": 12,
               "x": 0,
-              "y": 12
+              "y": 14
+            }
+          },
+          {
+            "card": {
+              "cardType": "stage",
+              "id": "card-gpsk59x1",
+              "stageId": "stage-jv3pfnpg"
+            },
+            "layout": {
+              "h": 43,
+              "i": "card-gpsk59x1",
+              "isDraggable": true,
+              "isResizable": true,
+              "moved": false,
+              "static": false,
+              "w": 12,
+              "x": 0,
+              "y": 24
             }
           }
         ],
-        "lastModified": 1660330165004
+        "lastModified": 1660608341195
       }
     ]
   },
@@ -56,7 +156,7 @@
       {
         "defaultValue": {
           "datasetref": {
-            "datasetId": "${RESOURCE_DATASET}"
+            "datasetId": "41109129"
           }
         },
         "id": "projectID",
@@ -67,7 +167,7 @@
         "viewType": "input"
       }
     ],
-    "selectedStageId": "stage-itglsq8u",
+    "selectedStageId": "stage-697rttwo",
     "timeRange": {
       "display": "Past 4 hours",
       "endTime": null,
@@ -76,7 +176,8 @@
       "startTime": null,
       "timeRangeInfo": {
         "key": "PRESETS",
-        "name": "Presets"
+        "name": "Presets",
+        "presetType": "PAST_4_HOURS"
       },
       "timeZone": null
     }

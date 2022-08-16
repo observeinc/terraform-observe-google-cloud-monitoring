@@ -98,6 +98,7 @@ module "google" {
 | <a name="output_projects"></a> [projects](#output\_projects) | n/a |
 | <a name="output_pubsub_events"></a> [pubsub\_events](#output\_pubsub\_events) | n/a |
 | <a name="output_resource_asset_inventory_records"></a> [resource\_asset\_inventory\_records](#output\_resource\_asset\_inventory\_records) | n/a |
+| <a name="output_storage"></a> [storage](#output\_storage) | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## License

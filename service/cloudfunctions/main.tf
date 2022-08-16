@@ -224,3 +224,18 @@ resource "observe_dashboard" "host" {
   parameters       = local.functions_dashboard.parameters
   parameter_values = local.functions_dashboard.parameter_values
 }
+
+resource "observe_link" "project" {
+  for_each = {
+    "AssetInventory" = {
+      target = var.google.projects.oid
+      fields = ["projectId:project_id"]
+    }
+  }
+
+  workspace = var.workspace.oid
+  source    = observe_dataset.function.oid
+  target    = each.value.target
+  fields    = each.value.fields
+  label     = each.key
+}
