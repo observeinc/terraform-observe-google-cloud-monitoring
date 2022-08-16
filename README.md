@@ -59,7 +59,6 @@ module "google" {
 | observe_dataset.projects | resource |
 | observe_dataset.resource_asset_inventory_records | resource |
 | observe_dataset.string_metrics | resource |
-| observe_default_dashboard.project | resource |
 | observe_link.project | resource |
 
 ## Inputs
