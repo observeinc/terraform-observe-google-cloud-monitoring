@@ -7,25 +7,44 @@
 ####################################################
 # USAGE
 ####################################################
-# Critical variables unique to where you are: TERRAFORM_DIRECTORY and SERVICE_DIRECTORY
-
-# Assumes 
-
 SHELL=/bin/bash
 
+# If you have your project set up then run make all iteratively
+
+# When setting up run in this order
+# make template_def
+# make datasets
+# make get_unique_dataset_id - use filter generated against usage to sanity check inputs
+# make ids
+# make check_for_unsubstituted_values
+
+
+all: template_def datasets ids name_clean finish remove_template_def check_for_unsubstituted_values
+
+no_refresh: ids finish
+
+datasets: get_template_dashboard parameters stages layout # parameter_values - if it is ever valid
+
+ids: replace_ids replace_params
+
+name_clean: replace_name
+
+finish: resource_def build_dashboard 
 
 # Suffix for json files that will be created
 FILE_VERSION:=_v1
 
 ############################################
-# These variables are set for new dashboard
+# These variables are set for new dashboard 
 ############################################
-
+# This output exists in content-eng-gcp-example/example and contains dataset ids
 DATASET_ID_OUTPUT_NAME=project_datasets_id
+# this will sanitize input names on stages to remove working package
 NAME_CLEANOUT=gcp-396/
+# This is dashboard id that you are doing development on taht will be used to create terraformed dashboard
 INPUT_DASHBOARD_ID=41124888
 
-# Variables used in functions below
+# Variables used in functions below and set with script
 RESOURCE_DATASET_ID:=UNSET
 RESOURCE_ASSET_INVENTORY_DATASET_ID:=UNSET
 COMPUTE_DATASET_ID:=UNSET
@@ -33,6 +52,14 @@ STORAGE_DATASET_ID:=UNSET
 CLOUD_SQL_DATASET_ID:=UNSET
 FUNCTION_DATASET_ID:=UNSET
 
+# The directory where you are building google module - this should be a sample deployment of your service - https://github.com/observeinc/content-eng-gcp-example - main branch
+TERRAFORM_DIRECTORY:=/Users/arthur/content_eng/content-eng-gcp-example/example
+# The local directory with module code - your json and dashboard terraform will be placed here
+SERVICE_DIRECTORY:=Users/arthur/content_eng/terraform-observe-google
+# where temporary terraform lives
+TEMPLATE_DASHBOARD_DIRECTORY:=/Users/arthur/content_eng/terraform-observe-google/dashboard_template
+
+# This gets injected into auto generated dashboard terraform definition
 define subVars 
 	RESOURCE_DATASET = observe_dataset.projects.id
 	RESOURCE_ASSET_INVENTORY_DATASET = observe_dataset.resource_asset_inventory_records.id
@@ -44,10 +71,13 @@ endef
 
 export subVars 
 
+# remove null params property that comes form terraform for no particular reason
 replace_params:
 	sed -i '' "s:\"params\"\: null,:"":g" /$(DASHBOARD_DIR)/*; 
-	
+
+# replace dataset ids with terraform template variables 
 replace_ids:
+	# pull ids for terraform outputs in content-eng-gcp-example/example
 	$(eval RESOURCE_DATASET_ID=$(shell cd $(TERRAFORM_DIRECTORY); \
 	terraform output -json $(DATASET_ID_OUTPUT_NAME) | jq -r '.resource_dataset_id'))
 
@@ -66,7 +96,7 @@ replace_ids:
 	$(eval FUNCTION_DATASET_ID=$(shell cd $(TERRAFORM_DIRECTORY); \
 	terraform output -json $(DATASET_ID_OUTPUT_NAME) | jq -r '.function_dataset_id'))
 
-
+	# echo values for sanity check
 	echo RESOURCE_DATASET_ID is $(RESOURCE_DATASET_ID);
 	echo RESOURCE_ASSET_INVENTORY_DATASET_ID is $(RESOURCE_ASSET_INVENTORY_DATASET_ID);
 	echo COMPUTE_DATASET_ID is $(COMPUTE_DATASET_ID);
@@ -74,6 +104,7 @@ replace_ids:
 	echo CLOUD_SQL_DATASET_ID is $(CLOUD_SQL_DATASET_ID);
 	echo FUNCTION_DATASET_ID is $(FUNCTION_DATASET_ID);
 
+	# replace static ids with variables
 	sed -i '' "s:$(RESOURCE_DATASET_ID):"\$${RESOURCE_DATASET}":g" /$(DASHBOARD_DIR)/*; 
 	sed -i '' "s:$(RESOURCE_ASSET_INVENTORY_DATASET_ID):"\$${RESOURCE_ASSET_INVENTORY_DATASET}":g" /$(DASHBOARD_DIR)/*; 
 	sed -i '' "s:$(COMPUTE_DATASET_ID):"\$${COMPUTE_DATASET}":g" /$(DASHBOARD_DIR)/*; 
@@ -81,6 +112,10 @@ replace_ids:
 	sed -i '' "s:$(CLOUD_SQL_DATASET_ID):"\$${CLOUD_SQL_DATASET}":g" /$(DASHBOARD_DIR)/*; 
 	sed -i '' "s:$(FUNCTION_DATASET_ID):"\$${FUNCTION_DATASET}":g" /$(DASHBOARD_DIR)/*; 
 
+replace_name:
+	sed -i '' "s:$(NAME_CLEANOUT):"":g" /$(DASHBOARD_DIR)/*; 
+
+# if you hose it this can fix it
 manual_replace:
 	sed -i '' "s:41109129:"\$${RESOURCE_DATASET}":g" /$(DASHBOARD_DIR)/*; 
 	sed -i '' "s:41109130:"\$${RESOURCE_ASSET_INVENTORY_DATASET}":g" /$(DASHBOARD_DIR)/*; 
@@ -89,13 +124,6 @@ manual_replace:
 	sed -i '' "s:41109178:"\$${CLOUD_SQL_DATASET}":g" /$(DASHBOARD_DIR)/*; 
 	sed -i '' "s:41109187:"\$${FUNCTION_DATASET}":g" /$(DASHBOARD_DIR)/*; 
 ############################################
-
-# The directory where you are building google module - this should be a sample deployment of your service - https://github.com/observeinc/content-eng-gcp-example - main branch
-TERRAFORM_DIRECTORY:=/Users/arthur/content_eng/content-eng-gcp-example/example
-# The local directory with module code - your json and dashboard terraform will be placed here
-SERVICE_DIRECTORY:=Users/arthur/content_eng/terraform-observe-google
-
-TEMPLATE_DASHBOARD_DIRECTORY:=/Users/arthur/content_eng/terraform-observe-google/dashboard_template
 
 # File created that will become a part of service definition
 PARAMETER_OUTPUT_FILE:=/$(SERVICE_DIRECTORY)/dashboards/parameters$(FILE_VERSION).json
@@ -118,29 +146,7 @@ DASHBOARD_FILE:=/$(SERVICE_DIRECTORY)/auto_project_dashboards.tf
 # Directorcy it will be created in
 DASHBOARD_DIR:=$(SERVICE_DIRECTORY)/dashboards
 
-
-
-#Run in this order
-# make datasets
-# make get_unique_dataset_id - use filter generated against usage to sanity check inputs
-# make ids
-# make check_for_unsubstituted_values
-
-
-all: template_def datasets ids name_clean finish remove_template_def
-
-no_refresh: ids finish
-
-datasets: get_template_dashboard parameters stages layout parameter_values
-
-ids: replace_ids replace_params
-
-name_clean: replace_name
-
-finish: resource_def build_dashboard check_for_unsubstituted_values
-
 # Terraform resource template variable
-
 define RESOURCE_DEF_VAR
 	resource "observe_dashboard" "monitoring" {
 			workspace = var.workspace.oid
@@ -173,10 +179,12 @@ build_dashboard:
 	cd $(TERRAFORM_DIRECTORY); \
 	terraform apply -auto-approve;
 
+# look for ids that were not substituted
 check_for_unsubstituted_values:
 	cd /$(SERVICE_DIRECTORY)/dashboards; \
 	grep -nr "datasetId" .
 
+# create a filter clause for Observe Dataset worksheet with unique dataset ids in your imported json before substitution
 get_unique_dataset_id:
 	cd /$(SERVICE_DIRECTORY)/dashboards; \
 	echo '#####################'; \
@@ -186,17 +194,7 @@ get_unique_dataset_id:
 	echo '#####################';
 
 
-
-
-replace_name:
-	sed -i '' "s:$(NAME_CLEANOUT):"":g" /$(DASHBOARD_DIR)/*; 
-
-random_wtf:
-	sed -i '' "s:\"params\"\: null,:"":g" /$(DASHBOARD_DIR)/*; 
-	    
-
-	
-
+    
 # Run this step by itself if you have no json files or outputs
 create_data_state:
 	rm -f $(DASHBOARD_FILE);
@@ -208,7 +206,6 @@ get_template_dashboard:
 
 	cd $(TEMPLATE_DASHBOARD_DIRECTORY); \
 	terraform apply -auto-approve; 
-
 
 # Create json file based on output value
 parameters:
@@ -239,8 +236,8 @@ parameter_values:
 	rm $(PARAMETER_VALUES_OUTPUT_FILE)_TEMP 
 
 
-template:
-
+# this creates template terraform 
+# assumes presence of autovars file to set variables
 define TEMPLATE_VAR
 
 variable "observe_domain" {
@@ -281,7 +278,6 @@ resource "observe_dashboard" "inbetween" {
   parameters       = data.observe_dashboard.db.parameters
   parameter_values = data.observe_dashboard.db.parameter_values
 }
-
 
 
 output "stages" {
@@ -338,8 +334,6 @@ data "aws_secretsmanager_secret_version" "secret" {
   secret_id = data.aws_secretsmanager_secret.secret.id
 }
 
-
-
 endef
 
 export TEMPLATE_VAR 
@@ -349,4 +343,7 @@ template_def:
 	terraform fmt;
 
 remove_template_def:
+	cd $(TEMPLATE_DASHBOARD_DIRECTORY); \
+	terraform destroy -auto-approve; 
+
 	rm -f $(TEMPLATE_DASHBOARD_DIRECTORY)/template_main.tf

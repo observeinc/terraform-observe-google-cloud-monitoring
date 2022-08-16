@@ -27,7 +27,5 @@ resource "observe_dashboard" "monitoring" {
   })
 
   parameter_values = null
-
 }
-
 
