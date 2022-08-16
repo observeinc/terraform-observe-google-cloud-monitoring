@@ -227,7 +227,7 @@ resource "observe_dashboard" "host" {
 
 resource "observe_link" "project" {
   for_each = {
-    "AssetInventory" = {
+    "Projects" = {
       target = var.google.projects.oid
       fields = ["projectId:project_id"]
     }

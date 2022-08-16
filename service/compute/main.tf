@@ -133,7 +133,7 @@ resource "observe_dataset" "compute" {
 }
 resource "observe_link" "project" {
   for_each = {
-    "AssetInventory" = {
+    "Projects" = {
       target = var.google.projects.oid
       fields = ["project_id"]
     }
