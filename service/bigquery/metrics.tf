@@ -463,7 +463,7 @@ resource "observe_dataset" "bigquery_metrics" {
             table_id: string(metric_labels.table)
             
         pick_col 
-            start_time,
+            timestamp:end_time,
             metric,
             metric_kind,
             metric_labels,
@@ -508,7 +508,7 @@ resource "observe_link" "bigquery_metrics" {
 
     "BigQuery Project" = {
         target =  var.google.projects.oid
-        fields  = ["project_id:project"]
+        fields  = ["project_id"]
         source = observe_dataset.bigquery_metrics[0].oid
     }
   } : {}

@@ -1,6 +1,6 @@
-resource "observe_dataset" "bigquery_events" {
+resource "observe_dataset" "bigquery_logs" {
   workspace = var.workspace.oid
-  name      = format(var.name_format, "Events")
+  name      = format(var.name_format, "Logs")
   freshness = var.freshness_default
 
   inputs = {
@@ -23,8 +23,7 @@ resource "observe_dataset" "bigquery_events" {
         receiveTimestamp,
         severity,
         protoPayload,
-    //    labels,
-    //    resourceLabels,
+        jsonPayload,
         project_id,
         dataset_id,
         location,
