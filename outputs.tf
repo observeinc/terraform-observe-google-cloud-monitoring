@@ -57,3 +57,4 @@ output "storage" {
 output "pubsub" {
   value = local.enable_service_pubsub ? module.pubsub[0] : null
 }
+
