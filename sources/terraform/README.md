@@ -1,4 +1,9 @@
-Observe provides a [terraform module](https://github.com/observeinc/terraform-google-collection) which collects resource data from a a given GCP project. The following terraform snippet installs the GCP collection stack for the Project of the Google provider:
+Observe provides a terraform module which installs infrastructure in your GCP Project.
+The infrastructure directs logs and asset inventory feed updates into a Pub/Sub topic.
+The outputs of the terraform module (`terraform output`) can be used in both the
+Monitoring and Pub/Sub pollers.
+
+The following terraform snippet installs the GCP collection stack for the Project of the [Google provider](https://registry.terraform.io/providers/hashicorp/google/4.32.0):
 
 ```
 module "observe" {
@@ -9,7 +14,4 @@ module "observe" {
 This terraform module forwards data towards Observe through a PubSub topic and a Lambda function. Data is collected from the following sources:
 
 - Cloud Logging
-- Cloud Monitoring
 - Cloud Asset Inventory
-
-The Observe GCP app uses this data to reconstruct the state of your GCP inventory over time.

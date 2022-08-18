@@ -1,3 +1,16 @@
+
+variable "name" {
+  type        = string
+  description = "Poller name. Should be unique per datastream."
+}
+
+# tflint-ignore: terraform_unused_declarations
+variable "description" {
+  type        = string
+  description = "Short description meant for other humans"
+  default     = ""
+}
+
 variable "workspace" {
   type        = object({ oid = string })
   description = "Workspace to apply module to."
@@ -5,41 +18,24 @@ variable "workspace" {
 
 variable "datastream" {
   type = object({
-    oid     = string
-    dataset = string
+    oid = string
   })
   description = <<-EOF
     Datastream to derive resources from.
   EOF
 }
 
-variable "name_format" {
+variable "project" {
   type        = string
-  description = "Format string to use for dataset names. Override to introduce a prefix or suffix."
-  default     = "%s"
+  description = "GCP project ID"
 }
 
-variable "collection" {
-  type = list(object({
-    project = string
-    subscription = object({
-      name = string
-    })
-    service_account_key = object({
-      private_key = string
-    })
-  }))
-  default = []
-
-  description = <<-EOF
-    A list of observe/terraform-google-collection modules to pull data from.
-
-    A set of pollers will be created for each element of the array. Each element
-    in the array should describe a different GCP project.
-  EOF
+variable "service_account_private_key_json" {
+  type        = string
+  description = "A GCP Service Account Private Key with the 'monitoring/viewer' and 'cloudasset.viewer' roles."
 }
 
-variable "metrics_poller_interval_duration" {
+variable "interval_duration" {
   type        = string
   default     = "1m0s"
   description = <<-EOF
@@ -47,7 +43,7 @@ variable "metrics_poller_interval_duration" {
   EOF
 }
 
-variable "metrics_poller_include_metric_type_prefixes" {
+variable "include_metric_type_prefixes" {
   type        = list(string)
   default     = []
   description = <<-EOF
@@ -57,7 +53,7 @@ variable "metrics_poller_include_metric_type_prefixes" {
   EOF
 }
 
-variable "metrics_poller_exclude_metric_type_prefixes" {
+variable "exclude_metric_type_prefixes" {
   type        = list(string)
   default     = []
   description = <<-EOF
@@ -67,4 +63,3 @@ variable "metrics_poller_exclude_metric_type_prefixes" {
     See https://cloud.google.com/monitoring/api/metrics_gcp for a list of Metric Types.
   EOF
 }
-
