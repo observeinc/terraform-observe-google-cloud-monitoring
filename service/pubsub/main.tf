@@ -34,6 +34,8 @@ resource "observe_dataset" "pubsub_topics" {
         extract_regex name, /topics\/(?P<topic_name>[^\/+]+)/
 
         extract_regex name, /pubsub.googleapis.com\/(?P<topic_subscription_name>.*)/
+
+        make_col topic_primary_key: name
     
     EOF
   }
@@ -48,7 +50,7 @@ resource "observe_dataset" "pubsub_topics" {
         project_id, 
         ttl,
         deleted,
-        primary_key(name),
+        primary_key(topic_primary_key),
         valid_for(ttl)
 
       add_key topic_name
@@ -83,7 +85,8 @@ resource "observe_dataset" "pubsub_subscriptions" {
         make_col topic:string(data.topic),
             retryPolicy:data.retryPolicy,
             ackDeadlineSeconds:int64(data.ackDeadlineSeconds),
-            messageRetentionDuration:string(data.messageRetentionDuration)
+            messageRetentionDuration:string(data.messageRetentionDuration),
+            subscription_key: name
             
         add_key topic
     
@@ -103,7 +106,7 @@ resource "observe_dataset" "pubsub_subscriptions" {
         messageRetentionDuration,
         ttl,
         deleted,
-        primary_key(name),
+        primary_key(subscription_key),
         valid_for(ttl)
 
       add_key subscription_name
@@ -147,23 +150,3 @@ resource "observe_link" "project" {
   fields    = each.value.fields
   label     = each.key
 }
-
-
-# resource "observe_dataset" "compute_group" {
-#   workspace = var.workspace.oid
-#   name      = format(var.name_format, "Instance Group")
-#   freshness = var.freshness_default
-
-#   inputs = {
-#     "events" = var.google.resource_asset_inventory_records.oid
-#   }
-
-#   # https://cloud.google.com/compute/docs
-#   stage {
-#     input    = "events"
-#     pipeline = <<-EOF
-#       filter asset_namespace = "compute.googleapis.com"  and asset_sub_type = "InstanceGroup"
-
-#     EOF
-#   }
-# }

@@ -12,13 +12,9 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/snapshot/backlog_bytes"
       label            = "Snapshot backlog bytes"
       active           = true
-
-
-      interval = "60s"
-
-      unit = "By"
-
-
+      interval         = "60s"
+      unit             = "By"
+      metricBin        = "snapshot"
     },
     "snapshot_backlog_bytes_by_region" = {
       type             = "gauge"
@@ -32,13 +28,9 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/snapshot/backlog_bytes_by_region"
       label            = "Snapshot backlog bytes by region"
       active           = true
-
-
-      interval = "60s"
-
-      unit = "By"
-
-
+      interval         = "60s"
+      unit             = "By"
+      metricBin        = "snapshot"
     },
     "snapshot_config_updates_count" = {
       type             = "delta"
@@ -52,13 +44,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/snapshot/config_updates_count"
       label            = "Snapshot updates"
       active           = true
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "snapshot"
     },
     "snapshot_num_messages" = {
       type             = "gauge"
@@ -72,13 +59,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/snapshot/num_messages"
       label            = "Snapshot messages"
       active           = true
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "snapshot"
     },
     "snapshot_num_messages_by_region" = {
       type             = "gauge"
@@ -92,13 +74,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/snapshot/num_messages_by_region"
       label            = "Snapshot messages by region"
       active           = true
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "snapshot"
     },
     "snapshot_oldest_message_age" = {
       type             = "gauge"
@@ -112,13 +89,9 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/snapshot/oldest_message_age"
       label            = "Oldest snapshot message age"
       active           = true
-
-
-      interval = "60s"
-
-      unit = "s"
-
-
+      interval         = "60s"
+      unit             = "s"
+      metricBin        = "snapshot"
     },
     "snapshot_oldest_message_age_by_region" = {
       type             = "gauge"
@@ -132,13 +105,9 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/snapshot/oldest_message_age_by_region"
       label            = "Oldest snapshot message age by region"
       active           = true
-
-
-      interval = "60s"
-
-      unit = "s"
-
-
+      interval         = "60s"
+      unit             = "s"
+      metricBin        = "snapshot"
     },
     "subscription_ack_latencies" = {
       type             = "delta"
@@ -152,13 +121,9 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/ack_latencies"
       label            = "Ack latency"
       active           = false
-
-
-      interval = "60s"
-
-      unit = "ms"
-
-
+      interval         = "60s"
+      unit             = "ms"
+      metricBin        = "subscription"
     },
     "subscription_ack_message_count" = {
       type             = "delta"
@@ -172,13 +137,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/ack_message_count"
       label            = "Ack message count"
       active           = true
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "subscription"
     },
     "subscription_backlog_bytes" = {
       type             = "gauge"
@@ -192,13 +152,9 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/backlog_bytes"
       label            = "Backlog size"
       active           = true
-
-
-      interval = "60s"
-
-      unit = "By"
-
-
+      interval         = "60s"
+      unit             = "By"
+      metricBin        = "subscription"
     },
     "subscription_byte_cost" = {
       type             = "delta"
@@ -212,13 +168,9 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/byte_cost"
       label            = "Subscription byte cost"
       active           = true
-
-
-      interval = "60s"
-
-      unit = "By"
-
-
+      interval         = "60s"
+      unit             = "By"
+      metricBin        = "subscription"
     },
     "subscription_config_updates_count" = {
       type             = "delta"
@@ -232,13 +184,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/config_updates_count"
       label            = "Subscription updates"
       active           = true
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "subscription"
     },
     "subscription_dead_letter_message_count" = {
       type             = "delta"
@@ -252,13 +199,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/dead_letter_message_count"
       label            = "Dead letter message count"
       active           = true
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "subscription"
     },
     "subscription_delivery_latency_health_score" = {
       type             = "gauge"
@@ -272,13 +214,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/delivery_latency_health_score"
       label            = "Delivery latency health score"
       active           = false
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "subscription"
     },
     "subscription_exactly_once_warning_count" = {
       type             = "delta"
@@ -292,13 +229,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/exactly_once_warning_count"
       label            = "Exactly once delivery warning"
       active           = false
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "subscription"
     },
     "subscription_expired_ack_deadlines_count" = {
       type             = "delta"
@@ -312,13 +244,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/expired_ack_deadlines_count"
       label            = "Expired ack deadlines count"
       active           = false
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "subscription"
     },
     "subscription_mod_ack_deadline_message_count" = {
       type             = "delta"
@@ -332,13 +259,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/mod_ack_deadline_message_count"
       label            = "Mod ack deadline message count"
       active           = true
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "subscription"
     },
     "subscription_mod_ack_deadline_message_operation_count" = {
       type             = "delta"
@@ -352,13 +274,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/mod_ack_deadline_message_operation_count"
       label            = "ModifyAckDeadline message operations"
       active           = false
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "subscription"
     },
     "subscription_mod_ack_deadline_request_count" = {
       type             = "delta"
@@ -372,13 +289,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/mod_ack_deadline_request_count"
       label            = "ModifyAckDeadline requests"
       active           = true
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "subscription"
     },
     "subscription_num_outstanding_messages" = {
       type             = "gauge"
@@ -392,13 +304,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/num_outstanding_messages"
       label            = "Outstanding push messages"
       active           = true
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "subscription"
     },
     "subscription_num_retained_acked_messages" = {
       type             = "gauge"
@@ -412,13 +319,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/num_retained_acked_messages"
       label            = "Retained acked messages"
       active           = false
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "subscription"
     },
     "subscription_num_retained_acked_messages_by_region" = {
       type             = "gauge"
@@ -432,13 +334,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/num_retained_acked_messages_by_region"
       label            = "Retained acked messages by region"
       active           = false
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "subscription"
     },
     "subscription_num_unacked_messages_by_region" = {
       type             = "gauge"
@@ -452,13 +349,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/num_unacked_messages_by_region"
       label            = "Unacked messages by region"
       active           = false
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "subscription"
     },
     "subscription_num_undelivered_messages" = {
       type             = "gauge"
@@ -472,13 +364,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/num_undelivered_messages"
       label            = "Unacked messages"
       active           = true
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "subscription"
     },
     "subscription_oldest_retained_acked_message_age" = {
       type             = "gauge"
@@ -492,13 +379,9 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/oldest_retained_acked_message_age"
       label            = "Oldest retained acked message age"
       active           = true
-
-
-      interval = "60s"
-
-      unit = "s"
-
-
+      interval         = "60s"
+      unit             = "s"
+      metricBin        = "subscription"
     },
     "subscription_oldest_retained_acked_message_age_by_region" = {
       type             = "gauge"
@@ -512,13 +395,9 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/oldest_retained_acked_message_age_by_region"
       label            = "Oldest retained acked message age by region"
       active           = true
-
-
-      interval = "60s"
-
-      unit = "s"
-
-
+      interval         = "60s"
+      unit             = "s"
+      metricBin        = "subscription"
     },
     "subscription_oldest_unacked_message_age" = {
       type             = "gauge"
@@ -532,13 +411,9 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/oldest_unacked_message_age"
       label            = "Oldest unacked message age"
       active           = true
-
-
-      interval = "60s"
-
-      unit = "s"
-
-
+      interval         = "60s"
+      unit             = "s"
+      metricBin        = "subscription"
     },
     "subscription_oldest_unacked_message_age_by_region" = {
       type             = "gauge"
@@ -552,13 +427,9 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/oldest_unacked_message_age_by_region"
       label            = "Oldest unacked message age by region"
       active           = true
-
-
-      interval = "60s"
-
-      unit = "s"
-
-
+      interval         = "60s"
+      unit             = "s"
+      metricBin        = "subscription"
     },
     "subscription_pull_ack_message_operation_count" = {
       type             = "delta"
@@ -572,13 +443,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/pull_ack_message_operation_count"
       label            = "Acknowledge message operations"
       active           = false
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "subscription"
     },
     "subscription_pull_ack_request_count" = {
       type             = "delta"
@@ -592,13 +458,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/pull_ack_request_count"
       label            = "Acknowledge requests"
       active           = true
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "subscription"
     },
     "subscription_pull_message_operation_count" = {
       type             = "delta"
@@ -612,13 +473,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/pull_message_operation_count"
       label            = "Pull operations"
       active           = false
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "subscription"
     },
     "subscription_pull_request_count" = {
       type             = "delta"
@@ -632,13 +488,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/pull_request_count"
       label            = "Pull requests"
       active           = true
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "subscription"
     },
     "subscription_push_request_count" = {
       type             = "delta"
@@ -652,13 +503,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/push_request_count"
       label            = "Push requests"
       active           = true
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "subscription"
     },
     "subscription_push_request_latencies" = {
       type             = "delta"
@@ -672,13 +518,9 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/push_request_latencies"
       label            = "Push latency"
       active           = true
-
-
-      interval = "60s"
-
-      unit = "us"
-
-
+      interval         = "60s"
+      unit             = "us"
+      metricBin        = "subscription"
     },
     "subscription_retained_acked_bytes" = {
       type             = "gauge"
@@ -692,13 +534,9 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/retained_acked_bytes"
       label            = "Retained acked bytes"
       active           = true
-
-
-      interval = "60s"
-
-      unit = "By"
-
-
+      interval         = "60s"
+      unit             = "By"
+      metricBin        = "subscription"
     },
     "subscription_retained_acked_bytes_by_region" = {
       type             = "gauge"
@@ -712,13 +550,9 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/retained_acked_bytes_by_region"
       label            = "Retained acked bytes by region"
       active           = true
-
-
-      interval = "60s"
-
-      unit = "By"
-
-
+      interval         = "60s"
+      unit             = "By"
+      metricBin        = "subscription"
     },
     "subscription_seek_request_count" = {
       type             = "delta"
@@ -732,13 +566,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/seek_request_count"
       label            = "Seek requests"
       active           = true
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "subscription"
     },
     "subscription_sent_message_count" = {
       type             = "delta"
@@ -752,13 +581,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/sent_message_count"
       label            = "Sent message count"
       active           = true
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "subscription"
     },
     "subscription_streaming_pull_ack_message_operation_count" = {
       type             = "delta"
@@ -772,13 +596,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/streaming_pull_ack_message_operation_count"
       label            = "StreamingPull Acknowledge message operations"
       active           = false
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "subscription"
     },
     "subscription_streaming_pull_ack_request_count" = {
       type             = "delta"
@@ -792,13 +611,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/streaming_pull_ack_request_count"
       label            = "StreamingPull Acknowledge requests"
       active           = true
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "subscription"
     },
     "subscription_streaming_pull_message_operation_count" = {
       type             = "delta"
@@ -812,13 +626,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/streaming_pull_message_operation_count"
       label            = "StreamingPull message operations"
       active           = false
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "subscription"
     },
     "subscription_streaming_pull_mod_ack_deadline_message_operation_count" = {
       type             = "delta"
@@ -832,13 +641,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/streaming_pull_mod_ack_deadline_message_operation_count"
       label            = "StreamingPull ModifyAckDeadline message operations"
       active           = false
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "subscription"
     },
     "subscription_streaming_pull_mod_ack_deadline_request_count" = {
       type             = "delta"
@@ -852,13 +656,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/streaming_pull_mod_ack_deadline_request_count"
       label            = "StreamingPull ModifyAckDeadline requests"
       active           = true
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "subscription"
     },
     "subscription_streaming_pull_response_count" = {
       type             = "delta"
@@ -872,13 +671,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/streaming_pull_response_count"
       label            = "StreamingPull responses"
       active           = true
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "subscription"
     },
     "subscription_unacked_bytes_by_region" = {
       type             = "gauge"
@@ -892,13 +686,9 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/subscription/unacked_bytes_by_region"
       label            = "Unacked bytes by region"
       active           = true
-
-
-      interval = "60s"
-
-      unit = "By"
-
-
+      interval         = "60s"
+      unit             = "By"
+      metricBin        = "subscription"
     },
     "topic_byte_cost" = {
       type             = "delta"
@@ -912,13 +702,9 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/topic/byte_cost"
       label            = "Topic byte cost"
       active           = true
-
-
-      interval = "60s"
-
-      unit = "By"
-
-
+      interval         = "60s"
+      unit             = "By"
+      metricBin        = "topic"
     },
     "topic_config_updates_count" = {
       type             = "delta"
@@ -932,13 +718,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/topic/config_updates_count"
       label            = "Topic updates"
       active           = true
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "topic"
     },
     "topic_message_sizes" = {
       type             = "delta"
@@ -952,13 +733,9 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/topic/message_sizes"
       label            = "Publish message size"
       active           = true
-
-
-      interval = "60s"
-
-      unit = "By"
-
-
+      interval         = "60s"
+      unit             = "By"
+      metricBin        = "topic"
     },
     "topic_num_retained_acked_messages_by_region" = {
       type             = "gauge"
@@ -972,13 +749,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/topic/num_retained_acked_messages_by_region"
       label            = "Retained acked messages by region"
       active           = false
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "topic"
     },
     "topic_num_retained_messages" = {
       type             = "gauge"
@@ -992,13 +764,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/topic/num_retained_messages"
       label            = "Retained messages"
       active           = false
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "topic"
     },
     "topic_num_unacked_messages_by_region" = {
       type             = "gauge"
@@ -1012,13 +779,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/topic/num_unacked_messages_by_region"
       label            = "Unacked messages by region"
       active           = false
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "topic"
     },
     "topic_oldest_retained_acked_message_age_by_region" = {
       type             = "gauge"
@@ -1032,13 +794,9 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/topic/oldest_retained_acked_message_age_by_region"
       label            = "Oldest retained acked message age by region"
       active           = true
-
-
-      interval = "60s"
-
-      unit = "s"
-
-
+      interval         = "60s"
+      unit             = "s"
+      metricBin        = "topic"
     },
     "topic_oldest_retained_message_age" = {
       type             = "gauge"
@@ -1052,13 +810,9 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/topic/oldest_retained_message_age"
       label            = "Oldest retained message age"
       active           = false
-
-
-      interval = "60s"
-
-      unit = "s"
-
-
+      interval         = "60s"
+      unit             = "s"
+      metricBin        = "topic"
     },
     "topic_oldest_unacked_message_age_by_region" = {
       type             = "gauge"
@@ -1072,13 +826,9 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/topic/oldest_unacked_message_age_by_region"
       label            = "Oldest unacked message age by region"
       active           = true
-
-
-      interval = "60s"
-
-      unit = "s"
-
-
+      interval         = "60s"
+      unit             = "s"
+      metricBin        = "topic"
     },
     "topic_retained_acked_bytes_by_region" = {
       type             = "gauge"
@@ -1092,13 +842,9 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/topic/retained_acked_bytes_by_region"
       label            = "Retained acked bytes by region"
       active           = true
-
-
-      interval = "60s"
-
-      unit = "By"
-
-
+      interval         = "60s"
+      unit             = "By"
+      metricBin        = "topic"
     },
     "topic_retained_bytes" = {
       type             = "gauge"
@@ -1112,13 +858,9 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/topic/retained_bytes"
       label            = "Retained bytes"
       active           = false
-
-
-      interval = "60s"
-
-      unit = "By"
-
-
+      interval         = "60s"
+      unit             = "By"
+      metricBin        = "topic"
     },
     "topic_send_message_operation_count" = {
       type             = "delta"
@@ -1132,13 +874,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/topic/send_message_operation_count"
       label            = "Publish message operations"
       active           = false
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "topic"
     },
     "topic_send_request_count" = {
       type             = "delta"
@@ -1152,13 +889,8 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/topic/send_request_count"
       label            = "Publish requests"
       active           = true
-
-
-      interval = "60s"
-
-
-
-
+      interval         = "60s"
+      metricBin        = "topic"
     },
     "topic_unacked_bytes_by_region" = {
       type             = "gauge"
@@ -1172,13 +904,9 @@ locals {
       googleMetricPath = "pubsub.googleapis.com/topic/unacked_bytes_by_region"
       label            = "Unacked bytes by region"
       active           = true
-
-
-      interval = "60s"
-
-      unit = "By"
-
-
+      interval         = "60s"
+      unit             = "By"
+      metricBin        = "topic"
     },
   }
 }

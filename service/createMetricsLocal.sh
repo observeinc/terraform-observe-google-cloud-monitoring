@@ -91,6 +91,14 @@ jq -r '# returns true if metric is GA
             if . | contains("compute.googleapis.com/") or contains("agent.googleapis.com/") 
             then (. | capture("googleapis.com/(?<keepafterapis>[^/]+)") | "metricBin = \"" + .keepafterapis + "\"") 
             else null end; 
+        def pubsubFunc: 
+            if . | contains("pubsub.googleapis.com/")
+            then (. | capture("googleapis.com/(?<keepafterapis>[^/]+)") | "metricBin = \"" + .keepafterapis + "\"") 
+            else null end; 
+        def serviceFunc: 
+            if . | contains("serviceruntime.googleapis.com/")
+            then (. | capture("googleapis.com/(?<keepafterapis>[^/]+)") | "metricBin = \"" + .keepafterapis + "\"") 
+            else null end;
         # function for parsing metric name else contains default use elif to build case statement
         def nameFunc: 
             if . | contains("cloudsql.googleapis.com/database") 
@@ -129,6 +137,10 @@ jq -r '# returns true if metric is GA
         "
         + (.unit | unitFunc ) + "
         "
+        + (.name | pubsubFunc ) + "
+        "
+        + (.name | serviceFunc ) + "
+        "
         + (.name | computeFunc ) + "
         
         },"
@@ -141,8 +153,10 @@ echo "}" >> "$output_file";
 # + (.metadata | intervalFunc )
 # certain characters make terraform explode
 # This tends to be super painful to debug export TF_LOG=DEBUG; terraform apply might help
-sed -i'' -e 's/>/greater than/g; s/(//g; s/)//g; s/&/and/g;' "$output_file"
+sed -i '' -e 's/>/greater than/g; s/(//g; s/)//g; s/&/and/g;' "$output_file"
 
+# remove empty lines
+sed -i "" '/^[[:space:]]*$/d' "$output_file"
 # fmt file
 terraform fmt "$output_file"
 

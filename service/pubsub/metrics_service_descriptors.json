@@ -1,0 +1,279 @@
+{
+    "metricDescriptors": [
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/serviceruntime.googleapis.com/api/request_count",
+        "labels": [
+          {
+            "key": "protocol",
+            "description": "The protocol of the request, e.g. \"http\", \"grpc\""
+          },
+          {
+            "key": "response_code",
+            "description": "The HTTP response code for HTTP requests, or HTTP equivalent code for gRPC requests. See code mapping in https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto."
+          },
+          {
+            "key": "response_code_class",
+            "description": "The response code class for HTTP requests, or HTTP equivalent class for gRPC requests, e.g. \"2xx\", \"4xx\""
+          },
+          {
+            "key": "grpc_status_code",
+            "description": "The numeric gRPC response code for gRPC requests, or gRPC equivalent code for HTTP requests. See code mapping in https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "The count of completed requests.",
+        "displayName": "Request count",
+        "type": "serviceruntime.googleapis.com/api/request_count",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "180s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "api",
+          "consumed_api",
+          "produced_api"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/serviceruntime.googleapis.com/api/request_latencies",
+        "metricKind": "DELTA",
+        "valueType": "DISTRIBUTION",
+        "unit": "s",
+        "description": "Distribution of latencies in seconds for non-streaming requests.",
+        "displayName": "Request latencies",
+        "type": "serviceruntime.googleapis.com/api/request_latencies",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "180s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "api",
+          "consumed_api",
+          "produced_api"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/serviceruntime.googleapis.com/api/request_latencies_backend",
+        "metricKind": "DELTA",
+        "valueType": "DISTRIBUTION",
+        "unit": "s",
+        "description": "Distribution of backend latencies in seconds for non-streaming requests.",
+        "displayName": "Request backend latencies",
+        "type": "serviceruntime.googleapis.com/api/request_latencies_backend",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "180s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "api",
+          "produced_api"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/serviceruntime.googleapis.com/api/request_latencies_overhead",
+        "metricKind": "DELTA",
+        "valueType": "DISTRIBUTION",
+        "unit": "s",
+        "description": "Distribution of request latencies in seconds for non-streaming requests excluding the backend.",
+        "displayName": "Request overhead latencies",
+        "type": "serviceruntime.googleapis.com/api/request_latencies_overhead",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "180s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "api",
+          "produced_api"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/serviceruntime.googleapis.com/api/request_sizes",
+        "metricKind": "DELTA",
+        "valueType": "DISTRIBUTION",
+        "unit": "By",
+        "description": "Distribution of request sizes in bytes recorded at request completion.",
+        "displayName": "Request sizes",
+        "type": "serviceruntime.googleapis.com/api/request_sizes",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "180s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "api",
+          "consumed_api",
+          "produced_api"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/serviceruntime.googleapis.com/api/response_sizes",
+        "metricKind": "DELTA",
+        "valueType": "DISTRIBUTION",
+        "unit": "By",
+        "description": "Distribution of response sizes in bytes recorded at request completion.",
+        "displayName": "Response sizes",
+        "type": "serviceruntime.googleapis.com/api/response_sizes",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s",
+          "ingestDelay": "180s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "api",
+          "consumed_api",
+          "produced_api"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/serviceruntime.googleapis.com/quota/allocation/usage",
+        "labels": [
+          {
+            "key": "quota_metric",
+            "description": "The name of quota metric or quota group."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "The total consumed allocation quota. Values reported more than 1/min are dropped. If no changes are received in quota usage, the last value is repeated at least every 24 hours.",
+        "displayName": "Allocation quota usage",
+        "type": "serviceruntime.googleapis.com/quota/allocation/usage",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "consumer_quota",
+          "producer_quota"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/serviceruntime.googleapis.com/quota/exceeded",
+        "labels": [
+          {
+            "key": "limit_name",
+            "description": "The quota limit name, such as \"Requests per day\" or \"In-use IP addresses\"."
+          },
+          {
+            "key": "quota_metric",
+            "description": "The name of quota metric or quota group."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "BOOL",
+        "unit": "1",
+        "description": "The error happened when the quota limit was exceeded.",
+        "displayName": "Quota exceeded error",
+        "type": "serviceruntime.googleapis.com/quota/exceeded",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "60s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "consumer_quota"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/serviceruntime.googleapis.com/quota/limit",
+        "labels": [
+          {
+            "key": "limit_name",
+            "description": "The quota limit name, such as \"Requests per day\" or \"In-use IP addresses\"."
+          },
+          {
+            "key": "quota_metric",
+            "description": "The name of quota metric or quota group."
+          }
+        ],
+        "metricKind": "GAUGE",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "The limit for the quota.",
+        "displayName": "Quota limit",
+        "type": "serviceruntime.googleapis.com/quota/limit",
+        "metadata": {
+          "launchStage": "GA",
+          "samplePeriod": "86400s"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "consumer_quota",
+          "producer_quota"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/serviceruntime.googleapis.com/quota/rate/net_usage",
+        "labels": [
+          {
+            "key": "method",
+            "description": "The API method name, such as \"disks.list\"."
+          },
+          {
+            "key": "quota_metric",
+            "description": "The name of quota metric or quota group."
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "The total consumed rate quota.",
+        "displayName": "Rate quota usage",
+        "type": "serviceruntime.googleapis.com/quota/rate/net_usage",
+        "metadata": {
+          "launchStage": "GA"
+        },
+        "launchStage": "GA",
+        "monitoredResourceTypes": [
+          "consumer_quota",
+          "producer_quota"
+        ]
+      },
+      {
+        "name": "projects/terraflood-345116/metricDescriptors/serviceruntime.googleapis.com/reserved/metric1",
+        "labels": [
+          {
+            "key": "quota_name",
+            "description": "Deprecated"
+          },
+          {
+            "key": "credential_id",
+            "description": "Deprecated"
+          },
+          {
+            "key": "quota_location",
+            "description": "Deprecated"
+          }
+        ],
+        "metricKind": "DELTA",
+        "valueType": "INT64",
+        "unit": "1",
+        "description": "Deprecated.",
+        "displayName": "Deprecated",
+        "type": "serviceruntime.googleapis.com/reserved/metric1",
+        "metadata": {
+          "launchStage": "EARLY_ACCESS",
+          "samplePeriod": "60s",
+          "ingestDelay": "180s"
+        },
+        "launchStage": "EARLY_ACCESS",
+        "monitoredResourceTypes": [
+          "deprecated_resource"
+        ]
+      }
+    ]
+  }
+  
