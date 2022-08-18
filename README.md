@@ -24,13 +24,13 @@ module "google" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.0 |
-| <a name="requirement_observe"></a> [observe](#requirement\_observe) | ~> 0.8 |
+| <a name="requirement_observe"></a> [observe](#requirement\_observe) | = 0.10.4 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_observe"></a> [observe](#provider\_observe) | ~> 0.8 |
+| <a name="provider_observe"></a> [observe](#provider\_observe) | = 0.10.4 |
 
 ## Modules
 
