@@ -1,8 +1,8 @@
 resource "observe_dataset" "projects" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Projects")
-  freshness = lookup(var.freshness_overrides, "projects", var.freshness_default)
-
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Projects")
+  freshness   = lookup(var.freshness_overrides, "projects", var.freshness_default)
+  description = "This dataset is used to create project resources"
   inputs = {
     "events" = observe_dataset.resource_asset_inventory_records.oid
   }

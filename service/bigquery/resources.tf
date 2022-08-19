@@ -63,3 +63,38 @@ resource "observe_dataset" "bigquery_table" {
     EOF
   }
 }
+
+resource "observe_link" "bigquery_dataset" {
+  workspace = var.workspace.oid
+  source    = observe_dataset.bigquery_dataset.oid
+  target    = each.value.target
+  fields    = each.value.fields
+  label     = each.key
+
+  for_each = merge(
+    {
+      "BigQuery Project" = {
+        target = var.google.projects.oid
+        fields = ["project_id"]
+      }
+    }
+  )
+}
+
+resource "observe_link" "bigquery_table" {
+  workspace = var.workspace.oid
+  source    = observe_dataset.bigquery_table.oid
+  target    = each.value.target
+  fields    = each.value.fields
+  label     = each.key
+
+  for_each = merge(
+    {
+      "BigQuery Dataset" = {
+        target = observe_dataset.bigquery_dataset.oid
+        fields = ["project_id", "dataset_id"]
+      }
+    }
+  )
+}
+
