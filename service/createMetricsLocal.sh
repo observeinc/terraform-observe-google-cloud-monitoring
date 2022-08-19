@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# !!!!!!!!!!!!!!!!   DEPRECATED   !!!!!!!!!!!!!!!!
+# !!!!!!!!!!!!!!!!   DEPRECATED   !!!!!!!!!!!!!!!!
+# !!!!!!!!!!!!!!!!   DEPRECATED   !!!!!!!!!!!!!!!!
+
 # Directions to use:
 # Go to https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors/list
 # Use Try this method dialog
