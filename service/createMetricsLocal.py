@@ -63,7 +63,7 @@ parser.add_argument(
     help="relative path of exported terraform file",
     required=False,
     type=lambda p: pathlib.Path(p).absolute(),
-     default="local_metricsdescriptors.tf",
+    default="local_metricsdescriptors.tf",
 )
 
 parser.add_argument(
@@ -102,11 +102,11 @@ filter = "metric.type = starts_with(\"{metric_namespace}/\")"
 
 project = "projects/{projectid}"
 
-print(filter.format(metric_namespace = args.metric_filter))
+print("Metric filter used to list metric descriptors - ", filter.format(metric_namespace = args.metric_filter))
 
-print(project.format(projectid = args.project_id))
+print("Project ID used for api call - ", project.format(projectid = args.project_id))
 
-print(args.output_file_name)
+print("Json output file name -", args.output_file_name)
 
 
 
@@ -147,7 +147,7 @@ def sample_list_metric_descriptors():
 
     # Handle the response
     for response in page_result:
-        print(response)
+        #print(response)
         def daLabel(resp):
             label = []
             for i in resp:
@@ -257,9 +257,8 @@ def create_terraform(fileName):
         data = json.load(data_file)
 
         for metric in data['metricDescriptors']:
-            print ("name=", metric['name'])
-
-            print ("launch_stage=", metric['launch_stage'])
+            # print ("name=", metric['name'])
+            # print ("launch_stage=", metric['launch_stage'])
             metric_bin=""
             metric_category="none"
 
@@ -273,16 +272,11 @@ def create_terraform(fileName):
                 metric_bin=splitStr[4]
                 metric_category=splitStr[5]
 
-        # def dataBaseParseFunc: 
-        #     if . | contains("mysql") or contains("postgresql") or contains("sqlserver") 
-        #     then "dataBase = \"" + . + "\"" 
-        #     else "dataBase = \"ALL\"" end;
-
             def specificTags(val):
-                print(val)
+                # print(val)
                 if "database" in val:
                     dbPlat = re.search('(?<=database/)([^/]+)', val).group()
-                    print(dbPlat)
+                    # print(dbPlat)
                     if ("mysql" in dbPlat) or ("postgresql" in dbPlat) or ("sqlserver" in dbPlat):
                         return  f'dataBase = "{dbPlat}"'
                     else:
