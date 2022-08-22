@@ -16,7 +16,7 @@ variable "datastream" {
 variable "name_format" {
   type        = string
   description = "Format string to use for dataset names. Override to introduce a prefix or suffix."
-  default     = "%s"
+  default     = "GCP %s"
 }
 
 variable "max_expiry" {

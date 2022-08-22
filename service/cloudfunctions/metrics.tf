@@ -127,10 +127,10 @@ locals {
 resource "observe_dataset" "function_metrics" {
   count = local.enable_metrics ? 1 : 0
 
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Function Metrics")
-  freshness = var.freshness_default
-
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Function Metrics")
+  freshness   = var.freshness_default
+  description = "This dataset contains metrics collected for cloud functions"
   inputs = {
     "metrics" = var.google.metrics.oid
   }
@@ -180,7 +180,6 @@ resource "observe_link" "function_metrics" {
       fields = ["project_id:projectId", "region", "function_name:functionName"]
     }
   } : {}
-
   workspace = var.workspace.oid
   source    = observe_dataset.function_metrics[0].oid
   target    = each.value.target
