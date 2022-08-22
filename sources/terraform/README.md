@@ -11,7 +11,7 @@ module "observe" {
 }
 ```
 
-This terraform module forwards data towards Observe through a PubSub topic and a Lambda function. Data is collected from the following sources:
+This terraform module forwards data towards Observe through a PubSub topic and a Cloud Function. Data is collected from the following sources:
 
 - Cloud Logging
 - Cloud Asset Inventory
