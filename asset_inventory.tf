@@ -1,8 +1,8 @@
 resource "observe_dataset" "base_asset_inventory_records" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Asset Inventory Records")
-  freshness = var.freshness_default
-
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Asset Inventory Records")
+  freshness   = var.freshness_default
+  description = "Raw data from asset exports"
   inputs = {
     "observation" = var.datastream.dataset
     "events"      = observe_dataset.base_pubsub_events.oid
@@ -64,10 +64,10 @@ resource "observe_dataset" "base_asset_inventory_records" {
 }
 
 resource "observe_dataset" "resource_asset_inventory_records" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Resource Asset Inventory Records")
-  freshness = var.freshness_default
-
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Resource Asset Inventory Records")
+  freshness   = var.freshness_default
+  description = "All cloud assets in GCP"
   inputs = {
     "events" = observe_dataset.base_asset_inventory_records.oid
   }
