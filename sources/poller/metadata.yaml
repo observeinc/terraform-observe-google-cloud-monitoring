@@ -1,5 +1,0 @@
-name: poller
-description: Onboard GCP project (Poller)
-kind: poller
-requiredvariables:
-- datastream
