@@ -2,8 +2,8 @@
 resource "observe_monitor" "high_cpu" {
   count = local.enable_both ? 1 : 0
 
-  disabled = var.metric_thresholds["CPU"].disabled
-
+  disabled    = var.metric_thresholds["CPU"].disabled
+  description = "This monitor will alert on CPU usage above a certain threshold"
   inputs = {
     "Compute Metrics" = observe_dataset.compute_metrics[0].oid
   }
