@@ -14,10 +14,10 @@ locals {
 }
 
 resource "observe_dataset" "compute" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Instance")
-  freshness = lookup(local.freshness, "compute", var.freshness_default)
-
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Instance")
+  freshness   = lookup(local.freshness, "compute", var.freshness_default)
+  description = "This dataset is used to create Compute Resources"
   inputs = {
     "events" = var.google.resource_asset_inventory_records.oid
   }

@@ -4,9 +4,10 @@
 # https://cloud.google.com/sql/docs/mysql/use-db-audit
 
 resource "observe_dataset" "postgres_data_access_logs" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Logs Postgres Data Access")
-  freshness = lookup(local.freshness, "logging", var.freshness_default)
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Logs Postgres Data Access")
+  freshness   = lookup(local.freshness, "logging", var.freshness_default)
+  description = "This dataset contains logs for database commands issued against Postgres"
 
   inputs = {
     "logs" = observe_dataset.sql_logs.oid
@@ -67,9 +68,10 @@ resource "observe_dataset" "postgres_data_access_logs" {
 }
 
 resource "observe_dataset" "mysql_data_access_logs" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Logs MySql Data Access")
-  freshness = lookup(local.freshness, "logging", var.freshness_default)
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Logs MySql Data Access")
+  freshness   = lookup(local.freshness, "logging", var.freshness_default)
+  description = "This dataset contains logs for database commands issued against MySql"
 
   inputs = {
     "logs" = observe_dataset.sql_logs.oid

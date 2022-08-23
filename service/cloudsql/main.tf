@@ -11,9 +11,10 @@ locals {
 }
 
 resource "observe_dataset" "cloudsql" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Instance")
-  freshness = lookup(local.freshness, "cloudsql", var.freshness_default)
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Instance")
+  freshness   = lookup(local.freshness, "cloudsql", var.freshness_default)
+  description = "This dataset is used to create CloudSQL Resources"
 
   inputs = {
     "events" = var.google.resource_asset_inventory_records.oid,

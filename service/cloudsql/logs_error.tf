@@ -1,7 +1,8 @@
 resource "observe_dataset" "combined_error_logs" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Logs Error")
-  freshness = lookup(local.freshness, "logging", var.freshness_default)
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Logs Error")
+  freshness   = lookup(local.freshness, "logging", var.freshness_default)
+  description = "This dataset contains error logs for Postgres, MySQL and SQL Server database instances"
 
   inputs = {
     "logs" = observe_dataset.sql_logs.oid

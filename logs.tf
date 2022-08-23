@@ -1,8 +1,8 @@
 resource "observe_dataset" "logs" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Logs")
-  freshness = var.freshness_default
-
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Logs")
+  freshness   = var.freshness_default
+  description = "This dataset contains all logging data collected from GCP and is used as an input to other datasets"
   inputs = {
     "events" = observe_dataset.base_pubsub_events.oid
   }
