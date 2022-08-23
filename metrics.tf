@@ -1,8 +1,8 @@
 resource "observe_dataset" "metric_points" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Metric Points")
-  freshness = var.freshness_default
-
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Metric Points")
+  freshness   = var.freshness_default
+  description = "This dataset contains metrics for all GCP resources and is used by other metrics datasets as an input"
   inputs = {
     "observation" = var.datastream.dataset
   }
