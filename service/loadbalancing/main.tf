@@ -5,9 +5,10 @@ locals {
 }
 
 resource "observe_dataset" "url_maps" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Url Maps")
-  freshness = lookup(var.freshness_overrides, "url_maps", var.freshness_default)
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Url Maps")
+  freshness   = lookup(var.freshness_overrides, "url_maps", var.freshness_default)
+  description = "This dataset is used to create the Load Balancing URL Maps Resource"
 
   inputs = {
     "events" = var.google.resource_asset_inventory_records.oid
@@ -57,9 +58,10 @@ resource "observe_dataset" "url_maps" {
 }
 
 resource "observe_dataset" "backend_services" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Backend Services")
-  freshness = lookup(var.freshness_overrides, "backend_services", var.freshness_default)
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Backend Services")
+  freshness   = lookup(var.freshness_overrides, "backend_services", var.freshness_default)
+  description = "This dataset is used to create the Load Balancing Backend Services Resource"
 
   inputs = {
     "events"          = var.google.resource_asset_inventory_records.oid
@@ -173,9 +175,10 @@ resource "observe_dataset" "backend_services" {
 }
 
 resource "observe_dataset" "forwarding_rules" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Forwarding Rules")
-  freshness = lookup(var.freshness_overrides, "forwarding_rules", var.freshness_default)
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Forwarding Rules")
+  freshness   = lookup(var.freshness_overrides, "forwarding_rules", var.freshness_default)
+  description = "This dataset is used to create the Load Balancing Forwarding Rules Resource"
 
   inputs = {
     "events" = var.google.resource_asset_inventory_records.oid
@@ -236,9 +239,10 @@ resource "observe_dataset" "forwarding_rules" {
 
 
 resource "observe_dataset" "target_proxies" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Target Proxies")
-  freshness = lookup(var.freshness_overrides, "target_proxies", var.freshness_default)
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Target Proxies")
+  freshness   = lookup(var.freshness_overrides, "target_proxies", var.freshness_default)
+  description = "This dataset is used to create the Load Balancing Target Proxies Resource"
 
   inputs = {
     "events" = var.google.resource_asset_inventory_records.oid
@@ -283,9 +287,10 @@ resource "observe_dataset" "target_proxies" {
 }
 
 resource "observe_dataset" "health_checks" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Health Checks")
-  freshness = lookup(var.freshness_overrides, "health_checks", var.freshness_default)
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Health Checks")
+  freshness   = lookup(var.freshness_overrides, "health_checks", var.freshness_default)
+  description = "This dataset is used to create the Load Balancing Health Checks Resource"
 
   inputs = {
     "events" = var.google.resource_asset_inventory_records.oid
@@ -339,9 +344,11 @@ resource "observe_dataset" "health_checks" {
 }
 
 resource "observe_dataset" "instance_groups" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Instance Groups")
-  freshness = lookup(var.freshness_overrides, "health_checks", var.freshness_default)
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Instance Groups")
+  freshness   = lookup(var.freshness_overrides, "health_checks", var.freshness_default)
+  description = "This dataset is used to create the Load Balancing Instance Groups Resource"
+
   inputs = {
     "events"            = var.google.resource_asset_inventory_records.oid
     "Health Check Logs" = observe_dataset.health_check_logs.oid
@@ -410,9 +417,10 @@ resource "observe_dataset" "instance_groups" {
 }
 
 resource "observe_dataset" "load_balancers" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Load Balancers")
-  freshness = lookup(var.freshness_overrides, "load_balancers", var.freshness_default)
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Load Balancers")
+  freshness   = lookup(var.freshness_overrides, "load_balancers", var.freshness_default)
+  description = "This dataset is used to create the Load Balancing Load Balancers Resource"
 
   inputs = {
     "events"          = var.google.resource_asset_inventory_records.oid
