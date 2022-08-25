@@ -5,9 +5,10 @@ locals {
 }
 
 resource "observe_dataset" "storage" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Buckets")
-  freshness = lookup(var.freshness_overrides, "storage", var.freshness_default)
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Buckets")
+  freshness   = lookup(var.freshness_overrides, "storage", var.freshness_default)
+  description = "This dataset is used to create Storage Resources"
 
   inputs = {
     "events" = var.google.resource_asset_inventory_records.oid
