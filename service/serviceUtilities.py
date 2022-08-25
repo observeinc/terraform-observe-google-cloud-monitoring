@@ -373,6 +373,7 @@ help commands:
     serviceUtilities.py create_doc_metrics -h       
 
 If you want to convert a terraform variable to file for use with create_doc_metrics here is a template - tf output -json compute_local_metric_descriptors | jq -r '. | {metricDescriptors: [keys[] as $k | {name: ($k), description: (.[$k] | .description)}]}'  > /Users/arthur/content_eng/terraform-observe-google/service/compute/tf_compute.json
+
 '''
 
 parser = ArgumentParser( prog='./serviceUtilities.py',
