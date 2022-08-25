@@ -28,7 +28,7 @@ class RawFormatter(HelpFormatter):
 try:
     from google.cloud import monitoring_v3
 except ImportError:
-    subprocess.check_call([sys.executable, "-m", "pip", "install", 'google-cloud-monitoring'])
+    subprocess.check_call([sys.executable, "-m", "pip3", "install", 'google-cloud-monitoring'])
 finally:
     from google.cloud import monitoring_v3
 
@@ -371,6 +371,8 @@ help commands:
     serviceUtilities.py fetch_metric_descriptors -h
     serviceUtilities.py create_terraform -h
     serviceUtilities.py create_doc_metrics -h       
+
+If you want to convert a terraform variable to file for use with create_doc_metrics here is a template - tf output -json compute_local_metric_descriptors | jq -r '. | {metricDescriptors: [keys[] as $k | {name: ($k), description: (.[$k] | .description)}]}'  > /Users/arthur/content_eng/terraform-observe-google/service/compute/tf_compute.json
 '''
 
 parser = ArgumentParser( prog='./serviceUtilities.py',
