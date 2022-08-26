@@ -132,10 +132,10 @@ resource "observe_dataset" "string_metrics" {
 }
 
 resource "observe_dataset" "distribution_metrics" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Distribution Metric Points")
-  freshness = var.freshness_default
-
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Distribution Metric Points")
+  freshness   = var.freshness_default
+  description = "This dataset contains distribution metrics for GCP resources that provide them and is used by other metrics datasets as an input"
   inputs = {
     "points" = observe_dataset.metric_points.oid
   }
@@ -164,10 +164,10 @@ resource "observe_dataset" "distribution_metrics" {
 }
 
 resource "observe_dataset" "process_distribution_metrics" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Distribution Metrics")
-  freshness = var.freshness_default
-
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Distribution Metrics")
+  freshness   = var.freshness_default
+  description = "This dataset contains distributio metrics for GCP resources that provide them"
   inputs = {
     "points" = observe_dataset.metric_points.oid
   }
