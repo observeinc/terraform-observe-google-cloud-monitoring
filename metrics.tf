@@ -107,10 +107,10 @@ resource "observe_dataset" "metrics" {
 }
 
 resource "observe_dataset" "string_metrics" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "String Metric Points")
-  freshness = var.freshness_default
-
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "String Metric Points")
+  freshness   = var.freshness_default
+  description = "This dataset contains string metrics for resources that provide them."
   inputs = {
     "points" = observe_dataset.metric_points.oid
   }
