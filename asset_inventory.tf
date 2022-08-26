@@ -75,33 +75,76 @@ resource "observe_dataset" "resource_asset_inventory_records" {
   # https://cloud.google.com/asset-inventory/docs/reference/rpc/google.cloud.asset.v1#google.cloud.asset.v1.Resource
   stage {
     input    = "events"
+    alias    = "base"
     pipeline = <<-EOF
-      filter not is_null(resource)
+          filter not is_null(resource)
 
-      make_col 
-        ttl: case(deleted, 1ns, true, ${var.max_expiry}),
-        parent:string(resource.parent),
-        asset_namespace: split_part(asset_type,'/', 1),
-        asset_sub_type: split_part(asset_type,'/', 2)
-        
-      extract_regex name, /projects\/(?P<project_id>[^\/+]+)/
-      extract_regex parent, /projects\/(?P<parent_project_id>[^\/+]+)/
+          make_col 
+            ttl: case(deleted, 1ns, true, 4h),
+            parent:string(resource.parent),
+            asset_namespace: split_part(asset_type,'/', 1),
+            asset_sub_type: split_part(asset_type,'/', 2)
+                  
+          extract_regex name, /projects\/(?P<project_id>[^\/+]+)/
+          extract_regex parent, /projects\/(?P<parent_project_id>[^\/+]+)/
 
+          make_col 
+            data:object(resource.data),
+            discovery_document_uri:string(resource.discovery_document_uri),
+            discovery_name:string(resource.discovery_name),
+            location:string(resource.location),
+            version:string(resource.version)
+    EOF
+  }
+
+  stage {
+    alias    = "project"
+    pipeline = <<-EOF
+        filter discovery_name = "Project"
+
+        filter asset_type = "cloudresourcemanager.googleapis.com/Project"
+
+        make_col 
+            createTime:string(data.createTime),
+            lifecycleState:string(data.lifecycleState),
+            name:string(data.name),
+            parent:data.parent,
+            parentId:string(data.parent.id),
+            parentType:string(data.parent.type),
+            project_id:string(data.projectId),
+            projectNumber:string(data.projectNumber),
+            fake_time: parse_isotime('2050-01-01T00:00:00Z')
+
+        set_valid_to fake_time
+
+        timestats cont: count(1), group_by(fake_time,project_id,projectNumber)
+    EOF
+  }
+
+  stage {
+    input    = "base"
+    pipeline = <<-EOF
+      leftjoin parent_project_id = @project.projectNumber, project_id_unified: @project.project_id
+    EOF
+  }
+
+  stage {
+    pipeline = <<-EOF
       pick_col 
         time,
         deleted,
         parent_project_id,
-        project_id: if_null(project_id,parent_project_id),
+        project_id:if_null(project_id_unified, project_id),
         asset_type,
         asset_namespace,
         asset_sub_type,
         name,
-        data:object(resource.data),
-        discovery_document_uri:string(resource.discovery_document_uri),
-        discovery_name:string(resource.discovery_name),
-        location:string(resource.location),
+        data,
+        discovery_document_uri,
+        discovery_name,
+        location,
         parent,
-        version:string(resource.version),
+        version,
         ttl
     EOF
   }
