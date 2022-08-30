@@ -57,8 +57,8 @@ module "google" {
 | observe_dataset.process_distribution_metrics | resource |
 | observe_dataset.projects | resource |
 | observe_dataset.resource_asset_inventory_records | resource |
+| observe_dataset.resource_asset_inventory_resource | resource |
 | observe_dataset.string_metrics | resource |
-| observe_link.project | resource |
 
 ## Inputs
 

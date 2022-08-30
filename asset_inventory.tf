@@ -14,6 +14,7 @@ resource "observe_dataset" "base_asset_inventory_records" {
     alias    = "feed_events"
     pipeline = <<-EOF
       filter is_null(attributes["logging.googleapis.com/timestamp"])
+
       make_col data:parse_json(data)
       filter not is_null(data.window) and not is_null(data.asset)
 
@@ -30,7 +31,8 @@ resource "observe_dataset" "base_asset_inventory_records" {
         resource:object(data.asset.resource),
         iam_policy:object(data.asset.iamPolicy),
         org_policy:array(data.asset.orgPolicy),
-        access_policy:object(data.asset.accessPolicy)
+        access_policy:object(data.asset.accessPolicy),
+        attributes
     EOF
   }
 
@@ -63,13 +65,47 @@ resource "observe_dataset" "base_asset_inventory_records" {
   }
 }
 
+resource "observe_dataset" "resource_asset_inventory_resource" {
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Asset Inventory Resource")
+  freshness   = var.freshness_default
+  description = "All cloud assets in GCP"
+  inputs = {
+    "events" = observe_dataset.resource_asset_inventory_records.oid
+  }
+
+  stage {
+    pipeline = <<-EOF
+      make_resource 
+        time,
+        deleted,
+        parent_project_id,
+        project_id,
+        asset_namespace,
+        asset_sub_type,
+        name,
+        data,
+        discovery_document_uri,
+        discovery_name,
+        location,
+        parent,
+        version,
+        ttl,
+        primary_key(asset_type)
+
+      add_key project_id
+    EOF
+  }
+}
+
 resource "observe_dataset" "resource_asset_inventory_records" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Resource Asset Inventory Records")
   freshness   = var.freshness_default
   description = "All cloud assets in GCP"
   inputs = {
-    "events" = observe_dataset.base_asset_inventory_records.oid
+    "events"   = observe_dataset.base_asset_inventory_records.oid
+    "projects" = observe_dataset.projects.oid
   }
 
   # https://cloud.google.com/asset-inventory/docs/reference/rpc/google.cloud.asset.v1#google.cloud.asset.v1.Resource
@@ -84,9 +120,12 @@ resource "observe_dataset" "resource_asset_inventory_records" {
             parent:string(resource.parent),
             asset_namespace: split_part(asset_type,'/', 1),
             asset_sub_type: split_part(asset_type,'/', 2)
-                  
-          extract_regex name, /projects\/(?P<project_id>[^\/+]+)/
+                            
+          extract_regex name, /projects\/(?P<project_id_text>[^\/+]+)/
           extract_regex parent, /projects\/(?P<parent_project_id>[^\/+]+)/
+          extract_regex parent, /projects\/(?P<project_id_number>[^\/+]+)/
+
+          make_col project_id_unified: if_null(project_id_text,project_id_number)
 
           make_col 
             data:object(resource.data),
@@ -96,37 +135,40 @@ resource "observe_dataset" "resource_asset_inventory_records" {
             version:string(resource.version)
     EOF
   }
+  # stage {
+  #   input = "pubsub_events"
+  #   alias = "project"
+  #   pipeline = <<-EOF
+  #       filter (string(attributes.data_type) = "cloudresourcemanager.Project")
+  #       make_col data:parse_json(data)
+
+  #       make_col createTime:string(data.createTime),
+  #           lifecycleState:string(data.lifecycleState),
+  #           name:string(data.name),
+  #           project_id:string(data.projectId),
+  #           projectNumber:string(data.projectNumber),
+  #           parent_id:string(data.parent.id),
+  #           parent_type:string(data.parent.type)
+
+  #       make_col deleted: bool(if(lifecycleState != "ACTIVE", true, false))
+
+  #       make_col ttl: case(deleted, 1ns, true, 4h)
+
+  #       add_key project_id
+  #       add_key projectNumber
+  #   EOF
+  # }
 
   stage {
-    alias    = "project"
     pipeline = <<-EOF
-        filter discovery_name = "Project"
+          leftjoin project_id_unified=@projects.projectNumber, project_id_number_join: @projects.project_id
+          leftjoin project_id_unified=@projects.project_id, project_id_text_join: @projects.project_id
 
-        filter asset_type = "cloudresourcemanager.googleapis.com/Project"
-
-        make_col 
-            createTime:string(data.createTime),
-            lifecycleState:string(data.lifecycleState),
-            name:string(data.name),
-            parent:data.parent,
-            parentId:string(data.parent.id),
-            parentType:string(data.parent.type),
-            project_id:string(data.projectId),
-            projectNumber:string(data.projectNumber),
-            fake_time: parse_isotime('2050-01-01T00:00:00Z')
-
-        set_valid_to fake_time
-
-        timestats cont: count(1), group_by(fake_time,project_id,projectNumber)
+          make_col project_id: if_null(project_id_number_join,project_id_text_join)
     EOF
   }
 
-  stage {
-    input    = "base"
-    pipeline = <<-EOF
-      leftjoin parent_project_id = @project.projectNumber, project_id_unified: @project.project_id
-    EOF
-  }
+
 
   stage {
     pipeline = <<-EOF
@@ -134,7 +176,7 @@ resource "observe_dataset" "resource_asset_inventory_records" {
         time,
         deleted,
         parent_project_id,
-        project_id:if_null(project_id_unified, project_id),
+        project_id,
         asset_type,
         asset_namespace,
         asset_sub_type,
@@ -146,6 +188,8 @@ resource "observe_dataset" "resource_asset_inventory_records" {
         parent,
         version,
         ttl
+
+      add_key project_id
     EOF
   }
 }
