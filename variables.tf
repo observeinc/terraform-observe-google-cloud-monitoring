@@ -63,7 +63,7 @@ variable "service_name_formats" {
 
 variable "enable_service_all" {
   type        = bool
-  default     = false
+  default     = true
   description = <<-EOF
     Enable all services.
     If enabled, all services that are not explicitly set to false will be
@@ -73,7 +73,7 @@ variable "enable_service_all" {
 
 variable "enable_service_cloudfunctions" {
   type        = bool
-  default     = null
+  default     = true
   description = <<-EOF
     Enable Cloud Functions service.
   EOF
@@ -81,7 +81,7 @@ variable "enable_service_cloudfunctions" {
 
 variable "enable_service_cloudsql" {
   type        = bool
-  default     = null
+  default     = true
   description = <<-EOF
     Enable Cloud SQL service.
   EOF
@@ -89,7 +89,7 @@ variable "enable_service_cloudsql" {
 
 variable "enable_service_compute" {
   type        = bool
-  default     = null
+  default     = true
   description = <<-EOF
     Enable Compute service.
   EOF
@@ -97,7 +97,7 @@ variable "enable_service_compute" {
 
 variable "enable_service_storage" {
   type        = bool
-  default     = null
+  default     = true
   description = <<-EOF
     Enable Cloud Storage service.
   EOF
@@ -105,7 +105,7 @@ variable "enable_service_storage" {
 
 variable "enable_service_load_balancing" {
   type        = bool
-  default     = null
+  default     = true
   description = <<-EOF
     Enable Cloud Load Balancing service.
   EOF
