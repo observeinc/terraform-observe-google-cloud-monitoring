@@ -25,12 +25,14 @@ locals {
     lookup(var.services, "compute", false)
   )
   name_format_compute = lookup(var.service_name_formats, "compute", "Compute %s")
+
   enable_service_storage = (
     var.enable_service_storage == true ||
     (var.enable_service_all == true && var.enable_service_storage != false) ||
     lookup(var.services, "storage", false)
   )
   name_format_storage = lookup(var.service_name_formats, "storage", "Storage %s")
+
   enable_service_load_balancing = (
     var.enable_service_storage == true ||
     (var.enable_service_all == true && var.enable_service_load_balancing != false) ||
