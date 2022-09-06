@@ -108,10 +108,10 @@ resource "observe_dataset" "resource_asset_inventory_records" {
 }
 
 resource "observe_dataset" "iam_policy_asset_inventory_records" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "IAM Policy Asset Inventory Records")
-  freshness = var.freshness_default
-
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "IAM Policy Asset Inventory Records")
+  freshness   = var.freshness_default
+  description = "This dataset contains IAM Policy bindings for other assets"
   inputs = {
     "events" = observe_dataset.base_asset_inventory_records.oid
   }

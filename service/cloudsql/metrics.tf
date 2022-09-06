@@ -126,18 +126,16 @@ resource "observe_dataset" "cloudsql_metrics_combo" {
 resource "observe_dataset" "cloudsql_metrics_wide" {
   count = local.enable_metrics ? 1 : 0
 
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Metrics Wide")
-  freshness = lookup(local.freshness, "metrics", var.freshness_default)
-
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Metrics Wide")
+  freshness   = lookup(local.freshness, "metrics", var.freshness_default)
+  description = "This dataset contains calculated metrics"
   inputs = {
     "metrics_base" = observe_dataset.cloudsql_metrics[0].oid
   }
   stage {
     pipeline = <<-EOF
       filter in(metric, "database_disk_bytes_used","database_disk_quota")
-      //filter database_id = "terraflood-345116:con-gha-tom-g1-1-519-instance-wren"
-
     EOF
   }
 
@@ -152,18 +150,10 @@ resource "observe_dataset" "cloudsql_metrics_wide" {
           quota:avg(quota),
           group_by( 
                     metric_category,
-                    //label,
-                    //instance_state_label,
                     database_platform,
-                   // metric_labels,
-                   // value_type_text,
                     database_id,
                     project_id,
                     region
-                    //metric_type,
-                    //metric_kind,
-                    //metric_kind_text,
-                    //value_type
                   )
     EOF
   }
