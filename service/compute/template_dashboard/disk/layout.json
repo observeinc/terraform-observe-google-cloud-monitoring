@@ -1,0 +1,163 @@
+{
+    "gridLayout": {
+        "sections": [
+            {
+                "card": {
+                    "cardType": "section",
+                    "closed": false,
+                    "id": "section-ol83hmhe",
+                    "title": "Dashboard Content"
+                },
+                "items": [],
+                "lastModified": 1661963940457
+            },
+            {
+                "card": {
+                    "cardType": "section",
+                    "closed": false,
+                    "id": "card-5awan0zg",
+                    "title": "Overview"
+                },
+                "items": [
+                    {
+                        "card": {
+                            "cardType": "stage",
+                            "id": "card-4p8n0itt",
+                            "stageId": "stage-amcr2ap9"
+                        },
+                        "layout": {
+                            "h": 12,
+                            "i": "card-4p8n0itt",
+                            "isDraggable": true,
+                            "isResizable": true,
+                            "moved": false,
+                            "static": false,
+                            "w": 4,
+                            "x": 0,
+                            "y": 0
+                        }
+                    },
+                    {
+                        "card": {
+                            "cardType": "stage",
+                            "id": "card-seaihfpw",
+                            "stageId": "stage-a8iwiff8"
+                        },
+                        "layout": {
+                            "h": 12,
+                            "i": "card-seaihfpw",
+                            "isDraggable": true,
+                            "isResizable": true,
+                            "moved": false,
+                            "static": false,
+                            "w": 4,
+                            "x": 4,
+                            "y": 0
+                        }
+                    },
+                    {
+                        "card": {
+                            "cardType": "stage",
+                            "id": "card-7c2qmpt8",
+                            "stageId": "stage-bvuvzode"
+                        },
+                        "layout": {
+                            "h": 12,
+                            "i": "card-7c2qmpt8",
+                            "isDraggable": true,
+                            "isResizable": true,
+                            "moved": false,
+                            "static": false,
+                            "w": 4,
+                            "x": 8,
+                            "y": 0
+                        }
+                    },
+                    {
+                        "card": {
+                            "cardType": "stage",
+                            "id": "card-y54b3n39",
+                            "stageId": "stage-4bxpnmn6"
+                        },
+                        "layout": {
+                            "h": 13,
+                            "i": "card-y54b3n39",
+                            "isDraggable": true,
+                            "isResizable": true,
+                            "moved": false,
+                            "static": false,
+                            "w": 12,
+                            "x": 0,
+                            "y": 12
+                        }
+                    }
+                ],
+                "lastModified": 1661964442738
+            },
+            {
+                "card": {
+                    "cardType": "section",
+                    "closed": false,
+                    "id": "card-46j1jbx9",
+                    "title": "Details"
+                },
+                "items": [
+                    {
+                        "card": {
+                            "cardType": "stage",
+                            "id": "card-mbh75ssr",
+                            "stageId": "stage-fz72ajs1"
+                        },
+                        "layout": {
+                            "h": 13,
+                            "i": "card-mbh75ssr",
+                            "isDraggable": true,
+                            "isResizable": true,
+                            "moved": false,
+                            "static": false,
+                            "w": 12,
+                            "x": 0,
+                            "y": 0
+                        }
+                    }
+                ],
+                "lastModified": 1661964979382
+            }
+        ]
+    },
+    "stageListLayout": {
+        "isModified": false,
+        "parameters": [
+            {
+                "controlledFilterStageId": "stage-wn63e3ww",
+                "datasetId": "41154833",
+                "defaultValue": {
+                    "datasetref": {
+                        "datasetId": "41154833"
+                    }
+                },
+                "emptyValueEncoding": "null",
+                "emptyValueLabelOption": "null",
+                "id": "input-parameter-nv8xq2ii",
+                "name": "disks",
+                "valueKind": {
+                    "type": "DATASETREF"
+                },
+                "viewType": "input"
+            }
+        ],
+        "selectedStageId": "stage-fz72ajs1",
+        "timeRange": {
+            "display": "Past 4 hours",
+            "endTime": null,
+            "millisFromCurrentTime": 14400000,
+            "originalDisplay": "Past 4 hours",
+            "startTime": null,
+            "timeRangeInfo": {
+                "key": "PRESETS",
+                "name": "Presets"
+            },
+            "timeZone": null
+        }
+    }
+}

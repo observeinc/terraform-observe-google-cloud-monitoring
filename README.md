@@ -56,8 +56,8 @@ module "google" {
 | observe_dataset.metrics | resource |
 | observe_dataset.process_distribution_metrics | resource |
 | observe_dataset.projects | resource |
+| observe_dataset.projects_all | resource |
 | observe_dataset.resource_asset_inventory_records | resource |
-| observe_dataset.resource_asset_inventory_resource | resource |
 | observe_dataset.string_metrics | resource |
 
 ## Inputs
@@ -92,6 +92,7 @@ module "google" {
 | <a name="output_compute"></a> [compute](#output\_compute) | n/a |
 | <a name="output_distribution_metrics"></a> [distribution\_metrics](#output\_distribution\_metrics) | n/a |
 | <a name="output_iam_policy_asset_inventory_records"></a> [iam\_policy\_asset\_inventory\_records](#output\_iam\_policy\_asset\_inventory\_records) | n/a |
+| <a name="output_loadbalancer"></a> [loadbalancer](#output\_loadbalancer) | n/a |
 | <a name="output_logs"></a> [logs](#output\_logs) | n/a |
 | <a name="output_metrics"></a> [metrics](#output\_metrics) | n/a |
 | <a name="output_projects"></a> [projects](#output\_projects) | n/a |

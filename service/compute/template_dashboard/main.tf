@@ -3,7 +3,6 @@ data "observe_dashboard" "db" {
   workspace = data.observe_workspace.ws.oid
   id        = var.template_dashboard_id
 }
-
 data "observe_workspace" "ws" {
   name = "Default"
 }

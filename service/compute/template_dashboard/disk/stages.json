@@ -1,0 +1,1160 @@
+[
+    {
+        "id": "stage-wn63e3ww",
+        "input": [
+            {
+                "inputName": "GCP/Compute Disk",
+                "inputRole": "Data",
+                "datasetId": "41154833",
+                "datasetPath": null,
+                "stageId": null
+            }
+        ],
+        "params": null,
+        "layout": {
+            "appearance": "HIDDEN",
+            "dataTableViewState": {
+                "autoTableHeight": true,
+                "columnFooterHeight": 0,
+                "columnHeaderHeight": 29,
+                "columnOrderOverride": {
+                    "1": "Valid From",
+                    "2": "Valid To"
+                },
+                "columnVisibility": {},
+                "columnWidths": {},
+                "containerWidth": null,
+                "contextMenuXCoord": null,
+                "contextMenuYCoord": null,
+                "defaultColumnWidth": 70,
+                "disableFixedLeftColumns": false,
+                "eventLinkColumnId": null,
+                "fetchPageSize": 100,
+                "hasCalculatedColumnWidths": false,
+                "hasDoneAutoLayout": false,
+                "maxColumnWidth": 400,
+                "maxMeasuredColumnWidth": {},
+                "minColumnWidth": 60,
+                "minRowHeight": 30,
+                "preserveCellAndRowSelection": true,
+                "rowHeaderWidth": 20,
+                "rowHeights": {},
+                "rowSizeIncrement": 1,
+                "scrollToColumn": null,
+                "scrollToRow": 0,
+                "selection": {
+                    "cells": {},
+                    "columnSelectSequence": [],
+                    "columns": {},
+                    "highlightState": {},
+                    "rows": {},
+                    "selectionType": "table"
+                },
+                "shouldAutoLayout": false,
+                "summaryColumnOrderOverride": {},
+                "summaryColumnVisibility": {},
+                "tableHeight": 0,
+                "tableView": "TABULAR"
+            },
+            "index": 0,
+            "inputList": [
+                {
+                    "datasetId": "41154833",
+                    "inputName": "GCP/Compute Disk",
+                    "inputRole": "Data",
+                    "isUserInput": false
+                }
+            ],
+            "managers": [],
+            "pipelineComment": "Filtered Dataset Controlled Filter Stage",
+            "queryPresentation": {
+                "initialRollupFilter": {
+                    "mode": "Last"
+                },
+                "linkify": true,
+                "progressive": true,
+                "resultKinds": [
+                    "ResultKindSchema",
+                    "ResultKindStats"
+                ],
+                "rollup": {}
+            },
+            "selectedStepId": null,
+            "serializable": true,
+            "steps": [
+                {
+                    "customName": "Input",
+                    "customSummary": "GCP/Compute Disk",
+                    "datasetQuery": null,
+                    "datasetQueryId": {
+                        "ignoreCompress": false,
+                        "queryId": null,
+                        "resultKinds": [
+                            "ResultKindSchema",
+                            "ResultKindData",
+                            "ResultKindStats"
+                        ],
+                        "tableTypes": [
+                            "TABULAR",
+                            "SUMMARY"
+                        ]
+                    },
+                    "id": "step-lnanhf0v",
+                    "index": 0,
+                    "isPinned": false,
+                    "opal": [
+                        "// Filtered Dataset Controlled Filter Stage"
+                    ],
+                    "queryPresentation": {},
+                    "type": "InputStep"
+                }
+            ],
+            "type": "table",
+            "viewModel": {
+                "consoleValue": null,
+                "railCollapseState": {
+                    "inputsOutputs": false,
+                    "minimap": false,
+                    "note": true,
+                    "script": true
+                },
+                "scriptTab": "SCRIPT",
+                "showTimeRuler": true,
+                "stageTab": "table"
+            }
+        },
+        "pipeline": "// Filtered Dataset Controlled Filter Stage"
+    },
+    {
+        "id": "stage-4bxpnmn6",
+        "input": [
+            {
+                "inputName": "disks",
+                "inputRole": "Data",
+                "datasetId": null,
+                "datasetPath": null,
+                "stageId": null
+            }
+        ],
+        "params": null,
+        "layout": {
+            "appearance": "VISIBLE",
+            "dataTableViewState": {
+                "autoTableHeight": true,
+                "columnFooterHeight": 0,
+                "columnHeaderHeight": 29,
+                "columnOrderOverride": {
+                    "1": "Valid From",
+                    "2": "Valid To"
+                },
+                "columnVisibility": {},
+                "columnWidths": {},
+                "containerWidth": 1324,
+                "contextMenuXCoord": null,
+                "contextMenuYCoord": null,
+                "defaultColumnWidth": 70,
+                "disableFixedLeftColumns": false,
+                "eventLinkColumnId": null,
+                "fetchPageSize": 100,
+                "hasCalculatedColumnWidths": false,
+                "hasDoneAutoLayout": false,
+                "maxColumnWidth": 400,
+                "maxMeasuredColumnWidth": {},
+                "minColumnWidth": 60,
+                "minRowHeight": 30,
+                "preserveCellAndRowSelection": true,
+                "rowHeaderWidth": 20,
+                "rowHeights": {},
+                "rowSizeIncrement": 1,
+                "scrollToColumn": null,
+                "scrollToRow": 0,
+                "selection": {
+                    "cells": {},
+                    "columnSelectSequence": [],
+                    "columns": {},
+                    "highlightState": {},
+                    "rows": {},
+                    "selectionType": "table"
+                },
+                "shouldAutoLayout": false,
+                "summaryColumnOrderOverride": {},
+                "summaryColumnVisibility": {},
+                "tableHeight": 0,
+                "tableView": "TABULAR"
+            },
+            "index": 1,
+            "inputList": [
+                {
+                    "inputName": "disks",
+                    "inputRole": "Data",
+                    "isUserInput": false,
+                    "parameterId": "input-parameter-nv8xq2ii"
+                }
+            ],
+            "label": "Status",
+            "managers": [
+                {
+                    "id": "53mxauid",
+                    "isDisabled": true,
+                    "isResourceCountEnabled": false,
+                    "parentStageId": "stage-4bxpnmn6",
+                    "type": "Timescrubber"
+                },
+                {
+                    "id": "860bgsm8",
+                    "isDisabled": false,
+                    "parentStageId": "stage-4bxpnmn6",
+                    "type": "Vis",
+                    "vis": {
+                        "config": {
+                            "areaFillType": "SolidFill",
+                            "legend": {
+                                "placement": "right",
+                                "type": "list",
+                                "visible": true
+                            },
+                            "type": "bar",
+                            "xAxisLabelPlacement": "horizontal",
+                            "xConfig": {
+                                "visible": true
+                            },
+                            "yConfig": {
+                                "visible": true
+                            }
+                        },
+                        "source": {
+                            "table": {
+                                "groupFields": [
+                                    "status"
+                                ],
+                                "statsBy": {
+                                    "fn": "count"
+                                },
+                                "timechart": {
+                                    "fn": "count",
+                                    "fnArgs": null,
+                                    "resolution": 900000
+                                },
+                                "transformType": "timechart",
+                                "type": "xy",
+                                "y": "status"
+                            },
+                            "type": "table"
+                        },
+                        "type": "bar"
+                    }
+                },
+                {
+                    "id": "9jwod0me",
+                    "isDisabled": false,
+                    "parentStageId": "stage-4bxpnmn6",
+                    "type": "JsonTree"
+                }
+            ],
+            "queryPresentation": {
+                "initialRollupFilter": {
+                    "mode": "Last"
+                },
+                "limit": 1000,
+                "linkify": true,
+                "loadEverything": false,
+                "progressive": true,
+                "resultKinds": [
+                    "ResultKindSchema"
+                ],
+                "rollup": {}
+            },
+            "renderType": "TABLE",
+            "selectedStepId": null,
+            "serializable": true,
+            "steps": [
+                {
+                    "columnStatsTable": {
+                        "columnFunctions": {
+                            "architecture": "count",
+                            "creationTime": "count",
+                            "deleted": "count",
+                            "guestOsFeatures": "count",
+                            "id": "count",
+                            "instance_name": "count",
+                            "labels": "count",
+                            "lastAttachTimestamp": "count",
+                            "licenses": "count",
+                            "physicalBlockSizeBytes": "count",
+                            "region": "count",
+                            "selfLink": "count",
+                            "sizeGb": "count",
+                            "sourceImage": "count",
+                            "sourceImageId": "count",
+                            "status": "count",
+                            "tags": "count",
+                            "ttl": "count",
+                            "type": "count",
+                            "users": "count",
+                            "zone": "count"
+                        },
+                        "datasetQueryId": {
+                            "ignoreCompress": false,
+                            "queryId": "q-z7vwrbjx",
+                            "resultKinds": [
+                                "ResultKindSchema",
+                                "ResultKindData"
+                            ],
+                            "tableTypes": [
+                                "TABULAR"
+                            ]
+                        }
+                    },
+                    "customName": "Input",
+                    "customSummary": "disks",
+                    "datasetQuery": null,
+                    "datasetQueryId": {
+                        "ignoreCompress": false,
+                        "queryId": null,
+                        "resultKinds": [
+                            "ResultKindSchema",
+                            "ResultKindData",
+                            "ResultKindStats"
+                        ],
+                        "tableTypes": [
+                            "TABULAR",
+                            "SUMMARY"
+                        ]
+                    },
+                    "id": "step-v4uvjq7u",
+                    "index": 0,
+                    "isPinned": false,
+                    "opal": [],
+                    "queryPresentation": {},
+                    "type": "InputStep"
+                }
+            ],
+            "type": "table",
+            "viewModel": {
+                "consoleValue": null,
+                "railCollapseState": {
+                    "inputsOutputs": false,
+                    "minimap": false,
+                    "note": true,
+                    "script": true
+                },
+                "scriptTab": "SCRIPT",
+                "showTimeRuler": true,
+                "stageTab": "vis"
+            }
+        },
+        "pipeline": ""
+    },
+    {
+        "id": "stage-a8iwiff8",
+        "input": [
+            {
+                "inputName": "disks",
+                "inputRole": "Data",
+                "datasetId": null,
+                "datasetPath": null,
+                "stageId": null
+            }
+        ],
+        "params": null,
+        "layout": {
+            "appearance": "VISIBLE",
+            "dataTableViewState": {
+                "autoTableHeight": true,
+                "columnFooterHeight": 0,
+                "columnHeaderHeight": 29,
+                "columnOrderOverride": {
+                    "1": "Valid From",
+                    "2": "Valid To"
+                },
+                "columnVisibility": {},
+                "columnWidths": {},
+                "containerWidth": 1313,
+                "contextMenuXCoord": null,
+                "contextMenuYCoord": null,
+                "defaultColumnWidth": 70,
+                "disableFixedLeftColumns": false,
+                "eventLinkColumnId": null,
+                "fetchPageSize": 100,
+                "hasCalculatedColumnWidths": false,
+                "hasDoneAutoLayout": false,
+                "maxColumnWidth": 400,
+                "maxMeasuredColumnWidth": {},
+                "minColumnWidth": 60,
+                "minRowHeight": 30,
+                "preserveCellAndRowSelection": true,
+                "rowHeaderWidth": 20,
+                "rowHeights": {},
+                "rowSizeIncrement": 1,
+                "scrollToColumn": null,
+                "scrollToRow": 0,
+                "selection": {
+                    "cells": {},
+                    "columnSelectSequence": [],
+                    "columns": {},
+                    "highlightState": {},
+                    "rows": {},
+                    "selectionType": "table"
+                },
+                "shouldAutoLayout": false,
+                "summaryColumnOrderOverride": {},
+                "summaryColumnVisibility": {},
+                "tableHeight": 0,
+                "tableView": "TABULAR"
+            },
+            "index": 2,
+            "inputList": [
+                {
+                    "inputName": "disks",
+                    "inputRole": "Data",
+                    "isUserInput": false,
+                    "parameterId": "input-parameter-nv8xq2ii"
+                }
+            ],
+            "label": "Region",
+            "managers": [
+                {
+                    "id": "no1m1j05",
+                    "isDisabled": true,
+                    "isResourceCountEnabled": false,
+                    "parentStageId": "stage-a8iwiff8",
+                    "type": "Timescrubber"
+                },
+                {
+                    "id": "sqe26l46",
+                    "isDisabled": false,
+                    "parentStageId": "stage-a8iwiff8",
+                    "type": "Vis",
+                    "vis": {
+                        "config": {
+                            "innerRadius": 0.6,
+                            "legend": {
+                                "placement": "right",
+                                "type": "list",
+                                "visible": true
+                            },
+                            "type": "arc"
+                        },
+                        "source": {
+                            "table": {
+                                "keyField": [
+                                    "region"
+                                ],
+                                "statsBy": {
+                                    "fn": "count"
+                                },
+                                "timechart": {
+                                    "fn": "count",
+                                    "resolution": "SINGLE"
+                                },
+                                "transformType": "timechart",
+                                "type": "keyvalue",
+                                "valueField": "region"
+                            },
+                            "type": "table"
+                        },
+                        "type": "circular"
+                    }
+                },
+                {
+                    "id": "14urt6tj",
+                    "isDisabled": false,
+                    "parentStageId": "stage-a8iwiff8",
+                    "type": "JsonTree"
+                }
+            ],
+            "queryPresentation": {
+                "initialRollupFilter": {
+                    "mode": "Last"
+                },
+                "limit": 1000,
+                "linkify": true,
+                "loadEverything": false,
+                "progressive": true,
+                "resultKinds": [
+                    "ResultKindSchema"
+                ],
+                "rollup": {}
+            },
+            "renderType": "TABLE",
+            "selectedStepId": null,
+            "serializable": true,
+            "steps": [
+                {
+                    "columnStatsTable": {
+                        "columnFunctions": {
+                            "architecture": "count",
+                            "creationTime": "count",
+                            "deleted": "count",
+                            "guestOsFeatures": "count",
+                            "id": "count",
+                            "instance_name": "count",
+                            "labels": "count",
+                            "lastAttachTimestamp": "count",
+                            "licenses": "count",
+                            "physicalBlockSizeBytes": "count",
+                            "region": "count",
+                            "selfLink": "count",
+                            "sizeGb": "count",
+                            "sourceImage": "count",
+                            "sourceImageId": "count",
+                            "status": "count",
+                            "tags": "count",
+                            "ttl": "count",
+                            "type": "count",
+                            "users": "count",
+                            "zone": "count"
+                        },
+                        "datasetQueryId": {
+                            "ignoreCompress": false,
+                            "queryId": "q-nwphp7km",
+                            "resultKinds": [
+                                "ResultKindSchema",
+                                "ResultKindData"
+                            ],
+                            "tableTypes": [
+                                "TABULAR"
+                            ]
+                        }
+                    },
+                    "customName": "Input",
+                    "customSummary": "disks",
+                    "datasetQuery": null,
+                    "datasetQueryId": {
+                        "ignoreCompress": false,
+                        "queryId": null,
+                        "resultKinds": [
+                            "ResultKindSchema",
+                            "ResultKindData",
+                            "ResultKindStats"
+                        ],
+                        "tableTypes": [
+                            "TABULAR",
+                            "SUMMARY"
+                        ]
+                    },
+                    "id": "step-ogzu6uo9",
+                    "index": 0,
+                    "isPinned": false,
+                    "opal": [],
+                    "queryPresentation": {},
+                    "type": "InputStep"
+                }
+            ],
+            "type": "table",
+            "viewModel": {
+                "consoleValue": null,
+                "railCollapseState": {
+                    "inputsOutputs": false,
+                    "minimap": false,
+                    "note": true,
+                    "script": true
+                },
+                "scriptTab": "SCRIPT",
+                "showTimeRuler": true,
+                "stageTab": "vis"
+            }
+        },
+        "pipeline": ""
+    },
+    {
+        "id": "stage-bvuvzode",
+        "input": [
+            {
+                "inputName": "disks",
+                "inputRole": "Data",
+                "datasetId": null,
+                "datasetPath": null,
+                "stageId": null
+            }
+        ],
+        "params": null,
+        "layout": {
+            "appearance": "VISIBLE",
+            "dataTableViewState": {
+                "autoTableHeight": true,
+                "columnFooterHeight": 0,
+                "columnHeaderHeight": 29,
+                "columnOrderOverride": {
+                    "1": "Valid From",
+                    "2": "Valid To"
+                },
+                "columnVisibility": {},
+                "columnWidths": {},
+                "containerWidth": 1313,
+                "contextMenuXCoord": null,
+                "contextMenuYCoord": null,
+                "defaultColumnWidth": 70,
+                "disableFixedLeftColumns": false,
+                "eventLinkColumnId": null,
+                "fetchPageSize": 100,
+                "hasCalculatedColumnWidths": false,
+                "hasDoneAutoLayout": false,
+                "maxColumnWidth": 400,
+                "maxMeasuredColumnWidth": {},
+                "minColumnWidth": 60,
+                "minRowHeight": 30,
+                "preserveCellAndRowSelection": true,
+                "rowHeaderWidth": 20,
+                "rowHeights": {},
+                "rowSizeIncrement": 1,
+                "scrollToColumn": null,
+                "scrollToRow": 0,
+                "selection": {
+                    "cells": {},
+                    "columnSelectSequence": [
+                        "zone"
+                    ],
+                    "columns": {
+                        "zone": true
+                    },
+                    "highlightState": {},
+                    "rows": {},
+                    "selectionType": "column"
+                },
+                "shouldAutoLayout": false,
+                "summaryColumnOrderOverride": {},
+                "summaryColumnVisibility": {},
+                "tableHeight": 0,
+                "tableView": "TABULAR"
+            },
+            "index": 3,
+            "inputList": [
+                {
+                    "inputName": "disks",
+                    "inputRole": "Data",
+                    "isUserInput": false,
+                    "parameterId": "input-parameter-nv8xq2ii"
+                }
+            ],
+            "label": "Zones",
+            "managers": [
+                {
+                    "id": "no1m1j05",
+                    "isDisabled": true,
+                    "isResourceCountEnabled": false,
+                    "parentStageId": "stage-bvuvzode",
+                    "type": "Timescrubber"
+                },
+                {
+                    "id": "sqe26l46",
+                    "isDisabled": false,
+                    "parentStageId": "stage-bvuvzode",
+                    "type": "Vis",
+                    "vis": {
+                        "config": {
+                            "innerRadius": 0.6,
+                            "legend": {
+                                "placement": "right",
+                                "type": "list",
+                                "visible": true
+                            },
+                            "type": "arc"
+                        },
+                        "source": {
+                            "table": {
+                                "keyField": [
+                                    "region"
+                                ],
+                                "statsBy": {
+                                    "fn": "count"
+                                },
+                                "timechart": {
+                                    "fn": "count",
+                                    "resolution": "SINGLE"
+                                },
+                                "transformType": "timechart",
+                                "type": "keyvalue",
+                                "valueField": "zone"
+                            },
+                            "type": "table"
+                        },
+                        "type": "circular"
+                    }
+                },
+                {
+                    "id": "14urt6tj",
+                    "isDisabled": false,
+                    "parentStageId": "stage-bvuvzode",
+                    "type": "JsonTree"
+                },
+                {
+                    "id": "vjye19xn",
+                    "isDisabled": true,
+                    "parentStageId": "stage-bvuvzode",
+                    "queryPresentation": {
+                        "resultKinds": [
+                            "ResultKindSchema",
+                            "ResultKindStats"
+                        ]
+                    },
+                    "stepId": "step-l19bj1ee",
+                    "type": "StepOutput"
+                }
+            ],
+            "queryPresentation": {
+                "initialRollupFilter": {
+                    "mode": "Last"
+                },
+                "limit": 1000,
+                "linkify": true,
+                "loadEverything": false,
+                "progressive": true,
+                "resultKinds": [
+                    "ResultKindSchema"
+                ],
+                "rollup": {}
+            },
+            "renderType": "TABLE",
+            "selectedStepId": null,
+            "serializable": true,
+            "steps": [
+                {
+                    "columnStatsTable": {
+                        "columnFunctions": {},
+                        "datasetQueryId": {
+                            "ignoreCompress": false,
+                            "queryId": "q-4c9zo6jd",
+                            "resultKinds": [
+                                "ResultKindSchema",
+                                "ResultKindData"
+                            ],
+                            "tableTypes": [
+                                "TABULAR"
+                            ]
+                        }
+                    },
+                    "customName": "Input",
+                    "customSummary": "disks",
+                    "datasetQuery": null,
+                    "datasetQueryId": {
+                        "ignoreCompress": false,
+                        "queryId": null,
+                        "resultKinds": [
+                            "ResultKindSchema",
+                            "ResultKindData",
+                            "ResultKindStats"
+                        ],
+                        "tableTypes": [
+                            "TABULAR",
+                            "SUMMARY"
+                        ]
+                    },
+                    "id": "step-l19bj1ee",
+                    "index": 0,
+                    "isPinned": false,
+                    "opal": [],
+                    "queryPresentation": {},
+                    "type": "InputStep"
+                }
+            ],
+            "type": "table",
+            "viewModel": {
+                "consoleValue": null,
+                "railCollapseState": {
+                    "inputsOutputs": false,
+                    "minimap": false,
+                    "note": true,
+                    "script": true
+                },
+                "scriptTab": "SCRIPT",
+                "showTimeRuler": true,
+                "stageTab": "vis"
+            }
+        },
+        "pipeline": ""
+    },
+    {
+        "id": "stage-amcr2ap9",
+        "input": [
+            {
+                "inputName": "disks",
+                "inputRole": "Data",
+                "datasetId": null,
+                "datasetPath": null,
+                "stageId": null
+            }
+        ],
+        "params": null,
+        "layout": {
+            "appearance": "VISIBLE",
+            "dataTableViewState": {
+                "autoTableHeight": true,
+                "columnFooterHeight": 0,
+                "columnHeaderHeight": 29,
+                "columnOrderOverride": {
+                    "1": "Valid From",
+                    "2": "Valid To"
+                },
+                "columnVisibility": {},
+                "columnWidths": {},
+                "contextMenuXCoord": null,
+                "contextMenuYCoord": null,
+                "defaultColumnWidth": 70,
+                "disableFixedLeftColumns": false,
+                "eventLinkColumnId": null,
+                "fetchPageSize": 100,
+                "hasCalculatedColumnWidths": false,
+                "hasDoneAutoLayout": false,
+                "maxColumnWidth": 400,
+                "maxMeasuredColumnWidth": {},
+                "minColumnWidth": 60,
+                "minRowHeight": 30,
+                "preserveCellAndRowSelection": true,
+                "rowHeaderWidth": 20,
+                "rowHeights": {},
+                "rowSizeIncrement": 1,
+                "scrollToColumn": null,
+                "scrollToRow": 0,
+                "selection": {
+                    "anchoredCellSelection": null,
+                    "anchoredColumnSelection": null,
+                    "anchoredRowSelection": null,
+                    "cells": {},
+                    "columnSelectSequence": [],
+                    "columns": {},
+                    "highlightState": {},
+                    "lastCellSelection": null,
+                    "lastColumnSelection": null,
+                    "lastRowSelection": null,
+                    "rows": {},
+                    "selectionType": "table"
+                },
+                "shouldAutoLayout": false,
+                "summaryColumnOrderOverride": {},
+                "summaryColumnVisibility": {},
+                "tableHeight": 0,
+                "tableView": "TABULAR"
+            },
+            "index": 4,
+            "inputList": [
+                {
+                    "inputName": "disks",
+                    "inputRole": "Data",
+                    "isUserInput": false,
+                    "parameterId": "input-parameter-nv8xq2ii"
+                }
+            ],
+            "label": "Projects",
+            "managers": [
+                {
+                    "id": "no1m1j05",
+                    "isDisabled": true,
+                    "isResourceCountEnabled": false,
+                    "parentStageId": "stage-amcr2ap9",
+                    "type": "Timescrubber"
+                },
+                {
+                    "id": "sqe26l46",
+                    "isDisabled": false,
+                    "parentStageId": "stage-amcr2ap9",
+                    "type": "Vis",
+                    "vis": {
+                        "config": {
+                            "innerRadius": 0.6,
+                            "legend": {
+                                "placement": "right",
+                                "type": "list",
+                                "visible": true
+                            },
+                            "type": "arc"
+                        },
+                        "source": {
+                            "table": {
+                                "keyField": [
+                                    [
+                                        "project_id"
+                                    ]
+                                ],
+                                "statsBy": {
+                                    "fn": "count"
+                                },
+                                "timechart": {
+                                    "fn": "count",
+                                    "resolution": "SINGLE"
+                                },
+                                "transformType": "timechart",
+                                "type": "keyvalue",
+                                "valueField": [
+                                    "project_id"
+                                ]
+                            },
+                            "type": "table"
+                        },
+                        "type": "circular"
+                    }
+                },
+                {
+                    "id": "14urt6tj",
+                    "isDisabled": false,
+                    "parentStageId": "stage-amcr2ap9",
+                    "type": "JsonTree"
+                },
+                {
+                    "id": "vjye19xn",
+                    "isDisabled": true,
+                    "parentStageId": "stage-amcr2ap9",
+                    "queryPresentation": {
+                        "resultKinds": [
+                            "ResultKindSchema",
+                            "ResultKindStats"
+                        ]
+                    },
+                    "stepId": "step-l19bj1ee",
+                    "type": "StepOutput"
+                }
+            ],
+            "queryPresentation": {
+                "initialRollupFilter": {
+                    "mode": "Last"
+                },
+                "limit": 1000,
+                "linkify": true,
+                "loadEverything": false,
+                "progressive": true,
+                "resultKinds": [
+                    "ResultKindSchema"
+                ],
+                "rollup": {}
+            },
+            "renderType": "TABLE",
+            "selectedStepId": "step-q2rs75fb",
+            "serializable": true,
+            "steps": [
+                {
+                    "customName": "Input",
+                    "customSummary": "disks",
+                    "datasetQuery": null,
+                    "datasetQueryId": {
+                        "ignoreCompress": false,
+                        "queryId": null,
+                        "resultKinds": [
+                            "ResultKindSchema",
+                            "ResultKindData",
+                            "ResultKindStats"
+                        ],
+                        "tableTypes": [
+                            "TABULAR",
+                            "SUMMARY"
+                        ]
+                    },
+                    "id": "step-q2rs75fb",
+                    "index": 0,
+                    "isPinned": false,
+                    "opal": [],
+                    "queryPresentation": {},
+                    "type": "InputStep"
+                }
+            ],
+            "type": "table",
+            "viewModel": {
+                "consoleValue": null,
+                "railCollapseState": {
+                    "inputsOutputs": false,
+                    "minimap": false,
+                    "note": true,
+                    "script": true
+                },
+                "scriptTab": "SCRIPT",
+                "showTimeRuler": true,
+                "stageTab": "vis"
+            }
+        },
+        "pipeline": ""
+    },
+    {
+        "id": "stage-fz72ajs1",
+        "input": [
+            {
+                "inputName": "disks",
+                "inputRole": "Data",
+                "datasetId": null,
+                "datasetPath": null,
+                "stageId": null
+            }
+        ],
+        "params": null,
+        "layout": {
+            "appearance": "VISIBLE",
+            "dataTableViewState": {
+                "autoTableHeight": false,
+                "columnFooterHeight": 0,
+                "columnHeaderHeight": 29,
+                "columnOrderOverride": {
+                    "1": "Valid From",
+                    "10": "physicalBlockSizeBytes",
+                    "11": "lastAttachTimestamp",
+                    "17": "guestOsFeatures",
+                    "2": "Valid To",
+                    "9": "sizeGb"
+                },
+                "columnVisibility": {
+                    "Compute": false,
+                    "deleted": false,
+                    "labels": false,
+                    "licenses": false,
+                    "selfLink": false,
+                    "sourceImage": false,
+                    "sourceImageId": false,
+                    "tags": false,
+                    "ttl": false
+                },
+                "columnWidths": {
+                    "instance_name": 112
+                },
+                "containerWidth": 1313,
+                "contextMenuXCoord": null,
+                "contextMenuYCoord": null,
+                "defaultColumnWidth": 70,
+                "disableFixedLeftColumns": false,
+                "eventLinkColumnId": null,
+                "fetchPageSize": 100,
+                "hasCalculatedColumnWidths": true,
+                "hasDoneAutoLayout": false,
+                "maxColumnWidth": 400,
+                "maxMeasuredColumnWidth": {},
+                "minColumnWidth": 60,
+                "minRowHeight": 30,
+                "preserveCellAndRowSelection": true,
+                "rowHeaderWidth": 20,
+                "rowHeights": {},
+                "rowSizeIncrement": 1,
+                "scrollToColumn": null,
+                "scrollToRow": 0,
+                "selection": {
+                    "anchoredCellSelection": null,
+                    "anchoredColumnSelection": null,
+                    "anchoredRowSelection": null,
+                    "cells": {},
+                    "columnSelectSequence": [],
+                    "columns": {},
+                    "highlightState": {},
+                    "lastCellSelection": null,
+                    "lastColumnSelection": null,
+                    "lastRowSelection": null,
+                    "rows": {},
+                    "selectionType": "table"
+                },
+                "shouldAutoLayout": false,
+                "summaryColumnOrderOverride": {},
+                "summaryColumnVisibility": {},
+                "tableHeight": 352,
+                "tableView": "TABULAR"
+            },
+            "index": 5,
+            "inputList": [
+                {
+                    "inputName": "disks",
+                    "inputRole": "Data",
+                    "isUserInput": false,
+                    "parameterId": "input-parameter-nv8xq2ii"
+                }
+            ],
+            "label": "Disk Details",
+            "managers": [
+                {
+                    "id": "2m4sslpc",
+                    "isDisabled": true,
+                    "isResourceCountEnabled": false,
+                    "parentStageId": "stage-fz72ajs1",
+                    "type": "Timescrubber"
+                }
+            ],
+            "queryPresentation": {
+                "initialRollupFilter": {
+                    "mode": "Last"
+                },
+                "limit": 1000,
+                "linkify": true,
+                "loadEverything": false,
+                "progressive": true,
+                "resultKinds": [
+                    "ResultKindStats",
+                    "ResultKindData",
+                    "ResultKindSchema",
+                    "ResultKindProgress"
+                ],
+                "rollup": {}
+            },
+            "renderType": "TABLE",
+            "selectedStepId": null,
+            "serializable": true,
+            "steps": [
+                {
+                    "columnStatsTable": {
+                        "columnFunctions": {
+                            "architecture": "count",
+                            "creationTime": "count",
+                            "deleted": "count",
+                            "guestOsFeatures": "count",
+                            "id": "count",
+                            "instance_name": "count",
+                            "labels": "count",
+                            "lastAttachTimestamp": "count",
+                            "licenses": "count",
+                            "physicalBlockSizeBytes": "count",
+                            "region": "count",
+                            "selfLink": "count",
+                            "sizeGb": "count",
+                            "sourceImage": "count",
+                            "sourceImageId": "count",
+                            "status": "count",
+                            "tags": "count",
+                            "ttl": "count",
+                            "type": "count",
+                            "users": "count",
+                            "zone": "count"
+                        },
+                        "datasetQueryId": {
+                            "ignoreCompress": false,
+                            "queryId": "q-3omsm12d",
+                            "resultKinds": [
+                                "ResultKindSchema",
+                                "ResultKindData"
+                            ],
+                            "tableTypes": [
+                                "TABULAR"
+                            ]
+                        }
+                    },
+                    "customName": "Input",
+                    "customSummary": "disks",
+                    "datasetQuery": null,
+                    "datasetQueryId": {
+                        "ignoreCompress": false,
+                        "queryId": null,
+                        "resultKinds": [
+                            "ResultKindSchema",
+                            "ResultKindData",
+                            "ResultKindStats"
+                        ],
+                        "tableTypes": [
+                            "TABULAR",
+                            "SUMMARY"
+                        ]
+                    },
+                    "id": "step-31ifo5vf",
+                    "index": 0,
+                    "isPinned": false,
+                    "opal": [],
+                    "queryPresentation": {},
+                    "type": "InputStep"
+                }
+            ],
+            "type": "table",
+            "viewModel": {
+                "consoleValue": null,
+                "railCollapseState": {
+                    "inputsOutputs": false,
+                    "minimap": false,
+                    "note": true,
+                    "script": true
+                },
+                "scriptTab": "SCRIPT",
+                "showTimeRuler": true,
+                "stageTab": "table"
+            }
+        },
+        "pipeline": ""
+    }
+]

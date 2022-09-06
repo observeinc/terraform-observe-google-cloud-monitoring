@@ -65,39 +65,6 @@ resource "observe_dataset" "base_asset_inventory_records" {
   }
 }
 
-resource "observe_dataset" "resource_asset_inventory_resource" {
-  workspace   = var.workspace.oid
-  name        = format(var.name_format, "Asset Inventory Resource")
-  freshness   = var.freshness_default
-  description = "All cloud assets in GCP"
-  inputs = {
-    "events" = observe_dataset.resource_asset_inventory_records.oid
-  }
-
-  stage {
-    pipeline = <<-EOF
-      make_resource 
-        time,
-        deleted,
-        parent_project_id,
-        project_id,
-        asset_namespace,
-        asset_sub_type,
-        name,
-        data,
-        discovery_document_uri,
-        discovery_name,
-        location,
-        parent,
-        version,
-        ttl,
-        primary_key(asset_type)
-
-      add_key project_id
-    EOF
-  }
-}
-
 resource "observe_dataset" "resource_asset_inventory_records" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Resource Asset Inventory Records")

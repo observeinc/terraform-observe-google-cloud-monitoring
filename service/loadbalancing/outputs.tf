@@ -1,6 +1,11 @@
-output "load_balancers" {
+output "load_balancers_url_maps" {
   value = observe_dataset.url_maps
 }
+
+output "load_balancers" {
+  value = observe_dataset.load_balancers
+}
+
 
 /*
 output "storage_logs" {
