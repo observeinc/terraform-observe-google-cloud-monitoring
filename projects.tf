@@ -4,8 +4,7 @@ resource "observe_dataset" "projects" {
   freshness   = lookup(var.freshness_overrides, "projects", var.freshness_default)
   description = "This dataset is used to create project resources"
   inputs = {
-    "events"      = observe_dataset.base_pubsub_events.oid
-    "base_assets" = observe_dataset.base_asset_inventory_records.oid
+    "events" = observe_dataset.base_pubsub_events.oid
   }
 
   stage {
@@ -68,8 +67,7 @@ resource "observe_dataset" "projects_all" {
   freshness   = lookup(var.freshness_overrides, "projects", var.freshness_default)
   description = "This dataset is used to create project resources"
   inputs = {
-    "events"      = observe_dataset.base_pubsub_events.oid
-    "base_assets" = observe_dataset.base_asset_inventory_records.oid
+    "events" = observe_dataset.base_pubsub_events.oid
   }
 
   stage {
