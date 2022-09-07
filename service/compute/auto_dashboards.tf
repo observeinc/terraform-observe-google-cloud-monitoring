@@ -17,13 +17,4 @@ resource "observe_dashboard" "monitoring" {
     METRICS_DATASET  = local.enable_metrics == true ? observe_dataset.compute_metrics[0].id : null
     LOGS_DATASET     = observe_dataset.compute_logs.id
   })
-
-  # parameter_values = templatefile("${path.module}//Users/arthur/content_eng/terraform-observe-google/service/compute/dashboards/parameterValues_v1.json", {
-  #
-  #})
 }
-
-# resource "observe_default_dashboard" "compute" {
-#   dataset   = observe_dataset.compute.oid
-#   dashboard = resource.observe_dashboard.monitoring[0].oid
-# }
