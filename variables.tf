@@ -61,15 +61,15 @@ variable "service_name_formats" {
   default     = {}
 }
 
-variable "enable_service_all" {
-  type        = bool
-  default     = true
-  description = <<-EOF
-    Enable all services.
-    If enabled, all services that are not explicitly set to false will be
-    configured.
-  EOF
-}
+# variable "enable_service_all" {
+#   type        = bool
+#   default     = true
+#   description = <<-EOF
+#     Enable all services.
+#     If enabled, all services that are not explicitly set to false will be
+#     configured.
+#   EOF
+# }
 
 variable "enable_service_cloudfunctions" {
   type        = bool
