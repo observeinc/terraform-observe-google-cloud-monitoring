@@ -1,3 +1,12 @@
+# [0.3.0](https://github.com/observeinc/terraform-observe-google/compare/v0.2.0...v0.3.0) (2022-09-07)
+
+
+### Features
+
+* project dashboard ([#72](https://github.com/observeinc/terraform-observe-google/issues/72)) ([6bbcfac](https://github.com/observeinc/terraform-observe-google/commit/6bbcfac7cab0962eb67f8ab2a31d59d6ecb31b21))
+
+
+
 # [0.2.0](https://github.com/observeinc/terraform-observe-google/compare/v0.1.0...v0.2.0) (2022-08-22)
 
 
