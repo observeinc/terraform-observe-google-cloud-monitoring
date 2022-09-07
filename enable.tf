@@ -7,36 +7,36 @@
 locals {
   enable_service_cloudfunctions = (
     var.enable_service_cloudfunctions == true ||
-    (var.enable_service_all == true && var.enable_service_cloudfunctions != false) ||
+    # (var.enable_service_all == true && var.enable_service_cloudfunctions != false) ||
     lookup(var.services, "cloudfunctions", false)
   )
   name_format_cloudfunctions = lookup(var.service_name_formats, "cloudfunctions", "Cloud Functions %s")
 
   enable_service_cloudsql = (
     var.enable_service_cloudsql == true ||
-    (var.enable_service_all == true && var.enable_service_cloudsql != false) ||
+    # (var.enable_service_all == true && var.enable_service_cloudsql != false) ||
     lookup(var.services, "cloudsql", false)
   )
   name_format_cloudsql = lookup(var.service_name_formats, "cloudsql", "Cloud SQL %s")
 
   enable_service_compute = (
     var.enable_service_compute == true ||
-    (var.enable_service_all == true && var.enable_service_compute != false) ||
+    # (var.enable_service_all == true && var.enable_service_compute != false) ||
     lookup(var.services, "compute", false)
   )
   name_format_compute = lookup(var.service_name_formats, "compute", "Compute %s")
 
   enable_service_storage = (
     var.enable_service_storage == true ||
-    (var.enable_service_all == true && var.enable_service_storage != false) ||
+    # (var.enable_service_all == true && var.enable_service_storage != false) ||
     lookup(var.services, "storage", false)
   )
   name_format_storage = lookup(var.service_name_formats, "storage", "Storage %s")
 
   enable_service_load_balancing = (
-    var.enable_service_storage == true ||
-    (var.enable_service_all == true && var.enable_service_load_balancing != false) ||
-    lookup(var.services, "storage", false)
+    var.enable_service_load_balancing == true ||
+    # (var.enable_service_all == true && var.enable_service_load_balancing != false) ||
+    lookup(var.services, "loadbalancer", false)
   )
   name_format_load_balancing = lookup(var.service_name_formats, "load_balancing", "Load Balancing %s")
 }
@@ -95,7 +95,7 @@ module "storage" {
 }
 
 module "load_balancing" {
-  count = local.enable_service_load_balancing ? 1 : 0
+  count = local.enable_service_load_balancing ? 0 : 0
 
   source              = "./service/loadbalancing"
   workspace           = var.workspace

@@ -24,13 +24,13 @@ module "google" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.0 |
-| <a name="requirement_observe"></a> [observe](#requirement\_observe) | >= 0.9.2, <= 0.10.5 |
+| <a name="requirement_observe"></a> [observe](#requirement\_observe) | >= 0.9.2, <= 0.11.3 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_observe"></a> [observe](#provider\_observe) | >= 0.9.2, <= 0.10.5 |
+| <a name="provider_observe"></a> [observe](#provider\_observe) | >= 0.9.2, <= 0.11.3 |
 
 ## Modules
 
@@ -65,7 +65,6 @@ module "google" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_datastream"></a> [datastream](#input\_datastream) | Datastream to derive resources from. | <pre>object({<br>    oid     = string<br>    dataset = string<br>  })</pre> | n/a | yes |
-| <a name="input_enable_service_all"></a> [enable\_service\_all](#input\_enable\_service\_all) | Enable all services.<br>If enabled, all services that are not explicitly set to false will be<br>configured. | `bool` | `true` | no |
 | <a name="input_enable_service_cloudfunctions"></a> [enable\_service\_cloudfunctions](#input\_enable\_service\_cloudfunctions) | Enable Cloud Functions service. | `bool` | `true` | no |
 | <a name="input_enable_service_cloudsql"></a> [enable\_service\_cloudsql](#input\_enable\_service\_cloudsql) | Enable Cloud SQL service. | `bool` | `true` | no |
 | <a name="input_enable_service_compute"></a> [enable\_service\_compute](#input\_enable\_service\_compute) | Enable Compute service. | `bool` | `true` | no |
@@ -92,7 +91,6 @@ module "google" {
 | <a name="output_compute"></a> [compute](#output\_compute) | n/a |
 | <a name="output_distribution_metrics"></a> [distribution\_metrics](#output\_distribution\_metrics) | n/a |
 | <a name="output_iam_policy_asset_inventory_records"></a> [iam\_policy\_asset\_inventory\_records](#output\_iam\_policy\_asset\_inventory\_records) | n/a |
-| <a name="output_loadbalancer"></a> [loadbalancer](#output\_loadbalancer) | n/a |
 | <a name="output_logs"></a> [logs](#output\_logs) | n/a |
 | <a name="output_metrics"></a> [metrics](#output\_metrics) | n/a |
 | <a name="output_projects"></a> [projects](#output\_projects) | n/a |
