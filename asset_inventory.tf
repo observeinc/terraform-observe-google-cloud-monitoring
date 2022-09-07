@@ -14,6 +14,7 @@ resource "observe_dataset" "base_asset_inventory_records" {
     alias    = "feed_events"
     pipeline = <<-EOF
       filter is_null(attributes["logging.googleapis.com/timestamp"])
+
       make_col data:parse_json(data)
       filter not is_null(data.window) and not is_null(data.asset)
 
@@ -30,7 +31,8 @@ resource "observe_dataset" "base_asset_inventory_records" {
         resource:object(data.asset.resource),
         iam_policy:object(data.asset.iamPolicy),
         org_policy:array(data.asset.orgPolicy),
-        access_policy:object(data.asset.accessPolicy)
+        access_policy:object(data.asset.accessPolicy),
+        attributes
     EOF
   }
 
@@ -69,40 +71,92 @@ resource "observe_dataset" "resource_asset_inventory_records" {
   freshness   = var.freshness_default
   description = "All cloud assets in GCP"
   inputs = {
-    "events" = observe_dataset.base_asset_inventory_records.oid
+    "events"   = observe_dataset.base_asset_inventory_records.oid
+    "projects" = observe_dataset.projects.oid
   }
 
   # https://cloud.google.com/asset-inventory/docs/reference/rpc/google.cloud.asset.v1#google.cloud.asset.v1.Resource
   stage {
     input    = "events"
+    alias    = "base"
     pipeline = <<-EOF
-      filter not is_null(resource)
+          filter not is_null(resource)
 
-      make_col 
-        ttl: case(deleted, 1ns, true, ${var.max_expiry}),
-        parent:string(resource.parent),
-        asset_namespace: split_part(asset_type,'/', 1),
-        asset_sub_type: split_part(asset_type,'/', 2)
-        
-      extract_regex name, /projects\/(?P<project_id>[^\/+]+)/
-      extract_regex parent, /projects\/(?P<parent_project_id>[^\/+]+)/
+          make_col 
+            ttl: case(deleted, 1ns, true, 4h),
+            parent:string(resource.parent),
+            asset_namespace: split_part(asset_type,'/', 1),
+            asset_sub_type: split_part(asset_type,'/', 2)
+                            
+          extract_regex name, /projects\/(?P<project_id_text>[^\/+]+)/
+          extract_regex parent, /projects\/(?P<parent_project_id>[^\/+]+)/
+          extract_regex parent, /projects\/(?P<project_id_number>[^\/+]+)/
 
+          make_col project_id_unified: if_null(project_id_text,project_id_number)
+
+          make_col 
+            data:object(resource.data),
+            discovery_document_uri:string(resource.discovery_document_uri),
+            discovery_name:string(resource.discovery_name),
+            location:string(resource.location),
+            version:string(resource.version)
+    EOF
+  }
+  # stage {
+  #   input = "pubsub_events"
+  #   alias = "project"
+  #   pipeline = <<-EOF
+  #       filter (string(attributes.data_type) = "cloudresourcemanager.Project")
+  #       make_col data:parse_json(data)
+
+  #       make_col createTime:string(data.createTime),
+  #           lifecycleState:string(data.lifecycleState),
+  #           name:string(data.name),
+  #           project_id:string(data.projectId),
+  #           projectNumber:string(data.projectNumber),
+  #           parent_id:string(data.parent.id),
+  #           parent_type:string(data.parent.type)
+
+  #       make_col deleted: bool(if(lifecycleState != "ACTIVE", true, false))
+
+  #       make_col ttl: case(deleted, 1ns, true, 4h)
+
+  #       add_key project_id
+  #       add_key projectNumber
+  #   EOF
+  # }
+
+  stage {
+    pipeline = <<-EOF
+          leftjoin project_id_unified=@projects.projectNumber, project_id_number_join: @projects.project_id
+          leftjoin project_id_unified=@projects.project_id, project_id_text_join: @projects.project_id
+
+          make_col project_id: if_null(project_id_number_join,project_id_text_join)
+    EOF
+  }
+
+
+
+  stage {
+    pipeline = <<-EOF
       pick_col 
         time,
         deleted,
         parent_project_id,
-        project_id: if_null(project_id,parent_project_id),
+        project_id,
         asset_type,
         asset_namespace,
         asset_sub_type,
         name,
-        data:object(resource.data),
-        discovery_document_uri:string(resource.discovery_document_uri),
-        discovery_name:string(resource.discovery_name),
-        location:string(resource.location),
+        data,
+        discovery_document_uri,
+        discovery_name,
+        location,
         parent,
-        version:string(resource.version),
+        version,
         ttl
+
+      add_key project_id
     EOF
   }
 }

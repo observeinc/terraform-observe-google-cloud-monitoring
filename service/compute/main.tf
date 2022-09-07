@@ -7,9 +7,9 @@ locals {
   enable_both = lookup(var.feature_flags, "monitors", true) && lookup(var.feature_flags, "metrics", true)
 
   freshness = merge({
-    cloudsql = "5m",
-    metrics  = "1m",
-    logging  = "1m",
+    compute = "5m",
+    metrics = "1m",
+    logging = "1m",
   }, var.freshness_overrides)
 }
 
@@ -125,6 +125,7 @@ resource "observe_dataset" "compute" {
         valid_for(ttl)
 
       add_key instance_name
+      add_key instance_id
       set_label instance_name
 
       add_key project_id, region, zone

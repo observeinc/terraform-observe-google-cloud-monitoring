@@ -21,3 +21,7 @@ output "cloudsql_metrics_wide" {
 output "combined_error_logs" {
   value = local.enable_metrics ? observe_dataset.combined_error_logs : null
 }
+
+output "activity_logs" {
+  value = local.enable_metrics ? observe_dataset.activity_logs : null
+}

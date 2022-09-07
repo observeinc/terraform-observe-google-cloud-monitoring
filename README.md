@@ -56,21 +56,21 @@ module "google" {
 | observe_dataset.metrics | resource |
 | observe_dataset.process_distribution_metrics | resource |
 | observe_dataset.projects | resource |
+| observe_dataset.projects_all | resource |
 | observe_dataset.resource_asset_inventory_records | resource |
 | observe_dataset.string_metrics | resource |
-| observe_link.project | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_datastream"></a> [datastream](#input\_datastream) | Datastream to derive resources from. | <pre>object({<br>    oid     = string<br>    dataset = string<br>  })</pre> | n/a | yes |
-| <a name="input_enable_service_all"></a> [enable\_service\_all](#input\_enable\_service\_all) | Enable all services.<br>If enabled, all services that are not explicitly set to false will be<br>configured. | `bool` | `false` | no |
-| <a name="input_enable_service_cloudfunctions"></a> [enable\_service\_cloudfunctions](#input\_enable\_service\_cloudfunctions) | Enable Cloud Functions service. | `bool` | `null` | no |
-| <a name="input_enable_service_cloudsql"></a> [enable\_service\_cloudsql](#input\_enable\_service\_cloudsql) | Enable Cloud SQL service. | `bool` | `null` | no |
-| <a name="input_enable_service_compute"></a> [enable\_service\_compute](#input\_enable\_service\_compute) | Enable Compute service. | `bool` | `null` | no |
-| <a name="input_enable_service_load_balancing"></a> [enable\_service\_load\_balancing](#input\_enable\_service\_load\_balancing) | Enable Cloud Load Balancing service. | `bool` | `null` | no |
-| <a name="input_enable_service_storage"></a> [enable\_service\_storage](#input\_enable\_service\_storage) | Enable Cloud Storage service. | `bool` | `null` | no |
+| <a name="input_enable_service_all"></a> [enable\_service\_all](#input\_enable\_service\_all) | Enable all services.<br>If enabled, all services that are not explicitly set to false will be<br>configured. | `bool` | `true` | no |
+| <a name="input_enable_service_cloudfunctions"></a> [enable\_service\_cloudfunctions](#input\_enable\_service\_cloudfunctions) | Enable Cloud Functions service. | `bool` | `true` | no |
+| <a name="input_enable_service_cloudsql"></a> [enable\_service\_cloudsql](#input\_enable\_service\_cloudsql) | Enable Cloud SQL service. | `bool` | `true` | no |
+| <a name="input_enable_service_compute"></a> [enable\_service\_compute](#input\_enable\_service\_compute) | Enable Compute service. | `bool` | `true` | no |
+| <a name="input_enable_service_load_balancing"></a> [enable\_service\_load\_balancing](#input\_enable\_service\_load\_balancing) | Enable Cloud Load Balancing service. | `bool` | `true` | no |
+| <a name="input_enable_service_storage"></a> [enable\_service\_storage](#input\_enable\_service\_storage) | Enable Cloud Storage service. | `bool` | `true` | no |
 | <a name="input_feature_flags"></a> [feature\_flags](#input\_feature\_flags) | Toggle features which are being rolled out or phased out. | `map(bool)` | `{}` | no |
 | <a name="input_freshness_default"></a> [freshness\_default](#input\_freshness\_default) | Default dataset freshness. Can be overridden with freshness input | `string` | `"1m"` | no |
 | <a name="input_freshness_overrides"></a> [freshness\_overrides](#input\_freshness\_overrides) | Freshness overrides by dataset. If absent, fall back to freshness\_default | `map(string)` | `{}` | no |
@@ -92,6 +92,7 @@ module "google" {
 | <a name="output_compute"></a> [compute](#output\_compute) | n/a |
 | <a name="output_distribution_metrics"></a> [distribution\_metrics](#output\_distribution\_metrics) | n/a |
 | <a name="output_iam_policy_asset_inventory_records"></a> [iam\_policy\_asset\_inventory\_records](#output\_iam\_policy\_asset\_inventory\_records) | n/a |
+| <a name="output_loadbalancer"></a> [loadbalancer](#output\_loadbalancer) | n/a |
 | <a name="output_logs"></a> [logs](#output\_logs) | n/a |
 | <a name="output_metrics"></a> [metrics](#output\_metrics) | n/a |
 | <a name="output_projects"></a> [projects](#output\_projects) | n/a |
