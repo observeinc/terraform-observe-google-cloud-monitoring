@@ -33,15 +33,6 @@ resource "observe_dataset" "compute_disk" {
         tags: string(data.tags)
 
 
-      //make_col name_parts: split (instance_name, '-')
-
-      //make_col length_last_part: strlen(string(get_item(name_parts,array_length(name_parts)-1)))
-
-      //make_col baseInstanceNameGroup: left(instance_name, strlen(instance_name) - (length_last_part+1))
-
-      //add_key baseInstanceNameGroup
-
-
       make_col architecture:string(data.architecture),
           guestOsFeatures:data.guestOsFeatures,
           id:string(data.id),
