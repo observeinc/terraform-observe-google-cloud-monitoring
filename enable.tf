@@ -95,7 +95,7 @@ module "storage" {
 }
 
 module "load_balancing" {
-  count = local.enable_service_load_balancing ? 1 : 0
+  count = local.enable_service_load_balancing ? 0 : 0
 
   source              = "./service/loadbalancing"
   workspace           = var.workspace
