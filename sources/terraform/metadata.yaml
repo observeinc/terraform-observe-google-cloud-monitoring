@@ -1,5 +1,3 @@
 name: terraform
-description: Onboard GCP project using Terraform
+description: Do this first! Onboard GCP project using Terraform or manual setup
 kind: documentation
-requiredvariables:
-- datastream
