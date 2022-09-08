@@ -1,13 +1,14 @@
 variable "name" {
   type        = string
   description = "Poller name. Should be unique per datastream."
+  default     = "Logs"
 }
 
 # tflint-ignore: terraform_unused_declarations
 variable "description" {
   type        = string
   description = "Short description meant for other humans"
-  default     = ""
+  default     = "GCP Poller for log data"
 }
 
 variable "workspace" {
@@ -26,15 +27,15 @@ variable "datastream" {
 
 variable "project" {
   type        = string
-  description = "GCP project ID"
+  description = "GCP Project ID"
 }
 
 variable "subscription" {
   type        = string
-  description = "GCP Pub/Sub Subscription ID"
+  description = "GCP Pub/Sub Subscription ID (from topic)"
 }
 
 variable "service_account_private_key_json" {
   type        = string
-  description = "A GCP Service Account Private Key with the 'monitoring/viewer' and 'cloudasset.viewer' roles."
+  description = "A GCP Service Account Private Key with the 'roles/pubsub.subscriber' role."
 }

@@ -2,13 +2,14 @@
 variable "name" {
   type        = string
   description = "Poller name. Should be unique per datastream."
+  default     = "Assets-Metrics"
 }
 
 # tflint-ignore: terraform_unused_declarations
 variable "description" {
   type        = string
   description = "Short description meant for other humans"
-  default     = ""
+  default     = "GCP Poller for metrics and asset inventory records"
 }
 
 variable "workspace" {
@@ -27,7 +28,7 @@ variable "datastream" {
 
 variable "project" {
   type        = string
-  description = "GCP project ID"
+  description = "GCP Project ID"
 }
 
 variable "service_account_private_key_json" {
@@ -37,15 +38,25 @@ variable "service_account_private_key_json" {
 
 variable "interval_duration" {
   type        = string
-  default     = "1m0s"
+  default     = "5m0s"
   description = <<-EOF
-    How frequently to poll for metrics from Google Cloud Monitoring.
+    How frequently to poll for metrics from Google Cloud Monitoring.  Minimum value is 1m0s.
   EOF
 }
 
 variable "include_metric_type_prefixes" {
-  type        = list(string)
-  default     = []
+  type = list(string)
+  default = [
+    "cloudfunctions.googleapis.com/",
+    "cloudsql.googleapis.com/",
+    "compute.googleapis.com/",
+    "iam.googleapis.com/",
+    "logging.googleapis.com/",
+    "monitoring.googleapis.com/",
+    "pubsub.googleapis.com/",
+    "serviceruntime.googleapis.com/",
+    "storage.googleapis.com/",
+  ]
   description = <<-EOF
     Metrics with these Metric Types with these prefixes will be fetched.
     

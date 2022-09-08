@@ -32,12 +32,13 @@ locals {
     lookup(var.services, "storage", false)
   )
   name_format_storage = lookup(var.service_name_formats, "storage", "Storage %s")
-
+  # tflint-ignore: terraform_unused_declarations  
   enable_service_load_balancing = (
     var.enable_service_load_balancing == true ||
     # (var.enable_service_all == true && var.enable_service_load_balancing != false) ||
     lookup(var.services, "loadbalancer", false)
   )
+  # tflint-ignore: terraform_unused_declarations
   name_format_load_balancing = lookup(var.service_name_formats, "load_balancing", "Load Balancing %s")
 }
 
@@ -94,16 +95,16 @@ module "storage" {
   google = local.base_module
 }
 
-module "load_balancing" {
-  count = local.enable_service_load_balancing ? 0 : 0
+# module "load_balancing" {
+#   count = local.enable_service_load_balancing ? 0 : 0
 
-  source              = "./service/loadbalancing"
-  workspace           = var.workspace
-  name_format         = format(var.name_format, local.name_format_load_balancing)
-  max_expiry          = var.max_expiry
-  freshness_default   = var.freshness_default
-  freshness_overrides = var.freshness_overrides
-  feature_flags       = var.feature_flags
+#   source              = "./service/loadbalancing"
+#   workspace           = var.workspace
+#   name_format         = format(var.name_format, local.name_format_load_balancing)
+#   max_expiry          = var.max_expiry
+#   freshness_default   = var.freshness_default
+#   freshness_overrides = var.freshness_overrides
+#   feature_flags       = var.feature_flags
 
-  google = local.base_module
-}
+#   google = local.base_module
+# }
