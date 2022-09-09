@@ -95,16 +95,16 @@ module "storage" {
   google = local.base_module
 }
 
-# module "load_balancing" {
-#   count = local.enable_service_load_balancing ? 0 : 0
+module "load_balancing" {
+  count = local.enable_service_load_balancing ? 1 : 0
 
-#   source              = "./service/loadbalancing"
-#   workspace           = var.workspace
-#   name_format         = format(var.name_format, local.name_format_load_balancing)
-#   max_expiry          = var.max_expiry
-#   freshness_default   = var.freshness_default
-#   freshness_overrides = var.freshness_overrides
-#   feature_flags       = var.feature_flags
+  source              = "./service/loadbalancing"
+  workspace           = var.workspace
+  name_format         = format(var.name_format, local.name_format_load_balancing)
+  max_expiry          = var.max_expiry
+  freshness_default   = var.freshness_default
+  freshness_overrides = var.freshness_overrides
+  feature_flags       = var.feature_flags
 
-#   google = local.base_module
-# }
+  google = local.base_module
+}
