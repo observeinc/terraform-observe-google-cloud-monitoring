@@ -6,7 +6,7 @@ resource "observe_monitor" "high_execution_times" {
   inputs = {
     "Function Metrics" = observe_dataset.function_metrics[0].oid
   }
-  name      = format("(TEMPLATE) %s", format(var.name_format, "Function Execution Times"))
+  name      = format("(TEMPLATE) %s", format(var.name_format, "Execution Times"))
   workspace = var.workspace.oid
 
   notification_spec {
@@ -18,15 +18,15 @@ resource "observe_monitor" "high_execution_times" {
     source_column = "value"
 
     threshold {
-      compare_function = var.metric_thresholds["Execution_Times"].compare_function
+      compare_function = "greater"
       compare_values = [
         var.metric_thresholds["Execution_Times"].value,
       ]
-      lookback_time = "5m0s"
+      lookback_time          = "5m0s"
+      threshold_agg_function = "at_least_once"
     }
   }
-
   stage {
-    pipeline = "filter metric = \"metric-function_execution_times\""
+    pipeline = "filter metric = \"function_execution_times\""
   }
 }
