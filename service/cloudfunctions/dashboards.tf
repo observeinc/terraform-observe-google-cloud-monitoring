@@ -2,6 +2,7 @@ locals {
   enable_metrics = lookup(var.feature_flags, "metrics", true)
   # tflint-ignore: terraform_unused_declarations
   enable_monitors = lookup(var.feature_flags, "monitors", true)
+  enable_both     = local.enable_monitors && local.enable_metrics
 
   functions_dashboard = local.enable_metrics ? jsondecode(templatefile("${path.module}/dashboards/GCPFunctionsMonitoring.json", {
     dataset_cloudfunctions_cloud_functions_function         = observe_dataset.function.id
