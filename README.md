@@ -45,6 +45,7 @@ module "google" {
 
 | Name | Type |
 |------|------|
+| observe_dashboard.projects_home | resource |
 | observe_dataset.audit_logs | resource |
 | observe_dataset.base_asset_inventory_records | resource |
 | observe_dataset.base_pubsub_events | resource |
@@ -57,7 +58,9 @@ module "google" {
 | observe_dataset.projects | resource |
 | observe_dataset.projects_all | resource |
 | observe_dataset.resource_asset_inventory_records | resource |
+| observe_dataset.resource_asset_inventory_resource | resource |
 | observe_dataset.string_metrics | resource |
+| observe_link.resource_asset_inventory_resource | resource |
 
 ## Inputs
 

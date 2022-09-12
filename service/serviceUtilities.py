@@ -18,6 +18,8 @@ class RawFormatter(HelpFormatter):
 
 # Sources of stuff used to create this
 
+# ./serviceUtilities.py fetch_metric_descriptors -o compute/computemetrics.json -m "compute.googleapis.com"
+# ./serviceUtilities.py create_terraform -i compute/computemetrics.json -t compute/local_metricdescriptors.tf
 # https://github.com/googleapis/python-monitoring
 # https://cloud.google.com/python/docs/reference/monitoring/latest/google.cloud.monitoring_v3.services.metric_service.MetricServiceClient#google_cloud_monitoring_v3_services_metric_service_MetricServiceClient_transport
 # https://cloud.google.com/monitoring/api/metrics#metadata
@@ -28,7 +30,7 @@ class RawFormatter(HelpFormatter):
 try:
     from google.cloud import monitoring_v3
 except ImportError:
-    subprocess.check_call([sys.executable, "-m", "pip3", "install", 'google-cloud-monitoring'])
+    subprocess.check_call([sys.executable, "-m", "pip", "install", 'google-cloud-monitoring'])
 finally:
     from google.cloud import monitoring_v3
 
