@@ -4,6 +4,8 @@
 
 # ./write_terraform.py 41144639 ../service/cloudsql/cloudSQLDashboard.tf
 
+# ./write_terraform.py 41144640 ../projectsDashboard.tf
+
 # see https://github.com/observeinc/content-eng-tools/blob/main/engage_datasets/config/configfile.ini for example config file
 
 """This file is for converting json produced by getTerraform GraphQL method"""
