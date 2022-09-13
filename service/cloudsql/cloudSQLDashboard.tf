@@ -1,21 +1,39 @@
 locals {
-  workspace        = var.workspace.oid
-  dashboard_name   = format(var.name_format, "Monitoring ")
-  compute_instance = data.observe_dataset.compute_instance.id
-  compute_metrics  = data.observe_dataset.compute_metrics.id
+  workspace               = var.workspace.oid
+  dashboard_name          = format(var.name_format, "Monitoring")
+  cloud_sql_instance      = data.observe_dataset.cloud_sql_instance.id
+  cloud_sql_metrics       = data.observe_dataset.cloud_sql_metrics.id
+  cloud_sql_metrics_combo = data.observe_dataset.cloud_sql_metrics_combo.id
+  cloud_sql_logs_error    = data.observe_dataset.cloud_sql_logs_error.id
+  cloud_sql_metrics_wide  = data.observe_dataset.cloud_sql_metrics_wide.id
 }
 
-data "observe_dataset" "compute_instance" {
+data "observe_dataset" "cloud_sql_instance" {
   workspace = local.workspace
   name      = format(var.name_format, "Instance")
 }
 
-data "observe_dataset" "compute_metrics" {
+data "observe_dataset" "cloud_sql_metrics" {
   workspace = local.workspace
   name      = format(var.name_format, "Metrics")
 }
-# terraform import observe_dashboard.compute_monitoring_tf 41144648
-resource "observe_dashboard" "compute_monitoring_tf" {
+
+data "observe_dataset" "cloud_sql_metrics_combo" {
+  workspace = local.workspace
+  name      = format(var.name_format, "Metrics Combo")
+}
+
+data "observe_dataset" "cloud_sql_logs_error" {
+  workspace = local.workspace
+  name      = format(var.name_format, "Logs Error")
+}
+
+data "observe_dataset" "cloud_sql_metrics_wide" {
+  workspace = local.workspace
+  name      = format(var.name_format, "Metrics Wide")
+}
+# terraform import observe_dashboard.cloud_sql_monitoring 41144639
+resource "observe_dashboard" "cloud_sql_monitoring" {
   layout = jsonencode(
     {
       gridLayout = {
@@ -24,172 +42,352 @@ resource "observe_dashboard" "compute_monitoring_tf" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "section-di408x2m"
+              id       = "section-wuw4j2eb"
               title    = "Dashboard Content"
             }
             items        = []
-            lastModified = 1659627562394
+            lastModified = 1657240575024
           },
           {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-4cs9otf1"
-              title    = "Overview"
+              id       = "card-rpqqyqcw"
+              title    = "Summary"
             }
             items = [
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-7k215juk"
-                  stageId  = "stage-hk634e8f"
-                }
-                layout = {
-                  h           = 7
-                  i           = "card-7k215juk"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 6
-                  x           = 0
-                  y           = 0
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-nc07vktx"
-                  stageId  = "stage-i9te03n4"
-                }
-                layout = {
-                  h           = 7
-                  i           = "card-nc07vktx"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 6
-                  x           = 6
-                  y           = 0
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-vb33hfgz"
-                  stageId  = "stage-x2r9aqus"
+                  id       = "card-ficrlmsm"
+                  stageId  = "stage-2iknse1z"
                 }
                 layout = {
                   h           = 10
-                  i           = "card-vb33hfgz"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 12
-                  x           = 0
-                  y           = 7
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-1bqrigg8"
-                  stageId  = "stage-xjztexw9"
-                }
-                layout = {
-                  h           = 11
-                  i           = "card-1bqrigg8"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
-                  x           = 6
-                  y           = 17
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-r1a2n89m"
-                  stageId  = "stage-auesy2zu"
-                }
-                layout = {
-                  h           = 11
-                  i           = "card-r1a2n89m"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
-                  x           = 9
-                  y           = 17
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-l8t5cymv"
-                  stageId  = "stage-4zw73l75"
-                }
-                layout = {
-                  h           = 11
-                  i           = "card-l8t5cymv"
+                  i           = "card-ficrlmsm"
                   isDraggable = true
                   isResizable = true
                   moved       = false
                   static      = false
                   w           = 3
                   x           = 0
-                  y           = 17
+                  y           = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-brsnfhxe"
-                  stageId  = "stage-fnyfu38e"
+                  id       = "card-0ps6gj5i"
+                  stageId  = "stage-h169l5vk"
                 }
                 layout = {
-                  h           = 11
-                  i           = "card-brsnfhxe"
+                  h           = 10
+                  i           = "card-0ps6gj5i"
                   isDraggable = true
                   isResizable = true
                   moved       = false
                   static      = false
                   w           = 3
                   x           = 3
-                  y           = 17
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-4dhmql3r"
+                  stageId  = "stage-gcd1nb81"
+                }
+                layout = {
+                  h           = 10
+                  i           = "card-4dhmql3r"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 3
+                  x           = 6
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-ceys4rth"
+                  stageId  = "stage-zx1ijn1u"
+                  title    = "Installed Version"
+                }
+                layout = {
+                  h           = 10
+                  i           = "card-ceys4rth"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 3
+                  x           = 9
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-w0jsqql7"
+                  stageId  = "stage-pe9mq2em"
+                }
+                layout = {
+                  h           = 13
+                  i           = "card-w0jsqql7"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 7
+                  x           = 0
+                  y           = 10
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-9ma40tce"
+                  stageId  = "stage-bv986tcd"
+                }
+                layout = {
+                  h           = 24
+                  i           = "card-9ma40tce"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 5
+                  x           = 7
+                  y           = 10
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-icvxavrk"
+                  stageId  = "stage-9e63b4hp"
+                }
+                layout = {
+                  h           = 11
+                  i           = "card-icvxavrk"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 7
+                  x           = 0
+                  y           = 23
                 }
               },
             ]
-            lastModified = 1659628508007
+            lastModified = 1657240869975
           },
           {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-wu4dge2k"
-              title    = "CPU"
+              id       = "card-tzs7rt28"
+              title    = "Monitoring"
             }
             items = [
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-gkgyd2ye"
-                  stageId  = "stage-pmsu1uzz"
+                  id       = "card-pfowjtb2"
+                  stageId  = "stage-bxss6s26"
+                }
+                layout = {
+                  h           = 21
+                  i           = "card-pfowjtb2"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 7
+                  x           = 0
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-5uhumddp"
+                  stageId  = "stage-urrvnw15"
+                  title    = "Network Bytes Sent"
+                }
+                layout = {
+                  h           = 11
+                  i           = "card-5uhumddp"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 5
+                  x           = 7
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-hs7zxyku"
+                  stageId  = "stage-mpne8ae1"
+                  title    = "Network Bytes Received"
+                }
+                layout = {
+                  h           = 10
+                  i           = "card-hs7zxyku"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 5
+                  x           = 7
+                  y           = 9
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-hlazpqqf"
+                  stageId  = "stage-6qjozjl6"
+                  title    = "Disk Read Operations"
+                }
+                layout = {
+                  h           = 8
+                  i           = "card-hlazpqqf"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 12
+                  x           = 0
+                  y           = 19
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-30lvhmz6"
+                  stageId  = "stage-1zwm1yf7"
+                  title    = "Disk Write Operations"
+                }
+                layout = {
+                  h           = 8
+                  i           = "card-30lvhmz6"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 12
+                  x           = 0
+                  y           = 27
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-237mdmxw"
+                  stageId  = "stage-wy53129b"
                 }
                 layout = {
                   h           = 12
-                  i           = "card-gkgyd2ye"
+                  i           = "card-237mdmxw"
                   isDraggable = true
                   isResizable = true
                   moved       = false
                   static      = false
                   w           = 12
                   x           = 0
+                  y           = 35
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-n0hfgwy2"
+                  stageId  = "stage-perdox7c"
+                }
+                layout = {
+                  h           = 12
+                  i           = "card-n0hfgwy2"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 12
+                  x           = 0
+                  y           = 47
+                }
+              },
+            ]
+          },
+          {
+            card = {
+              cardType = "section"
+              closed   = false
+              id       = "card-8w7v9p1w"
+              title    = "System"
+            }
+            items = [
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-d2u8px48"
+                  stageId  = "stage-m3remp1v"
+                  title    = "Disk Bytes Used"
+                }
+                layout = {
+                  h           = 11
+                  i           = "card-d2u8px48"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 5
+                  x           = 7
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-64vrxoc6"
+                  stageId  = "stage-x113jq90"
+                  title    = "CPU Utilization"
+                }
+                layout = {
+                  h           = 22
+                  i           = "card-64vrxoc6"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 7
+                  x           = 0
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-kl464mcf"
+                  stageId  = "stage-5g6dfyg1"
+                  title    = "Disk Quota"
+                }
+                layout = {
+                  h           = 11
+                  i           = "card-kl464mcf"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 5
+                  x           = 7
                   y           = 0
                 }
               },
@@ -199,196 +397,38 @@ resource "observe_dashboard" "compute_monitoring_tf" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-2s9x370q"
-              title    = "Disk"
-            }
-            items = [
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-0q2x67lm"
-                  stageId  = "stage-j7trzfmb"
-                }
-                lastModified = 1660097976859
-                layout = {
-                  h           = 10
-                  i           = "card-0q2x67lm---1660097976859"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 12
-                  x           = 0
-                  y           = 0
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-mjkh4ngo"
-                  stageId  = "stage-kmd3xtah"
-                }
-                lastModified = 1660097976859
-                layout = {
-                  h           = 10
-                  i           = "card-mjkh4ngo---1660097976859"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 12
-                  x           = 0
-                  y           = 0
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-bgz05bnl"
-                  stageId  = "stage-7schdd0k"
-                }
-                layout = {
-                  h           = 10
-                  i           = "card-bgz05bnl"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 12
-                  x           = 0
-                  y           = 0
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-winlpmqz"
-                  stageId  = "stage-d4h31odg"
-                }
-                layout = {
-                  h           = 9
-                  i           = "card-winlpmqz"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 12
-                  x           = 0
-                  y           = 0
-                }
-              },
-            ]
-          },
-          {
-            card = {
-              cardType = "section"
-              closed   = false
-              id       = "card-gu5msvjd"
-              title    = "Network"
-            }
-            items = [
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-sm9216iy"
-                  stageId  = "stage-3ks89dsy"
-                }
-                layout = {
-                  h           = 10
-                  i           = "card-sm9216iy"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 12
-                  x           = 0
-                  y           = 0
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-x70d6v1z"
-                  stageId  = "stage-q8h3nsju"
-                }
-                layout = {
-                  h           = 10
-                  i           = "card-x70d6v1z"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 12
-                  x           = 0
-                  y           = 0
-                }
-              },
-            ]
-          },
-          {
-            card = {
-              cardType = "section"
-              closed   = true
-              id       = "card-lthicc23"
-              title    = "Instance Details"
-            }
-            items = [
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-zde1vi58"
-                  stageId  = "stage-vfqqg8en"
-                }
-                layout = {
-                  h           = 20
-                  i           = "card-zde1vi58"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 12
-                  x           = 0
-                  y           = 0
-                }
-              },
-            ]
-          },
-          {
-            card = {
-              cardType = "section"
-              closed   = false
-              id       = "card-gif56xru"
-              title    = "Notes"
+              id       = "card-fmre7o05"
+              title    = "Documentation"
             }
             items = [
               {
                 card = {
                   cardType = "text"
-                  id       = "card-gphac4sh"
+                  id       = "card-prktimcl"
                   text     = <<-EOT
-                                        ### Using this dashboard
-                                                                                
-                                        This dashboard is designed to be used within the Compute resource dataset.
-                                                                                
-                                        Change the dropdown in top left corner of honeycomb to select attributes to group resources.
-                                                                                
-                                        ### Google Compute
-                                                                                
-                                        [https://cloud.google.com/compute/docs](https://cloud.google.com/compute/docs)
-                                                                                
-                                        Compute Engine is a computing and hosting service that lets you create and run virtual machines on Google infrastructure. Compute Engine offers scale, performance, and value that lets you easily launch large compute clusters on Google's infrastructure. There are no upfront investments, and you can run thousands of virtual CPUs on a system that offers quick, consistent performance.
-                                                                                
-                                        ### What is a Compute instance?
-                                                                                
-                                        An instance is a virtual machine (VM) hosted on Google's infrastructure. You can create an instance or create a group of managed instances by using the Google Cloud console, the Google Cloud CLI, or the Compute Engine API.
-                                                                                
-                                        Compute Engine instances can run the public images for Linux and Windows Server that Google provides as well as private custom images that you can create or import from your existing systems. You can also deploy Docker containers, which are automatically launched on instances running the Container-Optimized OS public image.
+                                        ### Google Cloud SQL
+                                        
+                                        [https://cloud.google.com/sql/docs](https://cloud.google.com/sql/docs)
+                                        
+                                        Cloud SQL is a fully-managed database service that helps you set up, maintain, manage, and administer your relational databases on Google Cloud Platform.
+                                        
+                                        ### Use cases for Cloud SQL
+                                        
+                                        Cloud SQL provides a cloud-based alternative to local MySQL, PostgreSQL, and SQL Server databases. You should use Cloud SQL if you want to spend less time managing your database and more time using it.
+                                        
+                                        Many applications running on Compute Engine, App Engine and other services in Google Cloud use Cloud SQL for database storage
+                                        
+                                        ### What is a Cloud SQL instance?
+                                        
+                                        Each Cloud SQL instance is powered by a virtual machine (VM) running on a host Google Cloud server. Each VM operates the database program, such as MySQL Server, PostgreSQL, or SQL Server, and service agents that provide supporting services, such as logging and monitoring. The high availability option also provides a standby VM in another zone with a configuration that's identical to the primary VM.
+                                        
+                                        The database is stored on a scalable, durable network storage device called a persistent disk that attaches to the VM. A static IP address sits in front of each VM to ensure that the IP address an application connects to persists throughout the lifetime of the Cloud SQL instance.
                                     EOT
                   title    = "Untitled Text"
                 }
                 layout = {
                   h           = 34
-                  i           = "card-gphac4sh"
+                  i           = "card-prktimcl"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -401,28 +441,39 @@ resource "observe_dashboard" "compute_monitoring_tf" {
               {
                 card = {
                   cardType = "text"
-                  id       = "card-mnikaigs"
+                  id       = "card-98advz0r"
                   text     = <<-EOT
                                         ### Notes
-                                        Metrics are sampled every 60s and may take up to 240s to display.
-                                                                                
-                                        To use this application you must implement the terraform-google-collection and the terraform google module with either the enable_service_all or the enable_service_compute set to true.
-                                                                                
-                                        If you are looking to monitor the **operating systems or processes running on these GCP instances**, then you want to look into the [Host Monitoring](https://docs.observeinc.com/en/latest/content/integrations/linux/linux.html) module instead.
-                                                                                
+                                        
+                                        To use this application you must implement the terraform-google-collection and the terraform google module with either the enable_service_all or the enable_service_cloudsql set to true.
+                                        
+                                        ### Freshness
+                                        
+                                        Freshness determines how often your data will be refreshed.
+                                        
+                                        Defaults:
+                                        
+                                         - cloudsql: 5m
+                                         - metrics:  1m 
+                                         - logging:  1m
+                                        
                                         ### Metric Types
-                                                                                
+                                        
                                         A gauge metric, in which the value measures a specific instant in time. For example, metrics measuring CPU utilization are gauge metrics; each point records the CPU utilization at the time of measurement. Another example of a gauge metric is the current temperature.
-                                                                                
+                                        
                                         A delta metric, in which the value measures the change since it was last recorded. For example, metrics measuring request counts are delta metrics; each value records how many requests were received since the last data point was recorded.
-                                                                                
+                                        
                                         A cumulative metric, in which the value constantly increases over time. For example, a metric for sent bytes might be cumulative; each value records the total number of bytes sent by a service at that time.
+                                        
+                                        ### Database Specific
+                                        
+                                        For database specific metrics please graphlink to Cloud SQL Metrics table
                                     EOT
                   title    = "Untitled Text"
                 }
                 layout = {
                   h           = 34
-                  i           = "card-mnikaigs"
+                  i           = "card-98advz0r"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -433,7 +484,7 @@ resource "observe_dashboard" "compute_monitoring_tf" {
                 }
               },
             ]
-            lastModified = 1660168323769
+            lastModified = 1660348749956
           },
         ]
       }
@@ -443,77 +494,18 @@ resource "observe_dashboard" "compute_monitoring_tf" {
           {
             defaultValue = {
               datasetref = {
-                datasetId = "${local.compute_instance}"
+                datasetId = "${local.cloud_sql_instance}"
               }
             }
-            id   = "computeID"
-            name = "Compute Instance"
+            id   = "dbResource"
+            name = "Cloud SQL Instance"
             valueKind = {
               type = "DATASETREF"
             }
             viewType = "input"
           },
-          {
-            defaultValue = {
-              string = "instance_cpu_utilization"
-            }
-            id     = "cpuMetric"
-            name   = "CPU Metric"
-            source = "CustomData"
-            sourceCustomData = {
-              "Guest Visible CPUs"  = "instance_cpu_guest_visible_vcpus"
-              "Reserved Cores"      = "instance_cpu_reserved_cores"
-              "Scheduler Wait Time" = "instance_cpu_scheduler_wait_time"
-              "Usage Time"          = "instance_cpu_usage_time"
-              Utilization           = "instance_cpu_utilization"
-            }
-            valueKind = {
-              type = "STRING"
-            }
-            viewType = "single-select"
-          },
-          {
-            defaultValue = {
-              string = "instance_disk_write_ops_count"
-            }
-            id     = "diskMetric"
-            name   = "Disk Metric"
-            source = "CustomData"
-            sourceCustomData = {
-              "Read Bytes Count"            = "instance_disk_read_bytes_count"
-              "Read Ops Count"              = "instance_disk_read_ops_count"
-              "Throttled Read Bytes Count"  = "instance_disk_throttled_read_bytes_count"
-              "Throttled Read Ops Count"    = "instance_disk_throttled_read_ops_count"
-              "Throttled Write Bytes Count" = "instance_disk_throttled_write_bytes_count"
-              "Throttled Write Ops Count"   = "instance_disk_throttled_write_ops_count"
-              "Write Bytes Count"           = "instance_disk_write_bytes_count"
-              "Write Ops Count"             = "instance_disk_write_ops_count"
-            }
-            valueKind = {
-              type = "STRING"
-            }
-            viewType = "single-select"
-          },
-          {
-            defaultValue = {
-              string = "instance_network_sent_bytes_count"
-            }
-            id     = "networkMetric"
-            name   = "Network Metric"
-            source = "CustomData"
-            sourceCustomData = {
-              "Bytes Received"   = "instance_network_sent_bytes_count"
-              "Bytes Sent"       = "instance_network_sent_bytes_count"
-              "Packets Received" = "instance_network_sent_bytes_count"
-              "Packets Sent"     = "instance_network_sent_bytes_count"
-            }
-            valueKind = {
-              type = "STRING"
-            }
-            viewType = "single-select"
-          },
         ]
-        selectedStageId = "stage-x2r9aqus"
+        selectedStageId = "stage-bxss6s26"
         timeRange = {
           display               = "Past 4 hours"
           endTime               = null
@@ -538,7 +530,7 @@ resource "observe_dashboard" "compute_monitoring_tf" {
           array = null
           bool  = null
           datasetref = {
-            datasetId   = "${local.compute_instance}"
+            datasetId   = "${local.cloud_sql_instance}"
             datasetPath = null
             stageId     = null
           }
@@ -547,66 +539,12 @@ resource "observe_dashboard" "compute_monitoring_tf" {
           link    = null
           string  = null
         }
-        id   = "computeID"
-        name = "Compute Instance"
+        id   = "dbResource"
+        name = "Cloud SQL Instance"
         valueKind = {
           arrayItemType   = null
           keyForDatasetId = null
           type            = "DATASETREF"
-        }
-      },
-      {
-        defaultValue = {
-          array      = null
-          bool       = null
-          datasetref = null
-          float64    = null
-          int64      = null
-          link       = null
-          string     = "instance_cpu_utilization"
-        }
-        id   = "cpuMetric"
-        name = "CPU Metric"
-        valueKind = {
-          arrayItemType   = null
-          keyForDatasetId = null
-          type            = "STRING"
-        }
-      },
-      {
-        defaultValue = {
-          array      = null
-          bool       = null
-          datasetref = null
-          float64    = null
-          int64      = null
-          link       = null
-          string     = "instance_disk_write_ops_count"
-        }
-        id   = "diskMetric"
-        name = "Disk Metric"
-        valueKind = {
-          arrayItemType   = null
-          keyForDatasetId = null
-          type            = "STRING"
-        }
-      },
-      {
-        defaultValue = {
-          array      = null
-          bool       = null
-          datasetref = null
-          float64    = null
-          int64      = null
-          link       = null
-          string     = "instance_network_sent_bytes_count"
-        }
-        id   = "networkMetric"
-        name = "Network Metric"
-        valueKind = {
-          arrayItemType   = null
-          keyForDatasetId = null
-          type            = "STRING"
         }
       },
     ]
@@ -614,12 +552,12 @@ resource "observe_dashboard" "compute_monitoring_tf" {
   stages = jsonencode(
     [
       {
-        id = "stage-qr6xpot1"
+        id = "stage-x113jq90"
         input = [
           {
             datasetId   = null
             datasetPath = null
-            inputName   = "computeID"
+            inputName   = "dbResource"
             inputRole   = "Data"
             stageId     = null
           },
@@ -631,249 +569,14 @@ resource "observe_dashboard" "compute_monitoring_tf" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_name"
-              "1" = "name"
+              "0" = "name"
+              "1" = "label"
               "2" = "Valid From"
               "3" = "Valid To"
             }
             columnVisibility            = {}
             columnWidths                = {}
-            containerWidth              = 285
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = true
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
-            selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
-            }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
-          }
-          index = 0
-          inputList = [
-            {
-              inputName   = "computeID"
-              inputRole   = "Data"
-              isUserInput = false
-              parameterId = "computeID"
-            },
-          ]
-          label = "Instances"
-          managers = [
-            {
-              id                     = "pde7pm95"
-              isDisabled             = true
-              isResourceCountEnabled = false
-              parentStageId          = "stage-qr6xpot1"
-              type                   = "Timescrubber"
-            },
-          ]
-          queryPresentation = {
-            initialRollupFilter = {
-              mode = "Last"
-            }
-            limit          = 1000
-            linkify        = true
-            loadEverything = false
-            progressive    = true
-            resultKinds = [
-              "ResultKindSchema",
-              "ResultKindData",
-              "ResultKindStats",
-              "ResultKindProgress",
-            ]
-            rollup = {}
-          }
-          renderType     = "TABLE"
-          selectedStepId = null
-          serializable   = true
-          steps = [
-            {
-              columnStatsTable = {
-                columnFunctions = {
-                  assetInventoryName = "count"
-                  cpuPlatform        = "count"
-                  deleted            = "count"
-                  instance_id        = "count"
-                  machineType        = "count"
-                  name               = "count"
-                  project_id         = "count"
-                  region             = "count"
-                  status             = "count"
-                  ttl                = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-66xu8an3"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
-              datasetQuery = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id                = "step-wzl0oqwe"
-              index             = 0
-              isPinned          = false
-              name              = "Input Step"
-              opal              = []
-              queryPresentation = {}
-              renderType        = null
-              summary           = "computeID (undefined)"
-              type              = "InputStep"
-            },
-            {
-              columnStatsTable = {
-                columnFunctions = {
-                  assetInventoryName = "count"
-                  cpuPlatform        = "count"
-                  deleted            = "count"
-                  instance_id        = "count"
-                  instance_name      = "count"
-                  machineType        = "count"
-                  name               = "count"
-                  project_id         = "count"
-                  region             = "count"
-                  status             = "count"
-                  ttl                = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-ot0gvot7"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
-              datasetQuery = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id       = "step-l53wuyvp"
-              index    = 1
-              isPinned = false
-              name     = "pick_col (custom)"
-              opal = [
-                "pick_col ",
-                "\t@.\"Valid From\",",
-                "    @.\"Valid To\",",
-                "    instance_key,",
-                "    instance_name,",
-                "    status,",
-                "    machineType",
-                "    ",
-                "colshow instance_key: false",
-              ]
-              queryPresentation = {}
-              renderType        = null
-              type              = "unknown"
-            },
-          ]
-          type = "table"
-          viewModel = {
-            consoleValue = null
-            railCollapseState = {
-              inputsOutputs = false
-              minimap       = false
-              note          = true
-              script        = true
-            }
-            scriptTab     = "INPUTS"
-            showTimeRuler = true
-            stageTab      = "table"
-          }
-        }
-        params   = null
-        pipeline = <<-EOT
-                    pick_col 
-                    	@."Valid From",
-                        @."Valid To",
-                        instance_key,
-                        instance_name,
-                        status,
-                        machineType
-                                            
-                    colshow instance_key: false
-                EOT
-      },
-      {
-        id = "stage-auesy2zu"
-        input = [
-          {
-            datasetId   = null
-            datasetPath = null
-            inputName   = "computeID"
-            inputRole   = "Data"
-            stageId     = null
-          },
-        ]
-        layout = {
-          appearance = "VISIBLE"
-          dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
-            columnOrderOverride = {
-              "0" = "instance_name"
-              "1" = "name"
-              "2" = "Valid From"
-              "3" = "Valid To"
-            }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 2145
+            containerWidth              = 1313
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -903,46 +606,2042 @@ resource "observe_dashboard" "compute_monitoring_tf" {
             shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
-            tableHeight                = 0
+            tableHeight                = 179
+            tableView                  = "TABULAR"
+          }
+          index = 0
+          inputList = [
+            {
+              inputName   = "dbResource"
+              inputRole   = "Data"
+              isUserInput = false
+              parameterId = "dbResource"
+            },
+          ]
+          label = "CPU Utilization"
+          managers = [
+            {
+              id                     = "v8po8a0z"
+              isDisabled             = true
+              isResourceCountEnabled = false
+              parentStageId          = "stage-x113jq90"
+              type                   = "Timescrubber"
+            },
+            {
+              id            = "rmcnxide"
+              isDisabled    = false
+              parentStageId = "stage-x113jq90"
+              type          = "Vis"
+              vis = {
+                config = {
+                  color         = "Default"
+                  hideGridLines = true
+                  legend = {
+                    placement = "right"
+                    type      = "list"
+                    visible   = false
+                  }
+                  type = "xy"
+                  xConfig = {
+                    visible = true
+                  }
+                  yConfig = {
+                    unit    = "10^2.%"
+                    visible = true
+                  }
+                }
+                source = {
+                  metric = {
+                    aggregate   = "sum"
+                    datasetId   = "${local.cloud_sql_metrics}"
+                    description = <<-EOT
+                                            Current CPU utilization represented as a percentage of the reserved CPU that is currently in use. Values are typically numbers between 0.0 and 1.0 but might exceed 1.0. Charts display the values as a percentage between 0% and 100% or more. Sampled every 60s and may take up to 210s to display.
+                                        EOT
+                    groupBy = [
+                      "database_id",
+                    ]
+                    heuristics = null
+                    id = {
+                      datasetId = "${local.cloud_sql_metrics}"
+                      name      = "database_cpu_utilization"
+                    }
+                    interval = 60000
+                    link = {
+                      __typename = "ForeignKey"
+                      dstFields = [
+                        "database_id",
+                      ]
+                      label = "Cloud SQL"
+                      srcFields = [
+                        "database_id",
+                      ]
+                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetStageLabel = null
+                      type             = "foreign"
+                    }
+                    name        = "database_cpu_utilization"
+                    rollup      = "avg"
+                    type        = "gauge"
+                    unit        = "10^2.%"
+                    userDefined = true
+                  }
+                  type = "metric"
+                }
+                type = "timeseries"
+              }
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            limit          = 1000
+            linkify        = true
+            loadEverything = false
+            progressive    = true
+            resultKinds = [
+              "ResultKindSchema",
+            ]
+            rollup = {}
+          }
+          renderType     = "TABLE"
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              columnStatsTable = {
+                columnFunctions = {
+                  availabilityType         = "count"
+                  backendType              = "count"
+                  backupConfiguration      = "count"
+                  createTime               = "count"
+                  current_state            = "count"
+                  dataDiskSizeGb           = "count"
+                  dataDiskType             = "count"
+                  databaseFlags            = "count"
+                  databaseInstalledVersion = "count"
+                  databaseVersion          = "count"
+                  database_id              = "count"
+                  gceZone                  = "count"
+                  ipAddressPrimary         = "count"
+                  ipAddresses              = "count"
+                  ipConfiguration          = "count"
+                  label                    = "count"
+                  name                     = "count"
+                  project_id               = "count"
+                  region                   = "count"
+                  state                    = "count"
+                  tier                     = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-mbtcl9k3"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              datasetQuery = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-4llzjhnz"
+              index             = 0
+              isPinned          = false
+              name              = "Input Step"
+              opal              = []
+              queryPresentation = {}
+              renderType        = null
+              summary           = "dbResource (undefined)"
+              type              = "InputStep"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            scriptTab     = "SCRIPT"
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = ""
+      },
+      {
+        id = "stage-m3remp1v"
+        input = [
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "dbResource"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight    = true
+            columnFooterHeight = 0
+            columnHeaderHeight = 29
+            columnOrderOverride = {
+              "0" = "name"
+              "1" = "label"
+              "2" = "Valid From"
+              "3" = "Valid To"
+            }
+            columnVisibility            = {}
+            columnWidths                = {}
+            containerWidth              = 1313
+            contextMenuXCoord           = null
+            contextMenuYCoord           = null
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            eventLinkColumnId           = null
+            fetchPageSize               = 100
+            hasCalculatedColumnWidths   = false
+            hasDoneAutoLayout           = false
+            maxColumnWidth              = 400
+            maxMeasuredColumnWidth      = {}
+            minColumnWidth              = 60
+            minRowHeight                = 30
+            preserveCellAndRowSelection = true
+            rowHeaderWidth              = 20
+            rowHeights                  = {}
+            rowSizeIncrement            = 1
+            scrollToColumn              = null
+            scrollToRow                 = 0
+            selection = {
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 179
             tableView                  = "TABULAR"
           }
           index = 1
           inputList = [
             {
-              inputName   = "computeID"
+              inputName   = "dbResource"
               inputRole   = "Data"
               isUserInput = false
-              parameterId = "computeID"
+              parameterId = "dbResource"
             },
           ]
-          label = "Machine Type"
+          label = "Disk Bytes Used"
           managers = [
             {
-              id                     = "tc61ge99"
+              id                     = "pbgtk31k"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-auesy2zu"
+              parentStageId          = "stage-m3remp1v"
               type                   = "Timescrubber"
             },
             {
-              id            = "ye665vef"
+              id            = "c9bu4tgl"
               isDisabled    = false
-              parentStageId = "stage-auesy2zu"
+              parentStageId = "stage-m3remp1v"
               type          = "Vis"
               vis = {
                 config = {
-                  innerRadius = 0.6
+                  color         = "Default"
+                  hideGridLines = true
                   legend = {
                     placement = "right"
-                    type      = "table"
-                    visible   = true
+                    type      = "list"
+                    visible   = false
+                  }
+                  type = "xy"
+                  xConfig = {
+                    visible = true
+                  }
+                  yConfig = {
+                    unit    = "By"
+                    visible = true
+                  }
+                }
+                source = {
+                  metric = {
+                    aggregate   = "sum"
+                    datasetId   = "${local.cloud_sql_metrics}"
+                    description = <<-EOT
+                                            Data utilization in bytes. Sampled every 60s and may take up to 210s to display.
+                                        EOT
+                    groupBy = [
+                      "database_id",
+                    ]
+                    heuristics = null
+                    id = {
+                      datasetId = "${local.cloud_sql_metrics}"
+                      name      = "database_disk_bytes_used"
+                    }
+                    interval = 60000
+                    link = {
+                      __typename = "ForeignKey"
+                      dstFields = [
+                        "database_id",
+                      ]
+                      label = "Cloud SQL"
+                      srcFields = [
+                        "database_id",
+                      ]
+                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetStageLabel = null
+                      type             = "foreign"
+                    }
+                    name        = "database_disk_bytes_used"
+                    rollup      = "avg"
+                    type        = "gauge"
+                    unit        = "By"
+                    userDefined = true
+                  }
+                  type = "metric"
+                }
+                type = "timeseries"
+              }
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            limit          = 1000
+            linkify        = true
+            loadEverything = false
+            progressive    = true
+            resultKinds = [
+              "ResultKindSchema",
+            ]
+            rollup = {}
+          }
+          renderType     = "TABLE"
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              columnStatsTable = {
+                columnFunctions = {
+                  availabilityType         = "count"
+                  backendType              = "count"
+                  backupConfiguration      = "count"
+                  createTime               = "count"
+                  current_state            = "count"
+                  dataDiskSizeGb           = "count"
+                  dataDiskType             = "count"
+                  databaseFlags            = "count"
+                  databaseInstalledVersion = "count"
+                  databaseVersion          = "count"
+                  database_id              = "count"
+                  gceZone                  = "count"
+                  ipAddressPrimary         = "count"
+                  ipAddresses              = "count"
+                  ipConfiguration          = "count"
+                  label                    = "count"
+                  name                     = "count"
+                  project_id               = "count"
+                  region                   = "count"
+                  state                    = "count"
+                  tier                     = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-1jxwgj7b"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              datasetQuery = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-gxgrapel"
+              index             = 0
+              isPinned          = false
+              name              = "Input Step"
+              opal              = []
+              queryPresentation = {}
+              renderType        = null
+              summary           = "dbResource (undefined)"
+              type              = "InputStep"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            scriptTab     = "SCRIPT"
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = ""
+      },
+      {
+        id = "stage-6qjozjl6"
+        input = [
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "dbResource"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight    = true
+            columnFooterHeight = 0
+            columnHeaderHeight = 29
+            columnOrderOverride = {
+              "0" = "name"
+              "1" = "label"
+              "2" = "Valid From"
+              "3" = "Valid To"
+            }
+            columnVisibility            = {}
+            columnWidths                = {}
+            containerWidth              = 1313
+            contextMenuXCoord           = null
+            contextMenuYCoord           = null
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            eventLinkColumnId           = null
+            fetchPageSize               = 100
+            hasCalculatedColumnWidths   = false
+            hasDoneAutoLayout           = false
+            maxColumnWidth              = 400
+            maxMeasuredColumnWidth      = {}
+            minColumnWidth              = 60
+            minRowHeight                = 30
+            preserveCellAndRowSelection = true
+            rowHeaderWidth              = 20
+            rowHeights                  = {}
+            rowSizeIncrement            = 1
+            scrollToColumn              = null
+            scrollToRow                 = 0
+            selection = {
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 179
+            tableView                  = "TABULAR"
+          }
+          index = 2
+          inputList = [
+            {
+              inputName   = "dbResource"
+              inputRole   = "Data"
+              isUserInput = false
+              parameterId = "dbResource"
+            },
+          ]
+          label = "Disk Read Operations"
+          managers = [
+            {
+              id                     = "u9rqvybi"
+              isDisabled             = true
+              isResourceCountEnabled = false
+              parentStageId          = "stage-6qjozjl6"
+              type                   = "Timescrubber"
+            },
+            {
+              id            = "jwmd39uu"
+              isDisabled    = false
+              parentStageId = "stage-6qjozjl6"
+              type          = "Vis"
+              vis = {
+                config = {
+                  color         = "Default"
+                  hideGridLines = true
+                  legend = {
+                    placement = "right"
+                    type      = "list"
+                    visible   = false
+                  }
+                  type = "xy"
+                  xConfig = {
+                    visible = true
+                  }
+                  yConfig = {
+                    unit    = ""
+                    visible = true
+                  }
+                }
+                source = {
+                  metric = {
+                    aggregate   = "sum"
+                    datasetId   = "${local.cloud_sql_metrics}"
+                    description = <<-EOT
+                                            Delta count of data disk read IO operations. Sampled every 60s and may take up to 210s to display.
+                                        EOT
+                    groupBy = [
+                      "database_id",
+                    ]
+                    heuristics = null
+                    id = {
+                      datasetId = "${local.cloud_sql_metrics}"
+                      name      = "database_disk_read_ops_count"
+                    }
+                    interval = 60000
+                    link = {
+                      __typename = "ForeignKey"
+                      dstFields = [
+                        "database_id",
+                      ]
+                      label = "Cloud SQL"
+                      srcFields = [
+                        "database_id",
+                      ]
+                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetStageLabel = null
+                      type             = "foreign"
+                    }
+                    name        = "database_disk_read_ops_count"
+                    rollup      = "avg"
+                    type        = "delta"
+                    unit        = ""
+                    userDefined = true
+                  }
+                  type = "metric"
+                }
+                type = "timeseries"
+              }
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            limit          = 1000
+            linkify        = true
+            loadEverything = false
+            progressive    = true
+            resultKinds = [
+              "ResultKindSchema",
+            ]
+            rollup = {}
+          }
+          renderType     = "TABLE"
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              columnStatsTable = {
+                columnFunctions = {
+                  availabilityType         = "count"
+                  backendType              = "count"
+                  backupConfiguration      = "count"
+                  createTime               = "count"
+                  current_state            = "count"
+                  dataDiskSizeGb           = "count"
+                  dataDiskType             = "count"
+                  databaseFlags            = "count"
+                  databaseInstalledVersion = "count"
+                  databaseVersion          = "count"
+                  database_id              = "count"
+                  gceZone                  = "count"
+                  ipAddressPrimary         = "count"
+                  ipAddresses              = "count"
+                  ipConfiguration          = "count"
+                  label                    = "count"
+                  name                     = "count"
+                  project_id               = "count"
+                  region                   = "count"
+                  state                    = "count"
+                  tier                     = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-4cz8d1lq"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              datasetQuery = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-uan390y7"
+              index             = 0
+              isPinned          = false
+              name              = "Input Step"
+              opal              = []
+              queryPresentation = {}
+              renderType        = null
+              summary           = "dbResource (undefined)"
+              type              = "InputStep"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            scriptTab     = "SCRIPT"
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = ""
+      },
+      {
+        id = "stage-bxss6s26"
+        input = [
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "dbResource"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight    = false
+            columnFooterHeight = 0
+            columnHeaderHeight = 29
+            columnOrderOverride = {
+              "0" = "name"
+              "1" = "label"
+              "2" = "Valid From"
+              "3" = "Valid To"
+            }
+            columnVisibility            = {}
+            columnWidths                = {}
+            containerWidth              = 1505
+            contextMenuXCoord           = null
+            contextMenuYCoord           = null
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            eventLinkColumnId           = null
+            fetchPageSize               = 100
+            hasCalculatedColumnWidths   = false
+            hasDoneAutoLayout           = false
+            maxColumnWidth              = 400
+            maxMeasuredColumnWidth      = {}
+            minColumnWidth              = 60
+            minRowHeight                = 30
+            preserveCellAndRowSelection = true
+            rowHeaderWidth              = 20
+            rowHeights                  = {}
+            rowSizeIncrement            = 1
+            scrollToColumn              = null
+            scrollToRow                 = 0
+            selection = {
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 179
+            tableView                  = "TABULAR"
+          }
+          index = 3
+          inputList = [
+            {
+              inputName   = "dbResource"
+              inputRole   = "Data"
+              isUserInput = false
+              parameterId = "dbResource"
+            },
+          ]
+          label = "Network Connections"
+          managers = [
+            {
+              id                     = "nho29ja2"
+              isDisabled             = true
+              isResourceCountEnabled = false
+              parentStageId          = "stage-bxss6s26"
+              type                   = "Timescrubber"
+            },
+            {
+              id            = "dah8b1ls"
+              isDisabled    = false
+              parentStageId = "stage-bxss6s26"
+              type          = "Vis"
+              vis = {
+                config = {
+                  color         = "Default"
+                  hideGridLines = true
+                  legend = {
+                    placement = "right"
+                    type      = "list"
+                    visible   = false
+                  }
+                  type = "xy"
+                  xConfig = {
+                    visible = true
+                  }
+                  yConfig = {
+                    unit    = ""
+                    visible = true
+                  }
+                }
+                source = {
+                  metric = {
+                    aggregate   = "sum"
+                    datasetId   = "${local.cloud_sql_metrics_combo}"
+                    description = <<-EOT
+                                            Combination of network connection metrics.
+                                        EOT
+                    groupBy = [
+                      "database_id",
+                    ]
+                    heuristics = {
+                      __typename = "MetricHeuristics"
+                      tags = [
+                        {
+                          __typename = "MetricTag"
+                          column     = "database_id"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "database_platform"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "label"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "metric"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "metric_category"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "metric_type"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "metric_kind"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "metric_kind_text"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "project_id"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "region"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "value_type"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "value_type_text"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "instance_state_label"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "metric_labels"
+                          path       = "database"
+                        },
+                      ]
+                      validLinkLabels = [
+                        "Cloud SQL Metrics Combo",
+                      ]
+                    }
+                    id = {
+                      datasetId = "${local.cloud_sql_metrics_combo}"
+                      name      = "all_database_network_connections"
+                    }
+                    interval = 60000
+                    link = {
+                      __typename = "ForeignKey"
+                      dstFields = [
+                        "database_id",
+                      ]
+                      label = "Cloud SQL Metrics Combo"
+                      srcFields = [
+                        "database_id",
+                      ]
+                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetStageLabel = null
+                      type             = "foreign"
+                    }
+                    name        = "all_database_network_connections"
+                    rollup      = "avg"
+                    type        = "gauge"
+                    unit        = ""
+                    userDefined = true
+                  }
+                  type = "metric"
+                }
+                type = "timeseries"
+              }
+            },
+            {
+              id            = "kgrs2a3q"
+              isDisabled    = true
+              parentStageId = "stage-bxss6s26"
+              type          = "Dashboard"
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            limit          = 1000
+            linkify        = true
+            loadEverything = false
+            progressive    = true
+            resultKinds = [
+              "ResultKindSchema",
+            ]
+            rollup = {}
+          }
+          renderType     = "TABLE"
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              columnStatsTable = {
+                columnFunctions = {
+                  availabilityType         = "count"
+                  backendType              = "count"
+                  backupConfiguration      = "count"
+                  createTime               = "count"
+                  current_state            = "count"
+                  dataDiskSizeGb           = "count"
+                  dataDiskType             = "count"
+                  databaseFlags            = "count"
+                  databaseInstalledVersion = "count"
+                  databaseVersion          = "count"
+                  database_id              = "count"
+                  gceZone                  = "count"
+                  ipAddressPrimary         = "count"
+                  ipAddresses              = "count"
+                  ipConfiguration          = "count"
+                  label                    = "count"
+                  name                     = "count"
+                  project_id               = "count"
+                  region                   = "count"
+                  state                    = "count"
+                  tier                     = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-e9n2d41m"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              datasetQuery = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-sfs4clgf"
+              index             = 0
+              isPinned          = false
+              name              = "Input Step"
+              opal              = []
+              queryPresentation = {}
+              renderType        = null
+              summary           = "dbResource (undefined)"
+              type              = "InputStep"
+            },
+            {
+              columnStatsTable = {
+                columnFunctions = {
+                  availabilityType         = "count"
+                  backendType              = "count"
+                  backupConfiguration      = "count"
+                  createTime               = "count"
+                  current_state            = "count"
+                  dataDiskSizeGb           = "count"
+                  dataDiskType             = "count"
+                  databaseFlags            = "count"
+                  databaseInstalledVersion = "count"
+                  databaseVersion          = "count"
+                  database_id              = "count"
+                  gceZone                  = "count"
+                  ipAddressPrimary         = "count"
+                  ipAddresses              = "count"
+                  ipConfiguration          = "count"
+                  label                    = "count"
+                  name                     = "count"
+                  project_id               = "count"
+                  region                   = "count"
+                  state                    = "count"
+                  tier                     = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-n083qp1o"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              datasetQuery = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-qcuofu0h"
+              index    = 1
+              isPinned = false
+              name     = " (custom)"
+              opal = [
+                "",
+              ]
+              queryPresentation = {}
+              renderType        = null
+              type              = "unknown"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            scriptTab     = "INPUTS"
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = ""
+      },
+      {
+        id = "stage-1zwm1yf7"
+        input = [
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "dbResource"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight    = true
+            columnFooterHeight = 0
+            columnHeaderHeight = 29
+            columnOrderOverride = {
+              "0" = "name"
+              "1" = "label"
+              "2" = "Valid From"
+              "3" = "Valid To"
+            }
+            columnVisibility            = {}
+            columnWidths                = {}
+            containerWidth              = 1313
+            contextMenuXCoord           = null
+            contextMenuYCoord           = null
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            eventLinkColumnId           = null
+            fetchPageSize               = 100
+            hasCalculatedColumnWidths   = false
+            hasDoneAutoLayout           = false
+            maxColumnWidth              = 400
+            maxMeasuredColumnWidth      = {}
+            minColumnWidth              = 60
+            minRowHeight                = 30
+            preserveCellAndRowSelection = true
+            rowHeaderWidth              = 20
+            rowHeights                  = {}
+            rowSizeIncrement            = 1
+            scrollToColumn              = null
+            scrollToRow                 = 0
+            selection = {
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 179
+            tableView                  = "TABULAR"
+          }
+          index = 4
+          inputList = [
+            {
+              inputName   = "dbResource"
+              inputRole   = "Data"
+              isUserInput = false
+              parameterId = "dbResource"
+            },
+          ]
+          label = "Disk Write Operations"
+          managers = [
+            {
+              id                     = "12jqfcoa"
+              isDisabled             = true
+              isResourceCountEnabled = false
+              parentStageId          = "stage-1zwm1yf7"
+              type                   = "Timescrubber"
+            },
+            {
+              id            = "o93y9zjm"
+              isDisabled    = false
+              parentStageId = "stage-1zwm1yf7"
+              type          = "Vis"
+              vis = {
+                config = {
+                  color         = "Default"
+                  hideGridLines = true
+                  legend = {
+                    placement = "right"
+                    type      = "list"
+                    visible   = false
+                  }
+                  type = "xy"
+                  xConfig = {
+                    visible = true
+                  }
+                  yConfig = {
+                    unit    = ""
+                    visible = true
+                  }
+                }
+                source = {
+                  metric = {
+                    aggregate   = "sum"
+                    datasetId   = "${local.cloud_sql_metrics}"
+                    description = <<-EOT
+                                            Delta count of data disk write IO operations. Sampled every 60s and may take up to 210s to display.
+                                        EOT
+                    groupBy = [
+                      "database_id",
+                    ]
+                    heuristics = null
+                    id = {
+                      datasetId = "${local.cloud_sql_metrics}"
+                      name      = "database_disk_write_ops_count"
+                    }
+                    interval = 60000
+                    link = {
+                      __typename = "ForeignKey"
+                      dstFields = [
+                        "database_id",
+                      ]
+                      label = "Cloud SQL"
+                      srcFields = [
+                        "database_id",
+                      ]
+                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetStageLabel = null
+                      type             = "foreign"
+                    }
+                    name        = "database_disk_write_ops_count"
+                    rollup      = "avg"
+                    type        = "delta"
+                    unit        = ""
+                    userDefined = true
+                  }
+                  type = "metric"
+                }
+                type = "timeseries"
+              }
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            limit          = 1000
+            linkify        = true
+            loadEverything = false
+            progressive    = true
+            resultKinds = [
+              "ResultKindSchema",
+            ]
+            rollup = {}
+          }
+          renderType     = "TABLE"
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              columnStatsTable = {
+                columnFunctions = {
+                  availabilityType         = "count"
+                  backendType              = "count"
+                  backupConfiguration      = "count"
+                  createTime               = "count"
+                  current_state            = "count"
+                  dataDiskSizeGb           = "count"
+                  dataDiskType             = "count"
+                  databaseFlags            = "count"
+                  databaseInstalledVersion = "count"
+                  databaseVersion          = "count"
+                  database_id              = "count"
+                  gceZone                  = "count"
+                  ipAddressPrimary         = "count"
+                  ipAddresses              = "count"
+                  ipConfiguration          = "count"
+                  label                    = "count"
+                  name                     = "count"
+                  project_id               = "count"
+                  region                   = "count"
+                  state                    = "count"
+                  tier                     = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-hs9ztnxd"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              datasetQuery = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-u49b87gc"
+              index             = 0
+              isPinned          = false
+              name              = "Input Step"
+              opal              = []
+              queryPresentation = {}
+              renderType        = null
+              summary           = "dbResource (undefined)"
+              type              = "InputStep"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            scriptTab     = "SCRIPT"
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = ""
+      },
+      {
+        id = "stage-mpne8ae1"
+        input = [
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "dbResource"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight    = true
+            columnFooterHeight = 0
+            columnHeaderHeight = 29
+            columnOrderOverride = {
+              "0" = "name"
+              "1" = "label"
+              "2" = "Valid From"
+              "3" = "Valid To"
+            }
+            columnVisibility            = {}
+            columnWidths                = {}
+            containerWidth              = 1313
+            contextMenuXCoord           = null
+            contextMenuYCoord           = null
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            eventLinkColumnId           = null
+            fetchPageSize               = 100
+            hasCalculatedColumnWidths   = false
+            hasDoneAutoLayout           = false
+            maxColumnWidth              = 400
+            maxMeasuredColumnWidth      = {}
+            minColumnWidth              = 60
+            minRowHeight                = 30
+            preserveCellAndRowSelection = true
+            rowHeaderWidth              = 20
+            rowHeights                  = {}
+            rowSizeIncrement            = 1
+            scrollToColumn              = null
+            scrollToRow                 = 0
+            selection = {
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 179
+            tableView                  = "TABULAR"
+          }
+          index = 5
+          inputList = [
+            {
+              inputName   = "dbResource"
+              inputRole   = "Data"
+              isUserInput = false
+              parameterId = "dbResource"
+            },
+          ]
+          label = "Network Bytes Received"
+          managers = [
+            {
+              id                     = "zm9ec5ed"
+              isDisabled             = true
+              isResourceCountEnabled = false
+              parentStageId          = "stage-mpne8ae1"
+              type                   = "Timescrubber"
+            },
+            {
+              id            = "6wrrxd6o"
+              isDisabled    = false
+              parentStageId = "stage-mpne8ae1"
+              type          = "Vis"
+              vis = {
+                config = {
+                  color         = "Default"
+                  hideGridLines = true
+                  legend = {
+                    placement = "right"
+                    type      = "list"
+                    visible   = false
+                  }
+                  type = "xy"
+                  xConfig = {
+                    visible = true
+                  }
+                  yConfig = {
+                    unit    = "By"
+                    visible = true
+                  }
+                }
+                source = {
+                  metric = {
+                    aggregate   = "sum"
+                    datasetId   = "${local.cloud_sql_metrics}"
+                    description = <<-EOT
+                                            Delta count of bytes received through the network. Sampled every 60s and may take up to 210s to display.
+                                        EOT
+                    groupBy = [
+                      "database_id",
+                    ]
+                    heuristics = null
+                    id = {
+                      datasetId = "${local.cloud_sql_metrics}"
+                      name      = "database_network_received_bytes_count"
+                    }
+                    interval = 60000
+                    link = {
+                      __typename = "ForeignKey"
+                      dstFields = [
+                        "database_id",
+                      ]
+                      label = "Cloud SQL"
+                      srcFields = [
+                        "database_id",
+                      ]
+                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetStageLabel = null
+                      type             = "foreign"
+                    }
+                    name        = "database_network_received_bytes_count"
+                    rollup      = "avg"
+                    type        = "delta"
+                    unit        = "By"
+                    userDefined = true
+                  }
+                  type = "metric"
+                }
+                type = "timeseries"
+              }
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            limit          = 1000
+            linkify        = true
+            loadEverything = false
+            progressive    = true
+            resultKinds = [
+              "ResultKindSchema",
+            ]
+            rollup = {}
+          }
+          renderType     = "TABLE"
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              columnStatsTable = {
+                columnFunctions = {
+                  availabilityType         = "count"
+                  backendType              = "count"
+                  backupConfiguration      = "count"
+                  createTime               = "count"
+                  current_state            = "count"
+                  dataDiskSizeGb           = "count"
+                  dataDiskType             = "count"
+                  databaseFlags            = "count"
+                  databaseInstalledVersion = "count"
+                  databaseVersion          = "count"
+                  database_id              = "count"
+                  gceZone                  = "count"
+                  ipAddressPrimary         = "count"
+                  ipAddresses              = "count"
+                  ipConfiguration          = "count"
+                  label                    = "count"
+                  name                     = "count"
+                  project_id               = "count"
+                  region                   = "count"
+                  state                    = "count"
+                  tier                     = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-lfc2v4xe"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              datasetQuery = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-qjbjafnf"
+              index             = 0
+              isPinned          = false
+              name              = "Input Step"
+              opal              = []
+              queryPresentation = {}
+              renderType        = null
+              summary           = "dbResource (undefined)"
+              type              = "InputStep"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            scriptTab     = "SCRIPT"
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = ""
+      },
+      {
+        id = "stage-urrvnw15"
+        input = [
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "dbResource"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight    = true
+            columnFooterHeight = 0
+            columnHeaderHeight = 29
+            columnOrderOverride = {
+              "0" = "name"
+              "1" = "label"
+              "2" = "Valid From"
+              "3" = "Valid To"
+            }
+            columnVisibility            = {}
+            columnWidths                = {}
+            contextMenuXCoord           = null
+            contextMenuYCoord           = null
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            eventLinkColumnId           = null
+            fetchPageSize               = 100
+            hasCalculatedColumnWidths   = false
+            hasDoneAutoLayout           = false
+            maxColumnWidth              = 400
+            maxMeasuredColumnWidth      = {}
+            minColumnWidth              = 60
+            minRowHeight                = 30
+            preserveCellAndRowSelection = true
+            rowHeaderWidth              = 20
+            rowHeights                  = {}
+            rowSizeIncrement            = 1
+            scrollToColumn              = null
+            scrollToRow                 = 0
+            selection = {
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 179
+            tableView                  = "TABULAR"
+          }
+          index = 6
+          inputList = [
+            {
+              inputName   = "dbResource"
+              inputRole   = "Data"
+              isUserInput = false
+              parameterId = "dbResource"
+            },
+          ]
+          label = "Network Bytes Sent"
+          managers = [
+            {
+              id                     = "zm9ec5ed"
+              isDisabled             = true
+              isResourceCountEnabled = false
+              parentStageId          = "stage-urrvnw15"
+              type                   = "Timescrubber"
+            },
+            {
+              id            = "6wrrxd6o"
+              isDisabled    = false
+              parentStageId = "stage-urrvnw15"
+              type          = "Vis"
+              vis = {
+                config = {
+                  color         = "Default"
+                  hideGridLines = true
+                  legend = {
+                    placement = "right"
+                    type      = "list"
+                    visible   = false
+                  }
+                  type = "xy"
+                  xConfig = {
+                    visible = true
+                  }
+                  yConfig = {
+                    unit    = "By"
+                    visible = true
+                  }
+                }
+                source = {
+                  metric = {
+                    aggregate   = "sum"
+                    datasetId   = "${local.cloud_sql_metrics}"
+                    description = <<-EOT
+                                            Delta count of bytes sent through the network. Sampled every 60s and may take up to 210s to display.
+                                        EOT
+                    groupBy = [
+                      "database_id",
+                    ]
+                    heuristics = null
+                    id = {
+                      datasetId = "${local.cloud_sql_metrics}"
+                      name      = "database_network_sent_bytes_count"
+                    }
+                    interval = 60000
+                    link = {
+                      __typename = "ForeignKey"
+                      dstFields = [
+                        "database_id",
+                      ]
+                      label = "Cloud SQL"
+                      srcFields = [
+                        "database_id",
+                      ]
+                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetStageLabel = null
+                      type             = "foreign"
+                    }
+                    name        = "database_network_sent_bytes_count"
+                    rollup      = "avg"
+                    type        = "delta"
+                    unit        = "By"
+                    userDefined = true
+                  }
+                  type = "metric"
+                }
+                type = "timeseries"
+              }
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            limit          = 1000
+            linkify        = true
+            loadEverything = false
+            progressive    = true
+            resultKinds = [
+              "ResultKindSchema",
+            ]
+            rollup = {}
+          }
+          renderType     = "TABLE"
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              datasetQuery = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-l8pnpkia"
+              index             = 0
+              isPinned          = false
+              name              = "Input Step"
+              opal              = []
+              queryPresentation = {}
+              renderType        = null
+              summary           = "dbResource (undefined)"
+              type              = "InputStep"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            scriptTab     = "SCRIPT"
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = ""
+      },
+      {
+        id = "stage-5g6dfyg1"
+        input = [
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "dbResource"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight    = true
+            columnFooterHeight = 0
+            columnHeaderHeight = 29
+            columnOrderOverride = {
+              "0" = "name"
+              "1" = "label"
+              "2" = "Valid From"
+              "3" = "Valid To"
+            }
+            columnVisibility            = {}
+            columnWidths                = {}
+            containerWidth              = 1313
+            contextMenuXCoord           = null
+            contextMenuYCoord           = null
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            eventLinkColumnId           = null
+            fetchPageSize               = 100
+            hasCalculatedColumnWidths   = false
+            hasDoneAutoLayout           = false
+            maxColumnWidth              = 400
+            maxMeasuredColumnWidth      = {}
+            minColumnWidth              = 60
+            minRowHeight                = 30
+            preserveCellAndRowSelection = true
+            rowHeaderWidth              = 20
+            rowHeights                  = {}
+            rowSizeIncrement            = 1
+            scrollToColumn              = null
+            scrollToRow                 = 0
+            selection = {
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 179
+            tableView                  = "TABULAR"
+          }
+          index = 7
+          inputList = [
+            {
+              inputName   = "dbResource"
+              inputRole   = "Data"
+              isUserInput = false
+              parameterId = "dbResource"
+            },
+          ]
+          label = "Disk Quota"
+          managers = [
+            {
+              id                     = "s23ly8g7"
+              isDisabled             = true
+              isResourceCountEnabled = false
+              parentStageId          = "stage-5g6dfyg1"
+              type                   = "Timescrubber"
+            },
+            {
+              id            = "rupd3t7k"
+              isDisabled    = false
+              parentStageId = "stage-5g6dfyg1"
+              type          = "Vis"
+              vis = {
+                config = {
+                  color         = "Default"
+                  hideGridLines = true
+                  legend = {
+                    placement = "right"
+                    type      = "list"
+                    visible   = false
+                  }
+                  type = "xy"
+                  xConfig = {
+                    visible = true
+                  }
+                  yConfig = {
+                    unit    = "By"
+                    visible = true
+                  }
+                }
+                source = {
+                  metric = {
+                    aggregate   = "sum"
+                    datasetId   = "${local.cloud_sql_metrics}"
+                    description = <<-EOT
+                                            Maximum data disk size in bytes. Sampled every 60s and may take up to 210s to display.
+                                        EOT
+                    groupBy = [
+                      "database_id",
+                    ]
+                    heuristics = null
+                    id = {
+                      datasetId = "${local.cloud_sql_metrics}"
+                      name      = "database_disk_quota"
+                    }
+                    interval = 60000
+                    link = {
+                      __typename = "ForeignKey"
+                      dstFields = [
+                        "database_id",
+                      ]
+                      label = "Cloud SQL"
+                      srcFields = [
+                        "database_id",
+                      ]
+                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetStageLabel = null
+                      type             = "foreign"
+                    }
+                    name        = "database_disk_quota"
+                    rollup      = "avg"
+                    type        = "gauge"
+                    unit        = "By"
+                    userDefined = true
+                  }
+                  type = "metric"
+                }
+                type = "timeseries"
+              }
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            limit          = 1000
+            linkify        = true
+            loadEverything = false
+            progressive    = true
+            resultKinds = [
+              "ResultKindSchema",
+            ]
+            rollup = {}
+          }
+          renderType     = "TABLE"
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              columnStatsTable = {
+                columnFunctions = {
+                  availabilityType         = "count"
+                  backendType              = "count"
+                  backupConfiguration      = "count"
+                  createTime               = "count"
+                  current_state            = "count"
+                  dataDiskSizeGb           = "count"
+                  dataDiskType             = "count"
+                  databaseFlags            = "count"
+                  databaseInstalledVersion = "count"
+                  databaseVersion          = "count"
+                  database_id              = "count"
+                  gceZone                  = "count"
+                  ipAddressPrimary         = "count"
+                  ipAddresses              = "count"
+                  ipConfiguration          = "count"
+                  label                    = "count"
+                  name                     = "count"
+                  project_id               = "count"
+                  region                   = "count"
+                  state                    = "count"
+                  tier                     = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-o8ggatjl"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              datasetQuery = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-enpyi9v9"
+              index             = 0
+              isPinned          = false
+              name              = "Input Step"
+              opal              = []
+              queryPresentation = {}
+              renderType        = null
+              summary           = "dbResource (undefined)"
+              type              = "InputStep"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            scriptTab     = "SCRIPT"
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = ""
+      },
+      {
+        id = "stage-zx1ijn1u"
+        input = [
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "dbResource"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight    = true
+            columnFooterHeight = 0
+            columnHeaderHeight = 29
+            columnOrderOverride = {
+              "0" = "name"
+              "1" = "label"
+              "2" = "Valid From"
+              "3" = "Valid To"
+            }
+            columnVisibility            = {}
+            columnWidths                = {}
+            containerWidth              = 1313
+            contextMenuXCoord           = null
+            contextMenuYCoord           = null
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            eventLinkColumnId           = null
+            fetchPageSize               = 100
+            hasCalculatedColumnWidths   = false
+            hasDoneAutoLayout           = false
+            maxColumnWidth              = 400
+            maxMeasuredColumnWidth      = {}
+            minColumnWidth              = 60
+            minRowHeight                = 30
+            preserveCellAndRowSelection = true
+            rowHeaderWidth              = 20
+            rowHeights                  = {}
+            rowSizeIncrement            = 1
+            scrollToColumn              = null
+            scrollToRow                 = 0
+            selection = {
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 179
+            tableView                  = "TABULAR"
+          }
+          index = 8
+          inputList = [
+            {
+              inputName   = "dbResource"
+              inputRole   = "Data"
+              isUserInput = false
+              parameterId = "dbResource"
+            },
+          ]
+          label = "Installed Version"
+          managers = [
+            {
+              id                     = "b9rersd2"
+              isDisabled             = true
+              isResourceCountEnabled = false
+              parentStageId          = "stage-zx1ijn1u"
+              type                   = "Timescrubber"
+            },
+            {
+              id            = "bzjcyrdv"
+              isDisabled    = false
+              parentStageId = "stage-zx1ijn1u"
+              type          = "Vis"
+              vis = {
+                config = {
+                  innerRadius = 0
+                  legend = {
+                    placement = "right"
+                    type      = "list"
+                    visible   = false
                   }
                   type = "arc"
                 }
                 source = {
                   table = {
                     keyField = [
-                      "machineType",
+                      "databaseInstalledVersion",
                     ]
                     statsBy = {
                       fn = "count"
@@ -953,7 +2652,7 @@ resource "observe_dashboard" "compute_monitoring_tf" {
                     }
                     transformType = "timechart"
                     type          = "keyvalue"
-                    valueField    = "machineType"
+                    valueField    = "databaseInstalledVersion"
                   }
                   type = "table"
                 }
@@ -981,20 +2680,31 @@ resource "observe_dashboard" "compute_monitoring_tf" {
             {
               columnStatsTable = {
                 columnFunctions = {
-                  assetInventoryName = "count"
-                  cpuPlatform        = "count"
-                  deleted            = "count"
-                  instance_id        = "count"
-                  machineType        = "count"
-                  name               = "count"
-                  project_id         = "count"
-                  region             = "count"
-                  status             = "count"
-                  ttl                = "count"
+                  availabilityType         = "count"
+                  backendType              = "count"
+                  backupConfiguration      = "count"
+                  createTime               = "count"
+                  current_state            = "count"
+                  dataDiskSizeGb           = "count"
+                  dataDiskType             = "count"
+                  databaseFlags            = "count"
+                  databaseInstalledVersion = "count"
+                  databaseVersion          = "count"
+                  database_id              = "count"
+                  gceZone                  = "count"
+                  ipAddressPrimary         = "count"
+                  ipAddresses              = "count"
+                  ipConfiguration          = "count"
+                  label                    = "count"
+                  name                     = "count"
+                  project_id               = "count"
+                  region                   = "count"
+                  state                    = "count"
+                  tier                     = "count"
                 }
                 datasetQueryId = {
                   ignoreCompress = false
-                  queryId        = "q-v0yleafm"
+                  queryId        = "q-8lv71j4g"
                   resultKinds = [
                     "ResultKindSchema",
                     "ResultKindData",
@@ -1018,14 +2728,14 @@ resource "observe_dashboard" "compute_monitoring_tf" {
                   "SUMMARY",
                 ]
               }
-              id                = "step-9jnt7ixg"
+              id                = "step-zf96nkh4"
               index             = 0
               isPinned          = false
               name              = "Input Step"
               opal              = []
               queryPresentation = {}
               renderType        = null
-              summary           = "computeID (undefined)"
+              summary           = "dbResource (undefined)"
               type              = "InputStep"
             },
           ]
@@ -1047,12 +2757,12 @@ resource "observe_dashboard" "compute_monitoring_tf" {
         pipeline = ""
       },
       {
-        id = "stage-4zw73l75"
+        id = "stage-2iknse1z"
         input = [
           {
             datasetId   = null
             datasetPath = null
-            inputName   = "computeID"
+            inputName   = "dbResource"
             inputRole   = "Data"
             stageId     = null
           },
@@ -1064,14 +2774,13 @@ resource "observe_dashboard" "compute_monitoring_tf" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_name"
-              "1" = "name"
+              "0" = "name"
               "2" = "Valid From"
               "3" = "Valid To"
             }
             columnVisibility            = {}
             columnWidths                = {}
-            containerWidth              = 2145
+            containerWidth              = 1505
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -1104,28 +2813,28 @@ resource "observe_dashboard" "compute_monitoring_tf" {
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index = 2
+          index = 9
           inputList = [
             {
-              inputName   = "computeID"
+              inputName   = "dbResource"
               inputRole   = "Data"
               isUserInput = false
-              parameterId = "computeID"
+              parameterId = "dbResource"
             },
           ]
           label = "Region"
           managers = [
             {
-              id                     = "vk5cylq8"
+              id                     = "db220a0d"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-4zw73l75"
+              parentStageId          = "stage-2iknse1z"
               type                   = "Timescrubber"
             },
             {
-              id            = "g9olxgu1"
+              id            = "dvz5w7nq"
               isDisabled    = false
-              parentStageId = "stage-4zw73l75"
+              parentStageId = "stage-2iknse1z"
               type          = "Vis"
               vis = {
                 config = {
@@ -1179,20 +2888,30 @@ resource "observe_dashboard" "compute_monitoring_tf" {
             {
               columnStatsTable = {
                 columnFunctions = {
-                  assetInventoryName = "count"
-                  cpuPlatform        = "count"
-                  deleted            = "count"
-                  instance_id        = "count"
-                  machineType        = "count"
-                  name               = "count"
-                  project_id         = "count"
-                  region             = "count"
-                  status             = "count"
-                  ttl                = "count"
+                  availabilityType         = "count"
+                  backendType              = "count"
+                  backupConfiguration      = "count"
+                  createTime               = "count"
+                  current_state            = "count"
+                  dataDiskSizeGb           = "count"
+                  dataDiskType             = "count"
+                  databaseFlags            = "count"
+                  databaseInstalledVersion = "count"
+                  databaseVersion          = "count"
+                  database_id              = "count"
+                  gceZone                  = "count"
+                  ipAddressPrimary         = "count"
+                  ipAddresses              = "count"
+                  ipConfiguration          = "count"
+                  name                     = "count"
+                  project_id               = "count"
+                  region                   = "count"
+                  state                    = "count"
+                  tier                     = "count"
                 }
                 datasetQueryId = {
                   ignoreCompress = false
-                  queryId        = "q-25n3oxvk"
+                  queryId        = "q-80j2510x"
                   resultKinds = [
                     "ResultKindSchema",
                     "ResultKindData",
@@ -1216,213 +2935,14 @@ resource "observe_dashboard" "compute_monitoring_tf" {
                   "SUMMARY",
                 ]
               }
-              id                = "step-5gz936i5"
+              id                = "step-bfy3p9ar"
               index             = 0
               isPinned          = false
               name              = "Input Step"
               opal              = []
               queryPresentation = {}
               renderType        = null
-              summary           = "computeID (undefined)"
-              type              = "InputStep"
-            },
-          ]
-          type = "table"
-          viewModel = {
-            consoleValue = null
-            railCollapseState = {
-              inputsOutputs = false
-              minimap       = false
-              note          = true
-              script        = true
-            }
-            scriptTab     = "INPUTS"
-            showTimeRuler = true
-            stageTab      = "vis"
-          }
-        }
-        params   = null
-        pipeline = ""
-      },
-      {
-        id = "stage-fnyfu38e"
-        input = [
-          {
-            datasetId   = null
-            datasetPath = null
-            inputName   = "computeID"
-            inputRole   = "Data"
-            stageId     = null
-          },
-        ]
-        layout = {
-          appearance = "VISIBLE"
-          dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
-            columnOrderOverride = {
-              "0" = "instance_name"
-              "1" = "name"
-              "2" = "Valid From"
-              "3" = "Valid To"
-            }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 2145
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
-            selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
-            }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
-          }
-          index = 3
-          inputList = [
-            {
-              inputName   = "computeID"
-              inputRole   = "Data"
-              isUserInput = false
-              parameterId = "computeID"
-            },
-          ]
-          label = "Zone"
-          managers = [
-            {
-              id                     = "c8xmld0s"
-              isDisabled             = true
-              isResourceCountEnabled = false
-              parentStageId          = "stage-fnyfu38e"
-              type                   = "Timescrubber"
-            },
-            {
-              id            = "bt3zb5wh"
-              isDisabled    = false
-              parentStageId = "stage-fnyfu38e"
-              type          = "Vis"
-              vis = {
-                config = {
-                  innerRadius = 0.6
-                  legend = {
-                    placement = "right"
-                    type      = "list"
-                    visible   = true
-                  }
-                  type = "arc"
-                }
-                source = {
-                  table = {
-                    keyField = [
-                      "zone",
-                    ]
-                    statsBy = {
-                      fn = "count"
-                    }
-                    timechart = {
-                      fn         = "count"
-                      resolution = "SINGLE"
-                    }
-                    transformType = "timechart"
-                    type          = "keyvalue"
-                    valueField    = "zone"
-                  }
-                  type = "table"
-                }
-                type = "circular"
-              }
-            },
-          ]
-          queryPresentation = {
-            initialRollupFilter = {
-              mode = "Last"
-            }
-            limit          = 1000
-            linkify        = true
-            loadEverything = false
-            progressive    = true
-            resultKinds = [
-              "ResultKindSchema",
-            ]
-            rollup = {}
-          }
-          renderType     = "TABLE"
-          selectedStepId = null
-          serializable   = true
-          steps = [
-            {
-              columnStatsTable = {
-                columnFunctions = {
-                  assetInventoryName = "count"
-                  cpuPlatform        = "count"
-                  deleted            = "count"
-                  instance_id        = "count"
-                  machineType        = "count"
-                  name               = "count"
-                  project_id         = "count"
-                  region             = "count"
-                  status             = "count"
-                  ttl                = "count"
-                  zone               = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-5s6lwo9d"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
-              datasetQuery = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id                = "step-l6g03l0l"
-              index             = 0
-              isPinned          = false
-              name              = "Input Step"
-              opal              = []
-              queryPresentation = {}
-              renderType        = null
-              summary           = "computeID (undefined)"
+              summary           = "dbResource (undefined)"
               type              = "InputStep"
             },
           ]
@@ -1444,12 +2964,12 @@ resource "observe_dashboard" "compute_monitoring_tf" {
         pipeline = ""
       },
       {
-        id = "stage-xjztexw9"
+        id = "stage-gcd1nb81"
         input = [
           {
             datasetId   = null
             datasetPath = null
-            inputName   = "computeID"
+            inputName   = "dbResource"
             inputRole   = "Data"
             stageId     = null
           },
@@ -1461,14 +2981,12 @@ resource "observe_dashboard" "compute_monitoring_tf" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_name"
-              "1" = "name"
+              "0" = "name"
               "2" = "Valid From"
               "3" = "Valid To"
             }
             columnVisibility            = {}
             columnWidths                = {}
-            containerWidth              = 2145
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -1501,28 +3019,28 @@ resource "observe_dashboard" "compute_monitoring_tf" {
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index = 4
+          index = 10
           inputList = [
             {
-              inputName   = "computeID"
+              inputName   = "dbResource"
               inputRole   = "Data"
               isUserInput = false
-              parameterId = "computeID"
+              parameterId = "dbResource"
             },
           ]
-          label = "Projects"
+          label = "Project"
           managers = [
             {
-              id                     = "od7gg294"
+              id                     = "db220a0d"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-xjztexw9"
+              parentStageId          = "stage-gcd1nb81"
               type                   = "Timescrubber"
             },
             {
-              id            = "zxbqncia"
+              id            = "dvz5w7nq"
               isDisabled    = false
-              parentStageId = "stage-xjztexw9"
+              parentStageId = "stage-gcd1nb81"
               type          = "Vis"
               vis = {
                 config = {
@@ -1574,32 +3092,6 @@ resource "observe_dashboard" "compute_monitoring_tf" {
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  assetInventoryName = "count"
-                  cpuPlatform        = "count"
-                  deleted            = "count"
-                  instance_id        = "count"
-                  machineType        = "count"
-                  name               = "count"
-                  project_id         = "count"
-                  region             = "count"
-                  status             = "count"
-                  ttl                = "count"
-                  zone               = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-4obqrw5r"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               datasetQuery = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -1614,14 +3106,14 @@ resource "observe_dashboard" "compute_monitoring_tf" {
                   "SUMMARY",
                 ]
               }
-              id                = "step-04kfp811"
+              id                = "step-gfn0yypc"
               index             = 0
               isPinned          = false
               name              = "Input Step"
               opal              = []
               queryPresentation = {}
               renderType        = null
-              summary           = "computeID (undefined)"
+              summary           = "dbResource (undefined)"
               type              = "InputStep"
             },
           ]
@@ -1643,12 +3135,12 @@ resource "observe_dashboard" "compute_monitoring_tf" {
         pipeline = ""
       },
       {
-        id = "stage-vfqqg8en"
+        id = "stage-pe9mq2em"
         input = [
           {
             datasetId   = null
             datasetPath = null
-            inputName   = "computeID"
+            inputName   = "dbResource"
             inputRole   = "Data"
             stageId     = null
           },
@@ -1660,1488 +3152,9 @@ resource "observe_dashboard" "compute_monitoring_tf" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "Name"
-              "1" = "instance_name"
+              "0" = "name"
               "2" = "Valid From"
               "3" = "Valid To"
-            }
-            columnVisibility = {}
-            columnWidths = {
-              "Deletion Protection" = 130
-              Network               = 297
-            }
-            containerWidth              = 2145
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = true
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
-            selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
-            }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
-          }
-          index = 5
-          inputList = [
-            {
-              inputName   = "computeID"
-              inputRole   = "Data"
-              isUserInput = false
-              parameterId = "computeID"
-            },
-          ]
-          label = "Instance List"
-          managers = [
-            {
-              id                     = "nw58l13x"
-              isDisabled             = true
-              isResourceCountEnabled = false
-              parentStageId          = "stage-vfqqg8en"
-              type                   = "Timescrubber"
-            },
-          ]
-          queryPresentation = {
-            initialRollupFilter = {
-              mode = "Last"
-            }
-            limit          = 1000
-            linkify        = true
-            loadEverything = false
-            progressive    = true
-            resultKinds = [
-              "ResultKindStats",
-              "ResultKindData",
-              "ResultKindSchema",
-              "ResultKindProgress",
-            ]
-            rollup = {}
-          }
-          renderType     = "TABLE"
-          selectedStepId = null
-          serializable   = true
-          steps = [
-            {
-              columnStatsTable = {
-                columnFunctions = {
-                  cpuPlatform   = "count"
-                  deleted       = "count"
-                  instance_id   = "count"
-                  instance_key  = "count"
-                  instance_name = "count"
-                  machineType   = "count"
-                  project_id    = "count"
-                  region        = "count"
-                  status        = "count"
-                  ttl           = "count"
-                  zone          = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-9cc4zqj1"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
-              datasetQuery = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id                = "step-le7aljwo"
-              index             = 0
-              isPinned          = false
-              name              = "Input Step"
-              opal              = []
-              queryPresentation = {}
-              renderType        = null
-              summary           = "computeID (undefined)"
-              type              = "InputStep"
-            },
-            {
-              columnStatsTable = {
-                columnFunctions = {
-                  cpuPlatform   = "count"
-                  deleted       = "count"
-                  instance_id   = "count"
-                  instance_key  = "count"
-                  instance_name = "count"
-                  machineType   = "count"
-                  project_id    = "count"
-                  region        = "count"
-                  status        = "count"
-                  ttl           = "count"
-                  zone          = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-uc4b2ip6"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
-              datasetQuery = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id       = "step-sd8m3dmd"
-              index    = 1
-              isPinned = false
-              name     = "pick_col (custom)"
-              opal = [
-                "pick_col ",
-                "\t@.\"Valid From\",",
-                "    @.\"Valid To\",",
-                "    instance_key,",
-                "    Status: status,",
-                "\tName: instance_name,",
-                "    Zone: zone,",
-                "    \"Creation Time\": creationTime,",
-                "    \"Deletion Protection\": deletionProtection,",
-                "    \"Machine Type\": machineType,",
-                "    \"In use by\": instance_group,",
-                "    \"Internal IP\": networkIP,",
-                "    \"External IP\": publicIP,",
-                "    Network: network,",
-                "    \"Network Tags\": tags,",
-                "    Labels: labels",
-                "    ",
-                "colshow instance_key: false",
-              ]
-              queryPresentation = {}
-              renderType        = null
-              type              = "unknown"
-            },
-          ]
-          type = "table"
-          viewModel = {
-            consoleValue = null
-            railCollapseState = {
-              inputsOutputs = false
-              minimap       = false
-              note          = true
-              script        = true
-            }
-            scriptTab     = "SCRIPT"
-            showTimeRuler = true
-            stageTab      = "table"
-          }
-        }
-        params   = null
-        pipeline = <<-EOT
-                    pick_col 
-                    	@."Valid From",
-                        @."Valid To",
-                        instance_key,
-                        Status: status,
-                    	Name: instance_name,
-                        Zone: zone,
-                        "Creation Time": creationTime,
-                        "Deletion Protection": deletionProtection,
-                        "Machine Type": machineType,
-                        "In use by": instance_group,
-                        "Internal IP": networkIP,
-                        "External IP": publicIP,
-                        Network: network,
-                        "Network Tags": tags,
-                        Labels: labels
-                                            
-                    colshow instance_key: false
-                EOT
-      },
-      {
-        id = "stage-hk634e8f"
-        input = [
-          {
-            datasetId   = null
-            datasetPath = null
-            inputName   = "computeID"
-            inputRole   = "Data"
-            stageId     = null
-          },
-        ]
-        layout = {
-          appearance = "VISIBLE"
-          dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
-            columnOrderOverride = {
-              "0" = "Name"
-              "1" = "instance_name"
-              "2" = "Valid From"
-              "3" = "Valid To"
-            }
-            columnVisibility = {}
-            columnWidths = {
-              "Deletion Protection" = 130
-              Network               = 297
-            }
-            containerWidth              = 1313
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
-            selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
-            }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
-          }
-          index = 6
-          inputList = [
-            {
-              inputName   = "computeID"
-              inputRole   = "Data"
-              isUserInput = false
-              parameterId = "computeID"
-            },
-          ]
-          label = "Running Instances"
-          managers = [
-            {
-              id                     = "nw58l13x"
-              isDisabled             = true
-              isResourceCountEnabled = false
-              parentStageId          = "stage-hk634e8f"
-              type                   = "Timescrubber"
-            },
-            {
-              id            = "sxn0n0of"
-              isDisabled    = false
-              parentStageId = "stage-hk634e8f"
-              type          = "Vis"
-              vis = {
-                config = {
-                  color           = "Default"
-                  colorConfigType = "Color"
-                  fieldConfig = {
-                    unit    = null
-                    visible = false
-                  }
-                  thresholds = null
-                  type       = "singlefield"
-                }
-                source = {
-                  table = {
-                    field = "Status"
-                    groupFields = [
-                      "label",
-                    ]
-                    statsBy = {
-                      fn = "count"
-                    }
-                    timechart = {
-                      fn         = "count"
-                      fnArgs     = null
-                      resolution = "AUTO"
-                    }
-                    transformType = "timechart"
-                    type          = "singlefield"
-                  }
-                  type = "table"
-                }
-                type = "singlevalue"
-              }
-            },
-          ]
-          queryPresentation = {
-            initialRollupFilter = {
-              mode = "Last"
-            }
-            limit          = 1000
-            linkify        = true
-            loadEverything = false
-            progressive    = true
-            resultKinds = [
-              "ResultKindSchema",
-            ]
-            rollup = {}
-          }
-          renderType     = "TABLE"
-          selectedStepId = null
-          serializable   = true
-          steps = [
-            {
-              datasetQuery = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id                = "step-lzn139eq"
-              index             = 0
-              isPinned          = false
-              name              = "Input Step"
-              opal              = []
-              queryPresentation = {}
-              renderType        = null
-              summary           = "computeID (undefined)"
-              type              = "InputStep"
-            },
-            {
-              datasetQuery = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id       = "step-azplgdlw"
-              index    = 1
-              isPinned = false
-              name     = "filter (custom)"
-              opal = [
-                "filter status = \"RUNNING\"",
-                "pick_col ",
-                "\t@.\"Valid From\",",
-                "    @.\"Valid To\",",
-                "    instance_key,",
-                "    Status: status,",
-                "\tName: instance_name,",
-                "    Zone: zone,",
-                "    \"Creation Time\": creationTime,",
-                "    \"Deletion Protection\": deletionProtection,",
-                "    \"Machine Type\": machineType,",
-                "    \"In use by\": instance_group,",
-                "    \"Internal IP\": networkIP,",
-                "    \"External IP\": publicIP,",
-                "    Network: network,",
-                "    \"Network Tags\": tags,",
-                "    Labels: labels,",
-                "      label: \"Running Instances\"",
-                "    ",
-                "colshow instance_key: false",
-              ]
-              queryPresentation = {}
-              renderType        = null
-              type              = "unknown"
-            },
-          ]
-          type = "table"
-          viewModel = {
-            consoleValue = null
-            railCollapseState = {
-              inputsOutputs = false
-              minimap       = false
-              note          = true
-              script        = true
-            }
-            scriptTab     = "SCRIPT"
-            showTimeRuler = true
-            stageTab      = "vis"
-          }
-        }
-        params   = null
-        pipeline = <<-EOT
-                    filter status = "RUNNING"
-                    pick_col 
-                    	@."Valid From",
-                        @."Valid To",
-                        instance_key,
-                        Status: status,
-                    	Name: instance_name,
-                        Zone: zone,
-                        "Creation Time": creationTime,
-                        "Deletion Protection": deletionProtection,
-                        "Machine Type": machineType,
-                        "In use by": instance_group,
-                        "Internal IP": networkIP,
-                        "External IP": publicIP,
-                        Network: network,
-                        "Network Tags": tags,
-                        Labels: labels,
-                          label: "Running Instances"
-                                            
-                    colshow instance_key: false
-                EOT
-      },
-      {
-        id = "stage-i9te03n4"
-        input = [
-          {
-            datasetId   = null
-            datasetPath = null
-            inputName   = "computeID"
-            inputRole   = "Data"
-            stageId     = null
-          },
-        ]
-        layout = {
-          appearance = "VISIBLE"
-          dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
-            columnOrderOverride = {
-              "0" = "Name"
-              "1" = "instance_name"
-              "2" = "Valid From"
-              "3" = "Valid To"
-            }
-            columnVisibility = {}
-            columnWidths = {
-              "Deletion Protection" = 130
-              Network               = 297
-            }
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
-            selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
-            }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
-          }
-          index = 7
-          inputList = [
-            {
-              inputName   = "computeID"
-              inputRole   = "Data"
-              isUserInput = false
-              parameterId = "computeID"
-            },
-          ]
-          label = "Total Instances"
-          managers = [
-            {
-              id                     = "nw58l13x"
-              isDisabled             = true
-              isResourceCountEnabled = false
-              parentStageId          = "stage-i9te03n4"
-              type                   = "Timescrubber"
-            },
-            {
-              id            = "sxn0n0of"
-              isDisabled    = false
-              parentStageId = "stage-i9te03n4"
-              type          = "Vis"
-              vis = {
-                config = {
-                  color           = "Default"
-                  colorConfigType = "Color"
-                  fieldConfig = {
-                    unit    = null
-                    visible = false
-                  }
-                  thresholds = null
-                  type       = "singlefield"
-                }
-                source = {
-                  table = {
-                    field = "exists"
-                    groupFields = [
-                      "label",
-                    ]
-                    statsBy = {
-                      fn = "count"
-                    }
-                    timechart = {
-                      fn         = "sum"
-                      fnArgs     = []
-                      resolution = "AUTO"
-                    }
-                    transformType = "timechart"
-                    type          = "singlefield"
-                  }
-                  type = "table"
-                }
-                type = "singlevalue"
-              }
-            },
-          ]
-          queryPresentation = {
-            initialRollupFilter = {
-              mode = "Last"
-            }
-            limit          = 1000
-            linkify        = true
-            loadEverything = false
-            progressive    = true
-            resultKinds = [
-              "ResultKindSchema",
-            ]
-            rollup = {}
-          }
-          renderType     = "TABLE"
-          selectedStepId = null
-          serializable   = true
-          steps = [
-            {
-              datasetQuery = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id                = "step-dwt8ttnl"
-              index             = 0
-              isPinned          = false
-              name              = "Input Step"
-              opal              = []
-              queryPresentation = {}
-              renderType        = null
-              summary           = "computeID (undefined)"
-              type              = "InputStep"
-            },
-            {
-              datasetQuery = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id       = "step-zw3u63tl"
-              index    = 1
-              isPinned = false
-              name     = " (custom)"
-              opal = [
-                "",
-                "pick_col ",
-                "\t@.\"Valid From\",",
-                "    @.\"Valid To\",",
-                "    instance_key,",
-                "    Status: status,",
-                "\tName: instance_name,",
-                "    Zone: zone,",
-                "    \"Creation Time\": creationTime,",
-                "    \"Deletion Protection\": deletionProtection,",
-                "    \"Machine Type\": machineType,",
-                "    \"In use by\": instance_group,",
-                "    \"Internal IP\": networkIP,",
-                "    \"External IP\": publicIP,",
-                "    Network: network,",
-                "    \"Network Tags\": tags,",
-                "    Labels: labels,",
-                "    exists: 1,",
-                "    label: \"Total Instances\"",
-                "    ",
-                "colshow instance_key: false",
-              ]
-              queryPresentation = {}
-              renderType        = null
-              type              = "unknown"
-            },
-          ]
-          type = "table"
-          viewModel = {
-            consoleValue = null
-            railCollapseState = {
-              inputsOutputs = false
-              minimap       = false
-              note          = true
-              script        = true
-            }
-            scriptTab     = "INPUTS"
-            showTimeRuler = true
-            stageTab      = "vis"
-          }
-        }
-        params   = null
-        pipeline = <<-EOT
-                                        
-                    pick_col 
-                    	@."Valid From",
-                        @."Valid To",
-                        instance_key,
-                        Status: status,
-                    	Name: instance_name,
-                        Zone: zone,
-                        "Creation Time": creationTime,
-                        "Deletion Protection": deletionProtection,
-                        "Machine Type": machineType,
-                        "In use by": instance_group,
-                        "Internal IP": networkIP,
-                        "External IP": publicIP,
-                        Network: network,
-                        "Network Tags": tags,
-                        Labels: labels,
-                        exists: 1,
-                        label: "Total Instances"
-                                            
-                    colshow instance_key: false
-                EOT
-      },
-      {
-        id = "stage-7schdd0k"
-        input = [
-          {
-            datasetId   = "${local.compute_metrics}"
-            datasetPath = null
-            inputName   = "Compute Metrics"
-            inputRole   = "Data"
-            stageId     = null
-          },
-          {
-            datasetId   = null
-            datasetPath = null
-            inputName   = "computeID"
-            inputRole   = "Data"
-            stageId     = null
-          },
-        ]
-        layout = {
-          appearance = "VISIBLE"
-          dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
-            columnOrderOverride = {
-              "0" = "instance_key"
-              "1" = "valid_from"
-              "2" = "valid_to"
-            }
-            columnVisibility            = {}
-            columnWidths                = {}
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
-            selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
-            }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
-          }
-          index = 8
-          inputList = [
-            {
-              datasetId   = "${local.compute_metrics}"
-              inputName   = "Compute Metrics"
-              inputRole   = "Data"
-              isUserInput = false
-            },
-            {
-              inputName   = "computeID"
-              inputRole   = "Data"
-              isUserInput = true
-              parameterId = "computeID"
-            },
-          ]
-          label = "Count of disk write IO operations."
-          managers = [
-            {
-              id                     = "471mzk05"
-              isDisabled             = true
-              isResourceCountEnabled = false
-              parentStageId          = "stage-7schdd0k"
-              type                   = "Timescrubber"
-            },
-            {
-              id            = "yeyupg29"
-              isDisabled    = false
-              parentStageId = "stage-7schdd0k"
-              type          = "Vis"
-              vis = {
-                config = {
-                  color         = "Default"
-                  hideGridLines = false
-                  legend = {
-                    placement = "right"
-                    type      = "list"
-                    visible   = false
-                  }
-                  type = "xy"
-                  xConfig = {
-                    visible = true
-                  }
-                  yConfig = {
-                    visible = true
-                  }
-                }
-                source = {
-                  table = {
-                    groupFields = [
-                      [
-                        "instance_key",
-                      ],
-                    ]
-                    statsBy = {
-                      fn = "avg"
-                    }
-                    timechart = {
-                      fn         = "avg"
-                      resolution = "AUTO"
-                    }
-                    transformType = "timechart"
-                    type          = "xy"
-                    y             = "value"
-                  }
-                  type = "table"
-                }
-                type = "timeseries"
-              }
-            },
-          ]
-          queryPresentation = {
-            initialRollupFilter = {
-              mode = "Last"
-            }
-            limit          = 1000
-            linkify        = true
-            loadEverything = false
-            progressive    = true
-            resultKinds = [
-              "ResultKindSchema",
-            ]
-            rollup = {}
-          }
-          renderType     = "TABLE"
-          selectedStepId = null
-          serializable   = true
-          steps = [
-            {
-              datasetQuery = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id                = "step-xkvieg3w"
-              index             = 0
-              isPinned          = false
-              name              = "Input Step"
-              opal              = []
-              queryPresentation = {}
-              renderType        = null
-              summary           = "Compute Metrics (${local.compute_metrics})"
-              type              = "InputStep"
-            },
-            {
-              datasetQuery = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id       = "step-ftjmkvtz"
-              index    = 1
-              isPinned = false
-              name     = "filter (custom)"
-              opal = [
-                "filter metric_category = \"disk\"",
-                "",
-                "filter metric = \"instance_disk_write_ops_count\"",
-                "",
-                "align 2m, frame(back: 1m), \"value\":avg(m(\"instance_disk_write_ops_count\"))",
-                "exists instance_key = @computeID.instance_key",
-                "aggregate \"value\":sum(@.\"value\"), group_by(instance_key)",
-                "topk 100",
-              ]
-              queryPresentation = {}
-              renderType        = null
-              type              = "unknown"
-            },
-          ]
-          type = "table"
-          viewModel = {
-            consoleValue = null
-            railCollapseState = {
-              inputsOutputs = false
-              minimap       = false
-              note          = true
-              script        = true
-            }
-            scriptTab     = "INPUTS"
-            showTimeRuler = true
-            stageTab      = "vis"
-          }
-        }
-        params   = null
-        pipeline = <<-EOT
-                    filter metric_category = "disk"
-                                        
-                    filter metric = "instance_disk_write_ops_count"
-                                        
-                    align 2m, frame(back: 1m), "value":avg(m("instance_disk_write_ops_count"))
-                    exists instance_key = @computeID.instance_key
-                    aggregate "value":sum(@."value"), group_by(instance_key)
-                    topk 100
-                EOT
-      },
-      {
-        id = "stage-j7trzfmb"
-        input = [
-          {
-            datasetId   = "${local.compute_metrics}"
-            datasetPath = null
-            inputName   = "Compute Metrics"
-            inputRole   = "Data"
-            stageId     = null
-          },
-          {
-            datasetId   = null
-            datasetPath = null
-            inputName   = "computeID"
-            inputRole   = "Data"
-            stageId     = null
-          },
-        ]
-        layout = {
-          appearance = "VISIBLE"
-          dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
-            columnOrderOverride = {
-              "0" = "instance_key"
-              "1" = "valid_from"
-              "2" = "valid_to"
-            }
-            columnVisibility            = {}
-            columnWidths                = {}
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
-            selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
-            }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
-          }
-          index = 9
-          inputList = [
-            {
-              datasetId   = "${local.compute_metrics}"
-              inputName   = "Compute Metrics"
-              inputRole   = "Data"
-              isUserInput = false
-            },
-            {
-              inputName   = "computeID"
-              inputRole   = "Data"
-              isUserInput = true
-              parameterId = "computeID"
-            },
-          ]
-          label = "Count of disk read IO operations."
-          managers = [
-            {
-              id                     = "471mzk05"
-              isDisabled             = true
-              isResourceCountEnabled = false
-              parentStageId          = "stage-j7trzfmb"
-              type                   = "Timescrubber"
-            },
-            {
-              id            = "yeyupg29"
-              isDisabled    = false
-              parentStageId = "stage-j7trzfmb"
-              type          = "Vis"
-              vis = {
-                config = {
-                  color         = "Default"
-                  hideGridLines = false
-                  legend = {
-                    placement = "right"
-                    type      = "list"
-                    visible   = false
-                  }
-                  type = "xy"
-                  xConfig = {
-                    visible = true
-                  }
-                  yConfig = {
-                    visible = true
-                  }
-                }
-                source = {
-                  table = {
-                    groupFields = [
-                      [
-                        "instance_key",
-                      ],
-                    ]
-                    statsBy = {
-                      fn = "avg"
-                    }
-                    timechart = {
-                      fn         = "avg"
-                      resolution = "AUTO"
-                    }
-                    transformType = "timechart"
-                    type          = "xy"
-                    y             = "value"
-                  }
-                  type = "table"
-                }
-                type = "timeseries"
-              }
-            },
-          ]
-          queryPresentation = {
-            initialRollupFilter = {
-              mode = "Last"
-            }
-            limit          = 1000
-            linkify        = true
-            loadEverything = false
-            progressive    = true
-            resultKinds = [
-              "ResultKindSchema",
-            ]
-            rollup = {}
-          }
-          renderType     = "TABLE"
-          selectedStepId = null
-          serializable   = true
-          steps = [
-            {
-              datasetQuery = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id                = "step-agyoitqz"
-              index             = 0
-              isPinned          = false
-              name              = "Input Step"
-              opal              = []
-              queryPresentation = {}
-              renderType        = null
-              summary           = "Compute Metrics (${local.compute_metrics})"
-              type              = "InputStep"
-            },
-            {
-              datasetQuery = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id       = "step-wdpawkjl"
-              index    = 1
-              isPinned = false
-              name     = "filter (custom)"
-              opal = [
-                "filter metric_category = \"disk\"",
-                "",
-                "filter metric = \"instance_disk_read_ops_count\"",
-                "",
-                "align 2m, frame(back: 1m), \"value\":avg(m(\"instance_disk_read_ops_count\"))",
-                "exists instance_key = @computeID.instance_key",
-                "aggregate \"value\":sum(@.\"value\"), group_by(instance_key)",
-                "topk 100",
-              ]
-              queryPresentation = {}
-              renderType        = null
-              type              = "unknown"
-            },
-          ]
-          type = "table"
-          viewModel = {
-            consoleValue = null
-            railCollapseState = {
-              inputsOutputs = false
-              minimap       = false
-              note          = true
-              script        = true
-            }
-            scriptTab     = "INPUTS"
-            showTimeRuler = true
-            stageTab      = "vis"
-          }
-        }
-        params   = null
-        pipeline = <<-EOT
-                    filter metric_category = "disk"
-                                        
-                    filter metric = "instance_disk_read_ops_count"
-                                        
-                    align 2m, frame(back: 1m), "value":avg(m("instance_disk_read_ops_count"))
-                    exists instance_key = @computeID.instance_key
-                    aggregate "value":sum(@."value"), group_by(instance_key)
-                    topk 100
-                EOT
-      },
-      {
-        id = "stage-pmsu1uzz"
-        input = [
-          {
-            datasetId   = "${local.compute_metrics}"
-            datasetPath = null
-            inputName   = "resource"
-            inputRole   = "Data"
-            stageId     = null
-          },
-          {
-            datasetId   = null
-            datasetPath = null
-            inputName   = "computeID"
-            inputRole   = "Data"
-            stageId     = null
-          },
-        ]
-        layout = {
-          appearance = "VISIBLE"
-          dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
-            columnOrderOverride = {
-              "1" = "valid_from"
-              "2" = "valid_to"
-            }
-            columnVisibility = {
-              _c_bucket = true
-            }
-            columnWidths = {
-              instance_key    = 185
-              metric_category = 180
-              metric_type     = 193
-            }
-            containerWidth              = 1313
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
-            selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
-            }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
-          }
-          index = 10
-          inputList = [
-            {
-              datasetId   = "${local.compute_metrics}"
-              inputName   = "resource"
-              inputRole   = "Data"
-              isUserInput = false
-            },
-            {
-              inputName   = "computeID"
-              inputRole   = "Data"
-              isUserInput = true
-              parameterId = "computeID"
-            },
-          ]
-          label = "CPU Utilization"
-          managers = [
-            {
-              id            = "9whbch9b"
-              isDisabled    = false
-              parentStageId = "stage-pmsu1uzz"
-              type          = "Vis"
-              vis = {
-                config = {
-                  color         = "Default"
-                  hideGridLines = true
-                  legend = {
-                    placement = "right"
-                    type      = "list"
-                    visible   = false
-                  }
-                  type = "xy"
-                  xConfig = {
-                    axisLabel = "Time"
-                    visible   = true
-                  }
-                  yConfig = {
-                    axisLabel = "Percent"
-                    hideUnits = true
-                    unit      = "1.%"
-                    visible   = true
-                  }
-                }
-                source = {
-                  table = {
-                    groupFields = [
-                      "instance_key",
-                    ]
-                    statsBy       = {}
-                    timechart     = {}
-                    transformType = "none"
-                    type          = "xy"
-                    x             = "valid_from"
-                    y             = "value"
-                  }
-                  type = "table"
-                }
-                type = "timeseries"
-              }
-            },
-            {
-              id                     = "uf9bdall"
-              isDisabled             = true
-              isResourceCountEnabled = false
-              parentStageId          = "stage-pmsu1uzz"
-              type                   = "Timescrubber"
-            },
-            {
-              columnId      = "metric_category"
-              id            = "4fnyb254"
-              isDisabled    = true
-              parentStageId = "stage-pmsu1uzz"
-              type          = "FacetFilter"
-            },
-          ]
-          queryPresentation = {
-            initialRollupFilter = {
-              mode = "Last"
-            }
-            linkify        = false
-            loadEverything = true
-            resultKinds = [
-              "ResultKindSchema",
-            ]
-            rollup = null
-          }
-          selectedStepId = null
-          serializable   = true
-          steps = [
-            {
-              datasetQuery = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id                = "step-wauywmfc"
-              index             = 0
-              isPinned          = false
-              name              = "Input Step"
-              opal              = []
-              queryPresentation = {}
-              renderType        = null
-              summary           = "resource (${local.compute_metrics})"
-              type              = "InputStep"
-            },
-            {
-              columnStatsTable = {
-                columnFunctions = {
-                  instance_key = "count"
-                  value        = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-lej9oz34"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
-              datasetQuery = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id       = "step-jb6lxstn"
-              index    = 1
-              isPinned = false
-              name     = "filter (custom)"
-              opal = [
-                "filter metric_category = \"cpu\"",
-                "filter metric = \"instance_cpu_utilization\"",
-                "align 2m, frame(back: 1m), \"value\":avg(m(string(\"instance_cpu_utilization\")))",
-                "exists instance_key = @computeID.instance_key",
-                "aggregate \"value\":sum(@.\"value\"), group_by(instance_key)",
-                "topk 100",
-              ]
-              queryPresentation = {}
-              renderType        = null
-              type              = "unknown"
-            },
-          ]
-          type = "table"
-          viewModel = {
-            consoleValue = null
-            railCollapseState = {
-              inputsOutputs = false
-              minimap       = false
-              note          = true
-              script        = true
-            }
-            scriptTab     = "SCRIPT"
-            showTimeRuler = true
-            stageTab      = "vis"
-          }
-        }
-        params   = null
-        pipeline = <<-EOT
-                    filter metric_category = "cpu"
-                    filter metric = "instance_cpu_utilization"
-                    align 2m, frame(back: 1m), "value":avg(m(string("instance_cpu_utilization")))
-                    exists instance_key = @computeID.instance_key
-                    aggregate "value":sum(@."value"), group_by(instance_key)
-                    topk 100
-                EOT
-      },
-      {
-        id = "stage-kmd3xtah"
-        input = [
-          {
-            datasetId   = "${local.compute_metrics}"
-            datasetPath = null
-            inputName   = "Compute Metrics"
-            inputRole   = "Data"
-            stageId     = null
-          },
-          {
-            datasetId   = null
-            datasetPath = null
-            inputName   = "computeID"
-            inputRole   = "Data"
-            stageId     = null
-          },
-        ]
-        layout = {
-          appearance = "VISIBLE"
-          dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
-            columnOrderOverride = {
-              "0" = "instance_key"
-              "1" = "valid_from"
-              "2" = "valid_to"
             }
             columnVisibility            = {}
             columnWidths                = {}
@@ -3181,42 +3194,36 @@ resource "observe_dashboard" "compute_monitoring_tf" {
           index = 11
           inputList = [
             {
-              datasetId   = "${local.compute_metrics}"
-              inputName   = "Compute Metrics"
+              inputName   = "dbResource"
               inputRole   = "Data"
               isUserInput = false
-            },
-            {
-              inputName   = "computeID"
-              inputRole   = "Data"
-              isUserInput = true
-              parameterId = "computeID"
+              parameterId = "dbResource"
             },
           ]
-          label = "Count of throttled read operations."
+          label = "Current State"
           managers = [
             {
-              id                     = "471mzk05"
+              id                     = "sc2eh4dq"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-kmd3xtah"
+              parentStageId          = "stage-pe9mq2em"
               type                   = "Timescrubber"
             },
             {
-              id            = "yeyupg29"
+              id            = "fuhnk8qb"
               isDisabled    = false
-              parentStageId = "stage-kmd3xtah"
+              parentStageId = "stage-pe9mq2em"
               type          = "Vis"
               vis = {
                 config = {
-                  color         = "Default"
-                  hideGridLines = false
+                  areaFillType = "SolidFill"
                   legend = {
-                    placement = "right"
+                    placement = "bottom"
                     type      = "list"
-                    visible   = false
+                    visible   = true
                   }
-                  type = "xy"
+                  type                = "bar"
+                  xAxisLabelPlacement = "horizontal"
                   xConfig = {
                     visible = true
                   }
@@ -3225,24 +3232,55 @@ resource "observe_dashboard" "compute_monitoring_tf" {
                   }
                 }
                 source = {
-                  table = {
-                    groupFields = [
-                      "instance_key",
+                  metric = {
+                    aggregate   = "sum"
+                    datasetId   = "${local.cloud_sql_metrics}"
+                    description = <<-EOT
+                                                      The current serving state of the Cloud SQL instance.
+                                            Because there are seven possible states, seven data points are returned.
+                                            Each of them has a different field value representing each state.
+                                            Only the one that matches the current state of the instance is TRUE. All the others are FALSE.
+                                            The state can be one of the following:
+                                            RUNNING:  The instance is running, or is ready to run when accessed.
+                                            SUSPENDED: The instance is not available, for example due to problems with billing.
+                                            RUNNABLE: The instance has been stopped by owner. It is not currently running, but it's ready to be restarted.
+                                            PENDING_CREATE: The instance is being created.
+                                            MAINTENANCE: The instance is down for maintenance.
+                                            FAILED: The instance creation failed.
+                                            UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may take up to 210s to display.
+                                        EOT
+                    groupBy = [
+                      "instance_state_label",
                     ]
-                    statsBy = {
-                      fn = "avg"
+                    heuristics = null
+                    id = {
+                      datasetId = "${local.cloud_sql_metrics}"
+                      name      = "database_instance_state"
                     }
-                    timechart = {
-                      fn         = "avg"
-                      resolution = "AUTO"
+                    interval = 60000
+                    link = {
+                      __typename = "ForeignKey"
+                      dstFields = [
+                        "database_id",
+                      ]
+                      label = "Cloud SQL"
+                      srcFields = [
+                        "database_id",
+                      ]
+                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetStageLabel = null
+                      type             = "foreign"
                     }
-                    transformType = "timechart"
-                    type          = "xy"
-                    y             = "value"
+                    name        = "database_instance_state"
+                    resolution  = 300000
+                    rollup      = "sum"
+                    type        = "gauge"
+                    unit        = ""
+                    userDefined = true
                   }
-                  type = "table"
+                  type = "metric"
                 }
-                type = "timeseries"
+                type = "bar"
               }
             },
           ]
@@ -3264,36 +3302,32 @@ resource "observe_dashboard" "compute_monitoring_tf" {
           serializable   = true
           steps = [
             {
-              datasetQuery = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id                = "step-to76ochn"
-              index             = 0
-              isPinned          = false
-              name              = "Input Step"
-              opal              = []
-              queryPresentation = {}
-              renderType        = null
-              summary           = "Compute Metrics (${local.compute_metrics})"
-              type              = "InputStep"
-            },
-            {
               columnStatsTable = {
-                columnFunctions = {}
+                columnFunctions = {
+                  availabilityType         = "count"
+                  backendType              = "count"
+                  backupConfiguration      = "count"
+                  createTime               = "count"
+                  current_state            = "count"
+                  dataDiskSizeGb           = "count"
+                  dataDiskType             = "count"
+                  databaseFlags            = "count"
+                  databaseInstalledVersion = "count"
+                  databaseVersion          = "count"
+                  database_id              = "count"
+                  gceZone                  = "count"
+                  ipAddressPrimary         = "count"
+                  ipAddresses              = "count"
+                  ipConfiguration          = "count"
+                  name                     = "count"
+                  project_id               = "count"
+                  region                   = "count"
+                  state                    = "count"
+                  tier                     = "count"
+                }
                 datasetQueryId = {
                   ignoreCompress = false
-                  queryId        = "q-65jnz1q1"
+                  queryId        = "q-70bagzha"
                   resultKinds = [
                     "ResultKindSchema",
                     "ResultKindData",
@@ -3317,19 +3351,250 @@ resource "observe_dashboard" "compute_monitoring_tf" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-n9j6dbo9"
+              id                = "step-ng0pqa3s"
+              index             = 0
+              isPinned          = false
+              name              = "Input Step"
+              opal              = []
+              queryPresentation = {}
+              renderType        = null
+              summary           = "dbResource (undefined)"
+              type              = "InputStep"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            scriptTab     = "INPUTS"
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = ""
+      },
+      {
+        id = "stage-9e63b4hp"
+        input = [
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "dbResource"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = "${local.cloud_sql_logs_error}"
+            datasetPath = null
+            inputName   = "Cloud SQL Logs Error"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight             = true
+            columnFooterHeight          = 0
+            columnHeaderHeight          = 29
+            columnOrderOverride         = {}
+            columnVisibility            = {}
+            columnWidths                = {}
+            containerWidth              = 1313
+            contextMenuXCoord           = null
+            contextMenuYCoord           = null
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            eventLinkColumnId           = null
+            fetchPageSize               = 100
+            hasCalculatedColumnWidths   = true
+            hasDoneAutoLayout           = false
+            maxColumnWidth              = 400
+            maxMeasuredColumnWidth      = {}
+            minColumnWidth              = 60
+            minRowHeight                = 30
+            preserveCellAndRowSelection = true
+            rowHeaderWidth              = 20
+            rowHeights                  = {}
+            rowSizeIncrement            = 1
+            scrollToColumn              = null
+            scrollToRow                 = 0
+            selection = {
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 0
+            tableView                  = "TABULAR"
+          }
+          index = 12
+          inputList = [
+            {
+              inputName   = "dbResource"
+              inputRole   = "Data"
+              isUserInput = false
+              parameterId = "dbResource"
+            },
+            {
+              datasetId   = "${local.cloud_sql_logs_error}"
+              inputName   = "Cloud SQL Logs Error"
+              inputRole   = "Data"
+              isUserInput = true
+            },
+          ]
+          label = "Errors"
+          managers = [
+            {
+              id                     = "hp2cuf8g"
+              isDisabled             = false
+              isResourceCountEnabled = false
+              parentStageId          = "stage-9e63b4hp"
+              type                   = "Timescrubber"
+            },
+            {
+              id            = "ecmky31q"
+              isDisabled    = true
+              parentStageId = "stage-9e63b4hp"
+              type          = "Vis"
+              vis = {
+                config = {
+                  color         = "Default"
+                  hideGridLines = false
+                  legend = {
+                    placement = "right"
+                    type      = "list"
+                    visible   = true
+                  }
+                  type = "xy"
+                  xConfig = {
+                    visible = true
+                  }
+                  yConfig = {
+                    visible = true
+                  }
+                }
+                source = {
+                  table = {
+                    groupFields = [
+                      "severity",
+                    ]
+                    statsBy = {
+                      fn = "count"
+                    }
+                    timechart = {
+                      fn         = "count"
+                      resolution = "AUTO"
+                    }
+                    transformType = "timechart"
+                    type          = "xy"
+                    y             = "severity"
+                  }
+                  type = "table"
+                }
+                type = "timeseries"
+              }
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            limit          = 1000
+            linkify        = true
+            loadEverything = false
+            progressive    = true
+            resultKinds = [
+              "ResultKindSchema",
+              "ResultKindData",
+              "ResultKindStats",
+              "ResultKindProgress",
+            ]
+            rollup = {}
+          }
+          renderType     = "TABLE"
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              datasetQuery = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-gula9fpw"
+              index             = 0
+              isPinned          = false
+              name              = "Input Step"
+              opal              = []
+              queryPresentation = {}
+              renderType        = null
+              summary           = "dbResource (undefined)"
+              type              = "InputStep"
+            },
+            {
+              columnStatsTable = {
+                columnFunctions = {
+                  log_Name     = "count"
+                  log_Source   = "count"
+                  project_id   = "count"
+                  protoPayload = "count"
+                  region       = "count"
+                  severity     = "count"
+                  textPayload  = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-gjdr8j4s"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              datasetQuery = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-374t8dm0"
               index    = 1
               isPinned = false
-              name     = "filter (custom)"
+              name     = "follow (custom)"
               opal = [
-                "filter metric_category = \"disk\"",
-                "",
-                "filter metric = \"instance_disk_throttled_read_ops_count\"",
-                "",
-                "align 2m, frame(back: 1m), \"value\":avg(m(\"instance_disk_throttled_read_ops_count\"))",
-                "exists instance_key = @computeID.instance_key",
-                "aggregate \"value\":sum(@.\"value\"), group_by(instance_key)",
-                "topk 100",
+                "follow database_id = @\"Cloud SQL Logs Error\".database_id",
               ]
               queryPresentation = {}
               renderType        = null
@@ -3345,37 +3610,21 @@ resource "observe_dashboard" "compute_monitoring_tf" {
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
+            scriptTab     = "INPUTS"
             showTimeRuler = true
-            stageTab      = "vis"
+            stageTab      = "table"
           }
         }
         params   = null
-        pipeline = <<-EOT
-                    filter metric_category = "disk"
-                                        
-                    filter metric = "instance_disk_throttled_read_ops_count"
-                                        
-                    align 2m, frame(back: 1m), "value":avg(m("instance_disk_throttled_read_ops_count"))
-                    exists instance_key = @computeID.instance_key
-                    aggregate "value":sum(@."value"), group_by(instance_key)
-                    topk 100
-                EOT
+        pipeline = "follow database_id = @\"Cloud SQL Logs Error\".database_id"
       },
       {
-        id = "stage-d4h31odg"
+        id = "stage-h169l5vk"
         input = [
-          {
-            datasetId   = "${local.compute_metrics}"
-            datasetPath = null
-            inputName   = "Compute Metrics"
-            inputRole   = "Data"
-            stageId     = null
-          },
           {
             datasetId   = null
             datasetPath = null
-            inputName   = "computeID"
+            inputName   = "dbResource"
             inputRole   = "Data"
             stageId     = null
           },
@@ -3387,9 +3636,9 @@ resource "observe_dashboard" "compute_monitoring_tf" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_key"
-              "1" = "valid_from"
-              "2" = "valid_to"
+              "0" = "name"
+              "2" = "Valid From"
+              "3" = "Valid To"
             }
             columnVisibility            = {}
             columnWidths                = {}
@@ -3426,321 +3675,58 @@ resource "observe_dashboard" "compute_monitoring_tf" {
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index = 12
-          inputList = [
-            {
-              datasetId   = "${local.compute_metrics}"
-              inputName   = "Compute Metrics"
-              inputRole   = "Data"
-              isUserInput = false
-            },
-            {
-              inputName   = "computeID"
-              inputRole   = "Data"
-              isUserInput = true
-              parameterId = "computeID"
-            },
-          ]
-          label = "Count of throttled write operations."
-          managers = [
-            {
-              id                     = "471mzk05"
-              isDisabled             = true
-              isResourceCountEnabled = false
-              parentStageId          = "stage-d4h31odg"
-              type                   = "Timescrubber"
-            },
-            {
-              id            = "yeyupg29"
-              isDisabled    = false
-              parentStageId = "stage-d4h31odg"
-              type          = "Vis"
-              vis = {
-                config = {
-                  color         = "Default"
-                  hideGridLines = false
-                  legend = {
-                    placement = "right"
-                    type      = "list"
-                    visible   = false
-                  }
-                  type = "xy"
-                  xConfig = {
-                    visible = true
-                  }
-                  yConfig = {
-                    visible = true
-                  }
-                }
-                source = {
-                  table = {
-                    groupFields = [
-                      "instance_key",
-                    ]
-                    statsBy = {
-                      fn = "avg"
-                    }
-                    timechart = {
-                      fn         = "avg"
-                      resolution = "AUTO"
-                    }
-                    transformType = "timechart"
-                    type          = "xy"
-                    y             = "value"
-                  }
-                  type = "table"
-                }
-                type = "timeseries"
-              }
-            },
-          ]
-          queryPresentation = {
-            initialRollupFilter = {
-              mode = "Last"
-            }
-            limit          = 1000
-            linkify        = true
-            loadEverything = false
-            progressive    = true
-            resultKinds = [
-              "ResultKindSchema",
-            ]
-            rollup = {}
-          }
-          renderType     = "TABLE"
-          selectedStepId = null
-          serializable   = true
-          steps = [
-            {
-              datasetQuery = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id                = "step-qtwkpfez"
-              index             = 0
-              isPinned          = false
-              name              = "Input Step"
-              opal              = []
-              queryPresentation = {}
-              renderType        = null
-              summary           = "Compute Metrics (${local.compute_metrics})"
-              type              = "InputStep"
-            },
-            {
-              columnStatsTable = {
-                columnFunctions = {}
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-9ez28une"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
-              datasetQuery = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id       = "step-syseomld"
-              index    = 1
-              isPinned = false
-              name     = "filter (custom)"
-              opal = [
-                "filter metric_category = \"disk\"",
-                "",
-                "filter metric = \"instance_disk_throttled_write_ops_count\"",
-                "",
-                "align 2m, frame(back: 1m), \"value\":avg(m(\"instance_disk_throttled_write_ops_count\"))",
-                "exists instance_key = @computeID.instance_key",
-                "aggregate \"value\":sum(@.\"value\"), group_by(instance_key)",
-                "topk 100",
-              ]
-              queryPresentation = {}
-              renderType        = null
-              type              = "unknown"
-            },
-          ]
-          type = "table"
-          viewModel = {
-            consoleValue = null
-            railCollapseState = {
-              inputsOutputs = false
-              minimap       = false
-              note          = true
-              script        = true
-            }
-            scriptTab     = "INPUTS"
-            showTimeRuler = true
-            stageTab      = "vis"
-          }
-        }
-        params   = null
-        pipeline = <<-EOT
-                    filter metric_category = "disk"
-                                        
-                    filter metric = "instance_disk_throttled_write_ops_count"
-                                        
-                    align 2m, frame(back: 1m), "value":avg(m("instance_disk_throttled_write_ops_count"))
-                    exists instance_key = @computeID.instance_key
-                    aggregate "value":sum(@."value"), group_by(instance_key)
-                    topk 100
-                EOT
-      },
-      {
-        id = "stage-3ks89dsy"
-        input = [
-          {
-            datasetId   = "${local.compute_metrics}"
-            datasetPath = null
-            inputName   = "Compute Metrics"
-            inputRole   = "Data"
-            stageId     = null
-          },
-          {
-            datasetId   = null
-            datasetPath = null
-            inputName   = "computeID"
-            inputRole   = "Data"
-            stageId     = null
-          },
-        ]
-        layout = {
-          appearance = "VISIBLE"
-          dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
-            columnOrderOverride = {
-              "0" = "instance_key"
-              "1" = "valid_from"
-              "2" = "valid_to"
-            }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 2145
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
-            selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
-            }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
-          }
           index = 13
           inputList = [
             {
-              datasetId   = "${local.compute_metrics}"
-              inputName   = "Compute Metrics"
+              inputName   = "dbResource"
               inputRole   = "Data"
               isUserInput = false
-            },
-            {
-              inputName   = "computeID"
-              inputRole   = "Data"
-              isUserInput = true
-              parameterId = "computeID"
+              parameterId = "dbResource"
             },
           ]
-          label = "Count of packets received from the network."
+          label = "Zones"
           managers = [
             {
-              id                     = "471mzk05"
+              id                     = "7rvwc9lt"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-3ks89dsy"
+              parentStageId          = "stage-h169l5vk"
               type                   = "Timescrubber"
             },
             {
-              id            = "yeyupg29"
+              id            = "e0mkbwu0"
               isDisabled    = false
-              parentStageId = "stage-3ks89dsy"
+              parentStageId = "stage-h169l5vk"
               type          = "Vis"
               vis = {
                 config = {
-                  color         = "Default"
-                  hideGridLines = false
+                  innerRadius = 0.6
                   legend = {
                     placement = "right"
                     type      = "list"
-                    visible   = false
+                    visible   = true
                   }
-                  type = "xy"
-                  xConfig = {
-                    visible = true
-                  }
-                  yConfig = {
-                    visible = true
-                  }
+                  type = "arc"
                 }
                 source = {
                   table = {
-                    groupFields = [
-                      [
-                        "instance_key",
-                      ],
+                    keyField = [
+                      "gceZone",
                     ]
                     statsBy = {
-                      fn = "avg"
+                      fn = "count"
                     }
                     timechart = {
-                      fn         = "avg"
-                      resolution = "AUTO"
+                      fn         = "count"
+                      resolution = "SINGLE"
                     }
                     transformType = "timechart"
-                    type          = "xy"
-                    y             = "value"
+                    type          = "keyvalue"
+                    valueField    = "gceZone"
                   }
                   type = "table"
                 }
-                type = "timeseries"
+                type = "circular"
               }
             },
           ]
@@ -3762,38 +3748,31 @@ resource "observe_dashboard" "compute_monitoring_tf" {
           serializable   = true
           steps = [
             {
-              datasetQuery = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id                = "step-rn8sbs1c"
-              index             = 0
-              isPinned          = false
-              name              = "Input Step"
-              opal              = []
-              queryPresentation = {}
-              renderType        = null
-              summary           = "Compute Metrics (${local.compute_metrics})"
-              type              = "InputStep"
-            },
-            {
               columnStatsTable = {
                 columnFunctions = {
-                  value = "count"
+                  availabilityType         = "count"
+                  backendType              = "count"
+                  backupConfiguration      = "count"
+                  createTime               = "count"
+                  dataDiskSizeGb           = "count"
+                  dataDiskType             = "count"
+                  databaseFlags            = "count"
+                  databaseInstalledVersion = "count"
+                  databaseVersion          = "count"
+                  database_id              = "count"
+                  gceZone                  = "count"
+                  ipAddressPrimary         = "count"
+                  ipAddresses              = "count"
+                  ipConfiguration          = "count"
+                  name                     = "count"
+                  project_id               = "count"
+                  region                   = "count"
+                  state                    = "count"
+                  tier                     = "count"
                 }
                 datasetQueryId = {
                   ignoreCompress = false
-                  queryId        = "q-d7hops86"
+                  queryId        = "q-s65ahr2g"
                   resultKinds = [
                     "ResultKindSchema",
                     "ResultKindData",
@@ -3817,23 +3796,15 @@ resource "observe_dashboard" "compute_monitoring_tf" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-ri4kpsbu"
-              index    = 1
-              isPinned = false
-              name     = "filter (custom)"
-              opal = [
-                "filter metric_category = \"network\"",
-                "",
-                "filter metric = \"instance_network_received_packets_count\"",
-                "",
-                "align 2m, frame(back: 1m), \"value\":avg(m(\"instance_network_received_packets_count\"))",
-                "exists instance_key = @computeID.instance_key",
-                "aggregate \"value\":sum(@.\"value\"), group_by(instance_key)",
-                "topk 100",
-              ]
+              id                = "step-b0e3x1dr"
+              index             = 0
+              isPinned          = false
+              name              = "Input Step"
+              opal              = []
               queryPresentation = {}
               renderType        = null
-              type              = "unknown"
+              summary           = "dbResource (undefined)"
+              type              = "InputStep"
             },
           ]
           type = "table"
@@ -3845,37 +3816,21 @@ resource "observe_dashboard" "compute_monitoring_tf" {
               note          = true
               script        = true
             }
-            scriptTab     = "INPUTS"
+            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
         }
         params   = null
-        pipeline = <<-EOT
-                    filter metric_category = "network"
-                                        
-                    filter metric = "instance_network_received_packets_count"
-                                        
-                    align 2m, frame(back: 1m), "value":avg(m("instance_network_received_packets_count"))
-                    exists instance_key = @computeID.instance_key
-                    aggregate "value":sum(@."value"), group_by(instance_key)
-                    topk 100
-                EOT
+        pipeline = ""
       },
       {
-        id = "stage-q8h3nsju"
+        id = "stage-bv986tcd"
         input = [
-          {
-            datasetId   = "${local.compute_metrics}"
-            datasetPath = null
-            inputName   = "Compute Metrics"
-            inputRole   = "Data"
-            stageId     = null
-          },
           {
             datasetId   = null
             datasetPath = null
-            inputName   = "computeID"
+            inputName   = "dbResource"
             inputRole   = "Data"
             stageId     = null
           },
@@ -3887,19 +3842,20 @@ resource "observe_dashboard" "compute_monitoring_tf" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_key"
-              "1" = "valid_from"
-              "2" = "valid_to"
+              "0" = "name"
+              "2" = "Valid From"
+              "3" = "Valid To"
             }
             columnVisibility            = {}
             columnWidths                = {}
+            containerWidth              = 1313
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
             disableFixedLeftColumns     = false
             eventLinkColumnId           = null
             fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
+            hasCalculatedColumnWidths   = true
             hasDoneAutoLayout           = false
             maxColumnWidth              = 400
             maxMeasuredColumnWidth      = {}
@@ -3912,12 +3868,16 @@ resource "observe_dashboard" "compute_monitoring_tf" {
             scrollToColumn              = null
             scrollToRow                 = 0
             selection = {
-              cells                = {}
+              cells = {
+                name = {
+                  "4" = true
+                }
+              }
               columnSelectSequence = []
               columns              = {}
               highlightState       = {}
               rows                 = {}
-              selectionType        = "table"
+              selectionType        = "cell"
             }
             shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
@@ -3928,71 +3888,20 @@ resource "observe_dashboard" "compute_monitoring_tf" {
           index = 14
           inputList = [
             {
-              datasetId   = "${local.compute_metrics}"
-              inputName   = "Compute Metrics"
+              inputName   = "dbResource"
               inputRole   = "Data"
               isUserInput = false
-            },
-            {
-              inputName   = "computeID"
-              inputRole   = "Data"
-              isUserInput = true
-              parameterId = "computeID"
+              parameterId = "dbResource"
             },
           ]
-          label = "Count of packets sent over the network."
+          label = "Database List"
           managers = [
             {
-              id                     = "471mzk05"
-              isDisabled             = true
+              id                     = "lvkob97u"
+              isDisabled             = false
               isResourceCountEnabled = false
-              parentStageId          = "stage-q8h3nsju"
+              parentStageId          = "stage-bv986tcd"
               type                   = "Timescrubber"
-            },
-            {
-              id            = "yeyupg29"
-              isDisabled    = false
-              parentStageId = "stage-q8h3nsju"
-              type          = "Vis"
-              vis = {
-                config = {
-                  color         = "Default"
-                  hideGridLines = false
-                  legend = {
-                    placement = "right"
-                    type      = "list"
-                    visible   = false
-                  }
-                  type = "xy"
-                  xConfig = {
-                    visible = true
-                  }
-                  yConfig = {
-                    visible = true
-                  }
-                }
-                source = {
-                  table = {
-                    groupFields = [
-                      [
-                        "instance_key",
-                      ],
-                    ]
-                    statsBy = {
-                      fn = "avg"
-                    }
-                    timechart = {
-                      fn         = "avg"
-                      resolution = "AUTO"
-                    }
-                    transformType = "timechart"
-                    type          = "xy"
-                    y             = "value"
-                  }
-                  type = "table"
-                }
-                type = "timeseries"
-              }
             },
           ]
           queryPresentation = {
@@ -4004,7 +3913,10 @@ resource "observe_dashboard" "compute_monitoring_tf" {
             loadEverything = false
             progressive    = true
             resultKinds = [
+              "ResultKindStats",
+              "ResultKindData",
               "ResultKindSchema",
+              "ResultKindProgress",
             ]
             rollup = {}
           }
@@ -4013,6 +3925,40 @@ resource "observe_dashboard" "compute_monitoring_tf" {
           serializable   = true
           steps = [
             {
+              columnStatsTable = {
+                columnFunctions = {
+                  availabilityType         = "count"
+                  backendType              = "count"
+                  backupConfiguration      = "count"
+                  dataDiskSizeGb           = "count"
+                  dataDiskType             = "count"
+                  databaseFlags            = "count"
+                  databaseInstalledVersion = "count"
+                  databaseVersion          = "count"
+                  database_id              = "count"
+                  deleted                  = "count"
+                  gceZone                  = "count"
+                  ipAddressPrimary         = "count"
+                  ipAddresses              = "count"
+                  ipConfiguration          = "count"
+                  name                     = "count"
+                  project_id               = "count"
+                  region                   = "count"
+                  tier                     = "count"
+                  ttl                      = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-qo2q3bp3"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
               datasetQuery = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -4027,17 +3973,51 @@ resource "observe_dashboard" "compute_monitoring_tf" {
                   "SUMMARY",
                 ]
               }
-              id                = "step-9lxhvnku"
+              id                = "step-za0t1cme"
               index             = 0
               isPinned          = false
               name              = "Input Step"
               opal              = []
               queryPresentation = {}
               renderType        = null
-              summary           = "Compute Metrics (${local.compute_metrics})"
+              summary           = "dbResource (undefined)"
               type              = "InputStep"
             },
             {
+              columnStatsTable = {
+                columnFunctions = {
+                  availabilityType         = "count"
+                  backendType              = "count"
+                  backupConfiguration      = "count"
+                  dataDiskSizeGb           = "count"
+                  dataDiskType             = "count"
+                  databaseFlags            = "count"
+                  databaseInstalledVersion = "count"
+                  databaseVersion          = "count"
+                  database_id              = "count"
+                  deleted                  = "count"
+                  gceZone                  = "count"
+                  ipAddressPrimary         = "count"
+                  ipAddresses              = "count"
+                  ipConfiguration          = "count"
+                  name                     = "count"
+                  project_id               = "count"
+                  region                   = "count"
+                  tier                     = "count"
+                  ttl                      = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-t9an11y7"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
               datasetQuery = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -4052,19 +4032,19 @@ resource "observe_dashboard" "compute_monitoring_tf" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-j1zm5lim"
+              id       = "step-sjbhpn8c"
               index    = 1
               isPinned = false
-              name     = "filter (custom)"
+              name     = "pick_col (custom)"
               opal = [
-                "filter metric_category = \"network\"",
-                "",
-                "filter metric = \"instance_network_sent_packets_count\"",
-                "",
-                "align 2m, frame(back: 1m), \"value\":avg(m(\"instance_network_sent_packets_count\"))",
-                "exists instance_key = @computeID.instance_key",
-                "aggregate \"value\":sum(@.\"value\"), group_by(instance_key)",
-                "topk 100",
+                "pick_col ",
+                "\tdatabase_id,",
+                "    databaseVersion,",
+                "    name,",
+                "    @.\"Valid From\",",
+                "    @.\"Valid To\"",
+                "    ",
+                "colshow database_id: false",
               ]
               queryPresentation = {}
               renderType        = null
@@ -4082,35 +4062,28 @@ resource "observe_dashboard" "compute_monitoring_tf" {
             }
             scriptTab     = "INPUTS"
             showTimeRuler = true
-            stageTab      = "vis"
+            stageTab      = "table"
           }
         }
         params   = null
         pipeline = <<-EOT
-                    filter metric_category = "network"
-                                        
-                    filter metric = "instance_network_sent_packets_count"
-                                        
-                    align 2m, frame(back: 1m), "value":avg(m("instance_network_sent_packets_count"))
-                    exists instance_key = @computeID.instance_key
-                    aggregate "value":sum(@."value"), group_by(instance_key)
-                    topk 100
+                    pick_col 
+                    	database_id,
+                        databaseVersion,
+                        name,
+                        @."Valid From",
+                        @."Valid To"
+                        
+                    colshow database_id: false
                 EOT
       },
       {
-        id = "stage-9qqbf5wc"
+        id = "stage-perdox7c"
         input = [
-          {
-            datasetId   = "${local.compute_metrics}"
-            datasetPath = null
-            inputName   = "Compute Metrics"
-            inputRole   = "Data"
-            stageId     = null
-          },
           {
             datasetId   = null
             datasetPath = null
-            inputName   = "computeID"
+            inputName   = "dbResource"
             inputRole   = "Data"
             stageId     = null
           },
@@ -4122,12 +4095,13 @@ resource "observe_dashboard" "compute_monitoring_tf" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_key"
-              "1" = "valid_from"
-              "2" = "valid_to"
+              "0" = "name"
+              "2" = "Valid From"
+              "3" = "Valid To"
             }
             columnVisibility            = {}
             columnWidths                = {}
+            containerWidth              = 1313
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -4163,36 +4137,30 @@ resource "observe_dashboard" "compute_monitoring_tf" {
           index = 15
           inputList = [
             {
-              datasetId   = "${local.compute_metrics}"
-              inputName   = "Compute Metrics"
+              inputName   = "dbResource"
               inputRole   = "Data"
               isUserInput = false
-            },
-            {
-              inputName   = "computeID"
-              inputRole   = "Data"
-              isUserInput = true
-              parameterId = "computeID"
+              parameterId = "dbResource"
             },
           ]
-          label = "Count of bytes received from the network."
+          label = "Disk Usage By Type"
           managers = [
             {
-              id                     = "471mzk05"
+              id                     = "d7kdphj6"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-9qqbf5wc"
+              parentStageId          = "stage-perdox7c"
               type                   = "Timescrubber"
             },
             {
-              id            = "yeyupg29"
+              id            = "t6x5av1a"
               isDisabled    = false
-              parentStageId = "stage-9qqbf5wc"
+              parentStageId = "stage-perdox7c"
               type          = "Vis"
               vis = {
                 config = {
                   color         = "Default"
-                  hideGridLines = false
+                  hideGridLines = true
                   legend = {
                     placement = "right"
                     type      = "list"
@@ -4207,24 +4175,113 @@ resource "observe_dashboard" "compute_monitoring_tf" {
                   }
                 }
                 source = {
-                  table = {
-                    groupFields = [
-                      [
-                        "instance_key",
-                      ],
+                  metric = {
+                    aggregate   = "sum"
+                    datasetId   = "${local.cloud_sql_metrics}"
+                    description = "Auto Detected Metric"
+                    groupBy = [
+                      "metric_labels",
+                      "database_id",
                     ]
-                    statsBy = {
-                      fn = "avg"
+                    heuristics = {
+                      __typename = "MetricHeuristics"
+                      tags = [
+                        {
+                          __typename = "MetricTag"
+                          column     = "database_id"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "database_platform"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "label"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "metric_category"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "metric_kind"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "metric_kind_text"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "metric_type"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "project_id"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "region"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "value_type"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "value_type_text"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "instance_state_label"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "metric_labels"
+                          path       = "data_type"
+                        },
+                      ]
+                      validLinkLabels = [
+                        "Cloud SQL Metrics",
+                      ]
                     }
-                    timechart = {
-                      fn         = "avg"
-                      resolution = "AUTO"
+                    id = {
+                      datasetId = "${local.cloud_sql_metrics}"
+                      name      = "database_disk_bytes_used_by_data_type"
                     }
-                    transformType = "timechart"
-                    type          = "xy"
-                    y             = "value"
+                    interval = null
+                    link = {
+                      __typename = "ForeignKey"
+                      dstFields = [
+                        "database_id",
+                      ]
+                      label = "Cloud SQL Metrics"
+                      srcFields = [
+                        "database_id",
+                      ]
+                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetStageLabel = null
+                      type             = "foreign"
+                    }
+                    name        = "database_disk_bytes_used_by_data_type"
+                    resolution  = "AUTO"
+                    rollup      = "sum"
+                    type        = "gauge"
+                    unit        = "bit"
+                    userDefined = false
                   }
-                  type = "table"
+                  type = "metric"
                 }
                 type = "timeseries"
               }
@@ -4248,222 +4305,31 @@ resource "observe_dashboard" "compute_monitoring_tf" {
           serializable   = true
           steps = [
             {
-              datasetQuery = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id                = "step-b8zblo03"
-              index             = 0
-              isPinned          = false
-              name              = "Input Step"
-              opal              = []
-              queryPresentation = {}
-              renderType        = null
-              summary           = "Compute Metrics (${local.compute_metrics})"
-              type              = "InputStep"
-            },
-            {
-              datasetQuery = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id       = "step-968mbb10"
-              index    = 1
-              isPinned = false
-              name     = "filter (custom)"
-              opal = [
-                "filter metric_category = \"network\"",
-                "",
-                "filter metric = \"instance_network_sent_packets_count\"",
-                "",
-                "align 2m, frame(back: 1m), \"value\":avg(m(\"instance_network_sent_packets_count\"))",
-                "exists instance_key = @computeID.instance_key",
-                "aggregate \"value\":sum(@.\"value\"), group_by(instance_key)",
-                "topk 100",
-              ]
-              queryPresentation = {}
-              renderType        = null
-              type              = "unknown"
-            },
-          ]
-          type = "table"
-          viewModel = {
-            consoleValue = <<-EOT
-                            filter metric_category = "network"
-                                                        
-                            filter metric = "instance_network_received_bytes_count"
-                                                        
-                            align 2m, frame(back: 1m), "value":avg(m("instance_network_received_bytes_count"))
-                            exists instance_key = @computeID.instance_key
-                            aggregate "value":sum(@."value"), group_by(instance_key)
-                            topk 100
-                        EOT
-            railCollapseState = {
-              inputsOutputs = false
-              minimap       = false
-              note          = true
-              script        = true
-            }
-            scriptTab     = "INPUTS"
-            showTimeRuler = true
-            stageTab      = "vis"
-          }
-        }
-        params   = null
-        pipeline = <<-EOT
-                    filter metric_category = "network"
-                                        
-                    filter metric = "instance_network_sent_packets_count"
-                                        
-                    align 2m, frame(back: 1m), "value":avg(m("instance_network_sent_packets_count"))
-                    exists instance_key = @computeID.instance_key
-                    aggregate "value":sum(@."value"), group_by(instance_key)
-                    topk 100
-                EOT
-      },
-      {
-        id = "stage-4qz8g1va"
-        input = [
-          {
-            datasetId   = null
-            datasetPath = null
-            inputName   = "computeID"
-            inputRole   = "Data"
-            stageId     = null
-          },
-        ]
-        layout = {
-          appearance = "VISIBLE"
-          dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
-            columnOrderOverride = {
-              "0" = "instance_name"
-              "2" = "Valid From"
-              "3" = "Valid To"
-            }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 285
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = true
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
-            selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
-            }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
-          }
-          index = 16
-          inputList = [
-            {
-              inputName   = "computeID"
-              inputRole   = "Data"
-              isUserInput = false
-              parameterId = "computeID"
-            },
-          ]
-          label = "Stage 17"
-          managers = [
-            {
-              id                     = "09ukqxrf"
-              isDisabled             = true
-              isResourceCountEnabled = false
-              parentStageId          = "stage-4qz8g1va"
-              type                   = "Timescrubber"
-            },
-          ]
-          queryPresentation = {
-            initialRollupFilter = {
-              mode = "Last"
-            }
-            limit          = 1000
-            linkify        = true
-            loadEverything = false
-            progressive    = true
-            resultKinds = [
-              "ResultKindStats",
-              "ResultKindData",
-              "ResultKindSchema",
-              "ResultKindProgress",
-            ]
-            rollup = {}
-          }
-          renderType     = "TABLE"
-          selectedStepId = null
-          serializable   = true
-          steps = [
-            {
               columnStatsTable = {
                 columnFunctions = {
-                  cpuPlatform        = "count"
-                  creationTime       = "count"
-                  deleted            = "count"
-                  deletionProtection = "count"
-                  instance_group     = "count"
-                  instance_id        = "count"
-                  instance_key       = "count"
-                  instance_name      = "count"
-                  labels             = "count"
-                  machineType        = "count"
-                  network            = "count"
-                  networkIP          = "count"
-                  project_id         = "count"
-                  publicIP           = "count"
-                  region             = "count"
-                  status             = "count"
-                  subnetwork         = "count"
-                  tags               = "count"
-                  ttl                = "count"
-                  zone               = "count"
+                  availabilityType         = "count"
+                  backendType              = "count"
+                  backupConfiguration      = "count"
+                  dataDiskSizeGb           = "count"
+                  dataDiskType             = "count"
+                  databaseFlags            = "count"
+                  databaseInstalledVersion = "count"
+                  databaseVersion          = "count"
+                  database_id              = "count"
+                  deleted                  = "count"
+                  gceZone                  = "count"
+                  ipAddressPrimary         = "count"
+                  ipAddresses              = "count"
+                  ipConfiguration          = "count"
+                  name                     = "count"
+                  project_id               = "count"
+                  region                   = "count"
+                  tier                     = "count"
+                  ttl                      = "count"
                 }
                 datasetQueryId = {
                   ignoreCompress = false
-                  queryId        = "q-51dwph8f"
+                  queryId        = "q-d7bw0cc9"
                   resultKinds = [
                     "ResultKindSchema",
                     "ResultKindData",
@@ -4487,14 +4353,14 @@ resource "observe_dashboard" "compute_monitoring_tf" {
                   "SUMMARY",
                 ]
               }
-              id                = "step-r71opp54"
+              id                = "step-dh14h8pn"
               index             = 0
               isPinned          = false
               name              = "Input Step"
               opal              = []
               queryPresentation = {}
               renderType        = null
-              summary           = "computeID (undefined)"
+              summary           = "dbResource (undefined)"
               type              = "InputStep"
             },
           ]
@@ -4509,19 +4375,19 @@ resource "observe_dashboard" "compute_monitoring_tf" {
             }
             scriptTab     = "SCRIPT"
             showTimeRuler = true
-            stageTab      = "table"
+            stageTab      = "vis"
           }
         }
         params   = null
         pipeline = ""
       },
       {
-        id = "stage-x2r9aqus"
+        id = "stage-wy53129b"
         input = [
           {
             datasetId   = null
             datasetPath = null
-            inputName   = "computeID"
+            inputName   = "dbResource"
             inputRole   = "Data"
             stageId     = null
           },
@@ -4533,13 +4399,13 @@ resource "observe_dashboard" "compute_monitoring_tf" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_name"
+              "0" = "name"
               "2" = "Valid From"
               "3" = "Valid To"
             }
             columnVisibility            = {}
             columnWidths                = {}
-            containerWidth              = 2145
+            containerWidth              = 1313
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -4572,72 +4438,124 @@ resource "observe_dashboard" "compute_monitoring_tf" {
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index = 17
+          index = 16
           inputList = [
             {
-              inputName   = "computeID"
+              inputName   = "dbResource"
               inputRole   = "Data"
               isUserInput = false
-              parameterId = "computeID"
+              parameterId = "dbResource"
             },
           ]
-          label = "Status Over Time"
+          label = "Percent Disk Used"
           managers = [
             {
-              id                     = "qt1nyhy3"
+              id                     = "7xb4iip9"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-x2r9aqus"
+              parentStageId          = "stage-wy53129b"
               type                   = "Timescrubber"
             },
             {
-              id            = "e7f2v94u"
+              id            = "kahpojid"
               isDisabled    = false
-              parentStageId = "stage-x2r9aqus"
+              parentStageId = "stage-wy53129b"
               type          = "Vis"
               vis = {
                 config = {
-                  areaFillType = "SolidFill"
+                  color         = "Default"
+                  hideGridLines = true
                   legend = {
-                    placement = "bottom"
+                    placement = "right"
                     type      = "list"
-                    visible   = true
+                    visible   = false
                   }
-                  type                = "bar"
-                  xAxisLabelPlacement = "horizontal"
+                  type = "xy"
                   xConfig = {
                     visible = true
                   }
                   yConfig = {
+                    unit    = ""
                     visible = true
                   }
                 }
                 source = {
-                  table = {
-                    groupFields = [
-                      "status",
+                  metric = {
+                    aggregate   = "sum"
+                    datasetId   = "${local.cloud_sql_metrics_wide}"
+                    description = <<-EOT
+                                            Percentage of disk quota used
+                                        EOT
+                    groupBy = [
+                      "database_id",
                     ]
-                    statsBy = {
-                      fn = "count"
+                    heuristics = {
+                      __typename = "MetricHeuristics"
+                      tags = [
+                        {
+                          __typename = "MetricTag"
+                          column     = "database_id"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "database_platform"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "metric_category"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "project_id"
+                          path       = ""
+                        },
+                        {
+                          __typename = "MetricTag"
+                          column     = "region"
+                          path       = ""
+                        },
+                      ]
+                      validLinkLabels = [
+                        "Cloud SQL Metrics Wide",
+                      ]
                     }
-                    timechart = {
-                      fn         = "count"
-                      fnArgs     = null
-                      resolution = 300000
+                    id = {
+                      datasetId = "${local.cloud_sql_metrics_wide}"
+                      name      = "percent_disk_used"
                     }
-                    transformType = "timechart"
-                    type          = "xy"
-                    y             = "status"
+                    interval = 60000
+                    link = {
+                      __typename = "ForeignKey"
+                      dstFields = [
+                        "database_id",
+                      ]
+                      label = "Cloud SQL Metrics Wide"
+                      srcFields = [
+                        "database_id",
+                      ]
+                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetStageLabel = null
+                      type             = "foreign"
+                    }
+                    name        = "percent_disk_used"
+                    rollup      = "avg"
+                    type        = "gauge"
+                    unit        = ""
+                    userDefined = true
                   }
-                  topK = {
-                    fnArgs = []
-                    k      = 100
-                    type   = "Auto"
-                  }
-                  type = "table"
+                  type = "metric"
                 }
-                type = "bar"
+                type = "timeseries"
               }
+            },
+            {
+              id            = "hup0o50d"
+              isDisabled    = true
+              parentStageId = "stage-wy53129b"
+              type          = "RelatedContent"
             },
           ]
           queryPresentation = {
@@ -4660,30 +4578,29 @@ resource "observe_dashboard" "compute_monitoring_tf" {
             {
               columnStatsTable = {
                 columnFunctions = {
-                  cpuPlatform        = "count"
-                  creationTime       = "count"
-                  deleted            = "count"
-                  deletionProtection = "count"
-                  instance_group     = "count"
-                  instance_id        = "count"
-                  instance_key       = "count"
-                  instance_name      = "count"
-                  labels             = "count"
-                  machineType        = "count"
-                  network            = "count"
-                  networkIP          = "count"
-                  project_id         = "count"
-                  publicIP           = "count"
-                  region             = "count"
-                  status             = "count"
-                  subnetwork         = "count"
-                  tags               = "count"
-                  ttl                = "count"
-                  zone               = "count"
+                  availabilityType         = "count"
+                  backendType              = "count"
+                  backupConfiguration      = "count"
+                  dataDiskSizeGb           = "count"
+                  dataDiskType             = "count"
+                  databaseFlags            = "count"
+                  databaseInstalledVersion = "count"
+                  databaseVersion          = "count"
+                  database_id              = "count"
+                  deleted                  = "count"
+                  gceZone                  = "count"
+                  ipAddressPrimary         = "count"
+                  ipAddresses              = "count"
+                  ipConfiguration          = "count"
+                  name                     = "count"
+                  project_id               = "count"
+                  region                   = "count"
+                  tier                     = "count"
+                  ttl                      = "count"
                 }
                 datasetQueryId = {
                   ignoreCompress = false
-                  queryId        = "q-jfa9w8di"
+                  queryId        = "q-gxryzkot"
                   resultKinds = [
                     "ResultKindSchema",
                     "ResultKindData",
@@ -4707,14 +4624,14 @@ resource "observe_dashboard" "compute_monitoring_tf" {
                   "SUMMARY",
                 ]
               }
-              id                = "step-vp9bzx2a"
+              id                = "step-nfimyv99"
               index             = 0
               isPinned          = false
               name              = "Input Step"
               opal              = []
               queryPresentation = {}
               renderType        = null
-              summary           = "computeID (undefined)"
+              summary           = "dbResource (undefined)"
               type              = "InputStep"
             },
           ]
@@ -4727,7 +4644,7 @@ resource "observe_dashboard" "compute_monitoring_tf" {
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
+            scriptTab     = "INPUTS"
             showTimeRuler = true
             stageTab      = "vis"
           }

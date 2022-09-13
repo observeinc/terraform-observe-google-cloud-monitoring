@@ -1,10 +1,14 @@
 /*
 ./write_terraform.py project_db.json ../service/compute/projectDashboard.tf
 
-grep -rh "datasetId" --include projectDashboard.tf | sed -e $'s/,/\\\n/g' | sed -e 's/[[:space:]]//g' | sort | uniq | sed -e 's/"datasetId"://g'
-grep -rh "workspace" --include projectDashboard.tf | sed -e $'s/,/\\\n/g' | sed -e 's/[[:space:]]//g' | sort | uniq | sed -e 's/"datasetId"://g'
+!!! Use these grep commands to list unique values of ids we want to replace
 
-this command ignores lines with sed commands
+grep -rh "datasetId" --include projectDashboard.tf | sed -e $'s/,/\\\n/g' | sed -e 's/[[:space:]]//g' | sort | uniq | sed -e 's/"datasetId"://g'
+grep -rh "workspace" --include projectDashboard.tf | sed -e $'s/,/\\\n/g' | sed -e 's/[[:space:]]//g' | sort | uniq | sed -e 's/"workspace"://g'
+grep -rh "name" --include projectDashboard.tf | sed -e $'s/,/\\\n/g' | sed -e 's/[[:space:]]//g' | sort | uniq | sed -e 's/"name"://g'
+
+!!! Use these sed commands to replace id's with variables
+!!! this command ignores lines with sed commands
 
 sed -i '' "s:${local.projects_collection_enabled}:"\${local.projects_collection_enabled}":g" *.tf
 sed -i '' "s:${local.resources_asset_inventory}:"\${local.resources_asset_inventory}":g" *.tf
@@ -13,7 +17,7 @@ sed -i '' "s:${local.cloud_sql_metrics}:"\${local.cloud_sql_metrics}":g" *.tf
 sed -i '' '/^[[:space:]]*sed/! s:"41144592":"\${local.computeInstance}":g' projectDashboard.tf
 sed -i '' '/^[[:space:]]*sed/! s:"41144593":"\${local.computeMetrics}":g' projectDashboard.tf
 sed -i '' '/^[[:space:]]*sed/! s/"o:::workspace:41141634"/"\${local.workspace}"/g' projectDashboard.tf
-sed -i '' '/^[[:space:]]*sed/! s:"WORKING/Compute Monitoring":"\${local.dashboardName}":g' projectDashboard.tf
+sed -i '' '/^[[:space:]]*sed/! s:"Projects Home":"\${local.dashboard_name}":g' projectDashboard.tf
 */
 
 
@@ -22,6 +26,7 @@ locals {
   projects_collection_enabled = observe_dataset.projects.id                          # ${local.projects_collection_enabled}
   resources_asset_inventory   = observe_dataset.resource_asset_inventory_resource.id # ${local.resources_asset_inventory}
   cloud_sql_metrics           = local.cloudsqlmetrics.id                             # ${local.cloud_sql_metrics}
+  dashboard_name              = format(var.name_format, " Home")
   workspace                   = var.workspace.oid
 }
 
@@ -411,7 +416,7 @@ resource "observe_dashboard" "projects_home" {
       }
     }
   )
-  name = "Projects Home"
+  name = local.dashboard_name
   parameters = jsonencode(
     [
       {
