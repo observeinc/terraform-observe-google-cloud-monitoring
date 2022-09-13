@@ -1,41 +1,63 @@
-/*
-./write_terraform.py project_db.json ../service/compute/projectDashboard.tf
-
-!!! Use these grep commands to list unique values of ids we want to replace
-
-grep -rh "datasetId" --include projectDashboard.tf | sed -e $'s/,/\\\n/g' | sed -e 's/[[:space:]]//g' | sort | uniq | sed -e 's/"datasetId"://g'
-grep -rh "workspace" --include projectDashboard.tf | sed -e $'s/,/\\\n/g' | sed -e 's/[[:space:]]//g' | sort | uniq | sed -e 's/"workspace"://g'
-grep -rh "name" --include projectDashboard.tf | sed -e $'s/,/\\\n/g' | sed -e 's/[[:space:]]//g' | sort | uniq | sed -e 's/"name"://g'
-
-!!! Use these sed commands to replace id's with variables
-!!! this command ignores lines with sed commands
-
-sed -i '' "s:${local.projects_collection_enabled}:"\${local.projects_collection_enabled}":g" *.tf
-sed -i '' "s:${local.resources_asset_inventory}:"\${local.resources_asset_inventory}":g" *.tf
-sed -i '' "s:${local.cloud_sql_metrics}:"\${local.cloud_sql_metrics}":g" *.tf
-
-sed -i '' '/^[[:space:]]*sed/! s:"41144592":"\${local.computeInstance}":g' projectDashboard.tf
-sed -i '' '/^[[:space:]]*sed/! s:"41144593":"\${local.computeMetrics}":g' projectDashboard.tf
-sed -i '' '/^[[:space:]]*sed/! s/"o:::workspace:41141634"/"\${local.workspace}"/g' projectDashboard.tf
-sed -i '' '/^[[:space:]]*sed/! s:"Projects Home":"\${local.dashboard_name}":g' projectDashboard.tf
-*/
-
-
 locals {
-  cloudsqlmetrics             = one(module.cloudsql[*].cloudsql_metrics)
-  projects_collection_enabled = observe_dataset.projects.id                          # ${local.projects_collection_enabled}
-  resources_asset_inventory   = observe_dataset.resource_asset_inventory_resource.id # ${local.resources_asset_inventory}
-  cloud_sql_metrics           = local.cloudsqlmetrics.id                             # ${local.cloud_sql_metrics}
-  dashboard_name              = format(var.name_format, " Home")
-  workspace                   = var.workspace.oid
+  workspace                        = var.workspace.oid
+  dashboard_name                   = format(var.name_format, "Home")
+  projects_collection_enabled      = data.observe_dataset.projects_collection_enabled.id
+  resources_asset_inventory        = data.observe_dataset.resources_asset_inventory.id
+  cloud_sql_metrics                = data.observe_dataset.cloud_sql_metrics.id
+  compute_metrics                  = data.observe_dataset.compute_metrics.id
+  cloud_sql_metrics_wide           = data.observe_dataset.cloud_sql_metrics_wide.id
+  cloud_functions_function_metrics = data.observe_dataset.cloud_functions_function_metrics.id
+  cloud_functions_function_logs    = data.observe_dataset.cloud_functions_function_logs.id
+  metrics                          = data.observe_dataset.metrics.id
+  storage_metrics                  = data.observe_dataset.storage_metrics.id
 }
 
+data "observe_dataset" "projects_collection_enabled" {
+  workspace = local.workspace
+  name      = format(var.name_format, "Projects Collection Enabled")
+}
 
-# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-# !!!!!! use dashboards/write_terraform.py to produce this file   !!!!!!!
-# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-# Below this line is automatically written
-resource "observe_dashboard" "projects_home" {
+data "observe_dataset" "resources_asset_inventory" {
+  workspace = local.workspace
+  name      = format(var.name_format, "Resources Asset Inventory")
+}
+
+data "observe_dataset" "cloud_sql_metrics" {
+  workspace = local.workspace
+  name      = format(var.name_format, "Cloud SQL Metrics")
+}
+
+data "observe_dataset" "compute_metrics" {
+  workspace = local.workspace
+  name      = format(var.name_format, "Compute Metrics")
+}
+
+data "observe_dataset" "cloud_sql_metrics_wide" {
+  workspace = local.workspace
+  name      = format(var.name_format, "Cloud SQL Metrics Wide")
+}
+
+data "observe_dataset" "cloud_functions_function_metrics" {
+  workspace = local.workspace
+  name      = format(var.name_format, "Cloud Functions Function Metrics")
+}
+
+data "observe_dataset" "cloud_functions_function_logs" {
+  workspace = local.workspace
+  name      = format(var.name_format, "Cloud Functions Function Logs")
+}
+
+data "observe_dataset" "metrics" {
+  workspace = local.workspace
+  name      = format(var.name_format, "Metrics")
+}
+
+data "observe_dataset" "storage_metrics" {
+  workspace = local.workspace
+  name      = format(var.name_format, "Storage Metrics")
+}
+# terraform import observe_dashboard.projects_home_template 41144640
+resource "observe_dashboard" "projects_home_template" {
   layout = jsonencode(
     {
       gridLayout = {
@@ -65,7 +87,7 @@ resource "observe_dashboard" "projects_home" {
                   stageId  = "stage-59v5rk5f"
                 }
                 layout = {
-                  h           = 13
+                  h           = 8
                   i           = "card-muv8czr0"
                   isDraggable = true
                   isResizable = true
@@ -79,12 +101,12 @@ resource "observe_dashboard" "projects_home" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-7kb1f4xn"
-                  stageId  = "stage-veumo1m3"
+                  id       = "card-0gz34jv7"
+                  stageId  = "stage-6cf9jti3"
                 }
                 layout = {
-                  h           = 13
-                  i           = "card-7kb1f4xn"
+                  h           = 8
+                  i           = "card-0gz34jv7"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -97,12 +119,12 @@ resource "observe_dashboard" "projects_home" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-a9hdbidz"
-                  stageId  = "stage-2mmp17rv"
+                  id       = "card-nhspi1a1"
+                  stageId  = "stage-qod1mmjc"
                 }
                 layout = {
-                  h           = 13
-                  i           = "card-a9hdbidz"
+                  h           = 8
+                  i           = "card-nhspi1a1"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -119,7 +141,7 @@ resource "observe_dashboard" "projects_home" {
                   stageId  = "stage-7b5hzxyp"
                 }
                 layout = {
-                  h           = 12
+                  h           = 8
                   i           = "card-55ij29rt"
                   isDraggable = true
                   isResizable = true
@@ -127,25 +149,97 @@ resource "observe_dashboard" "projects_home" {
                   static      = false
                   w           = 4
                   x           = 0
-                  y           = 13
+                  y           = 8
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-fab4hzb8"
-                  stageId  = "stage-xyz607y1"
+                  id       = "card-eqry134k"
+                  stageId  = "stage-9gx4o1vf"
                 }
                 layout = {
-                  h           = 12
-                  i           = "card-fab4hzb8"
+                  h           = 8
+                  i           = "card-eqry134k"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 4
+                  x           = 4
+                  y           = 8
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-ebftxmpc"
+                  stageId  = "stage-qf8oapqb"
+                }
+                layout = {
+                  h           = 8
+                  i           = "card-ebftxmpc"
                   isDraggable = true
                   isResizable = true
                   moved       = false
                   static      = false
                   w           = 4
                   x           = 8
-                  y           = 13
+                  y           = 8
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-56kqm8mc"
+                  stageId  = "stage-60n5juu6"
+                }
+                layout = {
+                  h           = 8
+                  i           = "card-56kqm8mc"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 4
+                  x           = 4
+                  y           = 16
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-hdu8g13r"
+                  stageId  = "stage-83cj0j4u"
+                }
+                layout = {
+                  h           = 8
+                  i           = "card-hdu8g13r"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 4
+                  x           = 8
+                  y           = 16
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-7kb1f4xn"
+                  stageId  = "stage-veumo1m3"
+                }
+                layout = {
+                  h           = 8
+                  i           = "card-7kb1f4xn"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 4
+                  x           = 0
+                  y           = 16
                 }
               },
               {
@@ -155,33 +249,79 @@ resource "observe_dashboard" "projects_home" {
                   stageId  = "stage-jar5yskq"
                 }
                 layout = {
-                  h           = 12
+                  h           = 8
                   i           = "card-x37cvori"
                   isDraggable = true
                   isResizable = true
                   moved       = false
                   static      = false
                   w           = 4
-                  x           = 4
-                  y           = 13
+                  x           = 0
+                  y           = 24
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-zx45puqc"
-                  stageId  = "stage-b1h42m9y"
+                  id       = "card-z67rycx2"
+                  stageId  = "stage-xs8j2jsp"
                 }
                 layout = {
-                  h           = 12
-                  i           = "card-zx45puqc"
+                  h           = 8
+                  i           = "card-z67rycx2"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 4
+                  x           = 4
+                  y           = 24
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-v3yxhfyv"
+                  stageId  = "stage-wcrqj5fn"
+                }
+                layout = {
+                  h           = 8
+                  i           = "card-v3yxhfyv"
                   isDraggable = true
                   isResizable = true
                   moved       = false
                   static      = false
                   w           = 4
                   x           = 8
-                  y           = 25
+                  y           = 24
+                }
+              },
+            ]
+          },
+          {
+            card = {
+              cardType = "section"
+              closed   = false
+              id       = "section-mqik5fae"
+              title    = "Additional Resources"
+            }
+            items = [
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-j97t3w3y"
+                  stageId  = "stage-yudn4ulm"
+                }
+                layout = {
+                  h           = 8
+                  i           = "card-j97t3w3y"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 3
+                  x           = 6
+                  y           = 0
                 }
               },
               {
@@ -191,15 +331,15 @@ resource "observe_dashboard" "projects_home" {
                   stageId  = "stage-uffc40j8"
                 }
                 layout = {
-                  h           = 12
+                  h           = 8
                   i           = "card-eualk4fz"
                   isDraggable = true
                   isResizable = true
                   moved       = false
                   static      = false
-                  w           = 4
+                  w           = 3
                   x           = 0
-                  y           = 25
+                  y           = 0
                 }
               },
               {
@@ -209,15 +349,15 @@ resource "observe_dashboard" "projects_home" {
                   stageId  = "stage-1zjnd7x3"
                 }
                 layout = {
-                  h           = 12
+                  h           = 8
                   i           = "card-8absfapp"
                   isDraggable = true
                   isResizable = true
                   moved       = false
                   static      = false
-                  w           = 4
-                  x           = 4
-                  y           = 25
+                  w           = 3
+                  x           = 3
+                  y           = 0
                 }
               },
               {
@@ -227,15 +367,70 @@ resource "observe_dashboard" "projects_home" {
                   stageId  = "stage-0shmp61d"
                 }
                 layout = {
-                  h           = 12
+                  h           = 8
                   i           = "card-gis1q13p"
                   isDraggable = true
                   isResizable = true
                   moved       = false
                   static      = false
-                  w           = 4
-                  x           = 8
-                  y           = 37
+                  w           = 3
+                  x           = 9
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-a9hdbidz"
+                  stageId  = "stage-2mmp17rv"
+                }
+                lastModified = 1663090724391
+                layout = {
+                  h           = 8
+                  i           = "card-a9hdbidz---1663090724391"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 3
+                  x           = 3
+                  y           = 8
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-fab4hzb8"
+                  stageId  = "stage-xyz607y1"
+                }
+                layout = {
+                  h           = 8
+                  i           = "card-fab4hzb8"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 3
+                  x           = 0
+                  y           = 8
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-zx45puqc"
+                  stageId  = "stage-b1h42m9y"
+                }
+                layout = {
+                  h           = 8
+                  i           = "card-zx45puqc"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 3
+                  x           = 6
+                  y           = 8
                 }
               },
               {
@@ -245,33 +440,15 @@ resource "observe_dashboard" "projects_home" {
                   stageId  = "stage-35r7lf8w"
                 }
                 layout = {
-                  h           = 12
+                  h           = 8
                   i           = "card-3nm5nkxa"
                   isDraggable = true
                   isResizable = true
                   moved       = false
                   static      = false
-                  w           = 4
-                  x           = 0
-                  y           = 37
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-j97t3w3y"
-                  stageId  = "stage-yudn4ulm"
-                }
-                layout = {
-                  h           = 12
-                  i           = "card-j97t3w3y"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 4
-                  x           = 4
-                  y           = 37
+                  w           = 3
+                  x           = 9
+                  y           = 8
                 }
               },
             ]
@@ -287,6 +464,24 @@ resource "observe_dashboard" "projects_home" {
               {
                 card = {
                   cardType = "stage"
+                  id       = "card-ljebtj9e"
+                  stageId  = "stage-ufgxvfzv"
+                }
+                layout = {
+                  h           = 11
+                  i           = "card-ljebtj9e"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 12
+                  x           = 0
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
                   id       = "card-wer0wwfq"
                   stageId  = "stage-vh1fuqkb"
                 }
@@ -299,25 +494,7 @@ resource "observe_dashboard" "projects_home" {
                   static      = false
                   w           = 4
                   x           = 4
-                  y           = 0
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-3vc6heer"
-                  stageId  = "stage-rto8bjvo"
-                }
-                layout = {
-                  h           = 42
-                  i           = "card-3vc6heer"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 4
-                  x           = 0
-                  y           = 0
+                  y           = 11
                 }
               },
               {
@@ -335,7 +512,25 @@ resource "observe_dashboard" "projects_home" {
                   static      = false
                   w           = 4
                   x           = 8
-                  y           = 0
+                  y           = 11
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-3vc6heer"
+                  stageId  = "stage-rto8bjvo"
+                }
+                layout = {
+                  h           = 42
+                  i           = "card-3vc6heer"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 4
+                  x           = 0
+                  y           = 11
                 }
               },
             ]
@@ -356,8 +551,11 @@ resource "observe_dashboard" "projects_home" {
                   text     = <<-EOT
                                         ### Projects
                                         
-                                        This dashboard displays asset information for the given project.
+                                        Google Cloud projects form the basis for creating, enabling, and using all Google Cloud services including managing APIs, enabling billing, adding and removing collaborators, and managing permissions for Google Cloud resources.
                                         
+                                        This dashboard displays asset and metrics information for the given project.
+                                        
+                                        See [Observe GCP Installation Documentation](https://docs.observeinc.com/en/latest/content/integrations/gcp/gcp.html#installation) for how to configure.
                                     EOT
                   title    = "Untitled Text"
                 }
@@ -374,7 +572,7 @@ resource "observe_dashboard" "projects_home" {
                 }
               },
             ]
-            lastModified = 1662771458942
+            lastModified = 1663090876473
           },
         ]
       }
@@ -399,17 +597,17 @@ resource "observe_dashboard" "projects_home" {
             viewType = "input"
           },
         ]
-        selectedStageId = "stage-zhqax6ap"
+        selectedStageId = "stage-wcrqj5fn"
         timeRange = {
-          display               = "Past 15 minutes"
+          display               = "Today 09:41:13 - 10:41:13"
           endTime               = null
-          millisFromCurrentTime = 900000
-          originalDisplay       = "Past 15 minutes"
+          millisFromCurrentTime = 3600000
+          originalDisplay       = "Past 60 minutes"
           startTime             = null
           timeRangeInfo = {
             key        = "PRESETS"
             name       = "Presets"
-            presetType = "PAST_15_MINUTES"
+            presetType = "PAST_60_MINUTES"
           }
           timeZone = null
         }
@@ -712,7 +910,7 @@ resource "observe_dashboard" "projects_home" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 400
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -892,9 +1090,12 @@ resource "observe_dashboard" "projects_home" {
               "3" = "_c_valid_from"
               "4" = "_c_valid_to"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 859
+            columnVisibility = {}
+            columnWidths = {
+              instance_state_label = 151
+              metric_category      = 169
+            }
+            containerWidth              = 1313
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -962,7 +1163,7 @@ resource "observe_dashboard" "projects_home" {
               type       = "Vis"
               vis = {
                 config = {
-                  color           = "Default"
+                  color           = "Blue"
                   colorConfigType = "Color"
                   fieldConfig = {
                     unit    = null
@@ -973,7 +1174,9 @@ resource "observe_dashboard" "projects_home" {
                 }
                 source = {
                   table = {
-                    field = "asset_name"
+                    field = [
+                      "database_id",
+                    ]
                     groupFields = [
                       "label",
                     ]
@@ -1011,7 +1214,7 @@ resource "observe_dashboard" "projects_home" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 400
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -1043,14 +1246,10 @@ resource "observe_dashboard" "projects_home" {
             },
             {
               columnStatsTable = {
-                columnFunctions = {
-                  count                = "count"
-                  instance_state_label = "count"
-                  label                = "count"
-                }
+                columnFunctions = {}
                 datasetQueryId = {
                   ignoreCompress = false
-                  queryId        = "q-dj8otnac"
+                  queryId        = "q-0iqb6jqe"
                   resultKinds = [
                     "ResultKindSchema",
                     "ResultKindData",
@@ -1075,7 +1274,7 @@ resource "observe_dashboard" "projects_home" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-6ymuy2jk"
+              id       = "step-dz3zmnlg"
               index    = 1
               isPinned = false
               opal = [
@@ -1267,7 +1466,7 @@ resource "observe_dashboard" "projects_home" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 400
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -1381,14 +1580,14 @@ resource "observe_dashboard" "projects_home" {
               name = false
             }
             columnWidths                = {}
-            containerWidth              = 1313
+            containerWidth              = 2145
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
             disableFixedLeftColumns     = false
             eventLinkColumnId           = null
             fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
+            hasCalculatedColumnWidths   = true
             hasDoneAutoLayout           = false
             maxColumnWidth              = 400
             maxMeasuredColumnWidth      = {}
@@ -1761,7 +1960,7 @@ resource "observe_dashboard" "projects_home" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 400
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -1983,7 +2182,7 @@ resource "observe_dashboard" "projects_home" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 400
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -2204,7 +2403,7 @@ resource "observe_dashboard" "projects_home" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 400
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -2425,7 +2624,7 @@ resource "observe_dashboard" "projects_home" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 400
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -2646,7 +2845,7 @@ resource "observe_dashboard" "projects_home" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 400
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -2760,14 +2959,14 @@ resource "observe_dashboard" "projects_home" {
             }
             columnVisibility            = {}
             columnWidths                = {}
-            containerWidth              = 1313
+            containerWidth              = 2145
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
             disableFixedLeftColumns     = false
             eventLinkColumnId           = null
             fetchPageSize               = 100
-            hasCalculatedColumnWidths   = true
+            hasCalculatedColumnWidths   = false
             hasDoneAutoLayout           = false
             maxColumnWidth              = 400
             maxMeasuredColumnWidth      = {}
@@ -3119,7 +3318,7 @@ resource "observe_dashboard" "projects_home" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 400
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -3355,7 +3554,7 @@ resource "observe_dashboard" "projects_home" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 400
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -3578,7 +3777,7 @@ resource "observe_dashboard" "projects_home" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 400
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -3818,7 +4017,7 @@ resource "observe_dashboard" "projects_home" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 400
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -3950,7 +4149,7 @@ resource "observe_dashboard" "projects_home" {
               name = false
             }
             columnWidths                = {}
-            containerWidth              = 1313
+            containerWidth              = 2145
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -4172,6 +4371,3345 @@ resource "observe_dashboard" "projects_home" {
                        resource: asset_sub_type,
                     	location
                     
+                EOT
+      },
+      {
+        id = "stage-6cf9jti3"
+        input = [
+          {
+            datasetId   = "${local.compute_metrics}"
+            datasetPath = null
+            inputName   = "WORKING/Compute Metrics"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "projects"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight             = true
+            columnFooterHeight          = 0
+            columnHeaderHeight          = 29
+            columnOrderOverride         = {}
+            columnVisibility            = {}
+            columnWidths                = {}
+            containerWidth              = 1313
+            contextMenuXCoord           = null
+            contextMenuYCoord           = null
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            eventLinkColumnId           = null
+            fetchPageSize               = 100
+            hasCalculatedColumnWidths   = false
+            hasDoneAutoLayout           = false
+            maxColumnWidth              = 400
+            maxMeasuredColumnWidth      = {}
+            minColumnWidth              = 60
+            minRowHeight                = 30
+            preserveCellAndRowSelection = true
+            rowHeaderWidth              = 20
+            rowHeights                  = {}
+            rowSizeIncrement            = 1
+            scrollToColumn              = null
+            scrollToRow                 = 0
+            selection = {
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 0
+            tableView                  = "TABULAR"
+          }
+          index = 16
+          inputList = [
+            {
+              datasetId   = "${local.compute_metrics}"
+              inputName   = "WORKING/Compute Metrics"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+            {
+              inputName   = "projects"
+              inputRole   = "Data"
+              isUserInput = true
+              parameterId = "input-parameter-cjhbgiip"
+            },
+          ]
+          label = "CPU Utilization"
+          managers = [
+            {
+              id                     = "5rg2s6hz"
+              isDisabled             = true
+              isResourceCountEnabled = false
+              type                   = "Timescrubber"
+            },
+            {
+              id         = "w1kvx49r"
+              isDisabled = false
+              type       = "Vis"
+              vis = {
+                config = {
+                  color         = "Default"
+                  hideGridLines = false
+                  legend = {
+                    placement = "right"
+                    type      = "list"
+                    visible   = false
+                  }
+                  type = "xy"
+                  xConfig = {
+                    visible = true
+                  }
+                  yConfig = {
+                    visible = true
+                  }
+                }
+                source = {
+                  table = {
+                    groupFields = [
+                      [
+                        "instance_key",
+                      ],
+                    ]
+                    statsBy = {
+                      fn = "avg"
+                    }
+                    timechart = {
+                      fn         = "avg"
+                      resolution = "AUTO"
+                    }
+                    transformType = "timechart"
+                    type          = "xy"
+                    y             = "value"
+                  }
+                  type = "table"
+                }
+                type = "timeseries"
+              }
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            limit          = 1000
+            linkify        = true
+            loadEverything = false
+            progressive    = true
+            resultKinds = [
+              "ResultKindSchema",
+            ]
+            rollup      = {}
+            wantBuckets = 600
+          }
+          renderType     = "TABLE"
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              columnStatsTable = {
+                columnFunctions = {
+                  instance_id      = "count"
+                  instance_name    = "count"
+                  label            = "count"
+                  metric           = "count"
+                  metric_category  = "count"
+                  metric_kind      = "count"
+                  metric_kind_text = "count"
+                  metric_labels    = "count"
+                  metric_type      = "count"
+                  project_id       = "count"
+                  region           = "count"
+                  value            = "count"
+                  value_type       = "count"
+                  value_type_text  = "count"
+                  zone             = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-7uxz18ty"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              customName    = "Input"
+              customSummary = "WORKING/Compute Metrics"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-q9rl9oqd"
+              index             = 0
+              isPinned          = false
+              opal              = []
+              queryPresentation = {}
+              type              = "InputStep"
+            },
+            {
+              action = {
+                params = {
+                  columnId    = "metric"
+                  columnType  = "string"
+                  filterVerb  = "filter"
+                  isExcluding = false
+                  values = [
+                    "instance_cpu_utilization",
+                  ]
+                }
+                summary = null
+                type    = "FilterValues"
+              }
+              columnStatsTable = {
+                columnFunctions = {
+                  instance_id      = "count"
+                  instance_name    = "count"
+                  label            = "count"
+                  metric           = "count"
+                  metric_category  = "count"
+                  metric_kind      = "count"
+                  metric_kind_text = "count"
+                  metric_labels    = "count"
+                  metric_type      = "count"
+                  project_id       = "count"
+                  region           = "count"
+                  value            = "count"
+                  value_type       = "count"
+                  value_type_text  = "count"
+                  zone             = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-8iuanjfc"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              customSummary = "metric"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-guehky89"
+              index    = 1
+              isPinned = true
+              opal = [
+                "filter metric = \"instance_cpu_utilization\"",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = <<-EOT
+                            exists project_id = @projects.project_id
+                            
+                            filter metric = "instance_cpu_utilization"
+                        EOT
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            scriptTab     = "SCRIPT"
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = "filter metric = \"instance_cpu_utilization\""
+      },
+      {
+        id = "stage-qod1mmjc"
+        input = [
+          {
+            datasetId   = "${local.compute_metrics}"
+            datasetPath = null
+            inputName   = "WORKING/Compute Metrics"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "projects"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight    = true
+            columnFooterHeight = 0
+            columnHeaderHeight = 29
+            columnOrderOverride = {
+              "0" = "end_time"
+            }
+            columnVisibility            = {}
+            columnWidths                = {}
+            containerWidth              = 1505
+            contextMenuXCoord           = null
+            contextMenuYCoord           = null
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            eventLinkColumnId           = null
+            fetchPageSize               = 100
+            hasCalculatedColumnWidths   = false
+            hasDoneAutoLayout           = false
+            maxColumnWidth              = 400
+            maxMeasuredColumnWidth      = {}
+            minColumnWidth              = 60
+            minRowHeight                = 30
+            preserveCellAndRowSelection = true
+            rowHeaderWidth              = 20
+            rowHeights                  = {}
+            rowSizeIncrement            = 1
+            scrollToColumn              = null
+            scrollToRow                 = 0
+            selection = {
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 0
+            tableView                  = "TABULAR"
+          }
+          index = 17
+          inputList = [
+            {
+              datasetId   = "${local.compute_metrics}"
+              inputName   = "WORKING/Compute Metrics"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+            {
+              inputName   = "projects"
+              inputRole   = "Data"
+              isUserInput = true
+              parameterId = "input-parameter-cjhbgiip"
+            },
+          ]
+          label = "Read Write Bytes"
+          managers = [
+            {
+              id                     = "5rg2s6hz"
+              isDisabled             = true
+              isResourceCountEnabled = false
+              type                   = "Timescrubber"
+            },
+            {
+              id         = "w1kvx49r"
+              isDisabled = false
+              type       = "Vis"
+              vis = {
+                config = {
+                  color         = "Default"
+                  hideGridLines = false
+                  legend = {
+                    placement = "right"
+                    type      = "list"
+                    visible   = false
+                  }
+                  type = "xy"
+                  xConfig = {
+                    visible = true
+                  }
+                  yConfig = {
+                    visible = true
+                  }
+                }
+                source = {
+                  table = {
+                    groupFields = [
+                      [
+                        "instance_key",
+                      ],
+                      "instance_id",
+                    ]
+                    statsBy = {
+                      fn = "avg"
+                    }
+                    timechart = {
+                      fn         = "avg"
+                      resolution = "AUTO"
+                    }
+                    transformType = "timechart"
+                    type          = "xy"
+                    y             = "value"
+                  }
+                  type = "table"
+                }
+                type = "timeseries"
+              }
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            limit          = 1000
+            linkify        = true
+            loadEverything = false
+            progressive    = true
+            resultKinds = [
+              "ResultKindSchema",
+            ]
+            rollup      = {}
+            wantBuckets = 600
+          }
+          renderType     = "TABLE"
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              customName    = "Input"
+              customSummary = "WORKING/Compute Metrics"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-2ahcqpbr"
+              index             = 0
+              isPinned          = false
+              opal              = []
+              queryPresentation = {}
+              type              = "InputStep"
+            },
+            {
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-xle8pgnf"
+              index    = 1
+              isPinned = false
+              opal = [
+                "exists project_id = @projects.project_id",
+                "",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+            {
+              action = {
+                params = {
+                  columnId    = "metric"
+                  columnType  = "string"
+                  filterVerb  = "filter"
+                  isExcluding = false
+                  values = [
+                    "instance_disk_read_bytes_count",
+                    "instance_disk_write_bytes_count",
+                  ]
+                }
+                summary = null
+                type    = "FilterValues"
+              }
+              columnStatsTable = {
+                columnFunctions = {
+                  instance_id      = "count"
+                  instance_name    = "count"
+                  label            = "count"
+                  metric           = "count"
+                  metric_category  = "count"
+                  metric_kind      = "count"
+                  metric_kind_text = "count"
+                  metric_labels    = "count"
+                  metric_type      = "count"
+                  project_id       = "count"
+                  region           = "count"
+                  value            = "count"
+                  value_type       = "count"
+                  value_type_text  = "count"
+                  zone             = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-unfw0d85"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              customSummary = "metric"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-oc6r743k"
+              index    = 2
+              isPinned = true
+              opal = [
+                "filter metric = \"instance_disk_read_bytes_count\" or metric = \"instance_disk_write_bytes_count\"",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+            {
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-qnpd34g5"
+              index    = 3
+              isPinned = false
+              opal = [
+                "",
+                "make_col combo_label: \"read_write_bytes\"",
+                "",
+                "timestats value:sum(value), group_by(instance_key, instance_id, combo_label)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            scriptTab     = "SCRIPT"
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = <<-EOT
+                    exists project_id = @projects.project_id
+                    
+                    filter metric = "instance_disk_read_bytes_count" or metric = "instance_disk_write_bytes_count"
+                    
+                    make_col combo_label: "read_write_bytes"
+                    
+                    timestats value:sum(value), group_by(instance_key, instance_id, combo_label)
+                EOT
+      },
+      {
+        id = "stage-9gx4o1vf"
+        input = [
+          {
+            datasetId   = "${local.cloud_sql_metrics}"
+            datasetPath = null
+            inputName   = "WORKING/Cloud SQL Metrics"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "projects"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight             = true
+            columnFooterHeight          = 0
+            columnHeaderHeight          = 29
+            columnOrderOverride         = {}
+            columnVisibility            = {}
+            columnWidths                = {}
+            containerWidth              = 1505
+            contextMenuXCoord           = null
+            contextMenuYCoord           = null
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            eventLinkColumnId           = null
+            fetchPageSize               = 100
+            hasCalculatedColumnWidths   = false
+            hasDoneAutoLayout           = false
+            maxColumnWidth              = 400
+            maxMeasuredColumnWidth      = {}
+            minColumnWidth              = 60
+            minRowHeight                = 30
+            preserveCellAndRowSelection = true
+            rowHeaderWidth              = 20
+            rowHeights                  = {}
+            rowSizeIncrement            = 1
+            scrollToColumn              = null
+            scrollToRow                 = 0
+            selection = {
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 0
+            tableView                  = "TABULAR"
+          }
+          index = 18
+          inputList = [
+            {
+              datasetId   = "${local.cloud_sql_metrics}"
+              inputName   = "WORKING/Cloud SQL Metrics"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+            {
+              inputName   = "projects"
+              inputRole   = "Data"
+              isUserInput = true
+              parameterId = "input-parameter-cjhbgiip"
+            },
+          ]
+          label = "CPU Utilization"
+          managers = [
+            {
+              id                     = "ums8h6m0"
+              isDisabled             = true
+              isResourceCountEnabled = false
+              type                   = "Timescrubber"
+            },
+            {
+              id         = "9peor5h6"
+              isDisabled = false
+              type       = "Vis"
+              vis = {
+                config = {
+                  color         = "Default"
+                  hideGridLines = false
+                  legend = {
+                    placement = "right"
+                    type      = "list"
+                    visible   = false
+                  }
+                  type = "xy"
+                  xConfig = {
+                    visible = true
+                  }
+                  yConfig = {
+                    visible = true
+                  }
+                }
+                source = {
+                  table = {
+                    groupFields = [
+                      [
+                        "database_id",
+                      ],
+                    ]
+                    statsBy = {
+                      fn = "avg"
+                    }
+                    timechart = {
+                      fn         = "avg"
+                      resolution = "AUTO"
+                    }
+                    transformType = "timechart"
+                    type          = "xy"
+                    y             = "value"
+                  }
+                  type = "table"
+                }
+                type = "timeseries"
+              }
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            limit          = 1000
+            linkify        = true
+            loadEverything = false
+            progressive    = true
+            resultKinds = [
+              "ResultKindSchema",
+            ]
+            rollup      = {}
+            wantBuckets = 600
+          }
+          renderType     = "TABLE"
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              columnStatsTable = {
+                columnFunctions = {
+                  database_platform    = "count"
+                  instance_state_label = "count"
+                  label                = "count"
+                  metric               = "count"
+                  metric_category      = "count"
+                  metric_kind_text     = "count"
+                  metric_labels        = "count"
+                  project_id           = "count"
+                  region               = "count"
+                  value                = "count"
+                  value_type_text      = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-7nms7vg2"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              customName    = "Input"
+              customSummary = "WORKING/Cloud SQL Metrics"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-s65h9oip"
+              index             = 0
+              isPinned          = false
+              opal              = []
+              queryPresentation = {}
+              type              = "InputStep"
+            },
+            {
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-3vxvxj3j"
+              index    = 1
+              isPinned = false
+              opal = [
+                "exists project_id = @projects.project_id",
+                "",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+            {
+              action = {
+                params = {
+                  columnId    = "metric"
+                  columnType  = "string"
+                  filterVerb  = "filter"
+                  isExcluding = false
+                  values = [
+                    "database_cpu_utilization",
+                  ]
+                }
+                summary = null
+                type    = "FilterValues"
+              }
+              columnStatsTable = {
+                columnFunctions = {
+                  database_platform    = "count"
+                  instance_state_label = "count"
+                  label                = "count"
+                  metric               = "count"
+                  metric_category      = "count"
+                  metric_kind_text     = "count"
+                  metric_labels        = "count"
+                  project_id           = "count"
+                  region               = "count"
+                  value                = "count"
+                  value_type_text      = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-nplocjin"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              customSummary = "metric"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-gys21cf3"
+              index    = 2
+              isPinned = true
+              opal = [
+                "filter metric = \"database_cpu_utilization\"",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            scriptTab     = "SCRIPT"
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = <<-EOT
+                    exists project_id = @projects.project_id
+                    
+                    filter metric = "database_cpu_utilization"
+                EOT
+      },
+      {
+        id = "stage-zgm9r7wo"
+        input = [
+          {
+            datasetId   = "${local.cloud_sql_metrics}"
+            datasetPath = null
+            inputName   = "WORKING/Cloud SQL Metrics"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "projects"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight             = true
+            columnFooterHeight          = 0
+            columnHeaderHeight          = 29
+            columnOrderOverride         = {}
+            columnVisibility            = {}
+            columnWidths                = {}
+            containerWidth              = 1505
+            contextMenuXCoord           = null
+            contextMenuYCoord           = null
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            eventLinkColumnId           = null
+            fetchPageSize               = 100
+            hasCalculatedColumnWidths   = false
+            hasDoneAutoLayout           = false
+            maxColumnWidth              = 400
+            maxMeasuredColumnWidth      = {}
+            minColumnWidth              = 60
+            minRowHeight                = 30
+            preserveCellAndRowSelection = true
+            rowHeaderWidth              = 20
+            rowHeights                  = {}
+            rowSizeIncrement            = 1
+            scrollToColumn              = null
+            scrollToRow                 = 0
+            selection = {
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 0
+            tableView                  = "TABULAR"
+          }
+          index = 19
+          inputList = [
+            {
+              datasetId   = "${local.cloud_sql_metrics}"
+              inputName   = "WORKING/Cloud SQL Metrics"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+            {
+              inputName   = "projects"
+              inputRole   = "Data"
+              isUserInput = true
+              parameterId = "input-parameter-cjhbgiip"
+            },
+          ]
+          label = "Database State"
+          managers = [
+            {
+              id                     = "hbkq0r48"
+              isDisabled             = true
+              isResourceCountEnabled = false
+              type                   = "Timescrubber"
+            },
+            {
+              id         = "r5pajqag"
+              isDisabled = false
+              type       = "Vis"
+              vis = {
+                config = {
+                  color         = "Blue"
+                  hideGridLines = false
+                  legend = {
+                    placement = "right"
+                    type      = "list"
+                    visible   = true
+                  }
+                  lineCurveType = "Step"
+                  type          = "xy"
+                  xConfig = {
+                    visible = true
+                  }
+                  yConfig = {
+                    visible = true
+                  }
+                }
+                source = {
+                  table = {
+                    groupFields = [
+                      "instance_state_label",
+                    ]
+                    statsBy = {
+                      fn = "count"
+                    }
+                    timechart = {
+                      fn         = "count"
+                      resolution = "AUTO"
+                    }
+                    transformType = "timechart"
+                    type          = "xy"
+                    y             = "instance_state_label"
+                  }
+                  type = "table"
+                }
+                type = "timeseries"
+              }
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            limit          = 1000
+            linkify        = true
+            loadEverything = false
+            progressive    = true
+            resultKinds = [
+              "ResultKindSchema",
+            ]
+            rollup      = {}
+            wantBuckets = 50
+          }
+          renderType     = "TABLE"
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              columnStatsTable = {
+                columnFunctions = {
+                  database_platform    = "count"
+                  instance_state_label = "count"
+                  label                = "count"
+                  metric               = "count"
+                  metric_category      = "count"
+                  metric_kind_text     = "count"
+                  metric_labels        = "count"
+                  project_id           = "count"
+                  region               = "count"
+                  value                = "count"
+                  value_type_text      = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-h4nclc70"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              customName    = "Input"
+              customSummary = "WORKING/Cloud SQL Metrics"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-c5rna45m"
+              index             = 0
+              isPinned          = false
+              opal              = []
+              queryPresentation = {}
+              type              = "InputStep"
+            },
+            {
+              columnStatsTable = {
+                columnFunctions = {
+                  database_platform    = "count"
+                  instance_state_label = "count"
+                  label                = "count"
+                  metric               = "count"
+                  metric_category      = "count"
+                  metric_kind_text     = "count"
+                  metric_labels        = "count"
+                  project_id           = "count"
+                  region               = "count"
+                  value                = "count"
+                  value_type_text      = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-ua15eg73"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-wtbh17st"
+              index    = 1
+              isPinned = false
+              opal = [
+                "exists project_id = @projects.project_id",
+                "",
+                "filter metric = \"database_instance_state\" and value = 1",
+                "",
+                "",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            scriptTab     = "SCRIPT"
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = <<-EOT
+                    exists project_id = @projects.project_id
+                    
+                    filter metric = "database_instance_state" and value = 1
+                    
+                EOT
+      },
+      {
+        id = "stage-qf8oapqb"
+        input = [
+          {
+            datasetId   = "${local.cloud_sql_metrics_wide}"
+            datasetPath = null
+            inputName   = "WORKING/Cloud SQL Metrics Wide"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "projects"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight             = true
+            columnFooterHeight          = 0
+            columnHeaderHeight          = 29
+            columnOrderOverride         = {}
+            columnVisibility            = {}
+            columnWidths                = {}
+            containerWidth              = 1505
+            contextMenuXCoord           = null
+            contextMenuYCoord           = null
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            eventLinkColumnId           = null
+            fetchPageSize               = 100
+            hasCalculatedColumnWidths   = false
+            hasDoneAutoLayout           = false
+            maxColumnWidth              = 400
+            maxMeasuredColumnWidth      = {}
+            minColumnWidth              = 60
+            minRowHeight                = 30
+            preserveCellAndRowSelection = true
+            rowHeaderWidth              = 20
+            rowHeights                  = {}
+            rowSizeIncrement            = 1
+            scrollToColumn              = null
+            scrollToRow                 = 0
+            selection = {
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 0
+            tableView                  = "TABULAR"
+          }
+          index = 20
+          inputList = [
+            {
+              datasetId   = "${local.cloud_sql_metrics_wide}"
+              inputName   = "WORKING/Cloud SQL Metrics Wide"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+            {
+              inputName   = "projects"
+              inputRole   = "Data"
+              isUserInput = true
+              parameterId = "input-parameter-cjhbgiip"
+            },
+          ]
+          label = "Percent of Disk Used"
+          managers = [
+            {
+              id                     = "wo9zx2x6"
+              isDisabled             = true
+              isResourceCountEnabled = false
+              type                   = "Timescrubber"
+            },
+            {
+              id         = "1pfl5zz4"
+              isDisabled = false
+              type       = "Vis"
+              vis = {
+                config = {
+                  color         = "Default"
+                  hideGridLines = false
+                  legend = {
+                    placement = "right"
+                    type      = "list"
+                    visible   = false
+                  }
+                  type = "xy"
+                  xConfig = {
+                    visible = true
+                  }
+                  yConfig = {
+                    visible = true
+                  }
+                }
+                source = {
+                  table = {
+                    groupFields = [
+                      [
+                        "database_id",
+                      ],
+                    ]
+                    statsBy = {
+                      fn = "avg"
+                    }
+                    timechart = {
+                      fn         = "avg"
+                      resolution = "AUTO"
+                    }
+                    transformType = "timechart"
+                    type          = "xy"
+                    y             = "value"
+                  }
+                  type = "table"
+                }
+                type = "timeseries"
+              }
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            limit          = 1000
+            linkify        = true
+            loadEverything = false
+            progressive    = true
+            resultKinds = [
+              "ResultKindSchema",
+            ]
+            rollup      = {}
+            wantBuckets = 600
+          }
+          renderType     = "TABLE"
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              columnStatsTable = {
+                columnFunctions = {
+                  database_platform = "count"
+                  metric            = "count"
+                  metric_category   = "count"
+                  project_id        = "count"
+                  region            = "count"
+                  value             = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-izqe8ajw"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              customName    = "Input"
+              customSummary = "WORKING/Cloud SQL Metrics Wide"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-slzxda8n"
+              index             = 0
+              isPinned          = false
+              opal              = []
+              queryPresentation = {}
+              type              = "InputStep"
+            },
+            {
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-jve2k1tw"
+              index    = 1
+              isPinned = false
+              opal = [
+                "exists project_id = @projects.project_id",
+                "",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+            {
+              action = {
+                params = {
+                  columnId    = "metric"
+                  columnType  = "string"
+                  filterVerb  = "filter"
+                  isExcluding = false
+                  values = [
+                    "percent_disk_used",
+                  ]
+                }
+                summary = null
+                type    = "FilterValues"
+              }
+              columnStatsTable = {
+                columnFunctions = {
+                  database_platform = "count"
+                  metric            = "count"
+                  metric_category   = "count"
+                  project_id        = "count"
+                  region            = "count"
+                  value             = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-l2s073z1"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              customSummary = "metric"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-7bxym6wt"
+              index    = 2
+              isPinned = false
+              opal = [
+                "filter metric = \"percent_disk_used\"",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            scriptTab     = "SCRIPT"
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = <<-EOT
+                    exists project_id = @projects.project_id
+                    
+                    filter metric = "percent_disk_used"
+                EOT
+      },
+      {
+        id = "stage-60n5juu6"
+        input = [
+          {
+            datasetId   = "${local.cloud_functions_function_metrics}"
+            datasetPath = null
+            inputName   = "WORKING/Cloud Functions Function Metrics"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "projects"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight             = true
+            columnFooterHeight          = 0
+            columnHeaderHeight          = 29
+            columnOrderOverride         = {}
+            columnVisibility            = {}
+            columnWidths                = {}
+            containerWidth              = 1313
+            contextMenuXCoord           = null
+            contextMenuYCoord           = null
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            eventLinkColumnId           = null
+            fetchPageSize               = 100
+            hasCalculatedColumnWidths   = false
+            hasDoneAutoLayout           = false
+            maxColumnWidth              = 400
+            maxMeasuredColumnWidth      = {}
+            minColumnWidth              = 60
+            minRowHeight                = 30
+            preserveCellAndRowSelection = true
+            rowHeaderWidth              = 20
+            rowHeights                  = {}
+            rowSizeIncrement            = 1
+            scrollToColumn              = null
+            scrollToRow                 = 0
+            selection = {
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 0
+            tableView                  = "TABULAR"
+          }
+          index = 21
+          inputList = [
+            {
+              datasetId   = "${local.cloud_functions_function_metrics}"
+              inputName   = "WORKING/Cloud Functions Function Metrics"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+            {
+              inputName   = "projects"
+              inputRole   = "Data"
+              isUserInput = true
+              parameterId = "input-parameter-cjhbgiip"
+            },
+          ]
+          label = "Function Execution Times Milliseconds"
+          managers = [
+            {
+              id                     = "k1fp6oqi"
+              isDisabled             = true
+              isResourceCountEnabled = false
+              type                   = "Timescrubber"
+            },
+            {
+              id         = "repsl9qs"
+              isDisabled = false
+              type       = "Vis"
+              vis = {
+                config = {
+                  color         = "Default"
+                  hideGridLines = false
+                  legend = {
+                    placement = "right"
+                    type      = "list"
+                    visible   = false
+                  }
+                  type = "xy"
+                  xConfig = {
+                    visible = true
+                  }
+                  yConfig = {
+                    visible = true
+                  }
+                }
+                source = {
+                  table = {
+                    groupFields = [
+                      [
+                        "project_id",
+                        "region",
+                        "function_name",
+                      ],
+                    ]
+                    statsBy = {
+                      fn = "avg"
+                    }
+                    timechart = {
+                      fn         = "avg"
+                      resolution = "AUTO"
+                    }
+                    transformType = "timechart"
+                    type          = "xy"
+                    y             = "milli_value"
+                  }
+                  type = "table"
+                }
+                type = "timeseries"
+              }
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            limit          = 1000
+            linkify        = true
+            loadEverything = false
+            progressive    = true
+            resultKinds = [
+              "ResultKindSchema",
+            ]
+            rollup      = {}
+            wantBuckets = 600
+          }
+          renderType     = "TABLE"
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              columnStatsTable = {
+                columnFunctions = {
+                  metric        = "count"
+                  metric_kind   = "count"
+                  metric_labels = "count"
+                  value         = "count"
+                  value_type    = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-u8u3bstx"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              customName    = "Input"
+              customSummary = "WORKING/Cloud Functions Function Metrics"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-cixt8ej7"
+              index             = 0
+              isPinned          = false
+              opal              = []
+              queryPresentation = {}
+              type              = "InputStep"
+            },
+            {
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-eorcs667"
+              index    = 1
+              isPinned = false
+              opal = [
+                "exists project_id = @projects.project_id",
+                "",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+            {
+              action = {
+                params = {
+                  columnId    = "metric"
+                  columnType  = "string"
+                  filterVerb  = "filter"
+                  isExcluding = false
+                  values = [
+                    "function_execution_times",
+                  ]
+                }
+                summary = null
+                type    = "FilterValues"
+              }
+              columnStatsTable = {
+                columnFunctions = {
+                  metric        = "count"
+                  metric_kind   = "count"
+                  metric_labels = "count"
+                  value         = "count"
+                  value_type    = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-w3gnlqk7"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              customSummary = "metric"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-23aec4wb"
+              index    = 2
+              isPinned = true
+              opal = [
+                "filter metric = \"function_execution_times\"",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+            {
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-mortw08d"
+              index    = 3
+              isPinned = false
+              opal = [
+                "",
+                "make_col milli_value: value/1000000",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            scriptTab     = "SCRIPT"
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = <<-EOT
+                    exists project_id = @projects.project_id
+                    
+                    filter metric = "function_execution_times"
+                    
+                    make_col milli_value: value/1000000
+                EOT
+      },
+      {
+        id = "stage-83cj0j4u"
+        input = [
+          {
+            datasetId   = "${local.cloud_functions_function_metrics}"
+            datasetPath = null
+            inputName   = "WORKING/Cloud Functions Function Metrics"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "projects"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight     = true
+            columnFooterHeight  = 0
+            columnHeaderHeight  = 29
+            columnOrderOverride = {}
+            columnVisibility    = {}
+            columnWidths = {
+              metric_labels = 582
+            }
+            containerWidth              = 2145
+            contextMenuXCoord           = null
+            contextMenuYCoord           = null
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            eventLinkColumnId           = null
+            fetchPageSize               = 100
+            hasCalculatedColumnWidths   = false
+            hasDoneAutoLayout           = false
+            maxColumnWidth              = 400
+            maxMeasuredColumnWidth      = {}
+            minColumnWidth              = 60
+            minRowHeight                = 30
+            preserveCellAndRowSelection = true
+            rowHeaderWidth              = 20
+            rowHeights                  = {}
+            rowSizeIncrement            = 1
+            scrollToColumn              = null
+            scrollToRow                 = 0
+            selection = {
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 0
+            tableView                  = "TABULAR"
+          }
+          index = 22
+          inputList = [
+            {
+              datasetId   = "${local.cloud_functions_function_metrics}"
+              inputName   = "WORKING/Cloud Functions Function Metrics"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+            {
+              inputName   = "projects"
+              inputRole   = "Data"
+              isUserInput = true
+              parameterId = "input-parameter-cjhbgiip"
+            },
+          ]
+          label = "Function Log Counts by Severity"
+          managers = [
+            {
+              id                     = "k1fp6oqi"
+              isDisabled             = true
+              isResourceCountEnabled = false
+              type                   = "Timescrubber"
+            },
+            {
+              id         = "repsl9qs"
+              isDisabled = false
+              type       = "Vis"
+              vis = {
+                config = {
+                  color         = "Default"
+                  hideGridLines = false
+                  legend = {
+                    placement = "bottom"
+                    type      = "list"
+                    visible   = true
+                  }
+                  type = "xy"
+                  xConfig = {
+                    visible = true
+                  }
+                  yConfig = {
+                    visible = true
+                  }
+                }
+                source = {
+                  table = {
+                    groupFields = [
+                      "log_severity",
+                    ]
+                    statsBy = {
+                      fn = "avg"
+                    }
+                    timechart = {
+                      fn         = "avg"
+                      resolution = "AUTO"
+                    }
+                    transformType = "timechart"
+                    type          = "xy"
+                    y             = "value"
+                  }
+                  type = "table"
+                }
+                type = "timeseries"
+              }
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            limit          = 1000
+            linkify        = true
+            loadEverything = false
+            progressive    = true
+            resultKinds = [
+              "ResultKindSchema",
+            ]
+            rollup      = {}
+            wantBuckets = 600
+          }
+          renderType     = "TABLE"
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              customName    = "Input"
+              customSummary = "WORKING/Cloud Functions Function Metrics"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-tixs3ae4"
+              index             = 0
+              isPinned          = false
+              opal              = []
+              queryPresentation = {}
+              type              = "InputStep"
+            },
+            {
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-9gzg2t0n"
+              index    = 1
+              isPinned = false
+              opal = [
+                "exists project_id = @projects.project_id",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+            {
+              action = {
+                params = {
+                  columnId    = "metric"
+                  columnType  = "string"
+                  filterVerb  = "filter"
+                  isExcluding = false
+                  values = [
+                    "log_entry_count",
+                  ]
+                }
+                summary = null
+                type    = "FilterValues"
+              }
+              columnStatsTable = {
+                columnFunctions = {
+                  metric        = "count"
+                  metric_kind   = "count"
+                  metric_labels = "count"
+                  milli_value   = "count"
+                  value         = "count"
+                  value_type    = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-cfpy06uy"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              customSummary = "metric"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-m1ql7ri8"
+              index    = 2
+              isPinned = true
+              opal = [
+                "filter metric = \"log_entry_count\"",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+            {
+              columnStatsTable = {
+                columnFunctions = {
+                  metric        = "count"
+                  metric_kind   = "count"
+                  metric_labels = "count"
+                  milli_value   = "count"
+                  value         = "count"
+                  value_type    = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-q9xhkylg"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-9o1xi6z9"
+              index    = 3
+              isPinned = false
+              opal = [
+                "//filter metric = \"function_execution_times\"",
+                "",
+                "make_col log_severity: string(metric_labels.severity)",
+                "",
+                "",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            scriptTab     = "SCRIPT"
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = <<-EOT
+                    exists project_id = @projects.project_id
+                    filter metric = "log_entry_count"
+                    //filter metric = "function_execution_times"
+                    
+                    make_col log_severity: string(metric_labels.severity)
+                    
+                EOT
+      },
+      {
+        id = "stage-bnuvko6z"
+        input = [
+          {
+            datasetId   = "${local.cloud_functions_function_logs}"
+            datasetPath = null
+            inputName   = "WORKING/Cloud Functions Function Logs"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight             = true
+            columnFooterHeight          = 0
+            columnHeaderHeight          = 29
+            columnOrderOverride         = {}
+            columnVisibility            = {}
+            columnWidths                = {}
+            containerWidth              = 285
+            contextMenuXCoord           = null
+            contextMenuYCoord           = null
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            eventLinkColumnId           = null
+            fetchPageSize               = 100
+            hasCalculatedColumnWidths   = true
+            hasDoneAutoLayout           = false
+            maxColumnWidth              = 400
+            maxMeasuredColumnWidth      = {}
+            minColumnWidth              = 60
+            minRowHeight                = 30
+            preserveCellAndRowSelection = true
+            rowHeaderWidth              = 20
+            rowHeights                  = {}
+            rowSizeIncrement            = 1
+            scrollToColumn              = null
+            scrollToRow                 = 0
+            selection = {
+              anchoredCellSelection = [
+                10,
+                "textPayload",
+              ]
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells = {
+                textPayload = {
+                  "10" = true
+                }
+              }
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              lastCellSelection    = null
+              lastColumnSelection  = null
+              lastRowSelection     = null
+              rows                 = {}
+              selectionType        = "cell"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 0
+            tableView                  = "TABULAR"
+          }
+          index = 23
+          inputList = [
+            {
+              datasetId   = "${local.cloud_functions_function_logs}"
+              inputName   = "WORKING/Cloud Functions Function Logs"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+          ]
+          label = "Stage 23"
+          managers = [
+            {
+              id                     = "lgf2f4r8"
+              isDisabled             = true
+              isResourceCountEnabled = false
+              type                   = "Timescrubber"
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            limit          = 1000
+            linkify        = true
+            loadEverything = false
+            progressive    = true
+            resultKinds = [
+              "ResultKindStats",
+              "ResultKindData",
+              "ResultKindSchema",
+              "ResultKindProgress",
+            ]
+            rollup = {}
+          }
+          renderType     = "TABLE"
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              columnStatsTable = {
+                columnFunctions = {
+                  logName     = "count"
+                  severity    = "count"
+                  textPayload = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-2fmg280q"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              customName    = "Input"
+              customSummary = "WORKING/Cloud Functions Function Logs"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-g940971n"
+              index             = 0
+              isPinned          = false
+              opal              = []
+              queryPresentation = {}
+              type              = "InputStep"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            scriptTab     = "SCRIPT"
+            showTimeRuler = true
+            stageTab      = "table"
+          }
+        }
+        params   = null
+        pipeline = ""
+      },
+      {
+        id = "stage-ufgxvfzv"
+        input = [
+          {
+            datasetId   = "${local.metrics}"
+            datasetPath = null
+            inputName   = "WORKING/Metrics"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "projects"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight             = true
+            columnFooterHeight          = 0
+            columnHeaderHeight          = 29
+            columnOrderOverride         = {}
+            columnVisibility            = {}
+            columnWidths                = {}
+            containerWidth              = 1313
+            contextMenuXCoord           = null
+            contextMenuYCoord           = null
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            eventLinkColumnId           = null
+            fetchPageSize               = 100
+            hasCalculatedColumnWidths   = false
+            hasDoneAutoLayout           = false
+            maxColumnWidth              = 400
+            maxMeasuredColumnWidth      = {}
+            minColumnWidth              = 60
+            minRowHeight                = 30
+            preserveCellAndRowSelection = true
+            rowHeaderWidth              = 20
+            rowHeights                  = {}
+            rowSizeIncrement            = 1
+            scrollToColumn              = null
+            scrollToRow                 = 0
+            selection = {
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 0
+            tableView                  = "TABULAR"
+          }
+          index = 24
+          inputList = [
+            {
+              datasetId   = "${local.metrics}"
+              inputName   = "WORKING/Metrics"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+            {
+              inputName   = "projects"
+              inputRole   = "Data"
+              isUserInput = true
+              parameterId = "input-parameter-cjhbgiip"
+            },
+          ]
+          label = "Megabytes Ingested by Service"
+          managers = [
+            {
+              id                     = "rj9thlmb"
+              isDisabled             = true
+              isResourceCountEnabled = false
+              type                   = "Timescrubber"
+            },
+            {
+              id         = "1pdnocmv"
+              isDisabled = false
+              type       = "Vis"
+              vis = {
+                config = {
+                  color         = "Default"
+                  hideGridLines = false
+                  legend = {
+                    placement = "right"
+                    type      = "list"
+                    visible   = true
+                  }
+                  type = "xy"
+                  xConfig = {
+                    visible = true
+                  }
+                  yConfig = {
+                    visible = true
+                  }
+                }
+                source = {
+                  table = {
+                    groupFields = [
+                      "resource_type",
+                    ]
+                    statsBy = {
+                      fn = "avg"
+                    }
+                    timechart = {
+                      fn         = "avg"
+                      resolution = "AUTO"
+                    }
+                    transformType = "timechart"
+                    type          = "xy"
+                    y             = "mb_value"
+                  }
+                  type = "table"
+                }
+                type = "timeseries"
+              }
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            limit          = 1000
+            linkify        = true
+            loadEverything = false
+            progressive    = true
+            resultKinds = [
+              "ResultKindSchema",
+            ]
+            rollup      = {}
+            wantBuckets = 600
+          }
+          renderType     = "TABLE"
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              columnStatsTable = {
+                columnFunctions = {
+                  metric_kind      = "count"
+                  metric_kind_text = "count"
+                  metric_labels    = "count"
+                  metric_namespace = "count"
+                  metric_type      = "count"
+                  resource_labels  = "count"
+                  resource_type    = "count"
+                  value            = "count"
+                  value_type       = "count"
+                  value_type_text  = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-y2ww4w0i"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              customName    = "Input"
+              customSummary = "WORKING/Metrics"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-5uy0z74d"
+              index             = 0
+              isPinned          = false
+              opal              = []
+              queryPresentation = {}
+              type              = "InputStep"
+            },
+            {
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-x271p0us"
+              index    = 1
+              isPinned = false
+              opal = [
+                "exists project_id = @projects.project_id",
+                "",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+            {
+              action = {
+                params = {
+                  columnId    = "metric_type"
+                  columnType  = "string"
+                  filterVerb  = "filter"
+                  isExcluding = false
+                  values = [
+                    "logging.googleapis.com/billing/bytes_ingested",
+                  ]
+                }
+                summary = null
+                type    = "FilterValues"
+              }
+              columnStatsTable = {
+                columnFunctions = {
+                  metric_kind      = "count"
+                  metric_kind_text = "count"
+                  metric_labels    = "count"
+                  metric_namespace = "count"
+                  metric_type      = "count"
+                  resource_labels  = "count"
+                  resource_type    = "count"
+                  value            = "count"
+                  value_type       = "count"
+                  value_type_text  = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-fx4u80at"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              customSummary = "metric_type"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-upf2vmqg"
+              index    = 2
+              isPinned = false
+              opal = [
+                "filter metric_type = \"logging.googleapis.com/billing/bytes_ingested\"",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+            {
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-o7s9608h"
+              index    = 3
+              isPinned = false
+              opal = [
+                "",
+                "make_col resource_type: string(metric_labels.resource_type), project_id: string(resource_labels.project_id)",
+                "",
+                "make_col mb_value: value / 1000000",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            scriptTab     = "SCRIPT"
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = <<-EOT
+                    exists project_id = @projects.project_id
+                    
+                    filter metric_type = "logging.googleapis.com/billing/bytes_ingested"
+                    
+                    make_col resource_type: string(metric_labels.resource_type), project_id: string(resource_labels.project_id)
+                    
+                    make_col mb_value: value / 1000000
+                EOT
+      },
+      {
+        id = "stage-xs8j2jsp"
+        input = [
+          {
+            datasetId   = "${local.storage_metrics}"
+            datasetPath = null
+            inputName   = "WORKING/Storage Metrics"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "projects"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight             = true
+            columnFooterHeight          = 0
+            columnHeaderHeight          = 29
+            columnOrderOverride         = {}
+            columnVisibility            = {}
+            columnWidths                = {}
+            containerWidth              = 2145
+            contextMenuXCoord           = null
+            contextMenuYCoord           = null
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            eventLinkColumnId           = null
+            fetchPageSize               = 100
+            hasCalculatedColumnWidths   = false
+            hasDoneAutoLayout           = false
+            maxColumnWidth              = 400
+            maxMeasuredColumnWidth      = {}
+            minColumnWidth              = 60
+            minRowHeight                = 30
+            preserveCellAndRowSelection = true
+            rowHeaderWidth              = 20
+            rowHeights                  = {}
+            rowSizeIncrement            = 1
+            scrollToColumn              = null
+            scrollToRow                 = 0
+            selection = {
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 0
+            tableView                  = "TABULAR"
+          }
+          index = 25
+          inputList = [
+            {
+              datasetId   = "${local.storage_metrics}"
+              inputName   = "WORKING/Storage Metrics"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+            {
+              inputName   = "projects"
+              inputRole   = "Data"
+              isUserInput = true
+              parameterId = "input-parameter-cjhbgiip"
+            },
+          ]
+          label = "Storage Response Code Counts"
+          managers = [
+            {
+              id                     = "gtolzcfl"
+              isDisabled             = true
+              isResourceCountEnabled = false
+              type                   = "Timescrubber"
+            },
+            {
+              id         = "db4xqgcv"
+              isDisabled = false
+              type       = "Vis"
+              vis = {
+                config = {
+                  color         = "Default"
+                  hideGridLines = false
+                  legend = {
+                    placement = "bottom"
+                    type      = "list"
+                    visible   = true
+                  }
+                  type = "xy"
+                  xConfig = {
+                    visible = true
+                  }
+                  yConfig = {
+                    visible = true
+                  }
+                }
+                source = {
+                  table = {
+                    groupFields = [
+                      "response_code",
+                    ]
+                    statsBy = {
+                      fn = "avg"
+                    }
+                    timechart = {
+                      fn         = "avg"
+                      resolution = "AUTO"
+                    }
+                    transformType = "timechart"
+                    type          = "xy"
+                    y             = "value"
+                  }
+                  type = "table"
+                }
+                type = "timeseries"
+              }
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            limit          = 1000
+            linkify        = true
+            loadEverything = false
+            progressive    = true
+            resultKinds = [
+              "ResultKindSchema",
+            ]
+            rollup      = {}
+            wantBuckets = 600
+          }
+          renderType     = "TABLE"
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              columnStatsTable = {
+                columnFunctions = {
+                  metric        = "count"
+                  metric_labels = "count"
+                  project_id    = "count"
+                  region        = "count"
+                  value         = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-akwkuvyn"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              customName    = "Input"
+              customSummary = "WORKING/Storage Metrics"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-3qxox80d"
+              index             = 0
+              isPinned          = false
+              opal              = []
+              queryPresentation = {}
+              type              = "InputStep"
+            },
+            {
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-c5assdhr"
+              index    = 1
+              isPinned = false
+              opal = [
+                "exists project_id = @projects.project_id",
+                "",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+            {
+              action = {
+                params = {
+                  columnId    = "metric"
+                  columnType  = "string"
+                  filterVerb  = "filter"
+                  isExcluding = false
+                  values = [
+                    "api_request_count",
+                  ]
+                }
+                summary = null
+                type    = "FilterValues"
+              }
+              columnStatsTable = {
+                columnFunctions = {
+                  metric        = "count"
+                  metric_labels = "count"
+                  project_id    = "count"
+                  region        = "count"
+                  value         = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-epxa5btd"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              customSummary = "metric"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-4glsbxrg"
+              index    = 2
+              isPinned = true
+              opal = [
+                "filter metric = \"api_request_count\"",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+            {
+              columnStatsTable = {
+                columnFunctions = {
+                  method        = "count"
+                  metric        = "count"
+                  metric_labels = "count"
+                  project_id    = "count"
+                  region        = "count"
+                  response_code = "count"
+                  value         = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-qjya04hr"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-mp0cprzw"
+              index    = 3
+              isPinned = false
+              opal = [
+                "",
+                "make_col method: string(metric_labels.method), response_code: string(metric_labels.response_code)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            scriptTab     = "SCRIPT"
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = <<-EOT
+                    exists project_id = @projects.project_id
+                    
+                    filter metric = "api_request_count"
+                    
+                    make_col method: string(metric_labels.method), response_code: string(metric_labels.response_code)
+                EOT
+      },
+      {
+        id = "stage-wcrqj5fn"
+        input = [
+          {
+            datasetId   = "${local.storage_metrics}"
+            datasetPath = null
+            inputName   = "WORKING/Storage Metrics"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "projects"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight     = true
+            columnFooterHeight  = 0
+            columnHeaderHeight  = 29
+            columnOrderOverride = {}
+            columnVisibility    = {}
+            columnWidths = {
+              value = 175
+            }
+            containerWidth              = 2145
+            contextMenuXCoord           = null
+            contextMenuYCoord           = null
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            eventLinkColumnId           = null
+            fetchPageSize               = 100
+            hasCalculatedColumnWidths   = false
+            hasDoneAutoLayout           = false
+            maxColumnWidth              = 400
+            maxMeasuredColumnWidth      = {}
+            minColumnWidth              = 60
+            minRowHeight                = 30
+            preserveCellAndRowSelection = true
+            rowHeaderWidth              = 20
+            rowHeights                  = {}
+            rowSizeIncrement            = 1
+            scrollToColumn              = null
+            scrollToRow                 = 0
+            selection = {
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 0
+            tableView                  = "TABULAR"
+          }
+          index = 26
+          inputList = [
+            {
+              datasetId   = "${local.storage_metrics}"
+              inputName   = "WORKING/Storage Metrics"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+            {
+              inputName   = "projects"
+              inputRole   = "Data"
+              isUserInput = true
+              parameterId = "input-parameter-cjhbgiip"
+            },
+          ]
+          label = "Storage GBs Used"
+          managers = [
+            {
+              id                     = "gtolzcfl"
+              isDisabled             = true
+              isResourceCountEnabled = false
+              type                   = "Timescrubber"
+            },
+            {
+              id         = "db4xqgcv"
+              isDisabled = false
+              type       = "Vis"
+              vis = {
+                config = {
+                  color         = "Default"
+                  hideGridLines = false
+                  legend = {
+                    placement = "bottom"
+                    type      = "list"
+                    visible   = false
+                  }
+                  type = "xy"
+                  xConfig = {
+                    visible = true
+                  }
+                  yConfig = {
+                    visible = true
+                  }
+                }
+                source = {
+                  table = {
+                    groupFields = [
+                      [
+                        "bucket_name",
+                      ],
+                    ]
+                    statsBy = {
+                      fn = "avg"
+                    }
+                    timechart = {
+                      fn         = "avg"
+                      resolution = "AUTO"
+                    }
+                    transformType = "timechart"
+                    type          = "xy"
+                    y             = "mb_value"
+                  }
+                  type = "table"
+                }
+                type = "timeseries"
+              }
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            limit          = 1000
+            linkify        = true
+            loadEverything = false
+            progressive    = true
+            resultKinds = [
+              "ResultKindSchema",
+            ]
+            rollup      = {}
+            wantBuckets = 600
+          }
+          renderType     = "TABLE"
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              customName    = "Input"
+              customSummary = "WORKING/Storage Metrics"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-ta3w4hep"
+              index             = 0
+              isPinned          = false
+              opal              = []
+              queryPresentation = {}
+              type              = "InputStep"
+            },
+            {
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-je6papug"
+              index    = 1
+              isPinned = false
+              opal = [
+                "exists project_id = @projects.project_id",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+            {
+              action = {
+                params = {
+                  columnId    = "metric"
+                  columnType  = "string"
+                  filterVerb  = "filter"
+                  isExcluding = false
+                  values = [
+                    "storage_total_bytes",
+                  ]
+                }
+                summary = null
+                type    = "FilterValues"
+              }
+              columnStatsTable = {
+                columnFunctions = {
+                  metric        = "count"
+                  metric_labels = "count"
+                  project_id    = "count"
+                  region        = "count"
+                  value         = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-jwkklnib"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              customSummary = "metric"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-96to7auu"
+              index    = 2
+              isPinned = false
+              opal = [
+                "filter metric = \"storage_total_bytes\"",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+            {
+              columnStatsTable = {
+                columnFunctions = {
+                  metric        = "count"
+                  metric_labels = "count"
+                  project_id    = "count"
+                  region        = "count"
+                  value         = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-hy9fk51h"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-m38cpn3r"
+              index    = 3
+              isPinned = false
+              opal = [
+                "",
+                "make_col mb_value: value/1000000",
+                "",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            scriptTab     = "SCRIPT"
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = <<-EOT
+                    exists project_id = @projects.project_id
+                    filter metric = "storage_total_bytes"
+                    
+                    make_col mb_value: value/1000000
                 EOT
       },
     ]
