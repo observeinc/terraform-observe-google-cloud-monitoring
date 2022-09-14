@@ -42,7 +42,7 @@ resource "observe_dataset" "base_asset_inventory_records" {
     alias    = "export_events"
     pipeline = <<-EOF
       filter OBSERVATION_KIND = "gcpassets"
-      make_col data:FIELDS
+      make_col data:FIELDS.asset
       filter not is_null(data.asset_type) and not is_null(data.name)
 
       pick_col 
