@@ -1,14 +1,14 @@
 locals {
   workspace                        = var.workspace.oid
   dashboard_name                   = format(var.name_format, "Projects Home")
-  projects_collection_enabled      = resource.observe_dataset.projects_collection_enabled.id
-  resources_asset_inventory        = resource.observe_dataset.resources_asset_inventory.id
+  projects_collection_enabled      = observe_dataset.projects_collection_enabled.id
+  resources_asset_inventory        = observe_dataset.resources_asset_inventory.id
   cloud_sql_metrics                = one(module.cloudsql[*].cloudsql_metrics) == null ? "NA" : one(module.cloudsql[*].cloudsql_metrics.id)
   compute_metrics                  = one(module.compute[*].compute_metrics) == null ? "NA" : one(module.compute[*].compute_metrics.id)
   cloud_sql_metrics_wide           = one(module.cloudsql[*].cloudsql_metrics_wide) == null ? "NA" : one(module.cloudsql[*].cloudsql_metrics_wide.id)
   cloud_functions_function_metrics = one(module.cloudfunctions[*].function_metrics) == null ? "NA" : one(module.cloudfunctions[*].function_metrics.id)
   cloud_functions_function_logs    = one(module.cloudfunctions[*].function_logs) == null ? "NA" : one(module.cloudfunctions[*].function_logs.id)
-  metrics                          = resource.observe_dataset.metrics.id
+  metrics                          = observe_dataset.metrics.id
   storage_metrics                  = one(module.storage[*].storage_metrics) == null ? "NA" : one(module.storage[*].storage_metrics.id)
 }
 # terraform import observe_dashboard.projects_home_template 41144640
