@@ -47,7 +47,7 @@ output "compute" {
 }
 
 output "projects" {
-  value = observe_dataset.projects
+  value = observe_dataset.projects_collection_enabled
 }
 
 output "storage" {

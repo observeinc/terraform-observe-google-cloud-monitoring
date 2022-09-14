@@ -1141,6 +1141,38 @@ locals { metrics_definitions = {
     valuetype          = "INT64"
 
   }
+  producer_connected_consumer_forwarding_rules = {
+    type               = "gauge"
+    description        = <<-EOF
+                    Number of Consumer Forwarding Rules connected to a PSC Attachment ID.
+                EOF
+    launchStage        = "BETA"
+    rollup             = "avg"
+    aggregate          = "sum"
+    metricCategory     = "producer"
+    google_metric_path = "compute.googleapis.com/private_service_connect/producer/connected_consumer_forwarding_rules"
+    label              = "Connected consumer forwarding rules"
+    unit               = "1"
+    metricBin          = "['private_service_connect']"
+    valuetype          = "INT64"
+
+  }
+  producer_used_nat_ip_addresses = {
+    type               = "gauge"
+    description        = <<-EOF
+                    IP usage of the monitored service attachment.
+                EOF
+    launchStage        = "BETA"
+    rollup             = "avg"
+    aggregate          = "sum"
+    metricCategory     = "producer"
+    google_metric_path = "compute.googleapis.com/private_service_connect/producer/used_nat_ip_addresses"
+    label              = "Used nat ip addresses"
+    unit               = "1"
+    metricBin          = "['private_service_connect']"
+    valuetype          = "INT64"
+
+  }
   instances_per_vpc_network_exceeded = {
     type               = "delta"
     description        = <<-EOF

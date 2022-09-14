@@ -73,7 +73,7 @@ if contains(var.metric_launch_stages, options.launchStage)])}
 resource "observe_link" "compute_metrics" {
   for_each = length(observe_dataset.compute_metrics) > 0 ? {
     "Compute" = {
-      target = observe_dataset.compute.oid
+      target = observe_dataset.compute_instance.oid
       fields = ["instance_key"]
     }
   } : {}

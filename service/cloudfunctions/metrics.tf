@@ -128,7 +128,7 @@ resource "observe_dataset" "function_metrics" {
   count = local.enable_metrics ? 1 : 0
 
   workspace   = var.workspace.oid
-  name        = format(var.name_format, "Function Metrics")
+  name        = format(var.name_format, "Metrics")
   freshness   = var.freshness_default
   description = "This dataset contains metrics collected for cloud functions"
   inputs = {

@@ -111,13 +111,13 @@ resource "observe_link" "sql_logs" {
 
   for_each = {
     "sql_logs" = {
-      target = observe_dataset.cloudsql.oid
+      target = observe_dataset.cloud_sql_instance.oid
       fields = ["database_id"]
       source = observe_dataset.sql_logs.oid
     }
 
     "activity_logs" = {
-      target = observe_dataset.cloudsql.oid
+      target = observe_dataset.cloud_sql_instance.oid
       fields = ["database_id"]
       source = observe_dataset.activity_logs.oid
     }

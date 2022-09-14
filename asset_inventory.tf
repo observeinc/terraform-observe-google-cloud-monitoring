@@ -72,7 +72,7 @@ resource "observe_dataset" "resource_asset_inventory_records" {
   description = "All cloud assets in GCP"
   inputs = {
     "events"   = observe_dataset.base_asset_inventory_records.oid
-    "projects" = observe_dataset.projects.oid
+    "projects" = observe_dataset.projects_collection_enabled.oid
   }
 
   # https://cloud.google.com/asset-inventory/docs/reference/rpc/google.cloud.asset.v1#google.cloud.asset.v1.Resource
@@ -161,6 +161,44 @@ resource "observe_dataset" "resource_asset_inventory_records" {
   }
 }
 
+resource "observe_dataset" "resources_asset_inventory" {
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Resources Asset Inventory")
+  freshness   = var.freshness_default
+  description = "All cloud resources in GCP"
+  inputs = {
+    "events" = observe_dataset.resource_asset_inventory_records.oid
+  }
+
+  stage {
+    pipeline = <<-EOF
+      make_resource options(expiry:${var.max_expiry}), 
+        time,
+        deleted,
+        parent_project_id,
+        project_id,
+        asset_type,
+        asset_namespace,
+        asset_sub_type,
+        asset_name: name,
+        data,
+        discovery_document_uri,
+        discovery_name,
+        location,
+        parent,
+        version,
+        ttl,
+        primary_key(name),
+        valid_for(ttl)
+
+      add_key project_id
+      add_key asset_type
+      add_key asset_namespace
+      add_key asset_sub_type
+    EOF
+  }
+}
+
 resource "observe_dataset" "iam_policy_asset_inventory_records" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "IAM Policy Asset Inventory Records")
@@ -182,4 +220,19 @@ resource "observe_dataset" "iam_policy_asset_inventory_records" {
         etag:string(iam_policy.etag)
     EOF
   }
+}
+
+resource "observe_link" "resource_asset_inventory_resource" {
+  for_each = {
+    "Projects" = {
+      target = observe_dataset.projects_collection_enabled.oid
+      fields = ["project_id"]
+    }
+  }
+
+  workspace = var.workspace.oid
+  source    = observe_dataset.resources_asset_inventory.oid
+  target    = each.value.target
+  fields    = each.value.fields
+  label     = each.key
 }

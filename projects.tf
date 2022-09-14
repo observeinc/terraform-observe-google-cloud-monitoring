@@ -1,4 +1,4 @@
-resource "observe_dataset" "projects" {
+resource "observe_dataset" "projects_collection_enabled" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Projects Collection Enabled")
   freshness   = lookup(var.freshness_overrides, "projects", var.freshness_default)
@@ -48,7 +48,7 @@ resource "observe_dataset" "projects" {
 }
 
 # resource "observe_link" "project" {
-#   for_each = length(observe_dataset.projects) > 0 ? {
+#   for_each = length(observe_dataset.projects_collection_enabled) > 0 ? {
 #     "AssetInventory" = {
 #       target = observe_dataset.resource_asset_inventory_records.oid
 #       fields = ["project_id"]
@@ -56,7 +56,7 @@ resource "observe_dataset" "projects" {
 #   } : {}
 
 #   workspace = var.workspace.oid
-#   source    = observe_dataset.projects.oid
+#   source    = observe_dataset.projects_collection_enabled.oid
 #   target    = each.value.target
 #   fields    = each.value.fields
 #   label     = each.key

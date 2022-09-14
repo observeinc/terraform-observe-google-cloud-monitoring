@@ -10,7 +10,7 @@ locals {
   enable_both     = local.enable_monitors && local.enable_metrics
 }
 
-resource "observe_dataset" "cloudsql" {
+resource "observe_dataset" "cloud_sql_instance" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Instance")
   freshness   = lookup(local.freshness, "cloudsql", var.freshness_default)
@@ -81,7 +81,7 @@ resource "observe_link" "project" {
   }
 
   workspace = var.workspace.oid
-  source    = observe_dataset.cloudsql.oid
+  source    = observe_dataset.cloud_sql_instance.oid
   target    = each.value.target
   fields    = each.value.fields
   label     = each.key

@@ -1,5 +1,5 @@
 output "compute" {
-  value = observe_dataset.compute
+  value = observe_dataset.compute_instance
 }
 
 output "compute_logs" {

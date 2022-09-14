@@ -23,7 +23,7 @@ module "google" {
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.1.0 |
 | <a name="requirement_observe"></a> [observe](#requirement\_observe) | >= 0.9.2, <= 0.11.3 |
 
 ## Providers
@@ -46,6 +46,7 @@ module "google" {
 
 | Name | Type |
 |------|------|
+| observe_dashboard.projects_home_template | resource |
 | observe_dataset.audit_logs | resource |
 | observe_dataset.base_asset_inventory_records | resource |
 | observe_dataset.base_pubsub_events | resource |
@@ -55,10 +56,12 @@ module "google" {
 | observe_dataset.metric_points | resource |
 | observe_dataset.metrics | resource |
 | observe_dataset.process_distribution_metrics | resource |
-| observe_dataset.projects | resource |
 | observe_dataset.projects_all | resource |
+| observe_dataset.projects_collection_enabled | resource |
 | observe_dataset.resource_asset_inventory_records | resource |
+| observe_dataset.resources_asset_inventory | resource |
 | observe_dataset.string_metrics | resource |
+| observe_link.resource_asset_inventory_resource | resource |
 
 ## Inputs
 

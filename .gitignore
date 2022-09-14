@@ -47,3 +47,5 @@ gettfdef.sh
 
 MakefileLocal
 service/__pycache__/createMetricsLocal.cpython-39.pyc
+dashboards/config.ini
+config.ini
