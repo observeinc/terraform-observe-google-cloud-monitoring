@@ -444,6 +444,10 @@ resource "observe_dataset" "load_balancers" {
         or asset_type = "compute.googleapis.com/BackendService"
         or asset_type = "compute.googleapis.com/RegionBackendService"
         or asset_type = "compute.googleapis.com/BackendBucket"
+      make_col assetExportStartTS:window(first_not_null(time), frame(back:5m))
+      set_valid_from assetExportStartTS
+      make_col time:assetExportStartTS
+      set_valid_from time
     EOF
   }
 
@@ -585,7 +589,8 @@ resource "observe_dataset" "load_balancers" {
     alias    = "LoadBalancers"
     input    = "UrlMaps"
     pipeline = <<-EOF
-      fulljoin defaultService=@BackendServices.selfLink,
+      fulljoin
+        defaultService=@BackendServices.selfLink,
         defaultServiceName:@BackendServices.name,
         defaultServiceHeathchecks:@BackendServices.healthChecks,
         defaultServiceProtocol:@BackendServices.protocol,
@@ -601,10 +606,14 @@ resource "observe_dataset" "load_balancers" {
         defaultServiceNullStatusGroups:@BackendServices.nullGroups
 
       filter not is_null(name) or not starts_with(defaultServiceProtocol, "HTTP")
-      join selfLink=@TargetProxies.urlMap,
+
+      leftjoin
+        selfLink=@TargetProxies.urlMap,
         targetProxy:@TargetProxies.selfLink,
         targetProxyName:@TargetProxies.name
-      join targetProxy=@ForwardingRules.target,
+
+      leftjoin
+        targetProxy=@ForwardingRules.target,
         frontEnd:@ForwardingRules.frontend_name,
         IPAddress:@ForwardingRules.IPAddress,
         IPProtocol:@ForwardingRules.IPProtocol,
@@ -623,6 +632,9 @@ resource "observe_dataset" "load_balancers" {
         id:if_null(id, defaultServiceId),
         region:if_null(region,defaultServiceRegion),
         creationTimestamp:if_null(creationTimestamp, defaultServiceCreationTS)
+
+      // remove GRPC proxies
+      filter not is_null(defaultServiceProtocol)
 
       make_resource 
         project_id,
