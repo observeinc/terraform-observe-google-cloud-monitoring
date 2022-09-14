@@ -49,7 +49,7 @@ resource "observe_link" "compute_logs" {
 
   for_each = {
     "Compute" = {
-      target = observe_dataset.compute.oid
+      target = observe_dataset.compute_instance.oid
       fields = ["instance_key"]
     }
   }

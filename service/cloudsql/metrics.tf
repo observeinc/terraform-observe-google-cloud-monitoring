@@ -1,4 +1,4 @@
-resource "observe_dataset" "cloudsql_metrics_base" {
+resource "observe_dataset" "cloud_sql_metrics_base" {
   count = local.enable_metrics ? 1 : 0
 
   workspace   = var.workspace.oid
@@ -59,7 +59,7 @@ resource "observe_dataset" "cloudsql_metrics_base" {
 }
 
 
-resource "observe_dataset" "cloudsql_metrics" {
+resource "observe_dataset" "cloud_sql_metrics" {
   count = local.enable_metrics ? 1 : 0
 
   workspace   = var.workspace.oid
@@ -67,7 +67,7 @@ resource "observe_dataset" "cloudsql_metrics" {
   freshness   = lookup(local.freshness, "metrics", var.freshness_default)
   description = "This dataset contains metrics grouped by category and label"
   inputs = {
-    "metrics_base" = observe_dataset.cloudsql_metrics_base[0].oid
+    "metrics_base" = observe_dataset.cloud_sql_metrics_base[0].oid
   }
   stage {
     input = "metrics_base"
@@ -92,7 +92,7 @@ resource "observe_dataset" "cloudsql_metrics" {
 }
 }
 
-resource "observe_dataset" "cloudsql_metrics_combo" {
+resource "observe_dataset" "cloud_sql_metrics_combo" {
   count = local.enable_metrics ? 1 : 0
 
   workspace   = var.workspace.oid
@@ -100,7 +100,7 @@ resource "observe_dataset" "cloudsql_metrics_combo" {
   freshness   = lookup(local.freshness, "metrics", var.freshness_default)
   description = "This dataset contains derived metrics"
   inputs = {
-    "metrics_base" = observe_dataset.cloudsql_metrics_base[0].oid
+    "metrics_base" = observe_dataset.cloud_sql_metrics_base[0].oid
   }
   stage {
     # alias    = "all_database_network_connections"
@@ -123,7 +123,7 @@ resource "observe_dataset" "cloudsql_metrics_combo" {
 
 }
 
-resource "observe_dataset" "cloudsql_metrics_wide" {
+resource "observe_dataset" "cloud_sql_metrics_wide" {
   count = local.enable_metrics ? 1 : 0
 
   workspace   = var.workspace.oid
@@ -131,7 +131,7 @@ resource "observe_dataset" "cloudsql_metrics_wide" {
   freshness   = lookup(local.freshness, "metrics", var.freshness_default)
   description = "This dataset contains calculated metrics"
   inputs = {
-    "metrics_base" = observe_dataset.cloudsql_metrics[0].oid
+    "metrics_base" = observe_dataset.cloud_sql_metrics[0].oid
   }
   stage {
     pipeline = <<-EOF
@@ -224,25 +224,25 @@ resource "observe_dataset" "cloudsql_metrics_wide" {
 # 1 dimensionless
 # use var instead of prop metric_interface_fields
 
-resource "observe_link" "cloudsql_metrics" {
-  for_each = length(observe_dataset.cloudsql_metrics) > 0 ? {
+resource "observe_link" "cloud_sql_metrics" {
+  for_each = length(observe_dataset.cloud_sql_metrics) > 0 ? {
     "Cloud SQL Metrics" = {
-      target = observe_dataset.cloudsql.oid
+      target = observe_dataset.cloud_sql_instance.oid
       fields = ["database_id"]
-      source = observe_dataset.cloudsql_metrics[0].oid
+      source = observe_dataset.cloud_sql_metrics[0].oid
     }
 
     "Cloud SQL Metrics Combo" = {
-      target = observe_dataset.cloudsql.oid
+      target = observe_dataset.cloud_sql_instance.oid
       fields = ["database_id"]
-      source = observe_dataset.cloudsql_metrics_combo[0].oid
+      source = observe_dataset.cloud_sql_metrics_combo[0].oid
     }
 
 
     "Cloud SQL Metrics Wide" = {
-      target = observe_dataset.cloudsql.oid
+      target = observe_dataset.cloud_sql_instance.oid
       fields = ["database_id"]
-      source = observe_dataset.cloudsql_metrics_wide[0].oid
+      source = observe_dataset.cloud_sql_metrics_wide[0].oid
     }
   } : {}
 
@@ -312,7 +312,7 @@ resource "observe_link" "cloudsql_metrics" {
 # resource "observe_link" "cloudsql_string_metrics" {
 #   for_each = length(observe_dataset.cloudsql_string_metrics) > 0 ? {
 #     "Cloud SQL" = {
-#       target = observe_dataset.cloudsql.oid
+#       target = observe_dataset.cloud_sql_instance.oid
 #       fields = ["database_id"]
 #     }
 #   } : {}

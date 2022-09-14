@@ -1,39 +1,15 @@
 locals {
   workspace               = var.workspace.oid
   dashboard_name          = format(var.name_format, "Monitoring")
-  cloud_sql_instance      = data.observe_dataset.cloud_sql_instance.id
-  cloud_sql_metrics       = data.observe_dataset.cloud_sql_metrics.id
-  cloud_sql_metrics_combo = data.observe_dataset.cloud_sql_metrics_combo.id
-  cloud_sql_logs_error    = data.observe_dataset.cloud_sql_logs_error.id
-  cloud_sql_metrics_wide  = data.observe_dataset.cloud_sql_metrics_wide.id
+  cloud_sql_instance      = resource.observe_dataset.cloud_sql_instance.id
+  cloud_sql_metrics       = one(resource.observe_dataset.cloud_sql_metrics[*].id)
+  cloud_sql_metrics_combo = one(resource.observe_dataset.cloud_sql_metrics_combo[*].id)
+  cloud_sql_logs_error    = resource.observe_dataset.cloud_sql_logs_error.id
+  cloud_sql_metrics_wide  = one(resource.observe_dataset.cloud_sql_metrics_wide[*].id)
 }
-
-data "observe_dataset" "cloud_sql_instance" {
-  workspace = local.workspace
-  name      = format(var.name_format, "Instance")
-}
-
-data "observe_dataset" "cloud_sql_metrics" {
-  workspace = local.workspace
-  name      = format(var.name_format, "Metrics")
-}
-
-data "observe_dataset" "cloud_sql_metrics_combo" {
-  workspace = local.workspace
-  name      = format(var.name_format, "Metrics Combo")
-}
-
-data "observe_dataset" "cloud_sql_logs_error" {
-  workspace = local.workspace
-  name      = format(var.name_format, "Logs Error")
-}
-
-data "observe_dataset" "cloud_sql_metrics_wide" {
-  workspace = local.workspace
-  name      = format(var.name_format, "Metrics Wide")
-}
-# terraform import observe_dashboard.cloud_sql_monitoring 41144639
+# terraform import observe_dashboard.cloud_sql_monitoring 41145294
 resource "observe_dashboard" "cloud_sql_monitoring" {
+  count = local.enable_metrics ? 1 : 0
   layout = jsonencode(
     {
       gridLayout = {
@@ -407,21 +383,21 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   id       = "card-prktimcl"
                   text     = <<-EOT
                                         ### Google Cloud SQL
-                                        
+                                                                                
                                         [https://cloud.google.com/sql/docs](https://cloud.google.com/sql/docs)
-                                        
+                                                                                
                                         Cloud SQL is a fully-managed database service that helps you set up, maintain, manage, and administer your relational databases on Google Cloud Platform.
-                                        
+                                                                                
                                         ### Use cases for Cloud SQL
-                                        
+                                                                                
                                         Cloud SQL provides a cloud-based alternative to local MySQL, PostgreSQL, and SQL Server databases. You should use Cloud SQL if you want to spend less time managing your database and more time using it.
-                                        
+                                                                                
                                         Many applications running on Compute Engine, App Engine and other services in Google Cloud use Cloud SQL for database storage
-                                        
+                                                                                
                                         ### What is a Cloud SQL instance?
-                                        
+                                                                                
                                         Each Cloud SQL instance is powered by a virtual machine (VM) running on a host Google Cloud server. Each VM operates the database program, such as MySQL Server, PostgreSQL, or SQL Server, and service agents that provide supporting services, such as logging and monitoring. The high availability option also provides a standby VM in another zone with a configuration that's identical to the primary VM.
-                                        
+                                                                                
                                         The database is stored on a scalable, durable network storage device called a persistent disk that attaches to the VM. A static IP address sits in front of each VM to ensure that the IP address an application connects to persists throughout the lifetime of the Cloud SQL instance.
                                     EOT
                   title    = "Untitled Text"
@@ -444,29 +420,29 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   id       = "card-98advz0r"
                   text     = <<-EOT
                                         ### Notes
-                                        
+                                                                                
                                         To use this application you must implement the terraform-google-collection and the terraform google module with either the enable_service_all or the enable_service_cloudsql set to true.
-                                        
+                                                                                
                                         ### Freshness
-                                        
+                                                                                
                                         Freshness determines how often your data will be refreshed.
-                                        
+                                                                                
                                         Defaults:
-                                        
+                                                                                
                                          - cloudsql: 5m
                                          - metrics:  1m 
                                          - logging:  1m
-                                        
+                                                                                
                                         ### Metric Types
-                                        
+                                                                                
                                         A gauge metric, in which the value measures a specific instant in time. For example, metrics measuring CPU utilization are gauge metrics; each point records the CPU utilization at the time of measurement. Another example of a gauge metric is the current temperature.
-                                        
+                                                                                
                                         A delta metric, in which the value measures the change since it was last recorded. For example, metrics measuring request counts are delta metrics; each value records how many requests were received since the last data point was recorded.
-                                        
+                                                                                
                                         A cumulative metric, in which the value constantly increases over time. For example, a metric for sent bytes might be cumulative; each value records the total number of bytes sent by a service at that time.
-                                        
+                                                                                
                                         ### Database Specific
-                                        
+                                                                                
                                         For database specific metrics please graphlink to Cloud SQL Metrics table
                                     EOT
                   title    = "Untitled Text"
@@ -4073,7 +4049,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                         name,
                         @."Valid From",
                         @."Valid To"
-                        
+                                            
                     colshow database_id: false
                 EOT
       },

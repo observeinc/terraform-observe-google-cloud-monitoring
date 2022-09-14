@@ -1,21 +1,12 @@
 locals {
   workspace        = var.workspace.oid
-  dashboard_name   = format(var.name_format, "Monitoring ")
-  compute_instance = data.observe_dataset.compute_instance.id
-  compute_metrics  = data.observe_dataset.compute_metrics.id
+  dashboard_name   = format(var.name_format, "Monitoring")
+  compute_instance = resource.observe_dataset.compute_instance.id
+  compute_metrics  = one(resource.observe_dataset.compute_metrics[*].id)
 }
-
-data "observe_dataset" "compute_instance" {
-  workspace = local.workspace
-  name      = format(var.name_format, "Instance")
-}
-
-data "observe_dataset" "compute_metrics" {
-  workspace = local.workspace
-  name      = format(var.name_format, "Metrics")
-}
-# terraform import observe_dashboard.compute_monitoring_tf 41144648
-resource "observe_dashboard" "compute_monitoring_tf" {
+# terraform import observe_dashboard.compute_monitoring_ 41145293
+resource "observe_dashboard" "compute_monitoring" {
+  count = local.enable_metrics ? 1 : 0
   layout = jsonencode(
     {
       gridLayout = {
@@ -367,21 +358,21 @@ resource "observe_dashboard" "compute_monitoring_tf" {
                   id       = "card-gphac4sh"
                   text     = <<-EOT
                                         ### Using this dashboard
-                                                                                
+                                                                                                                        
                                         This dashboard is designed to be used within the Compute resource dataset.
-                                                                                
+                                                                                                                        
                                         Change the dropdown in top left corner of honeycomb to select attributes to group resources.
-                                                                                
+                                                                                                                        
                                         ### Google Compute
-                                                                                
+                                                                                                                        
                                         [https://cloud.google.com/compute/docs](https://cloud.google.com/compute/docs)
-                                                                                
+                                                                                                                        
                                         Compute Engine is a computing and hosting service that lets you create and run virtual machines on Google infrastructure. Compute Engine offers scale, performance, and value that lets you easily launch large compute clusters on Google's infrastructure. There are no upfront investments, and you can run thousands of virtual CPUs on a system that offers quick, consistent performance.
-                                                                                
+                                                                                                                        
                                         ### What is a Compute instance?
-                                                                                
+                                                                                                                        
                                         An instance is a virtual machine (VM) hosted on Google's infrastructure. You can create an instance or create a group of managed instances by using the Google Cloud console, the Google Cloud CLI, or the Compute Engine API.
-                                                                                
+                                                                                                                        
                                         Compute Engine instances can run the public images for Linux and Windows Server that Google provides as well as private custom images that you can create or import from your existing systems. You can also deploy Docker containers, which are automatically launched on instances running the Container-Optimized OS public image.
                                     EOT
                   title    = "Untitled Text"
@@ -405,17 +396,17 @@ resource "observe_dashboard" "compute_monitoring_tf" {
                   text     = <<-EOT
                                         ### Notes
                                         Metrics are sampled every 60s and may take up to 240s to display.
-                                                                                
+                                                                                                                        
                                         To use this application you must implement the terraform-google-collection and the terraform google module with either the enable_service_all or the enable_service_compute set to true.
-                                                                                
+                                                                                                                        
                                         If you are looking to monitor the **operating systems or processes running on these GCP instances**, then you want to look into the [Host Monitoring](https://docs.observeinc.com/en/latest/content/integrations/linux/linux.html) module instead.
-                                                                                
+                                                                                                                        
                                         ### Metric Types
-                                                                                
+                                                                                                                        
                                         A gauge metric, in which the value measures a specific instant in time. For example, metrics measuring CPU utilization are gauge metrics; each point records the CPU utilization at the time of measurement. Another example of a gauge metric is the current temperature.
-                                                                                
+                                                                                                                        
                                         A delta metric, in which the value measures the change since it was last recorded. For example, metrics measuring request counts are delta metrics; each value records how many requests were received since the last data point was recorded.
-                                                                                
+                                                                                                                        
                                         A cumulative metric, in which the value constantly increases over time. For example, a metric for sent bytes might be cumulative; each value records the total number of bytes sent by a service at that time.
                                     EOT
                   title    = "Untitled Text"
@@ -844,7 +835,7 @@ resource "observe_dashboard" "compute_monitoring_tf" {
                         instance_name,
                         status,
                         machineType
-                                            
+                                                                
                     colshow instance_key: false
                 EOT
       },
@@ -1895,7 +1886,7 @@ resource "observe_dashboard" "compute_monitoring_tf" {
                         Network: network,
                         "Network Tags": tags,
                         Labels: labels
-                                            
+                                                                
                     colshow instance_key: false
                 EOT
       },
@@ -2139,7 +2130,7 @@ resource "observe_dashboard" "compute_monitoring_tf" {
                         "Network Tags": tags,
                         Labels: labels,
                           label: "Running Instances"
-                                            
+                                                                
                     colshow instance_key: false
                 EOT
       },
@@ -2365,7 +2356,7 @@ resource "observe_dashboard" "compute_monitoring_tf" {
         }
         params   = null
         pipeline = <<-EOT
-                                        
+                                                            
                     pick_col 
                     	@."Valid From",
                         @."Valid To",
@@ -2384,7 +2375,7 @@ resource "observe_dashboard" "compute_monitoring_tf" {
                         Labels: labels,
                         exists: 1,
                         label: "Total Instances"
-                                            
+                                                                
                     colshow instance_key: false
                 EOT
       },
@@ -2614,9 +2605,9 @@ resource "observe_dashboard" "compute_monitoring_tf" {
         params   = null
         pipeline = <<-EOT
                     filter metric_category = "disk"
-                                        
+                                                            
                     filter metric = "instance_disk_write_ops_count"
-                                        
+                                                            
                     align 2m, frame(back: 1m), "value":avg(m("instance_disk_write_ops_count"))
                     exists instance_key = @computeID.instance_key
                     aggregate "value":sum(@."value"), group_by(instance_key)
@@ -2849,9 +2840,9 @@ resource "observe_dashboard" "compute_monitoring_tf" {
         params   = null
         pipeline = <<-EOT
                     filter metric_category = "disk"
-                                        
+                                                            
                     filter metric = "instance_disk_read_ops_count"
-                                        
+                                                            
                     align 2m, frame(back: 1m), "value":avg(m("instance_disk_read_ops_count"))
                     exists instance_key = @computeID.instance_key
                     aggregate "value":sum(@."value"), group_by(instance_key)
@@ -3353,9 +3344,9 @@ resource "observe_dashboard" "compute_monitoring_tf" {
         params   = null
         pipeline = <<-EOT
                     filter metric_category = "disk"
-                                        
+                                                            
                     filter metric = "instance_disk_throttled_read_ops_count"
-                                        
+                                                            
                     align 2m, frame(back: 1m), "value":avg(m("instance_disk_throttled_read_ops_count"))
                     exists instance_key = @computeID.instance_key
                     aggregate "value":sum(@."value"), group_by(instance_key)
@@ -3601,9 +3592,9 @@ resource "observe_dashboard" "compute_monitoring_tf" {
         params   = null
         pipeline = <<-EOT
                     filter metric_category = "disk"
-                                        
+                                                            
                     filter metric = "instance_disk_throttled_write_ops_count"
-                                        
+                                                            
                     align 2m, frame(back: 1m), "value":avg(m("instance_disk_throttled_write_ops_count"))
                     exists instance_key = @computeID.instance_key
                     aggregate "value":sum(@."value"), group_by(instance_key)
@@ -3853,9 +3844,9 @@ resource "observe_dashboard" "compute_monitoring_tf" {
         params   = null
         pipeline = <<-EOT
                     filter metric_category = "network"
-                                        
+                                                            
                     filter metric = "instance_network_received_packets_count"
-                                        
+                                                            
                     align 2m, frame(back: 1m), "value":avg(m("instance_network_received_packets_count"))
                     exists instance_key = @computeID.instance_key
                     aggregate "value":sum(@."value"), group_by(instance_key)
@@ -4088,9 +4079,9 @@ resource "observe_dashboard" "compute_monitoring_tf" {
         params   = null
         pipeline = <<-EOT
                     filter metric_category = "network"
-                                        
+                                                            
                     filter metric = "instance_network_sent_packets_count"
-                                        
+                                                            
                     align 2m, frame(back: 1m), "value":avg(m("instance_network_sent_packets_count"))
                     exists instance_key = @computeID.instance_key
                     aggregate "value":sum(@."value"), group_by(instance_key)
@@ -4310,9 +4301,9 @@ resource "observe_dashboard" "compute_monitoring_tf" {
           viewModel = {
             consoleValue = <<-EOT
                             filter metric_category = "network"
-                                                        
+                                                                                    
                             filter metric = "instance_network_received_bytes_count"
-                                                        
+                                                                                    
                             align 2m, frame(back: 1m), "value":avg(m("instance_network_received_bytes_count"))
                             exists instance_key = @computeID.instance_key
                             aggregate "value":sum(@."value"), group_by(instance_key)
@@ -4332,9 +4323,9 @@ resource "observe_dashboard" "compute_monitoring_tf" {
         params   = null
         pipeline = <<-EOT
                     filter metric_category = "network"
-                                        
+                                                            
                     filter metric = "instance_network_sent_packets_count"
-                                        
+                                                            
                     align 2m, frame(back: 1m), "value":avg(m("instance_network_sent_packets_count"))
                     exists instance_key = @computeID.instance_key
                     aggregate "value":sum(@."value"), group_by(instance_key)

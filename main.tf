@@ -9,9 +9,10 @@ locals {
     audit_logs                         = observe_dataset.audit_logs
     metrics                            = observe_dataset.metrics
     string_metrics                     = observe_dataset.string_metrics
-    projects                           = observe_dataset.projects
+    projects                           = observe_dataset.projects_collection_enabled
     distribution_metrics               = observe_dataset.process_distribution_metrics
   }
+  enable_metrics = lookup(var.feature_flags, "metrics", true)
 }
 resource "observe_dataset" "base_pubsub_events" {
   workspace   = var.workspace.oid

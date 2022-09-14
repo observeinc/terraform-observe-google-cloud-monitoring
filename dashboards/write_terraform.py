@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-# ./write_terraform.py 41144648 ../service/compute/computeDashboard2.tf
+# ./write_terraform.py 41144592 ../service/compute/computeDashboard.tf
 
-# ./write_terraform.py 41144639 ../service/cloudsql/cloudSQLDashboard.tf
+# ./write_terraform.py 41145294 ../service/cloudsql/cloudSQLDashboard.tf
 
 # ./write_terraform.py 41144640 ../projectsDashboard.tf
 
@@ -237,14 +237,14 @@ def write_dashboard():
         # local variable name
         variable_name = line['variable_name']
         # add to list to write to file
-        locals_def.append(f'''{variable_name} = data.observe_dataset.{variable_name}.id''')
+        locals_def.append(f'''{variable_name} = resource.observe_dataset.{variable_name}.id''')
 
         # get worspace and name for replacement with variables
         workspace_oid=re.findall('workspace[^"]*("[^"]*")', line['terraform'])[0]
         name=re.findall('name[^"]*("[^"]*")', line['terraform'])[0]
 
         # replace
-        line['terraform'] = line['terraform'].replace(workspace_oid, "local.workspace")
+        line['terraform'] = line['terraform'].replace(workspace_oid, f'local.workspace \n depends_on = [ resource.observe_dataset.{variable_name}]')
         line['terraform'] = line['terraform'].replace(name, f'''format(var.name_format, {name})''')
 
     locals_def.append('}')
@@ -258,8 +258,8 @@ def write_dashboard():
             print(local_line)
 
         # write data resources
-        for dataset_line in stuff_to_replace_dict["datasets"]:
-            print(dataset_line['terraform'])
+        # for dataset_line in stuff_to_replace_dict["datasets"]:
+        #     print(dataset_line['terraform'])
 
         sys.stdout = original_stdout #
 

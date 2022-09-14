@@ -95,7 +95,7 @@ resource "observe_link" "project_disk" {
       fields = ["project_id"]
     }
     "Compute" = {
-      target = observe_dataset.compute.oid
+      target = observe_dataset.compute_instance.oid
       fields = ["instance_id"]
     }
   }

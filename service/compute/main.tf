@@ -13,7 +13,7 @@ locals {
   }, var.freshness_overrides)
 }
 
-resource "observe_dataset" "compute" {
+resource "observe_dataset" "compute_instance" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Instance")
   freshness   = lookup(local.freshness, "compute", var.freshness_default)
@@ -141,7 +141,7 @@ resource "observe_link" "project" {
   }
 
   workspace = var.workspace.oid
-  source    = observe_dataset.compute.oid
+  source    = observe_dataset.compute_instance.oid
   target    = each.value.target
   fields    = each.value.fields
   label     = each.key

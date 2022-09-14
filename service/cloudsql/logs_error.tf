@@ -1,4 +1,4 @@
-resource "observe_dataset" "combined_error_logs" {
+resource "observe_dataset" "cloud_sql_logs_error" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Logs Error")
   freshness   = lookup(local.freshness, "logging", var.freshness_default)
@@ -26,25 +26,25 @@ resource "observe_link" "sql_error_logs" {
   for_each = {
 
     "DatabaseErrors" = {
-      target = observe_dataset.cloudsql.oid
+      target = observe_dataset.cloud_sql_instance.oid
       fields = ["database_id"]
-      source = observe_dataset.combined_error_logs.oid
+      source = observe_dataset.cloud_sql_logs_error.oid
     }
     ## If we want to create an error log for each platform 
     # "PostGresDatabaseAccess" = {
-    #   target = observe_dataset.cloudsql.oid
+    #   target = observe_dataset.cloud_sql_instance.oid
     #   fields = ["database_id"]
     #   source = observe_dataset.postgres_error_logs.oid
     # }
 
     # "MySQLDatabaseError" = {
-    #   target = observe_dataset.cloudsql.oid
+    #   target = observe_dataset.cloud_sql_instance.oid
     #   fields = ["database_id"]
     #   source = observe_dataset.mysql_error_logs.oid
     # }
 
     # "SQLServerDatabaseError" = {
-    #   target = observe_dataset.cloudsql.oid
+    #   target = observe_dataset.cloud_sql_instance.oid
     #   fields = ["database_id"]
     #   source = observe_dataset.sqlserver_error_logs.oid
     # }

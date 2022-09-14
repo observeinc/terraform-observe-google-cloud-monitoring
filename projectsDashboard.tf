@@ -1,63 +1,19 @@
 locals {
   workspace                        = var.workspace.oid
-  dashboard_name                   = format(var.name_format, "Home")
-  projects_collection_enabled      = data.observe_dataset.projects_collection_enabled.id
-  resources_asset_inventory        = data.observe_dataset.resources_asset_inventory.id
-  cloud_sql_metrics                = data.observe_dataset.cloud_sql_metrics.id
-  compute_metrics                  = data.observe_dataset.compute_metrics.id
-  cloud_sql_metrics_wide           = data.observe_dataset.cloud_sql_metrics_wide.id
-  cloud_functions_function_metrics = data.observe_dataset.cloud_functions_function_metrics.id
-  cloud_functions_function_logs    = data.observe_dataset.cloud_functions_function_logs.id
-  metrics                          = data.observe_dataset.metrics.id
-  storage_metrics                  = data.observe_dataset.storage_metrics.id
-}
-
-data "observe_dataset" "projects_collection_enabled" {
-  workspace = local.workspace
-  name      = format(var.name_format, "Projects Collection Enabled")
-}
-
-data "observe_dataset" "resources_asset_inventory" {
-  workspace = local.workspace
-  name      = format(var.name_format, "Resources Asset Inventory")
-}
-
-data "observe_dataset" "cloud_sql_metrics" {
-  workspace = local.workspace
-  name      = format(var.name_format, "Cloud SQL Metrics")
-}
-
-data "observe_dataset" "compute_metrics" {
-  workspace = local.workspace
-  name      = format(var.name_format, "Compute Metrics")
-}
-
-data "observe_dataset" "cloud_sql_metrics_wide" {
-  workspace = local.workspace
-  name      = format(var.name_format, "Cloud SQL Metrics Wide")
-}
-
-data "observe_dataset" "cloud_functions_function_metrics" {
-  workspace = local.workspace
-  name      = format(var.name_format, "Cloud Functions Function Metrics")
-}
-
-data "observe_dataset" "cloud_functions_function_logs" {
-  workspace = local.workspace
-  name      = format(var.name_format, "Cloud Functions Function Logs")
-}
-
-data "observe_dataset" "metrics" {
-  workspace = local.workspace
-  name      = format(var.name_format, "Metrics")
-}
-
-data "observe_dataset" "storage_metrics" {
-  workspace = local.workspace
-  name      = format(var.name_format, "Storage Metrics")
+  dashboard_name                   = format(var.name_format, "Projects Home")
+  projects_collection_enabled      = resource.observe_dataset.projects_collection_enabled.id
+  resources_asset_inventory        = resource.observe_dataset.resources_asset_inventory.id
+  cloud_sql_metrics                = one(module.cloudsql[*].cloudsql_metrics) == null ? "NA" : one(module.cloudsql[*].cloudsql_metrics.id)
+  compute_metrics                  = one(module.compute[*].compute_metrics) == null ? "NA" : one(module.compute[*].compute_metrics.id)
+  cloud_sql_metrics_wide           = one(module.cloudsql[*].cloudsql_metrics_wide) == null ? "NA" : one(module.cloudsql[*].cloudsql_metrics_wide.id)
+  cloud_functions_function_metrics = one(module.cloudfunctions[*].function_metrics) == null ? "NA" : one(module.cloudfunctions[*].function_metrics.id)
+  cloud_functions_function_logs    = one(module.cloudfunctions[*].function_logs) == null ? "NA" : one(module.cloudfunctions[*].function_logs.id)
+  metrics                          = resource.observe_dataset.metrics.id
+  storage_metrics                  = one(module.storage[*].storage_metrics) == null ? "NA" : one(module.storage[*].storage_metrics.id)
 }
 # terraform import observe_dashboard.projects_home_template 41144640
 resource "observe_dashboard" "projects_home_template" {
+  count = local.enable_metrics ? 1 : 0
   layout = jsonencode(
     {
       gridLayout = {

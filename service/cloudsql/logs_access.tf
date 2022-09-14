@@ -122,13 +122,13 @@ resource "observe_link" "sql_access_logs" {
 
   for_each = {
     "PostGresDatabaseAccess" = {
-      target = observe_dataset.cloudsql.oid
+      target = observe_dataset.cloud_sql_instance.oid
       fields = ["database_id"]
       source = observe_dataset.postgres_data_access_logs.oid
     }
 
     "MySQLDatabaseAccess" = {
-      target = observe_dataset.cloudsql.oid
+      target = observe_dataset.cloud_sql_instance.oid
       fields = ["database_id"]
       source = observe_dataset.mysql_data_access_logs.oid
     }

@@ -55,21 +55,12 @@ module "google" {
 | observe_dataset.metric_points | resource |
 | observe_dataset.metrics | resource |
 | observe_dataset.process_distribution_metrics | resource |
-| observe_dataset.projects | resource |
 | observe_dataset.projects_all | resource |
+| observe_dataset.projects_collection_enabled | resource |
 | observe_dataset.resource_asset_inventory_records | resource |
-| observe_dataset.resource_asset_inventory_resource | resource |
+| observe_dataset.resources_asset_inventory | resource |
 | observe_dataset.string_metrics | resource |
 | observe_link.resource_asset_inventory_resource | resource |
-| observe_dataset.cloud_functions_function_logs | data source |
-| observe_dataset.cloud_functions_function_metrics | data source |
-| observe_dataset.cloud_sql_metrics | data source |
-| observe_dataset.cloud_sql_metrics_wide | data source |
-| observe_dataset.compute_metrics | data source |
-| observe_dataset.metrics | data source |
-| observe_dataset.projects_collection_enabled | data source |
-| observe_dataset.resources_asset_inventory | data source |
-| observe_dataset.storage_metrics | data source |
 
 ## Inputs
 
