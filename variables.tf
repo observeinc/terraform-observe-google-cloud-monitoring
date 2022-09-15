@@ -34,7 +34,7 @@ variable "max_time_diff" {
 variable "freshness_default" {
   type        = string
   description = "Default dataset freshness. Can be overridden with freshness input"
-  default     = "1m"
+  default     = "5m"
 }
 
 variable "freshness_overrides" {
