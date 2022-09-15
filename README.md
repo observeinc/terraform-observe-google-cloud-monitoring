@@ -56,7 +56,6 @@ module "google" {
 | observe_dataset.metric_points | resource |
 | observe_dataset.metrics | resource |
 | observe_dataset.process_distribution_metrics | resource |
-| observe_dataset.projects_all | resource |
 | observe_dataset.projects_collection_enabled | resource |
 | observe_dataset.resource_asset_inventory_records | resource |
 | observe_dataset.resources_asset_inventory | resource |
