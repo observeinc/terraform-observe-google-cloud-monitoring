@@ -101,7 +101,8 @@ resource "observe_dataset" "metrics" {
         resource_labels,
         value,
         value_type,
-        value_type_text
+        value_type_text,
+        project_id: string(resource_labels.project_id)
     EOF
   }
 }
