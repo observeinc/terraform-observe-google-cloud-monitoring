@@ -1,4 +1,27 @@
-# [0.3.0](https://github.com/observeinc/terraform-observe-google/compare/v0.2.0...v0.3.0) (2022-09-07)
+# [0.4.0](https://github.com/observeinc/terraform-observe-google/compare/v0.3.9...v0.4.0) (2022-09-15)
+
+
+### Bug Fixes
+
+* update variable defaults and descriptions ([#76](https://github.com/observeinc/terraform-observe-google/issues/76)) ([c5caee2](https://github.com/observeinc/terraform-observe-google/commit/c5caee236bbb00b53d58e9913ecc8dba83adf526))
+* use lookaround_joins for load balancing resource ([#78](https://github.com/observeinc/terraform-observe-google/issues/78)) ([256440c](https://github.com/observeinc/terraform-observe-google/commit/256440c4bd60caf239d0579654c94bce65f0d00a))
+
+
+### Features
+
+* add function high execution time monitor ([f532f22](https://github.com/observeinc/terraform-observe-google/commit/f532f22e3ffe5ceb6760307215774d97ffee1a4d))
+* add max execution time monitor template ([#77](https://github.com/observeinc/terraform-observe-google/issues/77)) ([9b6f74a](https://github.com/observeinc/terraform-observe-google/commit/9b6f74a5c480f7f7cdc0b75c91d0f0a6c014c94b))
+* add project home ([#80](https://github.com/observeinc/terraform-observe-google/issues/80)) ([53bc448](https://github.com/observeinc/terraform-observe-google/commit/53bc44812ea01fd7239f958b8e42fd0091a53b02))
+* remove load balance ([#75](https://github.com/observeinc/terraform-observe-google/issues/75)) ([6b7cd6d](https://github.com/observeinc/terraform-observe-google/commit/6b7cd6d30da4f4b03b8063e876ddd13568e92913))
+
+
+
+## [0.3.9](https://github.com/observeinc/terraform-observe-google/compare/v0.2.0...v0.3.9) (2022-09-07)
+
+
+### Bug Fixes
+
+* remove enable all variable and update tests ([#73](https://github.com/observeinc/terraform-observe-google/issues/73)) ([27bbe79](https://github.com/observeinc/terraform-observe-google/commit/27bbe793aea228fcfe8377ac4102e978af4e262b))
 
 
 ### Features
