@@ -135,19 +135,6 @@ def fetch_metric_descriptors(args_in):
         def make_interval(resp):
             return str(resp.sample_period.seconds)+"s"
 
-        metric_bin = ""
-        metric_category = "none"
-
-        split_string = response.name.split("/")
-        split_string_length = len(split_string)-4
-
-        if split_string_length == 2:
-            metric_bin = split_string[4]
-
-        elif split_string_length == 3:
-            metric_bin = split_string[4]
-            metric_category = split_string[5]
-
         def create_domain_specific_properties(val):
             # print(val)
             if "database" in val:
@@ -160,6 +147,37 @@ def fetch_metric_descriptors(args_in):
                     return 'dataBase', 'ALL'
             else:
                 return None, None
+
+        metric_bin = "none"
+        metric_category = "none"
+        metric_bin_path = "none"
+
+        split_string = response.name.split("/")
+        split_string_length = len(split_string)-4
+
+        is_database, database_metric_bin = create_domain_specific_properties(
+            response.name)
+
+        if is_database is not None:
+            metric_bin = database_metric_bin
+
+            if split_string_length == 2:
+                metric_bin_path = f'''{split_string[3]}/{split_string[4]}'''
+            elif split_string_length == 3:
+                metric_category = split_string[5]
+                metric_bin_path = f'''{split_string[3]}/{split_string[4]}'''
+            elif split_string_length == 4:
+                metric_category = split_string[6]
+                metric_bin_path = f'''{split_string[3]}/{split_string[4]}'''
+
+        elif split_string_length == 2:
+            metric_bin = split_string[4]
+            metric_bin_path = f'''{split_string[3]}/{split_string[4]}'''
+
+        elif split_string_length == 3:
+            metric_bin = split_string[4]
+            metric_category = split_string[5]
+            metric_bin_path = f'''{split_string[3]}/{split_string[4]}'''
 
         metric_name = re.search(
             "[^\/]+$", response.name)  # pylint: disable=anomalous-backslash-in-string;
@@ -175,13 +193,15 @@ def fetch_metric_descriptors(args_in):
         obj_line = {}
         obj_line["terraform_variable_name"] = make_name(
             metric_category, metric_name)
-        obj_line["metric_bin"] = metric_bin,
+        obj_line["metric_bin"] = metric_bin
+        obj_line["metric_bin_path"] = metric_bin_path
         obj_line["metric_category"] = metric_category
         obj_line["google_metric_path"] = google_metric_path.group()
         obj_line["valuetype"] = value_type(response.value_type)
         obj_line["name"] = response.name
         obj_line["type"] = metric_kind_transform(response.metric_kind)
-        obj_line["type_num"] = response.type
+        obj_line["type_num"] = response.metric_kind
+        obj_line["metric_path"] = response.type
         obj_line["labels"] = make_label(response.labels)
         obj_line["metric_kind"] = response.metric_kind
         obj_line["value_type"] = response.value_type
@@ -229,7 +249,7 @@ def create_terraform(args_in):
     # run serviceUtilities.py in service directory to create this file
     # serviceUtilities.py -h for list of commands and options
     ######################
-    locals {{ {args_in.terraform_local_variable_name} = {{
+    locals {{{args_in.terraform_local_variable_name} = {{
         ''')
     terraform_output_file.close()
 
@@ -272,20 +292,20 @@ def create_terraform(args_in):
                     return ""
 
             terraform_line = f'''    {metric['terraform_variable_name']} = {{
-                type             = "{metric['type']}"
-                description      = <<-EOF
+                type = "{metric['type']}"
+                description = <<-EOF
                     {metric['description']}
                 EOF
-                launchStage      = "{metric['launchStage']}"
-                rollup           = "avg"
-                aggregate        = "sum"
-                metricCategory   = "{metric['metric_category']}"
+                launchStage = "{metric['launchStage']}"
+                rollup = "avg"
+                aggregate = "sum"
+                metricCategory = "{metric['metric_category']}"
                 google_metric_path = "{metric['google_metric_path']}"
-                label            = "{metric['display_name']}"
-                unit      = "{metric['unit']}"
+                label = "{metric['display_name']}"
+                unit = "{metric['unit']}"
                 metricBin = "{metric['metric_bin']}"
-                valuetype      = "{metric['valuetype']}"
-                {check_prop('dataBase',metric)}
+                valuetype = "{metric['valuetype']}"
+                {check_prop('dataBase', metric)}
                 }}
                 '''
 
@@ -324,8 +344,18 @@ def create_terraform(args_in):
 
 def create_doc_metrics(args_in):
     """Create file for Observe Docs"""
+    service_name = args_in.service_name
+
     temp = open(args_in.output_file_name, "w", encoding="utf8")
-    temp.write("")
+
+    temp.write(f'''\
+# {service_name.capitalize()} metrics
+<!---
+This is an auto generated file.  Run ./serviceUtilities.py - h in terraform-observe-google/service for help.
+-->
+This page lists the {service_name} metrics collected by the GCP Integration.
+''')
+
     temp.close()
     with open(args_in.input_file_name, encoding="utf8") as data_file:
         data = json.load(data_file)
@@ -333,24 +363,38 @@ def create_doc_metrics(args_in):
     output_file = open(args_in.output_file_name, "a",  encoding="utf8")
 
     mid_section = ''''''
+# create docs for observe docs ex - ./serviceUtilities.py create_doc_metrics -i compute/computemetrics.json -o compute/computemetrics.md -s compute
+    metric_bin_list = []
     for obj in data["metricDescriptors"]:
-        if (obj['launch_stage'] == 4 or obj['launch_stage'] == 3):
-            name = re.search('([^/]+$)', obj['name']).group()
-            description = obj['description']
-            # display_name = obj['display_name']
+        metric_bin_list.append(obj['metric_bin'])
 
-            mid_section += f'''\
+    metric_bin_list = list(dict.fromkeys(metric_bin_list))
+
+    for metric_bin_value in metric_bin_list:
+
+        for obj in data["metricDescriptors"]:
+
+            if ((obj['launch_stage'] == 4 or obj['launch_stage'] == 3) and obj['metric_bin'] == metric_bin_value):
+                metric_category = obj['metric_category'] = obj['metric_category']
+                name = re.search('([^/]+$)', obj['name']).group()
+                if metric_category != "none":
+                    name = f'''{metric_category}/{name}'''
+
+                description = obj['description']
+                metric_bin_path = obj['metric_bin_path']
+
+                # display_name = obj['display_name']
+
+                mid_section += f'''\
 * - `{name}`
   - {description}
 '''
 
-    service_name = args_in.service_name
-    output_file.write(f'''\
-# {service_name.capitalize()} metrics
-<!---
-This is an auto generated file.  Run ./serviceUtilities.py -h in terraform-observe-google/service for help.
--->
-This page lists the {service_name} metrics collected by the GCP Integration.
+        print("write")
+        output_file.write(f'''\
+
+## {metric_bin_value.upper()}
+{metric_bin_path}
 
 ```{{list-table}}
 :header-rows: 1
@@ -378,11 +422,11 @@ PARSER_DESCRIPTION = '''
 Commands for fetching metrics from google cloud, producing a terraform local variable file for metrics and documentation for metics.
 
 help commands:
-    serviceUtilities.py fetch_metric_descriptors -h
-    serviceUtilities.py create_terraform -h
-    serviceUtilities.py create_doc_metrics -h       
+    serviceUtilities.py fetch_metric_descriptors - h
+    serviceUtilities.py create_terraform - h
+    serviceUtilities.py create_doc_metrics - h
 
-If you want to convert a terraform variable to file for use with create_doc_metrics here is a template - tf output -json compute_local_metric_descriptors | jq -r '. | {metricDescriptors: [keys[] as $k | {name: ($k), description: (.[$k] | .description)}]}'  > /Users/arthur/content_eng/terraform-observe-google/service/compute/tf_compute.json
+If you want to convert a terraform variable to file for use with create_doc_metrics here is a template - tf output - json compute_local_metric_descriptors | jq - r '. | {metricDescriptors: [keys[] as $k | {name: ($k), description: (.[$k] | .description)}]}' > /Users/arthur/content_eng/terraform-observe-google/service/compute/tf_compute.json
 
 '''
 
@@ -395,7 +439,8 @@ subparsers = parser.add_subparsers(
 HELP_TEXT = '''
 create local terraform variable file
 
- ex - serviceUtilities.py create_terraform -i compute/computemetrics.json -t compute/local_metricdescriptors.tf
+ ex - serviceUtilities.py create_terraform -i compute/computemetrics.json -t compute/local_metricdescriptors.tf | 
+ serviceUtilities.py create_terraform -i cloudfunctions/cloudfunctionsmetrics.json -t cloudfunctions/local_metricdescriptors.tf
 '''
 ##########################################
 # Sub parser for create_terraform command
@@ -447,7 +492,11 @@ parser_create_terraform.set_defaults(func=create_terraform)
 parser_fetch_metric_descriptors = subparsers.add_parser('fetch_metric_descriptors',
                                                         help='''metric descriptors from google cloud ex - ./serviceUtilities.py
      fetch_metric_descriptors -o compute/computemetrics.json -m "compute.googleapis.com"
-     ./serviceUtilities.py fetch_metric_descriptors -o loadbalancing/loadbalancingmetrics.json -m "loadbalancing.googleapis.com"''')
+     | ./serviceUtilities.py fetch_metric_descriptors -o cloudsql/cloudsqlmetrics.json -m "cloudsql.googleapis.com" |
+     ./serviceUtilities.py fetch_metric_descriptors -o loadbalancing/loadbalancingmetrics.json -m "loadbalancing.googleapis.com"
+     | ./serviceUtilities.py fetch_metric_descriptors -o storage/storagemetrics.json -m "storage.googleapis.com"
+   
+     ''')
 
 parser_fetch_metric_descriptors.add_argument(
 
@@ -488,7 +537,13 @@ parser_fetch_metric_descriptors.set_defaults(func=fetch_metric_descriptors)
 ##########################################
 parser_create_doc_metrics = subparsers.add_parser('create_doc_metrics',
                                                   help='''create docs for observe docs ex - ./serviceUtilities.py
-     create_doc_metrics -i compute/computemetrics.json -o compute/comput-metrics.md -s compute''')
+     create_doc_metrics -i compute/computemetrics.json -o compute/compute-metrics.md -s compute | 
+     ./serviceUtilities.py create_doc_metrics -i storage/storagemetrics.json -o loadbalancing/cloud-storage-metrics.md -s storage |
+     ./serviceUtilities.py create_doc_metrics -i loadbalancing/loadbalancingmetrics.json -o loadbalancing/cloud-load-balancing-metrics.md -s loadbalancing | 
+    ./serviceUtilities.py create_doc_metrics -i cloudfunctions/cloudfunctionsmetrics.json -o /Users/arthur/content_eng/observe-docs/docs/content/integrations/gcp/cloud-functions-metrics.md -s cloudfunctions | 
+        
+        
+        ''')
 
 parser_create_doc_metrics.add_argument(
 

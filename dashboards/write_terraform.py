@@ -6,6 +6,8 @@
 
 # ./write_terraform.py -d 41148940 -n ../service/storage/storageDashboard.tf -e arthur-eng-tenant
 
+# ./write_terraform.py -d 41146418 -n ../service/cloudfunctions/cloudfunctionsDashboard.tf -e arthur-eng-tenant
+
 # see https://github.com/observeinc/content-eng-tools/blob/main/engage_datasets/config/configfile.ini for example config file
 
 """This file is for converting json produced by getTerraform GraphQL method"""
