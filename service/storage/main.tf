@@ -4,7 +4,7 @@ locals {
   enable_monitors = lookup(var.feature_flags, "monitors", true)
 }
 
-resource "observe_dataset" "storage" {
+resource "observe_dataset" "storage_buckets" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Buckets")
   freshness   = lookup(var.freshness_overrides, "storage", var.freshness_default)
@@ -83,7 +83,7 @@ resource "observe_dataset" "storage" {
 
 resource "observe_link" "storage_projects" {
   workspace = var.workspace.oid
-  source    = observe_dataset.storage.oid
+  source    = observe_dataset.storage_buckets.oid
   target    = var.google.projects.oid
   fields    = ["projectNumber"]
   label     = "Project Number"

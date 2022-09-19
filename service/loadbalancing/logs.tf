@@ -110,7 +110,7 @@ resource "observe_dataset" "health_check_logs" {
   }
 }
 
-resource "observe_dataset" "audit_logs" {
+resource "observe_dataset" "load_balancing_config_audit_logs" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Config Audit Logs")
   freshness   = lookup(var.freshness_overrides, "audit_logs", var.freshness_default)
@@ -156,7 +156,7 @@ resource "observe_link" "load_balancing_logs" {
 
   for_each = {
     "Load Balancer" = {
-      target = observe_dataset.load_balancers.oid
+      target = observe_dataset.load_balancing_load_balancers.oid
       fields = ["url_map_name:name"]
     },
     "Backend Service" = {

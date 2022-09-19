@@ -41,7 +41,7 @@ resource "observe_link" "storage_logs" {
 
   for_each = {
     "Bucket" = {
-      target = observe_dataset.storage.oid
+      target = observe_dataset.storage_buckets.oid
       fields = ["bucket_name"]
     }
   }

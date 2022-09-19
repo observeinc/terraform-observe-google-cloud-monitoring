@@ -4,7 +4,7 @@ resource "observe_monitor" "high_execution_times" {
   disabled    = var.metric_thresholds["Execution_Times"].disabled
   description = "This monitor will alert on Cloud Function execution times exceeding a specified amount of time"
   inputs = {
-    "Function Metrics" = observe_dataset.function_metrics[0].oid
+    "Function Metrics" = observe_dataset.cloud_functions_metrics[0].oid
   }
   name      = format("(TEMPLATE) %s", format(var.name_format, "Execution Times"))
   workspace = var.workspace.oid

@@ -1,4 +1,4 @@
-resource "observe_dataset" "function" {
+resource "observe_dataset" "cloud_functions_instances" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Instances")
   freshness   = var.freshness_default

@@ -57,7 +57,7 @@ resource "observe_dataset" "storage_metrics" {
 resource "observe_link" "storage_metrics" {
   for_each = length(observe_dataset.storage_metrics) > 0 ? {
     "Bucket" = {
-      target = observe_dataset.storage.oid
+      target = observe_dataset.storage_buckets.oid
       fields = ["bucket_name"]
     }
   } : {}

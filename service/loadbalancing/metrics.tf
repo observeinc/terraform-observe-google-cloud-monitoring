@@ -144,7 +144,7 @@ resource "observe_link" "target_proxies_metrics" {
 resource "observe_link" "load_balancer_metrics" {
   for_each = length(observe_dataset.load_balancing_metrics) > 0 ? {
     "Load Balancer" = {
-      target = observe_dataset.load_balancers.oid
+      target = observe_dataset.load_balancing_load_balancers.oid
       fields = [
         "load_balancer_name:name",
         "forwarding_rule_name:frontEnd",
