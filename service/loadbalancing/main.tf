@@ -286,7 +286,7 @@ resource "observe_dataset" "target_proxies" {
   }
 }
 
-resource "observe_dataset" "health_checks" {
+resource "observe_dataset" "load_balancing_health_checks" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Health Checks")
   freshness   = lookup(var.freshness_overrides, "health_checks", var.freshness_default)
@@ -416,7 +416,7 @@ resource "observe_dataset" "instance_groups" {
   }
 }
 
-resource "observe_dataset" "load_balancers" {
+resource "observe_dataset" "load_balancing_load_balancers" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Load Balancers")
   freshness   = lookup(var.freshness_overrides, "load_balancers", var.freshness_default)
@@ -685,7 +685,7 @@ resource "observe_link" "url_maps_to_backend_services" {
 
 resource "observe_link" "load_balancer_to_backend_services" {
   workspace = var.workspace.oid
-  source    = observe_dataset.load_balancers.oid
+  source    = observe_dataset.load_balancing_load_balancers.oid
   target    = observe_dataset.backend_services.oid
   fields    = ["defaultServiceName:name"]
   label     = "Backend Service"
@@ -694,7 +694,7 @@ resource "observe_link" "load_balancer_to_backend_services" {
 resource "observe_link" "target_proxy_to_load_balancer" {
   workspace = var.workspace.oid
   source    = observe_dataset.target_proxies.oid
-  target    = observe_dataset.load_balancers.oid
+  target    = observe_dataset.load_balancing_load_balancers.oid
   fields    = ["urlMap:selfLink"]
   label     = "Url Map"
 }
@@ -709,7 +709,7 @@ resource "observe_link" "forwarding_rule_to_target_proxy" {
 
 resource "observe_link" "load_balancer_to_project_id" {
   workspace = var.workspace.oid
-  source    = observe_dataset.load_balancers.oid
+  source    = observe_dataset.load_balancing_load_balancers.oid
   target    = var.google.projects.oid
   fields    = ["project_id"]
   label     = "Project"

@@ -229,7 +229,7 @@ resource "observe_dashboard" "compute_monitoring" {
                   static      = false
                   w           = 12
                   x           = 0
-                  y           = 0
+                  y           = 10
                 }
               },
               {
@@ -247,7 +247,7 @@ resource "observe_dashboard" "compute_monitoring" {
                   static      = false
                   w           = 12
                   x           = 0
-                  y           = 0
+                  y           = 20
                 }
               },
               {
@@ -265,7 +265,7 @@ resource "observe_dashboard" "compute_monitoring" {
                   static      = false
                   w           = 12
                   x           = 0
-                  y           = 0
+                  y           = 30
                 }
               },
             ]
@@ -311,7 +311,7 @@ resource "observe_dashboard" "compute_monitoring" {
                   static      = false
                   w           = 12
                   x           = 0
-                  y           = 0
+                  y           = 10
                 }
               },
             ]
@@ -358,21 +358,21 @@ resource "observe_dashboard" "compute_monitoring" {
                   id       = "card-gphac4sh"
                   text     = <<-EOT
                                         ### Using this dashboard
-                                                                                                                        
+                                                                                                                                                                                                        
                                         This dashboard is designed to be used within the Compute resource dataset.
-                                                                                                                        
+                                                                                                                                                                                                        
                                         Change the dropdown in top left corner of honeycomb to select attributes to group resources.
-                                                                                                                        
+                                                                                                                                                                                                        
                                         ### Google Compute
-                                                                                                                        
+                                                                                                                                                                                                        
                                         [https://cloud.google.com/compute/docs](https://cloud.google.com/compute/docs)
-                                                                                                                        
+                                                                                                                                                                                                        
                                         Compute Engine is a computing and hosting service that lets you create and run virtual machines on Google infrastructure. Compute Engine offers scale, performance, and value that lets you easily launch large compute clusters on Google's infrastructure. There are no upfront investments, and you can run thousands of virtual CPUs on a system that offers quick, consistent performance.
-                                                                                                                        
+                                                                                                                                                                                                        
                                         ### What is a Compute instance?
-                                                                                                                        
+                                                                                                                                                                                                        
                                         An instance is a virtual machine (VM) hosted on Google's infrastructure. You can create an instance or create a group of managed instances by using the Google Cloud console, the Google Cloud CLI, or the Compute Engine API.
-                                                                                                                        
+                                                                                                                                                                                                        
                                         Compute Engine instances can run the public images for Linux and Windows Server that Google provides as well as private custom images that you can create or import from your existing systems. You can also deploy Docker containers, which are automatically launched on instances running the Container-Optimized OS public image.
                                     EOT
                   title    = "Untitled Text"
@@ -386,7 +386,7 @@ resource "observe_dashboard" "compute_monitoring" {
                   static      = false
                   w           = 6
                   x           = 0
-                  y           = 0
+                  y           = 109
                 }
               },
               {
@@ -396,17 +396,17 @@ resource "observe_dashboard" "compute_monitoring" {
                   text     = <<-EOT
                                         ### Notes
                                         Metrics are sampled every 60s and may take up to 240s to display.
-                                                                                                                        
+                                                                                                                                                                                                        
                                         To use this application you must implement the terraform-google-collection and the terraform google module with either the enable_service_all or the enable_service_compute set to true.
-                                                                                                                        
+                                                                                                                                                                                                        
                                         If you are looking to monitor the **operating systems or processes running on these GCP instances**, then you want to look into the [Host Monitoring](https://docs.observeinc.com/en/latest/content/integrations/linux/linux.html) module instead.
-                                                                                                                        
+                                                                                                                                                                                                        
                                         ### Metric Types
-                                                                                                                        
+                                                                                                                                                                                                        
                                         A gauge metric, in which the value measures a specific instant in time. For example, metrics measuring CPU utilization are gauge metrics; each point records the CPU utilization at the time of measurement. Another example of a gauge metric is the current temperature.
-                                                                                                                        
+                                                                                                                                                                                                        
                                         A delta metric, in which the value measures the change since it was last recorded. For example, metrics measuring request counts are delta metrics; each value records how many requests were received since the last data point was recorded.
-                                                                                                                        
+                                                                                                                                                                                                        
                                         A cumulative metric, in which the value constantly increases over time. For example, a metric for sent bytes might be cumulative; each value records the total number of bytes sent by a service at that time.
                                     EOT
                   title    = "Untitled Text"
@@ -420,11 +420,11 @@ resource "observe_dashboard" "compute_monitoring" {
                   static      = false
                   w           = 6
                   x           = 6
-                  y           = 0
+                  y           = 109
                 }
               },
             ]
-            lastModified = 1660168323769
+            lastModified = 1663601045463
           },
         ]
       }
@@ -432,76 +432,21 @@ resource "observe_dashboard" "compute_monitoring" {
         isModified = false
         parameters = [
           {
+            controlledFilterStageId = "stage-heng8s54"
+            datasetId               = "${local.compute_instance}"
             defaultValue = {
               datasetref = {
                 datasetId = "${local.compute_instance}"
               }
             }
-            id   = "computeID"
-            name = "Compute Instance"
+            emptyValueEncoding    = "null"
+            emptyValueLabelOption = "null"
+            id                    = "computeID"
+            name                  = "Compute Instance"
             valueKind = {
               type = "DATASETREF"
             }
             viewType = "input"
-          },
-          {
-            defaultValue = {
-              string = "instance_cpu_utilization"
-            }
-            id     = "cpuMetric"
-            name   = "CPU Metric"
-            source = "CustomData"
-            sourceCustomData = {
-              "Guest Visible CPUs"  = "instance_cpu_guest_visible_vcpus"
-              "Reserved Cores"      = "instance_cpu_reserved_cores"
-              "Scheduler Wait Time" = "instance_cpu_scheduler_wait_time"
-              "Usage Time"          = "instance_cpu_usage_time"
-              Utilization           = "instance_cpu_utilization"
-            }
-            valueKind = {
-              type = "STRING"
-            }
-            viewType = "single-select"
-          },
-          {
-            defaultValue = {
-              string = "instance_disk_write_ops_count"
-            }
-            id     = "diskMetric"
-            name   = "Disk Metric"
-            source = "CustomData"
-            sourceCustomData = {
-              "Read Bytes Count"            = "instance_disk_read_bytes_count"
-              "Read Ops Count"              = "instance_disk_read_ops_count"
-              "Throttled Read Bytes Count"  = "instance_disk_throttled_read_bytes_count"
-              "Throttled Read Ops Count"    = "instance_disk_throttled_read_ops_count"
-              "Throttled Write Bytes Count" = "instance_disk_throttled_write_bytes_count"
-              "Throttled Write Ops Count"   = "instance_disk_throttled_write_ops_count"
-              "Write Bytes Count"           = "instance_disk_write_bytes_count"
-              "Write Ops Count"             = "instance_disk_write_ops_count"
-            }
-            valueKind = {
-              type = "STRING"
-            }
-            viewType = "single-select"
-          },
-          {
-            defaultValue = {
-              string = "instance_network_sent_bytes_count"
-            }
-            id     = "networkMetric"
-            name   = "Network Metric"
-            source = "CustomData"
-            sourceCustomData = {
-              "Bytes Received"   = "instance_network_sent_bytes_count"
-              "Bytes Sent"       = "instance_network_sent_bytes_count"
-              "Packets Received" = "instance_network_sent_bytes_count"
-              "Packets Sent"     = "instance_network_sent_bytes_count"
-            }
-            valueKind = {
-              type = "STRING"
-            }
-            viewType = "single-select"
           },
         ]
         selectedStageId = "stage-x2r9aqus"
@@ -546,60 +491,6 @@ resource "observe_dashboard" "compute_monitoring" {
           type            = "DATASETREF"
         }
       },
-      {
-        defaultValue = {
-          array      = null
-          bool       = null
-          datasetref = null
-          float64    = null
-          int64      = null
-          link       = null
-          string     = "instance_cpu_utilization"
-        }
-        id   = "cpuMetric"
-        name = "CPU Metric"
-        valueKind = {
-          arrayItemType   = null
-          keyForDatasetId = null
-          type            = "STRING"
-        }
-      },
-      {
-        defaultValue = {
-          array      = null
-          bool       = null
-          datasetref = null
-          float64    = null
-          int64      = null
-          link       = null
-          string     = "instance_disk_write_ops_count"
-        }
-        id   = "diskMetric"
-        name = "Disk Metric"
-        valueKind = {
-          arrayItemType   = null
-          keyForDatasetId = null
-          type            = "STRING"
-        }
-      },
-      {
-        defaultValue = {
-          array      = null
-          bool       = null
-          datasetref = null
-          float64    = null
-          int64      = null
-          link       = null
-          string     = "instance_network_sent_bytes_count"
-        }
-        id   = "networkMetric"
-        name = "Network Metric"
-        valueKind = {
-          arrayItemType   = null
-          keyForDatasetId = null
-          type            = "STRING"
-        }
-      },
     ]
   )
   stages = jsonencode(
@@ -629,7 +520,7 @@ resource "observe_dashboard" "compute_monitoring" {
             }
             columnVisibility            = {}
             columnWidths                = {}
-            containerWidth              = 285
+            containerWidth              = 2145
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -675,9 +566,8 @@ resource "observe_dashboard" "compute_monitoring" {
           managers = [
             {
               id                     = "pde7pm95"
-              isDisabled             = true
+              isDisabled             = false
               isResourceCountEnabled = false
-              parentStageId          = "stage-qr6xpot1"
               type                   = "Timescrubber"
             },
           ]
@@ -727,7 +617,9 @@ resource "observe_dashboard" "compute_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "computeID"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -744,11 +636,8 @@ resource "observe_dashboard" "compute_monitoring" {
               id                = "step-wzl0oqwe"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "computeID (undefined)"
               type              = "InputStep"
             },
             {
@@ -778,7 +667,9 @@ resource "observe_dashboard" "compute_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "pick_col (custom)"
+              customSummary = ""
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -795,7 +686,6 @@ resource "observe_dashboard" "compute_monitoring" {
               id       = "step-l53wuyvp"
               index    = 1
               isPinned = false
-              name     = "pick_col (custom)"
               opal = [
                 "pick_col ",
                 "\t@.\"Valid From\",",
@@ -808,7 +698,6 @@ resource "observe_dashboard" "compute_monitoring" {
                 "colshow instance_key: false",
               ]
               queryPresentation = {}
-              renderType        = null
               type              = "unknown"
             },
           ]
@@ -835,7 +724,7 @@ resource "observe_dashboard" "compute_monitoring" {
                         instance_name,
                         status,
                         machineType
-                                                                
+                        
                     colshow instance_key: false
                 EOT
       },
@@ -912,14 +801,12 @@ resource "observe_dashboard" "compute_monitoring" {
               id                     = "tc61ge99"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-auesy2zu"
               type                   = "Timescrubber"
             },
             {
-              id            = "ye665vef"
-              isDisabled    = false
-              parentStageId = "stage-auesy2zu"
-              type          = "Vis"
+              id         = "ye665vef"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   innerRadius = 0.6
@@ -963,7 +850,8 @@ resource "observe_dashboard" "compute_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 1
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -995,7 +883,9 @@ resource "observe_dashboard" "compute_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "computeID"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1012,11 +902,8 @@ resource "observe_dashboard" "compute_monitoring" {
               id                = "step-9jnt7ixg"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "computeID (undefined)"
               type              = "InputStep"
             },
           ]
@@ -1110,14 +997,12 @@ resource "observe_dashboard" "compute_monitoring" {
               id                     = "vk5cylq8"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-4zw73l75"
               type                   = "Timescrubber"
             },
             {
-              id            = "g9olxgu1"
-              isDisabled    = false
-              parentStageId = "stage-4zw73l75"
-              type          = "Vis"
+              id         = "g9olxgu1"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   innerRadius = 0.6
@@ -1161,7 +1046,8 @@ resource "observe_dashboard" "compute_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 1
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -1193,7 +1079,9 @@ resource "observe_dashboard" "compute_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "computeID"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1210,11 +1098,8 @@ resource "observe_dashboard" "compute_monitoring" {
               id                = "step-5gz936i5"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "computeID (undefined)"
               type              = "InputStep"
             },
           ]
@@ -1308,14 +1193,12 @@ resource "observe_dashboard" "compute_monitoring" {
               id                     = "c8xmld0s"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-fnyfu38e"
               type                   = "Timescrubber"
             },
             {
-              id            = "bt3zb5wh"
-              isDisabled    = false
-              parentStageId = "stage-fnyfu38e"
-              type          = "Vis"
+              id         = "bt3zb5wh"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   innerRadius = 0.6
@@ -1359,7 +1242,8 @@ resource "observe_dashboard" "compute_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 1
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -1392,7 +1276,9 @@ resource "observe_dashboard" "compute_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "computeID"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1409,11 +1295,8 @@ resource "observe_dashboard" "compute_monitoring" {
               id                = "step-l6g03l0l"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "computeID (undefined)"
               type              = "InputStep"
             },
           ]
@@ -1507,14 +1390,12 @@ resource "observe_dashboard" "compute_monitoring" {
               id                     = "od7gg294"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-xjztexw9"
               type                   = "Timescrubber"
             },
             {
-              id            = "zxbqncia"
-              isDisabled    = false
-              parentStageId = "stage-xjztexw9"
-              type          = "Vis"
+              id         = "zxbqncia"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   innerRadius = 0.6
@@ -1558,7 +1439,8 @@ resource "observe_dashboard" "compute_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 1
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -1591,7 +1473,9 @@ resource "observe_dashboard" "compute_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "computeID"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1608,11 +1492,8 @@ resource "observe_dashboard" "compute_monitoring" {
               id                = "step-04kfp811"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "computeID (undefined)"
               type              = "InputStep"
             },
           ]
@@ -1707,9 +1588,8 @@ resource "observe_dashboard" "compute_monitoring" {
           managers = [
             {
               id                     = "nw58l13x"
-              isDisabled             = true
+              isDisabled             = false
               isResourceCountEnabled = false
-              parentStageId          = "stage-vfqqg8en"
               type                   = "Timescrubber"
             },
           ]
@@ -1760,7 +1640,9 @@ resource "observe_dashboard" "compute_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "computeID"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1777,11 +1659,8 @@ resource "observe_dashboard" "compute_monitoring" {
               id                = "step-le7aljwo"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "computeID (undefined)"
               type              = "InputStep"
             },
             {
@@ -1811,7 +1690,9 @@ resource "observe_dashboard" "compute_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "pick_col (custom)"
+              customSummary = ""
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1828,7 +1709,6 @@ resource "observe_dashboard" "compute_monitoring" {
               id       = "step-sd8m3dmd"
               index    = 1
               isPinned = false
-              name     = "pick_col (custom)"
               opal = [
                 "pick_col ",
                 "\t@.\"Valid From\",",
@@ -1850,7 +1730,6 @@ resource "observe_dashboard" "compute_monitoring" {
                 "colshow instance_key: false",
               ]
               queryPresentation = {}
-              renderType        = null
               type              = "unknown"
             },
           ]
@@ -1886,7 +1765,7 @@ resource "observe_dashboard" "compute_monitoring" {
                         Network: network,
                         "Network Tags": tags,
                         Labels: labels
-                                                                
+                        
                     colshow instance_key: false
                 EOT
       },
@@ -1966,14 +1845,12 @@ resource "observe_dashboard" "compute_monitoring" {
               id                     = "nw58l13x"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-hk634e8f"
               type                   = "Timescrubber"
             },
             {
-              id            = "sxn0n0of"
-              isDisabled    = false
-              parentStageId = "stage-hk634e8f"
-              type          = "Vis"
+              id         = "sxn0n0of"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   color           = "Default"
@@ -2019,14 +1896,17 @@ resource "observe_dashboard" "compute_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "computeID"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2043,15 +1923,14 @@ resource "observe_dashboard" "compute_monitoring" {
               id                = "step-lzn139eq"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "computeID (undefined)"
               type              = "InputStep"
             },
             {
-              datasetQuery = null
+              customName    = "filter (custom)"
+              customSummary = ""
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2068,7 +1947,6 @@ resource "observe_dashboard" "compute_monitoring" {
               id       = "step-azplgdlw"
               index    = 1
               isPinned = false
-              name     = "filter (custom)"
               opal = [
                 "filter status = \"RUNNING\"",
                 "pick_col ",
@@ -2092,7 +1970,6 @@ resource "observe_dashboard" "compute_monitoring" {
                 "colshow instance_key: false",
               ]
               queryPresentation = {}
-              renderType        = null
               type              = "unknown"
             },
           ]
@@ -2130,7 +2007,7 @@ resource "observe_dashboard" "compute_monitoring" {
                         "Network Tags": tags,
                         Labels: labels,
                           label: "Running Instances"
-                                                                
+                        
                     colshow instance_key: false
                 EOT
       },
@@ -2209,14 +2086,12 @@ resource "observe_dashboard" "compute_monitoring" {
               id                     = "nw58l13x"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-i9te03n4"
               type                   = "Timescrubber"
             },
             {
-              id            = "sxn0n0of"
-              isDisabled    = false
-              parentStageId = "stage-i9te03n4"
-              type          = "Vis"
+              id         = "sxn0n0of"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   color           = "Default"
@@ -2262,14 +2137,17 @@ resource "observe_dashboard" "compute_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "computeID"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2286,15 +2164,14 @@ resource "observe_dashboard" "compute_monitoring" {
               id                = "step-dwt8ttnl"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "computeID (undefined)"
               type              = "InputStep"
             },
             {
-              datasetQuery = null
+              customName    = " (custom)"
+              customSummary = ""
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2311,7 +2188,6 @@ resource "observe_dashboard" "compute_monitoring" {
               id       = "step-zw3u63tl"
               index    = 1
               isPinned = false
-              name     = " (custom)"
               opal = [
                 "",
                 "pick_col ",
@@ -2336,7 +2212,6 @@ resource "observe_dashboard" "compute_monitoring" {
                 "colshow instance_key: false",
               ]
               queryPresentation = {}
-              renderType        = null
               type              = "unknown"
             },
           ]
@@ -2356,7 +2231,7 @@ resource "observe_dashboard" "compute_monitoring" {
         }
         params   = null
         pipeline = <<-EOT
-                                                            
+                    
                     pick_col 
                     	@."Valid From",
                         @."Valid To",
@@ -2375,7 +2250,7 @@ resource "observe_dashboard" "compute_monitoring" {
                         Labels: labels,
                         exists: 1,
                         label: "Total Instances"
-                                                                
+                        
                     colshow instance_key: false
                 EOT
       },
@@ -2463,14 +2338,12 @@ resource "observe_dashboard" "compute_monitoring" {
               id                     = "471mzk05"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-7schdd0k"
               type                   = "Timescrubber"
             },
             {
-              id            = "yeyupg29"
-              isDisabled    = false
-              parentStageId = "stage-7schdd0k"
-              type          = "Vis"
+              id         = "yeyupg29"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   color         = "Default"
@@ -2523,14 +2396,17 @@ resource "observe_dashboard" "compute_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "Compute Metrics"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2547,15 +2423,14 @@ resource "observe_dashboard" "compute_monitoring" {
               id                = "step-xkvieg3w"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "Compute Metrics (${local.compute_metrics})"
               type              = "InputStep"
             },
             {
-              datasetQuery = null
+              customName    = "filter (custom)"
+              customSummary = ""
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2572,7 +2447,6 @@ resource "observe_dashboard" "compute_monitoring" {
               id       = "step-ftjmkvtz"
               index    = 1
               isPinned = false
-              name     = "filter (custom)"
               opal = [
                 "filter metric_category = \"disk\"",
                 "",
@@ -2584,7 +2458,6 @@ resource "observe_dashboard" "compute_monitoring" {
                 "topk 100",
               ]
               queryPresentation = {}
-              renderType        = null
               type              = "unknown"
             },
           ]
@@ -2605,9 +2478,9 @@ resource "observe_dashboard" "compute_monitoring" {
         params   = null
         pipeline = <<-EOT
                     filter metric_category = "disk"
-                                                            
+                    
                     filter metric = "instance_disk_write_ops_count"
-                                                            
+                    
                     align 2m, frame(back: 1m), "value":avg(m("instance_disk_write_ops_count"))
                     exists instance_key = @computeID.instance_key
                     aggregate "value":sum(@."value"), group_by(instance_key)
@@ -2698,14 +2571,12 @@ resource "observe_dashboard" "compute_monitoring" {
               id                     = "471mzk05"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-j7trzfmb"
               type                   = "Timescrubber"
             },
             {
-              id            = "yeyupg29"
-              isDisabled    = false
-              parentStageId = "stage-j7trzfmb"
-              type          = "Vis"
+              id         = "yeyupg29"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   color         = "Default"
@@ -2758,14 +2629,17 @@ resource "observe_dashboard" "compute_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "Compute Metrics"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2782,15 +2656,14 @@ resource "observe_dashboard" "compute_monitoring" {
               id                = "step-agyoitqz"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "Compute Metrics (${local.compute_metrics})"
               type              = "InputStep"
             },
             {
-              datasetQuery = null
+              customName    = "filter (custom)"
+              customSummary = ""
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2807,7 +2680,6 @@ resource "observe_dashboard" "compute_monitoring" {
               id       = "step-wdpawkjl"
               index    = 1
               isPinned = false
-              name     = "filter (custom)"
               opal = [
                 "filter metric_category = \"disk\"",
                 "",
@@ -2819,7 +2691,6 @@ resource "observe_dashboard" "compute_monitoring" {
                 "topk 100",
               ]
               queryPresentation = {}
-              renderType        = null
               type              = "unknown"
             },
           ]
@@ -2840,9 +2711,9 @@ resource "observe_dashboard" "compute_monitoring" {
         params   = null
         pipeline = <<-EOT
                     filter metric_category = "disk"
-                                                            
+                    
                     filter metric = "instance_disk_read_ops_count"
-                                                            
+                    
                     align 2m, frame(back: 1m), "value":avg(m("instance_disk_read_ops_count"))
                     exists instance_key = @computeID.instance_key
                     aggregate "value":sum(@."value"), group_by(instance_key)
@@ -2936,10 +2807,9 @@ resource "observe_dashboard" "compute_monitoring" {
           label = "CPU Utilization"
           managers = [
             {
-              id            = "9whbch9b"
-              isDisabled    = false
-              parentStageId = "stage-pmsu1uzz"
-              type          = "Vis"
+              id         = "9whbch9b"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   color         = "Default"
@@ -2982,15 +2852,7 @@ resource "observe_dashboard" "compute_monitoring" {
               id                     = "uf9bdall"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-pmsu1uzz"
               type                   = "Timescrubber"
-            },
-            {
-              columnId      = "metric_category"
-              id            = "4fnyb254"
-              isDisabled    = true
-              parentStageId = "stage-pmsu1uzz"
-              type          = "FacetFilter"
             },
           ]
           queryPresentation = {
@@ -3002,13 +2864,16 @@ resource "observe_dashboard" "compute_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = null
+            rollup      = null
+            wantBuckets = 600
           }
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "resource"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3025,11 +2890,8 @@ resource "observe_dashboard" "compute_monitoring" {
               id                = "step-wauywmfc"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "resource (${local.compute_metrics})"
               type              = "InputStep"
             },
             {
@@ -3050,7 +2912,9 @@ resource "observe_dashboard" "compute_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "filter (custom)"
+              customSummary = ""
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3067,7 +2931,6 @@ resource "observe_dashboard" "compute_monitoring" {
               id       = "step-jb6lxstn"
               index    = 1
               isPinned = false
-              name     = "filter (custom)"
               opal = [
                 "filter metric_category = \"cpu\"",
                 "filter metric = \"instance_cpu_utilization\"",
@@ -3077,7 +2940,6 @@ resource "observe_dashboard" "compute_monitoring" {
                 "topk 100",
               ]
               queryPresentation = {}
-              renderType        = null
               type              = "unknown"
             },
           ]
@@ -3190,14 +3052,12 @@ resource "observe_dashboard" "compute_monitoring" {
               id                     = "471mzk05"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-kmd3xtah"
               type                   = "Timescrubber"
             },
             {
-              id            = "yeyupg29"
-              isDisabled    = false
-              parentStageId = "stage-kmd3xtah"
-              type          = "Vis"
+              id         = "yeyupg29"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   color         = "Default"
@@ -3248,14 +3108,17 @@ resource "observe_dashboard" "compute_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "Compute Metrics"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3272,11 +3135,8 @@ resource "observe_dashboard" "compute_monitoring" {
               id                = "step-to76ochn"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "Compute Metrics (${local.compute_metrics})"
               type              = "InputStep"
             },
             {
@@ -3294,7 +3154,9 @@ resource "observe_dashboard" "compute_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "filter (custom)"
+              customSummary = ""
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3311,7 +3173,6 @@ resource "observe_dashboard" "compute_monitoring" {
               id       = "step-n9j6dbo9"
               index    = 1
               isPinned = false
-              name     = "filter (custom)"
               opal = [
                 "filter metric_category = \"disk\"",
                 "",
@@ -3323,7 +3184,6 @@ resource "observe_dashboard" "compute_monitoring" {
                 "topk 100",
               ]
               queryPresentation = {}
-              renderType        = null
               type              = "unknown"
             },
           ]
@@ -3344,9 +3204,9 @@ resource "observe_dashboard" "compute_monitoring" {
         params   = null
         pipeline = <<-EOT
                     filter metric_category = "disk"
-                                                            
+                    
                     filter metric = "instance_disk_throttled_read_ops_count"
-                                                            
+                    
                     align 2m, frame(back: 1m), "value":avg(m("instance_disk_throttled_read_ops_count"))
                     exists instance_key = @computeID.instance_key
                     aggregate "value":sum(@."value"), group_by(instance_key)
@@ -3438,14 +3298,12 @@ resource "observe_dashboard" "compute_monitoring" {
               id                     = "471mzk05"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-d4h31odg"
               type                   = "Timescrubber"
             },
             {
-              id            = "yeyupg29"
-              isDisabled    = false
-              parentStageId = "stage-d4h31odg"
-              type          = "Vis"
+              id         = "yeyupg29"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   color         = "Default"
@@ -3496,14 +3354,17 @@ resource "observe_dashboard" "compute_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "Compute Metrics"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3520,11 +3381,8 @@ resource "observe_dashboard" "compute_monitoring" {
               id                = "step-qtwkpfez"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "Compute Metrics (${local.compute_metrics})"
               type              = "InputStep"
             },
             {
@@ -3542,7 +3400,9 @@ resource "observe_dashboard" "compute_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "filter (custom)"
+              customSummary = ""
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3559,7 +3419,6 @@ resource "observe_dashboard" "compute_monitoring" {
               id       = "step-syseomld"
               index    = 1
               isPinned = false
-              name     = "filter (custom)"
               opal = [
                 "filter metric_category = \"disk\"",
                 "",
@@ -3571,7 +3430,6 @@ resource "observe_dashboard" "compute_monitoring" {
                 "topk 100",
               ]
               queryPresentation = {}
-              renderType        = null
               type              = "unknown"
             },
           ]
@@ -3592,9 +3450,9 @@ resource "observe_dashboard" "compute_monitoring" {
         params   = null
         pipeline = <<-EOT
                     filter metric_category = "disk"
-                                                            
+                    
                     filter metric = "instance_disk_throttled_write_ops_count"
-                                                            
+                    
                     align 2m, frame(back: 1m), "value":avg(m("instance_disk_throttled_write_ops_count"))
                     exists instance_key = @computeID.instance_key
                     aggregate "value":sum(@."value"), group_by(instance_key)
@@ -3686,14 +3544,12 @@ resource "observe_dashboard" "compute_monitoring" {
               id                     = "471mzk05"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-3ks89dsy"
               type                   = "Timescrubber"
             },
             {
-              id            = "yeyupg29"
-              isDisabled    = false
-              parentStageId = "stage-3ks89dsy"
-              type          = "Vis"
+              id         = "yeyupg29"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   color         = "Default"
@@ -3746,14 +3602,17 @@ resource "observe_dashboard" "compute_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "Compute Metrics"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3770,11 +3629,8 @@ resource "observe_dashboard" "compute_monitoring" {
               id                = "step-rn8sbs1c"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "Compute Metrics (${local.compute_metrics})"
               type              = "InputStep"
             },
             {
@@ -3794,7 +3650,9 @@ resource "observe_dashboard" "compute_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "filter (custom)"
+              customSummary = ""
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3811,7 +3669,6 @@ resource "observe_dashboard" "compute_monitoring" {
               id       = "step-ri4kpsbu"
               index    = 1
               isPinned = false
-              name     = "filter (custom)"
               opal = [
                 "filter metric_category = \"network\"",
                 "",
@@ -3823,7 +3680,6 @@ resource "observe_dashboard" "compute_monitoring" {
                 "topk 100",
               ]
               queryPresentation = {}
-              renderType        = null
               type              = "unknown"
             },
           ]
@@ -3844,9 +3700,9 @@ resource "observe_dashboard" "compute_monitoring" {
         params   = null
         pipeline = <<-EOT
                     filter metric_category = "network"
-                                                            
+                    
                     filter metric = "instance_network_received_packets_count"
-                                                            
+                    
                     align 2m, frame(back: 1m), "value":avg(m("instance_network_received_packets_count"))
                     exists instance_key = @computeID.instance_key
                     aggregate "value":sum(@."value"), group_by(instance_key)
@@ -3937,14 +3793,12 @@ resource "observe_dashboard" "compute_monitoring" {
               id                     = "471mzk05"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-q8h3nsju"
               type                   = "Timescrubber"
             },
             {
-              id            = "yeyupg29"
-              isDisabled    = false
-              parentStageId = "stage-q8h3nsju"
-              type          = "Vis"
+              id         = "yeyupg29"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   color         = "Default"
@@ -3997,14 +3851,17 @@ resource "observe_dashboard" "compute_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "Compute Metrics"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4021,15 +3878,14 @@ resource "observe_dashboard" "compute_monitoring" {
               id                = "step-9lxhvnku"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "Compute Metrics (${local.compute_metrics})"
               type              = "InputStep"
             },
             {
-              datasetQuery = null
+              customName    = "filter (custom)"
+              customSummary = ""
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4046,7 +3902,6 @@ resource "observe_dashboard" "compute_monitoring" {
               id       = "step-j1zm5lim"
               index    = 1
               isPinned = false
-              name     = "filter (custom)"
               opal = [
                 "filter metric_category = \"network\"",
                 "",
@@ -4058,7 +3913,6 @@ resource "observe_dashboard" "compute_monitoring" {
                 "topk 100",
               ]
               queryPresentation = {}
-              renderType        = null
               type              = "unknown"
             },
           ]
@@ -4079,9 +3933,9 @@ resource "observe_dashboard" "compute_monitoring" {
         params   = null
         pipeline = <<-EOT
                     filter metric_category = "network"
-                                                            
+                    
                     filter metric = "instance_network_sent_packets_count"
-                                                            
+                    
                     align 2m, frame(back: 1m), "value":avg(m("instance_network_sent_packets_count"))
                     exists instance_key = @computeID.instance_key
                     aggregate "value":sum(@."value"), group_by(instance_key)
@@ -4172,14 +4026,12 @@ resource "observe_dashboard" "compute_monitoring" {
               id                     = "471mzk05"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-9qqbf5wc"
               type                   = "Timescrubber"
             },
             {
-              id            = "yeyupg29"
-              isDisabled    = false
-              parentStageId = "stage-9qqbf5wc"
-              type          = "Vis"
+              id         = "yeyupg29"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   color         = "Default"
@@ -4232,14 +4084,17 @@ resource "observe_dashboard" "compute_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "Compute Metrics"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4256,15 +4111,14 @@ resource "observe_dashboard" "compute_monitoring" {
               id                = "step-b8zblo03"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "Compute Metrics (${local.compute_metrics})"
               type              = "InputStep"
             },
             {
-              datasetQuery = null
+              customName    = "filter (custom)"
+              customSummary = ""
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4281,7 +4135,6 @@ resource "observe_dashboard" "compute_monitoring" {
               id       = "step-968mbb10"
               index    = 1
               isPinned = false
-              name     = "filter (custom)"
               opal = [
                 "filter metric_category = \"network\"",
                 "",
@@ -4293,7 +4146,6 @@ resource "observe_dashboard" "compute_monitoring" {
                 "topk 100",
               ]
               queryPresentation = {}
-              renderType        = null
               type              = "unknown"
             },
           ]
@@ -4301,9 +4153,9 @@ resource "observe_dashboard" "compute_monitoring" {
           viewModel = {
             consoleValue = <<-EOT
                             filter metric_category = "network"
-                                                                                    
+                                                                                                                                            
                             filter metric = "instance_network_received_bytes_count"
-                                                                                    
+                                                                                                                                            
                             align 2m, frame(back: 1m), "value":avg(m("instance_network_received_bytes_count"))
                             exists instance_key = @computeID.instance_key
                             aggregate "value":sum(@."value"), group_by(instance_key)
@@ -4323,9 +4175,9 @@ resource "observe_dashboard" "compute_monitoring" {
         params   = null
         pipeline = <<-EOT
                     filter metric_category = "network"
-                                                            
+                    
                     filter metric = "instance_network_sent_packets_count"
-                                                            
+                    
                     align 2m, frame(back: 1m), "value":avg(m("instance_network_sent_packets_count"))
                     exists instance_key = @computeID.instance_key
                     aggregate "value":sum(@."value"), group_by(instance_key)
@@ -4356,7 +4208,7 @@ resource "observe_dashboard" "compute_monitoring" {
             }
             columnVisibility            = {}
             columnWidths                = {}
-            containerWidth              = 285
+            containerWidth              = 2145
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -4402,9 +4254,8 @@ resource "observe_dashboard" "compute_monitoring" {
           managers = [
             {
               id                     = "09ukqxrf"
-              isDisabled             = true
+              isDisabled             = false
               isResourceCountEnabled = false
-              parentStageId          = "stage-4qz8g1va"
               type                   = "Timescrubber"
             },
           ]
@@ -4464,7 +4315,9 @@ resource "observe_dashboard" "compute_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "computeID"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4481,11 +4334,8 @@ resource "observe_dashboard" "compute_monitoring" {
               id                = "step-r71opp54"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "computeID (undefined)"
               type              = "InputStep"
             },
           ]
@@ -4578,14 +4428,12 @@ resource "observe_dashboard" "compute_monitoring" {
               id                     = "qt1nyhy3"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-x2r9aqus"
               type                   = "Timescrubber"
             },
             {
-              id            = "e7f2v94u"
-              isDisabled    = false
-              parentStageId = "stage-x2r9aqus"
-              type          = "Vis"
+              id         = "e7f2v94u"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   areaFillType = "SolidFill"
@@ -4642,7 +4490,8 @@ resource "observe_dashboard" "compute_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 48
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -4684,7 +4533,9 @@ resource "observe_dashboard" "compute_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "computeID"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4701,11 +4552,8 @@ resource "observe_dashboard" "compute_monitoring" {
               id                = "step-vp9bzx2a"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "computeID (undefined)"
               type              = "InputStep"
             },
           ]
@@ -4725,6 +4573,132 @@ resource "observe_dashboard" "compute_monitoring" {
         }
         params   = null
         pipeline = ""
+      },
+      {
+        id = "stage-heng8s54"
+        input = [
+          {
+            datasetId   = "${local.compute_instance}"
+            datasetPath = null
+            inputName   = "GCP/Compute Instance"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "HIDDEN"
+          dataTableViewState = {
+            autoTableHeight    = true
+            columnFooterHeight = 0
+            columnHeaderHeight = 29
+            columnOrderOverride = {
+              "0" = "instance_name"
+              "2" = "Valid From"
+              "3" = "Valid To"
+            }
+            columnVisibility            = {}
+            columnWidths                = {}
+            contextMenuXCoord           = null
+            contextMenuYCoord           = null
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            eventLinkColumnId           = null
+            fetchPageSize               = 100
+            hasCalculatedColumnWidths   = false
+            hasDoneAutoLayout           = false
+            maxColumnWidth              = 400
+            maxMeasuredColumnWidth      = {}
+            minColumnWidth              = 60
+            minRowHeight                = 30
+            preserveCellAndRowSelection = true
+            rowHeaderWidth              = 20
+            rowHeights                  = {}
+            rowSizeIncrement            = 1
+            scrollToColumn              = null
+            scrollToRow                 = 0
+            selection = {
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 0
+            tableView                  = "TABULAR"
+          }
+          index = 18
+          inputList = [
+            {
+              datasetId   = "${local.compute_instance}"
+              inputName   = "GCP/Compute Instance"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+          ]
+          managers        = []
+          pipelineComment = "Filtered Dataset Controlled Filter Stage"
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            linkify     = true
+            progressive = true
+            resultKinds = [
+              "ResultKindSchema",
+              "ResultKindStats",
+            ]
+            rollup = {}
+          }
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              customName    = "Input"
+              customSummary = "GCP/Compute Instance"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-qlc4nnck"
+              index    = 0
+              isPinned = false
+              opal = [
+                "// Filtered Dataset Controlled Filter Stage",
+              ]
+              queryPresentation = {}
+              type              = "InputStep"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            scriptTab     = "SCRIPT"
+            showTimeRuler = true
+            stageTab      = "table"
+          }
+        }
+        params   = null
+        pipeline = "// Filtered Dataset Controlled Filter Stage"
       },
     ]
   )
