@@ -1,6 +1,6 @@
 locals {
   workspace                     = var.workspace.oid
-  dashboard_name                = format(var.name_format, "dev/Cloud Functions Monitoring")
+  dashboard_name                = format(var.name_format, "Monitoring")
   cloud_functions_instances     = observe_dataset.cloud_functions_instances.id
   cloud_functions_metrics       = one(observe_dataset.cloud_functions_metrics[*].id)
   cloud_functions_function_logs = observe_dataset.cloud_functions_function_logs.id
