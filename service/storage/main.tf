@@ -51,6 +51,7 @@ resource "observe_dataset" "storage_buckets" {
     pipeline = <<-EOF
       make_resource options(expiry:${var.max_expiry}), 
         projectNumber,
+        project_id,
         owner,
         region,
         locationType,
@@ -77,6 +78,7 @@ resource "observe_dataset" "storage_buckets" {
       set_label bucket_name
 
       add_key projectNumber, region
+      add_key project_id
     EOF
   }
 }
