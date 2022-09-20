@@ -66,7 +66,8 @@ resource "observe_dataset" "cloud_sql_instance" {
 
       set_label name
 
-      add_key project_id, region
+      add_key project_id
+      add_key region
       
     EOF
   }
