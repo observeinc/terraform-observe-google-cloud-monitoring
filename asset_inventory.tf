@@ -234,7 +234,7 @@ resource "observe_link" "resource_asset_inventory_resource" {
     }
     "CloudFunction" = {
       target = one(module.cloudfunctions[*].function.oid)
-      fields = ["project_id"]
+      fields = ["project_id:projectId"]
     }
     "Storage" = {
       target = one(module.storage[*].storage.oid)
