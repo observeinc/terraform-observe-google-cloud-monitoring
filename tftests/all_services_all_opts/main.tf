@@ -22,8 +22,8 @@ module "all_services_all_opts" {
   enable_service_load_balancing = true
   enable_service_storage        = true
 
-  feature_flags = {
-    metrics  = false
-    monitors = false
-  }
+  # feature_flags = {
+  #   metrics  = false
+  #   monitors = false
+  # }
 }
