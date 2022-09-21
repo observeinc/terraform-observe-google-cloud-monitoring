@@ -1,3 +1,15 @@
+## [0.4.1](https://github.com/observeinc/terraform-observe-google/compare/v0.4.0...v0.4.1) (2022-09-21)
+
+
+### Bug Fixes
+
+* fix conditions for dashboard creation ([#87](https://github.com/observeinc/terraform-observe-google/issues/87)) ([28ee1f4](https://github.com/observeinc/terraform-observe-google/commit/28ee1f43ed8a4388a76d4b5dfe843f880c95c93a))
+* fixes from testing and add links to project dashboard dataset to make it easier to navigate ([#85](https://github.com/observeinc/terraform-observe-google/issues/85)) ([b9a3bc4](https://github.com/observeinc/terraform-observe-google/commit/b9a3bc44bdf67ab7a5893f4e00d1cea81786ab82))
+* setting enable_service_storage will no longer break app ([#86](https://github.com/observeinc/terraform-observe-google/issues/86)) ([2994fae](https://github.com/observeinc/terraform-observe-google/commit/2994faed8b67b7fca7113a8c80351db69f342945))
+* updated overview to include public pre-view ([#83](https://github.com/observeinc/terraform-observe-google/issues/83)) ([6977357](https://github.com/observeinc/terraform-observe-google/commit/6977357b00b9e873438e21c4fa2dd8543d8a1c80))
+
+
+
 # [0.4.0](https://github.com/observeinc/terraform-observe-google/compare/v0.3.9...v0.4.0) (2022-09-15)
 
 
