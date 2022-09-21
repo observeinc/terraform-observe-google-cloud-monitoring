@@ -10,10 +10,11 @@ locals {
   cloud_functions_function_logs    = one(module.cloudfunctions[*].function_logs) == null ? "NA" : one(module.cloudfunctions[*].function_logs.id)
   metrics                          = observe_dataset.metrics.id
   storage_metrics                  = one(module.storage[*].storage_metrics) == null ? "NA" : one(module.storage[*].storage_metrics.id)
+  enable_dashboard                 = var.enable_service_cloudfunctions && var.enable_service_compute && var.enable_service_cloudsql && var.enable_service_storage
 }
 # terraform import observe_dashboard.projects_home_template 41144640
 resource "observe_dashboard" "projects_home_template" {
-  count = local.enable_metrics ? 1 : 0
+  count = local.enable_dashboard ? 1 : 0
   layout = jsonencode(
     {
       gridLayout = {
