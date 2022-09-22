@@ -43,7 +43,7 @@ resource "observe_dataset" "cloud_functions_instances" {
       set_label name
       extract_regex name, /projects\/(?P<projectId>[^\/+]+)\/locations\/(?P<region>[^\/+]+)\/functions\/(?P<functionName>[^\/+]+)/
       add_key projectId, region, functionName
-      add_key projectId
+      //add_key projectId
     EOF
   }
 }

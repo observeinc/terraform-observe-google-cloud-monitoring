@@ -83,7 +83,7 @@ resource "observe_dataset" "compute_disk" {
       add_key instance_id
       set_label id
 
-      add_key project_id, region, zone
+      // add_key project_id, region, zone
     EOF
   }
 }

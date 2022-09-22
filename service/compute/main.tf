@@ -121,6 +121,7 @@ resource "observe_dataset" "compute_instance" {
         deletionProtection,
         ttl,
         deleted,
+        assetInventoryName,
         primary_key(instance_key),
         valid_for(ttl)
 
@@ -128,7 +129,8 @@ resource "observe_dataset" "compute_instance" {
       add_key instance_id
       set_label instance_name
 
-      add_key project_id, region, zone
+      // add_key project_id, region, zone
+      add_key assetInventoryName
     EOF
   }
 }
