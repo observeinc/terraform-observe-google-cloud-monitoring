@@ -1,3 +1,12 @@
+## [0.4.2](https://github.com/observeinc/terraform-observe-google/compare/v0.4.1...v0.4.2) (2022-09-23)
+
+
+### Bug Fixes
+
+* remove keys that don't uniquely identify ([#88](https://github.com/observeinc/terraform-observe-google/issues/88)) ([b7d5f3f](https://github.com/observeinc/terraform-observe-google/commit/b7d5f3fd973f8b9216a3c60aa0b475f4f7c35cb7))
+
+
+
 ## [0.4.1](https://github.com/observeinc/terraform-observe-google/compare/v0.4.0...v0.4.1) (2022-09-21)
 
 
