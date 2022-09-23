@@ -59,6 +59,7 @@ resource "observe_dataset" "cloud_sql_instance" {
         gceZone:string(data.gceZone),
         ttl,
         deleted,
+        assetInventoryName,
         primary_key(database_id),
         valid_for(ttl)
 
@@ -66,8 +67,9 @@ resource "observe_dataset" "cloud_sql_instance" {
 
       set_label name
 
-      add_key project_id
-      add_key region
+      //add_key project_id
+      //add_key region
+      add_key assetInventoryName
       
     EOF
   }

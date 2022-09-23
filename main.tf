@@ -12,7 +12,7 @@ locals {
     projects                           = observe_dataset.projects_collection_enabled
     distribution_metrics               = observe_dataset.process_distribution_metrics
   }
-  enable_metrics = lookup(var.feature_flags, "metrics", true)
+  # enable_metrics = lookup(var.feature_flags, "metrics", true)
 }
 resource "observe_dataset" "base_pubsub_events" {
   workspace   = var.workspace.oid

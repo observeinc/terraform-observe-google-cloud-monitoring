@@ -20,6 +20,7 @@ class RawFormatter(HelpFormatter):
 
 # Sources of stuff used to create this
 
+
 # ./serviceUtilities.py fetch_metric_descriptors -o compute/computemetrics.json -m "compute.googleapis.com"
 # ./serviceUtilities.py create_terraform -i compute/computemetrics.json -t compute/local_metricdescriptors.tf
 # https://github.com/googleapis/python-monitoring
@@ -371,10 +372,12 @@ This page lists the {service_name} metrics collected by the GCP Integration.
     metric_bin_list = list(dict.fromkeys(metric_bin_list))
 
     for metric_bin_value in metric_bin_list:
-
+        mid_section = ''''''
         for obj in data["metricDescriptors"]:
 
             if ((obj['launch_stage'] == 4 or obj['launch_stage'] == 3) and obj['metric_bin'] == metric_bin_value):
+                print(obj['metric_bin'])
+                print(metric_bin_value)
                 metric_category = obj['metric_category'] = obj['metric_category']
                 name = re.search('([^/]+$)', obj['name']).group()
                 if metric_category != "none":
@@ -540,6 +543,7 @@ parser_create_doc_metrics = subparsers.add_parser('create_doc_metrics',
      create_doc_metrics -i compute/computemetrics.json -o compute/compute-metrics.md -s compute | 
      ./serviceUtilities.py create_doc_metrics -i storage/storagemetrics.json -o loadbalancing/cloud-storage-metrics.md -s storage |
      ./serviceUtilities.py create_doc_metrics -i loadbalancing/loadbalancingmetrics.json -o loadbalancing/cloud-load-balancing-metrics.md -s loadbalancing | 
+    ./serviceUtilities.py create_doc_metrics -i cloudsql/cloudsqlmetrics.json -o /Users/arthur/content_eng/observe-docs/docs/content/integrations/gcp/cloud-sql-metrics.md -s cloudsql | 
     ./serviceUtilities.py create_doc_metrics -i cloudfunctions/cloudfunctionsmetrics.json -o /Users/arthur/content_eng/observe-docs/docs/content/integrations/gcp/cloud-functions-metrics.md -s cloudfunctions | 
         
         

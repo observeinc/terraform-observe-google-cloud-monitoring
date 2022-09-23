@@ -21,6 +21,7 @@ resource "observe_dataset" "storage_buckets" {
     pipeline = <<-EOF
       filter asset_type = "storage.googleapis.com/Bucket"
       make_col
+        assetInventoryName:name,
         bucket_name:string(data.name),
         projectNumber:string(data.projectNumber),
         owner:object(data.owner),
@@ -72,13 +73,15 @@ resource "observe_dataset" "storage_buckets" {
         labels,
         updated,
         timeCreated,
+        assetInventoryName,
         primary_key(bucket_name),
         valid_for(ttl)
 
       set_label bucket_name
 
-      add_key projectNumber, region
-      add_key project_id
+      //add_key projectNumber, region
+      //add_key project_id
+      add_key assetInventoryName
     EOF
   }
 }

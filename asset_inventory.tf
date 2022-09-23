@@ -191,10 +191,10 @@ resource "observe_dataset" "resources_asset_inventory" {
         primary_key(name),
         valid_for(ttl)
 
-      add_key project_id
-      add_key asset_type
-      add_key asset_namespace
-      add_key asset_sub_type
+      //add_key project_id
+      //add_key asset_type
+      //add_key asset_namespace
+      //add_key asset_sub_type
     EOF
   }
 }
@@ -232,25 +232,25 @@ resource "observe_link" "resource_asset_inventory_resource" {
     var.enable_service_storage ? {
       "Storage" = {
         target = one(module.storage[*].storage.oid)
-        fields = ["project_id"]
+        fields = ["name:assetInventoryName"]
       }
     } : {},
     var.enable_service_compute ? {
       "Compute" = {
         target = one(module.compute[*].compute.oid)
-        fields = ["project_id"]
+        fields = ["name:assetInventoryName"]
       }
     } : {},
     var.enable_service_cloudsql ? {
       "CloudSQL" = {
         target = one(module.cloudsql[*].cloudsql.oid)
-        fields = ["project_id"]
+        fields = ["name:assetInventoryName"]
       }
     } : {},
     var.enable_service_cloudfunctions ? {
       "CloudFunction" = {
         target = one(module.cloudfunctions[*].function.oid)
-        fields = ["project_id:projectId"]
+        fields = ["name:assetInventoryName"]
       }
     } : {},
   )
