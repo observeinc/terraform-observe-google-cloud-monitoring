@@ -1,13 +1,12 @@
 locals {
   workspace                     = var.workspace.oid
   dashboard_name                = format(var.name_format, "Monitoring")
-  cloud_functions_instances     = observe_dataset.cloud_functions_instances.id
-  cloud_functions_metrics       = one(observe_dataset.cloud_functions_metrics[*].id)
-  cloud_functions_function_logs = observe_dataset.cloud_functions_function_logs.id
+  cloud_functions_instances     = resource.observe_dataset.cloud_functions_instances.id
+  cloud_functions_metrics       = resource.observe_dataset.cloud_functions_metrics[0].id
+  cloud_functions_function_logs = resource.observe_dataset.cloud_functions_function_logs.id
 }
-# terraform import observe_dashboard.cloud_functions_monitoring 41146418
+# terraform import observe_dashboard.cloud_functions_monitoring 41228004
 resource "observe_dashboard" "cloud_functions_monitoring" {
-  count = local.enable_metrics ? 1 : 0
   layout = jsonencode(
     {
       gridLayout = {
@@ -145,7 +144,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                   static      = false
                   w           = 3
                   x           = 9
-                  y           = 10
+                  y           = 12
                 }
               },
               {
@@ -163,7 +162,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                   static      = false
                   w           = 6
                   x           = 0
-                  y           = 22
+                  y           = 24
                 }
               },
               {
@@ -181,7 +180,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                   static      = false
                   w           = 6
                   x           = 6
-                  y           = 22
+                  y           = 24
                 }
               },
               {
@@ -199,7 +198,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                   static      = false
                   w           = 6
                   x           = 0
-                  y           = 39
+                  y           = 41
                 }
               },
               {
@@ -217,7 +216,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                   static      = false
                   w           = 6
                   x           = 6
-                  y           = 39
+                  y           = 41
                 }
               },
             ]
@@ -257,7 +256,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                 }
               },
             ]
-            lastModified = 1660770078299
+            lastModified = 1664480073908
           },
         ]
       }
@@ -265,30 +264,34 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
         isModified = false
         parameters = [
           {
+            controlledFilterStageId = "stage-1pcbjwdr"
+            datasetId               = "${local.cloud_functions_instances}"
             defaultValue = {
               datasetref = {
                 datasetId = "${local.cloud_functions_instances}"
               }
             }
-            id   = "cloudFunctions"
-            name = "cloudFunctions"
+            emptyValueEncoding    = "null"
+            emptyValueLabelOption = "null"
+            id                    = "cloudFunctions"
+            name                  = "cloudFunctions"
             valueKind = {
               type = "DATASETREF"
             }
             viewType = "input"
           },
         ]
-        selectedStageId = "stage-ifk44t3v"
+        selectedStageId = "stage-v80el32j"
         timeRange = {
-          display               = "Past 7 days"
+          display               = "Past 4 hours"
           endTime               = null
-          millisFromCurrentTime = 604800000
-          originalDisplay       = "Past 7 days"
+          millisFromCurrentTime = 14400000
+          originalDisplay       = "Past 4 hours"
           startTime             = null
           timeRangeInfo = {
             key        = "PRESETS"
             name       = "Presets"
-            presetType = "PAST_7_DAYS"
+            presetType = "PAST_4_HOURS"
           }
           timeZone = null
         }
@@ -409,14 +412,12 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               id                     = "c7h7bsmg"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-hmpks85q"
               type                   = "Timescrubber"
             },
             {
-              id            = "2xg7r566"
-              isDisabled    = false
-              parentStageId = "stage-hmpks85q"
-              type          = "Vis"
+              id         = "2xg7r566"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   color         = "Default"
@@ -424,7 +425,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                   legend = {
                     placement = "right"
                     type      = "list"
-                    visible   = true
+                    visible   = false
                   }
                   type = "xy"
                   xConfig = {
@@ -523,7 +524,8 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -566,7 +568,9 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "content-eng-1/Cloud Functions Function"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -583,15 +587,14 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               id                = "step-r840e8lw"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "content-eng-1/Cloud Functions Function (${local.cloud_functions_instances})"
               type              = "InputStep"
             },
             {
-              datasetQuery = null
+              customName    = "exists (custom)"
+              customSummary = ""
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -608,12 +611,10 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               id       = "step-c2i53j2r"
               index    = 1
               isPinned = false
-              name     = "exists (custom)"
               opal = [
                 "exists functionName = @cloudFunctions.functionName",
               ]
               queryPresentation = {}
-              renderType        = null
               type              = "unknown"
             },
           ]
@@ -626,7 +627,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -687,12 +687,18 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             scrollToColumn              = null
             scrollToRow                 = 0
             selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
             }
             shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
@@ -721,14 +727,12 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               id                     = "yz32ki92"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-f0whobgm"
               type                   = "Timescrubber"
             },
             {
-              id            = "2abmwvaa"
-              isDisabled    = false
-              parentStageId = "stage-f0whobgm"
-              type          = "Vis"
+              id         = "2abmwvaa"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   color         = "Default"
@@ -736,13 +740,14 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                   legend = {
                     placement = "right"
                     type      = "list"
-                    visible   = true
+                    visible   = false
                   }
                   type = "xy"
                   xConfig = {
                     visible = true
                   }
                   yConfig = {
+                    unit    = "bytes"
                     visible = true
                   }
                 }
@@ -783,7 +788,8 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -810,7 +816,9 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "content-eng-1/Cloud Functions Function Metrics"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -827,15 +835,14 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               id                = "step-oc9s5vgc"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "content-eng-1/Cloud Functions Function Metrics (${local.cloud_functions_metrics})"
               type              = "InputStep"
             },
             {
-              datasetQuery = null
+              customName    = "filter (custom)"
+              customSummary = ""
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -852,7 +859,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               id       = "step-hg0fvq0s"
               index    = 1
               isPinned = false
-              name     = "filter (custom)"
               opal = [
                 "filter metric = \"function_user_memory_bytes\"",
                 "exists project_id = @cloudFunctions.projectId",
@@ -861,7 +867,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                 "",
               ]
               queryPresentation = {}
-              renderType        = null
               type              = "unknown"
             },
           ]
@@ -874,7 +879,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -971,14 +975,12 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               id                     = "c7h7bsmg"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-r41eirof"
               type                   = "Timescrubber"
             },
             {
-              id            = "2xg7r566"
-              isDisabled    = false
-              parentStageId = "stage-r41eirof"
-              type          = "Vis"
+              id         = "2xg7r566"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   color         = "Default"
@@ -986,7 +988,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                   legend = {
                     placement = "right"
                     type      = "list"
-                    visible   = true
+                    visible   = false
                   }
                   type = "xy"
                   xConfig = {
@@ -1097,14 +1099,17 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "content-eng-1/Cloud Functions Function"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1121,15 +1126,14 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               id                = "step-t50292ms"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "content-eng-1/Cloud Functions Function (${local.cloud_functions_instances})"
               type              = "InputStep"
             },
             {
-              datasetQuery = null
+              customName    = "exists (custom)"
+              customSummary = ""
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1146,12 +1150,10 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               id       = "step-8dc94c4u"
               index    = 1
               isPinned = false
-              name     = "exists (custom)"
               opal = [
                 "exists functionName = @cloudFunctions.functionName",
               ]
               queryPresentation = {}
-              renderType        = null
               type              = "unknown"
             },
           ]
@@ -1164,7 +1166,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -1256,14 +1257,12 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               id                     = "c7h7bsmg"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-4jcselfm"
               type                   = "Timescrubber"
             },
             {
-              id            = "2xg7r566"
-              isDisabled    = false
-              parentStageId = "stage-4jcselfm"
-              type          = "Vis"
+              id         = "2xg7r566"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   color         = "Default"
@@ -1271,7 +1270,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                   legend = {
                     placement = "right"
                     type      = "list"
-                    visible   = true
+                    visible   = false
                   }
                   type = "xy"
                   xConfig = {
@@ -1387,14 +1386,17 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "content-eng-1/Cloud Functions Function"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1411,15 +1413,14 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               id                = "step-3k47l8cd"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "content-eng-1/Cloud Functions Function (${local.cloud_functions_instances})"
               type              = "InputStep"
             },
             {
-              datasetQuery = null
+              customName    = "exists (custom)"
+              customSummary = ""
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1436,12 +1437,10 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               id       = "step-l22ux62w"
               index    = 1
               isPinned = false
-              name     = "exists (custom)"
               opal = [
                 "exists functionName = @cloudFunctions.functionName",
               ]
               queryPresentation = {}
-              renderType        = null
               type              = "unknown"
             },
           ]
@@ -1454,7 +1453,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -1549,28 +1547,27 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               id                     = "y1s4ybc5"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-v80el32j"
               type                   = "Timescrubber"
             },
             {
-              id            = "vwk505t0"
-              isDisabled    = false
-              parentStageId = "stage-v80el32j"
-              type          = "Vis"
+              id         = "vwk505t0"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
-                  color         = "Default"
+                  color         = "Blue"
                   hideGridLines = false
                   legend = {
                     placement = "right"
                     type      = "list"
-                    visible   = true
+                    visible   = false
                   }
                   type = "xy"
                   xConfig = {
                     visible = true
                   }
                   yConfig = {
+                    unit    = "nanoseconds"
                     visible = true
                   }
                 }
@@ -1587,7 +1584,8 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                       fn = "avg"
                     }
                     timechart = {
-                      fn         = "avg"
+                      fn         = "sum"
+                      fnArgs     = []
                       resolution = "AUTO"
                     }
                     transformType = "timechart"
@@ -1611,7 +1609,8 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -1638,7 +1637,9 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "content-eng-1/Cloud Functions Function Metrics"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1655,11 +1656,8 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               id                = "step-gx6aqoqd"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "content-eng-1/Cloud Functions Function Metrics (${local.cloud_functions_metrics})"
               type              = "InputStep"
             },
             {
@@ -1684,7 +1682,9 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "exists (custom)"
+              customSummary = ""
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1701,7 +1701,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               id       = "step-iuuszoum"
               index    = 1
               isPinned = false
-              name     = "exists (custom)"
               opal = [
                 "exists function_name = @cloudFunctions.functionName",
                 "filter metric = \"function_execution_times\"",
@@ -1710,7 +1709,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                 "",
               ]
               queryPresentation = {}
-              renderType        = null
               type              = "unknown"
             },
           ]
@@ -1723,7 +1721,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -1763,7 +1760,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             columnOrderOverride         = {}
             columnVisibility            = {}
             columnWidths                = {}
-            containerWidth              = 1313
+            containerWidth              = 1745
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -1817,40 +1814,47 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               id                     = "a9roqvkt"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-ra65e7v9"
               type                   = "Timescrubber"
             },
             {
-              id            = "4bh5johk"
-              isDisabled    = false
-              parentStageId = "stage-ra65e7v9"
-              type          = "Vis"
+              id         = "4bh5johk"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
-                  color           = "Red"
-                  colorConfigType = "Color"
+                  color           = "Default"
+                  colorConfigType = "Threshold"
                   fieldConfig = {
                     unit    = null
                     visible = false
                   }
-                  thresholds = null
-                  type       = "singlefield"
+                  thresholds = {
+                    startingColor = "Green"
+                    thresholds = [
+                      {
+                        exceedsColor = "Default"
+                        value        = 1
+                      },
+                    ]
+                  }
+                  type = "singlefield"
                 }
                 source = {
                   table = {
-                    field = "severity"
+                    field = "is_error"
                     groupFields = [
                       "board_label",
                     ]
                     statsBy = {
-                      fn = "count"
+                      fn     = "sum"
+                      fnArgs = []
                     }
                     timechart = {
-                      fn         = "count"
+                      fn         = "avg"
                       fnArgs     = null
-                      resolution = "SINGLE"
+                      resolution = "AUTO"
                     }
-                    transformType = "timechart"
+                    transformType = "statsby"
                     type          = "singlefield"
                   }
                   type = "table"
@@ -1859,10 +1863,9 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               }
             },
             {
-              id            = "0uyzp68x"
-              isDisabled    = false
-              parentStageId = "stage-ra65e7v9"
-              type          = "JsonTree"
+              id         = "0uyzp68x"
+              isDisabled = false
+              type       = "JsonTree"
             },
           ]
           queryPresentation = {
@@ -1876,7 +1879,8 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -1901,7 +1905,9 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "content-eng-1/Cloud Functions Function Logs"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1918,11 +1924,8 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               id                = "step-s0wc8jns"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "content-eng-1/Cloud Functions Function Logs (${local.cloud_functions_function_logs})"
               type              = "InputStep"
             },
             {
@@ -1934,7 +1937,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                 }
                 datasetQueryId = {
                   ignoreCompress = false
-                  queryId        = "q-3c4wiyrp"
+                  queryId        = "q-72tlhg03"
                   resultKinds = [
                     "ResultKindSchema",
                     "ResultKindData",
@@ -1944,7 +1947,8 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customSummary = ""
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1958,17 +1962,16 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-dwy2kxg1"
+              id       = "step-zcm4u1rf"
               index    = 1
               isPinned = false
-              name     = "filter (custom)"
               opal = [
-                "filter severity = \"ERROR\"",
                 "exists functionName = @cloudFunctions.functionName, region = @cloudFunctions.region, projectId = @cloudFunctions.projectId",
-                "make_col board_label: \"Total Errors\"",
+                "make_col ",
+                "\tboard_label: \"Total Errors\",",
+                "    is_error: if(severity = \"ERROR\", 1, 0)",
               ]
               queryPresentation = {}
-              renderType        = null
               type              = "unknown"
             },
           ]
@@ -1981,16 +1984,16 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
         }
         params   = null
         pipeline = <<-EOT
-                    filter severity = "ERROR"
                     exists functionName = @cloudFunctions.functionName, region = @cloudFunctions.region, projectId = @cloudFunctions.projectId
-                    make_col board_label: "Total Errors"
+                    make_col 
+                    	board_label: "Total Errors",
+                        is_error: if(severity = "ERROR", 1, 0)
                 EOT
       },
       {
@@ -2014,13 +2017,19 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight             = true
-            columnFooterHeight          = 0
-            columnHeaderHeight          = 29
-            columnOrderOverride         = {}
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1313
+            autoTableHeight     = true
+            columnFooterHeight  = 0
+            columnHeaderHeight  = 29
+            columnOrderOverride = {}
+            columnVisibility    = {}
+            columnWidths = {
+              board_label  = 206
+              functionName = 224
+              has_errors   = 129
+              logName      = 263
+              severity     = 124
+            }
+            containerWidth              = 1745
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -2074,44 +2083,47 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               id                     = "a9roqvkt"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-ifk44t3v"
               type                   = "Timescrubber"
             },
             {
-              id            = "4bh5johk"
-              isDisabled    = false
-              parentStageId = "stage-ifk44t3v"
-              type          = "Vis"
+              id         = "4bh5johk"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
-                  color           = "Red"
-                  colorConfigType = "Color"
+                  color           = "Default"
+                  colorConfigType = "Threshold"
                   fieldConfig = {
                     unit    = null
                     visible = false
                   }
-                  thresholds = null
-                  type       = "singlefield"
+                  thresholds = {
+                    startingColor = "Green"
+                    thresholds = [
+                      {
+                        exceedsColor = "Default"
+                        value        = 1
+                      },
+                    ]
+                  }
+                  type = "singlefield"
                 }
                 source = {
                   table = {
-                    field = [
-                      "projectId",
-                      "region",
-                      "functionName",
-                    ]
+                    field = "has_errors"
                     groupFields = [
                       "board_label",
                     ]
                     statsBy = {
-                      fn = "count"
+                      fn     = "sum"
+                      fnArgs = []
                     }
                     timechart = {
-                      fn         = "count_distinct"
-                      fnArgs     = []
-                      resolution = "SINGLE"
+                      fn         = "avg"
+                      fnArgs     = null
+                      resolution = "AUTO"
                     }
-                    transformType = "timechart"
+                    transformType = "statsby"
                     type          = "singlefield"
                   }
                   type = "table"
@@ -2120,10 +2132,9 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               }
             },
             {
-              id            = "0uyzp68x"
-              isDisabled    = true
-              parentStageId = "stage-ifk44t3v"
-              type          = "JsonTree"
+              id         = "0uyzp68x"
+              isDisabled = true
+              type       = "JsonTree"
             },
           ]
           queryPresentation = {
@@ -2137,14 +2148,17 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "content-eng-1/Cloud Functions Function Logs"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2161,24 +2175,16 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               id                = "step-fdlrr341"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "content-eng-1/Cloud Functions Function Logs (${local.cloud_functions_function_logs})"
               type              = "InputStep"
             },
             {
               columnStatsTable = {
-                columnFunctions = {
-                  board_label = "count"
-                  logName     = "count"
-                  severity    = "count"
-                  textPayload = "count"
-                }
+                columnFunctions = {}
                 datasetQueryId = {
                   ignoreCompress = false
-                  queryId        = "q-suou6nq4"
+                  queryId        = "q-nlo21f3i"
                   resultKinds = [
                     "ResultKindSchema",
                     "ResultKindData",
@@ -2188,7 +2194,8 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customSummary = ""
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2202,133 +2209,22 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-5hia17mb"
+              id       = "step-oj6x53pj"
               index    = 1
               isPinned = false
-              name     = "filter (custom)"
               opal = [
-                "filter severity = \"ERROR\"",
                 "exists functionName = @cloudFunctions.functionName, region = @cloudFunctions.region, projectId = @cloudFunctions.projectId",
-                "make_col board_label: \"Functions With Errors\"",
-              ]
-              queryPresentation = {}
-              renderType        = null
-              type              = "unknown"
-            },
-            {
-              action = {
-                params = {
-                  columnIds = [
-                    "projectId",
-                    "region",
-                    "functionName",
-                  ]
-                  columnTypes = [
-                    "string",
-                    "string",
-                    "string",
-                  ]
-                  exclude    = true
-                  filterVerb = "filter"
-                  values = [
-                    [
-                      "terraflood-345116",
-                      "us-west1",
-                      "irdev-632-process-export",
-                    ],
-                  ]
-                }
-                summary = null
-                type    = "FilterMulti"
-              }
-              columnStatsTable = {
-                columnFunctions = {
-                  board_label = "count"
-                  logName     = "count"
-                  severity    = "count"
-                  textPayload = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-cyp8ezkf"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
-              datasetQuery = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id       = "step-k19pe4a9"
-              index    = 2
-              isPinned = false
-              name     = "Filter Multiple Columns"
-              opal = [
-                "filter not (projectId = \"terraflood-345116\" and region = \"us-west1\" and functionName = \"irdev-632-process-export\")",
-              ]
-              queryPresentation = {}
-              renderType        = null
-              summary           = "terraflood-345116, us-west1, irdev-632-process-export"
-              type              = "unknown"
-            },
-            {
-              columnStatsTable = {
-                columnFunctions = {
-                  board_label = "count"
-                  logName     = "count"
-                  severity    = "count"
-                  textPayload = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-lhtz7es4"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
-              datasetQuery = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id       = "step-ehy8ims1"
-              index    = 3
-              isPinned = false
-              name     = " (custom)"
-              opal = [
                 "",
+                "// Check each message to see if it's an error",
+                "make_col ",
+                "\tboard_label: \"Functions With Errors\",",
+                "    is_error: if(severity = \"ERROR\", 1, 0)",
+                "",
+                "// aggregate the errors for each function",
+                "statsby has_errors: if(sum(is_error) > 0, 1, 0),",
+                "  group_by(functionName, board_label)",
               ]
               queryPresentation = {}
-              renderType        = null
               type              = "unknown"
             },
           ]
@@ -2341,17 +2237,22 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
         }
         params   = null
         pipeline = <<-EOT
-                    filter severity = "ERROR"
                     exists functionName = @cloudFunctions.functionName, region = @cloudFunctions.region, projectId = @cloudFunctions.projectId
-                    make_col board_label: "Functions With Errors"
-                    filter not (projectId = "terraflood-345116" and region = "us-west1" and functionName = "irdev-632-process-export")
+                    
+                    // Check each message to see if it's an error
+                    make_col 
+                    	board_label: "Functions With Errors",
+                        is_error: if(severity = "ERROR", 1, 0)
+                    
+                    // aggregate the errors for each function
+                    statsby has_errors: if(sum(is_error) > 0, 1, 0),
+                      group_by(functionName, board_label)
                 EOT
       },
       {
@@ -2426,14 +2327,12 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               id                     = "41t2deyj"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-j3zdwc7r"
               type                   = "Timescrubber"
             },
             {
-              id            = "r141h2e1"
-              isDisabled    = false
-              parentStageId = "stage-j3zdwc7r"
-              type          = "Vis"
+              id         = "r141h2e1"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   innerRadius = 0.6
@@ -2477,7 +2376,8 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -2520,7 +2420,9 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "cloudFunctions"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2537,11 +2439,8 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               id                = "step-5sfi6ep1"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "cloudFunctions (undefined)"
               type              = "InputStep"
             },
           ]
@@ -2554,7 +2453,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -2633,14 +2531,12 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               id                     = "41t2deyj"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-367tr336"
               type                   = "Timescrubber"
             },
             {
-              id            = "r141h2e1"
-              isDisabled    = false
-              parentStageId = "stage-367tr336"
-              type          = "Vis"
+              id         = "r141h2e1"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   innerRadius = 0.6
@@ -2684,14 +2580,17 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "cloudFunctions"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2708,11 +2607,8 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               id                = "step-gdte94jw"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "cloudFunctions (undefined)"
               type              = "InputStep"
             },
           ]
@@ -2725,7 +2621,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -2804,14 +2699,12 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               id                     = "41t2deyj"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-ziasm4uf"
               type                   = "Timescrubber"
             },
             {
-              id            = "r141h2e1"
-              isDisabled    = false
-              parentStageId = "stage-ziasm4uf"
-              type          = "Vis"
+              id         = "r141h2e1"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   innerRadius = 0.6
@@ -2844,10 +2737,9 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               }
             },
             {
-              id            = "hwdk03xa"
-              isDisabled    = false
-              parentStageId = "stage-ziasm4uf"
-              type          = "JsonTree"
+              id         = "hwdk03xa"
+              isDisabled = false
+              type       = "JsonTree"
             },
           ]
           queryPresentation = {
@@ -2861,14 +2753,17 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "cloudFunctions"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2885,11 +2780,8 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               id                = "step-neblalxm"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "cloudFunctions (undefined)"
               type              = "InputStep"
             },
           ]
@@ -2902,13 +2794,138 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
         }
         params   = null
         pipeline = ""
+      },
+      {
+        id = "stage-1pcbjwdr"
+        input = [
+          {
+            datasetId   = "${local.cloud_functions_instances}"
+            datasetPath = null
+            inputName   = "Google/Cloud Functions Instances"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "HIDDEN"
+          dataTableViewState = {
+            autoTableHeight    = true
+            columnFooterHeight = 0
+            columnHeaderHeight = 29
+            columnOrderOverride = {
+              "0" = "name"
+              "2" = "Valid From"
+              "3" = "Valid To"
+            }
+            columnVisibility            = {}
+            columnWidths                = {}
+            containerWidth              = null
+            contextMenuXCoord           = null
+            contextMenuYCoord           = null
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            eventLinkColumnId           = null
+            fetchPageSize               = 100
+            hasCalculatedColumnWidths   = false
+            hasDoneAutoLayout           = false
+            maxColumnWidth              = 400
+            maxMeasuredColumnWidth      = {}
+            minColumnWidth              = 60
+            minRowHeight                = 30
+            preserveCellAndRowSelection = true
+            rowHeaderWidth              = 20
+            rowHeights                  = {}
+            rowSizeIncrement            = 1
+            scrollToColumn              = null
+            scrollToRow                 = 0
+            selection = {
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 0
+            tableView                  = "TABULAR"
+          }
+          index = 10
+          inputList = [
+            {
+              datasetId   = "${local.cloud_functions_instances}"
+              inputName   = "Google/Cloud Functions Instances"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+          ]
+          managers        = []
+          pipelineComment = "Filtered Dataset Controlled Filter Stage"
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            linkify     = true
+            progressive = true
+            resultKinds = [
+              "ResultKindSchema",
+              "ResultKindStats",
+            ]
+            rollup = {}
+          }
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              customName    = "Input"
+              customSummary = "Google/Cloud Functions Instances"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-17whd990"
+              index    = 0
+              isPinned = false
+              opal = [
+                "// Filtered Dataset Controlled Filter Stage",
+              ]
+              queryPresentation = {}
+              type              = "InputStep"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            showTimeRuler = true
+            stageTab      = "table"
+          }
+        }
+        params   = null
+        pipeline = "// Filtered Dataset Controlled Filter Stage"
       },
     ]
   )
