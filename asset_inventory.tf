@@ -247,12 +247,6 @@ resource "observe_link" "resource_asset_inventory_resource" {
         fields = ["name:assetInventoryName"]
       }
     } : {},
-    var.enable_service_bigquery ? {
-      "BigQuery" = {
-        target = one(module.bigquery[*].bigquery.oid)
-        fields = ["name:assetInventoryName"]
-      }
-    } : {},
     var.enable_service_cloudfunctions ? {
       "CloudFunction" = {
         target = one(module.cloudfunctions[*].function.oid)
