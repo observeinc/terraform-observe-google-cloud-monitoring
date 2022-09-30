@@ -7,7 +7,7 @@
 locals {
   enable_service_bigquery = (
     var.enable_service_bigquery == true ||
-   var.enable_service_bigquery ||
+    var.enable_service_bigquery ||
     lookup(var.services, "bigquery", false)
   )
   name_format_bigquery = lookup(var.service_name_formats, "bigquery", "BigQuery %s")

@@ -19,7 +19,7 @@ resource "observe_dataset" "bigquery_dataset" {
             lastModifiedTime:from_milliseconds(int64(data.lastModifiedTime)),
             location_1:string(data.location)
             
-        make_resource 
+        make_resource options(expiry:${var.max_expiry}), 
             creationTime,
             lastModifiedTime,
             defaultTableExpirationMs,
@@ -52,7 +52,7 @@ resource "observe_dataset" "bigquery_table" {
             expirationTime:from_milliseconds(int64(data.expirationTime)),
             creationTime:from_milliseconds(int64(data.creationTime))
 
-        make_resource options(expiry: 20m),
+        make_resource options(expiry:${var.max_expiry}), 
             creationTime,
             expirationTime,
             schema,
