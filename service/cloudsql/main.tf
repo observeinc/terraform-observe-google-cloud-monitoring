@@ -10,10 +10,11 @@ locals {
   enable_both     = local.enable_monitors && local.enable_metrics
 }
 
-resource "observe_dataset" "cloudsql" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Instance")
-  freshness = lookup(local.freshness, "cloudsql", var.freshness_default)
+resource "observe_dataset" "cloud_sql_instance" {
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Instance")
+  freshness   = lookup(local.freshness, "cloudsql", var.freshness_default)
+  description = "This dataset is used to create CloudSQL Resources"
 
   inputs = {
     "events" = var.google.resource_asset_inventory_records.oid,
@@ -58,6 +59,7 @@ resource "observe_dataset" "cloudsql" {
         gceZone:string(data.gceZone),
         ttl,
         deleted,
+        assetInventoryName,
         primary_key(database_id),
         valid_for(ttl)
 
@@ -65,7 +67,9 @@ resource "observe_dataset" "cloudsql" {
 
       set_label name
 
-      add_key project_id, region
+      //add_key project_id
+      //add_key region
+      add_key assetInventoryName
       
     EOF
   }
@@ -80,7 +84,7 @@ resource "observe_link" "project" {
   }
 
   workspace = var.workspace.oid
-  source    = observe_dataset.cloudsql.oid
+  source    = observe_dataset.cloud_sql_instance.oid
   target    = each.value.target
   fields    = each.value.fields
   label     = each.key

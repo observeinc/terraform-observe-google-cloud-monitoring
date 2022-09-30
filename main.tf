@@ -9,15 +9,16 @@ locals {
     audit_logs                         = observe_dataset.audit_logs
     metrics                            = observe_dataset.metrics
     string_metrics                     = observe_dataset.string_metrics
-    projects                           = observe_dataset.projects
+    projects                           = observe_dataset.projects_collection_enabled
     distribution_metrics               = observe_dataset.process_distribution_metrics
   }
+  # enable_metrics = lookup(var.feature_flags, "metrics", true)
 }
 resource "observe_dataset" "base_pubsub_events" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "PubSub Events")
-  freshness = var.freshness_default
-
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "PubSub Events")
+  freshness   = var.freshness_default
+  description = "This dataset contains all events from collection pubsub topic and is used as an input to other datasets"
   inputs = {
     "observation" = var.datastream.dataset
   }

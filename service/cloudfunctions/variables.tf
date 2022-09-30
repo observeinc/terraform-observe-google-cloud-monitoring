@@ -50,3 +50,15 @@ variable "launch_stage" {
   ]
   description = "Used by metric interface to pick metrics to include"
 }
+
+variable "metric_thresholds" {
+  description = "Variable for configuring thresholds on metrics"
+  type        = map(any)
+  default = {
+    Execution_Times = {
+      compare_function = "greater",
+      value            = 5000000000,
+      disabled         = false
+    }
+  }
+}

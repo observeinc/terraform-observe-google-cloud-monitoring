@@ -1,8 +1,8 @@
 resource "observe_dataset" "sql_logs" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Logs")
-  freshness = lookup(local.freshness, "logging", var.freshness_default)
-
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Logs")
+  freshness   = lookup(local.freshness, "logging", var.freshness_default)
+  description = "This dataset contains raw logging data for sql instances"
   inputs = {
     "logs" = var.google.logs.oid
   }
@@ -41,10 +41,10 @@ resource "observe_dataset" "sql_logs" {
 }
 
 resource "observe_dataset" "activity_logs" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Logs Activity")
-  freshness = lookup(local.freshness, "logging", var.freshness_default)
-
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Logs Activity")
+  freshness   = lookup(local.freshness, "logging", var.freshness_default)
+  description = "This dataset contains logs of operations against sql instances"
   inputs = {
     "logs" = var.google.logs.oid
   }
@@ -111,13 +111,13 @@ resource "observe_link" "sql_logs" {
 
   for_each = {
     "sql_logs" = {
-      target = observe_dataset.cloudsql.oid
+      target = observe_dataset.cloud_sql_instance.oid
       fields = ["database_id"]
       source = observe_dataset.sql_logs.oid
     }
 
     "activity_logs" = {
-      target = observe_dataset.cloudsql.oid
+      target = observe_dataset.cloud_sql_instance.oid
       fields = ["database_id"]
       source = observe_dataset.activity_logs.oid
     }

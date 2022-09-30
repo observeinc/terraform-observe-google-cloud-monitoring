@@ -4,10 +4,11 @@ locals {
   enable_monitors = lookup(var.feature_flags, "monitors", true)
 }
 
-resource "observe_dataset" "storage" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Buckets")
-  freshness = lookup(var.freshness_overrides, "storage", var.freshness_default)
+resource "observe_dataset" "storage_buckets" {
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Buckets")
+  freshness   = lookup(var.freshness_overrides, "storage", var.freshness_default)
+  description = "This dataset is used to create Storage Resources"
 
   inputs = {
     "events" = var.google.resource_asset_inventory_records.oid
@@ -20,6 +21,7 @@ resource "observe_dataset" "storage" {
     pipeline = <<-EOF
       filter asset_type = "storage.googleapis.com/Bucket"
       make_col
+        assetInventoryName:name,
         bucket_name:string(data.name),
         projectNumber:string(data.projectNumber),
         owner:object(data.owner),
@@ -50,6 +52,7 @@ resource "observe_dataset" "storage" {
     pipeline = <<-EOF
       make_resource options(expiry:${var.max_expiry}), 
         projectNumber,
+        project_id,
         owner,
         region,
         locationType,
@@ -70,19 +73,22 @@ resource "observe_dataset" "storage" {
         labels,
         updated,
         timeCreated,
+        assetInventoryName,
         primary_key(bucket_name),
         valid_for(ttl)
 
       set_label bucket_name
 
-      add_key projectNumber, region
+      //add_key projectNumber, region
+      //add_key project_id
+      add_key assetInventoryName
     EOF
   }
 }
 
 resource "observe_link" "storage_projects" {
   workspace = var.workspace.oid
-  source    = observe_dataset.storage.oid
+  source    = observe_dataset.storage_buckets.oid
   target    = var.google.projects.oid
   fields    = ["projectNumber"]
   label     = "Project Number"

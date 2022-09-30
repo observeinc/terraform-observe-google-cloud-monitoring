@@ -1,4 +1,81 @@
-# 0.1.0 (2022-08-03)
+## [0.4.2](https://github.com/observeinc/terraform-observe-google/compare/v0.4.1...v0.4.2) (2022-09-23)
+
+
+### Bug Fixes
+
+* remove keys that don't uniquely identify ([#88](https://github.com/observeinc/terraform-observe-google/issues/88)) ([b7d5f3f](https://github.com/observeinc/terraform-observe-google/commit/b7d5f3fd973f8b9216a3c60aa0b475f4f7c35cb7))
+
+
+
+## [0.4.1](https://github.com/observeinc/terraform-observe-google/compare/v0.4.0...v0.4.1) (2022-09-21)
+
+
+### Bug Fixes
+
+* fix conditions for dashboard creation ([#87](https://github.com/observeinc/terraform-observe-google/issues/87)) ([28ee1f4](https://github.com/observeinc/terraform-observe-google/commit/28ee1f43ed8a4388a76d4b5dfe843f880c95c93a))
+* fixes from testing and add links to project dashboard dataset to make it easier to navigate ([#85](https://github.com/observeinc/terraform-observe-google/issues/85)) ([b9a3bc4](https://github.com/observeinc/terraform-observe-google/commit/b9a3bc44bdf67ab7a5893f4e00d1cea81786ab82))
+* setting enable_service_storage will no longer break app ([#86](https://github.com/observeinc/terraform-observe-google/issues/86)) ([2994fae](https://github.com/observeinc/terraform-observe-google/commit/2994faed8b67b7fca7113a8c80351db69f342945))
+* updated overview to include public pre-view ([#83](https://github.com/observeinc/terraform-observe-google/issues/83)) ([6977357](https://github.com/observeinc/terraform-observe-google/commit/6977357b00b9e873438e21c4fa2dd8543d8a1c80))
+
+
+
+# [0.4.0](https://github.com/observeinc/terraform-observe-google/compare/v0.3.9...v0.4.0) (2022-09-15)
+
+
+### Bug Fixes
+
+* update variable defaults and descriptions ([#76](https://github.com/observeinc/terraform-observe-google/issues/76)) ([c5caee2](https://github.com/observeinc/terraform-observe-google/commit/c5caee236bbb00b53d58e9913ecc8dba83adf526))
+* use lookaround_joins for load balancing resource ([#78](https://github.com/observeinc/terraform-observe-google/issues/78)) ([256440c](https://github.com/observeinc/terraform-observe-google/commit/256440c4bd60caf239d0579654c94bce65f0d00a))
+
+
+### Features
+
+* add function high execution time monitor ([f532f22](https://github.com/observeinc/terraform-observe-google/commit/f532f22e3ffe5ceb6760307215774d97ffee1a4d))
+* add max execution time monitor template ([#77](https://github.com/observeinc/terraform-observe-google/issues/77)) ([9b6f74a](https://github.com/observeinc/terraform-observe-google/commit/9b6f74a5c480f7f7cdc0b75c91d0f0a6c014c94b))
+* add project home ([#80](https://github.com/observeinc/terraform-observe-google/issues/80)) ([53bc448](https://github.com/observeinc/terraform-observe-google/commit/53bc44812ea01fd7239f958b8e42fd0091a53b02))
+* remove load balance ([#75](https://github.com/observeinc/terraform-observe-google/issues/75)) ([6b7cd6d](https://github.com/observeinc/terraform-observe-google/commit/6b7cd6d30da4f4b03b8063e876ddd13568e92913))
+
+
+
+## [0.3.9](https://github.com/observeinc/terraform-observe-google/compare/v0.2.0...v0.3.9) (2022-09-07)
+
+
+### Bug Fixes
+
+* remove enable all variable and update tests ([#73](https://github.com/observeinc/terraform-observe-google/issues/73)) ([27bbe79](https://github.com/observeinc/terraform-observe-google/commit/27bbe793aea228fcfe8377ac4102e978af4e262b))
+
+
+### Features
+
+* project dashboard ([#72](https://github.com/observeinc/terraform-observe-google/issues/72)) ([6bbcfac](https://github.com/observeinc/terraform-observe-google/commit/6bbcfac7cab0962eb67f8ab2a31d59d6ecb31b21))
+
+
+
+# [0.2.0](https://github.com/observeinc/terraform-observe-google/compare/v0.1.0...v0.2.0) (2022-08-22)
+
+
+### Bug Fixes
+
+* app docs ([#37](https://github.com/observeinc/terraform-observe-google/issues/37)) ([5aea18f](https://github.com/observeinc/terraform-observe-google/commit/5aea18f5511afea47aaa1bf8cfb9715e1a0844f4))
+* fix cloud_sql output ([#38](https://github.com/observeinc/terraform-observe-google/issues/38)) ([a67eac3](https://github.com/observeinc/terraform-observe-google/commit/a67eac370afbf449099582ac18c8516b5e289784))
+* remove start time from metrics and change project resource ([#44](https://github.com/observeinc/terraform-observe-google/issues/44)) ([52d0931](https://github.com/observeinc/terraform-observe-google/commit/52d0931aa9624beed6f6c059a052bd3ef38f1cf8))
+* scrub ids from json ([#46](https://github.com/observeinc/terraform-observe-google/issues/46)) ([8101799](https://github.com/observeinc/terraform-observe-google/commit/8101799fc9434d9b11539d735252b84a84af3d81))
+* update functions dashboard to use time series instead of bar graph ([#41](https://github.com/observeinc/terraform-observe-google/issues/41)) ([771cf58](https://github.com/observeinc/terraform-observe-google/commit/771cf580802063c0fce2bc6c160492e1c4359edf))
+* update functions to match other services ([#53](https://github.com/observeinc/terraform-observe-google/issues/53)) ([f79cafc](https://github.com/observeinc/terraform-observe-google/commit/f79cafcf6915e66c5e1666a84d382754a4be8f3a))
+
+
+### Features
+
+* add compute dashboard ([#40](https://github.com/observeinc/terraform-observe-google/issues/40)) ([c6c9696](https://github.com/observeinc/terraform-observe-google/commit/c6c969674d89dec878a12c9afbd9f86cadea2840))
+* add loadbalancing submodule ([#43](https://github.com/observeinc/terraform-observe-google/issues/43)) ([aa434c7](https://github.com/observeinc/terraform-observe-google/commit/aa434c78fba438d677cbc413443ec126a0008dd0))
+* add loadbalancing submodule ([#48](https://github.com/observeinc/terraform-observe-google/issues/48)) ([95da50b](https://github.com/observeinc/terraform-observe-google/commit/95da50bf86d91cd2d64c519048554b2d0bd4dffa))
+* iterate on app manifests ([#54](https://github.com/observeinc/terraform-observe-google/issues/54)) ([1112cad](https://github.com/observeinc/terraform-observe-google/commit/1112cad25580b31a7c3b3e2bcd45d40c2ed8a1e0))
+* projects dashboard ([#50](https://github.com/observeinc/terraform-observe-google/issues/50)) ([3eabb27](https://github.com/observeinc/terraform-observe-google/commit/3eabb273ce949d59acf369c74dcf63d7d2d52482))
+* use Observe App poller setup scheme ([#42](https://github.com/observeinc/terraform-observe-google/issues/42)) ([e2b04e0](https://github.com/observeinc/terraform-observe-google/commit/e2b04e090befe0cc55a4853b02fcdbb553300c97))
+
+
+
+# [0.1.0](https://github.com/observeinc/terraform-observe-google/compare/6c2e2ca8c8e1b8972ee2bd21cdecf3481ad8f54c...v0.1.0) (2022-08-03)
 
 
 ### Bug Fixes

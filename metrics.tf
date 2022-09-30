@@ -1,8 +1,8 @@
 resource "observe_dataset" "metric_points" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Metric Points")
-  freshness = var.freshness_default
-
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Metric Points")
+  freshness   = var.freshness_default
+  description = "This dataset contains metrics for all GCP resources and is used by other metrics datasets as an input"
   inputs = {
     "observation" = var.datastream.dataset
   }
@@ -10,24 +10,24 @@ resource "observe_dataset" "metric_points" {
 
   stage {
     pipeline = <<-EOF
-      filter OBSERVATION_KIND = "gcpmetrics"
+filter OBSERVATION_KIND = "gcpmetrics"
 
-      make_col 
-        metric:object(FIELDS.timeseries.metric),
-        metric_kind:int64(FIELDS.timeseries.metric_kind),
-        resource_type:string(FIELDS.timeseries.resource.type),
-        resource_labels:object(FIELDS.timeseries.resource.labels),
-        value_type:int64(FIELDS.timeseries.value_type),
-        points:array(FIELDS.timeseries.points)
-          
-      make_col 
-        metric_type:string(metric.type),
-        metric_labels:object(metric.labels),
-        value_type_text: case (value_type=1, 'BOOL', value_type=2, 'INT64', value_type=3, 'DOUBLE', value_type=4, 'STRING', value_type=5, 'DISTRIBUTION'),
-        metric_kind_text: case (metric_kind=1, 'GAUGE', metric_kind=2, 'DELTA', metric_kind=3, 'CUMULATIVE')
-      
-      make_col
-        metric_namespace: split_part(metric_type, '/', 1)
+make_col 
+  metric:object(FIELDS.timeseries.metric),
+  metric_kind:int64(FIELDS.timeseries.metric_kind),
+  resource_type:string(FIELDS.timeseries.resource.type),
+  resource_labels:object(FIELDS.timeseries.resource.labels),
+  value_type:int64(FIELDS.timeseries.value_type),
+  points:array(FIELDS.timeseries.points)
+    
+make_col 
+  metric_type:string(metric.type),
+  metric_labels:object(metric.labels),
+  value_type_text: case (value_type=1, 'BOOL', value_type=2, 'INT64', value_type=3, 'DOUBLE', value_type=4, 'STRING', value_type=5, 'DISTRIBUTION'),
+  metric_kind_text: case (metric_kind=1, 'GAUGE', metric_kind=2, 'DELTA', metric_kind=3, 'CUMULATIVE')
+
+make_col
+  metric_namespace: split_part(metric_type, '/', 1)
       EOF
   }
 
@@ -101,16 +101,17 @@ resource "observe_dataset" "metrics" {
         resource_labels,
         value,
         value_type,
-        value_type_text
+        value_type_text,
+        project_id: string(resource_labels.project_id)
     EOF
   }
 }
 
 resource "observe_dataset" "string_metrics" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "String Metric Points")
-  freshness = var.freshness_default
-
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "String Metric Points")
+  freshness   = var.freshness_default
+  description = "This dataset contains string metrics for resources that provide them."
   inputs = {
     "points" = observe_dataset.metric_points.oid
   }
@@ -132,10 +133,10 @@ resource "observe_dataset" "string_metrics" {
 }
 
 resource "observe_dataset" "distribution_metrics" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Distribution Metric Points")
-  freshness = var.freshness_default
-
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Distribution Metric Points")
+  freshness   = var.freshness_default
+  description = "This dataset contains distribution metrics for GCP resources that provide them and is used by other metrics datasets as an input"
   inputs = {
     "points" = observe_dataset.metric_points.oid
   }
@@ -164,10 +165,10 @@ resource "observe_dataset" "distribution_metrics" {
 }
 
 resource "observe_dataset" "process_distribution_metrics" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Distribution Metrics")
-  freshness = var.freshness_default
-
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Distribution Metrics")
+  freshness   = var.freshness_default
+  description = "This dataset contains distributio metrics for GCP resources that provide them"
   inputs = {
     "points" = observe_dataset.metric_points.oid
   }

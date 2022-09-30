@@ -1,8 +1,9 @@
 
 resource "observe_dataset" "storage_logs" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Logs")
-  freshness = lookup(var.freshness_overrides, "storage_logs", var.freshness_default)
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Logs")
+  freshness   = lookup(var.freshness_overrides, "storage_logs", var.freshness_default)
+  description = "This dataset contains all logs generated for storage buckets"
 
   inputs = {
     "logs" = var.google.logs.oid
@@ -40,7 +41,7 @@ resource "observe_link" "storage_logs" {
 
   for_each = {
     "Bucket" = {
-      target = observe_dataset.storage.oid
+      target = observe_dataset.storage_buckets.oid
       fields = ["bucket_name"]
     }
   }

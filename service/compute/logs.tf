@@ -1,8 +1,8 @@
 resource "observe_dataset" "compute_logs" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Logs")
-  freshness = lookup(local.freshness, "metrics", var.freshness_default)
-
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Logs")
+  freshness   = lookup(local.freshness, "metrics", var.freshness_default)
+  description = "This dataset contains all logs generated for compute instances"
   inputs = {
     "audit_logs" = var.google.audit_logs.oid
   }
@@ -49,7 +49,7 @@ resource "observe_link" "compute_logs" {
 
   for_each = {
     "Compute" = {
-      target = observe_dataset.compute.oid
+      target = observe_dataset.compute_instance.oid
       fields = ["instance_key"]
     }
   }

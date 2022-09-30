@@ -16,7 +16,7 @@ variable "datastream" {
 variable "name_format" {
   type        = string
   description = "Format string to use for dataset names. Override to introduce a prefix or suffix."
-  default     = "%s"
+  default     = "GCP/%s"
 }
 
 variable "max_expiry" {
@@ -34,7 +34,7 @@ variable "max_time_diff" {
 variable "freshness_default" {
   type        = string
   description = "Default dataset freshness. Can be overridden with freshness input"
-  default     = "1m"
+  default     = "5m"
 }
 
 variable "freshness_overrides" {
@@ -61,15 +61,15 @@ variable "service_name_formats" {
   default     = {}
 }
 
-variable "enable_service_all" {
-  type        = bool
-  default     = false
-  description = <<-EOF
-    Enable all services.
-    If enabled, all services that are not explicitly set to false will be
-    configured.
-  EOF
-}
+# variable "enable_service_all" {
+#   type        = bool
+#   default     = true
+#   description = <<-EOF
+#     Enable all services.
+#     If enabled, all services that are not explicitly set to false will be
+#     configured.
+#   EOF
+# }
 
 variable "enable_service_bigquery" {
   type        = bool
@@ -82,7 +82,7 @@ variable "enable_service_bigquery" {
 
 variable "enable_service_cloudfunctions" {
   type        = bool
-  default     = null
+  default     = true
   description = <<-EOF
     Enable Cloud Functions service.
   EOF
@@ -90,7 +90,7 @@ variable "enable_service_cloudfunctions" {
 
 variable "enable_service_cloudsql" {
   type        = bool
-  default     = null
+  default     = true
   description = <<-EOF
     Enable Cloud SQL service.
   EOF
@@ -98,7 +98,7 @@ variable "enable_service_cloudsql" {
 
 variable "enable_service_compute" {
   type        = bool
-  default     = null
+  default     = true
   description = <<-EOF
     Enable Compute service.
   EOF
@@ -106,7 +106,7 @@ variable "enable_service_compute" {
 
 variable "enable_service_storage" {
   type        = bool
-  default     = null
+  default     = true
   description = <<-EOF
     Enable Cloud Storage service.
   EOF
@@ -114,7 +114,7 @@ variable "enable_service_storage" {
 
 variable "enable_service_load_balancing" {
   type        = bool
-  default     = null
+  default     = true
   description = <<-EOF
     Enable Cloud Load Balancing service.
   EOF

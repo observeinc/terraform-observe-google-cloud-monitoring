@@ -1,5 +1,5 @@
 output "storage" {
-  value = observe_dataset.storage
+  value = observe_dataset.storage_buckets
 }
 
 output "storage_logs" {

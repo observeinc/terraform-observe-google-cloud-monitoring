@@ -1,5 +1,0 @@
-name: terraform
-description: Onboard GCP project using Terraform
-kind: token
-requiredvariables:
-- datastream

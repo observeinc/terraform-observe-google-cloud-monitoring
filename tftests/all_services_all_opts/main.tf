@@ -10,14 +10,20 @@ data "observe_datastream" "default" {
 }
 
 module "all_services_all_opts" {
-  source             = "../.."
-  workspace          = data.observe_workspace.default
-  datastream         = data.observe_datastream.default
-  name_format        = "test_gcp_${random_pet.test.id}/%s"
-  enable_service_all = true
+  source      = "../.."
+  workspace   = data.observe_workspace.default
+  datastream  = data.observe_datastream.default
+  name_format = "test_gcp_${random_pet.test.id}/%s"
 
-  feature_flags = {
-    metrics  = false
-    monitors = false
-  }
+  # grep -rh "variable \"enable" --include variables.tf | sed -e 's/^[ \t]*//'| sed -e 's/variable//g' | sed -e 's/{//g' | sed -e 's/"//g'| sort | uniq 
+  enable_service_cloudfunctions = true
+  enable_service_cloudsql       = true
+  enable_service_compute        = true
+  enable_service_load_balancing = true
+  enable_service_storage        = true
+
+  # feature_flags = {
+  #   metrics  = false
+  #   monitors = false
+  # }
 }

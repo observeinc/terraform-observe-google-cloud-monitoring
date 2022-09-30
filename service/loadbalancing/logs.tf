@@ -1,8 +1,9 @@
 
 resource "observe_dataset" "load_balancing_logs" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Access Logs")
-  freshness = lookup(var.freshness_overrides, "load_balancing_logs", var.freshness_default)
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Access Logs")
+  freshness   = lookup(var.freshness_overrides, "load_balancing_logs", var.freshness_default)
+  description = "This dataset contains access logs generated for load balancers"
 
   inputs = {
     "logs" = var.google.logs.oid
@@ -73,9 +74,10 @@ resource "observe_dataset" "load_balancing_logs" {
 }
 
 resource "observe_dataset" "health_check_logs" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Health Check Logs")
-  freshness = lookup(var.freshness_overrides, "health_check_logs", var.freshness_default)
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Health Check Logs")
+  freshness   = lookup(var.freshness_overrides, "health_check_logs", var.freshness_default)
+  description = "This dataset contains health check logs generated for load balancers"
 
   inputs = {
     "logs" = var.google.logs.oid
@@ -108,10 +110,11 @@ resource "observe_dataset" "health_check_logs" {
   }
 }
 
-resource "observe_dataset" "audit_logs" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Config Audit Logs")
-  freshness = lookup(var.freshness_overrides, "audit_logs", var.freshness_default)
+resource "observe_dataset" "load_balancing_config_audit_logs" {
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Config Audit Logs")
+  freshness   = lookup(var.freshness_overrides, "audit_logs", var.freshness_default)
+  description = "This dataset contains audit logs generated for modifications to load balancing components"
 
   inputs = {
     "logs" = var.google.logs.oid
@@ -153,7 +156,7 @@ resource "observe_link" "load_balancing_logs" {
 
   for_each = {
     "Load Balancer" = {
-      target = observe_dataset.load_balancers.oid
+      target = observe_dataset.load_balancing_load_balancers.oid
       fields = ["url_map_name:name"]
     },
     "Backend Service" = {

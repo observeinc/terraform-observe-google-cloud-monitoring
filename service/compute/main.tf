@@ -7,17 +7,17 @@ locals {
   enable_both = lookup(var.feature_flags, "monitors", true) && lookup(var.feature_flags, "metrics", true)
 
   freshness = merge({
-    cloudsql = "5m",
-    metrics  = "1m",
-    logging  = "1m",
+    compute = "5m",
+    metrics = "1m",
+    logging = "1m",
   }, var.freshness_overrides)
 }
 
-resource "observe_dataset" "compute" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Instance")
-  freshness = lookup(local.freshness, "compute", var.freshness_default)
-
+resource "observe_dataset" "compute_instance" {
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Instance")
+  freshness   = lookup(local.freshness, "compute", var.freshness_default)
+  description = "This dataset is used to create Compute Resources"
   inputs = {
     "events" = var.google.resource_asset_inventory_records.oid
   }
@@ -121,13 +121,16 @@ resource "observe_dataset" "compute" {
         deletionProtection,
         ttl,
         deleted,
+        assetInventoryName,
         primary_key(instance_key),
         valid_for(ttl)
 
       add_key instance_name
+      add_key instance_id
       set_label instance_name
 
-      add_key project_id, region, zone
+      // add_key project_id, region, zone
+      add_key assetInventoryName
     EOF
   }
 }
@@ -140,7 +143,7 @@ resource "observe_link" "project" {
   }
 
   workspace = var.workspace.oid
-  source    = observe_dataset.compute.oid
+  source    = observe_dataset.compute_instance.oid
   target    = each.value.target
   fields    = each.value.fields
   label     = each.key

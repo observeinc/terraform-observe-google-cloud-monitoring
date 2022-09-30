@@ -47,9 +47,13 @@ output "compute" {
 }
 
 output "projects" {
-  value = observe_dataset.projects
+  value = observe_dataset.projects_collection_enabled
 }
 
 output "storage" {
   value = local.enable_service_storage ? module.storage[0] : null
+}
+
+output "loadbalancer" {
+  value = local.enable_service_load_balancing ? module.load_balancing[0] : null
 }
