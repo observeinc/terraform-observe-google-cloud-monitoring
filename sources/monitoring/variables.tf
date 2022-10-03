@@ -34,7 +34,7 @@ variable "project" {
 variable "service_account_private_key_json" {
   sensitive   = true
   type        = string
-  description = "A GCP Service Account Private Key with the 'monitoring/viewer' and 'cloudasset.viewer' roles."
+  description = "A GCP Service Account Private Key - see https://docs.observeinc.com/en/latest/content/integrations/gcp/gcp.html#installation"
 }
 
 variable "interval_duration" {
