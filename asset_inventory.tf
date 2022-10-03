@@ -212,11 +212,14 @@ resource "observe_dataset" "iam_policy_asset_inventory_records" {
   stage {
     pipeline = <<-EOF
       filter not is_null(iam_policy)
+      extract_regex string(ancestors), /projects\/(?P<projectNumber>[^"]*)/
       pick_col
         time,
         name,
         asset_type,
-        bindings:object(iam_policy.bindings),
+        projectNumber,
+        deleted,
+        bindings:iam_policy.bindings,
         etag:string(iam_policy.etag)
     EOF
   }
