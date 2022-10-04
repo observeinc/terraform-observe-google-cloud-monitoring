@@ -38,5 +38,9 @@ variable "subscription" {
 variable "service_account_private_key_json" {
   sensitive   = true
   type        = string
-  description = "A GCP Service Account Private Key - see https://docs.observeinc.com/en/latest/content/integrations/gcp/gcp.html#installation"
+  description = <<-EOF
+    A GCP Service Account should include the following role: Pub/Sub Subscriber (roles/pubsub.subscriber).
+    Please enter the entire JSON string you either generated with Terraform(https://docs.observeinc.com/en/latest/content/integrations/gcp/gcp.html#terraform-service-account-key) 
+    or downloaded from the GCP Console(https://docs.observeinc.com/en/latest/content/integrations/gcp/gcp.html#gcp-console-service-account-key).
+  EOF
 }

@@ -1,4 +1,4 @@
-Before setting up this poller you must follow the set up instructions to collect your GCP project data using Terraform or manual setup.
+Before setting up this [poller](https://docs.observeinc.com/en/latest/content/common-topics/ObserveGlossary.html) you must follow the set up instructions to collect your GCP project data using Terraform or manual setup.
 
 See the [GCP App installation](https://docs.observeinc.com/en/latest/content/integrations/gcp/gcp.html#installation) instructions under Observe integrations in the Observe Documentation.
 
