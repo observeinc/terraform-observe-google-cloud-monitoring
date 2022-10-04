@@ -7,4 +7,4 @@ The GCP Monitoring poller periodically fetches metrics, projects and asset inven
 
 The Observe GCP app uses this data to construct the state of your GCP inventory over time.
 
-You will need a service account private key in Json format to set up this poller.
+You will need a service account private key in Json format to set up this poller. 
