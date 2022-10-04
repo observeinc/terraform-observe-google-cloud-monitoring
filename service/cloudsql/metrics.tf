@@ -123,96 +123,96 @@ resource "observe_dataset" "cloud_sql_metrics_combo" {
 
 }
 
-resource "observe_dataset" "cloud_sql_metrics_wide" {
-  count = local.enable_metrics ? 1 : 0
+# resource "observe_dataset" "cloud_sql_metrics_wide" {
+#   count = local.enable_metrics ? 1 : 0
 
-  workspace   = var.workspace.oid
-  name        = format(var.name_format, "Metrics Wide")
-  freshness   = lookup(local.freshness, "metrics", var.freshness_duration_default)
-  description = "This dataset contains calculated metrics"
-  inputs = {
-    "metrics_base" = observe_dataset.cloud_sql_metrics[0].oid
-  }
-  stage {
-    pipeline = <<-EOF
-      filter in(metric, "database_disk_bytes_used","database_disk_quota")
-    EOF
-  }
+#   workspace   = var.workspace.oid
+#   name        = format(var.name_format, "Metrics Wide")
+#   freshness   = lookup(local.freshness, "metrics", var.freshness_default)
+#   description = "This dataset contains calculated metrics"
+#   inputs = {
+#     "metrics_base" = observe_dataset.cloud_sql_metrics[0].oid
+#   }
+#   stage {
+#     pipeline = <<-EOF
+#       filter in(metric, "database_disk_bytes_used","database_disk_quota")
+#     EOF
+#   }
 
-  stage {
-    pipeline = <<-EOF
-      align 60s,
-          used:avg(m("database_disk_bytes_used")),
-          quota:avg(m("database_disk_quota"))
+#   stage {
+#     pipeline = <<-EOF
+#       align 60s,
+#           used:avg(m("database_disk_bytes_used")),
+#           quota:avg(m("database_disk_quota"))
 
-      aggregate
-          used:avg(used),
-          quota:avg(quota),
-          group_by( 
-                    metric_category,
-                    database_platform,
-                    database_id,
-                    project_id,
-                    region
-                  )
-    EOF
-  }
+#       aggregate
+#           used:avg(used),
+#           quota:avg(quota),
+#           group_by( 
+#                     metric_category,
+#                     database_platform,
+#                     database_id,
+#                     project_id,
+#                     region
+#                   )
+#     EOF
+#   }
 
-  stage {
-    pipeline = <<-EOF
-      make_event
-   
-    EOF
-  }
+#   stage {
+#     pipeline = <<-EOF
+#       make_event
 
-  stage {
-    pipeline = <<-EOF
-      make_col
-        metrics:make_object(
-          percent_disk_used:float64(used/quota)
-        )
-      flatten_leaves metrics
-   
-    EOF
-  }
+#     EOF
+#   }
 
-  stage {
-    pipeline = <<-EOF
-      make_col metric:string(@."_c_metrics_path"),
-        value:float64(@."_c_metrics_value")
-    EOF
-  }
+#   stage {
+#     pipeline = <<-EOF
+#       make_col
+#         metrics:make_object(
+#           percent_disk_used:float64(used/quota)
+#         )
+#       flatten_leaves metrics
 
-  stage {
-    pipeline = <<-EOF
-      pick_col
-        valid_from,
-        valid_to,
-        metric,
-        value,
-        metric_category,
-        database_platform,
-        database_id,
-        project_id,
-        region
-    EOF
-  }
+#     EOF
+#   }
 
-  stage {
-    pipeline = <<-EOF
-        interface "metric", metric:metric, value:value
-        set_metric options(
-          aggregate: "sum",
-          description: "Percentage of disk quota used\n",
-          interval: 60s,
-          label: "Percent Disk Used",
-          rollup: "avg",
-          type: "gauge"
-          ), "percent_disk_used"
-    EOF
-  }
+#   stage {
+#     pipeline = <<-EOF
+#       make_col metric:string(@."_c_metrics_path"),
+#         value:float64(@."_c_metrics_value")
+#     EOF
+#   }
 
-}
+#   stage {
+#     pipeline = <<-EOF
+#       pick_col
+#         valid_from,
+#         valid_to,
+#         metric,
+#         value,
+#         metric_category,
+#         database_platform,
+#         database_id,
+#         project_id,
+#         region
+#     EOF
+#   }
+
+#   stage {
+#     pipeline = <<-EOF
+#         interface "metric", metric:metric, value:value
+#         set_metric options(
+#           aggregate: "sum",
+#           description: "Percentage of disk quota used\n",
+#           interval: 60s,
+#           label: "Percent Disk Used",
+#           rollup: "avg",
+#           type: "gauge"
+#           ), "percent_disk_used"
+#     EOF
+#   }
+
+# }
 # Basic units (UNIT)
 
 # bit bit
@@ -239,11 +239,11 @@ resource "observe_link" "cloud_sql_metrics" {
     }
 
 
-    "Cloud SQL Metrics Wide" = {
-      target = observe_dataset.cloud_sql_instance.oid
-      fields = ["database_id"]
-      source = observe_dataset.cloud_sql_metrics_wide[0].oid
-    }
+    # "Cloud SQL Metrics Wide" = {
+    #   target = observe_dataset.cloud_sql_instance.oid
+    #   fields = ["database_id"]
+    #   source = observe_dataset.cloud_sql_metrics_wide[0].oid
+    # }
   } : {}
 
   workspace = var.workspace.oid
