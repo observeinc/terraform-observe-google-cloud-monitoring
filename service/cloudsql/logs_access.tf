@@ -37,12 +37,16 @@ resource "observe_dataset" "postgres_data_access_logs" {
           chunkCount:int64(request.chunkCount),
           auditType:string(request.auditType),
           auditClass:string(request.auditClass),
-          "@type_1":string(request['@type'])
+          request_type:string(request['@type'])
+
+
     EOF
   }
 
   stage {
     pipeline = <<-EOF
+      filter contains(request_type,"PgAuditEntry")
+      
       pick_col 
         timestamp,
         database_id,

@@ -5,7 +5,7 @@ locals {
   cloud_sql_metrics       = one(observe_dataset.cloud_sql_metrics[*].id)
   cloud_sql_metrics_combo = one(observe_dataset.cloud_sql_metrics_combo[*].id)
   cloud_sql_logs_error    = observe_dataset.cloud_sql_logs_error.id
-  cloud_sql_metrics_wide  = one(observe_dataset.cloud_sql_metrics_wide[*].id)
+  cloud_sql_metrics_wide  = one(observe_dataset.cloud_sql_metrics[*].id)
 }
 # terraform import observe_dashboard.cloud_sql_monitoring 41145294
 resource "observe_dashboard" "cloud_sql_monitoring" {
