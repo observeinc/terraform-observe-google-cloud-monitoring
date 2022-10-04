@@ -1,7 +1,7 @@
 # Observe Google module
 
 This terraform module instantiates data from Google Cloud Platform as
-and datasets, metrics, and boards in Observe.
+and datasets, metrics, and boards in Observe. 
 
 ## Usage
 
