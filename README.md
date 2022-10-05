@@ -47,6 +47,7 @@ module "google" {
 
 | Name | Type |
 |------|------|
+| observe_dashboard.gcp_home | resource |
 | observe_dashboard.projects_home_template | resource |
 | observe_dataset.audit_logs | resource |
 | observe_dataset.base_asset_inventory_records | resource |
@@ -82,7 +83,7 @@ module "google" {
 | <a name="input_name_format"></a> [name\_format](#input\_name\_format) | Format string to use for dataset names. Override to introduce a prefix or suffix. | `string` | `"GCP/%s"` | no |
 | <a name="input_service_name_formats"></a> [service\_name\_formats](#input\_service\_name\_formats) | Override nested name\_format for enabled services | `map(string)` | `{}` | no |
 | <a name="input_services"></a> [services](#input\_services) | Map of services to enable. | `map(bool)` | `{}` | no |
-| <a name="input_workspace"></a> [workspace](#input\_workspace) | Workspace to apply module to. | `object({ oid = string })` | n/a | yes |
+| <a name="input_workspace"></a> [workspace](#input\_workspace) | Workspace to apply module to. | `object({ oid = string, id = string })` | n/a | yes |
 
 ## Outputs
 
