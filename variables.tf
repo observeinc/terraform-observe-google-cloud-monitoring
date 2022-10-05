@@ -1,5 +1,5 @@
 variable "workspace" {
-  type        = object({ oid = string })
+  type        = object({ oid = string, id = string })
   description = "Workspace to apply module to."
 }
 
