@@ -38,7 +38,7 @@ variable "service_account_private_key_json" {
     A GCP Service Account should include the following roles: Monitoring Viewer (roles/monitoring.viewer), 
     Cloud Asset Viewer (roles/cloudasset.viewer), and Browser (roles/browser).
 
-    Please enter the entire JSON string for your service account.
+    Please enter the entire JSON string of your service account.
     EOF
 }
 

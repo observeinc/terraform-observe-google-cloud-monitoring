@@ -41,6 +41,6 @@ variable "service_account_private_key_json" {
   description = <<-EOF
     A GCP Service Account should include the following role: Pub/Sub Subscriber (roles/pubsub.subscriber).
     
-    Please enter the entire JSON string for your service account.
+    Please enter the entire JSON string of your service account.
   EOF
 }
