@@ -1,3 +1,14 @@
+## [0.4.3](https://github.com/observeinc/terraform-observe-google/compare/v0.4.2...v0.4.3) (2022-10-06)
+
+
+### Bug Fixes
+
+* break out audit logs from cloud functions ([#90](https://github.com/observeinc/terraform-observe-google/issues/90)) ([5741365](https://github.com/observeinc/terraform-observe-google/commit/574136502d83e2fcb7f4292a363e10f98065ba41))
+* cloud functions dash now shows 0 instead of no data ([#89](https://github.com/observeinc/terraform-observe-google/issues/89)) ([421b08d](https://github.com/observeinc/terraform-observe-google/commit/421b08d314b6512f3d8684ba77eb3f1f469e0ba1))
+* update docs and units on cloud functions dashboard ([#96](https://github.com/observeinc/terraform-observe-google/issues/96)) ([c98051e](https://github.com/observeinc/terraform-observe-google/commit/c98051ea971c371db3a8acaa01fc1bf179f622fa))
+
+
+
 ## [0.4.2](https://github.com/observeinc/terraform-observe-google/compare/v0.4.1...v0.4.2) (2022-09-23)
 
 
