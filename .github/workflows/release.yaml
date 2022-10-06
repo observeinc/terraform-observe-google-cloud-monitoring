@@ -4,5 +4,5 @@ on:
 
 jobs:
   bump:
-    uses: terraform-observe-release.yaml@main
+    uses: .github/workflows/terraform-observe-release.yaml@main
     secrets: inherit
