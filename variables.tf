@@ -7,6 +7,7 @@ variable "datastream" {
   type = object({
     oid     = string
     dataset = string
+    name    = string
   })
   description = <<-EOF
     Datastream to derive resources from.

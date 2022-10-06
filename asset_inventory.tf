@@ -225,44 +225,44 @@ resource "observe_dataset" "iam_policy_asset_inventory_records" {
   }
 }
 
-resource "observe_link" "resource_asset_inventory_resource" {
-  for_each = merge({
-    "Projects" = {
-      target = observe_dataset.projects_collection_enabled.oid
-      fields = ["project_id"]
-    }
-    },
-    var.enable_service_storage ? {
-      "Storage" = {
-        target = one(module.storage[*].storage.oid)
-        fields = ["name:assetInventoryName"]
-      }
-    } : {},
-    var.enable_service_compute ? {
-      "Compute" = {
-        target = one(module.compute[*].compute.oid)
-        fields = ["name:assetInventoryName"]
-      }
-    } : {},
-    var.enable_service_cloudsql ? {
-      "CloudSQL" = {
-        target = one(module.cloudsql[*].cloudsql.oid)
-        fields = ["name:assetInventoryName"]
-      }
-    } : {},
-    var.enable_service_cloudfunctions ? {
-      "CloudFunction" = {
-        target = one(module.cloudfunctions[*].function.oid)
-        fields = ["name:assetInventoryName"]
-      }
-    } : {},
-  )
+# resource "observe_link" "resource_asset_inventory_resource" {
+#   for_each = merge({
+#     "Projects" = {
+#       target = observe_dataset.projects_collection_enabled.oid
+#       fields = ["project_id"]
+#     }
+#     },
+#     var.enable_service_storage ? {
+#       "Storage" = {
+#         target = one(module.storage[*].storage.oid)
+#         fields = ["name:assetInventoryName"]
+#       }
+#     } : {},
+#     var.enable_service_compute ? {
+#       "Compute" = {
+#         target = one(module.compute[*].compute.oid)
+#         fields = ["name:assetInventoryName"]
+#       }
+#     } : {},
+#     var.enable_service_cloudsql ? {
+#       "CloudSQL" = {
+#         target = one(module.cloudsql[*].cloudsql.oid)
+#         fields = ["name:assetInventoryName"]
+#       }
+#     } : {},
+#     var.enable_service_cloudfunctions ? {
+#       "CloudFunction" = {
+#         target = one(module.cloudfunctions[*].function.oid)
+#         fields = ["name:assetInventoryName"]
+#       }
+#     } : {},
+#   )
 
 
 
-  workspace = var.workspace.oid
-  source    = observe_dataset.resources_asset_inventory.oid
-  target    = each.value.target
-  fields    = each.value.fields
-  label     = each.key
-}
+#   workspace = var.workspace.oid
+#   source    = observe_dataset.resources_asset_inventory.oid
+#   target    = each.value.target
+#   fields    = each.value.fields
+#   label     = each.key
+# }
