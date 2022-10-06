@@ -47,8 +47,9 @@ module "google" {
 
 | Name | Type |
 |------|------|
-| observe_dashboard.gcp_home | resource |
-| observe_dashboard.projects_home_template | resource |
+| observe_dashboard.gcp | resource |
+| observe_dashboard.project_input | resource |
+| observe_dashboard.resource_monitoring | resource |
 | observe_dataset.audit_logs | resource |
 | observe_dataset.base_asset_inventory_records | resource |
 | observe_dataset.base_pubsub_events | resource |
@@ -62,13 +63,12 @@ module "google" {
 | observe_dataset.resource_asset_inventory_records | resource |
 | observe_dataset.resources_asset_inventory | resource |
 | observe_dataset.string_metrics | resource |
-| observe_link.resource_asset_inventory_resource | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_datastream"></a> [datastream](#input\_datastream) | Datastream to derive resources from. | <pre>object({<br>    oid     = string<br>    dataset = string<br>  })</pre> | n/a | yes |
+| <a name="input_datastream"></a> [datastream](#input\_datastream) | Datastream to derive resources from. | <pre>object({<br>    oid     = string<br>    dataset = string<br>    name    = string<br>  })</pre> | n/a | yes |
 | <a name="input_enable_service_cloudfunctions"></a> [enable\_service\_cloudfunctions](#input\_enable\_service\_cloudfunctions) | Enable Cloud Functions service. | `bool` | `true` | no |
 | <a name="input_enable_service_cloudsql"></a> [enable\_service\_cloudsql](#input\_enable\_service\_cloudsql) | Enable Cloud SQL service. | `bool` | `true` | no |
 | <a name="input_enable_service_compute"></a> [enable\_service\_compute](#input\_enable\_service\_compute) | Enable Compute service. | `bool` | `true` | no |
