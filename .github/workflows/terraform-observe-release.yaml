@@ -1,4 +1,4 @@
-name: Release and push
+name: Feeder
 on:
   workflow_call:
     secrets:
