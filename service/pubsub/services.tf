@@ -1,4 +1,4 @@
-resource "observe_dataset" "service_resource" {
+resource "observe_dataset" "pubsub_service" {
   workspace = var.workspace.oid
   name      = format(var.name_format, "Service")
   freshness = lookup(local.freshness, "pubsub", var.freshness_default)
@@ -53,7 +53,7 @@ resource "observe_dataset" "service_resource" {
   }
 }
 
-resource "observe_dataset" "service_api_metrics" {
+resource "observe_dataset" "pubsub_service_api_metrics" {
   workspace = var.workspace.oid
   name      = format(var.name_format, "Service API Metrics")
   freshness = lookup(local.freshness, "pubsub", var.freshness_default)
@@ -72,9 +72,10 @@ resource "observe_dataset" "service_api_metrics" {
 
         filter metric_subject = "api"
 
-        extract_regex metric_type, /(?P<label>[^\/]+$)/
+        extract_regex metric_type, /(?P<label1>api\/.*)/
 
-        make_col metric:label
+        make_col metric:replace(label1, '/','_')
+        make_col label:replace(label1, '/','_')
 
         make_col credential_id:string(resource_labels.credential_id),
             location:string(resource_labels.location),
@@ -128,7 +129,7 @@ if(contains(var.metric_launch_stages, options.launchStage) && options.metricBin 
 }
 }
 
-resource "observe_dataset" "service_quota_metrics" {
+resource "observe_dataset" "pubsub_service_quota_metrics" {
   workspace = var.workspace.oid
   name      = format(var.name_format, "Service Quota Metrics")
   freshness = lookup(local.freshness, "pubsub", var.freshness_default)
@@ -146,9 +147,10 @@ resource "observe_dataset" "service_quota_metrics" {
 
         filter metric_subject = "quota"
 
-        extract_regex metric_type, /(?P<label>[^\/]+$)/
+        extract_regex metric_type, /(?P<label1>quota\/.*)/
 
-        make_col metric:label
+        make_col metric:replace(label1, '/','_')
+        make_col label:replace(label1, '/','_')
 
 
         make_col credential_id:string(resource_labels.credential_id),
@@ -206,13 +208,13 @@ if(contains(var.metric_launch_stages, options.launchStage) && options.metricBin 
 resource "observe_link" "service_metrics" {
   for_each = {
     "api" = {
-      source = observe_dataset.service_api_metrics.oid
-      target = observe_dataset.service_resource.oid
+      source = observe_dataset.pubsub_service_api_metrics.oid
+      target = observe_dataset.pubsub_service.oid
       fields = ["service"]
     }
     "quota" = {
-      source = observe_dataset.service_quota_metrics.oid
-      target = observe_dataset.service_resource.oid
+      source = observe_dataset.pubsub_service_quota_metrics.oid
+      target = observe_dataset.pubsub_service.oid
       fields = ["service"]
     }
   }

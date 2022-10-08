@@ -1,8 +1,8 @@
-resource "observe_dataset" "pubsub_topic_metrics" {
+resource "observe_dataset" "pubsub_subscription_metrics" {
   count = local.enable_metrics ? 1 : 0
 
   workspace = var.workspace.oid
-  name      = format(var.name_format, "Topic Metrics")
+  name      = format(var.name_format, "Subscription Metrics")
   freshness = lookup(local.freshness, "metrics", var.freshness_default)
 
   inputs = {
@@ -11,20 +11,26 @@ resource "observe_dataset" "pubsub_topic_metrics" {
 
   stage {
     pipeline = <<-EOF
-      filter resource_type = "pubsub_topic"
+      filter resource_type = "pubsub_subscription"
 
-      make_col 
-        topic_id:string(resource_labels.topic_id),
-        project_id:string(resource_labels.project_id),
-        topic_id: string(resource_labels.topic_id),
-        topic_primary_key: strcat("//pubsub.googleapis.com/projects/",string(resource_labels.project_id),"/topics/",string(resource_labels.topic_id))
-    
-      extract_regex metric_type, /(?P<label1>topic\/.+)/
+      make_col project_id:string(resource_labels.project_id),
+          subscription_id:string(resource_labels.subscription_id)
+
+
+      extract_regex metric_type, /(?P<label1>subscription\/.+)/
 
       make_col metric: replace(label1,'/','_')
       make_col label: replace(label1,'/','_')
 
-      add_key topic_primary_key
+      //pubsub.googleapis.com/projects/terraflood-345116/subscriptions/slobsv
+          
+      make_col 
+        subscription_key: string_concat("//pubsub.googleapis.com/projects/",project_id,"/subscriptions/",subscription_id)
+
+      add_key subscription_id
+      add_key subscription_key
+     
+
      
       EOF
   }
@@ -32,8 +38,8 @@ resource "observe_dataset" "pubsub_topic_metrics" {
     pipeline = <<-EOF
         pick_col
           end_time,
-          topic_id,
-          topic_primary_key,
+          subscription_id,
+          subscription_key,
           metric,
           value,
           label,
@@ -57,7 +63,7 @@ resource "observe_dataset" "pubsub_topic_metrics" {
         format("set_metric options(\n%s\n), %q",
           join(",\n",
       [for k, v in options : k == "interval" ? format("%s: %s", k, v) : format("%s: %q", k, v) if contains(var.metric_interface_fields, k)]), metric))
-if(contains(var.metric_launch_stages, options.launchStage) && options.metricBin != "subscription")])}
+if(contains(var.metric_launch_stages, options.launchStage) && options.metricBin == "subscription")])}
 
       EOF
 }
