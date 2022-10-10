@@ -38,5 +38,9 @@ variable "subscription" {
 variable "service_account_private_key_json" {
   sensitive   = true
   type        = string
-  description = "A GCP Service Account Private Key with the 'roles/pubsub.subscriber' role."
+  description = <<-EOF
+    A GCP Service Account should include the following role: Pub/Sub Subscriber (roles/pubsub.subscriber).
+    
+    Please enter the entire JSON string of your service account.
+  EOF
 }

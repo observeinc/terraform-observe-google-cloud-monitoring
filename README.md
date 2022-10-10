@@ -1,7 +1,7 @@
 # Observe Google module
 
 This terraform module instantiates data from Google Cloud Platform as
-and datasets, metrics, and boards in Observe.
+and datasets, metrics, and boards in Observe. 
 
 ## Usage
 
@@ -30,7 +30,7 @@ module "google" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_observe"></a> [observe](#provider\_observe) | >= 0.9.2, <= 0.11.3 |
+| <a name="provider_observe"></a> [observe](#provider\_observe) | >= 0.9.2, <= 0.12.1 |
 
 ## Modules
 
