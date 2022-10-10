@@ -116,6 +116,7 @@ module "load_balancing" {
   google = local.base_module
 }
 module "bigquery" {
+  count             = local.enable_service_bigquery ? 1 : 0
   source            = "./service/bigquery"
   workspace         = var.workspace
   name_format       = format(var.name_format, local.name_format_bigquery)
