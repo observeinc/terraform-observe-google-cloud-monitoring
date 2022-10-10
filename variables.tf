@@ -73,7 +73,7 @@ variable "service_name_formats" {
 
 variable "enable_service_bigquery" {
   type        = bool
-  default     = false
+  default     = true
   description = <<-EOF
     Enable BigQuery service.
   EOF
