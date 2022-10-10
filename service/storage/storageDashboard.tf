@@ -1,9 +1,9 @@
 locals {
   workspace                        = var.workspace.oid
   dashboard_name                   = format(var.name_format, "Monitoring")
-  storage_buckets                  = resource.observe_dataset.storage_buckets.id
-  storage_metrics                  = one(resource.observe_dataset.storage_metrics[*].id)
-  storage_logs                     = resource.observe_dataset.storage_logs.id
+  storage_buckets                  = observe_dataset.storage_buckets.id
+  storage_metrics                  = one(observe_dataset.storage_metrics[*].id)
+  storage_logs                     = observe_dataset.storage_logs.id
   projects_collection_enabled      = var.google.projects.id
   resource_asset_inventory_records = var.google.resource_asset_inventory_records.id
 }
