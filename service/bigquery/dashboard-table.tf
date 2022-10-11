@@ -496,5 +496,5 @@ resource "observe_dashboard" "bigquery_tables_manual" {
       },
     ]
   )
-  workspace = "o:::workspace:41028411"
+  workspace = local.workspace
 }
