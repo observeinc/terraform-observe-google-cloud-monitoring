@@ -34,7 +34,12 @@ variable "project" {
 variable "service_account_private_key_json" {
   sensitive   = true
   type        = string
-  description = "A GCP Service Account Private Key with the 'monitoring/viewer' and 'cloudasset.viewer' roles."
+  description = <<-EOF
+    A GCP Service Account should include the following roles: Monitoring Viewer (roles/monitoring.viewer), 
+    Cloud Asset Viewer (roles/cloudasset.viewer), and Browser (roles/browser).
+
+    Please enter the entire JSON string of your service account.
+    EOF
 }
 
 variable "interval_duration" {
@@ -58,6 +63,7 @@ variable "include_metric_type_prefixes" {
     "serviceruntime.googleapis.com/",
     "storage.googleapis.com/",
     "bigquery.googleapis.com/",
+    "loadbalancing.googleapis.com",
   ]
   description = <<-EOF
     Metrics with these Metric Types with these prefixes will be fetched.

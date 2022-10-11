@@ -1,5 +1,5 @@
 variable "workspace" {
-  type        = object({ oid = string })
+  type        = object({ oid = string, id = string })
   description = "Workspace to apply module to."
 }
 
@@ -7,6 +7,7 @@ variable "datastream" {
   type = object({
     oid     = string
     dataset = string
+    name    = string
   })
   description = <<-EOF
     Datastream to derive resources from.
@@ -117,5 +118,13 @@ variable "enable_service_load_balancing" {
   default     = true
   description = <<-EOF
     Enable Cloud Load Balancing service.
+  EOF
+}
+
+variable "enable_service_pubsub" {
+  type        = bool
+  default     = true
+  description = <<-EOF
+    Enable Pub Sub service.
   EOF
 }

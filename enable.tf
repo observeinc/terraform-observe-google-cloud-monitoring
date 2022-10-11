@@ -47,6 +47,13 @@ locals {
   )
   # tflint-ignore: terraform_unused_declarations
   name_format_load_balancing = lookup(var.service_name_formats, "load_balancing", "Load Balancing %s")
+
+  enable_service_pubsub = (
+    var.enable_service_pubsub == true ||
+    lookup(var.services, "pubsub", false)
+  )
+  # tflint-ignore: terraform_unused_declarations
+  name_format_pubsub = lookup(var.service_name_formats, "pub_sub", "PubSub %s")
 }
 
 module "cloudfunctions" {
@@ -115,6 +122,7 @@ module "load_balancing" {
 
   google = local.base_module
 }
+
 module "bigquery" {
   count             = local.enable_service_bigquery ? 1 : 0
   source            = "./service/bigquery"
@@ -125,4 +133,17 @@ module "bigquery" {
   # freshness_overrides = var.freshness_overrides
   feature_flags = var.feature_flags
   google        = local.base_module
+}
+module "pubsub" {
+  count = local.enable_service_pubsub ? 1 : 0
+
+  source              = "./service/pubsub"
+  workspace           = var.workspace
+  name_format         = format(var.name_format, local.name_format_pubsub)
+  max_expiry          = var.max_expiry
+  freshness_default   = var.freshness_default
+  freshness_overrides = var.freshness_overrides
+  feature_flags       = var.feature_flags
+
+  google = local.base_module
 }
