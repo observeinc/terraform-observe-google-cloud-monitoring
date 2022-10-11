@@ -62,6 +62,7 @@ variable "include_metric_type_prefixes" {
     "pubsub.googleapis.com/",
     "serviceruntime.googleapis.com/",
     "storage.googleapis.com/",
+    "loadbalancing.googleapis.com",
   ]
   description = <<-EOF
     Metrics with these Metric Types with these prefixes will be fetched.
