@@ -72,6 +72,15 @@ variable "service_name_formats" {
 #   EOF
 # }
 
+variable "enable_service_bigquery" {
+  type        = bool
+  default     = true
+  description = <<-EOF
+    Enable BigQuery service.
+  EOF
+}
+
+
 variable "enable_service_cloudfunctions" {
   type        = bool
   default     = true

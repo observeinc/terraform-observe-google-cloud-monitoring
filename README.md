@@ -24,7 +24,7 @@ module "google" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.2.0 |
-| <a name="requirement_observe"></a> [observe](#requirement\_observe) | >= 0.9.2, <= 0.11.3 |
+| <a name="requirement_observe"></a> [observe](#requirement\_observe) | >= 0.9.2, <= 0.12.1 |
 
 ## Providers
 
@@ -36,6 +36,7 @@ module "google" {
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_bigquery"></a> [bigquery](#module\_bigquery) | ./service/bigquery | n/a |
 | <a name="module_cloudfunctions"></a> [cloudfunctions](#module\_cloudfunctions) | ./service/cloudfunctions | n/a |
 | <a name="module_cloudsql"></a> [cloudsql](#module\_cloudsql) | ./service/cloudsql | n/a |
 | <a name="module_compute"></a> [compute](#module\_compute) | ./service/compute | n/a |
@@ -69,6 +70,7 @@ module "google" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_datastream"></a> [datastream](#input\_datastream) | Datastream to derive resources from. | <pre>object({<br>    oid     = string<br>    dataset = string<br>    name    = string<br>  })</pre> | n/a | yes |
+| <a name="input_enable_service_bigquery"></a> [enable\_service\_bigquery](#input\_enable\_service\_bigquery) | Enable BigQuery service. | `bool` | `true` | no |
 | <a name="input_enable_service_cloudfunctions"></a> [enable\_service\_cloudfunctions](#input\_enable\_service\_cloudfunctions) | Enable Cloud Functions service. | `bool` | `true` | no |
 | <a name="input_enable_service_cloudsql"></a> [enable\_service\_cloudsql](#input\_enable\_service\_cloudsql) | Enable Cloud SQL service. | `bool` | `true` | no |
 | <a name="input_enable_service_compute"></a> [enable\_service\_compute](#input\_enable\_service\_compute) | Enable Compute service. | `bool` | `true` | no |

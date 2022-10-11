@@ -62,6 +62,7 @@ variable "include_metric_type_prefixes" {
     "pubsub.googleapis.com/",
     "serviceruntime.googleapis.com/",
     "storage.googleapis.com/",
+    "bigquery.googleapis.com/",
     "loadbalancing.googleapis.com",
   ]
   description = <<-EOF

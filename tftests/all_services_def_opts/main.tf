@@ -20,4 +20,5 @@ module "all_services_def_opts" {
   enable_service_compute        = true
   enable_service_load_balancing = true
   enable_service_storage        = true
+  enable_service_bigquery       = true
 }

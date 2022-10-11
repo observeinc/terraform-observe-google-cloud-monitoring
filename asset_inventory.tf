@@ -258,8 +258,6 @@ resource "observe_dataset" "iam_policy_asset_inventory_records" {
 #     } : {},
 #   )
 
-
-
 #   workspace = var.workspace.oid
 #   source    = observe_dataset.resources_asset_inventory.oid
 #   target    = each.value.target
