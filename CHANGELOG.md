@@ -1,3 +1,13 @@
+# [0.5.0](https://github.com/observeinc/terraform-observe-google/compare/v0.4.3...v0.5.0) (2022-10-11)
+
+
+### Features
+
+* add bigquery ([313d60d](https://github.com/observeinc/terraform-observe-google/commit/313d60d94ad98d64ddf0f3a488b2a89632a46fde))
+* pub sub ([#105](https://github.com/observeinc/terraform-observe-google/issues/105)) ([f140107](https://github.com/observeinc/terraform-observe-google/commit/f140107846c340e959b41f21fe75857f8bc0146a))
+
+
+
 ## [0.4.3](https://github.com/observeinc/terraform-observe-google/compare/v0.4.2...v0.4.3) (2022-10-06)
 
 
