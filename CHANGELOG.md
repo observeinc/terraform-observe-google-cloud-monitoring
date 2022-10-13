@@ -1,3 +1,12 @@
+## [0.5.1](https://github.com/observeinc/terraform-observe-google/compare/v0.5.0...v0.5.1) (2022-10-13)
+
+
+### Bug Fixes
+
+* add support for target pools and improve load balancer links ([#106](https://github.com/observeinc/terraform-observe-google/issues/106)) ([adc0abf](https://github.com/observeinc/terraform-observe-google/commit/adc0abf319054d06661d15d9a325195c5f354a8b))
+
+
+
 # [0.5.0](https://github.com/observeinc/terraform-observe-google/compare/v0.4.3...v0.5.0) (2022-10-11)
 
 
