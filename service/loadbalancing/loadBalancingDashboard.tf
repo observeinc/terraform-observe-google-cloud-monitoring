@@ -1,10 +1,10 @@
 locals {
   workspace                        = var.workspace.oid
   dashboard_name                   = format(var.name_format, "Monitoring")
-  load_balancing_load_balancers    = observe_dataset.load_balancing_load_balancers.id
+  load_balancing_load_balancers    = observe_dataset.load_balancing_load_balancer.id
   load_balancing_metrics           = one(observe_dataset.load_balancing_metrics[*].id)
   load_balancing_config_audit_logs = observe_dataset.load_balancing_config_audit_logs.id
-  load_balancing_health_checks     = observe_dataset.load_balancing_health_checks.id
+  load_balancing_health_checks     = observe_dataset.load_balancing_health_check.id
 }
 # terraform import observe_dashboard.load_balancing_monitoring_old_tf 41146438
 resource "observe_dashboard" "load_balancing_monitoring" {

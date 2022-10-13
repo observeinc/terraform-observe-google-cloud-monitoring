@@ -4,10 +4,10 @@ locals {
   enable_monitors = lookup(var.feature_flags, "monitors", true)
 }
 
-resource "observe_dataset" "url_maps" {
+resource "observe_dataset" "url_map" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Url Maps")
-  freshness   = lookup(var.freshness_overrides, "url_maps", var.freshness_default)
+  freshness   = lookup(var.freshness_overrides, "url_map", var.freshness_default)
   description = "This dataset is used to create the Load Balancing URL Maps Resource"
 
   inputs = {
@@ -57,15 +57,15 @@ resource "observe_dataset" "url_maps" {
   }
 }
 
-resource "observe_dataset" "backend_services" {
+resource "observe_dataset" "backend" {
   workspace   = var.workspace.oid
-  name        = format(var.name_format, "Backend Services")
-  freshness   = lookup(var.freshness_overrides, "backend_services", var.freshness_default)
-  description = "This dataset is used to create the Load Balancing Backend Services Resource"
+  name        = format(var.name_format, "Backend")
+  freshness   = lookup(var.freshness_overrides, "backend", var.freshness_default)
+  description = "This dataset is used to create the Load Balancing Backend Resource"
 
   inputs = {
-    "events"          = var.google.resource_asset_inventory_records.oid
-    "instance_groups" = observe_dataset.instance_groups.oid
+    "events"         = var.google.resource_asset_inventory_records.oid
+    "instance_group" = observe_dataset.instance_group.oid
   }
 
   # https://cloud.google.com/load-balancing/docs
@@ -74,9 +74,13 @@ resource "observe_dataset" "backend_services" {
     input    = "events"
     pipeline = <<-EOF
       filter asset_type = "compute.googleapis.com/BackendService"
+        or asset_type = "compute.googleapis.com/RegionBackendService"
+        or asset_type = "compute.googleapis.com/BackendBucket"
+        or asset_type = "compute.googleapis.com/TargetPool"
       make_col
         name:string(data.name),
         backends:array(data.backends),
+        instances:array(data.instances),
         connectionDraining:object(data.connectionDraining),
         description:string(data.description),
         enableCDN:bool(data.enableCDN),
@@ -91,6 +95,7 @@ resource "observe_dataset" "backend_services" {
         sessionAffinity:string(data.sessionAffinity),
         timeoutSec:int64(data.timeoutSec),
         fingerprint:string(data.fingerprint),
+        region:string(data.region),
         selfLink:string(data.selfLink),
         project_id:string(split_part(split_part(string(data.selfLink), "projects/", 2), "/", 1)),
         creationTimestamp:string(data.creationTimestamp)
@@ -99,7 +104,7 @@ resource "observe_dataset" "backend_services" {
       make_col each_backends:backends
       flatten_single each_backends
       make_col group:string(@."_c_each_backends_value".group)
-      lookup group=@instance_groups.selfLink, healthState:@instance_groups.healthState
+      lookup group=@instance_group.selfLink, healthState:@instance_group.healthState
       make_col 
         healthyGroups:if(healthState="HEALTHY",1,int64_null()),
         unhealthyGroups:if(healthState="UNHEALTHY",1,int64_null()),
@@ -116,6 +121,7 @@ resource "observe_dataset" "backend_services" {
           deleted,
           name,
           backends,
+          instances,
           connectionDraining,
           description,
           enableCDN,
@@ -174,10 +180,10 @@ resource "observe_dataset" "backend_services" {
   }
 }
 
-resource "observe_dataset" "forwarding_rules" {
+resource "observe_dataset" "forwarding_rule" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Forwarding Rules")
-  freshness   = lookup(var.freshness_overrides, "forwarding_rules", var.freshness_default)
+  freshness   = lookup(var.freshness_overrides, "forwarding_rule", var.freshness_default)
   description = "This dataset is used to create the Load Balancing Forwarding Rules Resource"
 
   inputs = {
@@ -200,12 +206,22 @@ resource "observe_dataset" "forwarding_rules" {
         ipVersion:string(data.ipVersion),
         labelFingerprint:string(data.labelFingerprint),
         loadBalancingScheme:string(data.loadBalancingScheme),
+        network:string(data.network),
         networkTier:string(data.networkTier),
+        subnetwork:string(data.subnetwork),
+        ports:array(data.ports),
         portRange:string(data.portRange),
         selfLink:string(data.selfLink),
         target:string(data.target),
+        backendService:string(data.backendService),
         creationTimestamp:string(data.creationTimestamp),
         project_id:string(split_part(split_part(string(data.selfLink), "projects/", 2), "/", 1))
+
+      // targetPools are listed as targets, but they are actually backends
+      make_col
+        target:if(split_part(target, "/", -2) = "targetPools", string_null(), target),
+        backend:if(split_part(target, "/", -2) = "targetPools", target, backendService)
+
     EOF
   }
 
@@ -222,9 +238,13 @@ resource "observe_dataset" "forwarding_rules" {
         ipVersion,
         labelFingerprint,
         loadBalancingScheme,
+        network,
         networkTier,
+        subnetwork,
+        ports,
         portRange,
         target,
+        backend,
         fingerprint,
         creationTimestamp,
         primary_key(frontend_name),
@@ -238,10 +258,10 @@ resource "observe_dataset" "forwarding_rules" {
 }
 
 
-resource "observe_dataset" "target_proxies" {
+resource "observe_dataset" "target_proxy" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Target Proxies")
-  freshness   = lookup(var.freshness_overrides, "target_proxies", var.freshness_default)
+  freshness   = lookup(var.freshness_overrides, "target_proxy", var.freshness_default)
   description = "This dataset is used to create the Load Balancing Target Proxies Resource"
 
   inputs = {
@@ -254,7 +274,11 @@ resource "observe_dataset" "target_proxies" {
     input    = "events"
     pipeline = <<-EOF
 
-      filter asset_type = "compute.googleapis.com/TargetHttpProxy" or asset_type = "compute.googleapis.com/TargetHttpsProxy"
+      filter asset_type = "compute.googleapis.com/TargetHttpProxy" 
+        or asset_type = "compute.googleapis.com/TargetHttpsProxy"
+        or asset_type = "compute.googleapis.com/TargetSslProxy"
+        or asset_type = "compute.googleapis.com/TargetTcpProxy"
+        or asset_type = "compute.googleapis.com/TargetGrpcProxy"
       make_col
         name:string(data.name), 
         fingerprint:string(data.fingerprint),
@@ -286,10 +310,10 @@ resource "observe_dataset" "target_proxies" {
   }
 }
 
-resource "observe_dataset" "load_balancing_health_checks" {
+resource "observe_dataset" "load_balancing_health_check" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Health Checks")
-  freshness   = lookup(var.freshness_overrides, "health_checks", var.freshness_default)
+  freshness   = lookup(var.freshness_overrides, "health_check", var.freshness_default)
   description = "This dataset is used to create the Load Balancing Health Checks Resource"
 
   inputs = {
@@ -343,10 +367,10 @@ resource "observe_dataset" "load_balancing_health_checks" {
   }
 }
 
-resource "observe_dataset" "instance_groups" {
+resource "observe_dataset" "instance_group" {
   workspace   = var.workspace.oid
-  name        = format(var.name_format, "Instance Groups")
-  freshness   = lookup(var.freshness_overrides, "health_checks", var.freshness_default)
+  name        = format(var.name_format, "Instance Group")
+  freshness   = lookup(var.freshness_overrides, "target_proxy", var.freshness_default)
   description = "This dataset is used to create the Load Balancing Instance Groups Resource"
 
   inputs = {
@@ -416,15 +440,15 @@ resource "observe_dataset" "instance_groups" {
   }
 }
 
-resource "observe_dataset" "load_balancing_load_balancers" {
+resource "observe_dataset" "load_balancing_load_balancer" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Load Balancers")
-  freshness   = lookup(var.freshness_overrides, "load_balancers", var.freshness_default)
+  freshness   = lookup(var.freshness_overrides, "load_balancing_load_balancer", var.freshness_default)
   description = "This dataset is used to create the Load Balancing Load Balancers Resource"
 
   inputs = {
-    "events"          = var.google.resource_asset_inventory_records.oid
-    "instance_groups" = observe_dataset.instance_groups.oid
+    "events"         = var.google.resource_asset_inventory_records.oid
+    "instance_group" = observe_dataset.instance_group.oid
   }
 
   # https://cloud.google.com/load-balancing/docs
@@ -441,6 +465,7 @@ resource "observe_dataset" "load_balancing_load_balancers" {
         or asset_type = "compute.googleapis.com/TargetSslProxy"
         or asset_type = "compute.googleapis.com/TargetTcpProxy"
         or asset_type = "compute.googleapis.com/TargetGrpcProxy"
+        or asset_type = "compute.googleapis.com/TargetPool"
         or asset_type = "compute.googleapis.com/BackendService"
         or asset_type = "compute.googleapis.com/RegionBackendService"
         or asset_type = "compute.googleapis.com/BackendBucket"
@@ -471,15 +496,17 @@ resource "observe_dataset" "load_balancing_load_balancers" {
   }
 
   stage {
-    alias    = "BackendServices"
+    alias    = "Backend"
     input    = "lb_events"
     pipeline = <<-EOF
       filter asset_type = "compute.googleapis.com/BackendService"
         or asset_type = "compute.googleapis.com/RegionBackendService"
         or asset_type = "compute.googleapis.com/BackendBucket"
+        or asset_type = "compute.googleapis.com/TargetPool"
       make_col
         name:string(data.name),
         backends:array(data.backends),
+        instances:array(data.instances),
         connectionDraining:object(data.connectionDraining),
         description:string(data.description),
         enableCDN:bool(data.enableCDN),
@@ -490,10 +517,14 @@ resource "observe_dataset" "load_balancing_load_balancers" {
         logConfig:object(data.logConfig),
         port:int64(data.port),
         portName:string(data.portName),
-        protocol:if(asset_type="compute.googleapis.com/BackendBucket", "bucket", string(data.protocol)),
+        protocol:case(
+          asset_type="compute.googleapis.com/BackendBucket", "bucket", 
+          asset_type="compute.googleapis.com/TargetPool", "targetPool", 
+          true, string(data.protocol)),
         sessionAffinity:string(data.sessionAffinity),
         timeoutSec:int64(data.timeoutSec),
         fingerprint:string(data.fingerprint),
+        region:string(data.region),
         selfLink:string(data.selfLink),
         project_id:string(split_part(split_part(string(data.selfLink), "projects/", 2), "/", 1)),
         creationTimestamp:string(data.creationTimestamp)
@@ -502,7 +533,7 @@ resource "observe_dataset" "load_balancing_load_balancers" {
       make_col each_backends:backends
       flatten_single each_backends
       make_col group:string(@."_c_each_backends_value".group)
-      lookup group=@instance_groups.selfLink, healthState:@instance_groups.healthState
+      lookup group=@instance_group.selfLink, healthState:@instance_group.healthState
       make_col 
         healthyGroups:if(healthState="HEALTHY",1,int64_null()),
         unhealthyGroups:if(healthState="UNHEALTHY",1,int64_null()),
@@ -519,6 +550,7 @@ resource "observe_dataset" "load_balancing_load_balancers" {
           deleted,
           name,
           backends,
+          instances,
           connectionDraining,
           description,
           enableCDN,
@@ -576,10 +608,13 @@ resource "observe_dataset" "load_balancing_load_balancers" {
         ipVersion:string(data.ipVersion),
         labelFingerprint:string(data.labelFingerprint),
         loadBalancingScheme:string(data.loadBalancingScheme),
+        network:string(data.network),
         networkTier:string(data.networkTier),
+        subnetwork:string(data.subnetwork),
+        ports:array(data.ports),
         portRange:string(data.portRange),
         selfLink:string(data.selfLink),
-        target:string(data.target),
+        target:coalesce(string(data.target), string(data.backendService)),
         creationTimestamp:string(data.creationTimestamp),
         project_id:string(split_part(split_part(string(data.selfLink), "projects/", 2), "/", 1))
     EOF
@@ -590,37 +625,46 @@ resource "observe_dataset" "load_balancing_load_balancers" {
     input    = "UrlMaps"
     pipeline = <<-EOF
       fulljoin
-        defaultService=@BackendServices.selfLink,
-        defaultServiceName:@BackendServices.name,
-        defaultServiceHeathchecks:@BackendServices.healthChecks,
-        defaultServiceProtocol:@BackendServices.protocol,
-        defaultServiceProjectId:@BackendServices.project_id,
-        defaultServiceId:@BackendServices.id,
-        defaultServiceRegion:@BackendServices.location,
-        defaultServiceCreationTS:@BackendServices.creationTimestamp,
-        defaultServiceLogConfig:@BackendServices.logConfig,
-        defaultServiceSelfLink:@BackendServices.selfLink,
-        defaultServiceHealthyStatusGroups:@BackendServices.healthyGroups,
-        defaultServiceUnhealthyStatusGroups:@BackendServices.unhealthyGroups,
-        defaultServiceUnknownStatusGroups:@BackendServices.unknownGroups,
-        defaultServiceNullStatusGroups:@BackendServices.nullGroups
+        defaultService=@Backend.selfLink,
+        defaultServiceName:@Backend.name,
+        defaultServiceHeathchecks:@Backend.healthChecks,
+        defaultServiceProtocol:@Backend.protocol,
+        defaultServiceProjectId:@Backend.project_id,
+        defaultServiceId:@Backend.id,
+        defaultServiceRegion:@Backend.location,
+        defaultServiceCreationTS:@Backend.creationTimestamp,
+        defaultServiceLogConfig:@Backend.logConfig,
+        defaultServiceSelfLink:@Backend.selfLink,
+        defaultServiceHealthyStatusGroups:@Backend.healthyGroups,
+        defaultServiceUnhealthyStatusGroups:@Backend.unhealthyGroups,
+        defaultServiceUnknownStatusGroups:@Backend.unknownGroups,
+        defaultServiceNullStatusGroups:@Backend.nullGroups
 
       filter not is_null(name) or not starts_with(defaultServiceProtocol, "HTTP")
 
+      // need a selfLink to associate with a targetProxy; null values cause join problems
+      make_col selfLink:coalesce(selfLink, defaultServiceSelfLink)
+      
       leftjoin
         selfLink=@TargetProxies.urlMap,
         targetProxy:@TargetProxies.selfLink,
         targetProxyName:@TargetProxies.name
 
+      // if there is no targetProxy, the frontend is linked directly to a targetPool or backendService
+      make_col target:coalesce(targetProxy, defaultServiceSelfLink)
+
       leftjoin
-        targetProxy=@ForwardingRules.target,
+        target=@ForwardingRules.target,
         frontEnd:@ForwardingRules.frontend_name,
         IPAddress:@ForwardingRules.IPAddress,
         IPProtocol:@ForwardingRules.IPProtocol,
         description:@ForwardingRules.description,
         IPVersion:@ForwardingRules.ipVersion,
         loadBalancingScheme:@ForwardingRules.loadBalancingScheme,
+        network:@ForwardingRules.network,
+        subnetwork:@ForwardingRules.subnetwork,
         networkTier:@ForwardingRules.networkTier,
+        ports:@ForwardingRules.ports,
         portRange:@ForwardingRules.portRange
       rename_col
         urlMapName:name,
@@ -652,7 +696,10 @@ resource "observe_dataset" "load_balancing_load_balancers" {
         IPVersion,
         description,
         loadBalancingScheme,
+        network,
+        subnetwork,
         networkTier,
+        ports,
         portRange,
         creationTimestamp,
         defaultServiceLogConfig,
@@ -674,42 +721,50 @@ resource "observe_dataset" "load_balancing_load_balancers" {
 }
 
 /*
-resource "observe_link" "url_maps_to_backend_services" {
+resource "observe_link" "url_map_to_backend" {
   workspace = var.workspace.oid
-  source    = observe_dataset.url_maps.oid
-  target    = observe_dataset.backend_services.oid
+  source    = observe_dataset.url_map.oid
+  target    = observe_dataset.backend.oid
   fields    = ["defaultService:selfLink"]
-  label     = "Backend Service"
+  label     = "Backend"
 }
 */
 
-resource "observe_link" "load_balancer_to_backend_services" {
+resource "observe_link" "load_balancer_to_backend" {
   workspace = var.workspace.oid
-  source    = observe_dataset.load_balancing_load_balancers.oid
-  target    = observe_dataset.backend_services.oid
+  source    = observe_dataset.load_balancing_load_balancer.oid
+  target    = observe_dataset.backend.oid
   fields    = ["defaultServiceName:name"]
-  label     = "Backend Service"
+  label     = "Backend"
 }
 
 resource "observe_link" "target_proxy_to_load_balancer" {
   workspace = var.workspace.oid
-  source    = observe_dataset.target_proxies.oid
-  target    = observe_dataset.load_balancing_load_balancers.oid
+  source    = observe_dataset.target_proxy.oid
+  target    = observe_dataset.load_balancing_load_balancer.oid
   fields    = ["urlMap:selfLink"]
   label     = "Url Map"
 }
 
 resource "observe_link" "forwarding_rule_to_target_proxy" {
   workspace = var.workspace.oid
-  source    = observe_dataset.forwarding_rules.oid
-  target    = observe_dataset.target_proxies.oid
+  source    = observe_dataset.forwarding_rule.oid
+  target    = observe_dataset.target_proxy.oid
   fields    = ["target:selfLink"]
   label     = "Target Proxy"
 }
 
+resource "observe_link" "forwarding_rule_to_backend" {
+  workspace = var.workspace.oid
+  source    = observe_dataset.forwarding_rule.oid
+  target    = observe_dataset.backend.oid
+  fields    = ["backend:selfLink"]
+  label     = "Backend"
+}
+
 resource "observe_link" "load_balancer_to_project_id" {
   workspace = var.workspace.oid
-  source    = observe_dataset.load_balancing_load_balancers.oid
+  source    = observe_dataset.load_balancing_load_balancer.oid
   target    = var.google.projects.oid
   fields    = ["project_id"]
   label     = "Project"
