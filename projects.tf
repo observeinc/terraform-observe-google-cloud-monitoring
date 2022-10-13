@@ -60,6 +60,12 @@ resource "observe_dataset" "projects_collection_enabled" {
   }
 }
 
+# set default dashboard
+resource "observe_default_dashboard" "default_project_dash" {
+  dataset   = observe_dataset.projects_collection_enabled.oid
+  dashboard = resource.observe_dashboard.project_input.oid
+}
+
 # resource "observe_link" "project" {
 #   for_each = length(observe_dataset.projects_collection_enabled) > 0 ? {
 #     "AssetInventory" = {
