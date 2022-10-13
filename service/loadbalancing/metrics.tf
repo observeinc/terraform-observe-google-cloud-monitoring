@@ -80,10 +80,10 @@ resource "observe_dataset" "load_balancing_metrics" {
 }
 
 
-resource "observe_link" "url_maps_metrics" {
+resource "observe_link" "url_map_metrics" {
   for_each = length(observe_dataset.load_balancing_metrics) > 0 ? {
     "Url Map" = {
-      target = observe_dataset.url_maps.oid
+      target = observe_dataset.url_map.oid
       fields = ["url_map_name:name"]
     }
   } : {}
@@ -96,10 +96,10 @@ resource "observe_link" "url_maps_metrics" {
 }
 
 
-resource "observe_link" "backend_services_metrics" {
+resource "observe_link" "backend_metrics" {
   for_each = length(observe_dataset.load_balancing_metrics) > 0 ? {
     "Backend Service" = {
-      target = observe_dataset.backend_services.oid
+      target = observe_dataset.backend.oid
       fields = ["backend_target_name:name"]
     }
   } : {}
@@ -114,7 +114,7 @@ resource "observe_link" "backend_services_metrics" {
 resource "observe_link" "forwarding_rules_metrics" {
   for_each = length(observe_dataset.load_balancing_metrics) > 0 ? {
     "Frontend Forwarding Rule" = {
-      target = observe_dataset.forwarding_rules.oid
+      target = observe_dataset.forwarding_rule.oid
       fields = ["forwarding_rule_name:frontend_name"]
     }
   } : {}
@@ -126,10 +126,10 @@ resource "observe_link" "forwarding_rules_metrics" {
   label     = each.key
 }
 
-resource "observe_link" "target_proxies_metrics" {
+resource "observe_link" "target_proxy_metrics" {
   for_each = length(observe_dataset.load_balancing_metrics) > 0 ? {
     "Target Proxy" = {
-      target = observe_dataset.target_proxies.oid
+      target = observe_dataset.target_proxy.oid
       fields = ["target_proxy_name:name"]
     }
   } : {}
@@ -144,7 +144,7 @@ resource "observe_link" "target_proxies_metrics" {
 resource "observe_link" "load_balancer_metrics" {
   for_each = length(observe_dataset.load_balancing_metrics) > 0 ? {
     "Load Balancer" = {
-      target = observe_dataset.load_balancing_load_balancers.oid
+      target = observe_dataset.load_balancing_load_balancer.oid
       fields = [
         "load_balancer_name:name",
         "forwarding_rule_name:frontEnd",

@@ -1,9 +1,9 @@
 output "load_balancers_url_maps" {
-  value = observe_dataset.url_maps
+  value = observe_dataset.url_map
 }
 
 output "load_balancers" {
-  value = observe_dataset.load_balancing_load_balancers
+  value = observe_dataset.load_balancing_load_balancer
 }
 
 

@@ -156,28 +156,28 @@ resource "observe_link" "load_balancing_logs" {
 
   for_each = {
     "Load Balancer" = {
-      target = observe_dataset.load_balancing_load_balancers.oid
+      target = observe_dataset.load_balancing_load_balancer.oid
       fields = ["url_map_name:name"]
     },
-    "Backend Service" = {
-      target = observe_dataset.backend_services.oid
+    "Backend" = {
+      target = observe_dataset.backend.oid
       fields = ["backend_service_name:name"]
     },
     "Forwarding Rule" = {
-      target = observe_dataset.forwarding_rules.oid
+      target = observe_dataset.forwarding_rule.oid
       fields = ["forwarding_rule_name:frontend_name"]
     },
     "Target Proxy" = {
-      target = observe_dataset.target_proxies.oid
+      target = observe_dataset.target_proxy.oid
       fields = ["target_proxy_name:name"]
     }
   }
 }
 
-resource "observe_link" "healthcheck_logs_to_instance_groups" {
+resource "observe_link" "healthcheck_logs_to_instance_group" {
   workspace = var.workspace.oid
   source    = observe_dataset.health_check_logs.oid
-  target    = observe_dataset.instance_groups.oid
+  target    = observe_dataset.instance_group.oid
   fields    = ["instance_group_name:name"]
   label     = "Instance Group"
 }
