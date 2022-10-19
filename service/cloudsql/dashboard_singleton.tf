@@ -1,7 +1,8 @@
-# terraform import observe_dashboard.cloud_sql_instance 41246467
+# terraform import observe_dashboard.cloud_sql_instance 41257197
 resource "observe_dashboard" "cloud_sql_instance" {
   layout = jsonencode(
     {
+      autoPack = true
       gridLayout = {
         sections = [
           {
@@ -352,7 +353,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
                 }
               },
             ]
-            lastModified = 1664885646674
+            lastModified = 1666203601796
           },
         ]
       }
@@ -397,7 +398,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
             viewType = "resource-input"
           },
         ]
-        selectedStageId = "stage-wwog6ily"
+        selectedStageId = "stage-quszu4mo"
         timeRange = {
           display               = "Past 7 days"
           endTime               = null
@@ -500,7 +501,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
               _c_backupConfiguration_path  = 290
               _c_backupConfiguration_value = 261
             }
-            containerWidth              = 544
+            containerWidth              = 622
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -520,12 +521,18 @@ resource "observe_dashboard" "cloud_sql_instance" {
             scrollToColumn              = null
             scrollToRow                 = 0
             selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
             }
             shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
@@ -781,7 +788,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
               Name  = 205
               Value = 184
             }
-            containerWidth              = 544
+            containerWidth              = 622
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -1065,7 +1072,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
               Value                                       = 184
               _c_ipConfiguration_authorizedNetworks_value = 690
             }
-            containerWidth              = 544
+            containerWidth              = 622
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -1297,7 +1304,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
               _c_ipConfiguration_authorizedNetworks_value = 690
               ipAddress                                   = 209
             }
-            containerWidth              = 544
+            containerWidth              = 622
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -1645,7 +1652,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
               dataDiskType    = 161
               databaseVersion = 174
             }
-            containerWidth              = 433
+            containerWidth              = 495
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -1902,14 +1909,14 @@ resource "observe_dashboard" "cloud_sql_instance" {
             columnOrderOverride         = {}
             columnVisibility            = {}
             columnWidths                = {}
-            containerWidth              = 1313
+            containerWidth              = 495
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
             disableFixedLeftColumns     = false
             eventLinkColumnId           = null
             fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
+            hasCalculatedColumnWidths   = true
             hasDoneAutoLayout           = false
             maxColumnWidth              = 400
             maxMeasuredColumnWidth      = {}
@@ -1922,12 +1929,18 @@ resource "observe_dashboard" "cloud_sql_instance" {
             scrollToColumn              = null
             scrollToRow                 = 0
             selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
             }
             shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
@@ -1954,7 +1967,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
             },
             {
               id         = "yjfcnn6o"
-              isDisabled = false
+              isDisabled = true
               type       = "Vis"
               vis = {
                 config = {
@@ -2008,6 +2021,9 @@ resource "observe_dashboard" "cloud_sql_instance" {
             progressive    = true
             resultKinds = [
               "ResultKindSchema",
+              "ResultKindData",
+              "ResultKindStats",
+              "ResultKindProgress",
             ]
             rollup      = {}
             wantBuckets = 400
@@ -2130,7 +2146,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
               script        = true
             }
             showTimeRuler = true
-            stageTab      = "vis"
+            stageTab      = "table"
           }
         }
         params   = null
@@ -2156,14 +2172,14 @@ resource "observe_dashboard" "cloud_sql_instance" {
             columnOrderOverride         = {}
             columnVisibility            = {}
             columnWidths                = {}
-            containerWidth              = 2145
+            containerWidth              = 368
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
             disableFixedLeftColumns     = false
             eventLinkColumnId           = null
             fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
+            hasCalculatedColumnWidths   = true
             hasDoneAutoLayout           = false
             maxColumnWidth              = 400
             maxMeasuredColumnWidth      = {}
@@ -2176,12 +2192,18 @@ resource "observe_dashboard" "cloud_sql_instance" {
             scrollToColumn              = null
             scrollToRow                 = 0
             selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
             }
             shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
@@ -2208,7 +2230,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
             },
             {
               id         = "4gqqddfj"
-              isDisabled = false
+              isDisabled = true
               type       = "Vis"
               vis = {
                 config = {
@@ -2252,6 +2274,9 @@ resource "observe_dashboard" "cloud_sql_instance" {
             progressive    = true
             resultKinds = [
               "ResultKindSchema",
+              "ResultKindData",
+              "ResultKindStats",
+              "ResultKindProgress",
             ]
             rollup      = {}
             wantBuckets = 1
@@ -2524,7 +2549,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
               script        = true
             }
             showTimeRuler = true
-            stageTab      = "vis"
+            stageTab      = "table"
           }
         }
         params   = null
@@ -2559,7 +2584,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
               data_type   = 254
               last_value  = 151
             }
-            containerWidth              = 322
+            containerWidth              = 368
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -2579,12 +2604,18 @@ resource "observe_dashboard" "cloud_sql_instance" {
             scrollToColumn              = null
             scrollToRow                 = 0
             selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
             }
             shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
@@ -2842,7 +2873,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
             columnWidths = {
               methodName = 285
             }
-            containerWidth              = 1313
+            containerWidth              = 1505
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -2862,16 +2893,18 @@ resource "observe_dashboard" "cloud_sql_instance" {
             scrollToColumn              = "protoPayload"
             scrollToRow                 = 8
             selection = {
-              cells = {
-                database = {
-                  "39" = true
-                }
-              }
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "cell"
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
             }
             shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
@@ -3070,7 +3103,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
             columnOrderOverride         = {}
             columnVisibility            = {}
             columnWidths                = {}
-            containerWidth              = 1313
+            containerWidth              = 1505
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -3090,16 +3123,18 @@ resource "observe_dashboard" "cloud_sql_instance" {
             scrollToColumn              = null
             scrollToRow                 = 0
             selection = {
-              cells = {
-                textPayload = {
-                  "6" = true
-                }
-              }
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "cell"
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
             }
             shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
@@ -3451,7 +3486,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
             columnWidths = {
               ERROR = 608
             }
-            containerWidth              = 1313
+            containerWidth              = 1505
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -3694,325 +3729,6 @@ resource "observe_dashboard" "cloud_sql_instance" {
                 EOT
       },
       {
-        id = "stage-quszu4mo"
-        input = [
-          {
-            datasetId   = "${local.cloud_sql_instance}"
-            datasetPath = null
-            inputName   = "stage/${local.dashboard_name_singleton}"
-            inputRole   = "Data"
-            stageId     = null
-          },
-        ]
-        layout = {
-          appearance = "VISIBLE"
-          dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
-            columnOrderOverride = {
-              "0" = "name"
-              "2" = "Valid From"
-              "3" = "Valid To"
-            }
-            columnVisibility = {}
-            columnWidths = {
-              Projects = 249
-            }
-            containerWidth              = 1313
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
-            selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
-            }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
-          }
-          index = 11
-          inputList = [
-            {
-              datasetId   = "${local.cloud_sql_instance}"
-              inputName   = "stage/${local.dashboard_name_singleton}"
-              inputRole   = "Data"
-              isUserInput = false
-            },
-          ]
-          label = "Disk Used"
-          managers = [
-            {
-              id                     = "cjxpxboo"
-              isDisabled             = true
-              isResourceCountEnabled = false
-              type                   = "Timescrubber"
-            },
-            {
-              id         = "7ieng2o9"
-              isDisabled = false
-              type       = "Vis"
-              vis = {
-                config = {
-                  color         = "Default"
-                  hideGridLines = true
-                  legend = {
-                    placement = "right"
-                    type      = "list"
-                    visible   = true
-                  }
-                  type = "xy"
-                  xConfig = {
-                    visible = true
-                  }
-                  yConfig = {
-                    unit    = "%"
-                    visible = true
-                  }
-                }
-                source = {
-                  metric = {
-                    aggregate   = "sum"
-                    datasetId   = "${local.cloud_sql_metrics_wide}"
-                    description = <<-EOT
-                                            Percentage of disk quota used
-                                        EOT
-                    groupBy = [
-                      "database_id",
-                    ]
-                    heuristics = {
-                      __typename = "MetricHeuristics"
-                      tags = [
-                        {
-                          __typename = "MetricTag"
-                          column     = "database_id"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "database_platform"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_category"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "project_id"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "region"
-                          path       = ""
-                        },
-                      ]
-                      validLinkLabels = [
-                        "Cloud SQL Metrics Wide",
-                      ]
-                    }
-                    interval = "60000000000"
-                    link = {
-                      __typename = "ForeignKey"
-                      dstFields = [
-                        "database_id",
-                      ]
-                      label = "Cloud SQL Metrics Wide"
-                      srcFields = [
-                        "database_id",
-                      ]
-                      targetDataset    = "${local.cloud_sql_instance}"
-                      targetStageLabel = null
-                      type             = "foreign"
-                    }
-                    name        = "percent_disk_used"
-                    rollup      = "avg"
-                    type        = "gauge"
-                    unit        = ""
-                    userDefined = true
-                  }
-                  type = "metric"
-                }
-                type = "timeseries"
-              }
-            },
-          ]
-          queryPresentation = {
-            initialRollupFilter = {
-              mode = "Last"
-            }
-            limit          = 1000
-            linkify        = true
-            loadEverything = false
-            progressive    = true
-            resultKinds = [
-              "ResultKindSchema",
-            ]
-            rollup      = {}
-            wantBuckets = 50
-          }
-          renderType     = "TABLE"
-          selectedStepId = null
-          serializable   = true
-          steps = [
-            {
-              columnStatsTable = {
-                columnFunctions = {
-                  assetInventoryName       = "count"
-                  availabilityType         = "count"
-                  backendType              = "count"
-                  backupConfiguration      = "count"
-                  dataDiskSizeGb           = "count"
-                  dataDiskType             = "count"
-                  databaseFlags            = "count"
-                  databaseInstalledVersion = "count"
-                  databaseVersion          = "count"
-                  database_id              = "count"
-                  deleted                  = "count"
-                  gceZone                  = "count"
-                  ipAddressPrimary         = "count"
-                  ipAddresses              = "count"
-                  ipConfiguration          = "count"
-                  name                     = "count"
-                  region                   = "count"
-                  tier                     = "count"
-                  ttl                      = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-w0inbnsj"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
-              customName    = "Input"
-              customSummary = "stage/${local.dashboard_name_singleton}"
-              datasetQuery  = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id                = "step-xtothrr6"
-              index             = 0
-              isPinned          = false
-              opal              = []
-              queryPresentation = {}
-              type              = "InputStep"
-            },
-            {
-              columnStatsTable = {
-                columnFunctions = {
-                  assetInventoryName       = "count"
-                  availabilityType         = "count"
-                  backendType              = "count"
-                  backupConfiguration      = "count"
-                  dataDiskSizeGb           = "count"
-                  dataDiskType             = "count"
-                  databaseFlags            = "count"
-                  databaseInstalledVersion = "count"
-                  databaseVersion          = "count"
-                  database_id              = "count"
-                  deleted                  = "count"
-                  gceZone                  = "count"
-                  ipAddressPrimary         = "count"
-                  ipAddresses              = "count"
-                  ipConfiguration          = "count"
-                  name                     = "count"
-                  region                   = "count"
-                  tier                     = "count"
-                  ttl                      = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-2hlbtxjo"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
-              customSummary = ""
-              datasetQuery  = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id       = "step-rrhsjfkh"
-              index    = 1
-              isPinned = false
-              opal = [
-                "filter database_id = $database.database_id",
-              ]
-              queryPresentation = {}
-              type              = "unknown"
-            },
-          ]
-          type = "table"
-          viewModel = {
-            consoleValue = null
-            railCollapseState = {
-              inputsOutputs = false
-              minimap       = false
-              note          = true
-              script        = true
-            }
-            showTimeRuler = true
-            stageTab      = "vis"
-          }
-        }
-        params   = null
-        pipeline = "filter database_id = $database.database_id"
-      },
-      {
         id = "stage-tr71x96b"
         input = [
           {
@@ -4075,7 +3791,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index = 12
+          index = 11
           inputList = [
             {
               datasetId   = "${local.cloud_sql_instance}"
@@ -4271,7 +3987,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
             }
             columnVisibility            = {}
             columnWidths                = {}
-            containerWidth              = 1313
+            containerWidth              = 1505
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -4291,18 +4007,12 @@ resource "observe_dashboard" "cloud_sql_instance" {
             scrollToColumn              = null
             scrollToRow                 = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
             shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
@@ -4310,7 +4020,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index = 13
+          index = 12
           inputList = [
             {
               inputName   = "Base Dataset_-tr71"
@@ -4600,7 +4310,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index = 14
+          index = 13
           inputList = [
             {
               datasetId   = "${local.cloud_sql_metrics}"
@@ -4946,7 +4656,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index = 15
+          index = 14
           inputList = [
             {
               inputName   = "Base Dataset_-tr71"

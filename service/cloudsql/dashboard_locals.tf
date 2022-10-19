@@ -6,6 +6,5 @@ locals {
   cloud_sql_metrics                   = one(observe_dataset.cloud_sql_metrics[*].id)
   cloud_sql_metrics_combo             = one(observe_dataset.cloud_sql_metrics_combo[*].id)
   cloud_sql_logs_error                = observe_dataset.cloud_sql_logs_error.id
-  cloud_sql_metrics_wide              = one(observe_dataset.cloud_sql_metrics_wide[*].id)
   cloud_sql_logs_postgres_data_access = observe_dataset.postgres_data_access_logs.id
 }
