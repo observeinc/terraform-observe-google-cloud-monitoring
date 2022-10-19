@@ -1,7 +1,7 @@
 resource "observe_dataset" "cloud_sql_logs_error" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Logs Error")
-  freshness   = lookup(local.freshness, "logging", var.freshness_default)
+  freshness   = lookup(local.freshness, "logging", var.freshness_duration_default)
   description = "This dataset contains error logs for Postgres, MySQL and SQL Server database instances"
 
   inputs = {
@@ -56,7 +56,7 @@ resource "observe_link" "sql_error_logs" {
 # resource "observe_dataset" "postgres_error_logs" {
 #   workspace = var.workspace.oid
 #   name      = format(var.name_format, "Logs Postgres Error")
-#   freshness = lookup(local.freshness, "logging", var.freshness_default)
+#   freshness = lookup(local.freshness, "logging", var.freshness_duration_default)
 
 #   inputs = {
 #     "logs" = observe_dataset.sql_logs.oid
@@ -73,7 +73,7 @@ resource "observe_link" "sql_error_logs" {
 # resource "observe_dataset" "mysql_error_logs" {
 #   workspace = var.workspace.oid
 #   name      = format(var.name_format, "Logs MySql Error")
-#   freshness = lookup(local.freshness, "logging", var.freshness_default)
+#   freshness = lookup(local.freshness, "logging", var.freshness_duration_default)
 
 #   inputs = {
 #     "logs" = observe_dataset.sql_logs.oid
@@ -118,7 +118,7 @@ resource "observe_link" "sql_error_logs" {
 # resource "observe_dataset" "sqlserver_error_logs" {
 #   workspace = var.workspace.oid
 #   name      = format(var.name_format, "Logs SQL Server Error")
-#   freshness = lookup(local.freshness, "logging", var.freshness_default)
+#   freshness = lookup(local.freshness, "logging", var.freshness_duration_default)
 
 #   inputs = {
 #     "logs" = observe_dataset.sql_logs.oid

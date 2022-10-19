@@ -2,7 +2,7 @@
 resource "observe_dataset" "load_balancing_logs" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Access Logs")
-  freshness   = lookup(var.freshness_overrides, "load_balancing_logs", var.freshness_default)
+  freshness   = lookup(var.freshness_overrides, "load_balancing_logs", var.freshness_duration_default)
   description = "This dataset contains access logs generated for load balancers"
 
   inputs = {
@@ -76,7 +76,7 @@ resource "observe_dataset" "load_balancing_logs" {
 resource "observe_dataset" "health_check_logs" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Health Check Logs")
-  freshness   = lookup(var.freshness_overrides, "health_check_logs", var.freshness_default)
+  freshness   = lookup(var.freshness_overrides, "health_check_logs", var.freshness_duration_default)
   description = "This dataset contains health check logs generated for load balancers"
 
   inputs = {
@@ -113,7 +113,7 @@ resource "observe_dataset" "health_check_logs" {
 resource "observe_dataset" "load_balancing_config_audit_logs" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Config Audit Logs")
-  freshness   = lookup(var.freshness_overrides, "audit_logs", var.freshness_default)
+  freshness   = lookup(var.freshness_overrides, "audit_logs", var.freshness_duration_default)
   description = "This dataset contains audit logs generated for modifications to load balancing components"
 
   inputs = {

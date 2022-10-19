@@ -135,7 +135,7 @@ resource "observe_dataset" "cloud_functions_metrics" {
 
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Metrics")
-  freshness   = var.freshness_default
+  freshness   = var.freshness_duration_default
   description = "This dataset contains metrics collected for cloud functions"
   inputs = {
     "metrics" = var.google.metrics.oid

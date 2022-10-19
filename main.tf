@@ -17,7 +17,7 @@ locals {
 resource "observe_dataset" "base_pubsub_events" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "PubSub Events")
-  freshness   = var.freshness_default
+  freshness   = var.freshness_duration_default
   description = "This dataset contains all events from collection pubsub topic and is used as an input to other datasets"
   inputs = {
     "observation" = var.datastream.dataset

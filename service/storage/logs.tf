@@ -2,7 +2,7 @@
 resource "observe_dataset" "storage_logs" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Logs")
-  freshness   = lookup(var.freshness_overrides, "storage_logs", var.freshness_default)
+  freshness   = lookup(var.freshness_overrides, "storage_logs", var.freshness_duration_default)
   description = "This dataset contains all logs generated for storage buckets"
 
   inputs = {

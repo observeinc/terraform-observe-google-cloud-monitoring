@@ -32,7 +32,7 @@ variable "max_time_diff" {
   default     = "4h"
 }
 
-variable "freshness_default" {
+variable "freshness_duration_default" {
   type        = string
   description = "Default dataset freshness. Can be overridden with freshness input"
   default     = "5m"
@@ -40,7 +40,7 @@ variable "freshness_default" {
 
 variable "freshness_overrides" {
   type        = map(string)
-  description = "Freshness overrides by dataset. If absent, fall back to freshness_default"
+  description = "Freshness overrides by dataset. If absent, fall back to freshness_duration_default"
   default     = {}
 }
 
@@ -128,3 +128,12 @@ variable "enable_service_pubsub" {
     Enable Pub Sub service.
   EOF
 }
+
+variable "enable_service_cloudscheduler" {
+  type        = bool
+  default     = true
+  description = <<-EOF
+    Enable Cloud Scheduler service.
+  EOF
+}
+

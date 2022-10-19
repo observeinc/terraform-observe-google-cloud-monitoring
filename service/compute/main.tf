@@ -16,7 +16,7 @@ locals {
 resource "observe_dataset" "compute_instance" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Instance")
-  freshness   = lookup(local.freshness, "compute", var.freshness_default)
+  freshness   = lookup(local.freshness, "compute", var.freshness_duration_default)
   description = "This dataset is used to create Compute Resources"
   inputs = {
     "events" = var.google.resource_asset_inventory_records.oid
@@ -153,7 +153,7 @@ resource "observe_link" "project" {
 # resource "observe_dataset" "compute_group" {
 #   workspace = var.workspace.oid
 #   name      = format(var.name_format, "Instance Group")
-#   freshness = var.freshness_default
+#   freshness = var.freshness_duration_default
 
 #   inputs = {
 #     "events" = var.google.resource_asset_inventory_records.oid

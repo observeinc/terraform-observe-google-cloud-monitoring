@@ -9,16 +9,11 @@ variable "name_format" {
   default     = "%s"
 }
 
+# tflint-ignore: terraform_unused_declarations
 variable "max_expiry" {
   type        = string
   description = "Maximum expiry time for resources."
   default     = "4h"
-}
-
-variable "freshness_duration_default" {
-  type        = string
-  description = "Default dataset freshness"
-  default     = "1m"
 }
 
 variable "freshness_overrides" {
@@ -27,6 +22,13 @@ variable "freshness_overrides" {
   default     = {}
 }
 
+variable "freshness_duration_default" {
+  type        = string
+  description = "Default dataset freshness"
+  default     = "2m"
+}
+
+# tflint-ignore: terraform_unused_declarations
 variable "feature_flags" {
   type        = map(bool)
   description = "Toggle features which are being rolled out or phased out."
@@ -38,24 +40,8 @@ variable "google" {
     resource_asset_inventory_records = object({ oid = string })
     logs                             = object({ oid = string })
     metrics                          = object({ oid = string })
-    projects = object({
-      oid = string
-      id  = string
-    })
+    audit_logs                       = object({ oid = string })
+    projects                         = object({ oid = string })
   })
   description = "Google base module"
-}
-
-variable "metric_interface_fields" {
-  type        = set(string)
-  default     = ["type", "description", "rollup", "aggregate", "interval", "label", "unit"]
-  description = "Used by metric interface to pick fields to map"
-}
-
-variable "launch_stage" {
-  type = set(string)
-  default = [
-    "GA",
-  ]
-  description = "Used by metric interface to pick metrics to include"
 }
