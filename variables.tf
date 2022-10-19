@@ -128,3 +128,12 @@ variable "enable_service_pubsub" {
     Enable Pub Sub service.
   EOF
 }
+
+variable "enable_service_cloudscheduler" {
+  type        = bool
+  default     = true
+  description = <<-EOF
+    Enable Cloud Scheduler service.
+  EOF
+}
+

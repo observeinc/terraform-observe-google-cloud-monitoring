@@ -54,6 +54,13 @@ locals {
   )
   # tflint-ignore: terraform_unused_declarations
   name_format_pubsub = lookup(var.service_name_formats, "pub_sub", "PubSub %s")
+
+  enable_service_cloudscheduler = (
+    var.enable_service_cloudscheduler == true ||
+    lookup(var.services, "pubsub", false)
+  )
+  # tflint-ignore: terraform_unused_declarations
+  name_format_cloudscheduler = lookup(var.service_name_formats, "cloud_scheduler", "Cloud Scheduler %s")
 }
 
 module "cloudfunctions" {
@@ -144,6 +151,19 @@ module "pubsub" {
   freshness_default   = var.freshness_default
   freshness_overrides = var.freshness_overrides
   feature_flags       = var.feature_flags
+
+  google = local.base_module
+}
+
+module "cloudscheduler" {
+  count = local.enable_service_cloudscheduler ? 1 : 0
+
+  source              = "./service/cloudscheduler"
+  workspace           = var.workspace
+  name_format         = format(var.name_format, local.name_format_cloudscheduler)
+  max_expiry          = var.max_expiry
+  freshness_default   = var.freshness_default
+  freshness_overrides = var.freshness_overrides
 
   google = local.base_module
 }

@@ -38,6 +38,7 @@ module "google" {
 |------|--------|---------|
 | <a name="module_bigquery"></a> [bigquery](#module\_bigquery) | ./service/bigquery | n/a |
 | <a name="module_cloudfunctions"></a> [cloudfunctions](#module\_cloudfunctions) | ./service/cloudfunctions | n/a |
+| <a name="module_cloudscheduler"></a> [cloudscheduler](#module\_cloudscheduler) | ./service/cloudscheduler | n/a |
 | <a name="module_cloudsql"></a> [cloudsql](#module\_cloudsql) | ./service/cloudsql | n/a |
 | <a name="module_compute"></a> [compute](#module\_compute) | ./service/compute | n/a |
 | <a name="module_load_balancing"></a> [load\_balancing](#module\_load\_balancing) | ./service/loadbalancing | n/a |
@@ -73,6 +74,7 @@ module "google" {
 | <a name="input_datastream"></a> [datastream](#input\_datastream) | Datastream to derive resources from. | <pre>object({<br>    oid     = string<br>    dataset = string<br>    name    = string<br>  })</pre> | n/a | yes |
 | <a name="input_enable_service_bigquery"></a> [enable\_service\_bigquery](#input\_enable\_service\_bigquery) | Enable BigQuery service. | `bool` | `true` | no |
 | <a name="input_enable_service_cloudfunctions"></a> [enable\_service\_cloudfunctions](#input\_enable\_service\_cloudfunctions) | Enable Cloud Functions service. | `bool` | `true` | no |
+| <a name="input_enable_service_cloudscheduler"></a> [enable\_service\_cloudscheduler](#input\_enable\_service\_cloudscheduler) | Enable Cloud Scheduler service. | `bool` | `true` | no |
 | <a name="input_enable_service_cloudsql"></a> [enable\_service\_cloudsql](#input\_enable\_service\_cloudsql) | Enable Cloud SQL service. | `bool` | `true` | no |
 | <a name="input_enable_service_compute"></a> [enable\_service\_compute](#input\_enable\_service\_compute) | Enable Compute service. | `bool` | `true` | no |
 | <a name="input_enable_service_load_balancing"></a> [enable\_service\_load\_balancing](#input\_enable\_service\_load\_balancing) | Enable Cloud Load Balancing service. | `bool` | `true` | no |
