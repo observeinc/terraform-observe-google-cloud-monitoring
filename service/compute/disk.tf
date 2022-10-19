@@ -2,7 +2,7 @@ resource "observe_dataset" "compute_disk" {
   workspace = var.workspace.oid
   name      = format(var.name_format, "Disk")
 
-  freshness = lookup(local.freshness, "compute", var.freshness_default)
+  freshness = lookup(local.freshness, "compute", var.freshness_duration_default)
 
   description = "This dataset is used to create Disk Resources"
 

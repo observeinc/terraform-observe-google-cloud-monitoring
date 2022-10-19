@@ -66,12 +66,12 @@ locals {
 module "cloudfunctions" {
   count = local.enable_service_cloudfunctions ? 1 : 0
 
-  source            = "./service/cloudfunctions"
-  workspace         = var.workspace
-  name_format       = format(var.name_format, local.name_format_cloudfunctions)
-  max_expiry        = var.max_expiry
-  freshness_default = var.freshness_default
-  feature_flags     = var.feature_flags
+  source                     = "./service/cloudfunctions"
+  workspace                  = var.workspace
+  name_format                = format(var.name_format, local.name_format_cloudfunctions)
+  max_expiry                 = var.max_expiry
+  freshness_duration_default = var.freshness_duration_default
+  feature_flags              = var.feature_flags
 
   google = local.base_module
 }
@@ -79,12 +79,12 @@ module "cloudfunctions" {
 module "cloudsql" {
   count = local.enable_service_cloudsql ? 1 : 0
 
-  source            = "./service/cloudsql"
-  workspace         = var.workspace
-  name_format       = format(var.name_format, local.name_format_cloudsql)
-  max_expiry        = var.max_expiry
-  freshness_default = var.freshness_default
-  feature_flags     = var.feature_flags
+  source                     = "./service/cloudsql"
+  workspace                  = var.workspace
+  name_format                = format(var.name_format, local.name_format_cloudsql)
+  max_expiry                 = var.max_expiry
+  freshness_duration_default = var.freshness_duration_default
+  feature_flags              = var.feature_flags
 
   google = local.base_module
 }
@@ -92,12 +92,12 @@ module "cloudsql" {
 module "compute" {
   count = local.enable_service_compute ? 1 : 0
 
-  source            = "./service/compute"
-  workspace         = var.workspace
-  name_format       = format(var.name_format, local.name_format_compute)
-  max_expiry        = var.max_expiry
-  freshness_default = var.freshness_default
-  feature_flags     = var.feature_flags
+  source                     = "./service/compute"
+  workspace                  = var.workspace
+  name_format                = format(var.name_format, local.name_format_compute)
+  max_expiry                 = var.max_expiry
+  freshness_duration_default = var.freshness_duration_default
+  feature_flags              = var.feature_flags
 
   google = local.base_module
 }
@@ -105,13 +105,13 @@ module "compute" {
 module "storage" {
   count = local.enable_service_storage ? 1 : 0
 
-  source              = "./service/storage"
-  workspace           = var.workspace
-  name_format         = format(var.name_format, local.name_format_storage)
-  max_expiry          = var.max_expiry
-  freshness_default   = var.freshness_default
-  freshness_overrides = var.freshness_overrides
-  feature_flags       = var.feature_flags
+  source                     = "./service/storage"
+  workspace                  = var.workspace
+  name_format                = format(var.name_format, local.name_format_storage)
+  max_expiry                 = var.max_expiry
+  freshness_duration_default = var.freshness_duration_default
+  freshness_overrides        = var.freshness_overrides
+  feature_flags              = var.feature_flags
 
   google = local.base_module
 }
@@ -119,24 +119,24 @@ module "storage" {
 module "load_balancing" {
   count = local.enable_service_load_balancing ? 1 : 0
 
-  source              = "./service/loadbalancing"
-  workspace           = var.workspace
-  name_format         = format(var.name_format, local.name_format_load_balancing)
-  max_expiry          = var.max_expiry
-  freshness_default   = var.freshness_default
-  freshness_overrides = var.freshness_overrides
-  feature_flags       = var.feature_flags
+  source                     = "./service/loadbalancing"
+  workspace                  = var.workspace
+  name_format                = format(var.name_format, local.name_format_load_balancing)
+  max_expiry                 = var.max_expiry
+  freshness_duration_default = var.freshness_duration_default
+  freshness_overrides        = var.freshness_overrides
+  feature_flags              = var.feature_flags
 
   google = local.base_module
 }
 
 module "bigquery" {
-  count             = local.enable_service_bigquery ? 1 : 0
-  source            = "./service/bigquery"
-  workspace         = var.workspace
-  name_format       = format(var.name_format, local.name_format_bigquery)
-  max_expiry        = var.max_expiry
-  freshness_default = var.freshness_default
+  count                      = local.enable_service_bigquery ? 1 : 0
+  source                     = "./service/bigquery"
+  workspace                  = var.workspace
+  name_format                = format(var.name_format, local.name_format_bigquery)
+  max_expiry                 = var.max_expiry
+  freshness_duration_default = var.freshness_duration_default
   # freshness_overrides = var.freshness_overrides
   feature_flags = var.feature_flags
   google        = local.base_module
@@ -144,13 +144,13 @@ module "bigquery" {
 module "pubsub" {
   count = local.enable_service_pubsub ? 1 : 0
 
-  source              = "./service/pubsub"
-  workspace           = var.workspace
-  name_format         = format(var.name_format, local.name_format_pubsub)
-  max_expiry          = var.max_expiry
-  freshness_default   = var.freshness_default
-  freshness_overrides = var.freshness_overrides
-  feature_flags       = var.feature_flags
+  source                     = "./service/pubsub"
+  workspace                  = var.workspace
+  name_format                = format(var.name_format, local.name_format_pubsub)
+  max_expiry                 = var.max_expiry
+  freshness_duration_default = var.freshness_duration_default
+  freshness_overrides        = var.freshness_overrides
+  feature_flags              = var.feature_flags
 
   google = local.base_module
 }
@@ -158,12 +158,12 @@ module "pubsub" {
 module "cloudscheduler" {
   count = local.enable_service_cloudscheduler ? 1 : 0
 
-  source              = "./service/cloudscheduler"
-  workspace           = var.workspace
-  name_format         = format(var.name_format, local.name_format_cloudscheduler)
-  max_expiry          = var.max_expiry
-  freshness_default   = var.freshness_default
-  freshness_overrides = var.freshness_overrides
+  source                     = "./service/cloudscheduler"
+  workspace                  = var.workspace
+  name_format                = format(var.name_format, local.name_format_cloudscheduler)
+  max_expiry                 = var.max_expiry
+  freshness_duration_default = var.freshness_duration_default
+  freshness_overrides        = var.freshness_overrides
 
   google = local.base_module
 }

@@ -7,7 +7,7 @@ locals {
 resource "observe_dataset" "storage_buckets" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Buckets")
-  freshness   = lookup(var.freshness_overrides, "storage", var.freshness_default)
+  freshness   = lookup(var.freshness_overrides, "storage", var.freshness_duration_default)
   description = "This dataset is used to create Storage Resources"
 
   inputs = {

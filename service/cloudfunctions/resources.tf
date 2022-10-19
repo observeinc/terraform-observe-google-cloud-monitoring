@@ -1,7 +1,7 @@
 resource "observe_dataset" "cloud_functions_instances" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Instances")
-  freshness   = var.freshness_default
+  freshness   = var.freshness_duration_default
   description = "This dataset is used to create Cloud Function Resources"
 
   inputs = {

@@ -1,7 +1,7 @@
 resource "observe_dataset" "pubsub_service" {
   workspace = var.workspace.oid
   name      = format(var.name_format, "Service")
-  freshness = lookup(local.freshness, "pubsub", var.freshness_default)
+  freshness = lookup(local.freshness, "pubsub", var.freshness_duration_default)
 
   inputs = {
     "events" = var.google.metrics.oid
@@ -56,7 +56,7 @@ resource "observe_dataset" "pubsub_service" {
 resource "observe_dataset" "pubsub_service_api_metrics" {
   workspace = var.workspace.oid
   name      = format(var.name_format, "Service API Metrics")
-  freshness = lookup(local.freshness, "pubsub", var.freshness_default)
+  freshness = lookup(local.freshness, "pubsub", var.freshness_duration_default)
 
   inputs = {
     "events" = var.google.metrics.oid
@@ -132,7 +132,7 @@ if(contains(var.metric_launch_stages, options.launchStage) && options.metricBin 
 resource "observe_dataset" "pubsub_service_quota_metrics" {
   workspace = var.workspace.oid
   name      = format(var.name_format, "Service Quota Metrics")
-  freshness = lookup(local.freshness, "pubsub", var.freshness_default)
+  freshness = lookup(local.freshness, "pubsub", var.freshness_duration_default)
 
   inputs = {
     "events" = var.google.metrics.oid

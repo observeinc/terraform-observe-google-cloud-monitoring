@@ -1,7 +1,7 @@
 resource "observe_dataset" "metric_points" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Metric Points")
-  freshness   = var.freshness_default
+  freshness   = var.freshness_duration_default
   description = "This dataset contains metrics for all GCP resources and is used by other metrics datasets as an input"
   inputs = {
     "observation" = var.datastream.dataset
@@ -70,7 +70,7 @@ make_col
 resource "observe_dataset" "metrics" {
   workspace = var.workspace.oid
   name      = format(var.name_format, "Metrics")
-  freshness = var.freshness_default
+  freshness = var.freshness_duration_default
 
   inputs = {
     "points" = observe_dataset.metric_points.oid
@@ -110,7 +110,7 @@ resource "observe_dataset" "metrics" {
 resource "observe_dataset" "string_metrics" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "String Metric Points")
-  freshness   = var.freshness_default
+  freshness   = var.freshness_duration_default
   description = "This dataset contains string metrics for resources that provide them."
   inputs = {
     "points" = observe_dataset.metric_points.oid
@@ -135,7 +135,7 @@ resource "observe_dataset" "string_metrics" {
 resource "observe_dataset" "distribution_metrics" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Distribution Metric Points")
-  freshness   = var.freshness_default
+  freshness   = var.freshness_duration_default
   description = "This dataset contains distribution metrics for GCP resources that provide them and is used by other metrics datasets as an input"
   inputs = {
     "points" = observe_dataset.metric_points.oid
@@ -167,7 +167,7 @@ resource "observe_dataset" "distribution_metrics" {
 resource "observe_dataset" "process_distribution_metrics" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Distribution Metrics")
-  freshness   = var.freshness_default
+  freshness   = var.freshness_duration_default
   description = "This dataset contains distributio metrics for GCP resources that provide them"
   inputs = {
     "points" = observe_dataset.metric_points.oid

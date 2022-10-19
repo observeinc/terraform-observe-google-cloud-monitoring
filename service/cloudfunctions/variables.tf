@@ -15,7 +15,7 @@ variable "max_expiry" {
   default     = "4h"
 }
 
-variable "freshness_default" {
+variable "freshness_duration_default" {
   type        = string
   description = "Default dataset freshness"
   default     = "1m"

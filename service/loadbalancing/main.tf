@@ -7,7 +7,7 @@ locals {
 resource "observe_dataset" "url_map" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Url Maps")
-  freshness   = lookup(var.freshness_overrides, "url_map", var.freshness_default)
+  freshness   = lookup(var.freshness_overrides, "url_map", var.freshness_duration_default)
   description = "This dataset is used to create the Load Balancing URL Maps Resource"
 
   inputs = {
@@ -60,7 +60,7 @@ resource "observe_dataset" "url_map" {
 resource "observe_dataset" "backend" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Backend")
-  freshness   = lookup(var.freshness_overrides, "backend", var.freshness_default)
+  freshness   = lookup(var.freshness_overrides, "backend", var.freshness_duration_default)
   description = "This dataset is used to create the Load Balancing Backend Resource"
 
   inputs = {
@@ -183,7 +183,7 @@ resource "observe_dataset" "backend" {
 resource "observe_dataset" "forwarding_rule" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Forwarding Rules")
-  freshness   = lookup(var.freshness_overrides, "forwarding_rule", var.freshness_default)
+  freshness   = lookup(var.freshness_overrides, "forwarding_rule", var.freshness_duration_default)
   description = "This dataset is used to create the Load Balancing Forwarding Rules Resource"
 
   inputs = {
@@ -261,7 +261,7 @@ resource "observe_dataset" "forwarding_rule" {
 resource "observe_dataset" "target_proxy" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Target Proxies")
-  freshness   = lookup(var.freshness_overrides, "target_proxy", var.freshness_default)
+  freshness   = lookup(var.freshness_overrides, "target_proxy", var.freshness_duration_default)
   description = "This dataset is used to create the Load Balancing Target Proxies Resource"
 
   inputs = {
@@ -313,7 +313,7 @@ resource "observe_dataset" "target_proxy" {
 resource "observe_dataset" "load_balancing_health_check" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Health Checks")
-  freshness   = lookup(var.freshness_overrides, "health_check", var.freshness_default)
+  freshness   = lookup(var.freshness_overrides, "health_check", var.freshness_duration_default)
   description = "This dataset is used to create the Load Balancing Health Checks Resource"
 
   inputs = {
@@ -370,7 +370,7 @@ resource "observe_dataset" "load_balancing_health_check" {
 resource "observe_dataset" "instance_group" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Instance Group")
-  freshness   = lookup(var.freshness_overrides, "target_proxy", var.freshness_default)
+  freshness   = lookup(var.freshness_overrides, "target_proxy", var.freshness_duration_default)
   description = "This dataset is used to create the Load Balancing Instance Groups Resource"
 
   inputs = {
@@ -443,7 +443,7 @@ resource "observe_dataset" "instance_group" {
 resource "observe_dataset" "load_balancing_load_balancer" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Load Balancers")
-  freshness   = lookup(var.freshness_overrides, "load_balancing_load_balancer", var.freshness_default)
+  freshness   = lookup(var.freshness_overrides, "load_balancing_load_balancer", var.freshness_duration_default)
   description = "This dataset is used to create the Load Balancing Load Balancers Resource"
 
   inputs = {

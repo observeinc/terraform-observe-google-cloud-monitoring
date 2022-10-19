@@ -1,7 +1,7 @@
 resource "observe_dataset" "bigquery_audit_logs" {
   workspace = var.workspace.oid
   name      = format(var.name_format, "Audit Logs")
-  freshness = var.freshness_default
+  freshness = var.freshness_duration_default
 
   inputs = {
     "events" = var.google.logs.oid
@@ -62,7 +62,7 @@ resource "observe_dataset" "bigquery_audit_logs" {
 resource "observe_dataset" "bigquery_job_logs" {
   workspace = var.workspace.oid
   name      = format(var.name_format, "Job Logs")
-  freshness = var.freshness_default
+  freshness = var.freshness_duration_default
 
   inputs = {
     "events" = var.google.logs.oid

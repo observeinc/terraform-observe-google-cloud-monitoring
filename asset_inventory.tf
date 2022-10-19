@@ -1,7 +1,7 @@
 resource "observe_dataset" "base_asset_inventory_records" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Asset Inventory Records")
-  freshness   = var.freshness_default
+  freshness   = var.freshness_duration_default
   description = "Raw data from asset exports"
   inputs = {
     "observation" = var.datastream.dataset
@@ -68,7 +68,7 @@ resource "observe_dataset" "base_asset_inventory_records" {
 resource "observe_dataset" "resource_asset_inventory_records" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Resource Asset Inventory Records")
-  freshness   = var.freshness_default
+  freshness   = var.freshness_duration_default
   description = "All cloud assets in GCP"
   inputs = {
     "events"   = observe_dataset.base_asset_inventory_records.oid
@@ -164,7 +164,7 @@ resource "observe_dataset" "resource_asset_inventory_records" {
 resource "observe_dataset" "resources_asset_inventory" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Resources Asset Inventory")
-  freshness   = var.freshness_default
+  freshness   = var.freshness_duration_default
   description = "All cloud resources in GCP"
   inputs = {
     "events" = observe_dataset.resource_asset_inventory_records.oid
@@ -202,7 +202,7 @@ resource "observe_dataset" "resources_asset_inventory" {
 resource "observe_dataset" "iam_policy_asset_inventory_records" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "IAM Policy Asset Inventory Records")
-  freshness   = var.freshness_default
+  freshness   = var.freshness_duration_default
   description = "This dataset contains IAM Policy bindings for other assets"
   inputs = {
     "events" = observe_dataset.base_asset_inventory_records.oid
