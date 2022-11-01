@@ -6,6 +6,7 @@ The GCP app provides the base models for GCP infrastructure such as:
 - Cloud Functions
 - Cloud SQL
 - Cloud Storage
+- BigQuery
   
 Out of the box Datasets, Monitors, and Dashboards enable you to immediately monitor and troubleshoot your GCP resources.
 
@@ -35,6 +36,9 @@ The `Compute Instance` dataset models your running Compute Engine VMs. From here
 
 The `Cloud SQL` dataset models deployed Cloud SQL instances.  The dataset links to nearly a hundred available metrics as well as error and data access logs.
 
+### BigQuery
+
+The `BigQuery` dataset models your BigQuery resource.  The dataset links to dozens of available metrics as well as error job and data access/audit logs.
 ### Projects
 
 The `Project` dataset models project data.  The Project Monitoring dashboard shows and inventory of project resources and provides Graph Link access to the rest of the GCP resource datasets.
