@@ -37,11 +37,17 @@ variable "feature_flags" {
 
 variable "google" {
   type = object({
-    resource_asset_inventory_records = object({ oid = string })
-    logs                             = object({ oid = string })
-    metrics                          = object({ oid = string })
-    audit_logs                       = object({ oid = string })
-    projects                         = object({ oid = string })
+    pubsub_events = object({ oid = string })
+    logs          = object({ oid = string })
+    metrics       = object({ oid = string })
+    audit_logs    = object({ oid = string })
+    projects      = object({ oid = string })
   })
   description = "Google base module"
+}
+
+variable "max_time_diff" {
+  type        = string
+  description = "Maximum time difference for processing time window."
+  default     = "4h"
 }
