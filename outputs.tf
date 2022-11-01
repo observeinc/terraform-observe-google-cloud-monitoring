@@ -57,3 +57,7 @@ output "storage" {
 output "loadbalancer" {
   value = local.enable_service_load_balancing ? module.load_balancing[0] : null
 }
+
+output "gke" {
+  value = local.enable_service_gke ? module.gke[0] : null
+}
