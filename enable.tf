@@ -57,10 +57,31 @@ locals {
 
   enable_service_cloudscheduler = (
     var.enable_service_cloudscheduler == true ||
-    lookup(var.services, "pubsub", false)
+    lookup(var.services, "cloud_scheduler", false)
   )
   # tflint-ignore: terraform_unused_declarations
   name_format_cloudscheduler = lookup(var.service_name_formats, "cloud_scheduler", "Cloud Scheduler %s")
+
+  enable_service_gke = (
+    var.enable_service_gke == true ||
+    lookup(var.services, "gke", false)
+  )
+  # tflint-ignore: terraform_unused_declarations
+  name_format_gke = lookup(var.service_name_formats, "gke", "GKE %s")
+
+  enable_service_iam = (
+    var.enable_service_iam == true ||
+    lookup(var.services, "iam", false)
+  )
+  # tflint-ignore: terraform_unused_declarations
+  name_format_iam = lookup(var.service_name_formats, "iam", "IAM %s")
+
+  enable_service_billing = (
+    var.enable_service_billing == true ||
+    lookup(var.services, "billing", false)
+  )
+  # tflint-ignore: terraform_unused_declarations
+  name_format_billing = lookup(var.service_name_formats, "billing", "Billing %s")
 }
 
 module "cloudfunctions" {
@@ -98,6 +119,7 @@ module "compute" {
   max_expiry                 = var.max_expiry
   freshness_duration_default = var.freshness_duration_default
   feature_flags              = var.feature_flags
+  iam_asset_binding          = one(module.iam[*].asset_binding)
 
   google = local.base_module
 }
@@ -166,4 +188,67 @@ module "cloudscheduler" {
   freshness_overrides        = var.freshness_overrides
 
   google = local.base_module
+}
+
+module "gke" {
+  count = local.enable_service_gke ? 1 : 0
+
+  source                     = "./service/gke"
+  workspace                  = var.workspace
+  name_format                = format(var.name_format, local.name_format_gke)
+  max_expiry                 = var.max_expiry
+  freshness_duration_default = var.freshness_duration_default
+  freshness_overrides        = var.freshness_overrides
+
+  google = merge(local.base_module, {
+    compute_instance_group                  = one(module.compute[*].compute_instance_group)
+    compute_instance                        = one(module.compute[*].compute)
+    compute_metrics                         = one(module.compute[*].compute_metrics)
+    compute_instance_group_link_to_instance = one(module.compute[*].compute_instance_group_link_to_instance)
+    compute_instance_link_to_disk           = one(module.compute[*].compute_instance_link_to_disk)
+  })
+
+}
+
+module "iam" {
+  count = local.enable_service_iam ? 1 : 0
+
+  source                     = "./service/iam"
+  workspace                  = var.workspace
+  name_format                = format(var.name_format, local.name_format_iam)
+  max_expiry                 = var.max_expiry
+  freshness_duration_default = var.freshness_duration_default
+  freshness_overrides        = var.freshness_overrides
+
+  google = local.base_module
+}
+
+module "billing" {
+  count = local.enable_service_billing ? 1 : 0
+
+  source                     = "./service/billing"
+  workspace                  = var.workspace
+  name_format                = format(var.name_format, local.name_format_billing)
+  max_expiry                 = var.max_expiry
+  freshness_duration_default = var.freshness_duration_default
+  freshness_overrides        = var.freshness_overrides
+
+  google = local.base_module
+}
+
+# These are services used during development and not meant to be exposed in app interface which reads from variables file
+variable "enable_service_iam" {
+  type        = bool
+  default     = false
+  description = <<-EOF
+    Enable IAM service.
+  EOF
+}
+
+variable "enable_service_billing" {
+  type        = bool
+  default     = false
+  description = <<-EOF
+    Enable Billing service.
+  EOF
 }

@@ -136,4 +136,11 @@ variable "enable_service_cloudscheduler" {
     Enable Cloud Scheduler service.
   EOF
 }
+variable "enable_service_gke" {
+  type        = bool
+  default     = true
+  description = <<-EOF
+    Enable GKE service.
+  EOF
+}
 
