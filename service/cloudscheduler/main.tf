@@ -8,9 +8,9 @@ locals {
 
 resource "observe_dataset" "cloud_scheduler_jobs" {
   workspace   = var.workspace.oid
-  name        = format(var.name_format, "Instance Group Instances")
+  name        = format(var.name_format, "Jobs")
   freshness   = lookup(var.freshness_overrides, "target_proxy", var.freshness_duration_default)
-  description = "This dataset is used to create the Compute Instance Groups Resource Instances"
+  description = "This dataset is used to create cloud scheduler job resources"
 
   inputs = {
     "events" = var.google.pubsub_events.oid
