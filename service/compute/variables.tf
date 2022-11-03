@@ -15,6 +15,12 @@ variable "max_expiry" {
   default     = "4h"
 }
 
+variable "max_time_diff" {
+  type        = string
+  description = "Maximum time difference for processing time window."
+  default     = "4h"
+}
+
 variable "freshness_overrides" {
   type        = map(string)
   description = "Freshness overrides by dataset. If absent, fall back to freshness_duration_default"
@@ -36,10 +42,12 @@ variable "feature_flags" {
 variable "google" {
   type = object({
     resource_asset_inventory_records = object({ oid = string })
+    asset_inventory_records          = object({ oid = string })
     logs                             = object({ oid = string })
     metrics                          = object({ oid = string })
     audit_logs                       = object({ oid = string })
     projects                         = object({ oid = string })
+    pubsub_events                    = object({ oid = string })
   })
   description = "Google base module"
 }
@@ -72,4 +80,8 @@ variable "metric_thresholds" {
     }
 
   }
+}
+
+variable "iam_asset_binding" {
+  type = object({ oid = string })
 }

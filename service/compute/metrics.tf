@@ -12,6 +12,8 @@ resource "observe_dataset" "compute_metrics" {
   stage {
     pipeline = <<-EOF
       filter resource_type = "gce_instance"
+
+
       make_col 
         instance_id:string(resource_labels.instance_id),
         project_id:string(resource_labels.project_id),
@@ -22,9 +24,15 @@ resource "observe_dataset" "compute_metrics" {
 
       filter metric_subject = "instance" 
 
-      make_col instance_name: string(metric_labels.instance_name)
+      make_col compute_instance_name: string(metric_labels.instance_name)
+      make_col disk_device_name: string(metric_labels.device_name)
 
-      make_col instance_key: strcat(project_id,":",instance_name)
+      make_col computeInstanceAssetKey: case(not is_null(compute_instance_name), string_concat("//compute.googleapis.com/projects/",project_id,"/zones/",zone,"/instances/",compute_instance_name), true, compute_instance_name) 
+      // ex - //compute.googleapis.com/projects/content-testpproj-stage-1/zones/us-central1-b/instances/test-stg-instance-ubuntu-20-04-lts-57
+   
+      make_col computeDiskInstanceAssetKey: case(not is_null(disk_device_name), string_concat("//compute.googleapis.com/projects/",project_id,"/zones/",zone,"/disks/",disk_device_name), true, disk_device_name) 
+      // ex - //compute.googleapis.com/projects/content-testpproj-stage-1/zones/us-west1-b/disks/gke-test-stg-gke-test-stg-gke-node-po-d4256cbb-1crf
+
 
       extract_regex zone, /(?P<region>[a-z]+[-]+[a-z,0-9]+)/
 
@@ -36,7 +44,6 @@ resource "observe_dataset" "compute_metrics" {
     pipeline = <<-EOF
       pick_col
         end_time,
-        instance_key,
         metric,
         value,
         metric_category,
@@ -50,8 +57,12 @@ resource "observe_dataset" "compute_metrics" {
         value_type,
         project_id,
         region,
-        instance_id,
-        instance_name
+        computeInstanceAssetKey,
+        computeDiskInstanceAssetKey,
+        compute_instance_name
+
+      add_key computeInstanceAssetKey
+      add_key computeDiskInstanceAssetKey
       EOF
   }
 
@@ -70,17 +81,3 @@ if contains(var.metric_launch_stages, options.launchStage)])}
 }
 }
 
-resource "observe_link" "compute_metrics" {
-  for_each = length(observe_dataset.compute_metrics) > 0 ? {
-    "Compute" = {
-      target = observe_dataset.compute_instance.oid
-      fields = ["instance_key"]
-    }
-  } : {}
-
-  workspace = var.workspace.oid
-  source    = observe_dataset.compute_metrics[0].oid
-  target    = each.value.target
-  fields    = each.value.fields
-  label     = each.key
-}

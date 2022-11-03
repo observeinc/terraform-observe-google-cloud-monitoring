@@ -19,29 +19,57 @@ resource "observe_dataset" "compute_instance" {
   freshness   = lookup(local.freshness, "compute", var.freshness_duration_default)
   description = "This dataset is used to create Compute Resources"
   inputs = {
-    "events" = var.google.resource_asset_inventory_records.oid
+    "events"          = var.google.resource_asset_inventory_records.oid
+    "instance_groups" = observe_dataset.instance_group.oid
+    "pubsub_events"   = var.google.pubsub_events.oid
   }
 
   stage {
-    input    = "events"
-    alias    = "instanceGroup"
+    input    = "pubsub_events"
+    alias    = "instance_group_base"
+    pipeline = <<-EOF
+        filter attributes.OBSERVATION_KIND = "gcpInstanceGroup"
+
+        make_col data2: parse_json(data)
+
+        flatten_single data2
+
+        make_col instance:string(_c_data2_value.instance),
+            instance_group:string(_c_data2_value.instance_group),
+            instance_group_id:string(_c_data2_value.instance_group_id),
+            project_id:string(_c_data2_value.project_id),
+            zone:string(_c_data2_value.zone),
+            ttl: 15m
+        
+        extract_regex instance, /instances\/(?P<instance_name>.*)/
+
+        make_col instanceGroupAssetKey: string_concat("//compute.googleapis.com/projects/",project_id,"/zones/",zone,"/instanceGroups/",instance_group)
+        // ex - //compute.googleapis.com/projects/content-testpproj-stage-1/zones/us-west1-a/instanceGroups/gke-test-stg-gke-test-stg-gke-node-po-5cf533ca-grp
+        make_col computeInstanceAssetKey: string_concat("//compute.googleapis.com/projects/",project_id,"/zones/",zone,"/instances/",instance_name)
+        // ex - //compute.googleapis.com/projects/content-testpproj-stage-1/zones/us-central1-b/instances/test-stg-instance-ubuntu-20-04-lts-57
+        
+
+        set_valid_from options(max_time_diff:${var.max_time_diff}), BUNDLE_TIMESTAMP
+      
+    EOF
+  }
+
+  stage {
+    input    = "instance_group_base"
+    alias    = "instance_group_instances"
     pipeline = <<-EOF
 
-        filter asset_namespace = "compute.googleapis.com"  and asset_sub_type = "InstanceGroupManager"
+      make_resource 
+        project_id,
+        zone,
+        instanceGroupAssetKey,
+        instance_group_id,
+        instance_group_name: instance_group,
+        primary_key(computeInstanceAssetKey),
+        valid_for(ttl)
 
-        extract_regex name, /projects\/(?P<project_id>[^\/+]+)/
-
-        extract_regex name, /zones\/(?P<zone>[^\/+]+)/
-
-        extract_regex name, /instanceGroupManagers\/(?P<instance_group_name>[^\/+]+)/
-
-        make_col instance_group_key: strcat(project_id,":",instance_group_name)
-
-        make_col baseInstanceName: string(data.baseInstanceName)
-
-        add_key baseInstanceName
-
-    
+      set_label instance_group_name
+      add_key instanceGroupAssetKey
     EOF
   }
 
@@ -60,9 +88,7 @@ resource "observe_dataset" "compute_instance" {
 
 
       make_col
-        assetInventoryName:string(name),
-        instance_id:string(data.id),
-        instance_key: strcat(project_id,":",instance_name),
+        computeInstanceAssetKey:string(name), // ex - //compute.googleapis.com/projects/content-testpproj-stage-1/zones/us-central1-b/instances/test-stg-instance-ubuntu-20-04-lts-57
         status:if(deleted=true, "DELETED",string(data.status)),
         description: string(data.description),
         creationTime: format_time(parse_isotime(string(data.creationTimestamp)), 'MON DD, YYYY HH24:MI:SS'),
@@ -80,13 +106,13 @@ resource "observe_dataset" "compute_instance" {
 
       extract_regex networkInterfaces, /(accessConfigs).+("external-nat").+("natIP":")(?P<publicIP>[^"]+)/
 
-      make_col name_parts: split (instance_name, '-')
+    EOF
+  }
 
-      make_col length_last_part: strlen(string(get_item(name_parts,array_length(name_parts)-1)))
+  stage {
+    pipeline = <<-EOF
 
-      make_col baseInstanceNameGroup: left(instance_name, strlen(instance_name) - (length_last_part+1))
-
-      add_key baseInstanceNameGroup
+      leftjoin computeInstanceAssetKey=@instance_group_instances.computeInstanceAssetKey, instance_group_name: @instance_group_instances.instance_group_name, instanceGroupAssetKey: @instance_group_instances.instanceGroupAssetKey
 
     EOF
   }
@@ -94,7 +120,7 @@ resource "observe_dataset" "compute_instance" {
   stage {
     pipeline = <<-EOF
 
-      leftjoin baseInstanceNameGroup=@instanceGroup.baseInstanceName, instance_group: @instanceGroup.instance_group_name
+      leftjoin instanceGroupAssetKey=@instance_groups.instanceGroupAssetKey, gkeClusterAssetKey: @instance_groups.gkeClusterAssetKey
 
     EOF
   }
@@ -103,7 +129,6 @@ resource "observe_dataset" "compute_instance" {
     pipeline = <<-EOF
       make_resource options(expiry:${var.max_expiry}),
         instance_name,
-        instance_id,
         status,
         creationTime,
         cpuPlatform: string(data.cpuPlatform),
@@ -117,54 +142,23 @@ resource "observe_dataset" "compute_instance" {
         publicIP,
         labels,
         tags,
-        instance_group,
+        instance_group_name,
+        instanceGroupAssetKey,
+        gkeClusterAssetKey,
         deletionProtection,
         ttl,
         deleted,
-        assetInventoryName,
-        primary_key(instance_key),
+        primary_key(computeInstanceAssetKey),
         valid_for(ttl)
 
       add_key instance_name
-      add_key instance_id
       set_label instance_name
 
-      // add_key project_id, region, zone
-      add_key assetInventoryName
+      add_key project_id
+
+      add_key instanceGroupAssetKey
+
+      add_key gkeClusterAssetKey
     EOF
   }
 }
-resource "observe_link" "project" {
-  for_each = {
-    "Projects" = {
-      target = var.google.projects.oid
-      fields = ["project_id"]
-    }
-  }
-
-  workspace = var.workspace.oid
-  source    = observe_dataset.compute_instance.oid
-  target    = each.value.target
-  fields    = each.value.fields
-  label     = each.key
-}
-
-
-# resource "observe_dataset" "compute_group" {
-#   workspace = var.workspace.oid
-#   name      = format(var.name_format, "Instance Group")
-#   freshness = var.freshness_duration_default
-
-#   inputs = {
-#     "events" = var.google.resource_asset_inventory_records.oid
-#   }
-
-#   # https://cloud.google.com/compute/docs
-#   stage {
-#     input    = "events"
-#     pipeline = <<-EOF
-#       filter asset_namespace = "compute.googleapis.com"  and asset_sub_type = "InstanceGroup"
-
-#     EOF
-#   }
-# }

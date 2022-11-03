@@ -1,6 +1,6 @@
 # observe_monitor.cloud-sql-metrics-threshold-database-id-check:
 resource "observe_monitor" "high_cpu" {
-  count = local.enable_both ? 1 : 0
+  count = local.enable_both ? 0 : 0
 
   disabled    = var.metric_thresholds["CPU"].disabled
   description = "This monitor will alert on CPU usage above a certain threshold"
@@ -20,7 +20,7 @@ resource "observe_monitor" "high_cpu" {
 
     group_by_group {
       columns = [
-        "instance_id",
+        "computeInstanceAssetKey",
         "project_id",
         "region"
       ]
