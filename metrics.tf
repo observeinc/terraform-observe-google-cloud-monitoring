@@ -62,7 +62,21 @@ make_col
 
       set_valid_from options(max_time_diff:${var.max_time_diff}), end_time
 
-      drop_col BUNDLE_TIMESTAMP, start_time
+      pick_col 
+        end_time,
+        metric_namespace,
+        metric,
+        metric_kind,
+        metric_kind_text,
+        metric_labels,
+        metric_type,
+        resource_type,
+        resource_labels,
+        value_type,
+        value_type_text,
+        metric_collection_period,
+        value
+  
     EOF
   }
 }
@@ -177,76 +191,88 @@ resource "observe_dataset" "process_distribution_metrics" {
   stage {
     pipeline = <<-EOF
       // 0. These things should really be dropped from the upstream dataset. They are not useful to anyone.
-      // drop_col FIELDS, EXTRA, BUNDLE_ID, OBSERVATION_INDEX, BUNDLE_TIMESTAMP, end_time, OBSERVATION_KIND, metric, @."_c_points_path", @."_c_points_value", @."_c_points_flattenid"
-      drop_col metric, @."_c_points_path", @."_c_points_value", @."_c_points_flattenid"
+// drop_col FIELDS, EXTRA, BUNDLE_ID, OBSERVATION_INDEX, BUNDLE_TIMESTAMP, end_time, OBSERVATION_KIND, metric, @."_c_points_path", @."_c_points_value", @."_c_points_flattenid"
+// drop_col metric, @."_c_points_path", @."_c_points_value", @."_c_points_flattenid"
 
-      // 1. Only keep distribution metrics.
-      filter not is_null(value.Value.DistributionValue.bucket_counts)
-      // All distribution metric share the same metric_kind and value_type. Not useful. Dropping.
-      drop_col metric_kind, value_type
+// 1. Only keep distribution metrics.
+filter not is_null(value.Value.DistributionValue.bucket_counts)
+// All distribution metric share the same metric_kind and value_type. Not useful. Dropping.
+// drop_col metric_kind, value_type
 
-      // 2. Prepare to extract each bucket reporting into a row
-      make_col 
-        value_buckets:array(value.Value.DistributionValue.bucket_counts),
-        total_count:int64(value.Value.DistributionValue.count),
-        bucket_options: value.Value.DistributionValue.bucket_options
-      drop_col value
+// 2. Prepare to extract each bucket reporting into a row
+make_col 
+  value_buckets:array(value.Value.DistributionValue.bucket_counts),
+  total_count:int64(value.Value.DistributionValue.count),
+  bucket_options: value.Value.DistributionValue.bucket_options
+// drop_col value
 
-      // 3. Extract the value in each bucket into a row
-      make_col value_buckets_for_p_low: value_buckets
-      flatten_single value_buckets
-      make_col
-        bucket_idx: int64(substring(@."_c_value_buckets_path",1, strlen(@."_c_value_buckets_path")-2)),
-        value: @."_c_value_buckets_value"
-      drop_col @."_c_value_buckets_path", @."_c_value_buckets_value", @."_c_value_buckets_flattenid"
+// 3. Extract the value in each bucket into a row
+make_col value_buckets_for_p_low: value_buckets
+flatten_single value_buckets
+make_col
+  bucket_idx: int64(substring(@."_c_value_buckets_path",1, strlen(@."_c_value_buckets_path")-2)),
+  value: @."_c_value_buckets_value"
+// drop_col @."_c_value_buckets_path", @."_c_value_buckets_value", @."_c_value_buckets_flattenid"
 
-      // should we do this filter? I'm not sure yet.
-      // filter value > 0
+// should we do this filter? I'm not sure yet.
+// filter value > 0
       
-      // 4. Calculate bucket boundaries.
-      make_col 
-        bucket_low:if(
-          bucket_idx=0,0,
-          int64(bucket_options.Options.ExponentialBuckets.scale)*pow(float64(bucket_options.Options.ExponentialBuckets.growth_factor), bucket_idx-1)),
-        bucket_up:int64(bucket_options.Options.ExponentialBuckets.scale)*pow(float64(bucket_options.Options.ExponentialBuckets.growth_factor), bucket_idx)
-      drop_col bucket_options
+// 4. Calculate bucket boundaries.
+make_col 
+  bucket_low:if(
+    bucket_idx=0,0,
+    int64(bucket_options.Options.ExponentialBuckets.scale)*pow(float64(bucket_options.Options.ExponentialBuckets.growth_factor), bucket_idx-1)),
+  bucket_up:int64(bucket_options.Options.ExponentialBuckets.scale)*pow(float64(bucket_options.Options.ExponentialBuckets.growth_factor), bucket_idx)
+// drop_col bucket_options
 
       
-      // where did this go? make_col value_buckets_for_p_low:array(value.Value.DistributionValue.bucket_counts)
+// where did this go? make_col value_buckets_for_p_low:array(value.Value.DistributionValue.bucket_counts)
 
-      // get p_low/up values
-      flatten_single value_buckets_for_p_low
-      make_col
-        bucket_idx_2: int64(substring(@."_c_value_buckets_for_p_low_path",1, strlen(@."_c_value_buckets_for_p_low_path")-2)),
-        value_2: @."_c_value_buckets_for_p_low_value"
-      drop_col @."_c_value_buckets_for_p_low_path", @."_c_value_buckets_for_p_low_value", @."_c_value_buckets_for_p_low_flattenid"
-      filter bucket_idx_2 <= bucket_idx
+// get p_low/up values
+flatten_single value_buckets_for_p_low
+make_col
+  bucket_idx_2: int64(substring(@."_c_value_buckets_for_p_low_path",1, strlen(@."_c_value_buckets_for_p_low_path")-2)),
+  value_2: @."_c_value_buckets_for_p_low_value"
+// drop_col @."_c_value_buckets_for_p_low_path", @."_c_value_buckets_for_p_low_value", @."_c_value_buckets_for_p_low_flattenid"
+filter bucket_idx_2 <= bucket_idx
 
-      timestats counts_to_now:sum(int64(value_2)), group_by(
-        value,
-        end_time,
-        metric_type,
-        metric_labels,
-        resource_type,
-        resource_labels,
-        bucket_low,
-        bucket_up,
-        total_count)
+timestats counts_to_now:sum(int64(value_2)), group_by(
+  value,
+  end_time,
+  metric_type,
+  metric_labels,
+  resource_type,
+  resource_labels,
+  bucket_low,
+  bucket_up,
+  total_count)
 
-      make_col
-        value:float64(value.Value.DistributionValue.mean),
-        distribution_metadata:make_object(
-          p_up:float64(counts_to_now/total_count),
-          p_low:float64((counts_to_now - value)/total_count),
-          bucket_up:bucket_up,
-          bucket_low:bucket_low)
+make_col
+  value:float64(value.Value.DistributionValue.mean),
+  distribution_metadata:make_object(
+    p_up:float64(counts_to_now/total_count),
+    p_low:float64((counts_to_now - value)/total_count),
+    bucket_up:bucket_up,
+    bucket_low:bucket_low)
 
-      /*
-      // example of how to calculate pN
-      make_col 
-        p99:if(p_low<=0.99 and 0.99<p_up, bucket_low + ((bucket_up - bucket_low)*(0.99-p_low)/(p_up-p_low)), float64_null()),
-        p50:if(p_low<=0.50 and 0.50<p_up, bucket_low + ((bucket_up - bucket_low)*(0.50-p_low)/(p_up-p_low)), float64_null())
-      */
+/*
+// example of how to calculate pN
+make_col 
+  p99:if(p_low<=0.99 and 0.99<p_up, bucket_low + ((bucket_up - bucket_low)*(0.99-p_low)/(p_up-p_low)), float64_null()),
+  p50:if(p_low<=0.50 and 0.50<p_up, bucket_low + ((bucket_up - bucket_low)*(0.50-p_low)/(p_up-p_low)), float64_null())
+*/
+pick_col 
+	end_time,
+	metric_type,
+    metric_labels,
+    resource_type,
+    resource_labels,
+    bucket_low,
+    bucket_up,
+    total_count,
+    counts_to_now,
+    distribution_metadata
+    
     EOF
   }
 }
