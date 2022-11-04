@@ -49,7 +49,7 @@ resource "observe_dataset" "compute_instance" {
         // ex - //compute.googleapis.com/projects/content-testpproj-stage-1/zones/us-central1-b/instances/test-stg-instance-ubuntu-20-04-lts-57
         
 
-        set_valid_from options(max_time_diff:${var.max_time_diff}), BUNDLE_TIMESTAMP
+        set_valid_from options(max_time_diff:4h), BUNDLE_TIMESTAMP
       
     EOF
   }
