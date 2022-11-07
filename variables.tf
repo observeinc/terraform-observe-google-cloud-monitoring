@@ -144,3 +144,19 @@ variable "enable_service_gke" {
   EOF
 }
 
+# These are services used during development and not meant to be exposed in app interface which reads from variables file
+variable "enable_service_iam" {
+  type        = bool
+  default     = false
+  description = <<-EOF
+    Enable IAM service.
+  EOF
+}
+
+variable "enable_service_billing" {
+  type        = bool
+  default     = false
+  description = <<-EOF
+    Enable Billing service.
+  EOF
+}

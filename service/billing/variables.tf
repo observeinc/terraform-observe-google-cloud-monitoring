@@ -9,11 +9,11 @@ variable "name_format" {
   default     = "%s"
 }
 
-variable "max_expiry" {
-  type        = string
-  description = "Maximum expiry time for resources."
-  default     = "4h"
-}
+# variable "max_expiry" {
+#   type        = string
+#   description = "Maximum expiry time for resources."
+#   default     = "4h"
+# }
 
 variable "freshness_duration_default" {
   type        = string
@@ -40,8 +40,8 @@ variable "google" {
   description = "Google base module"
 }
 
-variable "metric_interface_fields" {
-  type        = set(string)
-  default     = ["type", "description", "rollup", "aggregate", "interval"]
-  description = "Used by metric interface to pick fields to map"
-}
+# variable "metric_interface_fields" {
+#   type        = set(string)
+#   default     = ["type", "description", "rollup", "aggregate", "interval"]
+#   description = "Used by metric interface to pick fields to map"
+# }

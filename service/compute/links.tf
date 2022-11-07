@@ -176,6 +176,7 @@ resource "observe_preferred_path" "instance_groups_compute" {
     reverse = false
   }
 }
+# tflint-ignore: terraform_unsupported_argument
 
 resource "observe_preferred_path" "compute_instance_groups" {
   # folder = observe_folder.gcp.oid

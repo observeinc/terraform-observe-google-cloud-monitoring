@@ -1,7 +1,7 @@
 locals {
-  enable_metrics = lookup(var.feature_flags, "metrics", true)
+  # enable_metrics = lookup(var.feature_flags, "metrics", true)
   # tflint-ignore: terraform_unused_declarations
-  enable_monitors = lookup(var.feature_flags, "monitors", true)
+  # enable_monitors = lookup(var.feature_flags, "monitors", true)
 
   freshness = merge({
     billing = "12h",

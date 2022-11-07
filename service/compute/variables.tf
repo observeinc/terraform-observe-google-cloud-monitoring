@@ -15,11 +15,11 @@ variable "max_expiry" {
   default     = "4h"
 }
 
-variable "max_time_diff" {
-  type        = string
-  description = "Maximum time difference for processing time window."
-  default     = "4h"
-}
+# variable "max_time_diff" {
+#   type        = string
+#   description = "Maximum time difference for processing time window."
+#   default     = "4h"
+# }
 
 variable "freshness_overrides" {
   type        = map(string)
@@ -82,6 +82,6 @@ variable "metric_thresholds" {
   }
 }
 
-variable "iam_asset_binding" {
-  type = object({ oid = string })
-}
+# variable "iam_asset_binding" {
+#   type = object({ oid = string })
+# }
