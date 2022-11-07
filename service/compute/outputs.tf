@@ -2,6 +2,10 @@ output "compute" {
   value = observe_dataset.compute_instance
 }
 
+output "instance" {
+  value = observe_dataset.compute_instance
+}
+
 output "compute_logs" {
   value = observe_dataset.compute_logs_raw
 }
@@ -19,6 +23,10 @@ output "compute_instance_group_link_to_instance" {
 }
 
 output "compute_disk" {
+  value = observe_dataset.compute_disk
+}
+
+output "volume" {
   value = observe_dataset.compute_disk
 }
 
