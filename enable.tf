@@ -229,7 +229,7 @@ module "billing" {
   source                     = "./service/billing"
   workspace                  = var.workspace
   name_format                = format(var.name_format, local.name_format_billing)
-  max_expiry                 = var.max_expiry
+  # max_expiry                 = var.max_expiry
   freshness_duration_default = var.freshness_duration_default
   freshness_overrides        = var.freshness_overrides
 
