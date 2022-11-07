@@ -119,7 +119,7 @@ module "compute" {
   max_expiry                 = var.max_expiry
   freshness_duration_default = var.freshness_duration_default
   feature_flags              = var.feature_flags
-  iam_asset_binding          = one(module.iam[*].asset_binding)
+  # iam_asset_binding          = one(module.iam[*].asset_binding)
 
   google = local.base_module
 }
