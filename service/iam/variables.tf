@@ -33,11 +33,11 @@ variable "freshness_duration_default" {
   default     = "2m"
 }
 
-variable "feature_flags" {
-  type        = map(bool)
-  description = "Toggle features which are being rolled out or phased out."
-  default     = {}
-}
+# variable "feature_flags" {
+#   type        = map(bool)
+#   description = "Toggle features which are being rolled out or phased out."
+#   default     = {}
+# }
 
 variable "google" {
   type = object({
