@@ -4,7 +4,7 @@ locals {
       source = observe_dataset.compute_instance.oid
       target = var.google.projects.oid
       fields = ["project_id"]
-      label  = "Link to Projects"
+      label  = "Projects"
       create = true
     }
 
@@ -12,7 +12,7 @@ locals {
       source = observe_dataset.compute_disk.oid
       target = var.google.projects.oid
       fields = ["project_id"]
-      label  = "Link to Projects"
+      label  = "Projects"
       create = true
     }
 
@@ -20,7 +20,7 @@ locals {
       source = observe_dataset.compute_logs_raw.oid
       target = var.google.projects.oid
       fields = ["project_id"]
-      label  = "Link to Projects"
+      label  = "Projects"
       create = true
     }
 
@@ -28,7 +28,7 @@ locals {
       source = observe_dataset.compute_metrics[0].oid
       target = observe_dataset.compute_instance.oid
       fields = ["computeInstanceAssetKey"]
-      label  = "Link to Compute Instances"
+      label  = "Compute Instances"
       create = true
     }
 
@@ -36,39 +36,15 @@ locals {
       source = observe_dataset.compute_metrics[0].oid
       target = observe_dataset.compute_disk.oid
       fields = ["computeDiskInstanceAssetKey"]
-      label  = "Link to Compute Disk Instances"
+      label  = "Disk Instances"
       create = true
     }
-
-    # "ComputeInstanceToComputeMetrics" = {
-    #   target = observe_dataset.compute_metrics[0].oid
-    #   source = observe_dataset.compute_instance.oid
-    #   fields = ["computeInstanceAssetKey"]
-    #   label  = "Link to Compute Instances"
-    #   create = true
-    # }
-
-    # "ComputeDiskInstanceToComputeMetrics" = {
-    #   target = observe_dataset.compute_metrics[0].oid
-    #   source = observe_dataset.compute_disk.oid
-    #   fields = ["computeDiskInstanceAssetKey"]
-    #   label  = "Link to Compute Disk Instances"
-    #   create = true
-    # }
-
-    # "ComputeDiskToComputeInstance" = {
-    #   source = observe_dataset.compute_disk.oid
-    #   target = observe_dataset.compute_instance.oid
-    #   fields = ["computeInstanceAssetKey"]
-    #   label  = "Link to Compute Instances"
-    #   create = true
-    # }
 
     "ComputeInstanceToComputeDisk" = {
       target = observe_dataset.compute_disk.oid
       source = observe_dataset.compute_instance.oid
       fields = ["computeInstanceAssetKey"]
-      label  = "Link to Compute Instances"
+      label  = "Disk Instances"
       create = true
     }
 
@@ -76,7 +52,7 @@ locals {
       source = observe_dataset.compute_disk.oid
       target = observe_dataset.compute_logs_raw.oid
       fields = ["computeDiskInstanceAssetKey"]
-      label  = "Link to Compute Raw Logs"
+      label  = "Raw Logs"
       create = true
     }
 
@@ -84,7 +60,7 @@ locals {
       source = observe_dataset.compute_instance.oid
       target = observe_dataset.compute_logs_raw.oid
       fields = ["computeInstanceAssetKey"]
-      label  = "Link to Compute Raw Logs"
+      label  = "Raw Logs"
       create = true
     }
 
@@ -92,7 +68,7 @@ locals {
       target = observe_dataset.instance_group.oid
       fields = ["instanceGroupAssetKey"]
       source = observe_dataset.compute_instance.oid
-      label  = "Link to Compute Instances"
+      label  = "Compute Instances"
       create = true
     }
 
@@ -100,7 +76,7 @@ locals {
       source = observe_dataset.instance_group.oid
       fields = ["instanceGroupAssetKey"]
       target = observe_dataset.compute_instance.oid
-      label  = "Link to Compute Instances"
+      label  = "Compute Instances"
       create = true
     }
   }

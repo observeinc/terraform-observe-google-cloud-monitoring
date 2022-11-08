@@ -1,24 +1,24 @@
-resource "observe_link" "project" {
+resource "observe_link" "gke" {
   for_each = {
     "ClustersToProject" = {
       target = var.google.projects.oid
       fields = ["project_id"]
       source = observe_dataset.gke_clusters.oid
-      label  = "Link to project"
+      label  = "Project"
     }
 
     "ClusterToLogs" = {
       target = observe_dataset.gke_logs.oid
       fields = ["gkeClusterAssetKey"]
       source = observe_dataset.gke_clusters.oid
-      label  = "Link to logs"
+      label  = "Logs"
     }
 
     "GKEClusterToInstanceGroup" = {
       target = var.google.compute_instance_group.oid
       fields = ["gkeClusterAssetKey"]
       source = observe_dataset.gke_clusters.oid
-      label  = "Link to instance group"
+      label  = "Instance group"
     }
 
   }
@@ -36,7 +36,7 @@ resource "observe_preferred_path" "gke_to_logs" {
   description = "Link to compute instances that are used as nodes in current set of GKE Clusters"
   source      = observe_dataset.gke_clusters.oid
   step {
-    link    = observe_link.project["ClusterToLogs"].oid
+    link    = observe_link.gke["ClusterToLogs"].oid
     reverse = false
   }
 }
@@ -47,7 +47,7 @@ resource "observe_preferred_path" "gke_to_compute" {
   description = "Link to compute instances that are used as nodes in current set of GKE Clusters"
   source      = observe_dataset.gke_clusters.oid
   step {
-    link    = observe_link.project["GKEClusterToInstanceGroup"].oid
+    link    = observe_link.gke["GKEClusterToInstanceGroup"].oid
     reverse = false
   }
   step {
@@ -62,7 +62,7 @@ resource "observe_preferred_path" "gke_to_disk" {
   description = "Link to compute disk instances that are used by nodes in current set of GKE Clusters"
   source      = observe_dataset.gke_clusters.oid
   step {
-    link    = observe_link.project["GKEClusterToInstanceGroup"].oid
+    link    = observe_link.gke["GKEClusterToInstanceGroup"].oid
     reverse = false
   }
   step {
