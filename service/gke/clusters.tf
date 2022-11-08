@@ -88,7 +88,7 @@ resource "observe_dataset" "gke_clusters" {
     input    = "events"
     pipeline = <<-EOF
     
-        make_resource 
+        make_resource options(expiry:${var.max_expiry}),
             project_id,
             region,
             cluster_name: cluster,

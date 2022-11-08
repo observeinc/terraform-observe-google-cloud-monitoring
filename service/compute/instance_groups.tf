@@ -5,7 +5,7 @@ resource "observe_dataset" "instance_group_events" {
   description = "This dataset contains Compute Instance Groups Events"
 
   inputs = {
-    "events"       = var.google.resource_asset_inventory_records.oid
+    "events" = var.google.resource_asset_inventory_records.oid
     # "asset_events" = var.google.asset_inventory_records.oid
   }
 
@@ -54,7 +54,7 @@ resource "observe_dataset" "instance_group" {
   }
 
   stage {
-    input    = "events"
+    input = "events"
     # alias    = "instance_group_manager_base"
     pipeline = <<-EOF
       filter asset_type = "compute.googleapis.com/InstanceGroupManager"

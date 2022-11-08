@@ -226,9 +226,9 @@ module "iam" {
 module "billing" {
   count = local.enable_service_billing ? 1 : 0
 
-  source                     = "./service/billing"
-  workspace                  = var.workspace
-  name_format                = format(var.name_format, local.name_format_billing)
+  source      = "./service/billing"
+  workspace   = var.workspace
+  name_format = format(var.name_format, local.name_format_billing)
   # max_expiry                 = var.max_expiry
   freshness_duration_default = var.freshness_duration_default
   freshness_overrides        = var.freshness_overrides

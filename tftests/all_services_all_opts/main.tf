@@ -22,6 +22,8 @@ module "all_services_all_opts" {
   enable_service_load_balancing = true
   enable_service_storage        = true
   enable_service_bigquery       = true
+  enable_service_gke            = true
+  enable_service_cloudscheduler = true
 
   # feature_flags = {
   #   metrics  = false
