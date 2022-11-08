@@ -18,6 +18,9 @@ resource "observe_dataset" "cloud_functions_function_logs" {
         projectId:string(resourceLabels.project_id),
         region:string(resourceLabels.region)
 
+      make_col assetInventoryName: string_concat("//cloudfunctions.googleapis.com/projects/",projectId,"/locations/",region,"/functions/",functionName)
+      // ex - //cloudfunctions.googleapis.com/projects/content-testpproj-stage-1/locations/us-west1/functions/extension-export-cloud-scheduler-v2
+
       pick_col 
         timestamp,
         receiveTimestamp,
@@ -26,7 +29,10 @@ resource "observe_dataset" "cloud_functions_function_logs" {
         textPayload,
         projectId,
         region,
+        assetInventoryName,
         functionName
+
+      add_key assetInventoryName
     EOF
   }
 }

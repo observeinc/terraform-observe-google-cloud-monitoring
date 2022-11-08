@@ -9,10 +9,15 @@ variable "name_format" {
   default     = "%s"
 }
 
-# tflint-ignore: terraform_unused_declarations
 variable "max_expiry" {
   type        = string
   description = "Maximum expiry time for resources."
+  default     = "4h"
+}
+
+variable "max_time_diff" {
+  type        = string
+  description = "Maximum time difference for processing time window."
   default     = "4h"
 }
 
@@ -28,26 +33,22 @@ variable "freshness_duration_default" {
   default     = "2m"
 }
 
-# tflint-ignore: terraform_unused_declarations
-variable "feature_flags" {
-  type        = map(bool)
-  description = "Toggle features which are being rolled out or phased out."
-  default     = {}
-}
+# variable "feature_flags" {
+#   type        = map(bool)
+#   description = "Toggle features which are being rolled out or phased out."
+#   default     = {}
+# }
 
 variable "google" {
   type = object({
-    pubsub_events = object({ oid = string })
-    logs          = object({ oid = string })
-    metrics       = object({ oid = string })
-    audit_logs    = object({ oid = string })
-    projects      = object({ oid = string })
+    resource_asset_inventory_records   = object({ oid = string })
+    logs                               = object({ oid = string })
+    metrics                            = object({ oid = string })
+    audit_logs                         = object({ oid = string })
+    projects                           = object({ oid = string })
+    pubsub_events                      = object({ oid = string })
+    iam_policy_asset_inventory_records = object({ oid = string })
   })
   description = "Google base module"
 }
 
-variable "max_time_diff" {
-  type        = string
-  description = "Maximum time difference for processing time window."
-  default     = "4h"
-}

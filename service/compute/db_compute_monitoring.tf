@@ -1,9 +1,4 @@
-locals {
-  workspace        = var.workspace.oid
-  dashboard_name   = format(var.name_format, "Monitoring")
-  compute_instance = observe_dataset.compute_instance.id
-  compute_metrics  = one(observe_dataset.compute_metrics[*].id)
-}
+
 # terraform import observe_dashboard.compute_monitoring_ 41145293
 resource "observe_dashboard" "compute_monitoring" {
   count = local.enable_metrics ? 1 : 0

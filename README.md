@@ -24,23 +24,26 @@ module "google" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.2.0 |
-| <a name="requirement_observe"></a> [observe](#requirement\_observe) | >= 0.9.2, <= 0.12.1 |
+| <a name="requirement_observe"></a> [observe](#requirement\_observe) | >=0.11.1, <= 0.12.1 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_observe"></a> [observe](#provider\_observe) | >= 0.9.2, <= 0.12.1 |
+| <a name="provider_observe"></a> [observe](#provider\_observe) | >=0.11.1, <= 0.12.1 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_bigquery"></a> [bigquery](#module\_bigquery) | ./service/bigquery | n/a |
+| <a name="module_billing"></a> [billing](#module\_billing) | ./service/billing | n/a |
 | <a name="module_cloudfunctions"></a> [cloudfunctions](#module\_cloudfunctions) | ./service/cloudfunctions | n/a |
 | <a name="module_cloudscheduler"></a> [cloudscheduler](#module\_cloudscheduler) | ./service/cloudscheduler | n/a |
 | <a name="module_cloudsql"></a> [cloudsql](#module\_cloudsql) | ./service/cloudsql | n/a |
 | <a name="module_compute"></a> [compute](#module\_compute) | ./service/compute | n/a |
+| <a name="module_gke"></a> [gke](#module\_gke) | ./service/gke | n/a |
+| <a name="module_iam"></a> [iam](#module\_iam) | ./service/iam | n/a |
 | <a name="module_load_balancing"></a> [load\_balancing](#module\_load\_balancing) | ./service/loadbalancing | n/a |
 | <a name="module_pubsub"></a> [pubsub](#module\_pubsub) | ./service/pubsub | n/a |
 | <a name="module_storage"></a> [storage](#module\_storage) | ./service/storage | n/a |
@@ -49,9 +52,10 @@ module "google" {
 
 | Name | Type |
 |------|------|
-| observe_dashboard.gcp | resource |
+| observe_dashboard.app_home_v6 | resource |
 | observe_dashboard.project_input | resource |
 | observe_dashboard.resource_monitoring | resource |
+| observe_dashboard.total_cost_of_ownership | resource |
 | observe_dataset.audit_logs | resource |
 | observe_dataset.base_asset_inventory_records | resource |
 | observe_dataset.base_pubsub_events | resource |
@@ -73,10 +77,13 @@ module "google" {
 |------|-------------|------|---------|:--------:|
 | <a name="input_datastream"></a> [datastream](#input\_datastream) | Datastream to derive resources from. | <pre>object({<br>    oid     = string<br>    dataset = string<br>    name    = string<br>  })</pre> | n/a | yes |
 | <a name="input_enable_service_bigquery"></a> [enable\_service\_bigquery](#input\_enable\_service\_bigquery) | Enable BigQuery service. | `bool` | `true` | no |
+| <a name="input_enable_service_billing"></a> [enable\_service\_billing](#input\_enable\_service\_billing) | Enable Billing service. | `bool` | `false` | no |
 | <a name="input_enable_service_cloudfunctions"></a> [enable\_service\_cloudfunctions](#input\_enable\_service\_cloudfunctions) | Enable Cloud Functions service. | `bool` | `true` | no |
 | <a name="input_enable_service_cloudscheduler"></a> [enable\_service\_cloudscheduler](#input\_enable\_service\_cloudscheduler) | Enable Cloud Scheduler service. | `bool` | `true` | no |
 | <a name="input_enable_service_cloudsql"></a> [enable\_service\_cloudsql](#input\_enable\_service\_cloudsql) | Enable Cloud SQL service. | `bool` | `true` | no |
 | <a name="input_enable_service_compute"></a> [enable\_service\_compute](#input\_enable\_service\_compute) | Enable Compute service. | `bool` | `true` | no |
+| <a name="input_enable_service_gke"></a> [enable\_service\_gke](#input\_enable\_service\_gke) | Enable GKE service. | `bool` | `true` | no |
+| <a name="input_enable_service_iam"></a> [enable\_service\_iam](#input\_enable\_service\_iam) | Enable IAM service. | `bool` | `false` | no |
 | <a name="input_enable_service_load_balancing"></a> [enable\_service\_load\_balancing](#input\_enable\_service\_load\_balancing) | Enable Cloud Load Balancing service. | `bool` | `true` | no |
 | <a name="input_enable_service_pubsub"></a> [enable\_service\_pubsub](#input\_enable\_service\_pubsub) | Enable Pub Sub service. | `bool` | `true` | no |
 | <a name="input_enable_service_storage"></a> [enable\_service\_storage](#input\_enable\_service\_storage) | Enable Cloud Storage service. | `bool` | `true` | no |
@@ -100,6 +107,7 @@ module "google" {
 | <a name="output_cloud_sql"></a> [cloud\_sql](#output\_cloud\_sql) | n/a |
 | <a name="output_compute"></a> [compute](#output\_compute) | n/a |
 | <a name="output_distribution_metrics"></a> [distribution\_metrics](#output\_distribution\_metrics) | n/a |
+| <a name="output_gke"></a> [gke](#output\_gke) | n/a |
 | <a name="output_iam_policy_asset_inventory_records"></a> [iam\_policy\_asset\_inventory\_records](#output\_iam\_policy\_asset\_inventory\_records) | n/a |
 | <a name="output_loadbalancer"></a> [loadbalancer](#output\_loadbalancer) | n/a |
 | <a name="output_logs"></a> [logs](#output\_logs) | n/a |

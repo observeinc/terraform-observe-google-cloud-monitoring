@@ -5,6 +5,54 @@
 # serviceUtilities.py -h for list of commands and options
 ######################
 locals { metrics_definitions = {
+  provisioning_iops = {
+    type               = "gauge"
+    description        = <<-EOF
+                    Disk's provisioned IOPS specified by the user.
+                EOF
+    launchStage        = "ALPHA"
+    rollup             = "avg"
+    aggregate          = "sum"
+    metricCategory     = "provisioning"
+    google_metric_path = "compute.googleapis.com/disk/provisioning/iops"
+    label              = "Provisioned disk IOPS"
+    unit               = "1"
+    metricBin          = "disk"
+    valuetype          = "INT64"
+
+  }
+  provisioning_size = {
+    type               = "gauge"
+    description        = <<-EOF
+                    Disk's provisioned size specified by the user.
+                EOF
+    launchStage        = "ALPHA"
+    rollup             = "avg"
+    aggregate          = "sum"
+    metricCategory     = "provisioning"
+    google_metric_path = "compute.googleapis.com/disk/provisioning/size"
+    label              = "Provisioned disk size"
+    unit               = "By"
+    metricBin          = "disk"
+    valuetype          = "INT64"
+
+  }
+  provisioning_throughput = {
+    type               = "gauge"
+    description        = <<-EOF
+                    Disk's provisioned throughput bytes/sec specified by the user.
+                EOF
+    launchStage        = "ALPHA"
+    rollup             = "avg"
+    aggregate          = "sum"
+    metricCategory     = "provisioning"
+    google_metric_path = "compute.googleapis.com/disk/provisioning/throughput"
+    label              = "Provisioned disk throughput bytes/sec"
+    unit               = "1"
+    metricBin          = "disk"
+    valuetype          = "INT64"
+
+  }
   dropped_bytes_count = {
     type               = "delta"
     description        = <<-EOF
@@ -17,7 +65,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/firewall/dropped_bytes_count"
     label              = "Dropped bytes"
     unit               = "By"
-    metricBin          = "['firewall']"
+    metricBin          = "firewall"
     valuetype          = "INT64"
 
   }
@@ -33,7 +81,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/firewall/dropped_packets_count"
     label              = "Dropped packets"
     unit               = "1"
-    metricBin          = "['firewall']"
+    metricBin          = "firewall"
     valuetype          = "INT64"
 
   }
@@ -49,7 +97,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/guest/cpu/load_15m"
     label              = "CPU load average 15m"
     unit               = "1"
-    metricBin          = "['guest']"
+    metricBin          = "guest"
     valuetype          = "DOUBLE"
 
   }
@@ -65,7 +113,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/guest/cpu/load_1m"
     label              = "CPU load average 1m"
     unit               = "1"
-    metricBin          = "['guest']"
+    metricBin          = "guest"
     valuetype          = "DOUBLE"
 
   }
@@ -81,7 +129,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/guest/cpu/load_5m"
     label              = "CPU load average 5m"
     unit               = "1"
-    metricBin          = "['guest']"
+    metricBin          = "guest"
     valuetype          = "DOUBLE"
 
   }
@@ -97,7 +145,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/guest/cpu/runnable_task_count"
     label              = "Runnable task count."
     unit               = "1"
-    metricBin          = "['guest']"
+    metricBin          = "guest"
     valuetype          = "DOUBLE"
 
   }
@@ -113,7 +161,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/guest/cpu/usage_time"
     label              = "CPU usage"
     unit               = "s{CPU}"
-    metricBin          = "['guest']"
+    metricBin          = "guest"
     valuetype          = "DOUBLE"
 
   }
@@ -129,7 +177,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/guest/disk/bytes_used"
     label              = "Disk usage"
     unit               = "By"
-    metricBin          = "['guest']"
+    metricBin          = "guest"
     valuetype          = "INT64"
 
   }
@@ -145,7 +193,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/guest/disk/io_time"
     label              = "IO Time"
     unit               = "ms"
-    metricBin          = "['guest']"
+    metricBin          = "guest"
     valuetype          = "INT64"
 
   }
@@ -161,7 +209,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/guest/disk/merged_operation_count"
     label              = "Merged disk operations"
     unit               = "1"
-    metricBin          = "['guest']"
+    metricBin          = "guest"
     valuetype          = "INT64"
 
   }
@@ -177,7 +225,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/guest/disk/operation_bytes_count"
     label              = "Disk bytes transferred"
     unit               = "By"
-    metricBin          = "['guest']"
+    metricBin          = "guest"
     valuetype          = "INT64"
 
   }
@@ -193,7 +241,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/guest/disk/operation_count"
     label              = "Disk operations"
     unit               = "1"
-    metricBin          = "['guest']"
+    metricBin          = "guest"
     valuetype          = "INT64"
 
   }
@@ -209,7 +257,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/guest/disk/operation_time"
     label              = "Disk operation time"
     unit               = "ms"
-    metricBin          = "['guest']"
+    metricBin          = "guest"
     valuetype          = "INT64"
 
   }
@@ -225,7 +273,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/guest/disk/queue_length"
     label              = "Queue Length"
     unit               = "1"
-    metricBin          = "['guest']"
+    metricBin          = "guest"
     valuetype          = "DOUBLE"
 
   }
@@ -241,7 +289,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/guest/disk/weighted_io_time"
     label              = "IO Time"
     unit               = "ms"
-    metricBin          = "['guest']"
+    metricBin          = "guest"
     valuetype          = "INT64"
 
   }
@@ -257,7 +305,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/guest/memory/anonymous_used"
     label              = "Anonymous memory usage in Bytes"
     unit               = "By"
-    metricBin          = "['guest']"
+    metricBin          = "guest"
     valuetype          = "INT64"
 
   }
@@ -273,7 +321,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/guest/memory/bytes_used"
     label              = "Memory usage in Bytes"
     unit               = "By"
-    metricBin          = "['guest']"
+    metricBin          = "guest"
     valuetype          = "INT64"
 
   }
@@ -289,7 +337,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/guest/memory/dirty_used"
     label              = "Dirty pages usage in Bytes."
     unit               = "By"
-    metricBin          = "['guest']"
+    metricBin          = "guest"
     valuetype          = "INT64"
 
   }
@@ -305,7 +353,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/guest/memory/page_cache_used"
     label              = "Page cache memory usage in Bytes"
     unit               = "By"
-    metricBin          = "['guest']"
+    metricBin          = "guest"
     valuetype          = "INT64"
 
   }
@@ -321,7 +369,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/guest/memory/unevictable_used"
     label              = "Unevictable memory usage in Bytes"
     unit               = "By"
-    metricBin          = "['guest']"
+    metricBin          = "guest"
     valuetype          = "INT64"
 
   }
@@ -337,7 +385,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/guest/system/os_feature_enabled"
     label              = "OS Feature"
     unit               = "1"
-    metricBin          = "['guest']"
+    metricBin          = "guest"
     valuetype          = "INT64"
 
   }
@@ -353,7 +401,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/guest/system/problem_count"
     label              = "Problem Count"
     unit               = "1"
-    metricBin          = "['guest']"
+    metricBin          = "guest"
     valuetype          = "INT64"
 
   }
@@ -369,7 +417,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/guest/system/problem_state"
     label              = "Problem State"
     unit               = "1"
-    metricBin          = "['guest']"
+    metricBin          = "guest"
     valuetype          = "INT64"
 
   }
@@ -385,7 +433,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/guest/system/uptime"
     label              = "Uptime"
     unit               = "s"
-    metricBin          = "['guest']"
+    metricBin          = "guest"
     valuetype          = "INT64"
 
   }
@@ -401,7 +449,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/cpu/guest_visible_vcpus"
     label              = "Guest Visible vCPUs"
     unit               = "1"
-    metricBin          = "['instance']"
+    metricBin          = "instance"
     valuetype          = "DOUBLE"
 
   }
@@ -417,7 +465,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/cpu/reserved_cores"
     label              = "Reserved vCPUs"
     unit               = "1"
-    metricBin          = "['instance']"
+    metricBin          = "instance"
     valuetype          = "DOUBLE"
 
   }
@@ -433,7 +481,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/cpu/scheduler_wait_time"
     label              = "Scheduler Wait Time"
     unit               = "s{idle}"
-    metricBin          = "['instance']"
+    metricBin          = "instance"
     valuetype          = "DOUBLE"
 
   }
@@ -449,7 +497,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/cpu/usage_time"
     label              = "CPU usage"
     unit               = "s{CPU}"
-    metricBin          = "['instance']"
+    metricBin          = "instance"
     valuetype          = "DOUBLE"
 
   }
@@ -465,7 +513,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/cpu/utilization"
     label              = "CPU utilization"
     unit               = "10^2.%"
-    metricBin          = "['instance']"
+    metricBin          = "instance"
     valuetype          = "DOUBLE"
 
   }
@@ -481,7 +529,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/disk/max_read_bytes_count"
     label              = "Peak disk read bytes"
     unit               = "By"
-    metricBin          = "['instance']"
+    metricBin          = "instance"
     valuetype          = "INT64"
 
   }
@@ -497,7 +545,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/disk/max_read_ops_count"
     label              = "Peak disk read ops"
     unit               = "1"
-    metricBin          = "['instance']"
+    metricBin          = "instance"
     valuetype          = "INT64"
 
   }
@@ -513,7 +561,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/disk/max_write_bytes_count"
     label              = "Peak disk write bytes"
     unit               = "By"
-    metricBin          = "['instance']"
+    metricBin          = "instance"
     valuetype          = "INT64"
 
   }
@@ -529,7 +577,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/disk/max_write_ops_count"
     label              = "Peak disk write ops"
     unit               = "1"
-    metricBin          = "['instance']"
+    metricBin          = "instance"
     valuetype          = "INT64"
 
   }
@@ -545,7 +593,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/disk/read_bytes_count"
     label              = "Disk read bytes"
     unit               = "By"
-    metricBin          = "['instance']"
+    metricBin          = "instance"
     valuetype          = "INT64"
 
   }
@@ -561,7 +609,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/disk/read_ops_count"
     label              = "Disk read operations"
     unit               = "1"
-    metricBin          = "['instance']"
+    metricBin          = "instance"
     valuetype          = "INT64"
 
   }
@@ -577,7 +625,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/disk/throttled_read_bytes_count"
     label              = "Throttled read bytes"
     unit               = "By"
-    metricBin          = "['instance']"
+    metricBin          = "instance"
     valuetype          = "INT64"
 
   }
@@ -593,7 +641,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/disk/throttled_read_ops_count"
     label              = "Throttled read operations"
     unit               = "1"
-    metricBin          = "['instance']"
+    metricBin          = "instance"
     valuetype          = "INT64"
 
   }
@@ -609,7 +657,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/disk/throttled_write_bytes_count"
     label              = "Throttled write bytes"
     unit               = "By"
-    metricBin          = "['instance']"
+    metricBin          = "instance"
     valuetype          = "INT64"
 
   }
@@ -625,7 +673,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/disk/throttled_write_ops_count"
     label              = "Throttled write operations"
     unit               = "1"
-    metricBin          = "['instance']"
+    metricBin          = "instance"
     valuetype          = "INT64"
 
   }
@@ -641,7 +689,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/disk/write_bytes_count"
     label              = "Disk write bytes"
     unit               = "By"
-    metricBin          = "['instance']"
+    metricBin          = "instance"
     valuetype          = "INT64"
 
   }
@@ -657,7 +705,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/disk/write_ops_count"
     label              = "Disk write operations"
     unit               = "1"
-    metricBin          = "['instance']"
+    metricBin          = "instance"
     valuetype          = "INT64"
 
   }
@@ -673,7 +721,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/integrity/early_boot_validation_status"
     label              = "Early Boot Validation"
     unit               = "1"
-    metricBin          = "['instance']"
+    metricBin          = "instance"
     valuetype          = "INT64"
 
   }
@@ -689,7 +737,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/integrity/late_boot_validation_status"
     label              = "Late Boot Validation"
     unit               = "1"
-    metricBin          = "['instance']"
+    metricBin          = "instance"
     valuetype          = "INT64"
 
   }
@@ -705,7 +753,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/memory/balloon/ram_size"
     label              = "VM Memory Total"
     unit               = "By"
-    metricBin          = "['']"
+    metricBin          = "none"
     valuetype          = "INT64"
 
   }
@@ -721,7 +769,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/memory/balloon/ram_used"
     label              = "VM Memory Used"
     unit               = "By"
-    metricBin          = "['']"
+    metricBin          = "none"
     valuetype          = "INT64"
 
   }
@@ -737,7 +785,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/memory/balloon/swap_in_bytes_count"
     label              = "VM Swap In"
     unit               = "By"
-    metricBin          = "['']"
+    metricBin          = "none"
     valuetype          = "INT64"
 
   }
@@ -753,7 +801,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/memory/balloon/swap_out_bytes_count"
     label              = "VM Swap Out"
     unit               = "By"
-    metricBin          = "['']"
+    metricBin          = "none"
     valuetype          = "INT64"
 
   }
@@ -769,7 +817,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/network/received_bytes_count"
     label              = "Received bytes"
     unit               = "By"
-    metricBin          = "['instance']"
+    metricBin          = "instance"
     valuetype          = "INT64"
 
   }
@@ -785,7 +833,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/network/received_packets_count"
     label              = "Received packets"
     unit               = "1"
-    metricBin          = "['instance']"
+    metricBin          = "instance"
     valuetype          = "INT64"
 
   }
@@ -801,7 +849,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/network/sent_bytes_count"
     label              = "Sent bytes"
     unit               = "By"
-    metricBin          = "['instance']"
+    metricBin          = "instance"
     valuetype          = "INT64"
 
   }
@@ -817,7 +865,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/network/sent_packets_count"
     label              = "Sent packets"
     unit               = "1"
-    metricBin          = "['instance']"
+    metricBin          = "instance"
     valuetype          = "INT64"
 
   }
@@ -833,7 +881,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/uptime"
     label              = "Uptime"
     unit               = "s{uptime}"
-    metricBin          = "['instance']"
+    metricBin          = "instance"
     valuetype          = "DOUBLE"
 
   }
@@ -849,7 +897,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance/uptime_total"
     label              = "Uptime Total"
     unit               = "s"
-    metricBin          = "['instance']"
+    metricBin          = "instance"
     valuetype          = "INT64"
 
   }
@@ -865,7 +913,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance_group/predicted_capacity"
     label              = "Instance group capacity as predicted"
     unit               = "1"
-    metricBin          = "['instance_group']"
+    metricBin          = "instance_group"
     valuetype          = "DOUBLE"
 
   }
@@ -881,7 +929,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance_group/predicted_size"
     label              = "Instance group size as predicted"
     unit               = "1"
-    metricBin          = "['instance_group']"
+    metricBin          = "instance_group"
     valuetype          = "INT64"
 
   }
@@ -897,7 +945,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance_group/predicted_utilization"
     label              = "Instance group utilization as predicted"
     unit               = "1"
-    metricBin          = "['instance_group']"
+    metricBin          = "instance_group"
     valuetype          = "DOUBLE"
 
   }
@@ -913,7 +961,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/instance_group/size"
     label              = "Instance group size"
     unit               = "1"
-    metricBin          = "['instance_group']"
+    metricBin          = "instance_group"
     valuetype          = "INT64"
 
   }
@@ -929,7 +977,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/mirroring/dropped_packets_count"
     label              = "Dropped packets"
     unit               = "1"
-    metricBin          = "['mirroring']"
+    metricBin          = "mirroring"
     valuetype          = "INT64"
 
   }
@@ -945,7 +993,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/mirroring/mirrored_bytes_count"
     label              = "Mirrored bytes"
     unit               = "By"
-    metricBin          = "['mirroring']"
+    metricBin          = "mirroring"
     valuetype          = "INT64"
 
   }
@@ -961,7 +1009,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/mirroring/mirrored_packets_count"
     label              = "Mirrored packets"
     unit               = "1"
-    metricBin          = "['mirroring']"
+    metricBin          = "mirroring"
     valuetype          = "INT64"
 
   }
@@ -977,7 +1025,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/nat/allocated_ports"
     label              = "Allocated ports"
     unit               = "{port}"
-    metricBin          = "['nat']"
+    metricBin          = "nat"
     valuetype          = "INT64"
 
   }
@@ -993,7 +1041,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/nat/closed_connections_count"
     label              = "Closed connections count"
     unit               = "{connection}"
-    metricBin          = "['nat']"
+    metricBin          = "nat"
     valuetype          = "INT64"
 
   }
@@ -1009,7 +1057,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/nat/dropped_received_packets_count"
     label              = "Received packets dropped count"
     unit               = "{packet}"
-    metricBin          = "['nat']"
+    metricBin          = "nat"
     valuetype          = "INT64"
 
   }
@@ -1025,7 +1073,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/nat/dropped_sent_packets_count"
     label              = "Sent packets dropped count"
     unit               = "{packet}"
-    metricBin          = "['nat']"
+    metricBin          = "nat"
     valuetype          = "INT64"
 
   }
@@ -1041,7 +1089,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/nat/new_connections_count"
     label              = "New connections count"
     unit               = "{connection}"
-    metricBin          = "['nat']"
+    metricBin          = "nat"
     valuetype          = "INT64"
 
   }
@@ -1057,7 +1105,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/nat/open_connections"
     label              = "Open connections"
     unit               = "{connection}"
-    metricBin          = "['nat']"
+    metricBin          = "nat"
     valuetype          = "INT64"
 
   }
@@ -1073,7 +1121,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/nat/port_usage"
     label              = "Port usage"
     unit               = "{port}"
-    metricBin          = "['nat']"
+    metricBin          = "nat"
     valuetype          = "INT64"
 
   }
@@ -1089,7 +1137,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/nat/received_bytes_count"
     label              = "Received bytes count"
     unit               = "By"
-    metricBin          = "['nat']"
+    metricBin          = "nat"
     valuetype          = "INT64"
 
   }
@@ -1105,7 +1153,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/nat/received_packets_count"
     label              = "Received packets count"
     unit               = "{packet}"
-    metricBin          = "['nat']"
+    metricBin          = "nat"
     valuetype          = "INT64"
 
   }
@@ -1121,7 +1169,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/nat/sent_bytes_count"
     label              = "Sent bytes count"
     unit               = "By"
-    metricBin          = "['nat']"
+    metricBin          = "nat"
     valuetype          = "INT64"
 
   }
@@ -1137,7 +1185,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/nat/sent_packets_count"
     label              = "Sent packets count"
     unit               = "{packet}"
-    metricBin          = "['nat']"
+    metricBin          = "nat"
     valuetype          = "INT64"
 
   }
@@ -1146,14 +1194,14 @@ locals { metrics_definitions = {
     description        = <<-EOF
                     Number of Consumer Forwarding Rules connected to a PSC Attachment ID.
                 EOF
-    launchStage        = "BETA"
+    launchStage        = "GA"
     rollup             = "avg"
     aggregate          = "sum"
     metricCategory     = "producer"
     google_metric_path = "compute.googleapis.com/private_service_connect/producer/connected_consumer_forwarding_rules"
     label              = "Connected consumer forwarding rules"
     unit               = "1"
-    metricBin          = "['private_service_connect']"
+    metricBin          = "private_service_connect"
     valuetype          = "INT64"
 
   }
@@ -1162,14 +1210,14 @@ locals { metrics_definitions = {
     description        = <<-EOF
                     IP usage of the monitored service attachment.
                 EOF
-    launchStage        = "BETA"
+    launchStage        = "GA"
     rollup             = "avg"
     aggregate          = "sum"
     metricCategory     = "producer"
     google_metric_path = "compute.googleapis.com/private_service_connect/producer/used_nat_ip_addresses"
     label              = "Used nat ip addresses"
     unit               = "1"
-    metricBin          = "['private_service_connect']"
+    metricBin          = "private_service_connect"
     valuetype          = "INT64"
 
   }
@@ -1185,7 +1233,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/quota/instances_per_vpc_network/exceeded"
     label              = "Instances Per VPC Network quota exceeded error"
     unit               = "1"
-    metricBin          = "['quota']"
+    metricBin          = "quota"
     valuetype          = "INT64"
 
   }
@@ -1201,7 +1249,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/quota/instances_per_vpc_network/limit"
     label              = "Instances Per VPC Network quota limit"
     unit               = "1"
-    metricBin          = "['quota']"
+    metricBin          = "quota"
     valuetype          = "INT64"
 
   }
@@ -1217,7 +1265,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/quota/instances_per_vpc_network/usage"
     label              = "Instances Per VPC Network quota usage"
     unit               = "1"
-    metricBin          = "['quota']"
+    metricBin          = "quota"
     valuetype          = "INT64"
 
   }
@@ -1233,7 +1281,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/quota/internal_lb_forwarding_rules_per_vpc_network/exceeded"
     label              = "Internal Load Balancer Forwarding Rules per VPC Network quota exceeded error"
     unit               = "1"
-    metricBin          = "['quota']"
+    metricBin          = "quota"
     valuetype          = "INT64"
 
   }
@@ -1249,7 +1297,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/quota/internal_lb_forwarding_rules_per_vpc_network/limit"
     label              = "Internal Load Balancer Forwarding Rules per VPC Network quota limit"
     unit               = "1"
-    metricBin          = "['quota']"
+    metricBin          = "quota"
     valuetype          = "INT64"
 
   }
@@ -1265,7 +1313,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/quota/internal_lb_forwarding_rules_per_vpc_network/usage"
     label              = "Internal Load Balancer Forwarding Rules per VPC Network quota usage"
     unit               = "1"
-    metricBin          = "['quota']"
+    metricBin          = "quota"
     valuetype          = "INT64"
 
   }
@@ -1281,7 +1329,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/quota/internal_managed_forwarding_rules_per_vpc_network/exceeded"
     label              = "Internal Managed Forwarding Rules per VPC Network quota exceeded error"
     unit               = "1"
-    metricBin          = "['quota']"
+    metricBin          = "quota"
     valuetype          = "INT64"
 
   }
@@ -1297,7 +1345,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/quota/internal_managed_forwarding_rules_per_vpc_network/limit"
     label              = "Internal Managed Forwarding Rules per VPC Network quota limit"
     unit               = "1"
-    metricBin          = "['quota']"
+    metricBin          = "quota"
     valuetype          = "INT64"
 
   }
@@ -1313,7 +1361,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/quota/internal_managed_forwarding_rules_per_vpc_network/usage"
     label              = "Internal Managed Forwarding Rules per VPC Network quota usage"
     unit               = "1"
-    metricBin          = "['quota']"
+    metricBin          = "quota"
     valuetype          = "INT64"
 
   }
@@ -1329,7 +1377,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/quota/internal_protocol_forwarding_rules_per_vpc_network/exceeded"
     label              = "Internal Protocol Forwarding Rules per VPC Network quota exceeded error"
     unit               = "1"
-    metricBin          = "['quota']"
+    metricBin          = "quota"
     valuetype          = "INT64"
 
   }
@@ -1345,7 +1393,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/quota/internal_protocol_forwarding_rules_per_vpc_network/limit"
     label              = "Internal Protocol Forwarding Rules per VPC Network quota limit"
     unit               = "1"
-    metricBin          = "['quota']"
+    metricBin          = "quota"
     valuetype          = "INT64"
 
   }
@@ -1361,7 +1409,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/quota/internal_protocol_forwarding_rules_per_vpc_network/usage"
     label              = "Internal Protocol Forwarding Rules per VPC Network quota usage"
     unit               = "1"
-    metricBin          = "['quota']"
+    metricBin          = "quota"
     valuetype          = "INT64"
 
   }
@@ -1377,7 +1425,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/quota/ip_aliases_per_vpc_network/exceeded"
     label              = "IP Aliases per VPC Network quota exceeded error"
     unit               = "1"
-    metricBin          = "['quota']"
+    metricBin          = "quota"
     valuetype          = "INT64"
 
   }
@@ -1393,7 +1441,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/quota/ip_aliases_per_vpc_network/limit"
     label              = "IP Aliases per VPC Network quota limit"
     unit               = "1"
-    metricBin          = "['quota']"
+    metricBin          = "quota"
     valuetype          = "INT64"
 
   }
@@ -1409,7 +1457,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/quota/ip_aliases_per_vpc_network/usage"
     label              = "IP Aliases per VPC Network quota usage"
     unit               = "1"
-    metricBin          = "['quota']"
+    metricBin          = "quota"
     valuetype          = "INT64"
 
   }
@@ -1425,7 +1473,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/quota/psc_google_apis_forwarding_rules_per_vpc_network/exceeded"
     label              = "PSC Google APIs Forwarding Rules per VPC Network quota exceeded error"
     unit               = "1"
-    metricBin          = "['quota']"
+    metricBin          = "quota"
     valuetype          = "INT64"
 
   }
@@ -1441,7 +1489,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/quota/psc_google_apis_forwarding_rules_per_vpc_network/limit"
     label              = "PSC Google APIs Forwarding Rules per VPC Network quota limit"
     unit               = "1"
-    metricBin          = "['quota']"
+    metricBin          = "quota"
     valuetype          = "INT64"
 
   }
@@ -1457,7 +1505,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/quota/psc_google_apis_forwarding_rules_per_vpc_network/usage"
     label              = "PSC Google APIs Forwarding Rules per VPC Network quota usage"
     unit               = "1"
-    metricBin          = "['quota']"
+    metricBin          = "quota"
     valuetype          = "INT64"
 
   }
@@ -1473,7 +1521,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/quota/psc_ilb_consumer_forwarding_rules_per_producer_vpc_network/exceeded"
     label              = "PSC ILB Consumer Forwarding Rules per Producer VPC Network quota exceeded error"
     unit               = "1"
-    metricBin          = "['quota']"
+    metricBin          = "quota"
     valuetype          = "INT64"
 
   }
@@ -1489,7 +1537,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/quota/psc_ilb_consumer_forwarding_rules_per_producer_vpc_network/limit"
     label              = "PSC ILB Consumer Forwarding Rules per Producer VPC Network quota limit"
     unit               = "1"
-    metricBin          = "['quota']"
+    metricBin          = "quota"
     valuetype          = "INT64"
 
   }
@@ -1505,7 +1553,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/quota/psc_ilb_consumer_forwarding_rules_per_producer_vpc_network/usage"
     label              = "PSC ILB Consumer Forwarding Rules per Producer VPC Network quota usage"
     unit               = "1"
-    metricBin          = "['quota']"
+    metricBin          = "quota"
     valuetype          = "INT64"
 
   }
@@ -1521,7 +1569,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/quota/subnet_ranges_per_vpc_network/exceeded"
     label              = "Subnetwork ranges per VPC Network quota exceeded error"
     unit               = "1"
-    metricBin          = "['quota']"
+    metricBin          = "quota"
     valuetype          = "INT64"
 
   }
@@ -1537,7 +1585,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/quota/subnet_ranges_per_vpc_network/limit"
     label              = "Subnetwork ranges per VPC Network quota limit"
     unit               = "1"
-    metricBin          = "['quota']"
+    metricBin          = "quota"
     valuetype          = "INT64"
 
   }
@@ -1553,7 +1601,7 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/quota/subnet_ranges_per_vpc_network/usage"
     label              = "Subnetwork ranges per VPC Network quota usage"
     unit               = "1"
-    metricBin          = "['quota']"
+    metricBin          = "quota"
     valuetype          = "INT64"
 
   }
