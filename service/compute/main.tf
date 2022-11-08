@@ -26,7 +26,7 @@ resource "observe_dataset" "compute_instance" {
 
   stage {
     input    = "pubsub_events"
-    alias    = "instance_group_base"
+    # alias    = "instance_group_base"
     pipeline = <<-EOF
         filter attributes.OBSERVATION_KIND = "gcpInstanceGroup"
 
@@ -55,7 +55,7 @@ resource "observe_dataset" "compute_instance" {
   }
 
   stage {
-    input    = "instance_group_base"
+    # input    = "instance_group_base"
     alias    = "instance_group_instances"
     pipeline = <<-EOF
 
