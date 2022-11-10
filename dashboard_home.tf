@@ -736,14 +736,14 @@ resource "observe_dashboard" "app_home" {
                   id       = "card-bsfempw3"
                   text     = <<-EOT
                                         ### Base Datasets
-                                                                                                                                                                                                                                                
-                                        - [Datastream](/workspace/41028406/dataset/event/datastream-41272322) - All other pre-built data sets for the GCP application are derived from here.
-                                                                                                                                                                                                                                                
-                                        - [Asset Inventory](/workspace/41028406/dataset/event/Asset-Inventory-Records-41272341)  - This shows a list of all GCP for each project you are collecting data for. Pre-built Resources are derived from this dataset. 
-                                                                                                                                                                                                                                                
-                                        - [Metrics](/workspace/41028406/dataset/event/Metrics-${local.metrics})  - This shows incoming data of all metrics you are collecting from GCP for each project you are collecting data for. Pre-built Resources metrics are derived from this dataset. 
-                                                                                                                                                                                                                                                
-                                        - [Logs](/workspace/41028406/dataset/event/Logs-41272340) - This shows incoming log data for all logs you are collecting from GCP for each project you are collecting data for. Pre-built Resources logs are derived from this dataset.
+                                        
+                                        - [Datastream](workspace/${local.workspace_id}/dataset/event/${local.datastream_name}-${local.datastream_dataset_id}) - All other pre-built data sets for the GCP application are derived from here.
+                                        
+                                        - [Asset Inventory](/workspace/${local.workspace_id}/dataset/event/Asset-Inventory-Records-${local.asset_inventory})  - This shows a list of all GCP for each project you are collecting data for. Pre-built Resources are derived from this dataset. 
+                                        
+                                        - [Metrics](/workspace/${local.workspace_id}/dataset/event/Metrics-${local.metrics})  - This shows incoming data of all metrics you are collecting from GCP for each project you are collecting data for. Pre-built Resources metrics are derived from this dataset. 
+                                        
+                                        - [Logs](/workspace/${local.workspace_id}/dataset/event/Logs-${local.logs}) - This shows incoming log data for all logs you are collecting from GCP for each project you are collecting data for. Pre-built Resources logs are derived from this dataset.
                                                                                                                                                                                                         
                                     EOT
                   title    = "Untitled Text"
