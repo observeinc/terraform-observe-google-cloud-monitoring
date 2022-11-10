@@ -1,6 +1,6 @@
 
-# terraform import observe_dashboard.app_home_v6 41323978
-resource "observe_dashboard" "app_home_v6" {
+# terraform import observe_dashboard.app_home 41345249
+resource "observe_dashboard" "app_home" {
   layout = jsonencode(
     {
       autoPack = true
@@ -26,54 +26,18 @@ resource "observe_dashboard" "app_home_v6" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-v1gt6w5v"
-                  stageId  = "stage-yvtup4f7"
-                }
-                layout = {
-                  h           = 11
-                  i           = "card-v1gt6w5v"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
-                  x           = 3
-                  y           = 0
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-fa38nbko"
-                  stageId  = "stage-21nn95t9"
-                }
-                layout = {
-                  h           = 11
-                  i           = "card-fa38nbko"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
-                  x           = 0
-                  y           = 0
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
                   id       = "card-rq7k76rj"
                   stageId  = "stage-iv0som0b"
                 }
                 layout = {
-                  h           = 11
+                  h           = 10
                   i           = "card-rq7k76rj"
                   isDraggable = true
                   isResizable = true
                   moved       = false
                   static      = false
-                  w           = 3
-                  x           = 9
+                  w           = 2
+                  x           = 6
                   y           = 0
                 }
               },
@@ -84,14 +48,69 @@ resource "observe_dashboard" "app_home_v6" {
                   stageId  = "stage-g5xahf72"
                 }
                 layout = {
-                  h           = 11
+                  h           = 10
                   i           = "card-ve3z5tml"
                   isDraggable = true
                   isResizable = true
                   moved       = false
                   static      = false
-                  w           = 3
-                  x           = 6
+                  w           = 2
+                  x           = 10
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "image"
+                  id       = "card-gladzlhh"
+                  title    = "Untitled Image"
+                  url      = "https://pbs.twimg.com/profile_images/1190319303041724417/1a61e4pu_400x400.jpg"
+                }
+                layout = {
+                  h           = 10
+                  i           = "card-gladzlhh"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 2
+                  x           = 0
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-wkwtzd6f"
+                  stageId  = "stage-adtkr7tf"
+                }
+                layout = {
+                  h           = 10
+                  i           = "card-wkwtzd6f"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 2
+                  x           = 2
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-fa38nbko"
+                  stageId  = "stage-21nn95t9"
+                }
+                layout = {
+                  h           = 10
+                  i           = "card-fa38nbko"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 2
+                  x           = 4
                   y           = 0
                 }
               },
@@ -108,9 +127,9 @@ resource "observe_dashboard" "app_home_v6" {
                   isResizable = true
                   moved       = false
                   static      = false
-                  w           = 3
-                  x           = 0
-                  y           = 11
+                  w           = 2
+                  x           = 8
+                  y           = 0
                 }
               },
               {
@@ -126,9 +145,9 @@ resource "observe_dashboard" "app_home_v6" {
                   isResizable = true
                   moved       = false
                   static      = false
-                  w           = 3
-                  x           = 3
-                  y           = 11
+                  w           = 2
+                  x           = 4
+                  y           = 10
                 }
               },
               {
@@ -144,9 +163,9 @@ resource "observe_dashboard" "app_home_v6" {
                   isResizable = true
                   moved       = false
                   static      = false
-                  w           = 3
+                  w           = 2
                   x           = 6
-                  y           = 11
+                  y           = 10
                 }
               },
               {
@@ -162,9 +181,63 @@ resource "observe_dashboard" "app_home_v6" {
                   isResizable = true
                   moved       = false
                   static      = false
-                  w           = 3
-                  x           = 9
-                  y           = 11
+                  w           = 2
+                  x           = 8
+                  y           = 10
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-5t2gicka"
+                  stageId  = "stage-rcjq4hxw"
+                }
+                layout = {
+                  h           = 10
+                  i           = "card-5t2gicka"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 2
+                  x           = 10
+                  y           = 10
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-73mhg9cs"
+                  stageId  = "stage-fgwg2rh6"
+                }
+                layout = {
+                  h           = 10
+                  i           = "card-73mhg9cs"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 2
+                  x           = 0
+                  y           = 10
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-v1gt6w5v"
+                  stageId  = "stage-yvtup4f7"
+                }
+                layout = {
+                  h           = 10
+                  i           = "card-v1gt6w5v"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 2
+                  x           = 2
+                  y           = 10
                 }
               },
             ]
@@ -663,15 +736,15 @@ resource "observe_dashboard" "app_home_v6" {
                   id       = "card-bsfempw3"
                   text     = <<-EOT
                                         ### Base Datasets
-                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                
                                         - [Datastream](/workspace/41028406/dataset/event/datastream-41272322) - All other pre-built data sets for the GCP application are derived from here.
-                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                
                                         - [Asset Inventory](/workspace/41028406/dataset/event/Asset-Inventory-Records-41272341)  - This shows a list of all GCP for each project you are collecting data for. Pre-built Resources are derived from this dataset. 
-                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                
                                         - [Metrics](/workspace/41028406/dataset/event/Metrics-${local.metrics})  - This shows incoming data of all metrics you are collecting from GCP for each project you are collecting data for. Pre-built Resources metrics are derived from this dataset. 
-                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                
                                         - [Logs](/workspace/41028406/dataset/event/Logs-41272340) - This shows incoming log data for all logs you are collecting from GCP for each project you are collecting data for. Pre-built Resources logs are derived from this dataset.
-                                                                                                                                                                
+                                                                                                                                                                                                        
                                     EOT
                   title    = "Untitled Text"
                 }
@@ -693,12 +766,12 @@ resource "observe_dashboard" "app_home_v6" {
                   id       = "card-vg4gqfkn"
                   text     = <<-EOT
                                         # Google Cloud Platform Application
-                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                
                                         See Inventory section for count of resources within your monitored projects and metrics being collected.
-                                                                                                                                                                                                        
-                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                
                                         - [Observe GCP Documentation](https://docs.observeinc.com/en/latest/content/integrations/gcp/gcp.html)
-                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                
                                         - [Google Metrics Documentation](https://cloud.google.com/monitoring/api/metrics_gcp)
                                     EOT
                   title    = "Untitled Text"
@@ -721,17 +794,19 @@ resource "observe_dashboard" "app_home_v6" {
                   id       = "card-54zkyeh9"
                   text     = <<-EOT
                                         ### Pre-built Content
-                                                                                                                                                                                                        
-                                        - [CloudFunction Resources](/workspace/41028406/dataset/resource/Cloud-Functions-Instances-${local.cloud_functions_instances}) - Cloud Function Resource dataset that GraphLinks to metrics and logs. 
-                                                                                                                                                                                                        
-                                        - [CloudSQL Resources](/workspace/41028406/dataset/resource/Cloud-SQL-Instance-${local.cloud_sql_instance}) - CloudSQL Resource dataset that GraphLinks to metrics and logs. 
-                                                                                                                                                                                                        
-                                        - [Compute Resources](/workspace/41028406/dataset/resource/Compute-Instance-${local.compute_instance}) - Compute Resource dataset that GraphLinks to metrics and logs. 
-                                                                                                                                                                                                        
-                                        - [LoadBalancing Resources](/workspace/41028406/dataset/resource/Load-Balancing-Load-Balancers-41272452) - Load Balancer Resource dataset that GraphLinks to metrics and logs.
-                                                                                                                                                                                                        
-                                        - [Storage Resources](/workspace/41028406/dataset/resource/Storage-Buckets-${local.storage_buckets}) - Storage Bucket Resource dataset that GraphLinks to metrics and logs.
-                                                                                                                                                                
+                                        
+                                        ${local.enable_service_cloudfunctions == true ? "- [CloudFunction Resources](/workspace/${local.workspace_id}/dataset/resource/Cloud-Functions-Instances-${one(module.cloudfunctions[*].function.id)}) - Cloud Function Resource dataset that GraphLinks to metrics and logs." : ""} 
+                                        
+                                        ${local.enable_service_cloudsql == true ? "- [CloudSQL Resources](/workspace/${local.workspace_id}/dataset/resource/Cloud-SQL-Instance-${one(module.cloudsql[*].cloudsql.id)}) - CloudSQL Resource dataset that GraphLinks to metrics and logs." : ""} 
+                                        
+                                        ${local.enable_service_compute == true ? "- [Compute Resources](/workspace/${local.workspace_id}/dataset/resource/Compute-Instance-${one(module.compute[*].compute.id)}) - Compute Resource dataset that GraphLinks to metrics and logs." : ""} 
+                                        
+                                        ${local.enable_service_gke == true ? "- [GKE Resources](/workspace/${local.workspace_id}/dataset/resource/GKE-Cluster-${one(module.gke[*].gke_cluster.id)}) - Google Kubernetes Engine Resource dataset that GraphLinks to compute resources and Kubernetes App resources." : ""}
+
+                                        ${local.enable_service_load_balancing == true ? "- [LoadBalancing Resources](/workspace/${local.workspace_id}/dataset/resource/Load-Balancing-Load-Balancers-${one(module.load_balancing[*].load_balancers.id)}) - Load Balancer Resource dataset that GraphLinks to metrics and logs." : ""}
+                                        
+                                        ${local.enable_service_storage == true ? "- [Storage Resources](/workspace/${local.workspace_id}/dataset/resource/Storage-Buckets-${one(module.storage[*].storage.id)}) - Storage Bucket Resource dataset that GraphLinks to metrics and logs." : ""}
+                                                                                                                                                                                                                                                                                                                                                    
                                     EOT
                   title    = "Untitled Text"
                 }
@@ -748,7 +823,7 @@ resource "observe_dashboard" "app_home_v6" {
                 }
               },
             ]
-            lastModified = 1667507631449
+            lastModified = 1668101656657
           },
         ]
       }
@@ -807,9 +882,9 @@ resource "observe_dashboard" "app_home_v6" {
             viewType = "single-select"
           },
         ]
-        selectedStageId = "stage-b1chj5cm"
+        selectedStageId = "stage-fgwg2rh6"
         timeRange = {
-          display               = "Past 60 minutes"
+          display               = "Today 08:34:03 - 09:34:03"
           endTime               = null
           millisFromCurrentTime = 3600000
           originalDisplay       = "Past 60 minutes"
@@ -1052,14 +1127,14 @@ resource "observe_dashboard" "app_home_v6" {
               Location          = 172
               "Project ID"      = 253
             }
-            containerWidth              = 2604
+            containerWidth              = 1313
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
             disableFixedLeftColumns     = false
             eventLinkColumnId           = null
             fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
+            hasCalculatedColumnWidths   = true
             hasDoneAutoLayout           = false
             maxColumnWidth              = 400
             maxMeasuredColumnWidth      = {}
@@ -1322,7 +1397,7 @@ resource "observe_dashboard" "app_home_v6" {
               topic_name        = 179
               topic_primary_key = 468
             }
-            containerWidth              = 285
+            containerWidth              = 274
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -1670,7 +1745,7 @@ resource "observe_dashboard" "app_home_v6" {
             }
             columnVisibility            = {}
             columnWidths                = {}
-            containerWidth              = 285
+            containerWidth              = 274
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -1884,7 +1959,7 @@ resource "observe_dashboard" "app_home_v6" {
               name              = 196
               service           = 395
             }
-            containerWidth              = 2604
+            containerWidth              = 1313
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -1904,12 +1979,18 @@ resource "observe_dashboard" "app_home_v6" {
             scrollToColumn              = null
             scrollToRow                 = 0
             selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
             }
             shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
@@ -2104,7 +2185,7 @@ resource "observe_dashboard" "app_home_v6" {
               metric_namespace = 313
               metric_type      = 644
             }
-            containerWidth              = 2604
+            containerWidth              = 1313
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -2343,7 +2424,7 @@ resource "observe_dashboard" "app_home_v6" {
               count            = 156
               metric_namespace = 276
             }
-            containerWidth              = 285
+            containerWidth              = 274
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -2569,12 +2650,18 @@ resource "observe_dashboard" "app_home_v6" {
             scrollToColumn              = null
             scrollToRow                 = 0
             selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
             }
             shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
@@ -5277,9 +5364,9 @@ resource "observe_dashboard" "app_home_v6" {
           viewModel = {
             consoleValue = <<-EOT
                             filter is_null(deleted)
-                                                                                                                
+                                                                                                                                            
                             exists project_id = @projects.project_id
-                                                                                                                
+                                                                                                                                            
                             ever asset_type = "container.googleapis.com/Cluster"
                         EOT
             railCollapseState = {
@@ -5884,9 +5971,9 @@ resource "observe_dashboard" "app_home_v6" {
           viewModel = {
             consoleValue = <<-EOT
                             filter is_null(deleted)
-                                                                                                                
+                                                                                                                                            
                             exists project_id = @projects.project_id
-                                                                                                                
+                                                                                                                                            
                             ever asset_type = "pubsub.googleapis.com/Topic"
                         EOT
             railCollapseState = {
@@ -7333,14 +7420,14 @@ resource "observe_dashboard" "app_home_v6" {
               quota      = 206
               service    = 254
             }
-            containerWidth              = 2604
+            containerWidth              = 1313
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
             disableFixedLeftColumns     = false
             eventLinkColumnId           = null
             fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
+            hasCalculatedColumnWidths   = true
             hasDoneAutoLayout           = false
             maxColumnWidth              = 400
             maxMeasuredColumnWidth      = {}
@@ -7595,14 +7682,14 @@ resource "observe_dashboard" "app_home_v6" {
               quota      = 206
               service    = 254
             }
-            containerWidth              = 2604
+            containerWidth              = 1313
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
             disableFixedLeftColumns     = false
             eventLinkColumnId           = null
             fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
+            hasCalculatedColumnWidths   = true
             hasDoneAutoLayout           = false
             maxColumnWidth              = 400
             maxMeasuredColumnWidth      = {}
@@ -7814,7 +7901,7 @@ resource "observe_dashboard" "app_home_v6" {
               quota      = 206
               service    = 254
             }
-            containerWidth              = 2604
+            containerWidth              = 1313
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -8663,18 +8750,12 @@ resource "observe_dashboard" "app_home_v6" {
             scrollToColumn              = null
             scrollToRow                 = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
             shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
@@ -8958,18 +9039,12 @@ resource "observe_dashboard" "app_home_v6" {
             scrollToColumn              = null
             scrollToRow                 = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
             shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
@@ -9144,7 +9219,7 @@ resource "observe_dashboard" "app_home_v6" {
             rollup = {}
           }
           renderType     = "TABLE"
-          selectedStepId = "step-ag9z0vhr"
+          selectedStepId = null
           serializable   = true
           steps = [
             {
@@ -9231,18 +9306,12 @@ resource "observe_dashboard" "app_home_v6" {
             scrollToColumn              = null
             scrollToRow                 = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
             shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
@@ -9405,7 +9474,7 @@ resource "observe_dashboard" "app_home_v6" {
             rollup = {}
           }
           renderType     = "TABLE"
-          selectedStepId = "step-m2j2acul"
+          selectedStepId = null
           serializable   = true
           steps = [
             {
@@ -9492,18 +9561,12 @@ resource "observe_dashboard" "app_home_v6" {
             scrollToColumn              = null
             scrollToRow                 = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
             shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
@@ -9666,7 +9729,7 @@ resource "observe_dashboard" "app_home_v6" {
             rollup = {}
           }
           renderType     = "TABLE"
-          selectedStepId = "step-1h8bt6y3"
+          selectedStepId = null
           serializable   = true
           steps = [
             {
@@ -9709,6 +9772,718 @@ resource "observe_dashboard" "app_home_v6" {
         }
         params   = null
         pipeline = ""
+      },
+      {
+        id = "stage-adtkr7tf"
+        input = [
+          {
+            datasetId   = "${local.resources_asset_inventory}"
+            datasetPath = null
+            inputName   = "gcp-cost-test/Resources Asset Inventory"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "projects"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight    = true
+            columnFooterHeight = 0
+            columnHeaderHeight = 29
+            columnOrderOverride = {
+              "0" = "Asset Namespace"
+              "1" = "Valid From"
+              "2" = "Valid To"
+              "3" = "Asset Type"
+              "4" = "Project ID"
+              "5" = "Location"
+            }
+            columnVisibility = {}
+            columnWidths = {
+              "Asset Namespace" = 254
+              "Asset Type"      = 173
+              Count             = 102
+              Location          = 172
+              "Project ID"      = 253
+            }
+            containerWidth              = 1313
+            contextMenuXCoord           = null
+            contextMenuYCoord           = null
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            eventLinkColumnId           = null
+            fetchPageSize               = 100
+            hasCalculatedColumnWidths   = false
+            hasDoneAutoLayout           = false
+            maxColumnWidth              = 400
+            maxMeasuredColumnWidth      = {}
+            minColumnWidth              = 60
+            minRowHeight                = 30
+            preserveCellAndRowSelection = true
+            rowHeaderWidth              = 20
+            rowHeights                  = {}
+            rowSizeIncrement            = 1
+            scrollToColumn              = null
+            scrollToRow                 = 0
+            selection = {
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 0
+            tableView                  = "TABULAR"
+          }
+          index = 33
+          inputList = [
+            {
+              datasetId   = "${local.resources_asset_inventory}"
+              inputName   = "gcp-cost-test/Resources Asset Inventory"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+            {
+              inputName   = "projects"
+              inputRole   = "Data"
+              isUserInput = true
+              parameterId = "input-parameter-z5n5j9ss"
+            },
+          ]
+          label = "Monitored Projects"
+          managers = [
+            {
+              id                     = "jywkqd1x"
+              isDisabled             = true
+              isResourceCountEnabled = false
+              type                   = "Timescrubber"
+            },
+            {
+              id         = "t677hnrf"
+              isDisabled = false
+              type       = "Vis"
+              vis = {
+                config = {
+                  color           = "Blue"
+                  colorConfigType = "Color"
+                  fieldConfig = {
+                    unit    = null
+                    visible = false
+                  }
+                  singleStatLabel = "Monitored Projects"
+                  thresholds      = null
+                  type            = "singlefield"
+                }
+                source = {
+                  table = {
+                    field       = "asset_name"
+                    groupFields = []
+                    statsBy = {
+                      fn = "count"
+                    }
+                    timechart = {
+                      fn         = "count"
+                      fnArgs     = null
+                      resolution = "AUTO"
+                    }
+                    transformType = "timechart"
+                    type          = "singlefield"
+                  }
+                  type = "table"
+                }
+                type = "singlevalue"
+              }
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            limit          = 1000
+            linkify        = true
+            loadEverything = false
+            progressive    = true
+            resultKinds = [
+              "ResultKindSchema",
+            ]
+            rollup = {}
+          }
+          renderType     = "TABLE"
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              customName    = "Input"
+              customSummary = "gcp-cost-test/Resources Asset Inventory"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-zbhpzszg"
+              index             = 0
+              isPinned          = false
+              opal              = []
+              queryPresentation = {}
+              type              = "InputStep"
+            },
+            {
+              columnStatsTable = {
+                columnFunctions = {}
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-clqbwynj"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-btk8i9jc"
+              index    = 1
+              isPinned = false
+              opal = [
+                "filter is_null(deleted)",
+                "",
+                "exists project_id = @projects.project_id",
+                "filter asset_type = \"cloudresourcemanager.googleapis.com/Project\"",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = <<-EOT
+                    filter is_null(deleted)
+                    
+                    exists project_id = @projects.project_id
+                    filter asset_type = "cloudresourcemanager.googleapis.com/Project"
+                EOT
+      },
+      {
+        id = "stage-rcjq4hxw"
+        input = [
+          {
+            datasetId   = "${local.cloud_scheduler_jobs}"
+            datasetPath = null
+            inputName   = "gcp-cost-test/Cloud Scheduler Jobs"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight    = true
+            columnFooterHeight = 0
+            columnHeaderHeight = 29
+            columnOrderOverride = {
+              "1" = "Valid From"
+              "2" = "Valid To"
+            }
+            columnVisibility            = {}
+            columnWidths                = {}
+            containerWidth              = 1313
+            contextMenuXCoord           = null
+            contextMenuYCoord           = null
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            eventLinkColumnId           = null
+            fetchPageSize               = 100
+            hasCalculatedColumnWidths   = false
+            hasDoneAutoLayout           = false
+            maxColumnWidth              = 400
+            maxMeasuredColumnWidth      = {}
+            minColumnWidth              = 60
+            minRowHeight                = 30
+            preserveCellAndRowSelection = true
+            rowHeaderWidth              = 20
+            rowHeights                  = {}
+            rowSizeIncrement            = 1
+            scrollToColumn              = null
+            scrollToRow                 = 0
+            selection = {
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 0
+            tableView                  = "TABULAR"
+          }
+          index = 34
+          inputList = [
+            {
+              datasetId   = "${local.cloud_scheduler_jobs}"
+              inputName   = "gcp-cost-test/Cloud Scheduler Jobs"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+          ]
+          label = "Cloud Scheduler Jobs"
+          managers = [
+            {
+              id                     = "d6y6h07b"
+              isDisabled             = true
+              isResourceCountEnabled = false
+              type                   = "Timescrubber"
+            },
+            {
+              id         = "5yczjm5e"
+              isDisabled = false
+              type       = "Vis"
+              vis = {
+                config = {
+                  color           = "Blue"
+                  colorConfigType = "Color"
+                  fieldConfig = {
+                    unit    = null
+                    visible = false
+                  }
+                  singleStatLabel = "Cloud Scheduler Jobs"
+                  thresholds      = null
+                  type            = "singlefield"
+                }
+                source = {
+                  table = {
+                    field = [
+                      "project_id",
+                    ]
+                    groupFields = []
+                    statsBy = {
+                      fn = "count"
+                    }
+                    timechart = {
+                      fn         = "count"
+                      fnArgs     = null
+                      resolution = "AUTO"
+                    }
+                    transformType = "timechart"
+                    type          = "singlefield"
+                  }
+                  type = "table"
+                }
+                type = "singlevalue"
+              }
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            limit          = 1000
+            linkify        = true
+            loadEverything = false
+            progressive    = true
+            resultKinds = [
+              "ResultKindSchema",
+            ]
+            rollup = {}
+          }
+          renderType     = "TABLE"
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              columnStatsTable = {
+                columnFunctions = {
+                  asset_inventory_name = "count"
+                  attempt_deadline     = "count"
+                  deliveryAttempt      = "count"
+                  description          = "count"
+                  http_target          = "count"
+                  job_name             = "count"
+                  last_attempt_time    = "count"
+                  region               = "count"
+                  schedule             = "count"
+                  schedule_time        = "count"
+                  state                = "count"
+                  status               = "count"
+                  status_text          = "count"
+                  time_zone            = "count"
+                  user_update_time     = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-j17hvrkn"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              customName    = "Input"
+              customSummary = "gcp-cost-test/Cloud Scheduler Jobs"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-urowzbsm"
+              index             = 0
+              isPinned          = false
+              opal              = []
+              queryPresentation = {}
+              type              = "InputStep"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = ""
+      },
+      {
+        id = "stage-fgwg2rh6"
+        input = [
+          {
+            datasetId   = "${local.resources_asset_inventory}"
+            datasetPath = null
+            inputName   = "gcp-cost-test/Resources Asset Inventory"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "projects"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight    = true
+            columnFooterHeight = 0
+            columnHeaderHeight = 29
+            columnOrderOverride = {
+              "0" = "name"
+              "1" = "Valid From"
+              "2" = "Project ID"
+              "3" = "Location"
+              "4" = "Asset Type"
+            }
+            columnVisibility = {
+              name = false
+              time = false
+            }
+            columnWidths = {
+              "Asset Namespace" = 254
+              "Asset Type"      = 173
+              Count             = 102
+              Location          = 172
+              "Project ID"      = 253
+              name              = 196
+              service           = 395
+            }
+            containerWidth              = 1313
+            contextMenuXCoord           = null
+            contextMenuYCoord           = null
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            eventLinkColumnId           = null
+            fetchPageSize               = 100
+            hasCalculatedColumnWidths   = false
+            hasDoneAutoLayout           = false
+            maxColumnWidth              = 400
+            maxMeasuredColumnWidth      = {}
+            minColumnWidth              = 60
+            minRowHeight                = 30
+            preserveCellAndRowSelection = true
+            rowHeaderWidth              = 20
+            rowHeights                  = {}
+            rowSizeIncrement            = 1
+            scrollToColumn              = null
+            scrollToRow                 = 0
+            selection = {
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 0
+            tableView                  = "TABULAR"
+          }
+          index = 35
+          inputList = [
+            {
+              datasetId   = "${local.resources_asset_inventory}"
+              inputName   = "gcp-cost-test/Resources Asset Inventory"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+            {
+              inputName   = "projects"
+              inputRole   = "Data"
+              isUserInput = true
+              parameterId = "input-parameter-z5n5j9ss"
+            },
+          ]
+          label = "Services Enabled Count"
+          managers = [
+            {
+              id                     = "jywkqd1x"
+              isDisabled             = true
+              isResourceCountEnabled = false
+              type                   = "Timescrubber"
+            },
+            {
+              id         = "ed39rucd"
+              isDisabled = false
+              type       = "Vis"
+              vis = {
+                config = {
+                  color           = "Blue"
+                  colorConfigType = "Color"
+                  fieldConfig = {
+                    unit    = null
+                    visible = false
+                  }
+                  singleStatLabel = "Services Enabled"
+                  thresholds      = null
+                  type            = "singlefield"
+                }
+                source = {
+                  table = {
+                    field       = "service"
+                    groupFields = []
+                    statsBy = {
+                      fn = "count"
+                    }
+                    timechart = {
+                      fn         = "count"
+                      fnArgs     = null
+                      resolution = "AUTO"
+                    }
+                    transformType = "timechart"
+                    type          = "singlefield"
+                  }
+                  type = "table"
+                }
+                type = "singlevalue"
+              }
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            limit          = 1000
+            linkify        = true
+            loadEverything = false
+            progressive    = true
+            resultKinds = [
+              "ResultKindSchema",
+            ]
+            rollup = {}
+          }
+          renderType     = "TABLE"
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              customName    = "Input"
+              customSummary = "gcp-cost-test/Resources Asset Inventory"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-47diy03k"
+              index             = 0
+              isPinned          = false
+              opal              = []
+              queryPresentation = {}
+              type              = "InputStep"
+            },
+            {
+              columnStatsTable = {
+                columnFunctions = {
+                  name    = "count"
+                  service = "count"
+                  state   = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-xy3pe6ul"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-l14gey50"
+              index    = 1
+              isPinned = false
+              opal = [
+                "exists project_id = @projects.project_id",
+                "filter asset_type = \"serviceusage.googleapis.com/Service\"",
+                "filter string(data.state) = \"ENABLED\"",
+                "",
+                "make_col service: string(data.name)",
+                "",
+                "pick_col ",
+                "\t@.\"Valid From\",",
+                "    @.\"Valid To\",",
+                "\ttime,",
+                "\tname,",
+                "    service,",
+                "    state: string(data.state)",
+                "    ",
+                "// statsby last(time), group_by(name, service, state)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = <<-EOT
+                    exists project_id = @projects.project_id
+                    filter asset_type = "serviceusage.googleapis.com/Service"
+                    filter string(data.state) = "ENABLED"
+                    
+                    make_col service: string(data.name)
+                    
+                    pick_col 
+                    	@."Valid From",
+                        @."Valid To",
+                    	time,
+                    	name,
+                        service,
+                        state: string(data.state)
+                        
+                    // statsby last(time), group_by(name, service, state)
+                EOT
       },
     ]
   )
