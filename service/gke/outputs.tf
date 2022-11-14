@@ -11,7 +11,7 @@ output "gke_logs" {
 }
 
 output "logs" {
-  value = observe_dataset.gke_logs
+  value = var.google.logs
 }
 
 output "instance_group_link" {
