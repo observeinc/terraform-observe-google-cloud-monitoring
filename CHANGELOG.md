@@ -1,3 +1,21 @@
+# [0.6.0](https://github.com/observeinc/terraform-observe-google/compare/v0.5.1...v0.6.0) (2022-11-15)
+
+
+### Bug Fixes
+
+* Arthur/home dash update ([#113](https://github.com/observeinc/terraform-observe-google/issues/113)) ([5d3ab4f](https://github.com/observeinc/terraform-observe-google/commit/5d3ab4f574e5871313163f4ef3fcf11c7ade6e94))
+* match k8s app version ([#112](https://github.com/observeinc/terraform-observe-google/issues/112)) ([02f852b](https://github.com/observeinc/terraform-observe-google/commit/02f852b82739c74a47c4510193533fa4cff83d2f))
+* set default dashboard on projects to the project overview ([#107](https://github.com/observeinc/terraform-observe-google/issues/107)) ([569ca41](https://github.com/observeinc/terraform-observe-google/commit/569ca41fad31bbcb662a0a633e8aa1c26a0d542e))
+* updated Overview apps page with BigQuery ([#110](https://github.com/observeinc/terraform-observe-google/issues/110)) ([37e40db](https://github.com/observeinc/terraform-observe-google/commit/37e40dbafb62a96589657cc9fb6b97b6b59e0cbf))
+
+
+### Features
+
+* add cloud scheduler service ([#108](https://github.com/observeinc/terraform-observe-google/issues/108)) ([3adda5c](https://github.com/observeinc/terraform-observe-google/commit/3adda5c30b0392131084f804ada3697e1b98e7cd))
+* gke ([#111](https://github.com/observeinc/terraform-observe-google/issues/111)) ([e1b2539](https://github.com/observeinc/terraform-observe-google/commit/e1b25397e7834c77a79b4782000c64d6d2b679fe))
+
+
+
 ## [0.5.1](https://github.com/observeinc/terraform-observe-google/compare/v0.5.0...v0.5.1) (2022-10-13)
 
 
