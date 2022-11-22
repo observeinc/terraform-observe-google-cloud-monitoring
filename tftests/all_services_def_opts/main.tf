@@ -21,4 +21,8 @@ module "all_services_def_opts" {
   enable_service_load_balancing = true
   enable_service_storage        = true
   enable_service_bigquery       = true
+
+  feature_flags = {
+    "use_name_format_in_preferred_path" = true
+  }
 }

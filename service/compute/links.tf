@@ -1,6 +1,6 @@
 locals {
   use_name_format_in_preferred_path = lookup(var.feature_flags, "use_name_format_in_preferred_path", false)
-  
+
   links = {
     "ComputeInstanceToProjects" = {
       source = observe_dataset.compute_instance.oid
@@ -98,7 +98,7 @@ resource "observe_link" "compute" {
 resource "observe_preferred_path" "compute_disk" {
   # folder = observe_folder.gcp.oid
   workspace   = var.workspace.oid
-  name        = local.use_name_format_in_preferred_path == true ? format(var.name_format, "Link to Disk"): "Link to Disk"
+  name        = local.use_name_format_in_preferred_path == true ? format(var.name_format, "Link to Disk") : "Link to Disk"
   description = "Link to disk resources associated with current set of compute instances"
   source      = observe_dataset.compute_instance.oid
   step {
