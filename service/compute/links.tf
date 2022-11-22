@@ -1,4 +1,6 @@
 locals {
+  use_name_format_in_preferred_path = lookup(var.feature_flags, "use_name_format_in_preferred_path", false)
+  
   links = {
     "ComputeInstanceToProjects" = {
       source = observe_dataset.compute_instance.oid
@@ -96,7 +98,7 @@ resource "observe_link" "compute" {
 resource "observe_preferred_path" "compute_disk" {
   # folder = observe_folder.gcp.oid
   workspace   = var.workspace.oid
-  name        = format(var.name_format, "to disk")
+  name        = local.use_name_format_in_preferred_path == true ? format(var.name_format, "Link to Disk"): "Link to Disk"
   description = "Link to disk resources associated with current set of compute instances"
   source      = observe_dataset.compute_instance.oid
   step {
@@ -108,7 +110,7 @@ resource "observe_preferred_path" "compute_disk" {
 resource "observe_preferred_path" "disk_compute" {
   # folder = observe_folder.gcp.oid
   workspace   = var.workspace.oid
-  name        = format(var.name_format, "disk to compute instances")
+  name        = local.use_name_format_in_preferred_path == true ? format(var.name_format, "Link to Compute Instances") : "Link to Compute Instances"
   description = "Link to compute instances associated with current set of disk resources"
   source      = observe_dataset.compute_disk.oid
   step {
@@ -120,7 +122,7 @@ resource "observe_preferred_path" "disk_compute" {
 resource "observe_preferred_path" "compute_log" {
   # folder = observe_folder.gcp.oid
   workspace   = var.workspace.oid
-  name        = format(var.name_format, "to Logs")
+  name        = local.use_name_format_in_preferred_path == true ? format(var.name_format, "Link to Logs") : "Link to Logs"
   description = "Link to logs associated with current set of compute instances"
   source      = observe_dataset.compute_instance.oid
   step {
@@ -132,7 +134,7 @@ resource "observe_preferred_path" "compute_log" {
 resource "observe_preferred_path" "compute_metrics" {
   # folder = observe_folder.gcp.oid
   workspace   = var.workspace.oid
-  name        = format(var.name_format, "metrics to instance")
+  name        = local.use_name_format_in_preferred_path == true ? format(var.name_format, "Link to Compute Instances ") : "Link to Compute Instances "
   description = "Link to Metrics associated with current set of compute instances"
   source      = observe_dataset.compute_metrics[0].oid
   step {
@@ -144,7 +146,7 @@ resource "observe_preferred_path" "compute_metrics" {
 resource "observe_preferred_path" "instance_groups_compute" {
   # folder = observe_folder.gcp.oid
   workspace   = var.workspace.oid
-  name        = format(var.name_format, "instance group to instances")
+  name        = local.use_name_format_in_preferred_path == true ? format(var.name_format, "Link to Compute Instances  ") : "Link to Compute Instances  "
   description = "Link to Compute Instances associated with current set of Instance Groups"
   source      = observe_dataset.instance_group.oid
   step {
@@ -157,7 +159,7 @@ resource "observe_preferred_path" "instance_groups_compute" {
 resource "observe_preferred_path" "compute_instance_groups" {
   # folder = observe_folder.gcp.oid
   workspace   = var.workspace.oid
-  name        = format(var.name_format, "instances to instance group")
+  name        = local.use_name_format_in_preferred_path == true ? format(var.name_format, "Link to compute instance group") : "Link to compute instance group"
   description = "Link to instance groups associated with current set of compute instances"
   source      = observe_dataset.compute_instance.oid
   step {
@@ -169,7 +171,7 @@ resource "observe_preferred_path" "compute_instance_groups" {
 resource "observe_preferred_path" "instance_groups_compute_disk" {
 
   workspace   = var.workspace.oid
-  name        = format(var.name_format, "instance group to disks")
+  name        = local.use_name_format_in_preferred_path == true ? format(var.name_format, "Link to Disk ") : "Link to Disk "
   description = "Link to Disks attached to Compute Instances associated with current set of Instance Groups"
   source      = observe_dataset.instance_group.oid
 
