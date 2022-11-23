@@ -47,7 +47,7 @@ resource "observe_preferred_path" "gke_to_logs" {
 
 resource "observe_preferred_path" "gke_to_compute" {
   workspace   = var.workspace.oid
-  name        = local.use_name_format_in_preferred_path == true ? format(var.name_format, "Link to Compute   ") : "Link to Compute   "
+  name        = local.use_name_format_in_preferred_path == true ? format(var.name_format, "Link to Compute  ") : "Link to Compute  "
   description = "Link to compute instances that are used as nodes in current set of GKE Clusters"
   source      = observe_dataset.gke_clusters.oid
   step {
