@@ -198,6 +198,7 @@ module "gke" {
   max_expiry                 = var.max_expiry
   freshness_duration_default = var.freshness_duration_default
   freshness_overrides        = var.freshness_overrides
+  feature_flags              = var.feature_flags
 
   google = merge(local.base_module, {
     compute_instance_group                  = one(module.compute[*].compute_instance_group)
