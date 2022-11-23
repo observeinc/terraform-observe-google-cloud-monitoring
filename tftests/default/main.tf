@@ -14,4 +14,7 @@ module "default" {
   workspace   = data.observe_workspace.default
   datastream  = data.observe_datastream.default
   name_format = "test_gcp_${random_pet.test.id}/%s"
+  feature_flags = {
+    "use_name_format_in_preferred_path" = true
+  }
 }

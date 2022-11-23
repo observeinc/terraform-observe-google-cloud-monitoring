@@ -1,4 +1,4 @@
-# GCP App (Public Preview)
+# GCP App
 
 The GCP app provides the base models for GCP infrastructure such as:
 

@@ -5,6 +5,7 @@
 # - enable_service_* variable definitions in apps/variables.tf
 # - enable_service_* variable usages in apps/main.tf
 locals {
+
   enable_service_bigquery = (
     var.enable_service_bigquery == true ||
     var.enable_service_bigquery ||
@@ -70,14 +71,12 @@ locals {
   name_format_gke = lookup(var.service_name_formats, "gke", "GKE %s")
 
   enable_service_iam = (
-    var.enable_service_iam == true ||
     lookup(var.services, "iam", false)
   )
   # tflint-ignore: terraform_unused_declarations
   name_format_iam = lookup(var.service_name_formats, "iam", "IAM %s")
 
   enable_service_billing = (
-    var.enable_service_billing == true ||
     lookup(var.services, "billing", false)
   )
   # tflint-ignore: terraform_unused_declarations
@@ -199,6 +198,7 @@ module "gke" {
   max_expiry                 = var.max_expiry
   freshness_duration_default = var.freshness_duration_default
   freshness_overrides        = var.freshness_overrides
+  feature_flags              = var.feature_flags
 
   google = merge(local.base_module, {
     compute_instance_group                  = one(module.compute[*].compute_instance_group)

@@ -27,11 +27,11 @@ variable "freshness_overrides" {
   default     = {}
 }
 
-# variable "feature_flags" {
-#   type        = map(bool)
-#   description = "Toggle features which are being rolled out or phased out."
-#   default     = {}
-# }
+variable "feature_flags" {
+  type        = map(bool)
+  description = "Toggle features which are being rolled out or phased out."
+  default     = {}
+}
 
 variable "google" {
   type = object({
