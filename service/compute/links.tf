@@ -143,7 +143,7 @@ resource "observe_preferred_path" "compute_metrics" {
   }
 }
 
-resource "observe_preferred_path" "instanceGroupAssetKeys_compute" {
+resource "observe_preferred_path" "instance_groups_compute" {
   # folder = observe_folder.gcp.oid
   workspace   = var.workspace.oid
   name        = local.use_name_format_in_preferred_path == true ? format(var.name_format, "Link to Compute Instances  ") : "Link to Compute Instances  "
@@ -156,7 +156,7 @@ resource "observe_preferred_path" "instanceGroupAssetKeys_compute" {
 }
 # tflint-ignore: terraform_unsupported_argument
 
-resource "observe_preferred_path" "compute_instanceGroupAssetKeys" {
+resource "observe_preferred_path" "compute_instance_groups" {
   # folder = observe_folder.gcp.oid
   workspace   = var.workspace.oid
   name        = local.use_name_format_in_preferred_path == true ? format(var.name_format, "Link to compute instance group") : "Link to compute instance group"
@@ -168,7 +168,7 @@ resource "observe_preferred_path" "compute_instanceGroupAssetKeys" {
   }
 }
 
-resource "observe_preferred_path" "instanceGroupAssetKeys_compute_disk" {
+resource "observe_preferred_path" "instance_group_compute_disk" {
 
   workspace   = var.workspace.oid
   name        = local.use_name_format_in_preferred_path == true ? format(var.name_format, "Link to Disk ") : "Link to Disk "

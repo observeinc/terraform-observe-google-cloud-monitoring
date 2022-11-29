@@ -54,10 +54,10 @@ resource "observe_dataset" "pubsub_service" {
 }
 
 resource "observe_dataset" "pubsub_service_api_metrics" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Service API Metrics")
-  freshness = lookup(local.freshness, "pubsub", var.freshness_duration_default)
-description = "Metrics for Service APIs"
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Service API Metrics")
+  freshness   = lookup(local.freshness, "pubsub", var.freshness_duration_default)
+  description = "Metrics for Service APIs"
   inputs = {
     "events" = var.google.metrics.oid
   }

@@ -736,18 +736,19 @@ resource "observe_dashboard" "app_home" {
                   cardType = "text"
                   id       = "card-bsfempw3"
                   text     = <<-EOT
-                                        ### Base Datasets
-                                                                                
-                                        - [Datastream](workspace/41028406/dataset/event/datastream-41272322) - All other pre-built data sets for the GCP application are derived from here.
-                                                                                
-                                        - [Asset Inventory](/workspace/41028406/dataset/event/Asset-Inventory-Records-41387202)  - This shows a list of all GCP for each project you are collecting data for. Pre-built Resources are derived from this dataset. 
-                                                                                
-                                        - [Metrics](/workspace/41028406/dataset/event/Metrics-${local.metrics})  - This shows incoming data of all metrics you are collecting from GCP for each project you are collecting data for. Pre-built Resources metrics are derived from this dataset. 
-                                                                                
-                                        - [Logs](/workspace/41028406/dataset/event/Logs-41387197) - This shows incoming log data for all logs you are collecting from GCP for each project you are collecting data for. Pre-built Resources logs are derived from this dataset.
-                                                                                                                                                                                                                                                
+                                         ### Base Datasets
+                                        
+                                        - [Datastream](workspace/${local.workspace_id}/dataset/event/${local.datastream_name}-${local.datastream_dataset_id}) - All other pre-built data sets for the GCP application are derived from here.
+                                        
+                                        - [Asset Inventory](/workspace/${local.workspace_id}/dataset/event/Asset-Inventory-Records-${local.asset_inventory})  - This shows a list of all GCP for each project you are collecting data for. Pre-built Resources are derived from this dataset. 
+                                        
+                                        - [Metrics](/workspace/${local.workspace_id}/dataset/event/Metrics-${local.metrics})  - This shows incoming data of all metrics you are collecting from GCP for each project you are collecting data for. Pre-built Resources metrics are derived from this dataset. 
+                                        
+                                        - [Logs](/workspace/${local.workspace_id}/dataset/event/Logs-${local.logs}) - This shows incoming log data for all logs you are collecting from GCP for each project you are collecting data for. Pre-built Resources logs are derived from this dataset.
+                                                                                                                                                                                                        
                                     EOT
-                  title    = "Untitled Text"
+
+                  title = "Untitled Text"
                 }
                 layout = {
                   h           = 23
@@ -795,19 +796,19 @@ resource "observe_dashboard" "app_home" {
                   id       = "card-54zkyeh9"
                   text     = <<-EOT
                                         ### Pre-built Content
-                                                                                
-                                        - [CloudFunction Resources](/workspace/41028406/dataset/resource/Cloud-Functions-Instances-${local.cloud_functions_instances}) - Cloud Function Resource dataset that GraphLinks to metrics and logs. 
-                                                                                
-                                        - [CloudSQL Resources](/workspace/41028406/dataset/resource/Cloud-SQL-Instance-${local.cloud_sql_instance}) - CloudSQL Resource dataset that GraphLinks to metrics and logs. 
-                                                                                
-                                        - [Compute Resources](/workspace/41028406/dataset/resource/Compute-Instance-${local.compute_instance}) - Compute Resource dataset that GraphLinks to metrics and logs. 
-                                                                                
-                                        - [GKE Resources](/workspace/41028406/dataset/resource/GKE-Cluster-41406052) - Google Kubernetes Engine Resource dataset that GraphLinks to compute resources and Kubernetes App resources.
                                         
-                                        - [LoadBalancing Resources](/workspace/41028406/dataset/resource/Load-Balancing-Load-Balancers-41406013) - Load Balancer Resource dataset that GraphLinks to metrics and logs.
-                                                                                
-                                        - [Storage Resources](/workspace/41028406/dataset/resource/Storage-Buckets-${local.storage_buckets}) - Storage Bucket Resource dataset that GraphLinks to metrics and logs.
-                                                                                                                                                                                                                                                                                                                                                                                            
+                                        ${local.enable_service_cloudfunctions == true ? "- [CloudFunction Resources](/workspace/${local.workspace_id}/dataset/resource/Cloud-Functions-Instances-${one(module.cloudfunctions[*].function.id)}) - Cloud Function Resource dataset that GraphLinks to metrics and logs." : ""} 
+                                        
+                                        ${local.enable_service_cloudsql == true ? "- [CloudSQL Resources](/workspace/${local.workspace_id}/dataset/resource/Cloud-SQL-Instance-${one(module.cloudsql[*].cloudsql.id)}) - CloudSQL Resource dataset that GraphLinks to metrics and logs." : ""} 
+                                        
+                                        ${local.enable_service_compute == true ? "- [Compute Resources](/workspace/${local.workspace_id}/dataset/resource/Compute-Instance-${one(module.compute[*].compute.id)}) - Compute Resource dataset that GraphLinks to metrics and logs." : ""} 
+                                        
+                                        ${local.enable_service_gke == true ? "- [GKE Resources](/workspace/${local.workspace_id}/dataset/resource/GKE-Cluster-${one(module.gke[*].gke_cluster.id)}) - Google Kubernetes Engine Resource dataset that GraphLinks to compute resources and Kubernetes App resources." : ""}
+
+                                        ${local.enable_service_load_balancing == true ? "- [LoadBalancing Resources](/workspace/${local.workspace_id}/dataset/resource/Load-Balancing-Load-Balancers-${one(module.load_balancing[*].load_balancers.id)}) - Load Balancer Resource dataset that GraphLinks to metrics and logs." : ""}
+                                        
+                                        ${local.enable_service_storage == true ? "- [Storage Resources](/workspace/${local.workspace_id}/dataset/resource/Storage-Buckets-${one(module.storage[*].storage.id)}) - Storage Bucket Resource dataset that GraphLinks to metrics and logs." : ""}
+                                                                                                                                                                                                                                                                                                                                                                                      
                                     EOT
                   title    = "Untitled Text"
                 }
