@@ -1,6 +1,7 @@
 
 # terraform import observe_dashboard.resource_monitoring 41160336
 resource "observe_dashboard" "resource_monitoring" {
+  description = "Counts of resources by type"
   layout = jsonencode(
     {
       gridLayout = {
