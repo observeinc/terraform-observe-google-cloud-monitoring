@@ -1,5 +1,5 @@
 
-# terraform import observe_dashboard.app_home 41345249
+# terraform import observe_dashboard.app_home 41406070
 resource "observe_dashboard" "app_home" {
   layout = jsonencode(
     {
@@ -64,7 +64,7 @@ resource "observe_dashboard" "app_home" {
                   cardType = "image"
                   id       = "card-gladzlhh"
                   title    = "Untitled Image"
-                  url      = "https://pbs.twimg.com/profile_images/1190319303041724417/1a61e4pu_400x400.jpg"
+                  url      = "https://assets.observeinc.com/icons/apps/terraform-observe-google/gcp-icon.jpg"
                 }
                 layout = {
                   h           = 10
@@ -345,7 +345,7 @@ resource "observe_dashboard" "app_home" {
           {
             card = {
               cardType = "section"
-              closed   = false
+              closed   = true
               id       = "section-xabigv27"
               title    = "Buckets"
             }
@@ -391,7 +391,7 @@ resource "observe_dashboard" "app_home" {
           {
             card = {
               cardType = "section"
-              closed   = false
+              closed   = true
               id       = "section-4t24imlt"
               title    = "Cloud Functions"
             }
@@ -411,7 +411,7 @@ resource "observe_dashboard" "app_home" {
                   static      = false
                   w           = 6
                   x           = 0
-                  y           = 0
+                  y           = 65
                 }
               },
               {
@@ -429,7 +429,7 @@ resource "observe_dashboard" "app_home" {
                   static      = false
                   w           = 6
                   x           = 6
-                  y           = 0
+                  y           = 65
                 }
               },
               {
@@ -447,7 +447,7 @@ resource "observe_dashboard" "app_home" {
                   static      = false
                   w           = 6
                   x           = 0
-                  y           = 13
+                  y           = 78
                 }
               },
               {
@@ -465,7 +465,7 @@ resource "observe_dashboard" "app_home" {
                   static      = false
                   w           = 6
                   x           = 6
-                  y           = 13
+                  y           = 78
                 }
               },
             ]
@@ -473,7 +473,7 @@ resource "observe_dashboard" "app_home" {
           {
             card = {
               cardType = "section"
-              closed   = false
+              closed   = true
               id       = "section-pcq251y3"
               title    = "Cloud SQL"
             }
@@ -493,7 +493,7 @@ resource "observe_dashboard" "app_home" {
                   static      = false
                   w           = 6
                   x           = 0
-                  y           = 0
+                  y           = 67
                 }
               },
               {
@@ -511,7 +511,7 @@ resource "observe_dashboard" "app_home" {
                   static      = false
                   w           = 6
                   x           = 6
-                  y           = 0
+                  y           = 67
                 }
               },
               {
@@ -529,7 +529,7 @@ resource "observe_dashboard" "app_home" {
                   static      = false
                   w           = 6
                   x           = 0
-                  y           = 14
+                  y           = 81
                 }
               },
               {
@@ -547,7 +547,7 @@ resource "observe_dashboard" "app_home" {
                   static      = false
                   w           = 6
                   x           = 6
-                  y           = 14
+                  y           = 81
                 }
               },
             ]
@@ -555,7 +555,7 @@ resource "observe_dashboard" "app_home" {
           {
             card = {
               cardType = "section"
-              closed   = false
+              closed   = true
               id       = "section-dvtkmkku"
               title    = "Services Enabled"
             }
@@ -575,7 +575,7 @@ resource "observe_dashboard" "app_home" {
                   static      = false
                   w           = 6
                   x           = 0
-                  y           = 0
+                  y           = 69
                 }
               },
               {
@@ -593,7 +593,7 @@ resource "observe_dashboard" "app_home" {
                   static      = false
                   w           = 6
                   x           = 6
-                  y           = 0
+                  y           = 69
                 }
               },
               {
@@ -611,7 +611,7 @@ resource "observe_dashboard" "app_home" {
                   static      = false
                   w           = 12
                   x           = 0
-                  y           = 17
+                  y           = 86
                 }
               },
               {
@@ -632,7 +632,7 @@ resource "observe_dashboard" "app_home" {
                   static = false
                   w      = 4
                   x      = 0
-                  y      = 32
+                  y      = 101
                 }
               },
               {
@@ -650,7 +650,7 @@ resource "observe_dashboard" "app_home" {
                   static      = false
                   w           = 12
                   x           = 0
-                  y           = 36
+                  y           = 105
                 }
               },
             ]
@@ -658,7 +658,7 @@ resource "observe_dashboard" "app_home" {
           {
             card = {
               cardType = "section"
-              closed   = false
+              closed   = true
               id       = "card-zkjpi0f3"
               title    = "Inventory"
             }
@@ -678,7 +678,7 @@ resource "observe_dashboard" "app_home" {
                   static      = false
                   w           = 12
                   x           = 0
-                  y           = 0
+                  y           = 71
                 }
               },
               {
@@ -699,7 +699,7 @@ resource "observe_dashboard" "app_home" {
                   static = false
                   w      = 4
                   x      = 0
-                  y      = 21
+                  y      = 92
                 }
               },
               {
@@ -717,7 +717,7 @@ resource "observe_dashboard" "app_home" {
                   static      = false
                   w           = 12
                   x           = 0
-                  y           = 25
+                  y           = 96
                 }
               },
             ]
@@ -736,15 +736,15 @@ resource "observe_dashboard" "app_home" {
                   id       = "card-bsfempw3"
                   text     = <<-EOT
                                         ### Base Datasets
-                                        
-                                        - [Datastream](workspace/${local.workspace_id}/dataset/event/${local.datastream_name}-${local.datastream_dataset_id}) - All other pre-built data sets for the GCP application are derived from here.
-                                        
-                                        - [Asset Inventory](/workspace/${local.workspace_id}/dataset/event/Asset-Inventory-Records-${local.asset_inventory})  - This shows a list of all GCP for each project you are collecting data for. Pre-built Resources are derived from this dataset. 
-                                        
-                                        - [Metrics](/workspace/${local.workspace_id}/dataset/event/Metrics-${local.metrics})  - This shows incoming data of all metrics you are collecting from GCP for each project you are collecting data for. Pre-built Resources metrics are derived from this dataset. 
-                                        
-                                        - [Logs](/workspace/${local.workspace_id}/dataset/event/Logs-${local.logs}) - This shows incoming log data for all logs you are collecting from GCP for each project you are collecting data for. Pre-built Resources logs are derived from this dataset.
-                                                                                                                                                                                                        
+                                                                                
+                                        - [Datastream](workspace/41028406/dataset/event/datastream-41272322) - All other pre-built data sets for the GCP application are derived from here.
+                                                                                
+                                        - [Asset Inventory](/workspace/41028406/dataset/event/Asset-Inventory-Records-41387202)  - This shows a list of all GCP for each project you are collecting data for. Pre-built Resources are derived from this dataset. 
+                                                                                
+                                        - [Metrics](/workspace/41028406/dataset/event/Metrics-${local.metrics})  - This shows incoming data of all metrics you are collecting from GCP for each project you are collecting data for. Pre-built Resources metrics are derived from this dataset. 
+                                                                                
+                                        - [Logs](/workspace/41028406/dataset/event/Logs-41387197) - This shows incoming log data for all logs you are collecting from GCP for each project you are collecting data for. Pre-built Resources logs are derived from this dataset.
+                                                                                                                                                                                                                                                
                                     EOT
                   title    = "Untitled Text"
                 }
@@ -757,7 +757,7 @@ resource "observe_dashboard" "app_home" {
                   static      = false
                   w           = 5
                   x           = 7
-                  y           = 0
+                  y           = 73
                 }
               },
               {
@@ -766,12 +766,12 @@ resource "observe_dashboard" "app_home" {
                   id       = "card-vg4gqfkn"
                   text     = <<-EOT
                                         # Google Cloud Platform Application
-                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                        
                                         See Inventory section for count of resources within your monitored projects and metrics being collected.
-                                                                                                                                                                                                                                                
-                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                        
                                         - [Observe GCP Documentation](https://docs.observeinc.com/en/latest/content/integrations/gcp/gcp.html)
-                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                        
                                         - [Google Metrics Documentation](https://cloud.google.com/monitoring/api/metrics_gcp)
                                     EOT
                   title    = "Untitled Text"
@@ -785,7 +785,7 @@ resource "observe_dashboard" "app_home" {
                   static      = false
                   w           = 7
                   x           = 0
-                  y           = 0
+                  y           = 73
                 }
               },
               {
@@ -794,19 +794,19 @@ resource "observe_dashboard" "app_home" {
                   id       = "card-54zkyeh9"
                   text     = <<-EOT
                                         ### Pre-built Content
+                                                                                
+                                        - [CloudFunction Resources](/workspace/41028406/dataset/resource/Cloud-Functions-Instances-${local.cloud_functions_instances}) - Cloud Function Resource dataset that GraphLinks to metrics and logs. 
+                                                                                
+                                        - [CloudSQL Resources](/workspace/41028406/dataset/resource/Cloud-SQL-Instance-${local.cloud_sql_instance}) - CloudSQL Resource dataset that GraphLinks to metrics and logs. 
+                                                                                
+                                        - [Compute Resources](/workspace/41028406/dataset/resource/Compute-Instance-${local.compute_instance}) - Compute Resource dataset that GraphLinks to metrics and logs. 
+                                                                                
+                                        - [GKE Resources](/workspace/41028406/dataset/resource/GKE-Cluster-41406052) - Google Kubernetes Engine Resource dataset that GraphLinks to compute resources and Kubernetes App resources.
                                         
-                                        ${local.enable_service_cloudfunctions == true ? "- [CloudFunction Resources](/workspace/${local.workspace_id}/dataset/resource/Cloud-Functions-Instances-${one(module.cloudfunctions[*].function.id)}) - Cloud Function Resource dataset that GraphLinks to metrics and logs." : ""} 
-                                        
-                                        ${local.enable_service_cloudsql == true ? "- [CloudSQL Resources](/workspace/${local.workspace_id}/dataset/resource/Cloud-SQL-Instance-${one(module.cloudsql[*].cloudsql.id)}) - CloudSQL Resource dataset that GraphLinks to metrics and logs." : ""} 
-                                        
-                                        ${local.enable_service_compute == true ? "- [Compute Resources](/workspace/${local.workspace_id}/dataset/resource/Compute-Instance-${one(module.compute[*].compute.id)}) - Compute Resource dataset that GraphLinks to metrics and logs." : ""} 
-                                        
-                                        ${local.enable_service_gke == true ? "- [GKE Resources](/workspace/${local.workspace_id}/dataset/resource/GKE-Cluster-${one(module.gke[*].gke_cluster.id)}) - Google Kubernetes Engine Resource dataset that GraphLinks to compute resources and Kubernetes App resources." : ""}
-
-                                        ${local.enable_service_load_balancing == true ? "- [LoadBalancing Resources](/workspace/${local.workspace_id}/dataset/resource/Load-Balancing-Load-Balancers-${one(module.load_balancing[*].load_balancers.id)}) - Load Balancer Resource dataset that GraphLinks to metrics and logs." : ""}
-                                        
-                                        ${local.enable_service_storage == true ? "- [Storage Resources](/workspace/${local.workspace_id}/dataset/resource/Storage-Buckets-${one(module.storage[*].storage.id)}) - Storage Bucket Resource dataset that GraphLinks to metrics and logs." : ""}
-                                                                                                                                                                                                                                                                                                                                                    
+                                        - [LoadBalancing Resources](/workspace/41028406/dataset/resource/Load-Balancing-Load-Balancers-41406013) - Load Balancer Resource dataset that GraphLinks to metrics and logs.
+                                                                                
+                                        - [Storage Resources](/workspace/41028406/dataset/resource/Storage-Buckets-${local.storage_buckets}) - Storage Bucket Resource dataset that GraphLinks to metrics and logs.
+                                                                                                                                                                                                                                                                                                                                                                                            
                                     EOT
                   title    = "Untitled Text"
                 }
@@ -819,11 +819,11 @@ resource "observe_dashboard" "app_home" {
                   static      = false
                   w           = 7
                   x           = 0
-                  y           = 10
+                  y           = 83
                 }
               },
             ]
-            lastModified = 1668101656657
+            lastModified = 1669736107985
           },
         ]
       }
@@ -884,7 +884,7 @@ resource "observe_dashboard" "app_home" {
         ]
         selectedStageId = "stage-fgwg2rh6"
         timeRange = {
-          display               = "Today 08:34:03 - 09:34:03"
+          display               = "Past 60 minutes"
           endTime               = null
           millisFromCurrentTime = 3600000
           originalDisplay       = "Past 60 minutes"
@@ -1134,7 +1134,7 @@ resource "observe_dashboard" "app_home" {
             disableFixedLeftColumns     = false
             eventLinkColumnId           = null
             fetchPageSize               = 100
-            hasCalculatedColumnWidths   = true
+            hasCalculatedColumnWidths   = false
             hasDoneAutoLayout           = false
             maxColumnWidth              = 400
             maxMeasuredColumnWidth      = {}
@@ -1966,7 +1966,7 @@ resource "observe_dashboard" "app_home" {
             disableFixedLeftColumns     = false
             eventLinkColumnId           = null
             fetchPageSize               = 100
-            hasCalculatedColumnWidths   = true
+            hasCalculatedColumnWidths   = false
             hasDoneAutoLayout           = false
             maxColumnWidth              = 400
             maxMeasuredColumnWidth      = {}
@@ -1979,18 +1979,12 @@ resource "observe_dashboard" "app_home" {
             scrollToColumn              = null
             scrollToRow                 = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
             shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
@@ -2192,7 +2186,7 @@ resource "observe_dashboard" "app_home" {
             disableFixedLeftColumns     = false
             eventLinkColumnId           = null
             fetchPageSize               = 100
-            hasCalculatedColumnWidths   = true
+            hasCalculatedColumnWidths   = false
             hasDoneAutoLayout           = false
             maxColumnWidth              = 400
             maxMeasuredColumnWidth      = {}
@@ -2650,18 +2644,12 @@ resource "observe_dashboard" "app_home" {
             scrollToColumn              = null
             scrollToRow                 = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
             shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
@@ -5364,9 +5352,9 @@ resource "observe_dashboard" "app_home" {
           viewModel = {
             consoleValue = <<-EOT
                             filter is_null(deleted)
-                                                                                                                                            
+                                                                                                                                                                        
                             exists project_id = @projects.project_id
-                                                                                                                                            
+                                                                                                                                                                        
                             ever asset_type = "container.googleapis.com/Cluster"
                         EOT
             railCollapseState = {
@@ -5971,9 +5959,9 @@ resource "observe_dashboard" "app_home" {
           viewModel = {
             consoleValue = <<-EOT
                             filter is_null(deleted)
-                                                                                                                                            
+                                                                                                                                                                        
                             exists project_id = @projects.project_id
-                                                                                                                                            
+                                                                                                                                                                        
                             ever asset_type = "pubsub.googleapis.com/Topic"
                         EOT
             railCollapseState = {
@@ -7427,7 +7415,7 @@ resource "observe_dashboard" "app_home" {
             disableFixedLeftColumns     = false
             eventLinkColumnId           = null
             fetchPageSize               = 100
-            hasCalculatedColumnWidths   = true
+            hasCalculatedColumnWidths   = false
             hasDoneAutoLayout           = false
             maxColumnWidth              = 400
             maxMeasuredColumnWidth      = {}
@@ -7689,7 +7677,7 @@ resource "observe_dashboard" "app_home" {
             disableFixedLeftColumns     = false
             eventLinkColumnId           = null
             fetchPageSize               = 100
-            hasCalculatedColumnWidths   = true
+            hasCalculatedColumnWidths   = false
             hasDoneAutoLayout           = false
             maxColumnWidth              = 400
             maxMeasuredColumnWidth      = {}
@@ -7908,7 +7896,7 @@ resource "observe_dashboard" "app_home" {
             disableFixedLeftColumns     = false
             eventLinkColumnId           = null
             fetchPageSize               = 100
-            hasCalculatedColumnWidths   = true
+            hasCalculatedColumnWidths   = false
             hasDoneAutoLayout           = false
             maxColumnWidth              = 400
             maxMeasuredColumnWidth      = {}
@@ -10275,18 +10263,12 @@ resource "observe_dashboard" "app_home" {
             scrollToColumn              = null
             scrollToRow                 = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
             shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
