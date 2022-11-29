@@ -1,6 +1,7 @@
 
 # terraform import observe_dashboard.app_home 41406070
 resource "observe_dashboard" "app_home" {
+  description = "Starting point for monitoring GCP resources"
   layout = jsonencode(
     {
       autoPack = true

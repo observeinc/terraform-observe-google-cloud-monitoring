@@ -1,5 +1,6 @@
 # terraform import observe_dashboard.pubsub_pubsub_service_input2 41257303
 resource "observe_dashboard" "pubsub_pubsub_service_input2" {
+  description = "Dashboard for monitoring service usage"
   layout = jsonencode(
     {
       gridLayout = {

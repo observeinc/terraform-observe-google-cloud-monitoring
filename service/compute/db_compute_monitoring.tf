@@ -1,7 +1,8 @@
 
 # terraform import observe_dashboard.compute_monitoring_ 41145293
 resource "observe_dashboard" "compute_monitoring" {
-  count = local.enable_metrics ? 1 : 0
+  description = "Dashboard for monitoring Compute resources"
+  count       = local.enable_metrics ? 1 : 0
   layout = jsonencode(
     {
       gridLayout = {
@@ -1611,17 +1612,17 @@ resource "observe_dashboard" "compute_monitoring" {
             {
               columnStatsTable = {
                 columnFunctions = {
-                  cpuPlatform   = "count"
-                  deleted       = "count"
-                  instance_id   = "count"
-                  computeInstanceAssetKey  = "count"
-                  instance_name = "count"
-                  machineType   = "count"
-                  project_id    = "count"
-                  region        = "count"
-                  status        = "count"
-                  ttl           = "count"
-                  zone          = "count"
+                  cpuPlatform             = "count"
+                  deleted                 = "count"
+                  instance_id             = "count"
+                  computeInstanceAssetKey = "count"
+                  instance_name           = "count"
+                  machineType             = "count"
+                  project_id              = "count"
+                  region                  = "count"
+                  status                  = "count"
+                  ttl                     = "count"
+                  zone                    = "count"
                 }
                 datasetQueryId = {
                   ignoreCompress = false
@@ -1661,17 +1662,17 @@ resource "observe_dashboard" "compute_monitoring" {
             {
               columnStatsTable = {
                 columnFunctions = {
-                  cpuPlatform   = "count"
-                  deleted       = "count"
-                  instance_id   = "count"
-                  computeInstanceAssetKey  = "count"
-                  instance_name = "count"
-                  machineType   = "count"
-                  project_id    = "count"
-                  region        = "count"
-                  status        = "count"
-                  ttl           = "count"
-                  zone          = "count"
+                  cpuPlatform             = "count"
+                  deleted                 = "count"
+                  instance_id             = "count"
+                  computeInstanceAssetKey = "count"
+                  instance_name           = "count"
+                  machineType             = "count"
+                  project_id              = "count"
+                  region                  = "count"
+                  status                  = "count"
+                  ttl                     = "count"
+                  zone                    = "count"
                 }
                 datasetQueryId = {
                   ignoreCompress = false
@@ -2747,9 +2748,9 @@ resource "observe_dashboard" "compute_monitoring" {
               _c_bucket = true
             }
             columnWidths = {
-              computeInstanceAssetKey    = 185
-              metric_category = 180
-              metric_type     = 193
+              computeInstanceAssetKey = 185
+              metric_category         = 180
+              metric_type             = 193
             }
             containerWidth              = 1313
             contextMenuXCoord           = null
@@ -2893,7 +2894,7 @@ resource "observe_dashboard" "compute_monitoring" {
               columnStatsTable = {
                 columnFunctions = {
                   computeInstanceAssetKey = "count"
-                  value        = "count"
+                  value                   = "count"
                 }
                 datasetQueryId = {
                   ignoreCompress = false
@@ -4277,26 +4278,26 @@ resource "observe_dashboard" "compute_monitoring" {
             {
               columnStatsTable = {
                 columnFunctions = {
-                  cpuPlatform        = "count"
-                  creationTime       = "count"
-                  deleted            = "count"
-                  deletionProtection = "count"
-                  instanceGroupAssetKey     = "count"
-                  instance_id        = "count"
-                  computeInstanceAssetKey       = "count"
-                  instance_name      = "count"
-                  labels             = "count"
-                  machineType        = "count"
-                  network            = "count"
-                  networkIP          = "count"
-                  project_id         = "count"
-                  publicIP           = "count"
-                  region             = "count"
-                  status             = "count"
-                  subnetwork         = "count"
-                  tags               = "count"
-                  ttl                = "count"
-                  zone               = "count"
+                  cpuPlatform             = "count"
+                  creationTime            = "count"
+                  deleted                 = "count"
+                  deletionProtection      = "count"
+                  instanceGroupAssetKey   = "count"
+                  instance_id             = "count"
+                  computeInstanceAssetKey = "count"
+                  instance_name           = "count"
+                  labels                  = "count"
+                  machineType             = "count"
+                  network                 = "count"
+                  networkIP               = "count"
+                  project_id              = "count"
+                  publicIP                = "count"
+                  region                  = "count"
+                  status                  = "count"
+                  subnetwork              = "count"
+                  tags                    = "count"
+                  ttl                     = "count"
+                  zone                    = "count"
                 }
                 datasetQueryId = {
                   ignoreCompress = false
@@ -4495,26 +4496,26 @@ resource "observe_dashboard" "compute_monitoring" {
             {
               columnStatsTable = {
                 columnFunctions = {
-                  cpuPlatform        = "count"
-                  creationTime       = "count"
-                  deleted            = "count"
-                  deletionProtection = "count"
-                  instanceGroupAssetKey     = "count"
-                  instance_id        = "count"
-                  computeInstanceAssetKey       = "count"
-                  instance_name      = "count"
-                  labels             = "count"
-                  machineType        = "count"
-                  network            = "count"
-                  networkIP          = "count"
-                  project_id         = "count"
-                  publicIP           = "count"
-                  region             = "count"
-                  status             = "count"
-                  subnetwork         = "count"
-                  tags               = "count"
-                  ttl                = "count"
-                  zone               = "count"
+                  cpuPlatform             = "count"
+                  creationTime            = "count"
+                  deleted                 = "count"
+                  deletionProtection      = "count"
+                  instanceGroupAssetKey   = "count"
+                  instance_id             = "count"
+                  computeInstanceAssetKey = "count"
+                  instance_name           = "count"
+                  labels                  = "count"
+                  machineType             = "count"
+                  network                 = "count"
+                  networkIP               = "count"
+                  project_id              = "count"
+                  publicIP                = "count"
+                  region                  = "count"
+                  status                  = "count"
+                  subnetwork              = "count"
+                  tags                    = "count"
+                  ttl                     = "count"
+                  zone                    = "count"
                 }
                 datasetQueryId = {
                   ignoreCompress = false

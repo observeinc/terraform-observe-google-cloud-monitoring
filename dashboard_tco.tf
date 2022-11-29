@@ -4,6 +4,7 @@ locals {
 }
 # terraform import observe_dashboard.total_cost_of_ownership 41286602
 resource "observe_dashboard" "total_cost_of_ownership" {
+  count = local.enable_service_billing ? 1 : 0
   layout = jsonencode(
     {
       autoPack = true

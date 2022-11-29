@@ -1,8 +1,8 @@
 resource "observe_dataset" "bigquery_dataset" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Dataset")
-  freshness = var.freshness_duration_default
-
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Dataset")
+  freshness   = var.freshness_duration_default
+  description = "Information about Big Query datasets"
   inputs = {
     "events" = var.google.resource_asset_inventory_records.oid
   }
@@ -32,10 +32,10 @@ resource "observe_dataset" "bigquery_dataset" {
 }
 
 resource "observe_dataset" "bigquery_table" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Table")
-  freshness = var.freshness_duration_default
-
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Table")
+  freshness   = var.freshness_duration_default
+  description = "Resource dataset for Big Query tables"
   inputs = {
     "events" = var.google.resource_asset_inventory_records.oid
   }

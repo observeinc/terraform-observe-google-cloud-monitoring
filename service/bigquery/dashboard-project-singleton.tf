@@ -1,4 +1,5 @@
 resource "observe_dashboard" "bigquery_project_overview" {
+  description = "Overview dashboard for Big Query project"
   layout = jsonencode(
     {
       gridLayout = {
