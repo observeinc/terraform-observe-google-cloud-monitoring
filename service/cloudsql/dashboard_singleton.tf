@@ -1,5 +1,6 @@
 # terraform import observe_dashboard.cloud_sql_instance 41246467
 resource "observe_dashboard" "cloud_sql_instance" {
+  description = "Singleton dashboard for CloudSQL instance"
   layout = jsonencode(
     {
       gridLayout = {

@@ -9,7 +9,8 @@ locals {
 }
 # terraform import observe_dashboard.storage_monitoring_template 41148940
 resource "observe_dashboard" "storage_monitoring" {
-  count = local.enable_metrics ? 1 : 0
+  count       = local.enable_metrics ? 1 : 0
+  description = "Overview dashboard for Cloud Storage"
   layout = jsonencode(
     {
       gridLayout = {
