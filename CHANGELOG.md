@@ -1,3 +1,14 @@
+## [0.6.1](https://github.com/observeinc/terraform-observe-google/compare/v0.6.0...v0.6.1) (2022-11-29)
+
+
+### Bug Fixes
+
+* icon url ([#118](https://github.com/observeinc/terraform-observe-google/issues/118)) ([4a88a13](https://github.com/observeinc/terraform-observe-google/commit/4a88a137bca5f5574ac1edf2501b2a0f9f7bb1b8))
+* misc fixes related to con 524 ([#115](https://github.com/observeinc/terraform-observe-google/issues/115)) ([12c35be](https://github.com/observeinc/terraform-observe-google/commit/12c35be73017bce885f7d4829369ee5bf52ed22d))
+* updated GCP logo ([#117](https://github.com/observeinc/terraform-observe-google/issues/117)) ([76c2e80](https://github.com/observeinc/terraform-observe-google/commit/76c2e80667e0793266ab778b930b7e69e79b151a))
+
+
+
 # [0.6.0](https://github.com/observeinc/terraform-observe-google/compare/v0.5.1...v0.6.0) (2022-11-15)
 
 
