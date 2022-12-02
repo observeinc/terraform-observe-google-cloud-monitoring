@@ -41,9 +41,9 @@ resource "observe_dataset" "instance_group" {
         
       flatten_single instanceGroupUrls
 
-      extract_regex string(_c_instanceGroupUrls_value), /projects\/(?P<instance_group_base>.*)/
+      extract_regex string(_c_instanceGroupUrls_value), /projects\/(?P<instanceGroupAssetKey_base>.*)/
 
-      make_col instanceGroupManagerAssetKey: string_concat("//compute.googleapis.com/projects/",instance_group_base)
+      make_col instanceGroupManagerAssetKey: string_concat("//compute.googleapis.com/projects/",instanceGroupAssetKey_base)
       // ex - //compute.googleapis.com/projects/content-testpproj-stage-1/zones/us-west1-a/instanceGroups/gke-test-stg-gke-test-stg-gke-node-po-5cf533ca-grp
 
       make_resource 
@@ -55,7 +55,7 @@ resource "observe_dataset" "instance_group" {
 
   stage {
     input = "events"
-    # alias    = "instance_group_manager_base"
+    # alias    = "instanceGroupAssetKey_manager_base"
     pipeline = <<-EOF
       filter asset_type = "compute.googleapis.com/InstanceGroupManager"
 
@@ -75,18 +75,18 @@ resource "observe_dataset" "instance_group" {
           maxSurge:updatePolicy.maxSurge,
           maxUnavailable:updatePolicy.maxUnavailable
 
-      extract_regex instanceGroup, /projects\/(?P<instance_group_base>.*)/
+      extract_regex instanceGroup, /projects\/(?P<instanceGroupAssetKey_base>.*)/
 
       make_col instanceGroupManagerAssetKey: name
       
-      make_col instanceGroupAssetKey: string_concat("//compute.googleapis.com/projects/",instance_group_base)
+      make_col instanceGroupAssetKey: string_concat("//compute.googleapis.com/projects/",instanceGroupAssetKey_base)
       // ex - //compute.googleapis.com/projects/content-testpproj-stage-1/zones/us-west1-a/instanceGroups/gke-test-stg-gke-test-stg-gke-node-po-5cf533ca-grp
     EOF
   }
 
   stage {
-    # input    = "instance_group_manager_base"
-    alias    = "instance_group_manager"
+    # input    = "instanceGroupAssetKey_manager_base"
+    alias    = "instanceGroupAssetKey_manager"
     pipeline = <<-EOF
       make_resource 	
           project_id,
@@ -116,7 +116,7 @@ resource "observe_dataset" "instance_group" {
       make_col
         name:string(data.name), 
         description:string(data.description),
-        instance_group_id:string(data.id),
+        instanceGroupAssetKey_id:string(data.id),
         selfLink:string(data.selfLink),
         namedPorts:array(data.namedPorts),
         network:string(data.network),
@@ -132,20 +132,20 @@ resource "observe_dataset" "instance_group" {
   stage {
     pipeline = <<-EOF
 
-      leftjoin instanceGroupAssetKey=@instance_group_manager.instanceGroupAssetKey, 
-          igm_baseInstanceName:@instance_group_manager.baseInstanceName,
-          igm_creationTimestamp:@instance_group_manager.creationTimestamp,
-          igm_currentActions:@instance_group_manager.currentActions,
-          igm_status:@instance_group_manager.status,
-          igm_targetSize:@instance_group_manager.targetSize,
-          igm_updatePolicy:@instance_group_manager.updatePolicy,
-          igm_type:@instance_group_manager.type,
-          igm_replacementMethod:@instance_group_manager.replacementMethod,
-          igm_minimalAction: @instance_group_manager.minimalAction,
-          igm_maxSurge:@instance_group_manager.maxSurge,
-          igm_maxUnavailable:@instance_group_manager.maxUnavailable,
-          igm_versions:@instance_group_manager.versions,
-          igm_instanceGroupManagerAssetKey: @instance_group_manager.instanceGroupManagerAssetKey
+      leftjoin instanceGroupAssetKey=@instanceGroupAssetKey_manager.instanceGroupAssetKey, 
+          igm_baseInstanceName:@instanceGroupAssetKey_manager.baseInstanceName,
+          igm_creationTimestamp:@instanceGroupAssetKey_manager.creationTimestamp,
+          igm_currentActions:@instanceGroupAssetKey_manager.currentActions,
+          igm_status:@instanceGroupAssetKey_manager.status,
+          igm_targetSize:@instanceGroupAssetKey_manager.targetSize,
+          igm_updatePolicy:@instanceGroupAssetKey_manager.updatePolicy,
+          igm_type:@instanceGroupAssetKey_manager.type,
+          igm_replacementMethod:@instanceGroupAssetKey_manager.replacementMethod,
+          igm_minimalAction: @instanceGroupAssetKey_manager.minimalAction,
+          igm_maxSurge:@instanceGroupAssetKey_manager.maxSurge,
+          igm_maxUnavailable:@instanceGroupAssetKey_manager.maxUnavailable,
+          igm_versions:@instanceGroupAssetKey_manager.versions,
+          igm_instanceGroupManagerAssetKey: @instanceGroupAssetKey_manager.instanceGroupManagerAssetKey
 
        EOF
   }
@@ -171,7 +171,7 @@ resource "observe_dataset" "instance_group" {
         size,
         location,
         version,
-        instance_group_id,
+        instanceGroupAssetKey_id,
         gkeClusterAssetKey,
         igm_baseInstanceName,
         igm_creationTimestamp,

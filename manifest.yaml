@@ -2,4 +2,5 @@ name: GCP
 description: Track all of your resources across GCP services such as Compute Engine, Cloud Storage, Cloud Functions, and more.
 defaultfolder: gcp
 defaultdatastream: GCP
-iconurl: https://assets.observeinc.com/icons/apps/terraform-observe-google/gcp-logo.png
+iconurl: https://assets.observeinc.com/icons/apps/terraform-observe-google/gcp-icon.jpg
+

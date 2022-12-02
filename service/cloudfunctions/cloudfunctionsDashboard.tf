@@ -2947,9 +2947,10 @@ locals {
 }
 
 resource "observe_dashboard" "cloud_functions_monitoring_dashboard" {
-  layout     = local.cloud_functions_monitoring.layout
-  name       = format(var.name_format, "Monitoring")
-  parameters = local.cloud_functions_monitoring.parameters
-  stages     = local.cloud_functions_monitoring.stages
-  workspace  = var.workspace.oid
+  description = "Dashboard for monitoring Cloud Function resources"
+  layout      = local.cloud_functions_monitoring.layout
+  name        = format(var.name_format, "Monitoring")
+  parameters  = local.cloud_functions_monitoring.parameters
+  stages      = local.cloud_functions_monitoring.stages
+  workspace   = var.workspace.oid
 }

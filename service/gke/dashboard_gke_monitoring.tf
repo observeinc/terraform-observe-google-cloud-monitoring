@@ -7,6 +7,7 @@ locals {
 }
 # terraform import observe_dashboard.gke_monitoring 41294555
 resource "observe_dashboard" "gke_monitoring" {
+  description = "Dashboard for monitoring Google Kubernetes Engine resources"
   layout = jsonencode(
     {
       autoPack = true

@@ -168,7 +168,7 @@ resource "observe_preferred_path" "compute_instance_groups" {
   }
 }
 
-resource "observe_preferred_path" "instance_groups_compute_disk" {
+resource "observe_preferred_path" "instance_group_compute_disk" {
 
   workspace   = var.workspace.oid
   name        = local.use_name_format_in_preferred_path == true ? format(var.name_format, "Link to Disk ") : "Link to Disk "

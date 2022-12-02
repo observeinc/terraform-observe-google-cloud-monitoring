@@ -8,7 +8,8 @@ locals {
 }
 # terraform import observe_dashboard.load_balancing_monitoring_old_tf 41146438
 resource "observe_dashboard" "load_balancing_monitoring" {
-  count = local.enable_metrics ? 1 : 0
+  count       = local.enable_metrics ? 1 : 0
+  description = "Dashboard for monitoring Load Balancing resources"
   layout = jsonencode(
     {
       gridLayout = {

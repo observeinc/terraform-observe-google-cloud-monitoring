@@ -1,7 +1,8 @@
 
 # terraform import observe_dashboard.cloud_sql_monitoring 41145294
 resource "observe_dashboard" "cloud_sql_monitoring" {
-  count = local.enable_metrics ? 1 : 0
+  description = "Dashboard for monitoring Cloud SQL resources"
+  count       = local.enable_metrics ? 1 : 0
   layout = jsonencode(
     {
       gridLayout = {

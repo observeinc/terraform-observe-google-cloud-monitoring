@@ -19,7 +19,7 @@ resource "observe_dataset" "compute_logs_raw" {
 
       extract_regex  resourceName, /firewalls\/(?P<firewall_instance_name>.*)/
 
-      extract_regex  resourceName, /instanceGroups\/(?P<instance_group_instance_name>.*)/
+      extract_regex  resourceName, /instanceGroups\/(?P<instanceGroupAssetKey_instance_name>.*)/
 
       extract_regex  resourceName, /projects\/(?P<project_id>[^\/]+)/
       

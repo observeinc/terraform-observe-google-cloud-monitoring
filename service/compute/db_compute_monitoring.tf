@@ -1,7 +1,8 @@
 
 # terraform import observe_dashboard.compute_monitoring_ 41145293
 resource "observe_dashboard" "compute_monitoring" {
-  count = local.enable_metrics ? 1 : 0
+  description = "Dashboard for monitoring Compute resources"
+  count       = local.enable_metrics ? 1 : 0
   layout = jsonencode(
     {
       gridLayout = {
@@ -685,12 +686,12 @@ resource "observe_dashboard" "compute_monitoring" {
                 "pick_col ",
                 "\t@.\"Valid From\",",
                 "    @.\"Valid To\",",
-                "    instance_key,",
+                "    computeInstanceAssetKey,",
                 "    instance_name,",
                 "    status,",
                 "    machineType",
                 "    ",
-                "colshow instance_key: false",
+                "colshow computeInstanceAssetKey: false",
               ]
               queryPresentation = {}
               type              = "unknown"
@@ -715,12 +716,12 @@ resource "observe_dashboard" "compute_monitoring" {
                     pick_col 
                     	@."Valid From",
                         @."Valid To",
-                        instance_key,
+                        computeInstanceAssetKey,
                         instance_name,
                         status,
                         machineType
                         
-                    colshow instance_key: false
+                    colshow computeInstanceAssetKey: false
                 EOT
       },
       {
@@ -1611,17 +1612,17 @@ resource "observe_dashboard" "compute_monitoring" {
             {
               columnStatsTable = {
                 columnFunctions = {
-                  cpuPlatform   = "count"
-                  deleted       = "count"
-                  instance_id   = "count"
-                  instance_key  = "count"
-                  instance_name = "count"
-                  machineType   = "count"
-                  project_id    = "count"
-                  region        = "count"
-                  status        = "count"
-                  ttl           = "count"
-                  zone          = "count"
+                  cpuPlatform             = "count"
+                  deleted                 = "count"
+                  instance_id             = "count"
+                  computeInstanceAssetKey = "count"
+                  instance_name           = "count"
+                  machineType             = "count"
+                  project_id              = "count"
+                  region                  = "count"
+                  status                  = "count"
+                  ttl                     = "count"
+                  zone                    = "count"
                 }
                 datasetQueryId = {
                   ignoreCompress = false
@@ -1661,17 +1662,17 @@ resource "observe_dashboard" "compute_monitoring" {
             {
               columnStatsTable = {
                 columnFunctions = {
-                  cpuPlatform   = "count"
-                  deleted       = "count"
-                  instance_id   = "count"
-                  instance_key  = "count"
-                  instance_name = "count"
-                  machineType   = "count"
-                  project_id    = "count"
-                  region        = "count"
-                  status        = "count"
-                  ttl           = "count"
-                  zone          = "count"
+                  cpuPlatform             = "count"
+                  deleted                 = "count"
+                  instance_id             = "count"
+                  computeInstanceAssetKey = "count"
+                  instance_name           = "count"
+                  machineType             = "count"
+                  project_id              = "count"
+                  region                  = "count"
+                  status                  = "count"
+                  ttl                     = "count"
+                  zone                    = "count"
                 }
                 datasetQueryId = {
                   ignoreCompress = false
@@ -1708,21 +1709,21 @@ resource "observe_dashboard" "compute_monitoring" {
                 "pick_col ",
                 "\t@.\"Valid From\",",
                 "    @.\"Valid To\",",
-                "    instance_key,",
+                "    computeInstanceAssetKey,",
                 "    Status: status,",
                 "\tName: instance_name,",
                 "    Zone: zone,",
                 "    \"Creation Time\": creationTime,",
                 "    \"Deletion Protection\": deletionProtection,",
                 "    \"Machine Type\": machineType,",
-                "    \"In use by\": instance_group,",
+                "    \"In use by\": instanceGroupAssetKey,",
                 "    \"Internal IP\": networkIP,",
                 "    \"External IP\": publicIP,",
                 "    Network: network,",
                 "    \"Network Tags\": tags,",
                 "    Labels: labels",
                 "    ",
-                "colshow instance_key: false",
+                "colshow computeInstanceAssetKey: false",
               ]
               queryPresentation = {}
               type              = "unknown"
@@ -1747,21 +1748,21 @@ resource "observe_dashboard" "compute_monitoring" {
                     pick_col 
                     	@."Valid From",
                         @."Valid To",
-                        instance_key,
+                        computeInstanceAssetKey,
                         Status: status,
                     	Name: instance_name,
                         Zone: zone,
                         "Creation Time": creationTime,
                         "Deletion Protection": deletionProtection,
                         "Machine Type": machineType,
-                        "In use by": instance_group,
+                        "In use by": instanceGroupAssetKey,
                         "Internal IP": networkIP,
                         "External IP": publicIP,
                         Network: network,
                         "Network Tags": tags,
                         Labels: labels
                         
-                    colshow instance_key: false
+                    colshow computeInstanceAssetKey: false
                 EOT
       },
       {
@@ -1947,14 +1948,14 @@ resource "observe_dashboard" "compute_monitoring" {
                 "pick_col ",
                 "\t@.\"Valid From\",",
                 "    @.\"Valid To\",",
-                "    instance_key,",
+                "    computeInstanceAssetKey,",
                 "    Status: status,",
                 "\tName: instance_name,",
                 "    Zone: zone,",
                 "    \"Creation Time\": creationTime,",
                 "    \"Deletion Protection\": deletionProtection,",
                 "    \"Machine Type\": machineType,",
-                "    \"In use by\": instance_group,",
+                "    \"In use by\": instanceGroupAssetKey,",
                 "    \"Internal IP\": networkIP,",
                 "    \"External IP\": publicIP,",
                 "    Network: network,",
@@ -1962,7 +1963,7 @@ resource "observe_dashboard" "compute_monitoring" {
                 "    Labels: labels,",
                 "      label: \"Running Instances\"",
                 "    ",
-                "colshow instance_key: false",
+                "colshow computeInstanceAssetKey: false",
               ]
               queryPresentation = {}
               type              = "unknown"
@@ -1988,14 +1989,14 @@ resource "observe_dashboard" "compute_monitoring" {
                     pick_col 
                     	@."Valid From",
                         @."Valid To",
-                        instance_key,
+                        computeInstanceAssetKey,
                         Status: status,
                     	Name: instance_name,
                         Zone: zone,
                         "Creation Time": creationTime,
                         "Deletion Protection": deletionProtection,
                         "Machine Type": machineType,
-                        "In use by": instance_group,
+                        "In use by": instanceGroupAssetKey,
                         "Internal IP": networkIP,
                         "External IP": publicIP,
                         Network: network,
@@ -2003,7 +2004,7 @@ resource "observe_dashboard" "compute_monitoring" {
                         Labels: labels,
                           label: "Running Instances"
                         
-                    colshow instance_key: false
+                    colshow computeInstanceAssetKey: false
                 EOT
       },
       {
@@ -2188,14 +2189,14 @@ resource "observe_dashboard" "compute_monitoring" {
                 "pick_col ",
                 "\t@.\"Valid From\",",
                 "    @.\"Valid To\",",
-                "    instance_key,",
+                "    computeInstanceAssetKey,",
                 "    Status: status,",
                 "\tName: instance_name,",
                 "    Zone: zone,",
                 "    \"Creation Time\": creationTime,",
                 "    \"Deletion Protection\": deletionProtection,",
                 "    \"Machine Type\": machineType,",
-                "    \"In use by\": instance_group,",
+                "    \"In use by\": instanceGroupAssetKey,",
                 "    \"Internal IP\": networkIP,",
                 "    \"External IP\": publicIP,",
                 "    Network: network,",
@@ -2204,7 +2205,7 @@ resource "observe_dashboard" "compute_monitoring" {
                 "    exists: 1,",
                 "    label: \"Total Instances\"",
                 "    ",
-                "colshow instance_key: false",
+                "colshow computeInstanceAssetKey: false",
               ]
               queryPresentation = {}
               type              = "unknown"
@@ -2230,14 +2231,14 @@ resource "observe_dashboard" "compute_monitoring" {
                     pick_col 
                     	@."Valid From",
                         @."Valid To",
-                        instance_key,
+                        computeInstanceAssetKey,
                         Status: status,
                     	Name: instance_name,
                         Zone: zone,
                         "Creation Time": creationTime,
                         "Deletion Protection": deletionProtection,
                         "Machine Type": machineType,
-                        "In use by": instance_group,
+                        "In use by": instanceGroupAssetKey,
                         "Internal IP": networkIP,
                         "External IP": publicIP,
                         Network: network,
@@ -2246,7 +2247,7 @@ resource "observe_dashboard" "compute_monitoring" {
                         exists: 1,
                         label: "Total Instances"
                         
-                    colshow instance_key: false
+                    colshow computeInstanceAssetKey: false
                 EOT
       },
       {
@@ -2274,7 +2275,7 @@ resource "observe_dashboard" "compute_monitoring" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_key"
+              "0" = "computeInstanceAssetKey"
               "1" = "valid_from"
               "2" = "valid_to"
             }
@@ -2360,7 +2361,7 @@ resource "observe_dashboard" "compute_monitoring" {
                   table = {
                     groupFields = [
                       [
-                        "instance_key",
+                        "computeInstanceAssetKey",
                       ],
                     ]
                     statsBy = {
@@ -2448,8 +2449,8 @@ resource "observe_dashboard" "compute_monitoring" {
                 "filter metric = \"instance_disk_write_ops_count\"",
                 "",
                 "align 2m, frame(back: 1m), \"value\":avg(m(\"instance_disk_write_ops_count\"))",
-                "exists instance_key = @computeID.instance_key",
-                "aggregate \"value\":sum(@.\"value\"), group_by(instance_key)",
+                "exists computeInstanceAssetKey = @computeID.computeInstanceAssetKey",
+                "aggregate \"value\":sum(@.\"value\"), group_by(computeInstanceAssetKey)",
                 "topk 100",
               ]
               queryPresentation = {}
@@ -2477,8 +2478,8 @@ resource "observe_dashboard" "compute_monitoring" {
                     filter metric = "instance_disk_write_ops_count"
                     
                     align 2m, frame(back: 1m), "value":avg(m("instance_disk_write_ops_count"))
-                    exists instance_key = @computeID.instance_key
-                    aggregate "value":sum(@."value"), group_by(instance_key)
+                    exists computeInstanceAssetKey = @computeID.computeInstanceAssetKey
+                    aggregate "value":sum(@."value"), group_by(computeInstanceAssetKey)
                     topk 100
                 EOT
       },
@@ -2507,7 +2508,7 @@ resource "observe_dashboard" "compute_monitoring" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_key"
+              "0" = "computeInstanceAssetKey"
               "1" = "valid_from"
               "2" = "valid_to"
             }
@@ -2593,7 +2594,7 @@ resource "observe_dashboard" "compute_monitoring" {
                   table = {
                     groupFields = [
                       [
-                        "instance_key",
+                        "computeInstanceAssetKey",
                       ],
                     ]
                     statsBy = {
@@ -2681,8 +2682,8 @@ resource "observe_dashboard" "compute_monitoring" {
                 "filter metric = \"instance_disk_read_ops_count\"",
                 "",
                 "align 2m, frame(back: 1m), \"value\":avg(m(\"instance_disk_read_ops_count\"))",
-                "exists instance_key = @computeID.instance_key",
-                "aggregate \"value\":sum(@.\"value\"), group_by(instance_key)",
+                "exists computeInstanceAssetKey = @computeID.computeInstanceAssetKey",
+                "aggregate \"value\":sum(@.\"value\"), group_by(computeInstanceAssetKey)",
                 "topk 100",
               ]
               queryPresentation = {}
@@ -2710,8 +2711,8 @@ resource "observe_dashboard" "compute_monitoring" {
                     filter metric = "instance_disk_read_ops_count"
                     
                     align 2m, frame(back: 1m), "value":avg(m("instance_disk_read_ops_count"))
-                    exists instance_key = @computeID.instance_key
-                    aggregate "value":sum(@."value"), group_by(instance_key)
+                    exists computeInstanceAssetKey = @computeID.computeInstanceAssetKey
+                    aggregate "value":sum(@."value"), group_by(computeInstanceAssetKey)
                     topk 100
                 EOT
       },
@@ -2747,9 +2748,9 @@ resource "observe_dashboard" "compute_monitoring" {
               _c_bucket = true
             }
             columnWidths = {
-              instance_key    = 185
-              metric_category = 180
-              metric_type     = 193
+              computeInstanceAssetKey = 185
+              metric_category         = 180
+              metric_type             = 193
             }
             containerWidth              = 1313
             contextMenuXCoord           = null
@@ -2829,7 +2830,7 @@ resource "observe_dashboard" "compute_monitoring" {
                 source = {
                   table = {
                     groupFields = [
-                      "instance_key",
+                      "computeInstanceAssetKey",
                     ]
                     statsBy       = {}
                     timechart     = {}
@@ -2892,8 +2893,8 @@ resource "observe_dashboard" "compute_monitoring" {
             {
               columnStatsTable = {
                 columnFunctions = {
-                  instance_key = "count"
-                  value        = "count"
+                  computeInstanceAssetKey = "count"
+                  value                   = "count"
                 }
                 datasetQueryId = {
                   ignoreCompress = false
@@ -2930,8 +2931,8 @@ resource "observe_dashboard" "compute_monitoring" {
                 "filter metric_category = \"cpu\"",
                 "filter metric = \"instance_cpu_utilization\"",
                 "align 2m, frame(back: 1m), \"value\":avg(m(string(\"instance_cpu_utilization\")))",
-                "exists instance_key = @computeID.instance_key",
-                "aggregate \"value\":sum(@.\"value\"), group_by(instance_key)",
+                "exists computeInstanceAssetKey = @computeID.computeInstanceAssetKey",
+                "aggregate \"value\":sum(@.\"value\"), group_by(computeInstanceAssetKey)",
                 "topk 100",
               ]
               queryPresentation = {}
@@ -2957,8 +2958,8 @@ resource "observe_dashboard" "compute_monitoring" {
                     filter metric_category = "cpu"
                     filter metric = "instance_cpu_utilization"
                     align 2m, frame(back: 1m), "value":avg(m(string("instance_cpu_utilization")))
-                    exists instance_key = @computeID.instance_key
-                    aggregate "value":sum(@."value"), group_by(instance_key)
+                    exists computeInstanceAssetKey = @computeID.computeInstanceAssetKey
+                    aggregate "value":sum(@."value"), group_by(computeInstanceAssetKey)
                     topk 100
                 EOT
       },
@@ -2987,7 +2988,7 @@ resource "observe_dashboard" "compute_monitoring" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_key"
+              "0" = "computeInstanceAssetKey"
               "1" = "valid_from"
               "2" = "valid_to"
             }
@@ -3073,7 +3074,7 @@ resource "observe_dashboard" "compute_monitoring" {
                 source = {
                   table = {
                     groupFields = [
-                      "instance_key",
+                      "computeInstanceAssetKey",
                     ]
                     statsBy = {
                       fn = "avg"
@@ -3174,8 +3175,8 @@ resource "observe_dashboard" "compute_monitoring" {
                 "filter metric = \"instance_disk_throttled_read_ops_count\"",
                 "",
                 "align 2m, frame(back: 1m), \"value\":avg(m(\"instance_disk_throttled_read_ops_count\"))",
-                "exists instance_key = @computeID.instance_key",
-                "aggregate \"value\":sum(@.\"value\"), group_by(instance_key)",
+                "exists computeInstanceAssetKey = @computeID.computeInstanceAssetKey",
+                "aggregate \"value\":sum(@.\"value\"), group_by(computeInstanceAssetKey)",
                 "topk 100",
               ]
               queryPresentation = {}
@@ -3203,8 +3204,8 @@ resource "observe_dashboard" "compute_monitoring" {
                     filter metric = "instance_disk_throttled_read_ops_count"
                     
                     align 2m, frame(back: 1m), "value":avg(m("instance_disk_throttled_read_ops_count"))
-                    exists instance_key = @computeID.instance_key
-                    aggregate "value":sum(@."value"), group_by(instance_key)
+                    exists computeInstanceAssetKey = @computeID.computeInstanceAssetKey
+                    aggregate "value":sum(@."value"), group_by(computeInstanceAssetKey)
                     topk 100
                 EOT
       },
@@ -3233,7 +3234,7 @@ resource "observe_dashboard" "compute_monitoring" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_key"
+              "0" = "computeInstanceAssetKey"
               "1" = "valid_from"
               "2" = "valid_to"
             }
@@ -3319,7 +3320,7 @@ resource "observe_dashboard" "compute_monitoring" {
                 source = {
                   table = {
                     groupFields = [
-                      "instance_key",
+                      "computeInstanceAssetKey",
                     ]
                     statsBy = {
                       fn = "avg"
@@ -3420,8 +3421,8 @@ resource "observe_dashboard" "compute_monitoring" {
                 "filter metric = \"instance_disk_throttled_write_ops_count\"",
                 "",
                 "align 2m, frame(back: 1m), \"value\":avg(m(\"instance_disk_throttled_write_ops_count\"))",
-                "exists instance_key = @computeID.instance_key",
-                "aggregate \"value\":sum(@.\"value\"), group_by(instance_key)",
+                "exists computeInstanceAssetKey = @computeID.computeInstanceAssetKey",
+                "aggregate \"value\":sum(@.\"value\"), group_by(computeInstanceAssetKey)",
                 "topk 100",
               ]
               queryPresentation = {}
@@ -3449,8 +3450,8 @@ resource "observe_dashboard" "compute_monitoring" {
                     filter metric = "instance_disk_throttled_write_ops_count"
                     
                     align 2m, frame(back: 1m), "value":avg(m("instance_disk_throttled_write_ops_count"))
-                    exists instance_key = @computeID.instance_key
-                    aggregate "value":sum(@."value"), group_by(instance_key)
+                    exists computeInstanceAssetKey = @computeID.computeInstanceAssetKey
+                    aggregate "value":sum(@."value"), group_by(computeInstanceAssetKey)
                     topk 100
                 EOT
       },
@@ -3479,7 +3480,7 @@ resource "observe_dashboard" "compute_monitoring" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_key"
+              "0" = "computeInstanceAssetKey"
               "1" = "valid_from"
               "2" = "valid_to"
             }
@@ -3566,7 +3567,7 @@ resource "observe_dashboard" "compute_monitoring" {
                   table = {
                     groupFields = [
                       [
-                        "instance_key",
+                        "computeInstanceAssetKey",
                       ],
                     ]
                     statsBy = {
@@ -3670,8 +3671,8 @@ resource "observe_dashboard" "compute_monitoring" {
                 "filter metric = \"instance_network_received_packets_count\"",
                 "",
                 "align 2m, frame(back: 1m), \"value\":avg(m(\"instance_network_received_packets_count\"))",
-                "exists instance_key = @computeID.instance_key",
-                "aggregate \"value\":sum(@.\"value\"), group_by(instance_key)",
+                "exists computeInstanceAssetKey = @computeID.computeInstanceAssetKey",
+                "aggregate \"value\":sum(@.\"value\"), group_by(computeInstanceAssetKey)",
                 "topk 100",
               ]
               queryPresentation = {}
@@ -3699,8 +3700,8 @@ resource "observe_dashboard" "compute_monitoring" {
                     filter metric = "instance_network_received_packets_count"
                     
                     align 2m, frame(back: 1m), "value":avg(m("instance_network_received_packets_count"))
-                    exists instance_key = @computeID.instance_key
-                    aggregate "value":sum(@."value"), group_by(instance_key)
+                    exists computeInstanceAssetKey = @computeID.computeInstanceAssetKey
+                    aggregate "value":sum(@."value"), group_by(computeInstanceAssetKey)
                     topk 100
                 EOT
       },
@@ -3729,7 +3730,7 @@ resource "observe_dashboard" "compute_monitoring" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_key"
+              "0" = "computeInstanceAssetKey"
               "1" = "valid_from"
               "2" = "valid_to"
             }
@@ -3815,7 +3816,7 @@ resource "observe_dashboard" "compute_monitoring" {
                   table = {
                     groupFields = [
                       [
-                        "instance_key",
+                        "computeInstanceAssetKey",
                       ],
                     ]
                     statsBy = {
@@ -3903,8 +3904,8 @@ resource "observe_dashboard" "compute_monitoring" {
                 "filter metric = \"instance_network_sent_packets_count\"",
                 "",
                 "align 2m, frame(back: 1m), \"value\":avg(m(\"instance_network_sent_packets_count\"))",
-                "exists instance_key = @computeID.instance_key",
-                "aggregate \"value\":sum(@.\"value\"), group_by(instance_key)",
+                "exists computeInstanceAssetKey = @computeID.computeInstanceAssetKey",
+                "aggregate \"value\":sum(@.\"value\"), group_by(computeInstanceAssetKey)",
                 "topk 100",
               ]
               queryPresentation = {}
@@ -3932,8 +3933,8 @@ resource "observe_dashboard" "compute_monitoring" {
                     filter metric = "instance_network_sent_packets_count"
                     
                     align 2m, frame(back: 1m), "value":avg(m("instance_network_sent_packets_count"))
-                    exists instance_key = @computeID.instance_key
-                    aggregate "value":sum(@."value"), group_by(instance_key)
+                    exists computeInstanceAssetKey = @computeID.computeInstanceAssetKey
+                    aggregate "value":sum(@."value"), group_by(computeInstanceAssetKey)
                     topk 100
                 EOT
       },
@@ -3962,7 +3963,7 @@ resource "observe_dashboard" "compute_monitoring" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_key"
+              "0" = "computeInstanceAssetKey"
               "1" = "valid_from"
               "2" = "valid_to"
             }
@@ -4048,7 +4049,7 @@ resource "observe_dashboard" "compute_monitoring" {
                   table = {
                     groupFields = [
                       [
-                        "instance_key",
+                        "computeInstanceAssetKey",
                       ],
                     ]
                     statsBy = {
@@ -4136,8 +4137,8 @@ resource "observe_dashboard" "compute_monitoring" {
                 "filter metric = \"instance_network_sent_packets_count\"",
                 "",
                 "align 2m, frame(back: 1m), \"value\":avg(m(\"instance_network_sent_packets_count\"))",
-                "exists instance_key = @computeID.instance_key",
-                "aggregate \"value\":sum(@.\"value\"), group_by(instance_key)",
+                "exists computeInstanceAssetKey = @computeID.computeInstanceAssetKey",
+                "aggregate \"value\":sum(@.\"value\"), group_by(computeInstanceAssetKey)",
                 "topk 100",
               ]
               queryPresentation = {}
@@ -4152,8 +4153,8 @@ resource "observe_dashboard" "compute_monitoring" {
                             filter metric = "instance_network_received_bytes_count"
                                                                                                                                             
                             align 2m, frame(back: 1m), "value":avg(m("instance_network_received_bytes_count"))
-                            exists instance_key = @computeID.instance_key
-                            aggregate "value":sum(@."value"), group_by(instance_key)
+                            exists computeInstanceAssetKey = @computeID.computeInstanceAssetKey
+                            aggregate "value":sum(@."value"), group_by(computeInstanceAssetKey)
                             topk 100
                         EOT
             railCollapseState = {
@@ -4174,8 +4175,8 @@ resource "observe_dashboard" "compute_monitoring" {
                     filter metric = "instance_network_sent_packets_count"
                     
                     align 2m, frame(back: 1m), "value":avg(m("instance_network_sent_packets_count"))
-                    exists instance_key = @computeID.instance_key
-                    aggregate "value":sum(@."value"), group_by(instance_key)
+                    exists computeInstanceAssetKey = @computeID.computeInstanceAssetKey
+                    aggregate "value":sum(@."value"), group_by(computeInstanceAssetKey)
                     topk 100
                 EOT
       },
@@ -4277,26 +4278,26 @@ resource "observe_dashboard" "compute_monitoring" {
             {
               columnStatsTable = {
                 columnFunctions = {
-                  cpuPlatform        = "count"
-                  creationTime       = "count"
-                  deleted            = "count"
-                  deletionProtection = "count"
-                  instance_group     = "count"
-                  instance_id        = "count"
-                  instance_key       = "count"
-                  instance_name      = "count"
-                  labels             = "count"
-                  machineType        = "count"
-                  network            = "count"
-                  networkIP          = "count"
-                  project_id         = "count"
-                  publicIP           = "count"
-                  region             = "count"
-                  status             = "count"
-                  subnetwork         = "count"
-                  tags               = "count"
-                  ttl                = "count"
-                  zone               = "count"
+                  cpuPlatform             = "count"
+                  creationTime            = "count"
+                  deleted                 = "count"
+                  deletionProtection      = "count"
+                  instanceGroupAssetKey   = "count"
+                  instance_id             = "count"
+                  computeInstanceAssetKey = "count"
+                  instance_name           = "count"
+                  labels                  = "count"
+                  machineType             = "count"
+                  network                 = "count"
+                  networkIP               = "count"
+                  project_id              = "count"
+                  publicIP                = "count"
+                  region                  = "count"
+                  status                  = "count"
+                  subnetwork              = "count"
+                  tags                    = "count"
+                  ttl                     = "count"
+                  zone                    = "count"
                 }
                 datasetQueryId = {
                   ignoreCompress = false
@@ -4495,26 +4496,26 @@ resource "observe_dashboard" "compute_monitoring" {
             {
               columnStatsTable = {
                 columnFunctions = {
-                  cpuPlatform        = "count"
-                  creationTime       = "count"
-                  deleted            = "count"
-                  deletionProtection = "count"
-                  instance_group     = "count"
-                  instance_id        = "count"
-                  instance_key       = "count"
-                  instance_name      = "count"
-                  labels             = "count"
-                  machineType        = "count"
-                  network            = "count"
-                  networkIP          = "count"
-                  project_id         = "count"
-                  publicIP           = "count"
-                  region             = "count"
-                  status             = "count"
-                  subnetwork         = "count"
-                  tags               = "count"
-                  ttl                = "count"
-                  zone               = "count"
+                  cpuPlatform             = "count"
+                  creationTime            = "count"
+                  deleted                 = "count"
+                  deletionProtection      = "count"
+                  instanceGroupAssetKey   = "count"
+                  instance_id             = "count"
+                  computeInstanceAssetKey = "count"
+                  instance_name           = "count"
+                  labels                  = "count"
+                  machineType             = "count"
+                  network                 = "count"
+                  networkIP               = "count"
+                  project_id              = "count"
+                  publicIP                = "count"
+                  region                  = "count"
+                  status                  = "count"
+                  subnetwork              = "count"
+                  tags                    = "count"
+                  ttl                     = "count"
+                  zone                    = "count"
                 }
                 datasetQueryId = {
                   ignoreCompress = false

@@ -23,11 +23,11 @@ resource "observe_dataset" "compute_disk" {
 
         flatten_single users
 
-        extract_regex string(_c_users_value), /projects\/(?P<compute_instance_key_base>.*)/
+        extract_regex string(_c_users_value), /projects\/(?P<compute_computeInstanceAssetKey_base>.*)/
         
         extract_regex name, /(?P<disk_instance_name>[^\/]+$)/
 
-        make_col computeInstanceAssetKey: string_concat("//compute.googleapis.com/projects/",compute_instance_key_base)
+        make_col computeInstanceAssetKey: string_concat("//compute.googleapis.com/projects/",compute_computeInstanceAssetKey_base)
         // ex - //compute.googleapis.com/projects/content-testpproj-stage-1/zones/us-central1-b/instances/test-stg-instance-ubuntu-20-04-lts-57
 
         extract_regex name, /projects\/(?P<project_id>[^\/+]+)\/zones\/(?P<zone>[^\/+]+)\/disks\/(?P<disk_instance_name>[^\/+]+)/

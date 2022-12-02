@@ -1,6 +1,7 @@
 
 # terraform import observe_dashboard.bigquery_tables_manual_ 41255030
 resource "observe_dashboard" "bigquery_tables_manual" {
+  description = "Dashboard for monitoring Big Query tables"
   layout = jsonencode(
     {
       gridLayout = {

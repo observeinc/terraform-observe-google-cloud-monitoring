@@ -82,10 +82,10 @@ make_col
 }
 
 resource "observe_dataset" "metrics" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Metrics")
-  freshness = var.freshness_duration_default
-
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Metrics")
+  freshness   = var.freshness_duration_default
+  description = "Metrics dataset for GCP resources"
   inputs = {
     "points" = observe_dataset.metric_points.oid
   }

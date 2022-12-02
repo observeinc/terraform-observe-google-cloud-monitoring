@@ -1,10 +1,10 @@
 resource "observe_dataset" "bigquery_metrics" {
   count = local.enable_metrics ? 1 : 0
 
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Metrics")
-  freshness = lookup(local.freshness, "metrics", var.freshness_duration_default)
-
+  workspace   = var.workspace.oid
+  name        = format(var.name_format, "Metrics")
+  freshness   = lookup(local.freshness, "metrics", var.freshness_duration_default)
+  description = "Metrics for Big Query"
   inputs = {
     "metrics" = var.google.metrics.oid
   }

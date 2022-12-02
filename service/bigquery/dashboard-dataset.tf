@@ -1,4 +1,5 @@
 resource "observe_dashboard" "bigquery_dataset" {
+  description = "Dashboard for monitoring Big Query datasets"
   layout = jsonencode(
     {
       gridLayout = {

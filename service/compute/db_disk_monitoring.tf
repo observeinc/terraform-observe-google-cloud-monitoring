@@ -1,6 +1,7 @@
 
 # terraform import observe_dashboard.disk_monitoring 41294510
 resource "observe_dashboard" "disk_monitoring" {
+  description = "Dashboard for monitoring Compute Disk resources"
   layout = jsonencode(
     {
       autoPack = true

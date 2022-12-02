@@ -1,5 +1,6 @@
 # terraform import observe_dashboard.project_input 41160340
 resource "observe_dashboard" "project_input" {
+  description = "Dashboard to show monitored GCP projects"
   layout = jsonencode(
     {
       gridLayout = {
