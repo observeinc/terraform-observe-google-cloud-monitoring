@@ -24,5 +24,5 @@ locals {
   cloud_sql_metrics            = one(module.cloudsql[*].cloudsql_metrics.id)
   cloud_sql_metrics_combo      = one(module.cloudsql[*].cloudsql_metrics_combo.id)
   cloud_scheduler_jobs         = one(module.cloudscheduler[*].cloud_scheduler_jobs.id)
-  bigquery_dataset         = one(module.bigquery[*].bigquery_dataset.id)
+  # bigquery_dataset             = one(module.bigquery[*].bigquery_dataset.id)
 }
