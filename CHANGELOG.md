@@ -1,3 +1,12 @@
+# [0.7.0](https://github.com/observeinc/terraform-observe-google/compare/v0.6.1...v0.7.0) (2022-12-07)
+
+
+### Features
+
+* GCP App Generally Available ([#120](https://github.com/observeinc/terraform-observe-google/issues/120)) ([ba661b2](https://github.com/observeinc/terraform-observe-google/commit/ba661b2aee633c9ddc9add29b617032caf6d0986))
+
+
+
 ## [0.6.1](https://github.com/observeinc/terraform-observe-google/compare/v0.6.0...v0.6.1) (2022-11-29)
 
 
