@@ -797,6 +797,8 @@ resource "observe_dashboard" "app_home" {
                   text     = <<-EOT
                                         ### Pre-built Content
                                         
+                                        ${local.enable_service_bigquery == true ? "- [Big Query Resources](/workspace/${local.workspace_id}/dataset/resource/BigQuery-Dataset-${one(module.bigquery[*].bigquery_dataset.id)}) - Big Query dataset that GraphLinks to metrics and logs." : ""} 
+
                                         ${local.enable_service_cloudfunctions == true ? "- [CloudFunction Resources](/workspace/${local.workspace_id}/dataset/resource/Cloud-Functions-Instances-${one(module.cloudfunctions[*].function.id)}) - Cloud Function Resource dataset that GraphLinks to metrics and logs." : ""} 
                                         
                                         ${local.enable_service_cloudsql == true ? "- [CloudSQL Resources](/workspace/${local.workspace_id}/dataset/resource/Cloud-SQL-Instance-${one(module.cloudsql[*].cloudsql.id)}) - CloudSQL Resource dataset that GraphLinks to metrics and logs." : ""} 
