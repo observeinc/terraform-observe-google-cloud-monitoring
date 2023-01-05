@@ -733,18 +733,7 @@ resource "observe_dashboard" "app_home_fix" {
                 card = {
                   cardType = "text"
                   id       = "card-bsfempw3"
-                  text     = <<-EOT
-                                         ### Base Datasets
-                                                                                
-                                        - [Datastream](workspace/41028406/dataset/event/GCP-41203888) - All other pre-built data sets for the GCP application are derived from here.
-                                                                                
-                                        - [Asset Inventory](/workspace/41028406/dataset/event/Asset-Inventory-Records-41486302)  - This shows a list of all GCP for each project you are collecting data for. Pre-built Resources are derived from this dataset. 
-                                                                                
-                                        - [Metrics](/workspace/41028406/dataset/event/Metrics-${local.metrics})  - This shows incoming data of all metrics you are collecting from GCP for each project you are collecting data for. Pre-built Resources metrics are derived from this dataset. 
-                                                                                
-                                        - [Logs](/workspace/41028406/dataset/event/Logs-41486301) - This shows incoming log data for all logs you are collecting from GCP for each project you are collecting data for. Pre-built Resources logs are derived from this dataset.
-                                                                                                                                                                                                                                                
-                                    EOT
+                  text     = local.base_datasets
                   title    = "Untitled Text"
                 }
                 layout = {
@@ -791,24 +780,7 @@ resource "observe_dashboard" "app_home_fix" {
                 card = {
                   cardType = "text"
                   id       = "card-54zkyeh9"
-                  text     = <<-EOT
-                                        ### Pre-built Content
-                                                                                
-                                        - [Big Query Resources](/workspace/41028406/dataset/resource/BigQuery-Dataset-41486312) - Big Query dataset that GraphLinks to metrics and logs. 
-                                        
-                                        - [CloudFunction Resources](/workspace/41028406/dataset/resource/Cloud-Functions-Instances-${local.cloud_functions_instances}) - Cloud Function Resource dataset that GraphLinks to metrics and logs. 
-                                                                                
-                                        - [CloudSQL Resources](/workspace/41028406/dataset/resource/Cloud-SQL-Instance-${local.cloud_sql_instance}) - CloudSQL Resource dataset that GraphLinks to metrics and logs. 
-                                                                                
-                                        - [Compute Resources](/workspace/41028406/dataset/resource/Compute-Instance-${local.compute_instance}) - Compute Resource dataset that GraphLinks to metrics and logs. 
-                                                                                
-                                        - [GKE Resources](/workspace/41028406/dataset/resource/GKE-Cluster-41486463) - Google Kubernetes Engine Resource dataset that GraphLinks to compute resources and Kubernetes App resources.
-                                        
-                                        - [LoadBalancing Resources](/workspace/41028406/dataset/resource/Load-Balancing-Load-Balancers-41486419) - Load Balancer Resource dataset that GraphLinks to metrics and logs.
-                                                                                
-                                        - [Storage Resources](/workspace/41028406/dataset/resource/Storage-Buckets-${local.storage_buckets}) - Storage Bucket Resource dataset that GraphLinks to metrics and logs.
-                                                                                                                                                                                                                                                                                                                                                                                                                              
-                                    EOT
+                  text     = local.pre_built_content
                   title    = "Untitled Text"
                 }
                 layout = {
@@ -899,7 +871,7 @@ resource "observe_dashboard" "app_home_fix" {
       }
     }
   )
-  name = local.dashboard_name
+  name = local.dashboard_name_home
   parameters = jsonencode(
     [
       {
