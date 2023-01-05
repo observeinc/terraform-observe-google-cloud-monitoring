@@ -1,5 +1,6 @@
 resource "observe_monitor" "high_cpu" {
   count = local.enable_both ? 1 : 0
+  is_template = true
 
   disabled    = var.metric_thresholds["CPU"].disabled
   description = "This monitor will alert on CPU usage above a certain threshold"
@@ -41,6 +42,7 @@ resource "observe_monitor" "high_cpu" {
 
 resource "observe_monitor" "disk_quota" {
   count       = local.enable_both ? 1 : 0
+  is_template = true
   disabled    = var.metric_thresholds["Disk_Quota"].disabled
   description = "This monitor will alert on percent of disk quota used above a certain threshold"
   inputs = {

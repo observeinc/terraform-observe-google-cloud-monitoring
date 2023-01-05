@@ -1,5 +1,6 @@
 resource "observe_monitor" "public_access_granted" {
   count     = local.enable_monitors ? 1 : 0
+  is_template = true
   disabled  = true
   workspace = var.workspace.oid
   name      = format("(TEMPLATE) %s", format(var.name_format, "Public Access granted to Google Cloud Storage object"))
@@ -54,6 +55,7 @@ resource "observe_monitor" "public_access_granted" {
 resource "observe_monitor" "high_request_errors" {
   count     = local.enable_metrics && local.enable_monitors ? 1 : 0
   disabled  = true
+  is_template = true
   workspace = var.workspace.oid
   name      = format("(TEMPLATE) %s", format(var.name_format, "High Error Count for Google Cloud Storage requests"))
   inputs = {
