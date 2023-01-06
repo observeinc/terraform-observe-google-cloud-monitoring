@@ -1,8 +1,8 @@
 resource "observe_dataset" "projects_collection_enabled" {
-  workspace   = var.workspace.oid
-  name        = format(var.name_format, "Projects Collection Enabled")
-  freshness   = lookup(var.freshness_overrides, "projects", var.freshness_duration_default)
-  description = "This dataset is used to create project resources"
+  workspace   = local.datasets.projects_collection_enabled.workspace
+  name        = local.datasets.projects_collection_enabled.name
+  freshness   = local.datasets.projects_collection_enabled.freshness
+  description = local.datasets.projects_collection_enabled.description
 
   inputs = {
     "observation" = var.datastream.dataset
@@ -83,7 +83,7 @@ resource "observe_default_dashboard" "default_project_dash" {
 # resource "observe_dataset" "projects_all" {
 #   workspace   = var.workspace.oid
 #   name        = format(var.name_format, "Projects All")
-#   freshness   = lookup(var.freshness_overrides, "projects", var.freshness_duration_default)
+#   freshness   = lookup(var.freshness_overrides, "projects", var.freshness_default_duration)
 #   description = "This dataset is used to create project resources"
 #   inputs = {
 #     "events" = observe_dataset.base_pubsub_events.oid

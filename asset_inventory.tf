@@ -1,8 +1,9 @@
 resource "observe_dataset" "base_asset_inventory_records" {
-  workspace   = var.workspace.oid
-  name        = format(var.name_format, "Asset Inventory Records")
-  freshness   = var.freshness_duration_default
-  description = "Raw data from asset exports"
+  workspace   = local.datasets.base_asset_inventory_records.workspace
+  name        = local.datasets.base_asset_inventory_records.name
+  freshness   = local.datasets.base_asset_inventory_records.freshness
+  description = local.datasets.base_asset_inventory_records.description
+
   inputs = {
     "observation" = var.datastream.dataset
     "events"      = observe_dataset.base_pubsub_events.oid
@@ -66,10 +67,11 @@ resource "observe_dataset" "base_asset_inventory_records" {
 }
 
 resource "observe_dataset" "resource_asset_inventory_records" {
-  workspace   = var.workspace.oid
-  name        = format(var.name_format, "Resource Asset Inventory Records")
-  freshness   = var.freshness_duration_default
-  description = "All cloud assets in GCP"
+  workspace   = local.datasets.resource_asset_inventory_records.workspace
+  name        = local.datasets.resource_asset_inventory_records.name
+  freshness   = local.datasets.resource_asset_inventory_records.freshness
+  description = local.datasets.resource_asset_inventory_records.description
+
   inputs = {
     "events"   = observe_dataset.base_asset_inventory_records.oid
     "projects" = observe_dataset.projects_collection_enabled.oid
@@ -162,10 +164,11 @@ resource "observe_dataset" "resource_asset_inventory_records" {
 }
 
 resource "observe_dataset" "resources_asset_inventory" {
-  workspace   = var.workspace.oid
-  name        = format(var.name_format, "Resources Asset Inventory")
-  freshness   = var.freshness_duration_default
-  description = "All cloud resources in GCP"
+  workspace   = local.datasets.resources_asset_inventory.workspace
+  name        = local.datasets.resources_asset_inventory.name
+  freshness   = local.datasets.resources_asset_inventory.freshness
+  description = local.datasets.resources_asset_inventory.description
+
   inputs = {
     "events" = observe_dataset.resource_asset_inventory_records.oid
   }
@@ -200,10 +203,11 @@ resource "observe_dataset" "resources_asset_inventory" {
 }
 
 resource "observe_dataset" "iam_policy_asset_inventory_records" {
-  workspace   = var.workspace.oid
-  name        = format(var.name_format, "IAM Policy Asset Inventory Records")
-  freshness   = var.freshness_duration_default
-  description = "This dataset contains IAM Policy bindings for other assets"
+  workspace   = local.datasets.iam_policy_asset_inventory_records.workspace
+  name        = local.datasets.iam_policy_asset_inventory_records.name
+  freshness   = local.datasets.iam_policy_asset_inventory_records.freshness
+  description = local.datasets.iam_policy_asset_inventory_records.description
+
   inputs = {
     "events" = observe_dataset.base_asset_inventory_records.oid
   }

@@ -13,12 +13,13 @@ locals {
     distribution_metrics               = observe_dataset.process_distribution_metrics
   }
   # enable_metrics = lookup(var.feature_flags, "metrics", true)
+
 }
 resource "observe_dataset" "base_pubsub_events" {
-  workspace   = var.workspace.oid
-  name        = format(var.name_format, "PubSub Events")
-  freshness   = var.freshness_duration_default
-  description = "This dataset contains all events from collection pubsub topic and is used as an input to other datasets"
+  workspace   = local.datasets.base_pubsub_events.workspace
+  name        = local.datasets.base_pubsub_events.name
+  freshness   = local.datasets.base_pubsub_events.freshness
+  description = local.datasets.base_pubsub_events.description
   inputs = {
     "observation" = var.datastream.dataset
   }

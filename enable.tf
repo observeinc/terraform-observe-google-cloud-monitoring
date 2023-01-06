@@ -8,7 +8,7 @@ locals {
 
   enable_service_bigquery = (
     var.enable_service_bigquery == true ||
-    var.enable_service_bigquery ||
+    # var.enable_service_bigquery ||
     lookup(var.services, "bigquery", false)
   )
   name_format_bigquery = lookup(var.service_name_formats, "bigquery", "BigQuery %s")
@@ -90,7 +90,7 @@ module "cloudfunctions" {
   workspace                  = var.workspace
   name_format                = format(var.name_format, local.name_format_cloudfunctions)
   max_expiry                 = var.max_expiry
-  freshness_duration_default = var.freshness_duration_default
+  freshness_default_duration = var.freshness_default_duration
   feature_flags              = var.feature_flags
 
   google = local.base_module
@@ -103,7 +103,7 @@ module "cloudsql" {
   workspace                  = var.workspace
   name_format                = format(var.name_format, local.name_format_cloudsql)
   max_expiry                 = var.max_expiry
-  freshness_duration_default = var.freshness_duration_default
+  freshness_default_duration = var.freshness_default_duration
   feature_flags              = var.feature_flags
 
   google = local.base_module
@@ -116,7 +116,7 @@ module "compute" {
   workspace                  = var.workspace
   name_format                = format(var.name_format, local.name_format_compute)
   max_expiry                 = var.max_expiry
-  freshness_duration_default = var.freshness_duration_default
+  freshness_default_duration = var.freshness_default_duration
   feature_flags              = var.feature_flags
   # iam_asset_binding          = one(module.iam[*].asset_binding)
 
@@ -130,7 +130,7 @@ module "storage" {
   workspace                  = var.workspace
   name_format                = format(var.name_format, local.name_format_storage)
   max_expiry                 = var.max_expiry
-  freshness_duration_default = var.freshness_duration_default
+  freshness_default_duration = var.freshness_default_duration
   freshness_overrides        = var.freshness_overrides
   feature_flags              = var.feature_flags
 
@@ -144,7 +144,7 @@ module "load_balancing" {
   workspace                  = var.workspace
   name_format                = format(var.name_format, local.name_format_load_balancing)
   max_expiry                 = var.max_expiry
-  freshness_duration_default = var.freshness_duration_default
+  freshness_default_duration = var.freshness_default_duration
   freshness_overrides        = var.freshness_overrides
   feature_flags              = var.feature_flags
 
@@ -157,7 +157,7 @@ module "bigquery" {
   workspace                  = var.workspace
   name_format                = format(var.name_format, local.name_format_bigquery)
   max_expiry                 = var.max_expiry
-  freshness_duration_default = var.freshness_duration_default
+  freshness_default_duration = var.freshness_default_duration
   # freshness_overrides = var.freshness_overrides
   feature_flags = var.feature_flags
   google        = local.base_module
@@ -169,7 +169,7 @@ module "pubsub" {
   workspace                  = var.workspace
   name_format                = format(var.name_format, local.name_format_pubsub)
   max_expiry                 = var.max_expiry
-  freshness_duration_default = var.freshness_duration_default
+  freshness_default_duration = var.freshness_default_duration
   freshness_overrides        = var.freshness_overrides
   feature_flags              = var.feature_flags
 
@@ -183,7 +183,7 @@ module "cloudscheduler" {
   workspace                  = var.workspace
   name_format                = format(var.name_format, local.name_format_cloudscheduler)
   max_expiry                 = var.max_expiry
-  freshness_duration_default = var.freshness_duration_default
+  freshness_default_duration = var.freshness_default_duration
   freshness_overrides        = var.freshness_overrides
 
   google = local.base_module
@@ -196,7 +196,7 @@ module "gke" {
   workspace                  = var.workspace
   name_format                = format(var.name_format, local.name_format_gke)
   max_expiry                 = var.max_expiry
-  freshness_duration_default = var.freshness_duration_default
+  freshness_default_duration = var.freshness_default_duration
   freshness_overrides        = var.freshness_overrides
   feature_flags              = var.feature_flags
 
@@ -217,7 +217,7 @@ module "iam" {
   workspace                  = var.workspace
   name_format                = format(var.name_format, local.name_format_iam)
   max_expiry                 = var.max_expiry
-  freshness_duration_default = var.freshness_duration_default
+  freshness_default_duration = var.freshness_default_duration
   freshness_overrides        = var.freshness_overrides
 
   google = local.base_module
@@ -230,7 +230,7 @@ module "billing" {
   workspace   = var.workspace
   name_format = format(var.name_format, local.name_format_billing)
   # max_expiry                 = var.max_expiry
-  freshness_duration_default = var.freshness_duration_default
+  freshness_default_duration = var.freshness_default_duration
   freshness_overrides        = var.freshness_overrides
 
   google = local.base_module
