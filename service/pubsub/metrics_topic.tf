@@ -1,10 +1,11 @@
 resource "observe_dataset" "pubsub_topic_metrics" {
   count = local.enable_metrics ? 1 : 0
 
-  workspace   = var.workspace.oid
-  name        = format(var.name_format, "Topic Metrics")
-  freshness   = lookup(local.freshness, "metrics", var.freshness_duration_default)
-  description = "Metrics dataset for PubSub Topics"
+  workspace   = local.datasets.pubsub_topic_metrics.workspace
+  name        = local.datasets.pubsub_topic_metrics.name
+  freshness   = local.datasets.pubsub_topic_metrics.freshness
+  description = local.datasets.pubsub_topic_metrics.description
+
   inputs = {
     "metrics" = var.google.metrics.oid
   }

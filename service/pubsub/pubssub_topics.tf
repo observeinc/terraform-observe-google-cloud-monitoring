@@ -1,8 +1,9 @@
 resource "observe_dataset" "pubsub_topics" {
-  workspace   = var.workspace.oid
-  name        = format(var.name_format, "Topics")
-  freshness   = lookup(local.freshness, "pubsub", var.freshness_duration_default)
-  description = "Dataset for PubSub Topic resources"
+  workspace   = local.datasets.pubsub_topics.workspace
+  name        = local.datasets.pubsub_topics.name
+  freshness   = local.datasets.pubsub_topics.freshness
+  description = local.datasets.pubsub_topics.description
+
   inputs = {
     "events" = var.google.resource_asset_inventory_records.oid
   }

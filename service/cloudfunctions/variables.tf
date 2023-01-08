@@ -15,10 +15,16 @@ variable "max_expiry" {
   default     = "4h"
 }
 
-variable "freshness_duration_default" {
+variable "freshness_default_duration" {
   type        = string
   description = "Default dataset freshness"
   default     = "1m"
+}
+
+variable "freshness_overrides" {
+  type        = map(string)
+  description = "Freshness overrides by dataset. If absent, fall back to freshness_duration_default"
+  default     = {}
 }
 
 variable "feature_flags" {
@@ -58,7 +64,7 @@ variable "metric_thresholds" {
     Execution_Times = {
       compare_function = "greater",
       value            = 5000000000,
-      disabled         = false
+      disabled         = true
     }
   }
 }

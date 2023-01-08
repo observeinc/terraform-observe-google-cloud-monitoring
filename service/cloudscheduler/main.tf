@@ -1,16 +1,38 @@
 locals {
-  freshness = merge({
-    cloudsql = "5m",
-    metrics  = "1m",
-    logging  = "1m",
-  }, var.freshness_overrides)
+  freshness = merge({}, var.freshness_overrides)
+  workspace = var.workspace.oid
+  /*
+
+  workspace = local.datasets.REPLACE_WITH_DATASET_NAME.workspace
+  name        = local.datasets.REPLACE_WITH_DATASET_NAME.name
+  freshness   = local.datasets.REPLACE_WITH_DATASET_NAME.freshness
+  description = local.datasets.REPLACE_WITH_DATASET_NAME.description
+
+*/
+
+  datasets = {
+    cloud_scheduler_jobs = {
+      workspace   = local.workspace
+      name        = format(var.name_format, "Jobs")
+      freshness   = lookup(local.freshness, "cloud_scheduler_jobs", var.freshness_default_duration)
+      description = "This dataset is used to create cloud scheduler job resources"
+    }
+
+    cloudscheduler_logs = {
+      workspace   = local.workspace
+      name        = format(var.name_format, "Logs")
+      freshness   = lookup(local.freshness, "cloudscheduler_logs", var.freshness_default_duration)
+      description = "This dataset contains all logs generated for compute instances"
+    }
+  }
+
 }
 
 resource "observe_dataset" "cloud_scheduler_jobs" {
-  workspace   = var.workspace.oid
-  name        = format(var.name_format, "Jobs")
-  freshness   = lookup(var.freshness_overrides, "target_proxy", var.freshness_duration_default)
-  description = "This dataset is used to create cloud scheduler job resources"
+  workspace   = local.datasets.cloud_scheduler_jobs.workspace
+  name        = local.datasets.cloud_scheduler_jobs.name
+  freshness   = local.datasets.cloud_scheduler_jobs.freshness
+  description = local.datasets.cloud_scheduler_jobs.description
 
   inputs = {
     "events" = var.google.pubsub_events.oid

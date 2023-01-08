@@ -9,7 +9,7 @@ locals {
 resource "observe_dataset" "service_accounts" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Service Accounts")
-  freshness   = lookup(local.freshness, "service_accounts", var.freshness_duration_default)
+  freshness   = lookup(local.freshness, "service_accounts", var.freshness_default_duration)
   description = "This dataset is used to create the Compute Instance Groups Resource Instances"
 
   inputs = {

@@ -1,8 +1,9 @@
 resource "observe_dataset" "compute_logs_raw" {
-  workspace   = var.workspace.oid
-  name        = format(var.name_format, "Raw Logs")
-  freshness   = lookup(local.freshness, "metrics", var.freshness_duration_default)
-  description = "This dataset contains all logs generated for compute service which include compute instances, disks, routers, load balancers and more"
+  workspace   = local.datasets.compute_logs_raw.workspace
+  name        = local.datasets.compute_logs_raw.name
+  freshness   = local.datasets.compute_logs_raw.freshness
+  description = local.datasets.compute_logs_raw.description
+
   inputs = {
     "audit_logs" = var.google.audit_logs.oid
   }

@@ -1,8 +1,8 @@
 resource "observe_dataset" "instance_group_events" {
-  workspace   = var.workspace.oid
-  name        = format(var.name_format, "Instance Group Events")
-  freshness   = lookup(var.freshness_overrides, "target_proxy", var.freshness_duration_default)
-  description = "This dataset contains Compute Instance Groups Events"
+  workspace   = local.datasets.instance_group_events.workspace
+  name        = local.datasets.instance_group_events.name
+  freshness   = local.datasets.instance_group_events.freshness
+  description = local.datasets.instance_group_events.description
 
   inputs = {
     "events" = var.google.resource_asset_inventory_records.oid
@@ -20,7 +20,7 @@ resource "observe_dataset" "instance_group_events" {
 resource "observe_dataset" "instance_group" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Instance Group")
-  freshness   = lookup(var.freshness_overrides, "target_proxy", var.freshness_duration_default)
+  freshness   = lookup(var.freshness_overrides, "target_proxy", var.freshness_default_duration)
   description = "This dataset is used to create the Compute Instance Groups Resource"
 
   inputs = {

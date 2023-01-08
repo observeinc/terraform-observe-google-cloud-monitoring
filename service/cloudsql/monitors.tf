@@ -1,5 +1,5 @@
 resource "observe_monitor" "high_cpu" {
-  count = local.enable_both ? 1 : 0
+  count       = local.enable_both ? 1 : 0
   is_template = true
 
   disabled    = var.metric_thresholds["CPU"].disabled

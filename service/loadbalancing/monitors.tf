@@ -1,10 +1,10 @@
 
 resource "observe_monitor" "healthcheck_logs_non_healthy" {
-  count     = local.enable_monitors ? 1 : 0
-  disabled  = true
+  count       = local.enable_monitors ? 1 : 0
+  disabled    = true
   is_template = true
-  workspace = var.workspace.oid
-  name      = format("(TEMPLATE) %s", format(var.name_format, "LB Backend in non-healthy state"))
+  workspace   = var.workspace.oid
+  name        = format("(TEMPLATE) %s", format(var.name_format, "LB Backend in non-healthy state"))
   inputs = {
     "Logs" = observe_dataset.health_check_logs.oid
   }
@@ -38,11 +38,11 @@ resource "observe_monitor" "healthcheck_logs_non_healthy" {
 }
 
 resource "observe_monitor" "high_4xx_rate" {
-  count     = local.enable_metrics && local.enable_monitors ? 1 : 0
-  disabled  = true
+  count       = local.enable_metrics && local.enable_monitors ? 1 : 0
+  disabled    = true
   is_template = true
-  workspace = var.workspace.oid
-  name      = format("(TEMPLATE) %s", format(var.name_format, "High 4xx rate for an LB backend"))
+  workspace   = var.workspace.oid
+  name        = format("(TEMPLATE) %s", format(var.name_format, "High 4xx rate for an LB backend"))
   inputs = {
     "Metrics" = observe_dataset.load_balancing_metrics[0].oid
   }
@@ -106,11 +106,11 @@ resource "observe_monitor" "high_4xx_rate" {
 }
 
 resource "observe_monitor" "high_5xx_rate" {
-  count     = local.enable_metrics && local.enable_monitors ? 1 : 0
-  disabled  = true
+  count       = local.enable_metrics && local.enable_monitors ? 1 : 0
+  disabled    = true
   is_template = true
-  workspace = var.workspace.oid
-  name      = format("(TEMPLATE) %s", format(var.name_format, "High 5xx rate for an LB backend"))
+  workspace   = var.workspace.oid
+  name        = format("(TEMPLATE) %s", format(var.name_format, "High 5xx rate for an LB backend"))
   inputs = {
     "Metrics" = observe_dataset.load_balancing_metrics[0].oid
   }

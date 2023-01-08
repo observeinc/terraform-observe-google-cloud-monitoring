@@ -1,8 +1,8 @@
 resource "observe_dataset" "cloud_functions_instances" {
-  workspace   = var.workspace.oid
-  name        = format(var.name_format, "Instances")
-  freshness   = var.freshness_duration_default
-  description = "This dataset is used to create Cloud Function Resources"
+  workspace   = local.datasets.cloud_functions_instances.workspace
+  name        = local.datasets.cloud_functions_instances.name
+  freshness   = local.datasets.cloud_functions_instances.freshness
+  description = local.datasets.cloud_functions_instances.description
 
   inputs = {
     "events" = var.google.resource_asset_inventory_records.oid

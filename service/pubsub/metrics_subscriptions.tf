@@ -3,7 +3,7 @@ resource "observe_dataset" "pubsub_subscription_metrics" {
 
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Subscription Metrics")
-  freshness   = lookup(local.freshness, "metrics", var.freshness_duration_default)
+  freshness   = lookup(local.freshness, "metrics", var.freshness_default_duration)
   description = "Metrics dataset for PubSub Subscriptions"
   inputs = {
     "metrics" = var.google.metrics.oid
