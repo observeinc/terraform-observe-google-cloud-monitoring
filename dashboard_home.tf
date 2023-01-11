@@ -1,7 +1,5 @@
-
-# terraform import observe_dashboard.app_home 41406070
+# terraform import observe_dashboard.app_home_fix 41488268
 resource "observe_dashboard" "app_home" {
-  description = "Starting point for monitoring GCP resources"
   layout = jsonencode(
     {
       autoPack = true
@@ -735,20 +733,8 @@ resource "observe_dashboard" "app_home" {
                 card = {
                   cardType = "text"
                   id       = "card-bsfempw3"
-                  text     = <<-EOT
-                                         ### Base Datasets
-                                        
-                                        - [Datastream](workspace/${local.workspace_id}/dataset/event/${local.datastream_name}-${local.datastream_dataset_id}) - All other pre-built data sets for the GCP application are derived from here.
-                                        
-                                        - [Asset Inventory](/workspace/${local.workspace_id}/dataset/event/Asset-Inventory-Records-${local.asset_inventory})  - This shows a list of all GCP for each project you are collecting data for. Pre-built Resources are derived from this dataset. 
-                                        
-                                        - [Metrics](/workspace/${local.workspace_id}/dataset/event/Metrics-${local.metrics})  - This shows incoming data of all metrics you are collecting from GCP for each project you are collecting data for. Pre-built Resources metrics are derived from this dataset. 
-                                        
-                                        - [Logs](/workspace/${local.workspace_id}/dataset/event/Logs-${local.logs}) - This shows incoming log data for all logs you are collecting from GCP for each project you are collecting data for. Pre-built Resources logs are derived from this dataset.
-                                                                                                                                                                                                        
-                                    EOT
-
-                  title = "Untitled Text"
+                  text     = local.base_datasets
+                  title    = "Untitled Text"
                 }
                 layout = {
                   h           = 23
@@ -768,12 +754,12 @@ resource "observe_dashboard" "app_home" {
                   id       = "card-vg4gqfkn"
                   text     = <<-EOT
                                         # Google Cloud Platform Application
-                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                
                                         See Inventory section for count of resources within your monitored projects and metrics being collected.
-                                                                                                                                                                                                                                                                                        
-                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                
                                         - [Observe GCP Documentation](https://docs.observeinc.com/en/latest/content/integrations/gcp/gcp.html)
-                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                
                                         - [Google Metrics Documentation](https://cloud.google.com/monitoring/api/metrics_gcp)
                                     EOT
                   title    = "Untitled Text"
@@ -794,24 +780,7 @@ resource "observe_dashboard" "app_home" {
                 card = {
                   cardType = "text"
                   id       = "card-54zkyeh9"
-                  text     = <<-EOT
-                                        ### Pre-built Content
-                                        
-                                        ${local.enable_service_bigquery == true ? "- [Big Query Resources](/workspace/${local.workspace_id}/dataset/resource/BigQuery-Dataset-${one(module.bigquery[*].bigquery_dataset.id)}) - Big Query dataset that GraphLinks to metrics and logs." : ""} 
-
-                                        ${local.enable_service_cloudfunctions == true ? "- [CloudFunction Resources](/workspace/${local.workspace_id}/dataset/resource/Cloud-Functions-Instances-${one(module.cloudfunctions[*].function.id)}) - Cloud Function Resource dataset that GraphLinks to metrics and logs." : ""} 
-                                        
-                                        ${local.enable_service_cloudsql == true ? "- [CloudSQL Resources](/workspace/${local.workspace_id}/dataset/resource/Cloud-SQL-Instance-${one(module.cloudsql[*].cloudsql.id)}) - CloudSQL Resource dataset that GraphLinks to metrics and logs." : ""} 
-                                        
-                                        ${local.enable_service_compute == true ? "- [Compute Resources](/workspace/${local.workspace_id}/dataset/resource/Compute-Instance-${one(module.compute[*].compute.id)}) - Compute Resource dataset that GraphLinks to metrics and logs." : ""} 
-                                        
-                                        ${local.enable_service_gke == true ? "- [GKE Resources](/workspace/${local.workspace_id}/dataset/resource/GKE-Cluster-${one(module.gke[*].gke_cluster.id)}) - Google Kubernetes Engine Resource dataset that GraphLinks to compute resources and Kubernetes App resources." : ""}
-
-                                        ${local.enable_service_load_balancing == true ? "- [LoadBalancing Resources](/workspace/${local.workspace_id}/dataset/resource/Load-Balancing-Load-Balancers-${one(module.load_balancing[*].load_balancers.id)}) - Load Balancer Resource dataset that GraphLinks to metrics and logs." : ""}
-                                        
-                                        ${local.enable_service_storage == true ? "- [Storage Resources](/workspace/${local.workspace_id}/dataset/resource/Storage-Buckets-${one(module.storage[*].storage.id)}) - Storage Bucket Resource dataset that GraphLinks to metrics and logs." : ""}
-                                                                                                                                                                                                                                                                                                                                                                                      
-                                    EOT
+                  text     = local.pre_built_content
                   title    = "Untitled Text"
                 }
                 layout = {
@@ -827,7 +796,7 @@ resource "observe_dashboard" "app_home" {
                 }
               },
             ]
-            lastModified = 1669736107985
+            lastModified = 1672860242556
           },
         ]
       }
@@ -886,12 +855,12 @@ resource "observe_dashboard" "app_home" {
             viewType = "single-select"
           },
         ]
-        selectedStageId = "stage-fgwg2rh6"
+        selectedStageId = "stage-21nn95t9"
         timeRange = {
-          display               = "Past 60 minutes"
+          display               = "Today 10:18:09 → 11:18:09"
           endTime               = null
           millisFromCurrentTime = 3600000
-          originalDisplay       = "Past 60 minutes"
+          originalDisplay       = "Today 10:18:09 → 11:18:09"
           startTime             = null
           timeRangeInfo = {
             key        = "PRESETS"
@@ -1131,14 +1100,14 @@ resource "observe_dashboard" "app_home" {
               Location          = 172
               "Project ID"      = 253
             }
-            containerWidth              = 1313
+            containerWidth              = 1311
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
             disableFixedLeftColumns     = false
             eventLinkColumnId           = null
             fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
+            hasCalculatedColumnWidths   = true
             hasDoneAutoLayout           = false
             maxColumnWidth              = 400
             maxMeasuredColumnWidth      = {}
@@ -1401,7 +1370,7 @@ resource "observe_dashboard" "app_home" {
               topic_name        = 179
               topic_primary_key = 468
             }
-            containerWidth              = 274
+            containerWidth              = 272
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -1749,7 +1718,7 @@ resource "observe_dashboard" "app_home" {
             }
             columnVisibility            = {}
             columnWidths                = {}
-            containerWidth              = 274
+            containerWidth              = 272
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -1963,14 +1932,14 @@ resource "observe_dashboard" "app_home" {
               name              = 196
               service           = 395
             }
-            containerWidth              = 1313
+            containerWidth              = 1311
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
             disableFixedLeftColumns     = false
             eventLinkColumnId           = null
             fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
+            hasCalculatedColumnWidths   = true
             hasDoneAutoLayout           = false
             maxColumnWidth              = 400
             maxMeasuredColumnWidth      = {}
@@ -2183,14 +2152,14 @@ resource "observe_dashboard" "app_home" {
               metric_namespace = 313
               metric_type      = 644
             }
-            containerWidth              = 1313
+            containerWidth              = 1311
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
             disableFixedLeftColumns     = false
             eventLinkColumnId           = null
             fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
+            hasCalculatedColumnWidths   = true
             hasDoneAutoLayout           = false
             maxColumnWidth              = 400
             maxMeasuredColumnWidth      = {}
@@ -2422,7 +2391,7 @@ resource "observe_dashboard" "app_home" {
               count            = 156
               metric_namespace = 276
             }
-            containerWidth              = 274
+            containerWidth              = 272
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -2708,8 +2677,8 @@ resource "observe_dashboard" "app_home" {
                       fn = "count"
                     }
                     timechart = {
-                      fn         = "count"
-                      fnArgs     = null
+                      fn         = "count_distinct_exact"
+                      fnArgs     = []
                       resolution = "AUTO"
                     }
                     transformType = "timechart"
@@ -4497,8 +4466,8 @@ resource "observe_dashboard" "app_home" {
                       fn = "count"
                     }
                     timechart = {
-                      fn         = "count"
-                      fnArgs     = null
+                      fn         = "count_distinct_exact"
+                      fnArgs     = []
                       resolution = "AUTO"
                     }
                     transformType = "timechart"
@@ -4736,8 +4705,8 @@ resource "observe_dashboard" "app_home" {
                       fn = "count"
                     }
                     timechart = {
-                      fn         = "count"
-                      fnArgs     = null
+                      fn         = "count_distinct"
+                      fnArgs     = []
                       resolution = "AUTO"
                     }
                     transformType = "timechart"
@@ -4961,8 +4930,8 @@ resource "observe_dashboard" "app_home" {
                       fn = "count"
                     }
                     timechart = {
-                      fn         = "count"
-                      fnArgs     = null
+                      fn         = "count_distinct_exact"
+                      fnArgs     = []
                       resolution = "AUTO"
                     }
                     transformType = "timechart"
@@ -5187,8 +5156,8 @@ resource "observe_dashboard" "app_home" {
                       fn = "count"
                     }
                     timechart = {
-                      fn         = "count"
-                      fnArgs     = null
+                      fn         = "count_distinct_exact"
+                      fnArgs     = []
                       resolution = "AUTO"
                     }
                     transformType = "timechart"
@@ -5356,9 +5325,9 @@ resource "observe_dashboard" "app_home" {
           viewModel = {
             consoleValue = <<-EOT
                             filter is_null(deleted)
-                                                                                                                                                                        
+                                                                                                                                                                                                    
                             exists project_id = @projects.project_id
-                                                                                                                                                                        
+                                                                                                                                                                                                    
                             ever asset_type = "container.googleapis.com/Cluster"
                         EOT
             railCollapseState = {
@@ -5500,8 +5469,8 @@ resource "observe_dashboard" "app_home" {
                       fn = "count"
                     }
                     timechart = {
-                      fn         = "count"
-                      fnArgs     = null
+                      fn         = "count_distinct_exact"
+                      fnArgs     = []
                       resolution = "AUTO"
                     }
                     transformType = "timechart"
@@ -5793,8 +5762,8 @@ resource "observe_dashboard" "app_home" {
                       fn = "count"
                     }
                     timechart = {
-                      fn         = "count"
-                      fnArgs     = null
+                      fn         = "count_distinct_exact"
+                      fnArgs     = []
                       resolution = "AUTO"
                     }
                     transformType = "timechart"
@@ -5963,9 +5932,9 @@ resource "observe_dashboard" "app_home" {
           viewModel = {
             consoleValue = <<-EOT
                             filter is_null(deleted)
-                                                                                                                                                                        
+                                                                                                                                                                                                    
                             exists project_id = @projects.project_id
-                                                                                                                                                                        
+                                                                                                                                                                                                    
                             ever asset_type = "pubsub.googleapis.com/Topic"
                         EOT
             railCollapseState = {
@@ -6108,8 +6077,8 @@ resource "observe_dashboard" "app_home" {
                       fn = "count"
                     }
                     timechart = {
-                      fn         = "count"
-                      fnArgs     = null
+                      fn         = "count_distinct_exact"
+                      fnArgs     = []
                       resolution = "AUTO"
                     }
                     transformType = "timechart"
@@ -7412,14 +7381,14 @@ resource "observe_dashboard" "app_home" {
               quota      = 206
               service    = 254
             }
-            containerWidth              = 1313
+            containerWidth              = 1311
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
             disableFixedLeftColumns     = false
             eventLinkColumnId           = null
             fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
+            hasCalculatedColumnWidths   = true
             hasDoneAutoLayout           = false
             maxColumnWidth              = 400
             maxMeasuredColumnWidth      = {}
@@ -7432,14 +7401,19 @@ resource "observe_dashboard" "app_home" {
             scrollToColumn              = null
             scrollToRow                 = 0
             selection = {
+              anchoredCellSelection = [
+                9,
+                "limit_name",
+              ]
               cells = {
-                value = {
-                  "7" = true
+                limit_name = {
+                  "9" = true
                 }
               }
               columnSelectSequence = []
               columns              = {}
               highlightState       = {}
+              lastCellSelection    = null
               rows                 = {}
               selectionType        = "cell"
             }
@@ -7674,14 +7648,14 @@ resource "observe_dashboard" "app_home" {
               quota      = 206
               service    = 254
             }
-            containerWidth              = 1313
+            containerWidth              = 1311
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
             disableFixedLeftColumns     = false
             eventLinkColumnId           = null
             fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
+            hasCalculatedColumnWidths   = true
             hasDoneAutoLayout           = false
             maxColumnWidth              = 400
             maxMeasuredColumnWidth      = {}
@@ -7893,14 +7867,14 @@ resource "observe_dashboard" "app_home" {
               quota      = 206
               service    = 254
             }
-            containerWidth              = 1313
+            containerWidth              = 1311
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
             disableFixedLeftColumns     = false
             eventLinkColumnId           = null
             fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
+            hasCalculatedColumnWidths   = true
             hasDoneAutoLayout           = false
             maxColumnWidth              = 400
             maxMeasuredColumnWidth      = {}
@@ -9885,8 +9859,8 @@ resource "observe_dashboard" "app_home" {
                       fn = "count"
                     }
                     timechart = {
-                      fn         = "count"
-                      fnArgs     = null
+                      fn         = "count_distinct_exact"
+                      fnArgs     = []
                       resolution = "AUTO"
                     }
                     transformType = "timechart"
@@ -10102,8 +10076,8 @@ resource "observe_dashboard" "app_home" {
                       fn = "count"
                     }
                     timechart = {
-                      fn         = "count"
-                      fnArgs     = null
+                      fn         = "count_distinct_exact"
+                      fnArgs     = []
                       resolution = "AUTO"
                     }
                     transformType = "timechart"
@@ -10327,8 +10301,8 @@ resource "observe_dashboard" "app_home" {
                       fn = "count"
                     }
                     timechart = {
-                      fn         = "count"
-                      fnArgs     = null
+                      fn         = "count_distinct_exact"
+                      fnArgs     = []
                       resolution = "AUTO"
                     }
                     transformType = "timechart"

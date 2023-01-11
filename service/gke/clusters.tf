@@ -1,7 +1,7 @@
 resource "observe_dataset" "gke_events" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Cluster Events")
-  freshness   = lookup(local.freshness, "gke", var.freshness_duration_default)
+  freshness   = lookup(local.freshness, "gke", var.freshness_default_duration)
   description = "This dataset contains events for GKE Cluster Resources"
   inputs = {
     "events" = var.google.asset_inventory_records.oid
@@ -76,10 +76,11 @@ resource "observe_dataset" "gke_events" {
 }
 
 resource "observe_dataset" "gke_clusters" {
-  workspace   = var.workspace.oid
-  name        = format(var.name_format, "Cluster")
-  freshness   = lookup(local.freshness, "gke", var.freshness_duration_default)
-  description = "This dataset is used to create GKE Cluster Resources"
+  workspace   = local.datasets.gke_clusters.workspace
+  name        = local.datasets.gke_clusters.name
+  freshness   = local.datasets.gke_clusters.freshness
+  description = local.datasets.gke_clusters.description
+
   inputs = {
     "events" = observe_dataset.gke_events.oid
   }

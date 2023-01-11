@@ -1,8 +1,9 @@
 resource "observe_dataset" "sql_logs" {
-  workspace   = var.workspace.oid
-  name        = format(var.name_format, "Logs")
-  freshness   = lookup(local.freshness, "logging", var.freshness_duration_default)
-  description = "This dataset contains raw logging data for sql instances"
+  workspace   = local.datasets.sql_logs.workspace
+  name        = local.datasets.sql_logs.name
+  freshness   = local.datasets.sql_logs.freshness
+  description = local.datasets.sql_logs.description
+
   inputs = {
     "logs" = var.google.logs.oid
   }
@@ -41,10 +42,11 @@ resource "observe_dataset" "sql_logs" {
 }
 
 resource "observe_dataset" "activity_logs" {
-  workspace   = var.workspace.oid
-  name        = format(var.name_format, "Logs Activity")
-  freshness   = lookup(local.freshness, "logging", var.freshness_duration_default)
-  description = "This dataset contains logs of operations against sql instances"
+  workspace   = local.datasets.activity_logs.workspace
+  name        = local.datasets.activity_logs.name
+  freshness   = local.datasets.activity_logs.freshness
+  description = local.datasets.activity_logs.description
+
   inputs = {
     "logs" = var.google.logs.oid
   }

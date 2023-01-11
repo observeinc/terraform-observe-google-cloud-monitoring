@@ -11,7 +11,7 @@ locals {
 resource "observe_dataset" "billing_events" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Events")
-  freshness   = lookup(local.freshness, "billing", var.freshness_duration_default)
+  freshness   = lookup(local.freshness, "billing", var.freshness_default_duration)
   description = "This dataset contains events for GCP Billing"
   inputs = {
     "events" = var.google.pubsub_events.oid

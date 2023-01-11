@@ -1,8 +1,9 @@
 resource "observe_dataset" "logs" {
-  workspace   = var.workspace.oid
-  name        = format(var.name_format, "Logs")
-  freshness   = var.freshness_duration_default
-  description = "This dataset contains all logging data collected from GCP and is used as an input to other datasets"
+  workspace   = local.datasets.logs.workspace
+  name        = local.datasets.logs.name
+  freshness   = local.datasets.logs.freshness
+  description = local.datasets.logs.description
+
   inputs = {
     "events" = observe_dataset.base_pubsub_events.oid
   }
@@ -40,10 +41,11 @@ resource "observe_dataset" "logs" {
 }
 
 resource "observe_dataset" "audit_logs" {
-  workspace   = var.workspace.oid
-  name        = format(var.name_format, "Audit Logs")
-  freshness   = var.freshness_duration_default
-  description = "This dataset contains audit logs which are enabled per service within GCP"
+  workspace   = local.datasets.audit_logs.workspace
+  name        = local.datasets.audit_logs.name
+  freshness   = local.datasets.audit_logs.freshness
+  description = local.datasets.audit_logs.description
+
   inputs = {
     "events" = observe_dataset.logs.oid
   }

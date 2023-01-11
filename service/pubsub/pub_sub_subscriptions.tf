@@ -1,7 +1,7 @@
 resource "observe_dataset" "pubsub_subscriptions" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Subscriptions")
-  freshness   = lookup(local.freshness, "pubsub", var.freshness_duration_default)
+  freshness   = lookup(local.freshness, "pubsub", var.freshness_default_duration)
   description = "Dataset for PubSub Subscription resources"
   inputs = {
     "events" = var.google.resource_asset_inventory_records.oid

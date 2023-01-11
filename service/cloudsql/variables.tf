@@ -15,7 +15,7 @@ variable "max_expiry" {
   default     = "4h"
 }
 
-variable "freshness_duration_default" {
+variable "freshness_default_duration" {
   type        = string
   description = "Default dataset freshness"
   default     = "2m"
@@ -65,12 +65,12 @@ variable "metric_thresholds" {
     CPU = {
       compare_function = "greater",
       value            = 0.8,
-      disabled         = false
+      disabled         = true
     }
     Disk_Quota = {
       compare_function = "greater",
       value            = 0.8,
-      disabled         = false
+      disabled         = true
     }
 
   }

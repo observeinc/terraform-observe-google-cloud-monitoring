@@ -1,10 +1,8 @@
 resource "observe_dataset" "compute_disk" {
-  workspace = var.workspace.oid
-  name      = format(var.name_format, "Disk")
-
-  freshness = lookup(local.freshness, "compute", var.freshness_duration_default)
-
-  description = "This dataset is used to create Disk Resources"
+  workspace   = local.datasets.compute_disk.workspace
+  name        = local.datasets.compute_disk.name
+  freshness   = local.datasets.compute_disk.freshness
+  description = local.datasets.compute_disk.description
 
   inputs = {
     "events" = var.google.resource_asset_inventory_records.oid

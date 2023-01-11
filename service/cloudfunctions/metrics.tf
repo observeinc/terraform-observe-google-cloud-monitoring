@@ -133,10 +133,11 @@ locals {
 resource "observe_dataset" "cloud_functions_metrics" {
   count = local.enable_metrics ? 1 : 0
 
-  workspace   = var.workspace.oid
-  name        = format(var.name_format, "Metrics")
-  freshness   = var.freshness_duration_default
-  description = "This dataset contains metrics collected for cloud functions"
+  workspace   = local.datasets.cloud_functions_metrics.workspace
+  name        = local.datasets.cloud_functions_metrics.name
+  freshness   = local.datasets.cloud_functions_metrics.freshness
+  description = local.datasets.cloud_functions_metrics.description
+
   inputs = {
     "metrics" = var.google.metrics.oid
   }

@@ -1,8 +1,9 @@
 resource "observe_dataset" "gke_logs" {
-  workspace   = var.workspace.oid
-  name        = format(var.name_format, "Logs")
-  freshness   = lookup(local.freshness, "logging", var.freshness_duration_default)
-  description = "This dataset contains raw logging data for GKE instances"
+  workspace   = local.datasets.gke_logs.workspace
+  name        = local.datasets.gke_logs.name
+  freshness   = local.datasets.gke_logs.freshness
+  description = local.datasets.gke_logs.description
+
   inputs = {
     "logs" = var.google.logs.oid
   }

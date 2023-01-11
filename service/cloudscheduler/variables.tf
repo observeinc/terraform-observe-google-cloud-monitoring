@@ -22,7 +22,7 @@ variable "freshness_overrides" {
   default     = {}
 }
 
-variable "freshness_duration_default" {
+variable "freshness_default_duration" {
   type        = string
   description = "Default dataset freshness"
   default     = "2m"

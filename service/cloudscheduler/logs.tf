@@ -1,8 +1,9 @@
 resource "observe_dataset" "cloudscheduler_logs" {
-  workspace   = var.workspace.oid
-  name        = format(var.name_format, "Logs")
-  freshness   = lookup(local.freshness, "logs", var.freshness_duration_default)
-  description = "This dataset contains all logs generated for compute instances"
+  workspace   = local.datasets.cloudscheduler_logs.workspace
+  name        = local.datasets.cloudscheduler_logs.name
+  freshness   = local.datasets.cloudscheduler_logs.freshness
+  description = local.datasets.cloudscheduler_logs.description
+
   inputs = {
     "logs" = var.google.logs.oid
   }

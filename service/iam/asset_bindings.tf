@@ -1,7 +1,7 @@
 resource "observe_dataset" "asset_bindings" {
   workspace   = var.workspace.oid
   name        = format(var.name_format, "Asset Bindings")
-  freshness   = lookup(var.freshness_overrides, "service_accounts", var.freshness_duration_default)
+  freshness   = lookup(var.freshness_overrides, "service_accounts", var.freshness_default_duration)
   description = "This dataset is used to create the Compute Instance Groups Resource Instances"
 
   inputs = {
