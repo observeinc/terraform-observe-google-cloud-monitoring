@@ -1,5 +1,5 @@
 # terraform import observe_dashboard.app_home_fix 41488268
-resource "observe_dashboard" "app_home_fix" {
+resource "observe_dashboard" "app_home" {
   layout = jsonencode(
     {
       autoPack = true

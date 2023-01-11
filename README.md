@@ -53,7 +53,7 @@ module "google" {
 
 | Name | Type |
 |------|------|
-| observe_dashboard.app_home_fix | resource |
+| observe_dashboard.app_home | resource |
 | observe_dashboard.project_input | resource |
 | observe_dashboard.resource_monitoring | resource |
 | observe_dashboard.total_cost_of_ownership | resource |
