@@ -5,35 +5,36 @@ resource "observe_dataset" "projects_collection_enabled" {
   description = "This dataset is used to create project resources"
 
   inputs = {
-    "observation" = var.datastream.dataset
+    "pubsub" = observe_dataset.base_pubsub_events.oid
+  }
+
+  # Upstream data: See https://github.com/observeinc/google-cloud-functions/pull/2
+  stage {
+    pipeline = <<-EOF
+      filter attributes.observe_gcp_kind = "https://cloud.google.com/resource-manager/reference/rest/v3/projects"
+      make_col data:parse_json(data)
+      make_col
+          time:BUNDLE_TIMESTAMP,
+          update_time:parse_isotime(data.project.updateTime),
+          createTime:parse_isotime(data.project.createTime),
+          updateTime:parse_isotime(data.project.updateTime),
+          lifecycleState:string(data.project.state),
+          project_id:string(data.project.projectId),
+          parent_id:string(data.project.parent),
+          display_name:string(data.project.displayName),
+          etag:string(data.project.etag)
+    EOF
   }
 
   stage {
-
     pipeline = <<-EOF
-        filter OBSERVATION_KIND = "gcpprojects"
-        make_col data:FIELDS.project
-
-        make_col 
-          time:BUNDLE_TIMESTAMP,
-          update_time:timestamp_s(int64(data.update_time.seconds)) + if_null(duration(int64(data.update_time.nanos)), 0s),
-          createTime:timestamp_s(int64(data.create_time.seconds)) + if_null(duration(int64(data.create_time.nanos)), 0s),
-            updateTime:timestamp_s(int64(data.update_time.seconds)) + if_null(duration(int64(data.update_time.nanos)), 0s),
-            lifecycleState: case (int64(data.state)=0, "LIFECYCLE_STATE_UNSPECIFIED", int64(data.state)=1,"ACTIVE",int64(data.state)=2,"DELETE_REQUESTED", int64(data.state)=3,"DELETE_IN_PROGRESS", true, 'UNKNOWN') ,
-            project_id:string(data.project_id),
-            parent_id: string(data.parent),
-            display_name:string(data.display_name),
-            etag:string(data.etag)
-
         set_valid_from options(max_time_diff:${var.max_time_diff}), time
 
-        extract_regex  string(data.name), /^[^\/]+\/(?P<projectNumber>.*)/
+        extract_regex  string(data.project.name), /^[^\/]+\/(?P<projectNumber>.*)/
 
         make_col deleted: bool(if(lifecycleState != "ACTIVE", true, false))
 
         make_col ttl: case(deleted, 1ns, true, 4h)
-
-
     EOF
   }
 

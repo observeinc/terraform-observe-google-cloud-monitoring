@@ -1,10 +1,6 @@
-Before setting up this [poller](https://docs.observeinc.com/en/latest/content/common-topics/ObserveGlossary.html) you must follow the set up instructions to collect your GCP project data using Terraform or manual setup.
+Before setting up this [poller](https://docs.observeinc.com/en/latest/content/common-topics/ObserveGlossary.html) you
+typically should follow the [GCP App installation prerequisites](https://docs.observeinc.com/en/latest/content/integrations/gcp/gcp.html#installation) to collect your GCP project data.
 
-See the [GCP App installation](https://docs.observeinc.com/en/latest/content/integrations/gcp/gcp.html#installation) instructions under Observe integrations in the Observe Documentation.
+The GCP Monitoring poller periodically fetches metrics for a GCP project.
 
-
-The GCP Monitoring poller periodically fetches metrics, projects and asset inventory records for a GCP project.
-
-The Observe GCP app uses this data to construct the state of your GCP inventory over time.
-
-You will need a service account private key in Json format to set up this poller. 
+You will need a service account private key in Json format to set up this poller.

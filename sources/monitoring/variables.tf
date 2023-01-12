@@ -2,14 +2,14 @@
 variable "name" {
   type        = string
   description = "Poller name. Should be unique per datastream."
-  default     = "Assets-Metrics"
+  default     = "Monitoring"
 }
 
 # tflint-ignore: terraform_unused_declarations
 variable "description" {
   type        = string
   description = "Short description meant for other humans"
-  default     = "GCP Poller for metrics and asset inventory records"
+  default     = "GCP Poller for Google Cloud Monitoring"
 }
 
 variable "workspace" {
