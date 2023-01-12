@@ -67,20 +67,13 @@ locals {
     }
 
     "ComputeInstanceToInstanceGroup" = {
+      source = observe_dataset.compute_instance.oid
       target = observe_dataset.instance_group.oid
       fields = ["instanceGroupAssetKey"]
-      source = observe_dataset.compute_instance.oid
       label  = "Compute Instances"
       create = true
     }
 
-    "InstanceGroupToComputeInstance" = {
-      source = observe_dataset.instance_group.oid
-      fields = ["instanceGroupAssetKey"]
-      target = observe_dataset.compute_instance.oid
-      label  = "Compute Instances"
-      create = true
-    }
   }
 }
 
@@ -150,8 +143,8 @@ resource "observe_preferred_path" "instance_groups_compute" {
   description = "Link to Compute Instances associated with current set of Instance Groups"
   source      = observe_dataset.instance_group.oid
   step {
-    link    = observe_link.compute["InstanceGroupToComputeInstance"].oid
-    reverse = false
+    link    = observe_link.compute["ComputeInstanceToInstanceGroup"].oid
+    reverse = true
   }
 }
 # tflint-ignore: terraform_unsupported_argument
@@ -163,8 +156,8 @@ resource "observe_preferred_path" "compute_instance_groups" {
   description = "Link to instance groups associated with current set of compute instances"
   source      = observe_dataset.compute_instance.oid
   step {
-    link    = observe_link.compute["InstanceGroupToComputeInstance"].oid
-    reverse = true
+    link    = observe_link.compute["ComputeInstanceToInstanceGroup"].oid
+    reverse = false
   }
 }
 
@@ -176,8 +169,8 @@ resource "observe_preferred_path" "instance_group_compute_disk" {
   source      = observe_dataset.instance_group.oid
 
   step {
-    link    = observe_link.compute["InstanceGroupToComputeInstance"].oid
-    reverse = false
+    link    = observe_link.compute["ComputeInstanceToInstanceGroup"].oid
+    reverse = true
   }
 
   step {

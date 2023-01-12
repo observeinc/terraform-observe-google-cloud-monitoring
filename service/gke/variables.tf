@@ -42,7 +42,7 @@ variable "google" {
     compute_instance_group                  = object({ oid = string, id = string })
     compute_instance                        = object({ oid = string, id = string })
     compute_metrics                         = object({ oid = string, id = string })
-    compute_instance_group_link_to_instance = object({ oid = string, id = string })
+    compute_instance_link_to_instance_group = object({ oid = string, id = string })
     compute_instance_link_to_disk           = object({ oid = string, id = string })
   })
   description = "Google base module"
