@@ -204,7 +204,7 @@ module "gke" {
     compute_instance_group                  = one(module.compute[*].compute_instance_group)
     compute_instance                        = one(module.compute[*].compute)
     compute_metrics                         = one(module.compute[*].compute_metrics)
-    compute_instance_group_link_to_instance = one(module.compute[*].compute_instance_group_link_to_instance)
+    compute_instance_link_to_instance_group = one(module.compute[*].compute_instance_link_to_instance_group)
     compute_instance_link_to_disk           = one(module.compute[*].compute_instance_link_to_disk)
   })
 

@@ -18,10 +18,10 @@ resource "observe_link" "gke" {
       label  = "Logs"
     }
 
-    "GKEClusterToInstanceGroup" = {
-      target = var.google.compute_instance_group.oid
+    "InstanceGroupToGKECluster" = {
+      source = var.google.compute_instance_group.oid
+      target = observe_dataset.gke_clusters.oid
       fields = ["gkeClusterAssetKey"]
-      source = observe_dataset.gke_clusters.oid
       label  = "Instance group"
     }
 
@@ -51,12 +51,12 @@ resource "observe_preferred_path" "gke_to_compute" {
   description = "Link to compute instances that are used as nodes in current set of GKE Clusters"
   source      = observe_dataset.gke_clusters.oid
   step {
-    link    = observe_link.gke["GKEClusterToInstanceGroup"].oid
-    reverse = false
+    link    = observe_link.gke["InstanceGroupToGKECluster"].oid
+    reverse = true
   }
   step {
-    link    = var.google.compute_instance_group_link_to_instance.oid
-    reverse = false
+    link    = var.google.compute_instance_link_to_instance_group.oid
+    reverse = true
   }
 }
 
@@ -66,12 +66,12 @@ resource "observe_preferred_path" "gke_to_disk" {
   description = "Link to compute disk instances that are used by nodes in current set of GKE Clusters"
   source      = observe_dataset.gke_clusters.oid
   step {
-    link    = observe_link.gke["GKEClusterToInstanceGroup"].oid
-    reverse = false
+    link    = observe_link.gke["InstanceGroupToGKECluster"].oid
+    reverse = true
   }
   step {
-    link    = var.google.compute_instance_group_link_to_instance.oid
-    reverse = false
+    link    = var.google.compute_instance_link_to_instance_group.oid
+    reverse = true
   }
   step {
     link    = var.google.compute_instance_link_to_disk.oid

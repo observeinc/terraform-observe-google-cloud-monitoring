@@ -15,5 +15,5 @@ output "logs" {
 }
 
 output "instance_group_link" {
-  value = observe_link.gke["GKEClusterToInstanceGroup"]
+  value = observe_link.gke["InstanceGroupToGKECluster"]
 }

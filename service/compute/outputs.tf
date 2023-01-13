@@ -18,8 +18,8 @@ output "compute_instance_group" {
   value = observe_dataset.instance_group
 }
 
-output "compute_instance_group_link_to_instance" {
-  value = observe_link.compute["InstanceGroupToComputeInstance"]
+output "compute_instance_link_to_instance_group" {
+  value = observe_link.compute["ComputeInstanceToInstanceGroup"]
 }
 
 output "compute_disk" {
