@@ -1,5 +1,5 @@
 name: monitoring poller
-description: Onboard asset inventory records and metrics for a GCP project
+description: Onboard metrics for a GCP project
 kind: poller
 requiredvariables:
 - datastream

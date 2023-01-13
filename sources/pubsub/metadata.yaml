@@ -1,5 +1,5 @@
 name: pubsub events
-description: Onboard log data using a GCP Pub/Sub Subscription
+description: Onboard data using a GCP Pub/Sub Subscription
 kind: poller
 requiredvariables:
 - datastream

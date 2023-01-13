@@ -66,30 +66,28 @@ resource "observe_dataset" "compute_instance" {
     "pubsub_events"   = var.google.pubsub_events.oid
   }
 
+  # Upstream data: See https://github.com/observeinc/google-cloud-functions/pull/2
   stage {
-    input = "pubsub_events"
+    input    = "pubsub_events"
+    pipeline = <<-EOF
+      filter attributes.observe_gcp_kind = "https://cloud.google.com/asset-inventory/docs/supported-asset-types#INSTANCE_TO_INSTANCEGROUP"
+      make_col data_value:parse_json(data)
+
+      make_col instance:string(data_value.instanceUrl),
+        instanceGroupId:string(data_value.instanceGroupId),
+        projectId:string(data_value.projectId),
+        zone:string(data_value.zoneName),
+        ttl: 15m
+    EOF
+  }
+
+  stage {
     # alias    = "instance_group_base"
     pipeline = <<-EOF
-        filter attributes.OBSERVATION_KIND = "gcpInstanceGroup"
+        extract_regex instance, /instances\/(?P<instanceName>.*)/
 
-        make_col data2: parse_json(data)
-
-        flatten_single data2
-
-        make_col instance:string(_c_data2_value.instance),
-            instance_group:string(_c_data2_value.instance_group),
-            instance_group_id:string(_c_data2_value.instance_group_id),
-            project_id:string(_c_data2_value.project_id),
-            zone:string(_c_data2_value.zone),
-            ttl: 15m
-        
-        extract_regex instance, /instances\/(?P<instance_name>.*)/
-
-        make_col instanceGroupAssetKey: string_concat("//compute.googleapis.com/projects/",project_id,"/zones/",zone,"/instanceGroups/",instance_group)
-        // ex - //compute.googleapis.com/projects/content-testpproj-stage-1/zones/us-west1-a/instanceGroups/gke-test-stg-gke-test-stg-gke-node-po-5cf533ca-grp
-        make_col computeInstanceAssetKey: string_concat("//compute.googleapis.com/projects/",project_id,"/zones/",zone,"/instances/",instance_name)
+        make_col computeInstanceAssetKey: string_concat("//compute.googleapis.com/projects/",projectId,"/zones/",zone,"/instances/",instanceName)
         // ex - //compute.googleapis.com/projects/content-testpproj-stage-1/zones/us-central1-b/instances/test-stg-instance-ubuntu-20-04-lts-57
-        
 
         set_valid_from options(max_time_diff:4h), BUNDLE_TIMESTAMP
       
@@ -100,18 +98,10 @@ resource "observe_dataset" "compute_instance" {
     # input    = "instance_group_base"
     alias    = "instance_group_instances"
     pipeline = <<-EOF
-
-      make_resource 
-        project_id,
-        zone,
-        instanceGroupAssetKey,
-        instance_group_id,
-        instance_group_name: instance_group,
+      make_resource
+        instanceGroupId,
         primary_key(computeInstanceAssetKey),
         valid_for(ttl)
-
-      set_label instance_group_name
-      add_key instanceGroupAssetKey
     EOF
   }
 
@@ -154,7 +144,7 @@ resource "observe_dataset" "compute_instance" {
   stage {
     pipeline = <<-EOF
 
-      leftjoin computeInstanceAssetKey=@instance_group_instances.computeInstanceAssetKey, instance_group_name: @instance_group_instances.instance_group_name, instanceGroupAssetKey: @instance_group_instances.instanceGroupAssetKey
+      leftjoin computeInstanceAssetKey=@instance_group_instances.computeInstanceAssetKey, instanceGroupId: @instance_group_instances.instanceGroupId
 
     EOF
   }
@@ -162,7 +152,7 @@ resource "observe_dataset" "compute_instance" {
   stage {
     pipeline = <<-EOF
 
-      leftjoin instanceGroupAssetKey=@instance_groups.instanceGroupAssetKey, gkeClusterAssetKey: @instance_groups.gkeClusterAssetKey
+      leftjoin instanceGroupId=@instance_groups.instanceGroupAssetKey_id, instanceGroupAssetKey:@instance_groups.instanceGroupAssetKey, gkeClusterAssetKey: @instance_groups.gkeClusterAssetKey
 
     EOF
   }
@@ -175,7 +165,7 @@ resource "observe_dataset" "compute_instance" {
         creationTime,
         cpuPlatform: string(data.cpuPlatform),
         machineType,
-        project_id, 
+        project_id,
         region, 
         zone,
         network,
@@ -184,7 +174,7 @@ resource "observe_dataset" "compute_instance" {
         publicIP,
         labels,
         tags,
-        instance_group_name,
+        instanceGroupId,
         instanceGroupAssetKey,
         gkeClusterAssetKey,
         deletionProtection,
@@ -193,13 +183,13 @@ resource "observe_dataset" "compute_instance" {
         primary_key(computeInstanceAssetKey),
         valid_for(ttl)
 
-      add_key instance_name
+      add_key computeInstanceAssetKey
+      add_key instance_name, zone, project_id
       set_label instance_name
 
+      // TODO(luke): remove when reversed preferred paths work
       add_key project_id
-
       add_key instanceGroupAssetKey
-
       add_key gkeClusterAssetKey
     EOF
   }

@@ -1,10 +1,10 @@
-Before setting up this [poller](https://docs.observeinc.com/en/latest/content/common-topics/ObserveGlossary.html) you must follow the set up instructions to collect your GCP project data using Terraform or manual setup.
+Before setting up this [poller](https://docs.observeinc.com/en/latest/content/common-topics/ObserveGlossary.html) you
+typically should follow the [GCP App installation prerequisites](https://docs.observeinc.com/en/latest/content/integrations/gcp/gcp.html#installation) to collect your GCP data.
 
-See the [GCP App installation](https://docs.observeinc.com/en/latest/content/integrations/gcp/gcp.html#installation) instructions under Observe integrations in the Observe Documentation.
-
+This poller can also be used to ingest custom data from any pull-based Pub/Sub topic.
+It is a useful, lower-cost way to get large amounts of data from GCP into Observe.
 
 The GCP Pub/Sub poller periodically fetches messages from a pull-based Pub/Sub subscription.  
 
-In a standard configuration the Pub/Sub topic will be the destination for log sinks created within GCP.  All logs not excluded by filters on the log sink will be fetched by Observe pollers.  
-
-You will need the name of the created Pub/Sub subscription and a service account private key in Json format to set up this poller.
+You will need the name of the Pub/Sub subscription and a service account private key in Json format to set up this poller.
+The service account should have permission to read messages from the subscription.

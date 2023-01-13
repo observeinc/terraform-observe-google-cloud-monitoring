@@ -123,6 +123,7 @@ resource "observe_dataset" "instance_group" {
         subnetwork:string(data.subnetwork),
         size:int64(data.size),
         region:string(data.region),
+        zone:string(data.zone),
         creationTimestamp:string(data.creationTimestamp),
         project_id:string(split_part(split_part(string(data.selfLink), "projects/", 2), "/", 1))
       
@@ -193,8 +194,11 @@ resource "observe_dataset" "instance_group" {
 
       add_key selfLink
 
-      add_key gkeClusterAssetKey
+      add_key name, location, project_id
+      add_key instanceGroupAssetKey_id
 
+      // TODO(luke): remove when reversed preferred path works
+      add_key gkeClusterAssetKey
       add_key igm_instanceGroupManagerAssetKey
     EOF
   }

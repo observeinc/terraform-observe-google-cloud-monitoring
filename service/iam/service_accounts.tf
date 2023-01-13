@@ -15,23 +15,25 @@ resource "observe_dataset" "service_accounts" {
   inputs = {
     "events" = var.google.pubsub_events.oid
   }
+
+  # Upstream data: https://github.com/observeinc/google-cloud-functions/pull/2
   stage {
     pipeline = <<-EOF
-        filter attributes.OBSERVATION_KIND = "gcpServiceAccount"
+      filter attributes.observe_gcp_kind = "https://cloud.google.com/iam/docs/reference/rest/v1/projects.serviceAccounts"
+      make_col data2: parse_json(data)
+      make_col etag:string(data2.account.etag),
+        oauth2ClientId:string(data2.account.oauth2ClientId),
+        project_id:string(data2.account.projectId),
+        service_account_email:string(data2.account.email),
+        service_account_id:string(data2.account.uniqueId),
+        service_account_name:string(data2.account.name),
+        time:BUNDLE_TIMESTAMP,
+        ttl: 15m
+    EOF
+  }
 
-        make_col data2: parse_json(data)
-            
-        flatten_single data2
-
-        make_col etag:string(_c_data2_value.etag),
-            oauth2ClientId:string(_c_data2_value.oauth2ClientId),
-            project_id:string(_c_data2_value.project_id),
-            service_account_email:string(_c_data2_value.service_account_email),
-            service_account_id:string(_c_data2_value.service_account_id),
-            service_account_name:string(_c_data2_value.service_account_name),
-            time:BUNDLE_TIMESTAMP,
-            ttl: 15m
-
+  stage {
+    pipeline = <<-EOF
         extract_regex service_account_name, /serviceAccounts\/(?P<short_name>[^\/]+)/
 
         set_valid_from options(max_time_diff:${var.max_time_diff}), time

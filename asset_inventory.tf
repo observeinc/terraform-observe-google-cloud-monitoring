@@ -5,13 +5,11 @@ resource "observe_dataset" "base_asset_inventory_records" {
   description = local.datasets.base_asset_inventory_records.description
 
   inputs = {
-    "observation" = var.datastream.dataset
-    "events"      = observe_dataset.base_pubsub_events.oid
+    "events" = observe_dataset.base_pubsub_events.oid
   }
 
   # https://cloud.google.com/asset-inventory/docs/reference/rpc/google.cloud.asset.v1#temporalasset
   stage {
-    input    = "events"
     alias    = "feed_events"
     pipeline = <<-EOF
       filter is_null(attributes["logging.googleapis.com/timestamp"])
@@ -37,25 +35,25 @@ resource "observe_dataset" "base_asset_inventory_records" {
     EOF
   }
 
-  # https://cloud.google.com/asset-inventory/docs/reference/rpc/google.cloud.asset.v1#asset
+  # Upstream data: See https://github.com/observeinc/google-cloud-functions/pull/2
   stage {
-    input    = "observation"
-    alias    = "export_events"
+    input    = "events"
     pipeline = <<-EOF
-      filter OBSERVATION_KIND = "gcpassets"
-      make_col data:FIELDS.asset
-      filter not is_null(data.asset_type) and not is_null(data.name)
+      filter attributes.observe_gcp_kind = "https://cloud.google.com/asset-inventory/docs/reference/rest/v1/assets"
+      make_col data:parse_json(data)
 
-      pick_col 
+      pick_col
         time:BUNDLE_TIMESTAMP,
-        update_time:timestamp_s(int64(data.update_time.seconds)) + if_null(duration(int64(data.update_time.nanos)), 0s),
-        ancestors:array(data.ancestors),
-        asset_type:string(data.asset_type),
-        name:string(data.name),
-        resource:object(data.resource),
-        iam_policy:object(data.iam_policy),
-        org_policy:array(data.org_policy),
-        access_policy:object(data.access_policy)
+        deleted:bool(data.deleted),
+        update_time:parse_isotime(string(data.asset.updateTime)),
+        ancestors:array(data.asset.ancestors),
+        asset_type:string(data.asset.assetType),
+        name:string(data.asset.name),
+        resource:object(data.asset.resource),
+        iam_policy:object(data.asset.iamPolicy),
+        org_policy:array(data.asset.orgPolicy),
+        access_policy:object(data.asset.accessPolicy),
+        attributes
     EOF
   }
 
@@ -80,7 +78,6 @@ resource "observe_dataset" "resource_asset_inventory_records" {
   # https://cloud.google.com/asset-inventory/docs/reference/rpc/google.cloud.asset.v1#google.cloud.asset.v1.Resource
   stage {
     input    = "events"
-    alias    = "base"
     pipeline = <<-EOF
           filter not is_null(resource)
 
@@ -98,8 +95,8 @@ resource "observe_dataset" "resource_asset_inventory_records" {
 
           make_col 
             data:object(resource.data),
-            discovery_document_uri:string(resource.discovery_document_uri),
-            discovery_name:string(resource.discovery_name),
+            discovery_document_uri:string(coalesce(resource.discovery_document_uri, resource.discoveryDocumentUri)),
+            discovery_name:string(coalesce(resource.discovery_name, resource.discoveryName)),
             location:string(resource.location),
             version:string(resource.version)
     EOF
