@@ -1,5 +1,5 @@
 # terraform import observe_dashboard.cloud_sql_monitoring_fix 41214839
-resource "observe_dashboard" "cloud_sql_monitoring_fix" {
+resource "observe_dashboard" "cloud_sql_monitoring" {
   description = "Dashboard for monitoring Cloud SQL resources"
   count       = local.enable_metrics ? 1 : 0
   layout = jsonencode(
@@ -462,10 +462,10 @@ resource "observe_dashboard" "cloud_sql_monitoring_fix" {
         parameters = [
           {
             controlledFilterStageId = "stage-9zde4fcc"
-            datasetId               = "${local.cloud_sql_jobs}"
+            datasetId               = "${local.cloud_sql_instance}"
             defaultValue = {
               datasetref = {
-                datasetId = "${local.cloud_sql_jobs}"
+                datasetId = "${local.cloud_sql_instance}"
               }
             }
             emptyValueEncoding    = "null"
@@ -503,7 +503,7 @@ resource "observe_dashboard" "cloud_sql_monitoring_fix" {
           array = null
           bool  = null
           datasetref = {
-            datasetId   = "${local.cloud_sql_jobs}"
+            datasetId   = "${local.cloud_sql_instance}"
             datasetPath = null
             stageId     = null
           }
@@ -646,7 +646,7 @@ resource "observe_dashboard" "cloud_sql_monitoring_fix" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_jobs}"
+                      targetDataset    = "${local.cloud_sql_instance}"
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -878,7 +878,7 @@ resource "observe_dashboard" "cloud_sql_monitoring_fix" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_jobs}"
+                      targetDataset    = "${local.cloud_sql_instance}"
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -1110,7 +1110,7 @@ resource "observe_dashboard" "cloud_sql_monitoring_fix" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_jobs}"
+                      targetDataset    = "${local.cloud_sql_instance}"
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -1419,7 +1419,7 @@ resource "observe_dashboard" "cloud_sql_monitoring_fix" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_jobs}"
+                      targetDataset    = "${local.cloud_sql_instance}"
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -1713,7 +1713,7 @@ resource "observe_dashboard" "cloud_sql_monitoring_fix" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_jobs}"
+                      targetDataset    = "${local.cloud_sql_instance}"
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -1945,7 +1945,7 @@ resource "observe_dashboard" "cloud_sql_monitoring_fix" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_jobs}"
+                      targetDataset    = "${local.cloud_sql_instance}"
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -2176,7 +2176,7 @@ resource "observe_dashboard" "cloud_sql_monitoring_fix" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_jobs}"
+                      targetDataset    = "${local.cloud_sql_instance}"
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -2372,7 +2372,7 @@ resource "observe_dashboard" "cloud_sql_monitoring_fix" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_jobs}"
+                      targetDataset    = "${local.cloud_sql_instance}"
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -3188,7 +3188,7 @@ resource "observe_dashboard" "cloud_sql_monitoring_fix" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_jobs}"
+                      targetDataset    = "${local.cloud_sql_instance}"
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -4176,7 +4176,7 @@ resource "observe_dashboard" "cloud_sql_monitoring_fix" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_jobs}"
+                      targetDataset    = "${local.cloud_sql_instance}"
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -4438,7 +4438,7 @@ resource "observe_dashboard" "cloud_sql_monitoring_fix" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_jobs}"
+                      targetDataset    = "${local.cloud_sql_instance}"
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -4550,7 +4550,7 @@ resource "observe_dashboard" "cloud_sql_monitoring_fix" {
         id = "stage-9zde4fcc"
         input = [
           {
-            datasetId   = "${local.cloud_sql_jobs}"
+            datasetId   = "${local.cloud_sql_instance}"
             datasetPath = null
             inputName   = "GCP/Cloud SQL Jobs"
             inputRole   = "Data"
@@ -4605,7 +4605,7 @@ resource "observe_dashboard" "cloud_sql_monitoring_fix" {
           index = 17
           inputList = [
             {
-              datasetId   = "${local.cloud_sql_jobs}"
+              datasetId   = "${local.cloud_sql_instance}"
               inputName   = "GCP/Cloud SQL Jobs"
               inputRole   = "Data"
               isUserInput = false
