@@ -17,7 +17,7 @@ locals {
   datasets = {
     cloud_sql_instance = {
       workspace   = local.workspace
-      name        = format(var.name_format, "Jobs")
+      name        = format(var.name_format, "Instance")
       freshness   = lookup(local.freshness, "cloud_sql_instance", var.freshness_default_duration)
       description = "This dataset is used to create CloudSQL Resources"
     }

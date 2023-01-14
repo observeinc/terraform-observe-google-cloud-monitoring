@@ -1,10 +1,10 @@
-
-# terraform import observe_dashboard.cloud_sql_monitoring 41145294
+# terraform import observe_dashboard.cloud_sql_monitoring_fix 41214839
 resource "observe_dashboard" "cloud_sql_monitoring" {
   description = "Dashboard for monitoring Cloud SQL resources"
   count       = local.enable_metrics ? 1 : 0
   layout = jsonencode(
     {
+      autoPack = true
       gridLayout = {
         sections = [
           {
@@ -101,24 +101,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-w0jsqql7"
-                  stageId  = "stage-pe9mq2em"
-                }
-                layout = {
-                  h           = 13
-                  i           = "card-w0jsqql7"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 7
-                  x           = 0
-                  y           = 10
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
                   id       = "card-9ma40tce"
                   stageId  = "stage-bv986tcd"
                 }
@@ -137,6 +119,24 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               {
                 card = {
                   cardType = "stage"
+                  id       = "card-ulkvdn6h"
+                  stageId  = "stage-dbityb73"
+                }
+                layout = {
+                  h           = 12
+                  i           = "card-ulkvdn6h"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 7
+                  x           = 0
+                  y           = 10
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
                   id       = "card-icvxavrk"
                   stageId  = "stage-9e63b4hp"
                 }
@@ -149,7 +149,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   static      = false
                   w           = 7
                   x           = 0
-                  y           = 23
+                  y           = 22
                 }
               },
             ]
@@ -216,7 +216,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   static      = false
                   w           = 5
                   x           = 7
-                  y           = 9
+                  y           = 11
                 }
               },
               {
@@ -235,7 +235,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   static      = false
                   w           = 12
                   x           = 0
-                  y           = 19
+                  y           = 21
                 }
               },
               {
@@ -254,7 +254,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   static      = false
                   w           = 12
                   x           = 0
-                  y           = 27
+                  y           = 29
                 }
               },
               {
@@ -272,7 +272,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   static      = false
                   w           = 12
                   x           = 0
-                  y           = 35
+                  y           = 37
                 }
               },
               {
@@ -290,7 +290,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   static      = false
                   w           = 12
                   x           = 0
-                  y           = 47
+                  y           = 49
                 }
               },
             ]
@@ -357,7 +357,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   static      = false
                   w           = 5
                   x           = 7
-                  y           = 0
+                  y           = 11
                 }
               },
             ]
@@ -376,21 +376,21 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   id       = "card-prktimcl"
                   text     = <<-EOT
                                         ### Google Cloud SQL
-                                                                                
+                                                                                                                        
                                         [https://cloud.google.com/sql/docs](https://cloud.google.com/sql/docs)
-                                                                                
+                                                                                                                        
                                         Cloud SQL is a fully-managed database service that helps you set up, maintain, manage, and administer your relational databases on Google Cloud Platform.
-                                                                                
+                                                                                                                        
                                         ### Use cases for Cloud SQL
-                                                                                
+                                                                                                                        
                                         Cloud SQL provides a cloud-based alternative to local MySQL, PostgreSQL, and SQL Server databases. You should use Cloud SQL if you want to spend less time managing your database and more time using it.
-                                                                                
+                                                                                                                        
                                         Many applications running on Compute Engine, App Engine and other services in Google Cloud use Cloud SQL for database storage
-                                                                                
+                                                                                                                        
                                         ### What is a Cloud SQL instance?
-                                                                                
+                                                                                                                        
                                         Each Cloud SQL instance is powered by a virtual machine (VM) running on a host Google Cloud server. Each VM operates the database program, such as MySQL Server, PostgreSQL, or SQL Server, and service agents that provide supporting services, such as logging and monitoring. The high availability option also provides a standby VM in another zone with a configuration that's identical to the primary VM.
-                                                                                
+                                                                                                                        
                                         The database is stored on a scalable, durable network storage device called a persistent disk that attaches to the VM. A static IP address sits in front of each VM to ensure that the IP address an application connects to persists throughout the lifetime of the Cloud SQL instance.
                                     EOT
                   title    = "Untitled Text"
@@ -413,29 +413,29 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   id       = "card-98advz0r"
                   text     = <<-EOT
                                         ### Notes
-                                                                                
+                                                                                                                        
                                         To use this application you must implement the terraform-google-collection and the terraform google module with either the enable_service_all or the enable_service_cloudsql set to true.
-                                                                                
+                                                                                                                        
                                         ### Freshness
-                                                                                
+                                                                                                                        
                                         Freshness determines how often your data will be refreshed.
-                                                                                
+                                                                                                                        
                                         Defaults:
-                                                                                
+                                                                                                                        
                                          - cloudsql: 5m
                                          - metrics:  1m 
                                          - logging:  1m
-                                                                                
+                                                                                                                        
                                         ### Metric Types
-                                                                                
+                                                                                                                        
                                         A gauge metric, in which the value measures a specific instant in time. For example, metrics measuring CPU utilization are gauge metrics; each point records the CPU utilization at the time of measurement. Another example of a gauge metric is the current temperature.
-                                                                                
+                                                                                                                        
                                         A delta metric, in which the value measures the change since it was last recorded. For example, metrics measuring request counts are delta metrics; each value records how many requests were received since the last data point was recorded.
-                                                                                
+                                                                                                                        
                                         A cumulative metric, in which the value constantly increases over time. For example, a metric for sent bytes might be cumulative; each value records the total number of bytes sent by a service at that time.
-                                                                                
+                                                                                                                        
                                         ### Database Specific
-                                                                                
+                                                                                                                        
                                         For database specific metrics please graphlink to Cloud SQL Metrics table
                                     EOT
                   title    = "Untitled Text"
@@ -453,7 +453,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                 }
               },
             ]
-            lastModified = 1660348749956
+            lastModified = 1673654040700
           },
         ]
       }
@@ -461,22 +461,26 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
         isModified = false
         parameters = [
           {
+            controlledFilterStageId = "stage-9zde4fcc"
+            datasetId               = "${local.cloud_sql_instance}"
             defaultValue = {
               datasetref = {
                 datasetId = "${local.cloud_sql_instance}"
               }
             }
-            id   = "dbResource"
-            name = "Cloud SQL Instance"
+            emptyValueEncoding    = "null"
+            emptyValueLabelOption = "null"
+            id                    = "dbResource"
+            name                  = "Cloud SQL Instance"
             valueKind = {
               type = "DATASETREF"
             }
             viewType = "input"
           },
         ]
-        selectedStageId = "stage-bxss6s26"
+        selectedStageId = "stage-dbityb73"
         timeRange = {
-          display               = "Past 4 hours"
+          display               = "Today 11:50:06 → 15:50:06"
           endTime               = null
           millisFromCurrentTime = 14400000
           originalDisplay       = "Past 4 hours"
@@ -593,14 +597,12 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                     = "v8po8a0z"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-x113jq90"
               type                   = "Timescrubber"
             },
             {
-              id            = "rmcnxide"
-              isDisabled    = false
-              parentStageId = "stage-x113jq90"
-              type          = "Vis"
+              id         = "rmcnxide"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   color         = "Default"
@@ -714,7 +716,9 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "dbResource"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -731,11 +735,8 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                = "step-4llzjhnz"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "dbResource (undefined)"
               type              = "InputStep"
             },
           ]
@@ -748,7 +749,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -829,14 +829,12 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                     = "pbgtk31k"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-m3remp1v"
               type                   = "Timescrubber"
             },
             {
-              id            = "c9bu4tgl"
-              isDisabled    = false
-              parentStageId = "stage-m3remp1v"
-              type          = "Vis"
+              id         = "c9bu4tgl"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   color         = "Default"
@@ -950,7 +948,9 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "dbResource"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -967,11 +967,8 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                = "step-gxgrapel"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "dbResource (undefined)"
               type              = "InputStep"
             },
           ]
@@ -984,7 +981,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -1065,14 +1061,12 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                     = "u9rqvybi"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-6qjozjl6"
               type                   = "Timescrubber"
             },
             {
-              id            = "jwmd39uu"
-              isDisabled    = false
-              parentStageId = "stage-6qjozjl6"
-              type          = "Vis"
+              id         = "jwmd39uu"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   color         = "Default"
@@ -1186,7 +1180,9 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "dbResource"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1203,11 +1199,8 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                = "step-uan390y7"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "dbResource (undefined)"
               type              = "InputStep"
             },
           ]
@@ -1220,7 +1213,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -1301,14 +1293,12 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                     = "nho29ja2"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-bxss6s26"
               type                   = "Timescrubber"
             },
             {
-              id            = "dah8b1ls"
-              isDisabled    = false
-              parentStageId = "stage-bxss6s26"
-              type          = "Vis"
+              id         = "dah8b1ls"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   color         = "Default"
@@ -1444,12 +1434,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                 type = "timeseries"
               }
             },
-            {
-              id            = "kgrs2a3q"
-              isDisabled    = true
-              parentStageId = "stage-bxss6s26"
-              type          = "Dashboard"
-            },
           ]
           queryPresentation = {
             initialRollupFilter = {
@@ -1505,7 +1489,9 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "dbResource"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1522,11 +1508,8 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                = "step-sfs4clgf"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "dbResource (undefined)"
               type              = "InputStep"
             },
             {
@@ -1566,7 +1549,9 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = " (custom)"
+              customSummary = ""
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1583,12 +1568,10 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id       = "step-qcuofu0h"
               index    = 1
               isPinned = false
-              name     = " (custom)"
               opal = [
                 "",
               ]
               queryPresentation = {}
-              renderType        = null
               type              = "unknown"
             },
           ]
@@ -1601,7 +1584,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               note          = true
               script        = true
             }
-            scriptTab     = "INPUTS"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -1682,14 +1664,12 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                     = "12jqfcoa"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-1zwm1yf7"
               type                   = "Timescrubber"
             },
             {
-              id            = "o93y9zjm"
-              isDisabled    = false
-              parentStageId = "stage-1zwm1yf7"
-              type          = "Vis"
+              id         = "o93y9zjm"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   color         = "Default"
@@ -1803,7 +1783,9 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "dbResource"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1820,11 +1802,8 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                = "step-u49b87gc"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "dbResource (undefined)"
               type              = "InputStep"
             },
           ]
@@ -1837,7 +1816,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -1918,14 +1896,12 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                     = "zm9ec5ed"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-mpne8ae1"
               type                   = "Timescrubber"
             },
             {
-              id            = "6wrrxd6o"
-              isDisabled    = false
-              parentStageId = "stage-mpne8ae1"
-              type          = "Vis"
+              id         = "6wrrxd6o"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   color         = "Default"
@@ -2039,7 +2015,9 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "dbResource"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2056,11 +2034,8 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                = "step-qjbjafnf"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "dbResource (undefined)"
               type              = "InputStep"
             },
           ]
@@ -2073,7 +2048,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -2153,14 +2127,12 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                     = "zm9ec5ed"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-urrvnw15"
               type                   = "Timescrubber"
             },
             {
-              id            = "6wrrxd6o"
-              isDisabled    = false
-              parentStageId = "stage-urrvnw15"
-              type          = "Vis"
+              id         = "6wrrxd6o"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   color         = "Default"
@@ -2238,7 +2210,9 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           serializable   = true
           steps = [
             {
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "dbResource"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2255,11 +2229,8 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                = "step-l8pnpkia"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "dbResource (undefined)"
               type              = "InputStep"
             },
           ]
@@ -2272,7 +2243,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -2353,14 +2323,12 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                     = "s23ly8g7"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-5g6dfyg1"
               type                   = "Timescrubber"
             },
             {
-              id            = "rupd3t7k"
-              isDisabled    = false
-              parentStageId = "stage-5g6dfyg1"
-              type          = "Vis"
+              id         = "rupd3t7k"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   color         = "Default"
@@ -2474,7 +2442,9 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "dbResource"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2491,11 +2461,8 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                = "step-enpyi9v9"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "dbResource (undefined)"
               type              = "InputStep"
             },
           ]
@@ -2508,7 +2475,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -2589,14 +2555,12 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                     = "b9rersd2"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-zx1ijn1u"
               type                   = "Timescrubber"
             },
             {
-              id            = "bzjcyrdv"
-              isDisabled    = false
-              parentStageId = "stage-zx1ijn1u"
-              type          = "Vis"
+              id         = "bzjcyrdv"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   innerRadius = 0
@@ -2683,7 +2647,9 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "dbResource"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2700,11 +2666,8 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                = "step-zf96nkh4"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "dbResource (undefined)"
               type              = "InputStep"
             },
           ]
@@ -2717,7 +2680,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -2797,14 +2759,12 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                     = "db220a0d"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-2iknse1z"
               type                   = "Timescrubber"
             },
             {
-              id            = "dvz5w7nq"
-              isDisabled    = false
-              parentStageId = "stage-2iknse1z"
-              type          = "Vis"
+              id         = "dvz5w7nq"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   innerRadius = 0.6
@@ -2890,7 +2850,9 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "dbResource"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2907,11 +2869,8 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                = "step-bfy3p9ar"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "dbResource (undefined)"
               type              = "InputStep"
             },
           ]
@@ -2924,7 +2883,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -3003,14 +2961,12 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                     = "db220a0d"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-gcd1nb81"
               type                   = "Timescrubber"
             },
             {
-              id            = "dvz5w7nq"
-              isDisabled    = false
-              parentStageId = "stage-gcd1nb81"
-              type          = "Vis"
+              id         = "dvz5w7nq"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   innerRadius = 0.6
@@ -3061,7 +3017,9 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           serializable   = true
           steps = [
             {
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "dbResource"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3078,11 +3036,8 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                = "step-gfn0yypc"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "dbResource (undefined)"
               type              = "InputStep"
             },
           ]
@@ -3095,7 +3050,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -3175,14 +3129,12 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                     = "sc2eh4dq"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-pe9mq2em"
               type                   = "Timescrubber"
             },
             {
-              id            = "fuhnk8qb"
-              isDisabled    = false
-              parentStageId = "stage-pe9mq2em"
-              type          = "Vis"
+              id         = "fuhnk8qb"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   areaFillType = "SolidFill"
@@ -3306,7 +3258,9 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "dbResource"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3323,11 +3277,8 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                = "step-ng0pqa3s"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "dbResource (undefined)"
               type              = "InputStep"
             },
           ]
@@ -3340,7 +3291,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               note          = true
               script        = true
             }
-            scriptTab     = "INPUTS"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -3375,7 +3325,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             columnOrderOverride         = {}
             columnVisibility            = {}
             columnWidths                = {}
-            containerWidth              = 1313
+            containerWidth              = 1311
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -3427,16 +3377,14 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           managers = [
             {
               id                     = "hp2cuf8g"
-              isDisabled             = false
+              isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-9e63b4hp"
               type                   = "Timescrubber"
             },
             {
-              id            = "ecmky31q"
-              isDisabled    = true
-              parentStageId = "stage-9e63b4hp"
-              type          = "Vis"
+              id         = "ecmky31q"
+              isDisabled = true
+              type       = "Vis"
               vis = {
                 config = {
                   color         = "Default"
@@ -3497,7 +3445,9 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           serializable   = true
           steps = [
             {
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "dbResource"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3514,11 +3464,8 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                = "step-gula9fpw"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "dbResource (undefined)"
               type              = "InputStep"
             },
             {
@@ -3544,7 +3491,9 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "follow (custom)"
+              customSummary = ""
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3561,12 +3510,10 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id       = "step-374t8dm0"
               index    = 1
               isPinned = false
-              name     = "follow (custom)"
               opal = [
                 "follow database_id = @\"Cloud SQL Logs Error\".database_id",
               ]
               queryPresentation = {}
-              renderType        = null
               type              = "unknown"
             },
           ]
@@ -3579,7 +3526,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               note          = true
               script        = true
             }
-            scriptTab     = "INPUTS"
             showTimeRuler = true
             stageTab      = "table"
           }
@@ -3659,14 +3605,12 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                     = "7rvwc9lt"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-h169l5vk"
               type                   = "Timescrubber"
             },
             {
-              id            = "e0mkbwu0"
-              isDisabled    = false
-              parentStageId = "stage-h169l5vk"
-              type          = "Vis"
+              id         = "e0mkbwu0"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   innerRadius = 0.6
@@ -3751,7 +3695,9 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "dbResource"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3768,11 +3714,8 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                = "step-b0e3x1dr"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "dbResource (undefined)"
               type              = "InputStep"
             },
           ]
@@ -3785,7 +3728,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -3817,7 +3759,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             }
             columnVisibility            = {}
             columnWidths                = {}
-            containerWidth              = 1313
+            containerWidth              = 1311
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -3867,9 +3809,8 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           managers = [
             {
               id                     = "lvkob97u"
-              isDisabled             = false
+              isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-bv986tcd"
               type                   = "Timescrubber"
             },
           ]
@@ -3928,7 +3869,9 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "dbResource"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3945,11 +3888,8 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                = "step-za0t1cme"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "dbResource (undefined)"
               type              = "InputStep"
             },
             {
@@ -3987,7 +3927,9 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "pick_col (custom)"
+              customSummary = ""
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4004,7 +3946,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id       = "step-sjbhpn8c"
               index    = 1
               isPinned = false
-              name     = "pick_col (custom)"
               opal = [
                 "pick_col ",
                 "\tdatabase_id,",
@@ -4016,7 +3957,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                 "colshow database_id: false",
               ]
               queryPresentation = {}
-              renderType        = null
               type              = "unknown"
             },
           ]
@@ -4029,7 +3969,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               note          = true
               script        = true
             }
-            scriptTab     = "INPUTS"
             showTimeRuler = true
             stageTab      = "table"
           }
@@ -4042,7 +3981,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                         name,
                         @."Valid From",
                         @."Valid To"
-                                            
+                        
                     colshow database_id: false
                 EOT
       },
@@ -4118,14 +4057,12 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                     = "d7kdphj6"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-perdox7c"
               type                   = "Timescrubber"
             },
             {
-              id            = "t6x5av1a"
-              isDisabled    = false
-              parentStageId = "stage-perdox7c"
-              type          = "Vis"
+              id         = "t6x5av1a"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   color         = "Default"
@@ -4308,7 +4245,9 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "dbResource"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4325,11 +4264,8 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                = "step-dh14h8pn"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "dbResource (undefined)"
               type              = "InputStep"
             },
           ]
@@ -4342,7 +4278,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -4422,14 +4357,12 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                     = "7xb4iip9"
               isDisabled             = true
               isResourceCountEnabled = false
-              parentStageId          = "stage-wy53129b"
               type                   = "Timescrubber"
             },
             {
-              id            = "kahpojid"
-              isDisabled    = false
-              parentStageId = "stage-wy53129b"
-              type          = "Vis"
+              id         = "kahpojid"
+              isDisabled = false
+              type       = "Vis"
               vis = {
                 config = {
                   color         = "Default"
@@ -4520,12 +4453,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                 type = "timeseries"
               }
             },
-            {
-              id            = "hup0o50d"
-              isDisabled    = true
-              parentStageId = "stage-wy53129b"
-              type          = "RelatedContent"
-            },
           ]
           queryPresentation = {
             initialRollupFilter = {
@@ -4579,7 +4506,9 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   ]
                 }
               }
-              datasetQuery = null
+              customName    = "Input"
+              customSummary = "dbResource"
+              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4596,11 +4525,8 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               id                = "step-nfimyv99"
               index             = 0
               isPinned          = false
-              name              = "Input Step"
               opal              = []
               queryPresentation = {}
-              renderType        = null
-              summary           = "dbResource (undefined)"
               type              = "InputStep"
             },
           ]
@@ -4613,13 +4539,479 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               note          = true
               script        = true
             }
-            scriptTab     = "INPUTS"
             showTimeRuler = true
             stageTab      = "vis"
           }
         }
         params   = null
         pipeline = ""
+      },
+      {
+        id = "stage-9zde4fcc"
+        input = [
+          {
+            datasetId   = "${local.cloud_sql_instance}"
+            datasetPath = null
+            inputName   = "GCP/Cloud SQL Jobs"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "HIDDEN"
+          dataTableViewState = {
+            autoTableHeight    = true
+            columnFooterHeight = 0
+            columnHeaderHeight = 29
+            columnOrderOverride = {
+              "0" = "name"
+              "2" = "Valid From"
+              "3" = "Valid To"
+            }
+            columnVisibility            = {}
+            columnWidths                = {}
+            contextMenuXCoord           = null
+            contextMenuYCoord           = null
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            eventLinkColumnId           = null
+            fetchPageSize               = 100
+            hasCalculatedColumnWidths   = false
+            hasDoneAutoLayout           = false
+            maxColumnWidth              = 400
+            maxMeasuredColumnWidth      = {}
+            minColumnWidth              = 60
+            minRowHeight                = 30
+            preserveCellAndRowSelection = true
+            rowHeaderWidth              = 20
+            rowHeights                  = {}
+            rowSizeIncrement            = 1
+            scrollToColumn              = null
+            scrollToRow                 = 0
+            selection = {
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 0
+            tableView                  = "TABULAR"
+          }
+          index = 17
+          inputList = [
+            {
+              datasetId   = "${local.cloud_sql_instance}"
+              inputName   = "GCP/Cloud SQL Jobs"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+          ]
+          managers        = []
+          pipelineComment = "Filtered Dataset Controlled Filter Stage"
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            linkify     = true
+            progressive = true
+            resultKinds = [
+              "ResultKindSchema",
+              "ResultKindStats",
+            ]
+            rollup = {}
+          }
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              customName    = "Input"
+              customSummary = "GCP/Cloud SQL Jobs"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-1e9iz4cc"
+              index    = 0
+              isPinned = false
+              opal = [
+                "// Filtered Dataset Controlled Filter Stage",
+              ]
+              queryPresentation = {}
+              type              = "InputStep"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            showTimeRuler = true
+            stageTab      = "table"
+          }
+        }
+        params   = null
+        pipeline = "// Filtered Dataset Controlled Filter Stage"
+      },
+      {
+        id = "stage-dbityb73"
+        input = [
+          {
+            datasetId   = "${local.cloud_sql_metrics}"
+            datasetPath = null
+            inputName   = "database_instance_state_from_GCP/Cloud SQL Metrics"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight    = true
+            columnFooterHeight = 0
+            columnHeaderHeight = 29
+            columnOrderOverride = {
+              "0" = "database_id"
+              "1" = "valid_from"
+              "2" = "valid_to"
+            }
+            columnVisibility            = {}
+            columnWidths                = {}
+            contextMenuXCoord           = null
+            contextMenuYCoord           = null
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            eventLinkColumnId           = null
+            fetchPageSize               = 100
+            hasCalculatedColumnWidths   = false
+            hasDoneAutoLayout           = false
+            maxColumnWidth              = 400
+            maxMeasuredColumnWidth      = {}
+            minColumnWidth              = 60
+            minRowHeight                = 30
+            preserveCellAndRowSelection = true
+            rowHeaderWidth              = 20
+            rowHeights                  = {}
+            rowSizeIncrement            = 1
+            scrollToColumn              = null
+            scrollToRow                 = 0
+            selection = {
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 0
+            tableView                  = "TABULAR"
+          }
+          index     = 18
+          inputList = []
+          label     = "Current State"
+          managers = [
+            {
+              id         = "ik6ixlzc"
+              isDisabled = false
+              type       = "Vis"
+              vis = {
+                config = {
+                  areaFillType = "SolidFill"
+                  legend = {
+                    placement = "right"
+                    type      = "list"
+                    visible   = true
+                  }
+                  type                = "bar"
+                  xAxisLabelPlacement = "horizontal"
+                  xConfig = {
+                    visible = true
+                  }
+                  yConfig = {
+                    visible = true
+                  }
+                }
+                source = {
+                  table = {
+                    groupFields = [
+                      "instance_state_label",
+                    ]
+                    statsBy = {
+                      fn = "avg"
+                    }
+                    timechart = {
+                      fn         = "avg"
+                      fnArgs     = null
+                      resolution = "AUTO"
+                    }
+                    transformType = "none"
+                    type          = "xy"
+                    x             = "valid_from"
+                    y             = "metric_database_instance_state_jx859pfh"
+                  }
+                  type = "table"
+                }
+                type = "bar"
+              }
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            resultKinds = [
+              "ResultKindSchema",
+            ]
+            rollup      = {}
+            wantBuckets = 50
+          }
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              customName    = "Input"
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-1jizmkxz"
+              index             = 0
+              isPinned          = false
+              opal              = []
+              queryPresentation = {}
+              type              = "InputStep"
+            },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        dataVis = {
+                          config = {
+                            areaFillType = "SolidFill"
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type                = "bar"
+                            xAxisLabelPlacement = "horizontal"
+                            xConfig = {
+                              visible = true
+                            }
+                            yConfig = {
+                              visible = true
+                            }
+                          }
+                          source = {
+                            table = {
+                              groupFields = [
+                                "instance_state_label",
+                              ]
+                              statsBy = {
+                                fn = "avg"
+                              }
+                              timechart = {
+                                fn         = "avg"
+                                fnArgs     = null
+                                resolution = "AUTO"
+                              }
+                              transformType = "none"
+                              type          = "xy"
+                              x             = "valid_from"
+                              y             = "metric_database_instance_state_jx859pfh"
+                            }
+                            type = "table"
+                          }
+                          type = "bar"
+                        }
+                        disableAggregate = false
+                        filterActions    = []
+                        frameDuration = {
+                          num  = 2
+                          unit = "minute"
+                        }
+                        groupBy = [
+                          "instance_state_label",
+                        ]
+                        id            = "metric-expression-l3gdvq6y"
+                        lookupActions = []
+                        metric = {
+                          aggregate   = "sum"
+                          datasetId   = "${local.cloud_sql_metrics}"
+                          description = "Auto Detected Metric"
+                          heuristics = {
+                            __typename = "MetricHeuristics"
+                            tags = [
+                              {
+                                __typename = "MetricTag"
+                                column     = "instance_state_label"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "database_id"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "database_platform"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "label"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "metric_category"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "metric_kind"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "metric_kind_text"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "metric_type"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "project_id"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "region"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "value_type"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "value_type_text"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "metric_labels"
+                                path       = "state"
+                              },
+                            ]
+                            validLinkLabels = [
+                              "Cloud SQL Metrics",
+                            ]
+                          }
+                          interval    = null
+                          name        = "database_instance_state"
+                          rollup      = "avg"
+                          type        = "gauge"
+                          unit        = ""
+                          userDefined = false
+                        }
+                        showAlignment  = false
+                        showResolution = false
+                        type           = "metricExpression"
+                        valueColumnId  = "metric_database_instance_state_jx859pfh"
+                      },
+                    ]
+                    selectedExpressionId = "metric-expression-l3gdvq6y"
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-fm81j4wd"
+              index    = 1
+              isPinned = false
+              opal = [
+                "align frame(back: 2m), metric_database_instance_state_jx859pfh:avg(m(\"database_instance_state\"))",
+                "aggregate metric_database_instance_state_jx859pfh:sum(metric_database_instance_state_jx859pfh), group_by(instance_state_label)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = <<-EOT
+                            align frame(back: 2m), metric_database_instance_state_jx859pfh:avg(m("database_instance_state"))
+                            aggregate metric_database_instance_state_jx859pfh:sum(metric_database_instance_state_jx859pfh), group_by(instance_state_label)
+                        EOT
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = <<-EOT
+                    align frame(back: 2m), metric_database_instance_state_jx859pfh:avg(m("database_instance_state"))
+                    aggregate metric_database_instance_state_jx859pfh:sum(metric_database_instance_state_jx859pfh), group_by(instance_state_label)
+                EOT
       },
     ]
   )
