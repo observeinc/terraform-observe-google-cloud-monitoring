@@ -58,7 +58,7 @@ locals {
                                                                                                                                                                                                                                                                                                                                                                       
                     EOT
 
-    inventory_description = <<-<<-EOT
+  inventory_description = <<-EOT
                     # Google Cloud Platform Application
                                                                                                                                                                                                                                                                                                             
                     See Inventory section for count of resources within your monitored projects and metrics being collected.
