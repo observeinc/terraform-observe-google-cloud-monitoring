@@ -863,7 +863,7 @@ resource "observe_dashboard" "app_home" {
       }
     }
   )
-  name = local.dashboard_name
+  name = local.dashboard_name_home
   parameters = jsonencode(
     [
       {
