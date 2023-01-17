@@ -1057,7 +1057,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-5qcgtbj0"
         input = [
           {
-            datasetId   = "${local.resource_asset_inventory}"
+            datasetId   = "${local.resources_asset_inventory}"
             datasetPath = null
             inputName   = "Resources Asset Inventory"
             inputRole   = "Data"
@@ -1132,7 +1132,7 @@ resource "observe_dashboard" "app_home" {
           index = 1
           inputList = [
             {
-              datasetId   = "${local.resource_asset_inventory}"
+              datasetId   = "${local.resources_asset_inventory}"
               inputName   = "Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
@@ -1899,7 +1899,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-xrowv4mm"
         input = [
           {
-            datasetId   = "${local.resource_asset_inventory}"
+            datasetId   = "${local.resources_asset_inventory}"
             datasetPath = null
             inputName   = "Resources Asset Inventory"
             inputRole   = "Data"
@@ -1975,7 +1975,7 @@ resource "observe_dashboard" "app_home" {
           index = 4
           inputList = [
             {
-              datasetId   = "${local.resource_asset_inventory}"
+              datasetId   = "${local.resources_asset_inventory}"
               inputName   = "Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
@@ -2135,7 +2135,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-i0tj2v1q"
         input = [
           {
-            datasetId   = "${local.metric}"
+            datasetId   = "${local.metrics}"
             datasetPath = null
             inputName   = "Metrics"
             inputRole   = "Data"
@@ -2204,7 +2204,7 @@ resource "observe_dashboard" "app_home" {
           index = 5
           inputList = [
             {
-              datasetId   = "${local.metric}"
+              datasetId   = "${local.metrics}"
               inputName   = "Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -2382,7 +2382,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-0ln1husq"
         input = [
           {
-            datasetId   = "${local.metric}"
+            datasetId   = "${local.metrics}"
             datasetPath = null
             inputName   = "Metrics"
             inputRole   = "Data"
@@ -2444,7 +2444,7 @@ resource "observe_dashboard" "app_home" {
           index = 6
           inputList = [
             {
-              datasetId   = "${local.metric}"
+              datasetId   = "${local.metrics}"
               inputName   = "Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -2583,7 +2583,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-21nn95t9"
         input = [
           {
-            datasetId   = "${local.resource_asset_inventory}"
+            datasetId   = "${local.resources_asset_inventory}"
             datasetPath = null
             inputName   = "Resources Asset Inventory"
             inputRole   = "Data"
@@ -2655,7 +2655,7 @@ resource "observe_dashboard" "app_home" {
           index = 7
           inputList = [
             {
-              datasetId   = "${local.resource_asset_inventory}"
+              datasetId   = "${local.resources_asset_inventory}"
               inputName   = "Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
@@ -4372,7 +4372,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-g5xahf72"
         input = [
           {
-            datasetId   = "${local.resource_asset_inventory}"
+            datasetId   = "${local.resources_asset_inventory}"
             datasetPath = null
             inputName   = "Resources Asset Inventory"
             inputRole   = "Data"
@@ -4444,7 +4444,7 @@ resource "observe_dashboard" "app_home" {
           index = 13
           inputList = [
             {
-              datasetId   = "${local.resource_asset_inventory}"
+              datasetId   = "${local.resources_asset_inventory}"
               inputName   = "Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
@@ -4612,7 +4612,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-iv0som0b"
         input = [
           {
-            datasetId   = "${local.resource_asset_inventory}"
+            datasetId   = "${local.resources_asset_inventory}"
             datasetPath = null
             inputName   = "Resources Asset Inventory"
             inputRole   = "Data"
@@ -4683,7 +4683,7 @@ resource "observe_dashboard" "app_home" {
           index = 14
           inputList = [
             {
-              datasetId   = "${local.resource_asset_inventory}"
+              datasetId   = "${local.resources_asset_inventory}"
               inputName   = "Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
@@ -4837,7 +4837,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-yvtup4f7"
         input = [
           {
-            datasetId   = "${local.resource_asset_inventory}"
+            datasetId   = "${local.resources_asset_inventory}"
             datasetPath = null
             inputName   = "Resources Asset Inventory"
             inputRole   = "Data"
@@ -4908,7 +4908,7 @@ resource "observe_dashboard" "app_home" {
           index = 15
           inputList = [
             {
-              datasetId   = "${local.resource_asset_inventory}"
+              datasetId   = "${local.resources_asset_inventory}"
               inputName   = "Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
@@ -5062,7 +5062,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-jliidcnd"
         input = [
           {
-            datasetId   = "${local.resource_asset_inventory}"
+            datasetId   = "${local.resources_asset_inventory}"
             datasetPath = null
             inputName   = "Resources Asset Inventory"
             inputRole   = "Data"
@@ -5134,7 +5134,7 @@ resource "observe_dashboard" "app_home" {
           index = 16
           inputList = [
             {
-              datasetId   = "${local.resource_asset_inventory}"
+              datasetId   = "${local.resources_asset_inventory}"
               inputName   = "Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
@@ -5375,7 +5375,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-2b1wmvm0"
         input = [
           {
-            datasetId   = "${local.resource_asset_inventory}"
+            datasetId   = "${local.resources_asset_inventory}"
             datasetPath = null
             inputName   = "Resources Asset Inventory"
             inputRole   = "Data"
@@ -5447,7 +5447,7 @@ resource "observe_dashboard" "app_home" {
           index = 17
           inputList = [
             {
-              datasetId   = "${local.resource_asset_inventory}"
+              datasetId   = "${local.resources_asset_inventory}"
               inputName   = "Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
@@ -5668,7 +5668,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-pe50l3py"
         input = [
           {
-            datasetId   = "${local.resource_asset_inventory}"
+            datasetId   = "${local.resources_asset_inventory}"
             datasetPath = null
             inputName   = "Resources Asset Inventory"
             inputRole   = "Data"
@@ -5740,7 +5740,7 @@ resource "observe_dashboard" "app_home" {
           index = 18
           inputList = [
             {
-              datasetId   = "${local.resource_asset_inventory}"
+              datasetId   = "${local.resources_asset_inventory}"
               inputName   = "Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
@@ -5983,7 +5983,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-fqygx54m"
         input = [
           {
-            datasetId   = "${local.resource_asset_inventory}"
+            datasetId   = "${local.resources_asset_inventory}"
             datasetPath = null
             inputName   = "Resources Asset Inventory"
             inputRole   = "Data"
@@ -6055,7 +6055,7 @@ resource "observe_dashboard" "app_home" {
           index = 19
           inputList = [
             {
-              datasetId   = "${local.resource_asset_inventory}"
+              datasetId   = "${local.resources_asset_inventory}"
               inputName   = "Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
@@ -9775,7 +9775,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-adtkr7tf"
         input = [
           {
-            datasetId   = "${local.resource_asset_inventory}"
+            datasetId   = "${local.resources_asset_inventory}"
             datasetPath = null
             inputName   = "Resources Asset Inventory"
             inputRole   = "Data"
@@ -9847,7 +9847,7 @@ resource "observe_dashboard" "app_home" {
           index = 33
           inputList = [
             {
-              datasetId   = "${local.resource_asset_inventory}"
+              datasetId   = "${local.resources_asset_inventory}"
               inputName   = "Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
@@ -10222,7 +10222,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-fgwg2rh6"
         input = [
           {
-            datasetId   = "${local.resource_asset_inventory}"
+            datasetId   = "${local.resources_asset_inventory}"
             datasetPath = null
             inputName   = "Resources Asset Inventory"
             inputRole   = "Data"
@@ -10298,7 +10298,7 @@ resource "observe_dashboard" "app_home" {
           index = 35
           inputList = [
             {
-              datasetId   = "${local.resource_asset_inventory}"
+              datasetId   = "${local.resources_asset_inventory}"
               inputName   = "Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
