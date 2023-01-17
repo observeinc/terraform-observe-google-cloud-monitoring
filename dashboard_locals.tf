@@ -57,4 +57,15 @@ locals {
                         ${local.enable_service_storage == true ? "- [Storage Resources](/workspace/${local.workspace_id}/dataset/resource/Storage-Buckets-${one(module.storage[*].storage.id)}) - Storage Bucket Resource dataset that GraphLinks to metrics and logs." : ""}
                                                                                                                                                                                                                                                                                                                                                                       
                     EOT
+
+    inventory_description = <<-<<-EOT
+                    # Google Cloud Platform Application
+                                                                                                                                                                                                                                                                                                            
+                    See Inventory section for count of resources within your monitored projects and metrics being collected.
+                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
+                    - [Observe GCP Documentation](https://docs.observeinc.com/en/latest/content/integrations/gcp/gcp.html)
+                                                                                                                                                                                                                                                                                                            
+                    - [Google Metrics Documentation](https://cloud.google.com/monitoring/api/metrics_gcp)
+                EOT
 }
