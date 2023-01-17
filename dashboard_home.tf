@@ -772,24 +772,7 @@ resource "observe_dashboard" "app_home" {
                 card = {
                   cardType = "text"
                   id       = "card-54zkyeh9"
-                  text     = <<-EOT
-                                        ### Pre-built Content
-                                                                
-                                        - [Big Query Resources](/workspace/41141634/dataset/resource/BigQuery-Dataset-41214156) - Big Query dataset that GraphLinks to metrics and logs. 
-                                        
-                                        - [CloudFunction Resources](/workspace/41141634/dataset/resource/Cloud-Functions-Instances-${local.cloud_functions_instances}) - Cloud Function Resource dataset that GraphLinks to metrics and logs. 
-                                                                
-                                        - [CloudSQL Resources](/workspace/41141634/dataset/resource/Cloud-SQL-Instance-${local.cloud_sql_instance}) - CloudSQL Resource dataset that GraphLinks to metrics and logs. 
-                                                                
-                                        - [Compute Resources](/workspace/41141634/dataset/resource/Compute-Instance-${local.compute_instance}) - Compute Resource dataset that GraphLinks to metrics and logs. 
-                                                                
-                                        - [GKE Resources](/workspace/41141634/dataset/resource/GKE-Cluster-41214240) - Google Kubernetes Engine Resource dataset that GraphLinks to compute resources and Kubernetes App resources.
-                                        
-                                        - [LoadBalancing Resources](/workspace/41141634/dataset/resource/Load-Balancing-Load-Balancers-41214177) - Load Balancer Resource dataset that GraphLinks to metrics and logs.
-                                                                
-                                        - [Storage Resources](/workspace/41141634/dataset/resource/Storage-Buckets-${local.storage_buckets}) - Storage Bucket Resource dataset that GraphLinks to metrics and logs.
-                                                                                                                                                                                                                                                                                                                                                                                                              
-                                    EOT
+                  text     = local.pre_built_content
                   title    = "Untitled Text"
                 }
                 layout = {
