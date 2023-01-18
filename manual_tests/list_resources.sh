@@ -2,6 +2,7 @@
 
 # Run this script to check counts on app home
 # scheduler jobs assumes us-west1
+# to set project run - gcloud config set project your-project-id
 
 array=('compute instances list' 'sql instances list' 'container clusters list' 
 'functions list' 'services list --enabled' 'storage buckets list' 'alpha bq datasets list --all' 
