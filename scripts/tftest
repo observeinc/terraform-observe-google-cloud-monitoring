@@ -54,7 +54,7 @@ run_single() {
 
     cleanup() {
         if [ "$1" != "0" ]; then
-            ERROR "encountered an error, exit code $1 occurred on line $2"
+            ERROR "Encountered an error. [See this doc](https://www.notion.so/5c25dd98f251494293d27f7f7fdce53e) for pointers on what to do about it. Exit code $1 occurred on line $2."
         fi
         INFO "running terraform destroy for cleanup (this can take a while...)"
         ${CMD} destroy -auto-approve -input=false | grep -C 1 "Destroy complete!"
@@ -68,7 +68,7 @@ run_single() {
     plan_output=$(${CMD} plan)
     echo "$plan_output"
     echo "$plan_output" | grep -c "No changes." > /dev/null || rv=$?
-    [[ $rv -eq 0 ]] ||  (ERROR "Apply is not idempotent" && exit 1)
+    [[ $rv -eq 0 ]] ||  (ERROR "Apply is not idempotent. [See this doc](https://www.notion.so/4b23073b4b2845c8849c7ba934157612) for info on why." && exit 1)
 
     ${CMD} destroy -auto-approve -input=false
 }
