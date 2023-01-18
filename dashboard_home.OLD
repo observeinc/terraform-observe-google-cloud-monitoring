@@ -1,6 +1,5 @@
-# terraform import observe_dashboard.app_home 41214248
+# terraform import observe_dashboard.app_home_fix 41488268
 resource "observe_dashboard" "app_home" {
-  description = "App Home Dashboard"
   layout = jsonencode(
     {
       autoPack = true
@@ -753,7 +752,16 @@ resource "observe_dashboard" "app_home" {
                 card = {
                   cardType = "text"
                   id       = "card-vg4gqfkn"
-                  text     = local.inventory_description
+                  text     = <<-EOT
+                                        # Google Cloud Platform Application
+                                                                                                                                                                                                                                                                                                                                
+                                        See Inventory section for count of resources within your monitored projects and metrics being collected.
+                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                
+                                        - [Observe GCP Documentation](https://docs.observeinc.com/en/latest/content/integrations/gcp/gcp.html)
+                                                                                                                                                                                                                                                                                                                                
+                                        - [Google Metrics Documentation](https://cloud.google.com/monitoring/api/metrics_gcp)
+                                    EOT
                   title    = "Untitled Text"
                 }
                 layout = {
@@ -788,7 +796,7 @@ resource "observe_dashboard" "app_home" {
                 }
               },
             ]
-            lastModified = 1673990503467
+            lastModified = 1672860242556
           },
         ]
       }
@@ -847,12 +855,12 @@ resource "observe_dashboard" "app_home" {
             viewType = "single-select"
           },
         ]
-        selectedStageId = "stage-rcjq4hxw"
+        selectedStageId = "stage-21nn95t9"
         timeRange = {
-          display               = "Today 12:19:51 → 13:19:51"
+          display               = "Today 10:18:09 → 11:18:09"
           endTime               = null
           millisFromCurrentTime = 3600000
-          originalDisplay       = "Past 60 minutes"
+          originalDisplay       = "Today 10:18:09 → 11:18:09"
           startTime             = null
           timeRangeInfo = {
             key        = "PRESETS"
@@ -934,7 +942,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.projects_collection_enabled}"
             datasetPath = null
-            inputName   = "Projects Collection Enabled"
+            inputName   = "gcp-cost-test/Projects Collection Enabled"
             inputRole   = "Data"
             stageId     = null
           },
@@ -988,7 +996,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.projects_collection_enabled}"
-              inputName   = "Projects Collection Enabled"
+              inputName   = "gcp-cost-test/Projects Collection Enabled"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -1012,7 +1020,7 @@ resource "observe_dashboard" "app_home" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "Projects Collection Enabled"
+              customSummary = "gcp-cost-test/Projects Collection Enabled"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -1059,7 +1067,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.resources_asset_inventory}"
             datasetPath = null
-            inputName   = "Resources Asset Inventory"
+            inputName   = "gcp-cost-test/Resources Asset Inventory"
             inputRole   = "Data"
             stageId     = null
           },
@@ -1092,14 +1100,14 @@ resource "observe_dashboard" "app_home" {
               Location          = 172
               "Project ID"      = 253
             }
-            containerWidth              = 2591
+            containerWidth              = 1311
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
             disableFixedLeftColumns     = false
             eventLinkColumnId           = null
             fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
+            hasCalculatedColumnWidths   = true
             hasDoneAutoLayout           = false
             maxColumnWidth              = 400
             maxMeasuredColumnWidth      = {}
@@ -1133,7 +1141,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.resources_asset_inventory}"
-              inputName   = "Resources Asset Inventory"
+              inputName   = "gcp-cost-test/Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -1148,14 +1156,9 @@ resource "observe_dashboard" "app_home" {
           managers = [
             {
               id                     = "jywkqd1x"
-              isDisabled             = false
+              isDisabled             = true
               isResourceCountEnabled = false
               type                   = "Timescrubber"
-            },
-            {
-              id         = "cp3sz1z1"
-              isDisabled = false
-              type       = "JsonTree"
             },
           ]
           queryPresentation = {
@@ -1210,7 +1213,7 @@ resource "observe_dashboard" "app_home" {
                 }
               }
               customName    = "Input"
-              customSummary = "Resources Asset Inventory"
+              customSummary = "gcp-cost-test/Resources Asset Inventory"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -1338,7 +1341,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.pubsub_topics}"
             datasetPath = null
-            inputName   = "PubSub Service"
+            inputName   = "gcp-cost-test/PubSub Service"
             inputRole   = "Data"
             stageId     = null
           },
@@ -1367,14 +1370,14 @@ resource "observe_dashboard" "app_home" {
               topic_name        = 179
               topic_primary_key = 468
             }
-            containerWidth              = 2591
+            containerWidth              = 272
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
             disableFixedLeftColumns     = false
             eventLinkColumnId           = null
             fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
+            hasCalculatedColumnWidths   = true
             hasDoneAutoLayout           = false
             maxColumnWidth              = 400
             maxMeasuredColumnWidth      = {}
@@ -1404,7 +1407,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.pubsub_topics}"
-              inputName   = "PubSub Service"
+              inputName   = "gcp-cost-test/PubSub Service"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -1419,7 +1422,7 @@ resource "observe_dashboard" "app_home" {
           managers = [
             {
               id                     = "m1uoqfel"
-              isDisabled             = false
+              isDisabled             = true
               isResourceCountEnabled = false
               type                   = "Timescrubber"
             },
@@ -1558,11 +1561,6 @@ resource "observe_dashboard" "app_home" {
                 type = "timeseries"
               }
             },
-            {
-              id         = "temsdobm"
-              isDisabled = false
-              type       = "JsonTree"
-            },
           ]
           queryPresentation = {
             initialRollupFilter = {
@@ -1605,7 +1603,7 @@ resource "observe_dashboard" "app_home" {
                 }
               }
               customName    = "Input"
-              customSummary = "PubSub Service"
+              customSummary = "gcp-cost-test/PubSub Service"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -1720,7 +1718,7 @@ resource "observe_dashboard" "app_home" {
             }
             columnVisibility            = {}
             columnWidths                = {}
-            containerWidth              = 2591
+            containerWidth              = 272
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -1772,14 +1770,9 @@ resource "observe_dashboard" "app_home" {
           managers = [
             {
               id                     = "ndeambvg"
-              isDisabled             = false
+              isDisabled             = true
               isResourceCountEnabled = false
               type                   = "Timescrubber"
-            },
-            {
-              id         = "96uhw8dy"
-              isDisabled = false
-              type       = "JsonTree"
             },
           ]
           queryPresentation = {
@@ -1901,7 +1894,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.resources_asset_inventory}"
             datasetPath = null
-            inputName   = "Resources Asset Inventory"
+            inputName   = "gcp-cost-test/Resources Asset Inventory"
             inputRole   = "Data"
             stageId     = null
           },
@@ -1939,14 +1932,14 @@ resource "observe_dashboard" "app_home" {
               name              = 196
               service           = 395
             }
-            containerWidth              = 2591
+            containerWidth              = 1311
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
             disableFixedLeftColumns     = false
             eventLinkColumnId           = null
             fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
+            hasCalculatedColumnWidths   = true
             hasDoneAutoLayout           = false
             maxColumnWidth              = 400
             maxMeasuredColumnWidth      = {}
@@ -1976,7 +1969,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.resources_asset_inventory}"
-              inputName   = "Resources Asset Inventory"
+              inputName   = "gcp-cost-test/Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -1991,14 +1984,9 @@ resource "observe_dashboard" "app_home" {
           managers = [
             {
               id                     = "jywkqd1x"
-              isDisabled             = false
+              isDisabled             = true
               isResourceCountEnabled = false
               type                   = "Timescrubber"
-            },
-            {
-              id         = "agklc0cu"
-              isDisabled = false
-              type       = "JsonTree"
             },
           ]
           queryPresentation = {
@@ -2023,7 +2011,7 @@ resource "observe_dashboard" "app_home" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "Resources Asset Inventory"
+              customSummary = "gcp-cost-test/Resources Asset Inventory"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -2137,7 +2125,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.metrics}"
             datasetPath = null
-            inputName   = "Metrics"
+            inputName   = "gcp-cost-test/Metrics"
             inputRole   = "Data"
             stageId     = null
           },
@@ -2164,14 +2152,14 @@ resource "observe_dashboard" "app_home" {
               metric_namespace = 313
               metric_type      = 644
             }
-            containerWidth              = 2591
+            containerWidth              = 1311
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
             disableFixedLeftColumns     = false
             eventLinkColumnId           = null
             fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
+            hasCalculatedColumnWidths   = true
             hasDoneAutoLayout           = false
             maxColumnWidth              = 400
             maxMeasuredColumnWidth      = {}
@@ -2205,7 +2193,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.metrics}"
-              inputName   = "Metrics"
+              inputName   = "gcp-cost-test/Metrics"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -2220,14 +2208,9 @@ resource "observe_dashboard" "app_home" {
           managers = [
             {
               id                     = "9ty4dhel"
-              isDisabled             = false
+              isDisabled             = true
               isResourceCountEnabled = false
               type                   = "Timescrubber"
-            },
-            {
-              id         = "dh96p65f"
-              isDisabled = false
-              type       = "JsonTree"
             },
           ]
           queryPresentation = {
@@ -2278,7 +2261,7 @@ resource "observe_dashboard" "app_home" {
                 }
               }
               customName    = "Input"
-              customSummary = "Metrics"
+              customSummary = "gcp-cost-test/Metrics"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -2384,7 +2367,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.metrics}"
             datasetPath = null
-            inputName   = "Metrics"
+            inputName   = "gcp-cost-test/Metrics"
             inputRole   = "Data"
             stageId     = null
           },
@@ -2408,7 +2391,7 @@ resource "observe_dashboard" "app_home" {
               count            = 156
               metric_namespace = 276
             }
-            containerWidth              = 2591
+            containerWidth              = 272
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
@@ -2445,7 +2428,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.metrics}"
-              inputName   = "Metrics"
+              inputName   = "gcp-cost-test/Metrics"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -2460,14 +2443,9 @@ resource "observe_dashboard" "app_home" {
           managers = [
             {
               id                     = "9ty4dhel"
-              isDisabled             = false
+              isDisabled             = true
               isResourceCountEnabled = false
               type                   = "Timescrubber"
-            },
-            {
-              id         = "1k5vo1x7"
-              isDisabled = false
-              type       = "JsonTree"
             },
           ]
           queryPresentation = {
@@ -2492,7 +2470,7 @@ resource "observe_dashboard" "app_home" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "Metrics"
+              customSummary = "gcp-cost-test/Metrics"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -2585,7 +2563,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.resources_asset_inventory}"
             datasetPath = null
-            inputName   = "Resources Asset Inventory"
+            inputName   = "gcp-cost-test/Resources Asset Inventory"
             inputRole   = "Data"
             stageId     = null
           },
@@ -2656,7 +2634,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.resources_asset_inventory}"
-              inputName   = "Resources Asset Inventory"
+              inputName   = "gcp-cost-test/Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -2731,7 +2709,7 @@ resource "observe_dashboard" "app_home" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "Resources Asset Inventory"
+              customSummary = "gcp-cost-test/Resources Asset Inventory"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -2809,14 +2787,14 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.compute_instance}"
             datasetPath = null
-            inputName   = "Compute Instance"
+            inputName   = "gcp-cost-test/Compute Instance"
             inputRole   = "Data"
             stageId     = null
           },
           {
             datasetId   = "${local.compute_metrics}"
             datasetPath = null
-            inputName   = "Compute Metrics"
+            inputName   = "gcp-cost-test/Compute Metrics"
             inputRole   = "Data"
             stageId     = null
           },
@@ -2879,13 +2857,13 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.compute_instance}"
-              inputName   = "Compute Instance"
+              inputName   = "gcp-cost-test/Compute Instance"
               inputRole   = "Data"
               isUserInput = false
             },
             {
               datasetId   = "${local.compute_metrics}"
-              inputName   = "Compute Metrics"
+              inputName   = "gcp-cost-test/Compute Metrics"
               inputRole   = "Data"
               isUserInput = true
             },
@@ -3003,7 +2981,7 @@ resource "observe_dashboard" "app_home" {
                 }
               }
               customName    = "Input"
-              customSummary = "Compute Instance"
+              customSummary = "gcp-cost-test/Compute Instance"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -3046,7 +3024,7 @@ resource "observe_dashboard" "app_home" {
               isPinned = false
               opal = [
                 "exists project_id = @projects.project_id",
-                "follow computeInstanceAssetKey = @\"Compute Metrics\".computeInstanceAssetKey",
+                "follow computeInstanceAssetKey = @\"gcp-cost-test/Compute Metrics\".computeInstanceAssetKey",
                 "filter metric = \"instance_cpu_utilization\"",
                 "make_col value: value*100",
                 "",
@@ -3071,7 +3049,7 @@ resource "observe_dashboard" "app_home" {
         params   = null
         pipeline = <<-EOT
                     exists project_id = @projects.project_id
-                    follow computeInstanceAssetKey = @"Compute Metrics".computeInstanceAssetKey
+                    follow computeInstanceAssetKey = @"gcp-cost-test/Compute Metrics".computeInstanceAssetKey
                     filter metric = "instance_cpu_utilization"
                     make_col value: value*100
                 EOT
@@ -3082,7 +3060,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.compute_instance}"
             datasetPath = null
-            inputName   = "Compute Instance"
+            inputName   = "gcp-cost-test/Compute Instance"
             inputRole   = "Data"
             stageId     = null
           },
@@ -3146,7 +3124,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.compute_instance}"
-              inputName   = "Compute Instance"
+              inputName   = "gcp-cost-test/Compute Instance"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -3337,7 +3315,7 @@ resource "observe_dashboard" "app_home" {
                 }
               }
               customName    = "Input"
-              customSummary = "Compute Instance"
+              customSummary = "gcp-cost-test/Compute Instance"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -3407,7 +3385,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.compute_instance}"
             datasetPath = null
-            inputName   = "Compute Instance"
+            inputName   = "gcp-cost-test/Compute Instance"
             inputRole   = "Data"
             stageId     = null
           },
@@ -3471,7 +3449,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.compute_instance}"
-              inputName   = "Compute Instance"
+              inputName   = "gcp-cost-test/Compute Instance"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -3648,7 +3626,7 @@ resource "observe_dashboard" "app_home" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "Compute Instance"
+              customSummary = "gcp-cost-test/Compute Instance"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -3732,7 +3710,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.compute_instance}"
             datasetPath = null
-            inputName   = "Compute Instance"
+            inputName   = "gcp-cost-test/Compute Instance"
             inputRole   = "Data"
             stageId     = null
           },
@@ -3795,7 +3773,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.compute_instance}"
-              inputName   = "Compute Instance"
+              inputName   = "gcp-cost-test/Compute Instance"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -3983,7 +3961,7 @@ resource "observe_dashboard" "app_home" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "Compute Instance"
+              customSummary = "gcp-cost-test/Compute Instance"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -4053,7 +4031,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.compute_instance}"
             datasetPath = null
-            inputName   = "Compute Instance"
+            inputName   = "gcp-cost-test/Compute Instance"
             inputRole   = "Data"
             stageId     = null
           },
@@ -4116,7 +4094,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.compute_instance}"
-              inputName   = "Compute Instance"
+              inputName   = "gcp-cost-test/Compute Instance"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -4304,7 +4282,7 @@ resource "observe_dashboard" "app_home" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "Compute Instance"
+              customSummary = "gcp-cost-test/Compute Instance"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -4374,7 +4352,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.resources_asset_inventory}"
             datasetPath = null
-            inputName   = "Resources Asset Inventory"
+            inputName   = "gcp-cost-test/Resources Asset Inventory"
             inputRole   = "Data"
             stageId     = null
           },
@@ -4445,7 +4423,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.resources_asset_inventory}"
-              inputName   = "Resources Asset Inventory"
+              inputName   = "gcp-cost-test/Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -4520,7 +4498,7 @@ resource "observe_dashboard" "app_home" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "Resources Asset Inventory"
+              customSummary = "gcp-cost-test/Resources Asset Inventory"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -4614,7 +4592,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.resources_asset_inventory}"
             datasetPath = null
-            inputName   = "Resources Asset Inventory"
+            inputName   = "gcp-cost-test/Resources Asset Inventory"
             inputRole   = "Data"
             stageId     = null
           },
@@ -4684,7 +4662,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.resources_asset_inventory}"
-              inputName   = "Resources Asset Inventory"
+              inputName   = "gcp-cost-test/Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -4759,7 +4737,7 @@ resource "observe_dashboard" "app_home" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "Resources Asset Inventory"
+              customSummary = "gcp-cost-test/Resources Asset Inventory"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -4839,7 +4817,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.resources_asset_inventory}"
             datasetPath = null
-            inputName   = "Resources Asset Inventory"
+            inputName   = "gcp-cost-test/Resources Asset Inventory"
             inputRole   = "Data"
             stageId     = null
           },
@@ -4909,7 +4887,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.resources_asset_inventory}"
-              inputName   = "Resources Asset Inventory"
+              inputName   = "gcp-cost-test/Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -4984,7 +4962,7 @@ resource "observe_dashboard" "app_home" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "Resources Asset Inventory"
+              customSummary = "gcp-cost-test/Resources Asset Inventory"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -5064,7 +5042,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.resources_asset_inventory}"
             datasetPath = null
-            inputName   = "Resources Asset Inventory"
+            inputName   = "gcp-cost-test/Resources Asset Inventory"
             inputRole   = "Data"
             stageId     = null
           },
@@ -5135,7 +5113,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.resources_asset_inventory}"
-              inputName   = "Resources Asset Inventory"
+              inputName   = "gcp-cost-test/Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -5210,7 +5188,7 @@ resource "observe_dashboard" "app_home" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "Resources Asset Inventory"
+              customSummary = "gcp-cost-test/Resources Asset Inventory"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -5347,9 +5325,9 @@ resource "observe_dashboard" "app_home" {
           viewModel = {
             consoleValue = <<-EOT
                             filter is_null(deleted)
-                                                                                                                                                                                                                                
+                                                                                                                                                                                                    
                             exists project_id = @projects.project_id
-                                                                                                                                                                                                                                
+                                                                                                                                                                                                    
                             ever asset_type = "container.googleapis.com/Cluster"
                         EOT
             railCollapseState = {
@@ -5377,7 +5355,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.resources_asset_inventory}"
             datasetPath = null
-            inputName   = "Resources Asset Inventory"
+            inputName   = "gcp-cost-test/Resources Asset Inventory"
             inputRole   = "Data"
             stageId     = null
           },
@@ -5448,7 +5426,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.resources_asset_inventory}"
-              inputName   = "Resources Asset Inventory"
+              inputName   = "gcp-cost-test/Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -5523,7 +5501,7 @@ resource "observe_dashboard" "app_home" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "Resources Asset Inventory"
+              customSummary = "gcp-cost-test/Resources Asset Inventory"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -5670,7 +5648,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.resources_asset_inventory}"
             datasetPath = null
-            inputName   = "Resources Asset Inventory"
+            inputName   = "gcp-cost-test/Resources Asset Inventory"
             inputRole   = "Data"
             stageId     = null
           },
@@ -5741,7 +5719,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.resources_asset_inventory}"
-              inputName   = "Resources Asset Inventory"
+              inputName   = "gcp-cost-test/Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -5816,7 +5794,7 @@ resource "observe_dashboard" "app_home" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "Resources Asset Inventory"
+              customSummary = "gcp-cost-test/Resources Asset Inventory"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -5954,9 +5932,9 @@ resource "observe_dashboard" "app_home" {
           viewModel = {
             consoleValue = <<-EOT
                             filter is_null(deleted)
-                                                                                                                                                                                                                                
+                                                                                                                                                                                                    
                             exists project_id = @projects.project_id
-                                                                                                                                                                                                                                
+                                                                                                                                                                                                    
                             ever asset_type = "pubsub.googleapis.com/Topic"
                         EOT
             railCollapseState = {
@@ -5985,7 +5963,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.resources_asset_inventory}"
             datasetPath = null
-            inputName   = "Resources Asset Inventory"
+            inputName   = "gcp-cost-test/Resources Asset Inventory"
             inputRole   = "Data"
             stageId     = null
           },
@@ -6056,7 +6034,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.resources_asset_inventory}"
-              inputName   = "Resources Asset Inventory"
+              inputName   = "gcp-cost-test/Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -6131,7 +6109,7 @@ resource "observe_dashboard" "app_home" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "Resources Asset Inventory"
+              customSummary = "gcp-cost-test/Resources Asset Inventory"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -6292,7 +6270,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.cloud_functions_metrics}"
             datasetPath = null
-            inputName   = "Cloud Functions Metrics"
+            inputName   = "gcp-cost-test/Cloud Functions Metrics"
             inputRole   = "Data"
             stageId     = null
           },
@@ -6356,7 +6334,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.cloud_functions_metrics}"
-              inputName   = "Cloud Functions Metrics"
+              inputName   = "gcp-cost-test/Cloud Functions Metrics"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -6461,7 +6439,7 @@ resource "observe_dashboard" "app_home" {
                 }
               }
               customName    = "Input"
-              customSummary = "Cloud Functions Metrics"
+              customSummary = "gcp-cost-test/Cloud Functions Metrics"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -6564,7 +6542,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.cloud_functions_instances}"
             datasetPath = null
-            inputName   = "Cloud Functions Instances"
+            inputName   = "gcp-cost-test/Cloud Functions Instances"
             inputRole   = "Data"
             stageId     = null
           },
@@ -6626,7 +6604,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.cloud_functions_instances}"
-              inputName   = "Cloud Functions Instances"
+              inputName   = "gcp-cost-test/Cloud Functions Instances"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -6743,7 +6721,7 @@ resource "observe_dashboard" "app_home" {
                 }
               }
               customName    = "Input"
-              customSummary = "Cloud Functions Instances"
+              customSummary = "gcp-cost-test/Cloud Functions Instances"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -6849,7 +6827,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.cloud_functions_metrics}"
             datasetPath = null
-            inputName   = "Cloud Functions Metrics"
+            inputName   = "gcp-cost-test/Cloud Functions Metrics"
             inputRole   = "Data"
             stageId     = null
           },
@@ -6912,7 +6890,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.cloud_functions_metrics}"
-              inputName   = "Cloud Functions Metrics"
+              inputName   = "gcp-cost-test/Cloud Functions Metrics"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -6997,7 +6975,7 @@ resource "observe_dashboard" "app_home" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "Cloud Functions Metrics"
+              customSummary = "gcp-cost-test/Cloud Functions Metrics"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -7081,7 +7059,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.storage_buckets}"
             datasetPath = null
-            inputName   = "Storage Buckets"
+            inputName   = "gcp-cost-test/Storage Buckets"
             inputRole   = "Data"
             stageId     = null
           },
@@ -7142,7 +7120,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.storage_buckets}"
-              inputName   = "Storage Buckets"
+              inputName   = "gcp-cost-test/Storage Buckets"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -7324,7 +7302,7 @@ resource "observe_dashboard" "app_home" {
                 }
               }
               customName    = "Input"
-              customSummary = "Storage Buckets"
+              customSummary = "gcp-cost-test/Storage Buckets"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -7369,7 +7347,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.pubsub_service_quota_metrics}"
             datasetPath = null
-            inputName   = "PubSub Service Quota Metrics"
+            inputName   = "gcp-cost-test/PubSub Service Quota Metrics"
             inputRole   = "Data"
             stageId     = null
           },
@@ -7403,14 +7381,14 @@ resource "observe_dashboard" "app_home" {
               quota      = 206
               service    = 254
             }
-            containerWidth              = 2591
+            containerWidth              = 1311
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
             disableFixedLeftColumns     = false
             eventLinkColumnId           = null
             fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
+            hasCalculatedColumnWidths   = true
             hasDoneAutoLayout           = false
             maxColumnWidth              = 400
             maxMeasuredColumnWidth      = {}
@@ -7423,6 +7401,10 @@ resource "observe_dashboard" "app_home" {
             scrollToColumn              = null
             scrollToRow                 = 0
             selection = {
+              anchoredCellSelection = [
+                9,
+                "limit_name",
+              ]
               cells = {
                 limit_name = {
                   "9" = true
@@ -7431,6 +7413,7 @@ resource "observe_dashboard" "app_home" {
               columnSelectSequence = []
               columns              = {}
               highlightState       = {}
+              lastCellSelection    = null
               rows                 = {}
               selectionType        = "cell"
             }
@@ -7444,7 +7427,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.pubsub_service_quota_metrics}"
-              inputName   = "PubSub Service Quota Metrics"
+              inputName   = "gcp-cost-test/PubSub Service Quota Metrics"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -7459,14 +7442,9 @@ resource "observe_dashboard" "app_home" {
           managers = [
             {
               id                     = "m5r76nui"
-              isDisabled             = false
+              isDisabled             = true
               isResourceCountEnabled = false
               type                   = "Timescrubber"
-            },
-            {
-              id         = "gpmeq7w1"
-              isDisabled = false
-              type       = "JsonTree"
             },
           ]
           queryPresentation = {
@@ -7520,7 +7498,7 @@ resource "observe_dashboard" "app_home" {
                 }
               }
               customName    = "Input"
-              customSummary = "PubSub Service Quota Metrics"
+              customSummary = "gcp-cost-test/PubSub Service Quota Metrics"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -7637,7 +7615,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.pubsub_service_quota_metrics}"
             datasetPath = null
-            inputName   = "PubSub Service Quota Metrics"
+            inputName   = "gcp-cost-test/PubSub Service Quota Metrics"
             inputRole   = "Data"
             stageId     = null
           },
@@ -7670,14 +7648,14 @@ resource "observe_dashboard" "app_home" {
               quota      = 206
               service    = 254
             }
-            containerWidth              = 2591
+            containerWidth              = 1311
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
             disableFixedLeftColumns     = false
             eventLinkColumnId           = null
             fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
+            hasCalculatedColumnWidths   = true
             hasDoneAutoLayout           = false
             maxColumnWidth              = 400
             maxMeasuredColumnWidth      = {}
@@ -7707,7 +7685,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.pubsub_service_quota_metrics}"
-              inputName   = "PubSub Service Quota Metrics"
+              inputName   = "gcp-cost-test/PubSub Service Quota Metrics"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -7722,14 +7700,9 @@ resource "observe_dashboard" "app_home" {
           managers = [
             {
               id                     = "m5r76nui"
-              isDisabled             = false
+              isDisabled             = true
               isResourceCountEnabled = false
               type                   = "Timescrubber"
-            },
-            {
-              id         = "5odqxes8"
-              isDisabled = false
-              type       = "JsonTree"
             },
           ]
           queryPresentation = {
@@ -7754,7 +7727,7 @@ resource "observe_dashboard" "app_home" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "PubSub Service Quota Metrics"
+              customSummary = "gcp-cost-test/PubSub Service Quota Metrics"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -7860,7 +7833,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.pubsub_service_quota_metrics}"
             datasetPath = null
-            inputName   = "PubSub Service Quota Metrics"
+            inputName   = "gcp-cost-test/PubSub Service Quota Metrics"
             inputRole   = "Data"
             stageId     = null
           },
@@ -7894,14 +7867,14 @@ resource "observe_dashboard" "app_home" {
               quota      = 206
               service    = 254
             }
-            containerWidth              = 2591
+            containerWidth              = 1311
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
             disableFixedLeftColumns     = false
             eventLinkColumnId           = null
             fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
+            hasCalculatedColumnWidths   = true
             hasDoneAutoLayout           = false
             maxColumnWidth              = 400
             maxMeasuredColumnWidth      = {}
@@ -7931,7 +7904,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.pubsub_service_quota_metrics}"
-              inputName   = "PubSub Service Quota Metrics"
+              inputName   = "gcp-cost-test/PubSub Service Quota Metrics"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -7946,14 +7919,9 @@ resource "observe_dashboard" "app_home" {
           managers = [
             {
               id                     = "m5r76nui"
-              isDisabled             = false
+              isDisabled             = true
               isResourceCountEnabled = false
               type                   = "Timescrubber"
-            },
-            {
-              id         = "cq5abctg"
-              isDisabled = false
-              type       = "JsonTree"
             },
           ]
           queryPresentation = {
@@ -7978,7 +7946,7 @@ resource "observe_dashboard" "app_home" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "PubSub Service Quota Metrics"
+              customSummary = "gcp-cost-test/PubSub Service Quota Metrics"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -8082,7 +8050,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.cloud_functions_instances}"
             datasetPath = null
-            inputName   = "Cloud Functions Instances"
+            inputName   = "gcp-cost-test/Cloud Functions Instances"
             inputRole   = "Data"
             stageId     = null
           },
@@ -8151,7 +8119,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.cloud_functions_instances}"
-              inputName   = "Cloud Functions Instances"
+              inputName   = "gcp-cost-test/Cloud Functions Instances"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -8275,7 +8243,7 @@ resource "observe_dashboard" "app_home" {
                 }
               }
               customName    = "Input"
-              customSummary = "Cloud Functions Instances"
+              customSummary = "gcp-cost-test/Cloud Functions Instances"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -8409,7 +8377,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.storage_buckets}"
             datasetPath = null
-            inputName   = "Storage Buckets"
+            inputName   = "gcp-cost-test/Storage Buckets"
             inputRole   = "Data"
             stageId     = null
           },
@@ -8484,7 +8452,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.storage_buckets}"
-              inputName   = "Storage Buckets"
+              inputName   = "gcp-cost-test/Storage Buckets"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -8585,7 +8553,7 @@ resource "observe_dashboard" "app_home" {
                 }
               }
               customName    = "Input"
-              customSummary = "Storage Buckets"
+              customSummary = "gcp-cost-test/Storage Buckets"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -8710,7 +8678,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.cloud_sql_instance}"
             datasetPath = null
-            inputName   = "Cloud SQL Instance"
+            inputName   = "gcp-cost-test/Cloud SQL Instance"
             inputRole   = "Data"
             stageId     = null
           },
@@ -8765,7 +8733,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.cloud_sql_instance}"
-              inputName   = "Cloud SQL Instance"
+              inputName   = "gcp-cost-test/Cloud SQL Instance"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -8955,7 +8923,7 @@ resource "observe_dashboard" "app_home" {
                 }
               }
               customName    = "Input"
-              customSummary = "Cloud SQL Instance"
+              customSummary = "gcp-cost-test/Cloud SQL Instance"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -9000,7 +8968,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.cloud_sql_instance}"
             datasetPath = null
-            inputName   = "Cloud SQL Instance"
+            inputName   = "gcp-cost-test/Cloud SQL Instance"
             inputRole   = "Data"
             stageId     = null
           },
@@ -9054,7 +9022,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.cloud_sql_instance}"
-              inputName   = "Cloud SQL Instance"
+              inputName   = "gcp-cost-test/Cloud SQL Instance"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -9222,7 +9190,7 @@ resource "observe_dashboard" "app_home" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "Cloud SQL Instance"
+              customSummary = "gcp-cost-test/Cloud SQL Instance"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -9267,7 +9235,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.cloud_sql_instance}"
             datasetPath = null
-            inputName   = "Cloud SQL Instance"
+            inputName   = "gcp-cost-test/Cloud SQL Instance"
             inputRole   = "Data"
             stageId     = null
           },
@@ -9321,7 +9289,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.cloud_sql_instance}"
-              inputName   = "Cloud SQL Instance"
+              inputName   = "gcp-cost-test/Cloud SQL Instance"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -9477,7 +9445,7 @@ resource "observe_dashboard" "app_home" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "Cloud SQL Instance"
+              customSummary = "gcp-cost-test/Cloud SQL Instance"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -9522,7 +9490,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.cloud_sql_instance}"
             datasetPath = null
-            inputName   = "Cloud SQL Instance"
+            inputName   = "gcp-cost-test/Cloud SQL Instance"
             inputRole   = "Data"
             stageId     = null
           },
@@ -9576,7 +9544,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.cloud_sql_instance}"
-              inputName   = "Cloud SQL Instance"
+              inputName   = "gcp-cost-test/Cloud SQL Instance"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -9732,7 +9700,7 @@ resource "observe_dashboard" "app_home" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "Cloud SQL Instance"
+              customSummary = "gcp-cost-test/Cloud SQL Instance"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -9777,7 +9745,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.resources_asset_inventory}"
             datasetPath = null
-            inputName   = "Resources Asset Inventory"
+            inputName   = "gcp-cost-test/Resources Asset Inventory"
             inputRole   = "Data"
             stageId     = null
           },
@@ -9848,7 +9816,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.resources_asset_inventory}"
-              inputName   = "Resources Asset Inventory"
+              inputName   = "gcp-cost-test/Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -9923,7 +9891,7 @@ resource "observe_dashboard" "app_home" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "Resources Asset Inventory"
+              customSummary = "gcp-cost-test/Resources Asset Inventory"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -10015,7 +9983,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.cloud_scheduler_jobs}"
             datasetPath = null
-            inputName   = "Cloud Scheduler Jobs"
+            inputName   = "gcp-cost-test/Cloud Scheduler Jobs"
             inputRole   = "Data"
             stageId     = null
           },
@@ -10030,18 +9998,16 @@ resource "observe_dashboard" "app_home" {
               "1" = "Valid From"
               "2" = "Valid To"
             }
-            columnVisibility = {}
-            columnWidths = {
-              asset_inventory_name = 627
-            }
-            containerWidth              = 2591
+            columnVisibility            = {}
+            columnWidths                = {}
+            containerWidth              = 1313
             contextMenuXCoord           = null
             contextMenuYCoord           = null
             defaultColumnWidth          = 70
             disableFixedLeftColumns     = false
             eventLinkColumnId           = null
             fetchPageSize               = 100
-            hasCalculatedColumnWidths   = true
+            hasCalculatedColumnWidths   = false
             hasDoneAutoLayout           = false
             maxColumnWidth              = 400
             maxMeasuredColumnWidth      = {}
@@ -10054,18 +10020,12 @@ resource "observe_dashboard" "app_home" {
             scrollToColumn              = null
             scrollToRow                 = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
             shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
@@ -10077,7 +10037,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.cloud_scheduler_jobs}"
-              inputName   = "Cloud Scheduler Jobs"
+              inputName   = "gcp-cost-test/Cloud Scheduler Jobs"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -10108,7 +10068,9 @@ resource "observe_dashboard" "app_home" {
                 }
                 source = {
                   table = {
-                    field       = "asset_inventory_name"
+                    field = [
+                      "project_id",
+                    ]
                     groupFields = []
                     statsBy = {
                       fn = "count"
@@ -10137,9 +10099,6 @@ resource "observe_dashboard" "app_home" {
             progressive    = true
             resultKinds = [
               "ResultKindSchema",
-              "ResultKindData",
-              "ResultKindStats",
-              "ResultKindProgress",
             ]
             rollup = {}
           }
@@ -10179,7 +10138,7 @@ resource "observe_dashboard" "app_home" {
                 }
               }
               customName    = "Input"
-              customSummary = "Cloud Scheduler Jobs"
+              customSummary = "gcp-cost-test/Cloud Scheduler Jobs"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -10224,7 +10183,7 @@ resource "observe_dashboard" "app_home" {
           {
             datasetId   = "${local.resources_asset_inventory}"
             datasetPath = null
-            inputName   = "Resources Asset Inventory"
+            inputName   = "gcp-cost-test/Resources Asset Inventory"
             inputRole   = "Data"
             stageId     = null
           },
@@ -10299,7 +10258,7 @@ resource "observe_dashboard" "app_home" {
           inputList = [
             {
               datasetId   = "${local.resources_asset_inventory}"
-              inputName   = "Resources Asset Inventory"
+              inputName   = "gcp-cost-test/Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -10374,7 +10333,7 @@ resource "observe_dashboard" "app_home" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "Resources Asset Inventory"
+              customSummary = "gcp-cost-test/Resources Asset Inventory"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false

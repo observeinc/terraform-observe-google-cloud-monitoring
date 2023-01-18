@@ -64,7 +64,7 @@ resource "observe_dataset" "cloud_scheduler_jobs" {
 
   stage {
     pipeline = <<-EOF
-      make_col time:BUNDLE_TIMESTAMP, asset_inventory_name: name, ttl: 15m, time:BUNDLE_TIMESTAMP
+      make_col time:BUNDLE_TIMESTAMP, asset_inventory_name: name, ttl: 30m, time:BUNDLE_TIMESTAMP
       
       extract_regex name, /jobs\/(?P<job_name>[^\/]+)/
 
