@@ -1,3 +1,17 @@
+# [1.0.0](https://github.com/observeinc/terraform-observe-google/compare/v0.8.0...v1.0.0) (2023-01-18)
+
+
+### Features
+
+* New version of GCP App pollers ([#127](https://github.com/observeinc/terraform-observe-google/issues/127)) ([36f1a45](https://github.com/observeinc/terraform-observe-google/commit/36f1a452b7135d8df037e5c2626a57f344ef7a11))
+
+
+### BREAKING CHANGES
+
+* Pollers in Observe and Collection in GCP need to be deleted and recreated to be compatible with this version of the application.
+
+
+
 # [0.8.0](https://github.com/observeinc/terraform-observe-google/compare/v0.7.0...v0.8.0) (2023-01-18)
 
 
