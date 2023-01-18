@@ -1,3 +1,20 @@
+# [0.8.0](https://github.com/observeinc/terraform-observe-google/compare/v0.7.0...v0.8.0) (2023-01-18)
+
+
+### Bug Fixes
+
+* bad counts on app home and consistency ([#121](https://github.com/observeinc/terraform-observe-google/issues/121)) ([71670fe](https://github.com/observeinc/terraform-observe-google/commit/71670fe4bc92725cee4c27952eff77dab2dc545c))
+* cloud scheduler jobs count ([#126](https://github.com/observeinc/terraform-observe-google/issues/126)) ([38020f9](https://github.com/observeinc/terraform-observe-google/commit/38020f9548706c278d442a1d5ce67e09ad7b5322))
+* cloud sql state visual ([#124](https://github.com/observeinc/terraform-observe-google/issues/124)) ([5c70480](https://github.com/observeinc/terraform-observe-google/commit/5c70480e7e72c235df9c6f9e0ee0f8d637acd409))
+* swap source/target for some preferred paths ([#123](https://github.com/observeinc/terraform-observe-google/issues/123)) ([8a795b3](https://github.com/observeinc/terraform-observe-google/commit/8a795b37bb89147b3abda3d2660552ae1a87a1c9))
+
+
+### Features
+
+* support new cloud function events ([#122](https://github.com/observeinc/terraform-observe-google/issues/122)) ([f36c39f](https://github.com/observeinc/terraform-observe-google/commit/f36c39f7e4d4e9f78c83d039385599f6df882459))
+
+
+
 # [0.7.0](https://github.com/observeinc/terraform-observe-google/compare/v0.6.1...v0.7.0) (2022-12-07)
 
 
