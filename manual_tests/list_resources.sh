@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 
-array=( 'sql instances list' 'compute instances list' 'container clusters list' 
-'functions list' 'storage buckets list' 'alpha bq datasets list --all' 
-'pubsub topics list' 'pubsub subscriptions list'
-'compute url-maps list' 'scheduler jobs list --location=us-west1')
+# Run this script to check counts on app home
+# scheduler jobs assumes us-west1
+
+array=('compute instances list' 'sql instances list' 'container clusters list' 
+'functions list' 'services list --enabled' 'storage buckets list' 'alpha bq datasets list --all' 
+'pubsub topics list' 'compute url-maps list' 'scheduler jobs list --location=us-west1'
+)
 
 for var in "${array[@]}"
 do
@@ -35,3 +38,4 @@ done
 # https://cloud.google.com/sdk/gcloud/reference/sql/instances/list
 # https://cloud.google.com/sdk/gcloud/reference/config/set
 # https://cloud.google.com/sdk/gcloud/reference/scheduler/jobs/list
+# https://cloud.google.com/sdk/gcloud/reference/services/list
