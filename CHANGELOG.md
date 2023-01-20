@@ -1,3 +1,12 @@
+## [1.0.1](https://github.com/observeinc/terraform-observe-google/compare/v1.0.0...v1.0.1) (2023-01-20)
+
+
+### Bug Fixes
+
+* add compute output for k8s app ([#128](https://github.com/observeinc/terraform-observe-google/issues/128)) ([a8d3582](https://github.com/observeinc/terraform-observe-google/commit/a8d3582c147985ce2791d5e2e2c49c5a39702c45))
+
+
+
 # [1.0.0](https://github.com/observeinc/terraform-observe-google/compare/v0.8.0...v1.0.0) (2023-01-18)
 
 
