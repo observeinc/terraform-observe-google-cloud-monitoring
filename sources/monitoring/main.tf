@@ -11,5 +11,9 @@ resource "observe_poller" "gcp_monitoring" {
 
     include_metric_type_prefixes = var.include_metric_type_prefixes
     exclude_metric_type_prefixes = var.exclude_metric_type_prefixes
+
+  }
+  tags = {
+    function_version = "https://storage.googleapis.com/observeinc/google-cloud-functions-v0.2.0.zip"
   }
 }
