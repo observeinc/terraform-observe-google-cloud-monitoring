@@ -18,6 +18,7 @@ output "compute_instance_group" {
   value = observe_dataset.instance_group
 }
 
+# leaving for compatability - should deprecate in future
 output "compute_instance_link_to_instance_group" {
   value = observe_link.compute["ComputeInstanceToInstanceGroup"]
 }
