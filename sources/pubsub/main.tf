@@ -9,4 +9,7 @@ resource "observe_poller" "pubsub_poller" {
     subscription_id = var.subscription
     json_key        = var.service_account_private_key_json
   }
+  tags = {
+    function_version = "https://storage.googleapis.com/observeinc/google-cloud-functions-v0.2.0.zip"
+  }
 }
