@@ -28,8 +28,4 @@ module "all_services_all_opts" {
   feature_flags = {
     "use_name_format_in_preferred_path" = true
   }
-  # feature_flags = {
-  #   metrics  = false
-  #   monitors = false
-  # }
 }
