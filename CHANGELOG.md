@@ -1,3 +1,12 @@
+## [1.0.2](https://github.com/observeinc/terraform-observe-google/compare/v1.0.1...v1.0.2) (2023-01-24)
+
+
+### Bug Fixes
+
+* gate preferred paths with feature flag ([#130](https://github.com/observeinc/terraform-observe-google/issues/130)) ([514975b](https://github.com/observeinc/terraform-observe-google/commit/514975bb8fa20d104212a0316ccb9591f5eb1479))
+
+
+
 ## [1.0.1](https://github.com/observeinc/terraform-observe-google/compare/v1.0.0...v1.0.1) (2023-01-20)
 
 
