@@ -1,8 +1,13 @@
 
 locals {
+
   enable_metrics = lookup(var.feature_flags, "metrics", true)
   # tflint-ignore: terraform_unused_declarations
   enable_monitors = lookup(var.feature_flags, "monitors", true)
+
+  enable_preferred_paths = lookup(var.feature_flags, "preferred_paths", true)
+
+  use_name_format_in_preferred_path = lookup(var.feature_flags, "use_name_format_in_preferred_path", false)
 
   enable_both = lookup(var.feature_flags, "monitors", true) && lookup(var.feature_flags, "metrics", true)
 
