@@ -1,3 +1,12 @@
+## [1.0.3](https://github.com/observeinc/terraform-observe-google/compare/v1.0.2...v1.0.3) (2023-01-27)
+
+
+### Bug Fixes
+
+* updated registry with new app name ([32eb1c5](https://github.com/observeinc/terraform-observe-google/commit/32eb1c5ceb886956e96305dd4274f5f49586477a))
+
+
+
 ## [1.0.2](https://github.com/observeinc/terraform-observe-google/compare/v1.0.1...v1.0.2) (2023-01-24)
 
 
