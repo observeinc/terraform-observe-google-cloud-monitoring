@@ -8,12 +8,16 @@ Workflow is to run fetch_metric_descriptors and then create_terraform to create 
 This fetches data from gcp api and creates a json file to be read by next function
 ```
 ./serviceUtilities.py fetch_metric_descriptors -o compute/computemetrics.json -m "compute.googleapis.com"
+
+./serviceUtilities.py fetch_metric_descriptors -o bigquery/bigquerymetrics.json -m "bigquery.googleapis.com"
 ```
 
 This reads json file and creates local_metricdescriptors.tf file with local variable defined that can be read in metrics dataset definition.
 
 ```
-serviceUtilities.py create_terraform -i compute/computemetrics.json -t compute/local_metricdescriptors.tf 
+./serviceUtilities.py create_terraform -i compute/computemetrics.json -t compute/local_metricdescriptors.tf 
+
+./serviceUtilities.py create_terraform -i bigquery/bigquerymetrics.json -t bigquery/local_metricdescriptors.tf 
 ```
 
 ## Changing metric definitions
