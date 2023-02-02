@@ -65,7 +65,7 @@ variable "include_metric_type_prefixes" {
     "bigquery.googleapis.com/",
     "loadbalancing.googleapis.com",
     "kubernetes.io/",
-    "redis.googleapis.com"
+    "redis.googleapis.com/",
   ]
   description = <<-EOF
     Metrics with these Metric Types with these prefixes will be fetched.
