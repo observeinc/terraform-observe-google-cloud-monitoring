@@ -33,7 +33,6 @@ resource "observe_dataset" "bigquery_metrics" {
             table_id,
             location,
             project_id
-)}
     EOF
   }
   # The terraform below dynamically writes set_metric statements in opal
