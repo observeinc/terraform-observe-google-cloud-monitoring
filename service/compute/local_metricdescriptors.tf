@@ -10,7 +10,7 @@ locals { metrics_definitions = {
     description        = <<-EOF
                     Disk's provisioned IOPS specified by the user.
                 EOF
-    launchStage        = "ALPHA"
+    launchStage        = "BETA"
     rollup             = "avg"
     aggregate          = "sum"
     metricCategory     = "provisioning"
@@ -26,7 +26,7 @@ locals { metrics_definitions = {
     description        = <<-EOF
                     Disk's provisioned size specified by the user.
                 EOF
-    launchStage        = "ALPHA"
+    launchStage        = "BETA"
     rollup             = "avg"
     aggregate          = "sum"
     metricCategory     = "provisioning"
@@ -42,7 +42,7 @@ locals { metrics_definitions = {
     description        = <<-EOF
                     Disk's provisioned throughput bytes/sec specified by the user.
                 EOF
-    launchStage        = "ALPHA"
+    launchStage        = "BETA"
     rollup             = "avg"
     aggregate          = "sum"
     metricCategory     = "provisioning"
@@ -82,6 +82,22 @@ locals { metrics_definitions = {
     label              = "Dropped packets"
     unit               = "1"
     metricBin          = "firewall"
+    valuetype          = "INT64"
+
+  }
+  request_count = {
+    type               = "delta"
+    description        = <<-EOF
+                    The number of global internal DNS requests in a GCE project.
+                EOF
+    launchStage        = "BETA"
+    rollup             = "avg"
+    aggregate          = "sum"
+    metricCategory     = "none"
+    google_metric_path = "compute.googleapis.com/global_dns/request_count"
+    label              = "GCE Project Global DNS Request Count"
+    unit               = "1"
+    metricBin          = "global_dns"
     valuetype          = "INT64"
 
   }
@@ -1457,6 +1473,54 @@ locals { metrics_definitions = {
     google_metric_path = "compute.googleapis.com/quota/ip_aliases_per_vpc_network/usage"
     label              = "IP Aliases per VPC Network quota usage"
     unit               = "1"
+    metricBin          = "quota"
+    valuetype          = "INT64"
+
+  }
+  local_ssd_total_storage_per_vm_family_exceeded = {
+    type               = "delta"
+    description        = <<-EOF
+                    Number of attempts to exceed the limit on quota metric compute.googleapis.com/local_ssd_total_storage_per_vm_family.
+                EOF
+    launchStage        = "ALPHA"
+    rollup             = "avg"
+    aggregate          = "sum"
+    metricCategory     = "local_ssd_total_storage_per_vm_family"
+    google_metric_path = "compute.googleapis.com/quota/local_ssd_total_storage_per_vm_family/exceeded"
+    label              = "Local SSD disk per VM family GB. quota exceeded error"
+    unit               = "1"
+    metricBin          = "quota"
+    valuetype          = "INT64"
+
+  }
+  local_ssd_total_storage_per_vm_family_limit = {
+    type               = "gauge"
+    description        = <<-EOF
+                    Current limit on quota metric compute.googleapis.com/local_ssd_total_storage_per_vm_family.
+                EOF
+    launchStage        = "ALPHA"
+    rollup             = "avg"
+    aggregate          = "sum"
+    metricCategory     = "local_ssd_total_storage_per_vm_family"
+    google_metric_path = "compute.googleapis.com/quota/local_ssd_total_storage_per_vm_family/limit"
+    label              = "Local SSD disk per VM family GB. quota limit"
+    unit               = "GBy"
+    metricBin          = "quota"
+    valuetype          = "INT64"
+
+  }
+  local_ssd_total_storage_per_vm_family_usage = {
+    type               = "gauge"
+    description        = <<-EOF
+                    Current usage on quota metric compute.googleapis.com/local_ssd_total_storage_per_vm_family.
+                EOF
+    launchStage        = "ALPHA"
+    rollup             = "avg"
+    aggregate          = "sum"
+    metricCategory     = "local_ssd_total_storage_per_vm_family"
+    google_metric_path = "compute.googleapis.com/quota/local_ssd_total_storage_per_vm_family/usage"
+    label              = "Local SSD disk per VM family GB. quota usage"
+    unit               = "GBy"
     metricBin          = "quota"
     valuetype          = "INT64"
 

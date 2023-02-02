@@ -66,16 +66,64 @@ resource "observe_dataset" "compute_metrics" {
       EOF
   }
 
+  # The terraform below dynamically writes set_metric statements in opal
+  # This loops through the local.metrics_definitions map using for
+  # [for metric, options in local.metrics_definitions :
+
+  # metric is the key (avg_ttl) and options is the value (all the stuff between {})
+  /* Example metric in local.metrics_definitions
+        avg_ttl = {
+            type               = "gauge"
+            description        = <<-EOF
+                            Average TTL for keys in this database.
+                        EOF
+            launchStage        = "GA"
+            rollup             = "avg"
+            aggregate          = "sum"
+            metricCategory     = "none"
+            google_metric_path = "redis.googleapis.com/keyspace/avg_ttl"
+            label              = "Average TTL"
+            unit               = "ms"
+            metricBin          = "keyspace"
+            valuetype          = "DOUBLE"
+
+        }
+        */
+
+  # We filter the outer for loop checking whether options.launchStage is in the array defined by var.metric_launch_stages 
+  # in the inner for loop we iterate through the fields in the options objects and check if the field is in the array defined by var.metric_interface_fields
+  ##  and if so 
+  /* Example output
+  set_metric options(
+    aggregate: "sum",
+    description: "Average TTL for keys in this database.\n",
+    rollup: "avg",
+    type: "gauge",
+    unit: "ms"
+    ), "avg_ttl"
+    
+  */
+
   stage {
     pipeline = <<-EOF
       interface "metric", metric:metric, value:value
       ${join("\n\n",
-    [for metric, options in local.metrics_definitions :
+    [for metric, options in local.merged_metrics_definitions :
       indent(2,
+        # format takes result of join / forloop and metric as inputs
         format("set_metric options(\n%s\n), %q",
           join(",\n",
-      [for k, v in options : k == "interval" ? format("%s: %s", k, v) : format("%s: %q", k, v) if contains(var.metric_interface_fields, k)]), metric))
-if contains(var.metric_launch_stages, options.launchStage)])}
+            [for optionFieldName, optionFieldNameValue in options :
+              optionFieldName == "interval" ? format("%s: %s", optionFieldName, optionFieldNameValue) :
+              # format takes optionFieldName and optionFieldNameValue as inputs
+              format("%s: %q", optionFieldName, optionFieldNameValue)
+              if contains(var.metric_interface_fields, optionFieldName) # filters inner for loop
+            ]                                                           # end of inner for loop
+          ),                                                            # end of inner join statement
+      replace(replace(options.google_metric_path, "compute.googleapis.com/", ""), "/", "_")))
+      if contains(var.metric_launch_stages, options.launchStage) # filters outer for loop
+    ]                                                            # end of outer for loop and join statement
+)}  
 
     EOF
 }
