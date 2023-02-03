@@ -94,7 +94,7 @@ resource "observe_dataset" "cloud_functions_metrics" {
               if contains(var.metric_interface_fields, optionFieldName) # filters inner for loop
             ]                                                           # end of inner for loop
           ),                                                            # end of inner join statement
-      replace(replace(options.google_metric_path, "compute.googleapis.com/", ""), "/", "_")))
+      replace(replace(options.google_metric_path, "cloudfunctions.googleapis.com/", ""), "/", "_")))
       if contains(var.metric_launch_stages, options.launchStage) # filters outer for loop
     ]                                                            # end of outer for loop and join statement
 )}  
