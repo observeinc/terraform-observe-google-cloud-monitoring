@@ -10,6 +10,8 @@ This fetches data from gcp api and creates a json file to be read by next functi
 ./serviceUtilities.py fetch_metric_descriptors -o compute/computemetrics.json -m "compute.googleapis.com"
 
 ./serviceUtilities.py fetch_metric_descriptors -o bigquery/bigquerymetrics.json -m "bigquery.googleapis.com"
+
+./serviceUtilities.py fetch_metric_descriptors -o cloudfunctions/cloudfunctionmetrics.json -m "cloudfunctions.googleapis.com"
 ```
 
 This reads json file and creates local_metricdescriptors.tf file with local variable defined that can be read in metrics dataset definition.
@@ -18,6 +20,8 @@ This reads json file and creates local_metricdescriptors.tf file with local vari
 ./serviceUtilities.py create_terraform -i compute/computemetrics.json -t compute/local_metricdescriptors.tf 
 
 ./serviceUtilities.py create_terraform -i bigquery/bigquerymetrics.json -t bigquery/local_metricdescriptors.tf 
+
+./serviceUtilities.py create_terraform -i cloudfunctions/cloudfunctionmetrics.json -t cloudfunctions/local_metricdescriptors.tf 
 ```
 
 ## Changing metric definitions
@@ -76,3 +80,69 @@ locals {
 
 ```
 
+## Metrics file
+To use these variables to auoto generate the opal statements needed in your metrics definition file the last stage of your metrics dataset should contain the following (include comments for helping out future users who come across code)
+
+```
+ # The terraform below dynamically writes set_metric statements in opal
+  # This loops through the local.metrics_definitions map using for
+  # [for metric, options in local.metrics_definitions :
+
+  # metric is the key (avg_ttl) and options is the value (all the stuff between {})
+  /* Example metric in local.metrics_definitions
+        avg_ttl = {
+            type               = "gauge"
+            description        = <<-EOF
+                            Average TTL for keys in this database.
+                        EOF
+            launchStage        = "GA"
+            rollup             = "avg"
+            aggregate          = "sum"
+            metricCategory     = "none"
+            google_metric_path = "redis.googleapis.com/keyspace/avg_ttl"
+            label              = "Average TTL"
+            unit               = "ms"
+            metricBin          = "keyspace"
+            valuetype          = "DOUBLE"
+
+        }
+        */
+
+  # We filter the outer for loop checking whether options.launchStage is in the array defined by var.metric_launch_stages 
+  # in the inner for loop we iterate through the fields in the options objects and check if the field is in the array defined by var.metric_interface_fields
+  ##  and if so 
+  /* Example output
+  set_metric options(
+    aggregate: "sum",
+    description: "Average TTL for keys in this database.\n",
+    rollup: "avg",
+    type: "gauge",
+    unit: "ms"
+    ), "avg_ttl"
+    
+  */
+
+  stage {
+    pipeline = <<-EOF
+      interface "metric", metric:metric, value:value
+      ${join("\n\n",
+    [for metric, options in local.merged_metrics_definitions :
+      indent(2,
+        # format takes result of join / forloop and metric as inputs
+        format("set_metric options(\n%s\n), %q",
+          join(",\n",
+            [for optionFieldName, optionFieldNameValue in options :
+              optionFieldName == "interval" ? format("%s: %s", optionFieldName, optionFieldNameValue) :
+              # format takes optionFieldName and optionFieldNameValue as inputs
+              format("%s: %q", optionFieldName, optionFieldNameValue)
+              if contains(var.metric_interface_fields, optionFieldName) # filters inner for loop
+            ]                                                           # end of inner for loop
+          ),                                                            # end of inner join statement
+      replace(replace(options.google_metric_path, "compute.googleapis.com/", ""), "/", "_")))
+      if contains(var.metric_launch_stages, options.launchStage) # filters outer for loop
+    ]                                                            # end of outer for loop and join statement
+)}  
+
+    EOF
+}
+```
