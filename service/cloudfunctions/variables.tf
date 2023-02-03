@@ -45,7 +45,7 @@ variable "google" {
 
 variable "metric_interface_fields" {
   type        = set(string)
-  default     = ["type", "description", "rollup", "aggregate", "interval", "label", "unit"]
+  default     = ["type", "description", "rollup", "aggregate", "interval", "unit"]
   description = "Used by metric interface to pick fields to map"
 }
 
