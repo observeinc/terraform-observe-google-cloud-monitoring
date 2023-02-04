@@ -202,17 +202,9 @@ resource "observe_dashboard" "bigquery_project" {
     [
       {
         defaultValue = {
-          array = null
-          bool  = null
           datasetref = {
-            datasetId   = "${local.projects_collection_enabled}"
-            datasetPath = null
-            stageId     = null
+            datasetId = "${local.projects_collection_enabled}"
           }
-          float64 = null
-          int64   = null
-          link    = null
-          string  = null
         }
         id   = "project"
         name = "project"

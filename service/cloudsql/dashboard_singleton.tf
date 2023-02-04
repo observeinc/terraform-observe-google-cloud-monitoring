@@ -419,45 +419,30 @@ resource "observe_dashboard" "cloud_sql_instance" {
     [
       {
         defaultValue = {
-          array      = null
-          bool       = null
-          datasetref = null
-          float64    = null
-          int64      = null
           link = {
             datasetId = "${local.cloud_sql_instance}"
             primaryKeyValue = [
               {
                 name = "assetInventoryName"
                 value = {
-                  bool    = null
-                  float64 = null
-                  int64   = null
-                  string  = "//cloudsql.googleapis.com/projects/terraflood-345116/instances/con-gha-main-g1-763-instance-tapir"
+                  string = "//cloudsql.googleapis.com/projects/terraflood-345116/instances/con-gha-main-g1-763-instance-tapir"
                 }
               },
               {
                 name = "database_id"
                 value = {
-                  bool    = null
-                  float64 = null
-                  int64   = null
-                  string  = "terraflood-345116:con-gha-main-g1-763-instance-tapir"
+                  string = "terraflood-345116:con-gha-main-g1-763-instance-tapir"
                 }
               },
               {
                 name = "name"
                 value = {
-                  bool    = null
-                  float64 = null
-                  int64   = null
-                  string  = "con-gha-main-g1-763-instance-tapir"
+                  string = "con-gha-main-g1-763-instance-tapir"
                 }
               },
             ]
             storedLabel = "con-gha-main-g1-763-instance-tapir"
           }
-          string = null
         }
         id   = "database"
         name = "Database"

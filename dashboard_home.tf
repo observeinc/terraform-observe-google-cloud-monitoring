@@ -868,17 +868,9 @@ resource "observe_dashboard" "app_home" {
     [
       {
         defaultValue = {
-          array = null
-          bool  = null
           datasetref = {
-            datasetId   = "${local.projects_collection_enabled}"
-            datasetPath = null
-            stageId     = null
+            datasetId = "${local.projects_collection_enabled}"
           }
-          float64 = null
-          int64   = null
-          link    = null
-          string  = null
         }
         id   = "input-parameter-z5n5j9ss"
         name = "projects"
@@ -890,13 +882,7 @@ resource "observe_dashboard" "app_home" {
       },
       {
         defaultValue = {
-          array      = null
-          bool       = null
-          datasetref = null
-          float64    = null
-          int64      = null
-          link       = null
-          string     = ""
+          string = ""
         }
         id   = "service"
         name = "Service"
@@ -908,13 +894,7 @@ resource "observe_dashboard" "app_home" {
       },
       {
         defaultValue = {
-          array      = null
-          bool       = null
-          datasetref = null
-          float64    = null
-          int64      = null
-          link       = null
-          string     = ""
+          string = ""
         }
         id   = "metricNamespace"
         name = "Metric Namespace"

@@ -171,17 +171,9 @@ resource "observe_dashboard" "pubsub_monitoring" {
     [
       {
         defaultValue = {
-          array = null
-          bool  = null
           datasetref = {
-            datasetId   = "${local.pubsub_topics}"
-            datasetPath = null
-            stageId     = null
+            datasetId = "${local.pubsub_topics}"
           }
-          float64 = null
-          int64   = null
-          link    = null
-          string  = null
         }
         id   = "input-parameter-j9o4mgmh"
         name = "pubsubTopic"

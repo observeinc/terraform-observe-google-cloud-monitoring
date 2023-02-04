@@ -204,17 +204,9 @@ resource "observe_dashboard" "pubsub_pubsub_service_input2" {
     [
       {
         defaultValue = {
-          array = null
-          bool  = null
           datasetref = {
-            datasetId   = "${local.pubsub_service}"
-            datasetPath = null
-            stageId     = null
+            datasetId = "${local.pubsub_service}"
           }
-          float64 = null
-          int64   = null
-          link    = null
-          string  = null
         }
         id   = "input-parameter-ghoggkda"
         name = "service"

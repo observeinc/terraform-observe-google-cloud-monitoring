@@ -150,17 +150,9 @@ resource "observe_dashboard" "pubsub_subscription_input" {
     [
       {
         defaultValue = {
-          array = null
-          bool  = null
           datasetref = {
-            datasetId   = "${local.pubsub_subscriptions}"
-            datasetPath = null
-            stageId     = null
+            datasetId = "${local.pubsub_subscriptions}"
           }
-          float64 = null
-          int64   = null
-          link    = null
-          string  = null
         }
         id   = "input-parameter-r4djwcuh"
         name = "subscriptions"

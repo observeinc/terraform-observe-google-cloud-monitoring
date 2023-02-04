@@ -467,17 +467,9 @@ resource "observe_dashboard" "compute_monitoring" {
     [
       {
         defaultValue = {
-          array = null
-          bool  = null
           datasetref = {
-            datasetId   = "${local.compute_instance}"
-            datasetPath = null
-            stageId     = null
+            datasetId = "${local.compute_instance}"
           }
-          float64 = null
-          int64   = null
-          link    = null
-          string  = null
         }
         id   = "computeID"
         name = "Compute Instance"

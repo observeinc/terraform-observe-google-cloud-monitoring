@@ -310,13 +310,7 @@ resource "observe_dashboard" "bigquery_project_overview" {
     [
       {
         defaultValue = {
-          array      = null
-          bool       = null
-          datasetref = null
-          float64    = null
-          int64      = null
-          link       = null
-          string     = "query"
+          string = "query"
         }
         id   = "job_type"
         name = "job_type"
@@ -328,13 +322,7 @@ resource "observe_dashboard" "bigquery_project_overview" {
       },
       {
         defaultValue = {
-          array      = null
-          bool       = null
-          datasetref = null
-          float64    = null
-          int64      = null
-          link       = null
-          string     = "batch"
+          string = "batch"
         }
         id   = "priority"
         name = "priority"
@@ -346,13 +334,7 @@ resource "observe_dashboard" "bigquery_project_overview" {
       },
       {
         defaultValue = {
-          array      = null
-          bool       = null
-          datasetref = null
-          float64    = null
-          int64      = null
-          link       = null
-          string     = "running"
+          string = "running"
         }
         id   = "state"
         name = "state"

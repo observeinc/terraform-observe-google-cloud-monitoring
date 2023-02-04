@@ -206,13 +206,7 @@ resource "observe_dashboard" "total_cost_of_ownership" {
     [
       {
         defaultValue = {
-          array      = null
-          bool       = null
-          datasetref = null
-          float64    = null
-          int64      = null
-          link       = null
-          string     = "full_export_v6"
+          string = "full_export_v6"
         }
         id   = "queryID"
         name = "Query ID"
@@ -224,13 +218,7 @@ resource "observe_dashboard" "total_cost_of_ownership" {
       },
       {
         defaultValue = {
-          array      = null
-          bool       = null
-          datasetref = null
-          float64    = null
-          int64      = null
-          link       = null
-          string     = "content-testpproj-stage-1"
+          string = "content-testpproj-stage-1"
         }
         id   = "projectID"
         name = "Project ID"
@@ -242,13 +230,7 @@ resource "observe_dashboard" "total_cost_of_ownership" {
       },
       {
         defaultValue = {
-          array      = null
-          bool       = null
-          datasetref = null
-          float64    = null
-          int64      = null
-          link       = null
-          string     = ""
+          string = ""
         }
         id   = "serviceID"
         name = "Service"

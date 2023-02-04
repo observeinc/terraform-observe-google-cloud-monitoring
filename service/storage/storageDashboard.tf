@@ -730,17 +730,9 @@ resource "observe_dashboard" "storage_monitoring" {
     [
       {
         defaultValue = {
-          array = null
-          bool  = null
           datasetref = {
-            datasetId   = "${local.storage_buckets}"
-            datasetPath = null
-            stageId     = null
+            datasetId = "${local.storage_buckets}"
           }
-          float64 = null
-          int64   = null
-          link    = null
-          string  = null
         }
         id   = "bucket"
         name = "Bucket"
@@ -752,13 +744,7 @@ resource "observe_dashboard" "storage_monitoring" {
       },
       {
         defaultValue = {
-          array      = null
-          bool       = null
-          datasetref = null
-          float64    = null
-          int64      = null
-          link       = null
-          string     = "all"
+          string = "all"
         }
         id   = "responseCode"
         name = "Response Code"
@@ -770,13 +756,7 @@ resource "observe_dashboard" "storage_monitoring" {
       },
       {
         defaultValue = {
-          array      = null
-          bool       = null
-          datasetref = null
-          float64    = null
-          int64      = null
-          link       = null
-          string     = "all"
+          string = "all"
         }
         id   = "method"
         name = "Method"
@@ -788,13 +768,7 @@ resource "observe_dashboard" "storage_monitoring" {
       },
       {
         defaultValue = {
-          array      = null
-          bool       = null
-          datasetref = null
-          float64    = null
-          int64      = null
-          link       = null
-          string     = "authz_acl_based_object_access_count"
+          string = "authz_acl_based_object_access_count"
         }
         id   = "aclMetric"
         name = "ACL Metric"
@@ -806,13 +780,7 @@ resource "observe_dashboard" "storage_monitoring" {
       },
       {
         defaultValue = {
-          array      = null
-          bool       = null
-          datasetref = null
-          float64    = null
-          int64      = null
-          link       = null
-          string     = "Buckets without lifecycle rules"
+          string = "Buckets without lifecycle rules"
         }
         id   = "config"
         name = "Configuration Selection"
