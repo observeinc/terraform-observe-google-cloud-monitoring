@@ -325,7 +325,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
       {
         defaultValue = {
           datasetref = {
-            datasetId   = "${local.cloud_functions_instances}"
+            datasetId = "${local.cloud_functions_instances}"
           }
         }
         id   = "cloudFunctions"
