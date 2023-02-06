@@ -324,17 +324,9 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
     [
       {
         defaultValue = {
-          array = null
-          bool  = null
           datasetref = {
             datasetId   = "${local.cloud_functions_instances}"
-            datasetPath = null
-            stageId     = null
           }
-          float64 = null
-          int64   = null
-          link    = null
-          string  = null
         }
         id   = "cloudFunctions"
         name = "cloudFunctions"
