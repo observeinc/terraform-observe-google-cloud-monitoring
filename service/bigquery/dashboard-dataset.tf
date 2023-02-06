@@ -206,17 +206,9 @@ resource "observe_dashboard" "bigquery_dataset" {
     [
       {
         defaultValue = {
-          array = null
-          bool  = null
           datasetref = {
-            datasetId   = "${local.bigquery_dataset}"
-            datasetPath = null
-            stageId     = null
+            datasetId = "${local.bigquery_dataset}"
           }
-          float64 = null
-          int64   = null
-          link    = null
-          string  = null
         }
         id   = "dataset"
         name = "dataset"

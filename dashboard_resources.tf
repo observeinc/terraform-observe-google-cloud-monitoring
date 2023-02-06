@@ -79,17 +79,9 @@ resource "observe_dashboard" "resource_monitoring" {
     [
       {
         defaultValue = {
-          array = null
-          bool  = null
           datasetref = {
-            datasetId   = "${local.resources_asset_inventory}"
-            datasetPath = null
-            stageId     = null
+            datasetId = "${local.resources_asset_inventory}"
           }
-          float64 = null
-          int64   = null
-          link    = null
-          string  = null
         }
         id   = "input-parameter-r2120qwo"
         name = "resources"

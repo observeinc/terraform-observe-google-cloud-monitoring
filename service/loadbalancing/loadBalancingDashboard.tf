@@ -779,17 +779,9 @@ resource "observe_dashboard" "load_balancing_monitoring" {
     [
       {
         defaultValue = {
-          array = null
-          bool  = null
           datasetref = {
-            datasetId   = "${local.load_balancing_load_balancers}"
-            datasetPath = null
-            stageId     = null
+            datasetId = "${local.load_balancing_load_balancers}"
           }
-          float64 = null
-          int64   = null
-          link    = null
-          string  = null
         }
         id   = "loadBalancer"
         name = "Load Balancer"
@@ -801,13 +793,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
       },
       {
         defaultValue = {
-          array      = null
-          bool       = null
-          datasetref = null
-          float64    = null
-          int64      = null
-          link       = null
-          string     = "total_latencies"
+          string = "total_latencies"
         }
         id   = "latencyType"
         name = "Latency Type"
@@ -819,13 +805,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
       },
       {
         defaultValue = {
-          array      = null
-          bool       = null
-          datasetref = null
-          float64    = null
-          int64      = null
-          link       = null
-          string     = "avg"
+          string = "avg"
         }
         id   = "percentile"
         name = "Percentile"
@@ -837,13 +817,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
       },
       {
         defaultValue = {
-          array      = null
-          bool       = null
-          datasetref = null
-          float64    = null
-          int64      = null
-          link       = null
-          string     = "open_connections"
+          string = "open_connections"
         }
         id   = "connectionsType"
         name = "Connections Type"
@@ -855,13 +829,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
       },
       {
         defaultValue = {
-          array      = null
-          bool       = null
-          datasetref = null
-          float64    = null
-          int64      = null
-          link       = null
-          string     = ""
+          string = ""
         }
         id   = "responseCode"
         name = "Response Code"
@@ -873,13 +841,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
       },
       {
         defaultValue = {
-          array      = null
-          bool       = null
-          datasetref = null
-          float64    = null
-          int64      = null
-          link       = null
-          string     = "avg"
+          string = "avg"
         }
         id   = "percentileL4"
         name = "Percentile"

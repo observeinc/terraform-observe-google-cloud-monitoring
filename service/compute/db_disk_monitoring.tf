@@ -253,17 +253,9 @@ resource "observe_dashboard" "disk_monitoring" {
     [
       {
         defaultValue = {
-          array = null
-          bool  = null
           datasetref = {
-            datasetId   = "${local.compute_disk}"
-            datasetPath = null
-            stageId     = null
+            datasetId = "${local.compute_disk}"
           }
-          float64 = null
-          int64   = null
-          link    = null
-          string  = null
         }
         id   = "input-parameter-isvd5249"
         name = "disk"
