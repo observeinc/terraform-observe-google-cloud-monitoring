@@ -288,17 +288,9 @@ resource "observe_dashboard" "gke_monitoring" {
     [
       {
         defaultValue = {
-          array = null
-          bool  = null
           datasetref = {
-            datasetId   = "${local.gke_cluster}"
-            datasetPath = null
-            stageId     = null
+            datasetId = "${local.gke_cluster}"
           }
-          float64 = null
-          int64   = null
-          link    = null
-          string  = null
         }
         id   = "input-parameter-21mm2wi0"
         name = "gkeCluster"

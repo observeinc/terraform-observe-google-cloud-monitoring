@@ -108,17 +108,9 @@ resource "observe_dashboard" "bigquery_tables_manual" {
     [
       {
         defaultValue = {
-          array = null
-          bool  = null
           datasetref = {
-            datasetId   = "41252651"
-            datasetPath = null
-            stageId     = null
+            datasetId = "41252651"
           }
-          float64 = null
-          int64   = null
-          link    = null
-          string  = null
         }
         id   = "input-parameter-w81f71mb"
         name = "BigQuery Table"

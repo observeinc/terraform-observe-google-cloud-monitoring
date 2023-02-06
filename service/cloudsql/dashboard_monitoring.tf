@@ -500,17 +500,9 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
     [
       {
         defaultValue = {
-          array = null
-          bool  = null
           datasetref = {
-            datasetId   = "${local.cloud_sql_instance}"
-            datasetPath = null
-            stageId     = null
+            datasetId = "${local.cloud_sql_instance}"
           }
-          float64 = null
-          int64   = null
-          link    = null
-          string  = null
         }
         id   = "dbResource"
         name = "Cloud SQL Instance"

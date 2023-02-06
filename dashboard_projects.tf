@@ -78,17 +78,9 @@ resource "observe_dashboard" "project_input" {
     [
       {
         defaultValue = {
-          array = null
-          bool  = null
           datasetref = {
-            datasetId   = "${local.projects_collection_enabled}"
-            datasetPath = null
-            stageId     = null
+            datasetId = "${local.projects_collection_enabled}"
           }
-          float64 = null
-          int64   = null
-          link    = null
-          string  = null
         }
         id   = "input-parameter-nsjl7kcg"
         name = "projects"

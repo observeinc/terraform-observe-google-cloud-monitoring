@@ -323,17 +323,9 @@ locals {
       [
         {
           defaultValue = {
-            array = null
-            bool  = null
             datasetref = {
-              datasetId   = "${local.cloud_functions_instances}"
-              datasetPath = null
-              stageId     = null
+              datasetId = "${local.cloud_functions_instances}"
             }
-            float64 = null
-            int64   = null
-            link    = null
-            string  = null
           }
           id   = "cloudFunctions"
           name = "cloudFunctions"
