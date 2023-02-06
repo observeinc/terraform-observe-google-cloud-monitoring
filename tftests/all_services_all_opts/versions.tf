@@ -5,7 +5,7 @@ terraform {
     }
     observe = {
       source  = "terraform.observeinc.com/observeinc/observe"
-      version = "0.13.2"
+      version = "~>0.13"
     }
   }
   required_version = ">= 1.0.0"
