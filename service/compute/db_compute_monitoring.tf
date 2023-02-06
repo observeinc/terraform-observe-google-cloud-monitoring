@@ -468,7 +468,7 @@ resource "observe_dashboard" "compute_monitoring" {
       {
         defaultValue = {
           datasetref = {
-            datasetId   = "${local.compute_instance}"
+            datasetId = "${local.compute_instance}"
           }
         }
         id   = "computeID"
