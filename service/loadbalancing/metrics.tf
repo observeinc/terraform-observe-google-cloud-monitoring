@@ -63,7 +63,7 @@ resource "observe_dataset" "load_balancing_metrics" {
         url_map_name,
         distribution_metadata
 
-      colshow
+      set_col_visible
         metric_type: false, 
         metric_kind: false, 
         value_type: false
