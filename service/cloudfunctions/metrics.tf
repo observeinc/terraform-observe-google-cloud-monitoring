@@ -1,128 +1,3 @@
-# locals {
-#   metrics_definitions = {
-#     "function_active_instances" = {
-#       type             = "gauge"
-#       description      = <<-EOF
-#           The number of active function instances. Sampled every 60s and may take up to 240s to display.
-#       EOF
-#       launchStage      = "BETA"
-#       rollup           = "avg"
-#       aggregate        = "sum"
-#       metricCategory   = "none"
-#       googleMetricPath = "cloudfunctions.googleapis.com/function/active_instances"
-#       label            = "Active instances"
-#       active           = false
-
-
-#       interval = "60s"
-
-
-
-
-#     },
-#     "function_execution_count" = {
-#       type             = "delta"
-#       description      = <<-EOF
-#           Count of function executions broken down by status. Sampled every 60s and may take up to 240s to display.
-#       EOF
-#       launchStage      = "GA"
-#       rollup           = "avg"
-#       aggregate        = "sum"
-#       metricCategory   = "none"
-#       googleMetricPath = "cloudfunctions.googleapis.com/function/execution_count"
-#       label            = "Executions"
-#       active           = true
-
-
-#       interval = "60s"
-
-
-
-
-#     },
-#     "function_execution_times" = {
-#       type             = "delta"
-#       description      = <<-EOF
-#           Distribution of functions execution times in nanoseconds. Sampled every 60s and may take up to 240s to display.
-#       EOF
-#       launchStage      = "GA"
-#       rollup           = "avg"
-#       aggregate        = "sum"
-#       metricCategory   = "none"
-#       googleMetricPath = "cloudfunctions.googleapis.com/function/execution_times"
-#       label            = "Execution times"
-#       active           = true
-
-
-#       interval = "60s"
-
-#       unit = "ns"
-
-
-#     },
-#     "function_instance_count" = {
-#       type             = "gauge"
-#       description      = <<-EOF
-#           The number of function instances, broken down by state. Sampled every 60s and may take up to 240s to display.
-#       EOF
-#       launchStage      = "GA"
-#       rollup           = "avg"
-#       aggregate        = "sum"
-#       metricCategory   = "none"
-#       googleMetricPath = "cloudfunctions.googleapis.com/function/instance_count"
-#       label            = "Instance Count"
-#       active           = true
-
-
-#       interval = "60s"
-
-
-
-
-#     },
-#     "function_network_egress" = {
-#       type             = "delta"
-#       description      = <<-EOF
-#           Outgoing network traffic of function, in bytes. Sampled every 60s and may take up to 240s to display.
-#       EOF
-#       launchStage      = "GA"
-#       rollup           = "avg"
-#       aggregate        = "sum"
-#       metricCategory   = "none"
-#       googleMetricPath = "cloudfunctions.googleapis.com/function/network_egress"
-#       label            = "Network egress"
-#       active           = true
-
-
-#       interval = "60s"
-
-#       unit = "By"
-
-
-#     },
-#     "function_user_memory_bytes" = {
-#       type             = "delta"
-#       description      = <<-EOF
-#           Distribution of maximum function's memory usage during execution, in bytes. Sampled every 60s and may take up to 180s to display.
-#       EOF
-#       launchStage      = "GA"
-#       rollup           = "avg"
-#       aggregate        = "sum"
-#       metricCategory   = "none"
-#       googleMetricPath = "cloudfunctions.googleapis.com/function/user_memory_bytes"
-#       label            = "Memory usage"
-#       active           = true
-
-
-#       interval = "60s"
-
-#       unit = "By"
-
-
-#     },
-#   }
-# }
-
 locals {
   enable_metrics = lookup(var.feature_flags, "metrics", true)
   # tflint-ignore: terraform_unused_declarations
@@ -161,21 +36,69 @@ resource "observe_dataset" "cloud_functions_metrics" {
         value_type,
         project_id,
         region,
-        function_name
+        function_name   
+    EOF
+  }
 
+  # The terraform below dynamically writes set_metric statements in opal
+  # This loops through the local.metrics_definitions map using for
+  # [for metric, options in local.metrics_definitions :
+
+  # metric is the key (avg_ttl) and options is the value (all the stuff between {})
+  /* Example metric in local.metrics_definitions
+        avg_ttl = {
+            type               = "gauge"
+            description        = <<-EOF
+                            Average TTL for keys in this database.
+                        EOF
+            launchStage        = "GA"
+            rollup             = "avg"
+            aggregate          = "sum"
+            metricCategory     = "none"
+            google_metric_path = "redis.googleapis.com/keyspace/avg_ttl"
+            label              = "Average TTL"
+            unit               = "ms"
+            metricBin          = "keyspace"
+            valuetype          = "DOUBLE"
+
+        }
+        */
+
+  # We filter the outer for loop checking whether options.launchStage is in the array defined by var.metric_launch_stages 
+  # in the inner for loop we iterate through the fields in the options objects and check if the field is in the array defined by var.metric_interface_fields
+  ##  and if so 
+  /* Example output
+  set_metric options(
+    aggregate: "sum",
+    description: "Average TTL for keys in this database.\n",
+    rollup: "avg",
+    type: "gauge",
+    unit: "ms"
+    ), "avg_ttl"
+    
+  */
+
+  stage {
+    pipeline = <<-EOF
       interface "metric", metric:metric, value:value
-      ${join("\n\n", [for metric, options in local.metrics_definitions :
-    indent(2,
-      format("set_metric options(\n%s\n), %q",
-        join(",\n",
-          [for k, v in options : k == "interval" ?
-            format("%s: %s", k, v)
-            :
-            format("%s: %q", k, v)
-    if contains(var.metric_interface_fields, k)]), metric))
-    if contains(var.launch_stage, options.launchStage)
-  ]
-)}    
+      ${join("\n\n",
+    [for metric, options in local.merged_metrics_definitions :
+      indent(2,
+        # format takes result of join / forloop and metric as inputs
+        format("set_metric options(\n%s\n), %q",
+          join(",\n",
+            [for optionFieldName, optionFieldNameValue in options :
+              optionFieldName == "interval" ? format("%s: %s", optionFieldName, optionFieldNameValue) :
+              # format takes optionFieldName and optionFieldNameValue as inputs
+              format("%s: %q", optionFieldName, optionFieldNameValue)
+              if contains(var.metric_interface_fields, optionFieldName) # filters inner for loop
+            ]                                                           # end of inner for loop
+          ),                                                            # end of inner join statement
+      replace(replace(options.google_metric_path, "cloudfunctions.googleapis.com/", ""), "/", "_")))
+      if contains(var.metric_launch_stages, options.launchStage) # filters outer for loop
+    ]                                                            # end of outer for loop and join statement
+)}  
+
     EOF
 }
 }

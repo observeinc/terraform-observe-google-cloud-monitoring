@@ -45,15 +45,13 @@ variable "google" {
 
 variable "metric_interface_fields" {
   type        = set(string)
-  default     = ["type", "description", "rollup", "aggregate", "interval", "label", "unit"]
+  default     = ["type", "description", "rollup", "aggregate", "interval", "unit"]
   description = "Used by metric interface to pick fields to map"
 }
 
-variable "launch_stage" {
-  type = set(string)
-  default = [
-    "GA",
-  ]
+variable "metric_launch_stages" {
+  type        = set(string)
+  default     = ["GA", "BETA"]
   description = "Used by metric interface to pick metrics to include"
 }
 
