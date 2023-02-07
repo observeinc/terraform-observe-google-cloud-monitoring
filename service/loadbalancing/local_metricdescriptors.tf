@@ -17,7 +17,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/https/backend_latencies"
     label              = "Backend latency"
     unit               = "ms"
-    metricBin          = "['https']"
+    metricBin          = "https"
     valuetype          = "DISTRIBUTION"
 
   }
@@ -33,7 +33,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/https/backend_request_bytes_count"
     label              = "Backend Request Bytes"
     unit               = "By"
-    metricBin          = "['https']"
+    metricBin          = "https"
     valuetype          = "INT64"
 
   }
@@ -49,7 +49,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/https/backend_request_count"
     label              = "Backend Request Count"
     unit               = "1"
-    metricBin          = "['https']"
+    metricBin          = "https"
     valuetype          = "INT64"
 
   }
@@ -65,7 +65,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/https/backend_response_bytes_count"
     label              = "Backend Response Bytes"
     unit               = "By"
-    metricBin          = "['https']"
+    metricBin          = "https"
     valuetype          = "INT64"
 
   }
@@ -81,7 +81,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/https/external/regional/backend_latencies"
     label              = "Backend latencies"
     unit               = "ms"
-    metricBin          = "['']"
+    metricBin          = "none"
     valuetype          = "DISTRIBUTION"
 
   }
@@ -97,7 +97,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/https/external/regional/request_bytes_count"
     label              = "Request bytes"
     unit               = "By"
-    metricBin          = "['']"
+    metricBin          = "none"
     valuetype          = "INT64"
 
   }
@@ -113,7 +113,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/https/external/regional/request_count"
     label              = "Request count"
     unit               = "1"
-    metricBin          = "['']"
+    metricBin          = "none"
     valuetype          = "INT64"
 
   }
@@ -129,7 +129,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/https/external/regional/response_bytes_count"
     label              = "Response bytes"
     unit               = "By"
-    metricBin          = "['']"
+    metricBin          = "none"
     valuetype          = "INT64"
 
   }
@@ -145,7 +145,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/https/external/regional/total_latencies"
     label              = "Total latencies"
     unit               = "ms"
-    metricBin          = "['']"
+    metricBin          = "none"
     valuetype          = "DISTRIBUTION"
 
   }
@@ -161,7 +161,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/https/frontend_tcp_rtt"
     label              = "Frontend RTT"
     unit               = "ms"
-    metricBin          = "['https']"
+    metricBin          = "https"
     valuetype          = "DISTRIBUTION"
 
   }
@@ -177,7 +177,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/https/internal/backend_latencies"
     label              = "Backend latencies"
     unit               = "ms"
-    metricBin          = "['https']"
+    metricBin          = "https"
     valuetype          = "DISTRIBUTION"
 
   }
@@ -193,7 +193,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/https/internal/request_bytes_count"
     label              = "Request bytes"
     unit               = "By"
-    metricBin          = "['https']"
+    metricBin          = "https"
     valuetype          = "INT64"
 
   }
@@ -209,7 +209,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/https/internal/request_count"
     label              = "Request count"
     unit               = "1"
-    metricBin          = "['https']"
+    metricBin          = "https"
     valuetype          = "INT64"
 
   }
@@ -225,7 +225,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/https/internal/response_bytes_count"
     label              = "Response bytes"
     unit               = "By"
-    metricBin          = "['https']"
+    metricBin          = "https"
     valuetype          = "INT64"
 
   }
@@ -241,7 +241,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/https/internal/total_latencies"
     label              = "Total latencies"
     unit               = "ms"
-    metricBin          = "['https']"
+    metricBin          = "https"
     valuetype          = "DISTRIBUTION"
 
   }
@@ -257,7 +257,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/https/request_bytes_count"
     label              = "Request bytes"
     unit               = "By"
-    metricBin          = "['https']"
+    metricBin          = "https"
     valuetype          = "INT64"
 
   }
@@ -273,7 +273,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/https/request_count"
     label              = "Request count"
     unit               = "1"
-    metricBin          = "['https']"
+    metricBin          = "https"
     valuetype          = "INT64"
 
   }
@@ -289,7 +289,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/https/response_bytes_count"
     label              = "Response bytes"
     unit               = "By"
-    metricBin          = "['https']"
+    metricBin          = "https"
     valuetype          = "INT64"
 
   }
@@ -305,7 +305,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/https/total_latencies"
     label              = "Total latency"
     unit               = "ms"
-    metricBin          = "['https']"
+    metricBin          = "https"
     valuetype          = "DISTRIBUTION"
 
   }
@@ -321,7 +321,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/l3/external/egress_bytes_count"
     label              = "Egress bytes count"
     unit               = "By"
-    metricBin          = "['l3']"
+    metricBin          = "l3"
     valuetype          = "INT64"
 
   }
@@ -337,7 +337,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/l3/external/egress_packets_count"
     label              = "Egress packets count"
     unit               = "1"
-    metricBin          = "['l3']"
+    metricBin          = "l3"
     valuetype          = "INT64"
 
   }
@@ -353,7 +353,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/l3/external/ingress_bytes_count"
     label              = "Ingress bytes count"
     unit               = "By"
-    metricBin          = "['l3']"
+    metricBin          = "l3"
     valuetype          = "INT64"
 
   }
@@ -369,7 +369,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/l3/external/ingress_packets_count"
     label              = "Ingress packets count"
     unit               = "1"
-    metricBin          = "['l3']"
+    metricBin          = "l3"
     valuetype          = "INT64"
 
   }
@@ -385,7 +385,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/l3/external/rtt_latencies"
     label              = "RTT latencies"
     unit               = "ms"
-    metricBin          = "['l3']"
+    metricBin          = "l3"
     valuetype          = "DISTRIBUTION"
 
   }
@@ -401,7 +401,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/l3/internal/egress_bytes_count"
     label              = "Egress bytes"
     unit               = "By"
-    metricBin          = "['l3']"
+    metricBin          = "l3"
     valuetype          = "INT64"
 
   }
@@ -417,7 +417,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/l3/internal/egress_packets_count"
     label              = "Egress packets"
     unit               = "1"
-    metricBin          = "['l3']"
+    metricBin          = "l3"
     valuetype          = "INT64"
 
   }
@@ -433,7 +433,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/l3/internal/ingress_bytes_count"
     label              = "Ingress bytes"
     unit               = "By"
-    metricBin          = "['l3']"
+    metricBin          = "l3"
     valuetype          = "INT64"
 
   }
@@ -449,7 +449,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/l3/internal/ingress_packets_count"
     label              = "Ingress packets"
     unit               = "1"
-    metricBin          = "['l3']"
+    metricBin          = "l3"
     valuetype          = "INT64"
 
   }
@@ -465,7 +465,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/l3/internal/rtt_latencies"
     label              = "RTT latencies"
     unit               = "ms"
-    metricBin          = "['l3']"
+    metricBin          = "l3"
     valuetype          = "DISTRIBUTION"
 
   }
@@ -481,7 +481,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/l4_proxy/egress_bytes_count"
     label              = "Egress bytes"
     unit               = "By"
-    metricBin          = "['l4_proxy']"
+    metricBin          = "l4_proxy"
     valuetype          = "INT64"
 
   }
@@ -497,7 +497,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/l4_proxy/ingress_bytes_count"
     label              = "Ingress bytes"
     unit               = "By"
-    metricBin          = "['l4_proxy']"
+    metricBin          = "l4_proxy"
     valuetype          = "INT64"
 
   }
@@ -513,7 +513,23 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/l4_proxy/tcp/closed_connections_count"
     label              = "Closed connections"
     unit               = "1"
-    metricBin          = "['l4_proxy']"
+    metricBin          = "l4_proxy"
+    valuetype          = "INT64"
+
+  }
+  proxy_only_addresses = {
+    type               = "gauge"
+    description        = <<-EOF
+                    The current number of proxy-only addresses by state.
+                EOF
+    launchStage        = "BETA"
+    rollup             = "avg"
+    aggregate          = "sum"
+    metricCategory     = "proxy_only"
+    google_metric_path = "loadbalancing.googleapis.com/subnet/proxy_only/addresses"
+    label              = "Proxy-only addresses"
+    unit               = "1"
+    metricBin          = "subnet"
     valuetype          = "INT64"
 
   }
@@ -529,7 +545,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/tcp_ssl_proxy/closed_connections"
     label              = "Closed connections"
     unit               = "1"
-    metricBin          = "['tcp_ssl_proxy']"
+    metricBin          = "tcp_ssl_proxy"
     valuetype          = "INT64"
 
   }
@@ -545,7 +561,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/tcp_ssl_proxy/egress_bytes_count"
     label              = "Egress bytes"
     unit               = "By"
-    metricBin          = "['tcp_ssl_proxy']"
+    metricBin          = "tcp_ssl_proxy"
     valuetype          = "INT64"
 
   }
@@ -561,7 +577,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/tcp_ssl_proxy/frontend_tcp_rtt"
     label              = "Frontend RTT"
     unit               = "ms"
-    metricBin          = "['tcp_ssl_proxy']"
+    metricBin          = "tcp_ssl_proxy"
     valuetype          = "DISTRIBUTION"
 
   }
@@ -577,7 +593,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/tcp_ssl_proxy/ingress_bytes_count"
     label              = "Ingress bytes"
     unit               = "By"
-    metricBin          = "['tcp_ssl_proxy']"
+    metricBin          = "tcp_ssl_proxy"
     valuetype          = "INT64"
 
   }
@@ -593,7 +609,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/tcp_ssl_proxy/new_connections"
     label              = "New connections opened"
     unit               = "1"
-    metricBin          = "['tcp_ssl_proxy']"
+    metricBin          = "tcp_ssl_proxy"
     valuetype          = "INT64"
 
   }
@@ -609,7 +625,7 @@ locals { metrics_definitions = {
     google_metric_path = "loadbalancing.googleapis.com/tcp_ssl_proxy/open_connections"
     label              = "Open Connections"
     unit               = "1"
-    metricBin          = "['tcp_ssl_proxy']"
+    metricBin          = "tcp_ssl_proxy"
     valuetype          = "INT64"
 
   }
