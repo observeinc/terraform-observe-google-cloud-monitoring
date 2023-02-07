@@ -50,11 +50,9 @@ variable "metric_interface_fields" {
   description = "Used by metric interface to pick fields to map"
 }
 
-variable "launch_stage" {
-  type = set(string)
-  default = [
-    "GA",
-  ]
+variable "metric_launch_stages" {
+  type        = set(string)
+  default     = ["GA", "BETA"]
   description = "Used by metric interface to pick metrics to include"
 }
 

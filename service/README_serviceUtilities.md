@@ -12,6 +12,8 @@ This fetches data from gcp api and creates a json file to be read by next functi
 ./serviceUtilities.py fetch_metric_descriptors -o bigquery/bigquerymetrics.json -m "bigquery.googleapis.com"
 
 ./serviceUtilities.py fetch_metric_descriptors -o cloudfunctions/cloudfunctionmetrics.json -m "cloudfunctions.googleapis.com"
+
+./serviceUtilities.py fetch_metric_descriptors -o cloudsql/cloudsqlmetrics.json -m "cloudsql.googleapis.com"
 ```
 
 This reads json file and creates local_metricdescriptors.tf file with local variable defined that can be read in metrics dataset definition.
@@ -22,6 +24,8 @@ This reads json file and creates local_metricdescriptors.tf file with local vari
 ./serviceUtilities.py create_terraform -i bigquery/bigquerymetrics.json -t bigquery/local_metricdescriptors.tf 
 
 ./serviceUtilities.py create_terraform -i cloudfunctions/cloudfunctionmetrics.json -t cloudfunctions/local_metricdescriptors.tf 
+
+./serviceUtilities.py create_terraform -i cloudsql/cloudsqlmetrics.json -t cloudsql/local_metricdescriptors.tf 
 ```
 
 ## Changing metric definitions

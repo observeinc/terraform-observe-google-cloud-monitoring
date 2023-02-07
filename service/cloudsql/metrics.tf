@@ -72,25 +72,27 @@ resource "observe_dataset" "cloud_sql_metrics" {
     "metrics_base" = observe_dataset.cloud_sql_metrics_base[0].oid
   }
   stage {
-    input = "metrics_base"
-    alias = "all_metrics"
     pipeline = <<-EOF
       interface "metric", metric:metric, value:value
       ${join("\n\n",
-    [for metric, options in local.metrics_definitions :
+    [for metric, options in local.merged_metrics_definitions :
       indent(2,
+        # format takes result of join / forloop and metric as inputs
         format("set_metric options(\n%s\n), %q",
           join(",\n",
-            [for k, v in options : k == "interval" ?
-              format("%s: %s", k, v)
-              :
-              format("%s: %q", k, v)
-      if contains(var.metric_interface_fields, k)]), metric))
-      if contains(var.launch_stage, options.launchStage)
-    ]
-  )
-}
-  EOF
+            [for optionFieldName, optionFieldNameValue in options :
+              optionFieldName == "interval" ? format("%s: %s", optionFieldName, optionFieldNameValue) :
+              # format takes optionFieldName and optionFieldNameValue as inputs
+              format("%s: %q", optionFieldName, optionFieldNameValue)
+              if contains(var.metric_interface_fields, optionFieldName) # filters inner for loop
+            ]                                                           # end of inner for loop
+          ),                                                            # end of inner join statement
+      replace(replace(options.google_metric_path, "cloudsql.googleapis.com/", ""), "/", "_")))
+      if contains(var.metric_launch_stages, options.launchStage) # filters outer for loop
+    ]                                                            # end of outer for loop and join statement
+)}  
+
+    EOF
 }
 }
 
