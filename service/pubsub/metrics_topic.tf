@@ -86,7 +86,6 @@ resource "observe_dataset" "pubsub_topic_metrics" {
     ), "avg_ttl"
     
   */
-
   stage {
     pipeline = <<-EOF
       interface "metric", metric:metric, value:value
@@ -104,9 +103,8 @@ resource "observe_dataset" "pubsub_topic_metrics" {
             ]                                                           # end of inner for loop
           ),                                                            # end of inner join statement
       replace(replace(options.google_metric_path, "pubsub.googleapis.com/", ""), "/", "_")))
-if(contains(var.metric_launch_stages, options.launchStage) && options.metricBin != "subscription")])}
-                                                                 # filters outer for loop
-    ]                                                            # end of outer for loop and join statement
+    if(contains(var.metric_launch_stages, options.launchStage) && options.metricBin != "subscription")] # filters outer for loop
+    # end of outer for loop and join statement
 )}  
 
     EOF

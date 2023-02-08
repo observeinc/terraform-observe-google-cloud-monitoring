@@ -167,26 +167,25 @@ if(contains(var.metric_launch_stages, options.launchStage) && options.metricBin 
     
   */
 
-stage {
-  pipeline = <<-EOF
+  stage {
+    pipeline = <<-EOF
       interface "metric", metric:metric, value:value
       ${join("\n\n",
-  [for metric, options in local.merged_metrics_definitions_service :
-    indent(2,
-      # format takes result of join / forloop and metric as inputs
-      format("set_metric options(\n%s\n), %q",
-        join(",\n",
-          [for optionFieldName, optionFieldNameValue in options :
-            optionFieldName == "interval" ? format("%s: %s", optionFieldName, optionFieldNameValue) :
-            # format takes optionFieldName and optionFieldNameValue as inputs
-            format("%s: %q", optionFieldName, optionFieldNameValue)
-            if contains(var.metric_interface_fields, optionFieldName) # filters inner for loop
-          ]                                                           # end of inner for loop
-        ),                                                            # end of inner join statement
-    replace(replace(options.google_metric_path, "serviceruntime.googleapis.com/", ""), "/", "_")))
-if(contains(var.metric_launch_stages, options.launchStage) && options.metricBin == "api")])}
-                                                                 # filters outer for loop
-    ]                                                            # end of outer for loop and join statement
+    [for metric, options in local.merged_metrics_definitions_service :
+      indent(2,
+        # format takes result of join / forloop and metric as inputs
+        format("set_metric options(\n%s\n), %q",
+          join(",\n",
+            [for optionFieldName, optionFieldNameValue in options :
+              optionFieldName == "interval" ? format("%s: %s", optionFieldName, optionFieldNameValue) :
+              # format takes optionFieldName and optionFieldNameValue as inputs
+              format("%s: %q", optionFieldName, optionFieldNameValue)
+              if contains(var.metric_interface_fields, optionFieldName) # filters inner for loop
+            ]                                                           # end of inner for loop
+          ),                                                            # end of inner join statement
+      replace(replace(options.google_metric_path, "serviceruntime.googleapis.com/", ""), "/", "_")))
+    if(contains(var.metric_launch_stages, options.launchStage) && options.metricBin == "api")] # filters outer for loop
+    # end of outer for loop and join statement
 )}  
 
     EOF
@@ -257,12 +256,22 @@ resource "observe_dataset" "pubsub_service_quota_metrics" {
     pipeline = <<-EOF
       interface "metric", metric:metric, value:value
       ${join("\n\n",
-    [for metric, options in local.service_metrics_definitions :
+    [for metric, options in local.merged_metrics_definitions_service :
       indent(2,
+        # format takes result of join / forloop and metric as inputs
         format("set_metric options(\n%s\n), %q",
           join(",\n",
-      [for k, v in options : k == "interval" ? format("%s: %s", k, v) : format("%s: %q", k, v) if contains(var.metric_interface_fields, k)]), metric))
-if(contains(var.metric_launch_stages, options.launchStage) && options.metricBin == "quota")])}
+            [for optionFieldName, optionFieldNameValue in options :
+              optionFieldName == "interval" ? format("%s: %s", optionFieldName, optionFieldNameValue) :
+              # format takes optionFieldName and optionFieldNameValue as inputs
+              format("%s: %q", optionFieldName, optionFieldNameValue)
+              if contains(var.metric_interface_fields, optionFieldName) # filters inner for loop
+            ]                                                           # end of inner for loop
+          ),                                                            # end of inner join statement
+      replace(replace(options.google_metric_path, "serviceruntime.googleapis.com/", ""), "/", "_")))
+    if(contains(var.metric_launch_stages, options.launchStage) && options.metricBin == "quota")] # filters outer for loop
+    # end of outer for loop and join statement
+)}  
 
     EOF
 }
