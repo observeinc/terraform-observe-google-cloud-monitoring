@@ -144,4 +144,10 @@ variable "enable_service_gke" {
   EOF
 }
 
-
+variable "enable_service_redis" {
+  type        = bool
+  default     = true
+  description = <<-EOF
+    Enable Redis service.
+  EOF
+}

@@ -81,6 +81,13 @@ locals {
   )
   # tflint-ignore: terraform_unused_declarations
   name_format_billing = lookup(var.service_name_formats, "billing", "Billing %s")
+
+
+  enable_service_redis = (
+    lookup(var.services, "redis", false)
+  )
+  # tflint-ignore: terraform_unused_declarations
+  name_format_redis = lookup(var.service_name_formats, "redis", "Redis %s")
 }
 
 module "cloudfunctions" {
@@ -236,3 +243,15 @@ module "billing" {
   google = local.base_module
 }
 
+module "compute" {
+  count = local.enable_service_redis ? 1 : 0
+
+  source                     = "./service/redis"
+  workspace                  = var.workspace
+  name_format                = format(var.name_format, local.name_format_redis)
+  max_expiry                 = var.max_expiry
+  freshness_default_duration = var.freshness_default_duration
+  feature_flags              = var.feature_flags
+
+  google = local.base_module
+}
