@@ -243,7 +243,7 @@ module "billing" {
   google = local.base_module
 }
 
-module "compute" {
+module "redis" {
   count = local.enable_service_redis ? 1 : 0
 
   source                     = "./service/redis"
