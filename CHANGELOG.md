@@ -1,3 +1,24 @@
+# [1.1.0](https://github.com/observeinc/terraform-observe-google/compare/v1.0.3...v1.1.0) (2023-02-14)
+
+
+### Bug Fixes
+
+* bigquery metrics definitions ([#135](https://github.com/observeinc/terraform-observe-google/issues/135)) ([d6796b2](https://github.com/observeinc/terraform-observe-google/commit/d6796b2e76f4e84c5e9082435fcefa722a2cbb99))
+* cloudsql metrics ([#140](https://github.com/observeinc/terraform-observe-google/issues/140)) ([b9cb274](https://github.com/observeinc/terraform-observe-google/commit/b9cb274d48bb86ec503e42723f8e90d1715f0c9c))
+* compute metrics defitions ([#134](https://github.com/observeinc/terraform-observe-google/issues/134)) ([2f0a87e](https://github.com/observeinc/terraform-observe-google/commit/2f0a87ef15978fbfe51027d10fcdd1c6fad828bc))
+* loadbalancing metrics ([#141](https://github.com/observeinc/terraform-observe-google/issues/141)) ([3de1221](https://github.com/observeinc/terraform-observe-google/commit/3de122197a6b2b7af400eea5efbd0cc1cd677d9e))
+* pubsub metrics ([#142](https://github.com/observeinc/terraform-observe-google/issues/142)) ([245b7e5](https://github.com/observeinc/terraform-observe-google/commit/245b7e5b5bb0ec63ab0f5d686f9d87576c151be3))
+* remove nulls from defaultValue in dashboards ([#138](https://github.com/observeinc/terraform-observe-google/issues/138)) ([425ab0b](https://github.com/observeinc/terraform-observe-google/commit/425ab0b5708904094b1240fcc20467113ba3c540))
+* storage metrics ([#143](https://github.com/observeinc/terraform-observe-google/issues/143)) ([990fe76](https://github.com/observeinc/terraform-observe-google/commit/990fe76bd31581be0ba307f78519174c11275b68))
+* update cloud functions metrics ([#139](https://github.com/observeinc/terraform-observe-google/issues/139)) ([190277b](https://github.com/observeinc/terraform-observe-google/commit/190277b65d464ce4d06d62a18b12e9e6092095b9))
+
+
+### Features
+
+* default redis metric collection ([#136](https://github.com/observeinc/terraform-observe-google/issues/136)) ([bf3b30a](https://github.com/observeinc/terraform-observe-google/commit/bf3b30aa91b4c21d53bf5914a76cefdf90ac67e5))
+
+
+
 ## [1.0.3](https://github.com/observeinc/terraform-observe-google/compare/v1.0.2...v1.0.3) (2023-01-27)
 
 
