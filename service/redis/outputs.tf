@@ -3,9 +3,9 @@ output "logs" {
 }
 
 output "metrics" {
-  value = observe_dataset.metrics
+  value = one(observe_dataset.redis_metrics)
 }
 
-output "redis_cluster" {
-  value = observe_dataset.redis_cluster
+output "instance" {
+  value = observe_dataset.redis_instance
 }

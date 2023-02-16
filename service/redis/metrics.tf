@@ -1,14 +1,14 @@
-resource "observe_dataset" "metrics" {
+resource "observe_dataset" "redis_metrics" {
   count = local.enable_metrics ? 1 : 0
 
-  workspace   = local.datasets.metrics.workspace
-  name        = local.datasets.metrics.name
-  freshness   = local.datasets.metrics.freshness
-  description = local.datasets.metrics.description
+  workspace   = local.datasets.redis_metrics.workspace
+  name        = local.datasets.redis_metrics.name
+  freshness   = local.datasets.redis_metrics.freshness
+  description = local.datasets.redis_metrics.description
 
   inputs = {
     "gcp"      = local.base_module.metrics.oid
-    "instance" = observe_dataset.redis_cluster.oid
+    "instance" = observe_dataset.redis_instance.oid
   }
 
   # https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#pubsubmessage
@@ -25,7 +25,8 @@ resource "observe_dataset" "metrics" {
             instance_id:string(resource_labels.instance_id),
             region:string(resource_labels.region),
             metric_subject: split_part(metric_type, '/', 2),
-            metric_category: split_part(metric_type, '/', 3)
+            metric_category: split_part(metric_type, '/', 3),
+            command:string(metric_labels.cmd)
 
         extract_regex metric_type, /(?P<label>[^\/]+$)/
         // example value = //redis.googleapis.com/projects/content-eng-arthur/locations/us-west1/instances/ha-memory-cache
@@ -36,7 +37,7 @@ resource "observe_dataset" "metrics" {
 
   stage {
     pipeline = <<-EOF
-       join on(instance_pkey=@instance.instance_pkey), hostname:@instance.host, datacenter:@instance.datacenter
+       join on(instance_pkey=@instance.instance_pkey), displayName:@instance.displayName, hostname:@instance.host
       EOF
   }
   stage {
@@ -56,8 +57,9 @@ resource "observe_dataset" "metrics" {
         metric_kind,
         metric_kind_text,
         value_type,
+        command,
+        displayName,
         hostname,
-        datacenter,
         project_id,
         region,
         instance_pkey
@@ -128,9 +130,10 @@ resource "observe_dataset" "metrics" {
 }
 
 resource "observe_link" "instance_to_metric" {
-  workspace = local.datasets.metrics.workspace
-  source    = observe_dataset.metrics.oid
-  target    = observe_dataset.redis_cluster.oid
+  count     = local.enable_metrics ? 1 : 0
+  workspace = local.datasets.redis_metrics.workspace
+  source    = one(observe_dataset.redis_metrics).oid
+  target    = observe_dataset.redis_instance.oid
   fields    = ["instance_pkey"]
-  label     = "Redis Cluster"
+  label     = "Redis Instance"
 }

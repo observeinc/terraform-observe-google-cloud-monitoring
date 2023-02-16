@@ -82,3 +82,8 @@ variable "google" {
   description = "Google base module"
 }
 
+variable "feature_flags" {
+  type        = map(bool)
+  description = "Toggle features which are being rolled out or phased out."
+  default     = {}
+}
