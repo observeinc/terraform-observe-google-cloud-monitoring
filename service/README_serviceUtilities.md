@@ -23,6 +23,8 @@ This fetches data from gcp api and creates a json file to be read by next functi
 
 ./serviceUtilities.py fetch_metric_descriptors -o storage/storagemetrics.json -m "storage.googleapis.com"
 
+./serviceUtilities.py fetch_metric_descriptors -o memcache/memcachemetrics.json -m "memcache.googleapis.com"
+
 ```
 
 This reads json file and creates local_metricdescriptors.tf file with local variable defined that can be read in metrics dataset definition.
@@ -43,6 +45,8 @@ This reads json file and creates local_metricdescriptors.tf file with local vari
 ./serviceUtilities.py create_terraform -i pubsub/servicemetrics.json -t pubsub/local_metricdescriptors_service.tf 
 
 ./serviceUtilities.py create_terraform -i storage/storagemetrics.json -t storage/local_metricdescriptors_service.tf 
+
+./serviceUtilities.py create_terraform -i memcache/memcachemetrics.json -t memcache/local_metricdescriptors_service.tf 
 
 ```
 

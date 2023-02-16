@@ -61,3 +61,11 @@ output "loadbalancer" {
 output "gke" {
   value = local.enable_service_gke ? module.gke[0] : null
 }
+
+output "redis" {
+  value = local.enable_service_redis ? module.redis[0] : null
+}
+
+output "memcache" {
+  value = local.enable_service_memcache ? module.memcache[0] : null
+}
