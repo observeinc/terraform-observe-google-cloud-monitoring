@@ -54,6 +54,8 @@ locals {
 
                         ${local.enable_service_load_balancing == true ? "- [LoadBalancing Resources](/workspace/${local.workspace_id}/dataset/resource/Load-Balancing-Load-Balancers-${one(module.load_balancing[*].load_balancers.id)}) - Load Balancer Resource dataset that GraphLinks to metrics and logs." : ""}
                         
+                        ${local.enable_service_redis == true ? "- [Redis Resources](/workspace/${local.workspace_id}/dataset/resource/Redis-Instance-41726047${one(module.redis[*].instance.id)}) - Redis Resource dataset that GraphLinks to metrics and logs." : ""}
+
                         ${local.enable_service_storage == true ? "- [Storage Resources](/workspace/${local.workspace_id}/dataset/resource/Storage-Buckets-${one(module.storage[*].storage.id)}) - Storage Bucket Resource dataset that GraphLinks to metrics and logs." : ""}
                                                                                                                                                                                                                                                                                                                                                                       
                     EOT
