@@ -66,6 +66,6 @@ output "redis" {
   value = local.enable_service_redis ? module.redis[0] : null
 }
 
-output "memcache" {
-  value = local.enable_service_memcache ? module.memcache[0] : null
-}
+# output "memcache" {
+#   value = local.enable_service_memcache ? module.memcache[0] : null
+# }

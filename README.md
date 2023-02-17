@@ -46,7 +46,6 @@ module "google" {
 | <a name="module_gke"></a> [gke](#module\_gke) | ./service/gke | n/a |
 | <a name="module_iam"></a> [iam](#module\_iam) | ./service/iam | n/a |
 | <a name="module_load_balancing"></a> [load\_balancing](#module\_load\_balancing) | ./service/loadbalancing | n/a |
-| <a name="module_memcache"></a> [memcache](#module\_memcache) | ./service/memcache | n/a |
 | <a name="module_pubsub"></a> [pubsub](#module\_pubsub) | ./service/pubsub | n/a |
 | <a name="module_redis"></a> [redis](#module\_redis) | ./service/redis | n/a |
 | <a name="module_storage"></a> [storage](#module\_storage) | ./service/storage | n/a |
@@ -86,7 +85,6 @@ module "google" {
 | <a name="input_enable_service_compute"></a> [enable\_service\_compute](#input\_enable\_service\_compute) | Enable Compute service. | `bool` | `true` | no |
 | <a name="input_enable_service_gke"></a> [enable\_service\_gke](#input\_enable\_service\_gke) | Enable GKE service. | `bool` | `true` | no |
 | <a name="input_enable_service_load_balancing"></a> [enable\_service\_load\_balancing](#input\_enable\_service\_load\_balancing) | Enable Cloud Load Balancing service. | `bool` | `true` | no |
-| <a name="input_enable_service_memcache"></a> [enable\_service\_memcache](#input\_enable\_service\_memcache) | Enable Memcache service. | `bool` | `true` | no |
 | <a name="input_enable_service_pubsub"></a> [enable\_service\_pubsub](#input\_enable\_service\_pubsub) | Enable Pub Sub service. | `bool` | `true` | no |
 | <a name="input_enable_service_redis"></a> [enable\_service\_redis](#input\_enable\_service\_redis) | Enable Redis service. | `bool` | `true` | no |
 | <a name="input_enable_service_storage"></a> [enable\_service\_storage](#input\_enable\_service\_storage) | Enable Cloud Storage service. | `bool` | `true` | no |

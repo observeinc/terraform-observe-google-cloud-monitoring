@@ -152,10 +152,10 @@ variable "enable_service_redis" {
   EOF
 }
 
-variable "enable_service_memcache" {
-  type        = bool
-  default     = true
-  description = <<-EOF
-    Enable Memcache service.
-  EOF
-}
+# variable "enable_service_memcache" {
+#   type        = bool
+#   default     = true
+#   description = <<-EOF
+#     Enable Memcache service.
+#   EOF
+# }

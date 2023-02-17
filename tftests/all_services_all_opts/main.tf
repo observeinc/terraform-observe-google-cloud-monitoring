@@ -25,7 +25,7 @@ module "all_services_all_opts" {
   enable_service_gke            = true
   enable_service_cloudscheduler = true
   enable_service_redis          = true
-  enable_service_memcache       = true
+  # enable_service_memcache       = true
 
   feature_flags = {
     "use_name_format_in_preferred_path" = true
