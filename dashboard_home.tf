@@ -738,7 +738,7 @@ resource "observe_dashboard" "app_home" {
                   title    = "Untitled Text"
                 }
                 layout = {
-                  h           = 23
+                  h           = 25
                   i           = "card-bsfempw3"
                   isDraggable = true
                   isResizable = true
@@ -776,7 +776,7 @@ resource "observe_dashboard" "app_home" {
                   title    = "Untitled Text"
                 }
                 layout = {
-                  h           = 13
+                  h           = 15
                   i           = "card-54zkyeh9"
                   isDraggable = true
                   isResizable = true
