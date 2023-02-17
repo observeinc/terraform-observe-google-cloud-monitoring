@@ -1,7 +1,6 @@
-
-# terraform import observe_dashboard.redis_monitoring 41726050
-resource "observe_dashboard" "redis_monitoring" {
-  description = local.dashboard_description
+# terraform import observe_dashboard.redis_instance_v2 41743168
+resource "observe_dashboard" "redis_instance_v2" {
+  description = local.dashboard_description_singleton
   layout = jsonencode(
     {
       autoPack = true
@@ -11,170 +10,101 @@ resource "observe_dashboard" "redis_monitoring" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "section-1hrwz0fj"
-              title    = "Untitled Section"
+              id       = "card-ll37bbel"
+              title    = "Dashboard Content"
             }
-            items = []
+            items = [
+              {
+                card = {
+                  cardType    = "parameter"
+                  id          = "card-ve17w7ql"
+                  parameterId = "redis"
+                }
+                layout = {
+                  h           = 4
+                  i           = "card-ve17w7ql"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  resizeHandles = [
+                    "e",
+                  ]
+                  static = false
+                  w      = 4
+                  x      = 0
+                  y      = 0
+                }
+              },
+            ]
           },
           {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-pjpvodz0"
-              title    = "Summary"
+              id       = "section-oaa8j6kq"
+              title    = "Memory & CPU"
             }
             items = [
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-xoqlk2f6"
-                  stageId  = "stage-lmhxifdn"
+                  id       = "card-njbtt6ok"
+                  stageId  = "stage-0ho2ak92"
                 }
                 layout = {
-                  h           = 11
-                  i           = "card-xoqlk2f6"
+                  h           = 8
+                  i           = "card-njbtt6ok"
                   isDraggable = true
                   isResizable = true
                   moved       = false
                   static      = false
-                  w           = 2
+                  w           = 6
+                  x           = 0
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-483oye1k"
+                  stageId  = "stage-kblmpc8o"
+                }
+                layout = {
+                  h           = 8
+                  i           = "card-483oye1k"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 6
                   x           = 6
                   y           = 0
                 }
               },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-aertnui4"
-                  stageId  = "stage-va6o3bts"
-                }
-                layout = {
-                  h           = 11
-                  i           = "card-aertnui4"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 2
-                  x           = 8
-                  y           = 0
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-oxh3x8qz"
-                  stageId  = "stage-lbqljvi5"
-                }
-                layout = {
-                  h           = 11
-                  i           = "card-oxh3x8qz"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 2
-                  x           = 2
-                  y           = 0
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-0dbnktbs"
-                  stageId  = "stage-utxmlh24"
-                }
-                layout = {
-                  h           = 11
-                  i           = "card-0dbnktbs"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 2
-                  x           = 4
-                  y           = 0
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-qojjejfv"
-                  stageId  = "stage-93nehch0"
-                }
-                layout = {
-                  h           = 11
-                  i           = "card-qojjejfv"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 2
-                  x           = 0
-                  y           = 0
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-svv9dr7i"
-                  stageId  = "stage-95dn11kb"
-                }
-                layout = {
-                  h           = 11
-                  i           = "card-svv9dr7i"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 2
-                  x           = 10
-                  y           = 0
-                }
-              },
             ]
-            lastModified = 1676329754532
           },
           {
             card = {
               cardType = "section"
               closed   = false
-              id       = "section-i19xn7rx"
-              title    = "Monitoring"
+              id       = "section-nd8q4myb"
+              title    = "Network & Connections"
             }
             items = [
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-ffmn95en"
-                  stageId  = "stage-m6kykgl1"
-                }
-                layout = {
-                  h           = 19
-                  i           = "card-ffmn95en"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 5
-                  x           = 7
-                  y           = 0
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-fj9vimnu"
-                  stageId  = "stage-5il4u0ht"
+                  id       = "card-65zx3ap9"
+                  stageId  = "stage-kuf5r7f3"
                 }
                 layout = {
                   h           = 10
-                  i           = "card-fj9vimnu"
+                  i           = "card-65zx3ap9"
                   isDraggable = true
                   isResizable = true
                   moved       = false
                   static      = false
-                  w           = 7
+                  w           = 4
                   x           = 0
                   y           = 0
                 }
@@ -182,113 +112,222 @@ resource "observe_dashboard" "redis_monitoring" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-ul9r334r"
-                  stageId  = "stage-ltpfsi5n"
+                  id       = "card-c3w5whl3"
+                  stageId  = "stage-xbo28v7v"
                 }
                 layout = {
-                  h           = 9
-                  i           = "card-ul9r334r"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 7
-                  x           = 0
-                  y           = 10
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-dsjuagqo"
-                  stageId  = "stage-xa7yo712"
-                }
-                layout = {
-                  h           = 12
-                  i           = "card-dsjuagqo"
+                  h           = 10
+                  i           = "card-c3w5whl3"
                   isDraggable = true
                   isResizable = true
                   moved       = false
                   static      = false
                   w           = 4
                   x           = 4
-                  y           = 19
+                  y           = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-9espvsrs"
-                  stageId  = "stage-xmeu7adi"
+                  id       = "card-3jsqv0cj"
+                  stageId  = "stage-kp5jhjdv"
                 }
                 layout = {
-                  h           = 12
-                  i           = "card-9espvsrs"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 4
-                  x           = 0
-                  y           = 19
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-cby308vv"
-                  stageId  = "stage-4vx5oqwq"
-                }
-                layout = {
-                  h           = 12
-                  i           = "card-cby308vv"
+                  h           = 10
+                  i           = "card-3jsqv0cj"
                   isDraggable = true
                   isResizable = true
                   moved       = false
                   static      = false
                   w           = 4
                   x           = 8
-                  y           = 19
+                  y           = 0
                 }
               },
             ]
-            lastModified = 1676483032638
           },
           {
             card = {
               cardType = "section"
               closed   = false
-              id       = "section-ft8jerr3"
+              id       = "section-dgbwgl03"
+              title    = "Commands"
+            }
+            items = [
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-c8fm3s2a"
+                  stageId  = "stage-r3msr1xk"
+                }
+                layout = {
+                  h           = 17
+                  i           = "card-c8fm3s2a"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 4
+                  x           = 8
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-0ofx2hd3"
+                  stageId  = "stage-8ibk9wow"
+                }
+                layout = {
+                  h           = 9
+                  i           = "card-0ofx2hd3"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 8
+                  x           = 0
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-3o5u6gxo"
+                  stageId  = "stage-9mulnsts"
+                }
+                layout = {
+                  h           = 8
+                  i           = "card-3o5u6gxo"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 8
+                  x           = 0
+                  y           = 9
+                }
+              },
+            ]
+          },
+          {
+            card = {
+              cardType = "section"
+              closed   = false
+              id       = "section-th0miqd8"
               title    = "Keys"
             }
             items = [
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-6f5r2354"
-                  stageId  = "stage-9y2jp9iw"
+                  id       = "card-7g60of0m"
+                  stageId  = "stage-ehr1gzq0"
                 }
                 layout = {
-                  h           = 11
-                  i           = "card-6f5r2354"
+                  h           = 22
+                  i           = "card-7g60of0m"
                   isDraggable = true
                   isResizable = true
                   moved       = false
                   static      = false
-                  w           = 7
-                  x           = 5
+                  w           = 6
+                  x           = 0
                   y           = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-7t6mn4so"
-                  stageId  = "stage-5flbedut"
+                  id       = "card-rvkvgo40"
+                  stageId  = "stage-yothkrri"
                 }
                 layout = {
-                  h           = 22
-                  i           = "card-7t6mn4so"
+                  h           = 11
+                  i           = "card-rvkvgo40"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 3
+                  x           = 6
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-9mwr2q64"
+                  stageId  = "stage-wds98m8p"
+                }
+                layout = {
+                  h           = 11
+                  i           = "card-9mwr2q64"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 3
+                  x           = 9
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-z148u0h2"
+                  stageId  = "stage-yb1taje8"
+                }
+                layout = {
+                  h           = 11
+                  i           = "card-z148u0h2"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 3
+                  x           = 6
+                  y           = 11
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-vr1h2bz0"
+                  stageId  = "stage-t1p8enlp"
+                }
+                layout = {
+                  h           = 11
+                  i           = "card-vr1h2bz0"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 3
+                  x           = 9
+                  y           = 11
+                }
+              },
+            ]
+          },
+          {
+            card = {
+              cardType = "section"
+              closed   = true
+              id       = "section-pit132ks"
+              title    = "Details"
+            }
+            items = [
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-6oehbzvm"
+                  stageId  = "stage-pajoygss"
+                }
+                layout = {
+                  h           = 14
+                  i           = "card-6oehbzvm"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -301,12 +340,12 @@ resource "observe_dashboard" "redis_monitoring" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-mu054jxi"
-                  stageId  = "stage-f935xw0s"
+                  id       = "card-tqy84zjl"
+                  stageId  = "stage-zmb32x6w"
                 }
                 layout = {
-                  h           = 11
-                  i           = "card-mu054jxi"
+                  h           = 14
+                  i           = "card-tqy84zjl"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -319,109 +358,23 @@ resource "observe_dashboard" "redis_monitoring" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-2zvn76nh"
-                  stageId  = "stage-9x9a8h1f"
+                  id       = "card-ig4axjv0"
+                  stageId  = "stage-rp98umdc"
                 }
                 layout = {
-                  h           = 11
-                  i           = "card-2zvn76nh"
+                  h           = 14
+                  i           = "card-ig4axjv0"
                   isDraggable = true
                   isResizable = true
                   moved       = false
                   static      = false
-                  w           = 7
+                  w           = 4
                   x           = 5
-                  y           = 11
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-y5bhgr41"
-                  stageId  = "stage-pwabkz2q"
-                }
-                layout = {
-                  h           = 11
-                  i           = "card-y5bhgr41"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
-                  x           = 2
-                  y           = 11
-                }
-              },
-            ]
-            lastModified = 1676483632999
-          },
-          {
-            card = {
-              cardType = "section"
-              closed   = false
-              id       = "section-5yf1rwfj"
-              title    = "Documentation"
-            }
-            items = [
-              {
-                card = {
-                  cardType = "text"
-                  id       = "card-r4fj9zi6"
-                  text     = <<-EOT
-                                        ### Memorystore for Redis
-                                                                                                                                                                                                        
-                                        [https://cloud.google.com/memorystore/docs/redis/redis-overview](https://cloud.google.com/memorystore/docs/redis/redis-overview)
-                                                                                                                                                                                                        
-                                        Memorystore for Redis provides a fully-managed service that is powered by the Redis in-memory data store to build application caches that provide sub-millisecond data access.
-                                                                                                                                                                                                        
-                                        ### Use cases for Memorystore for Redis
-                                                                                                                                                                                                        
-                                        Memorystore for Redis provides a fast, in-memory store for use cases that require fast, real-time processing of data. From simple caching use cases to real time analytics, Memorystore for Redis provides the performance you need.
-                                                                                                                                                                                                        
-                                                                                                                                                                                                  
-                                    EOT
-                  title    = "Untitled Text"
-                }
-                layout = {
-                  h           = 14
-                  i           = "card-r4fj9zi6"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 6
-                  x           = 0
-                  y           = 0
-                }
-              },
-              {
-                card = {
-                  cardType = "text"
-                  id       = "card-1yadvgu1"
-                  text     = <<-EOT
-                                        ### Notes
-                                        Metrics are sampled every 60s and may take up to 240s to display.
-                                                                                                                                                                                                                                                                                        
-                                        To use this application you must implement the terraform-google-collection and the terraform google module with enable_service_redis set to true.
-                                                                                                                                                                                                                                                                                        
-                                                                                                                                                                                                                                                                                      
-                                    EOT
-                  title    = "Untitled Text"
-                }
-                layout = {
-                  h           = 14
-                  i           = "card-1yadvgu1"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 6
-                  x           = 6
                   y           = 0
                 }
               },
             ]
-            lastModified = 1676598347706
+            lastModified = 1676596466282
           },
         ]
       }
@@ -429,26 +382,40 @@ resource "observe_dashboard" "redis_monitoring" {
         isModified = false
         parameters = [
           {
-            controlledFilterStageId = "stage-5if3k3ks"
-            datasetId               = "${local.redis_instance}"
             defaultValue = {
-              datasetref = {
+              link = {
                 datasetId = "${local.redis_instance}"
+                primaryKeyValue = [
+                  {
+                    name = "instance_pkey"
+                    value = {
+                      string = "//redis.googleapis.com/projects/content-eng-arthur/locations/us-west1/instances/ha-memory-cache"
+                    }
+                  },
+                  {
+                    name = "project_id"
+                    value = {
+                      string = "content-eng-arthur"
+                    }
+                  },
+                ]
+                storedLabel = "//redis.googleapis.com/projects/content-eng-arthur/locations/us-west1/instances/ha-memory-cache"
               }
             }
             emptyValueEncoding    = "null"
             emptyValueLabelOption = "null"
-            id                    = "input-parameter-5maomrv2"
-            name                  = "redis"
+            id                    = "redis"
+            name                  = "Redis Instance"
             valueKind = {
-              type = "DATASETREF"
+              keyForDatasetId = "${local.redis_instance}"
+              type            = "LINK"
             }
-            viewType = "input"
+            viewType = "resource-input"
           },
         ]
-        selectedStageId = "stage-debafcpb"
+        selectedStageId = "stage-rp98umdc"
         timeRange = {
-          display               = "Today 16:30:08 → 17:30:08"
+          display               = "Today 15:04:48 → 16:04:48"
           endTime               = null
           millisFromCurrentTime = 3600000
           originalDisplay       = "Past 60 minutes"
@@ -462,21 +429,36 @@ resource "observe_dashboard" "redis_monitoring" {
       }
     }
   )
-  name = local.dashboard_name
+  name = local.dashboard_name_singleton
   parameters = jsonencode(
     [
       {
         defaultValue = {
-          datasetref = {
+          link = {
             datasetId = "${local.redis_instance}"
+            primaryKeyValue = [
+              {
+                name = "instance_pkey"
+                value = {
+                  string = "//redis.googleapis.com/projects/content-eng-arthur/locations/us-west1/instances/ha-memory-cache"
+                }
+              },
+              {
+                name = "project_id"
+                value = {
+                  string = "content-eng-arthur"
+                }
+              },
+            ]
+            storedLabel = "//redis.googleapis.com/projects/content-eng-arthur/locations/us-west1/instances/ha-memory-cache"
           }
         }
-        id   = "input-parameter-5maomrv2"
-        name = "redis"
+        id   = "redis"
+        name = "Redis Instance"
         valueKind = {
           arrayItemType   = null
-          keyForDatasetId = null
-          type            = "DATASETREF"
+          keyForDatasetId = "${local.redis_instance}"
+          type            = "LINK"
         }
       },
     ]
@@ -484,7 +466,7 @@ resource "observe_dashboard" "redis_monitoring" {
   stages = jsonencode(
     [
       {
-        id = "stage-5if3k3ks"
+        id = "stage-pajoygss"
         input = [
           {
             datasetId   = "${local.redis_instance}"
@@ -495,24 +477,29 @@ resource "observe_dashboard" "redis_monitoring" {
           },
         ]
         layout = {
-          appearance = "HIDDEN"
+          appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight    = true
+            autoTableHeight    = false
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
               "1" = "Valid From"
               "2" = "Valid To"
             }
-            columnVisibility             = {}
+            columnVisibility = {
+              _c_nodes_path  = false
+              _c_nodes_value = false
+              instance_pkey  = false
+            }
             columnWidths                 = {}
+            containerWidth               = 2143
             contextMenuXCoord            = null
             contextMenuYCoord            = null
             defaultColumnWidth           = 70
             disableFixedLeftColumns      = false
             eventLinkColumnId            = null
             fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
+            hasCalculatedColumnWidths    = true
             hasDoneAutoLayout            = false
             maxColumnWidth               = 600
             maxMeasuredColumnHeaderWidth = {}
@@ -526,17 +513,23 @@ resource "observe_dashboard" "redis_monitoring" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
             }
             shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
-            tableHeight                = 0
+            tableHeight                = 144
             tableView                  = "TABULAR"
           }
           index = 0
@@ -548,24 +541,74 @@ resource "observe_dashboard" "redis_monitoring" {
               isUserInput = false
             },
           ]
-          managers        = []
-          pipelineComment = "Filtered Dataset Controlled Filter Stage"
+          label = "Nodes"
+          managers = [
+            {
+              id                     = "ngwgqnkj"
+              isDisabled             = true
+              isResourceCountEnabled = false
+              type                   = "Timescrubber"
+            },
+          ]
           queryPresentation = {
             initialRollupFilter = {
               mode = "Last"
             }
-            linkify     = true
-            progressive = true
+            limit          = 1000
+            linkify        = true
+            loadEverything = false
+            progressive    = true
             resultKinds = [
-              "ResultKindSchema",
               "ResultKindStats",
+              "ResultKindData",
+              "ResultKindSchema",
+              "ResultKindProgress",
             ]
             rollup = {}
           }
+          renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
+              columnStatsTable = {
+                columnFunctions = {
+                  authorizedNetwork     = "count"
+                  connectMode           = "count"
+                  createTime            = "count"
+                  currentLocationId     = "count"
+                  displayName           = "count"
+                  host                  = "count"
+                  instance_pkey         = "count"
+                  location              = "count"
+                  locationId            = "count"
+                  name                  = "count"
+                  nodes                 = "count"
+                  persistenceMode       = "count"
+                  port                  = "count"
+                  project_id            = "count"
+                  readReplicasMode      = "count"
+                  redisVersion          = "count"
+                  replicaCount          = "count"
+                  reservedIpRange       = "count"
+                  state                 = "count"
+                  tier                  = "count"
+                  transitEncryptionMode = "count"
+                  ttl                   = "count"
+                  version               = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-cl17529h"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
               customName    = "Input"
               customSummary = "test_gcp_learning-bedbug/Redis Instance"
               datasetQuery  = null
@@ -582,14 +625,85 @@ resource "observe_dashboard" "redis_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-ezmooa2t"
-              index    = 0
-              isPinned = false
-              opal = [
-                "// Filtered Dataset Controlled Filter Stage",
-              ]
+              id                = "step-mb5wx51n"
+              index             = 0
+              isPinned          = false
+              opal              = []
               queryPresentation = {}
               type              = "InputStep"
+            },
+            {
+              columnStatsTable = {
+                columnFunctions = {
+                  authorizedNetwork     = "count"
+                  connectMode           = "count"
+                  createTime            = "count"
+                  currentLocationId     = "count"
+                  displayName           = "count"
+                  host                  = "count"
+                  instance_pkey         = "count"
+                  location              = "count"
+                  locationId            = "count"
+                  name                  = "count"
+                  nodes                 = "count"
+                  persistenceMode       = "count"
+                  port                  = "count"
+                  project_id            = "count"
+                  readReplicasMode      = "count"
+                  redisVersion          = "count"
+                  replicaCount          = "count"
+                  reservedIpRange       = "count"
+                  state                 = "count"
+                  tier                  = "count"
+                  transitEncryptionMode = "count"
+                  ttl                   = "count"
+                  version               = "count"
+                }
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-ch7996ng"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-lu1es50a"
+              index    = 1
+              isPinned = false
+              opal = [
+                "filter instance_pkey = $redis.instance_pkey",
+                "",
+                "pick_col",
+                "\t@.\"Valid From\",",
+                " \t@.\"Valid To\",",
+                " \tinstance_pkey,",
+                " \tnodes",
+                "",
+                "flatten_single nodes",
+                "make_col Node:string(_c_nodes_value.id)",
+                "make_col Zone:string(_c_nodes_value.zone)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
             },
           ]
           type = "table"
@@ -606,15 +720,27 @@ resource "observe_dashboard" "redis_monitoring" {
           }
         }
         params   = null
-        pipeline = "// Filtered Dataset Controlled Filter Stage"
+        pipeline = <<-EOT
+                    filter instance_pkey = $redis.instance_pkey
+                    
+                    pick_col
+                    	@."Valid From",
+                     	@."Valid To",
+                     	instance_pkey,
+                     	nodes
+                    
+                    flatten_single nodes
+                    make_col Node:string(_c_nodes_value.id)
+                    make_col Zone:string(_c_nodes_value.zone)
+                EOT
       },
       {
-        id = "stage-95dn11kb"
+        id = "stage-jt6xxmm2"
         input = [
           {
-            datasetId   = null
+            datasetId   = "${local.redis_instance}"
             datasetPath = null
-            inputName   = "redis"
+            inputName   = "test_gcp_learning-bedbug/Redis Instance"
             inputRole   = "Data"
             stageId     = null
           },
@@ -631,14 +757,14 @@ resource "observe_dashboard" "redis_monitoring" {
             }
             columnVisibility             = {}
             columnWidths                 = {}
-            containerWidth               = 2143
+            containerWidth               = 285
             contextMenuXCoord            = null
             contextMenuYCoord            = null
             defaultColumnWidth           = 70
             disableFixedLeftColumns      = false
             eventLinkColumnId            = null
             fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
+            hasCalculatedColumnWidths    = true
             hasDoneAutoLayout            = false
             maxColumnWidth               = 600
             maxMeasuredColumnHeaderWidth = {}
@@ -652,12 +778,18 @@ resource "observe_dashboard" "redis_monitoring" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
             }
             shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
@@ -668,60 +800,24 @@ resource "observe_dashboard" "redis_monitoring" {
           index = 1
           inputList = [
             {
-              inputName   = "redis"
+              datasetId   = "${local.redis_instance}"
+              inputName   = "test_gcp_learning-bedbug/Redis Instance"
               inputRole   = "Data"
               isUserInput = false
-              parameterId = "input-parameter-5maomrv2"
             },
           ]
-          label = "State"
+          label = "Base Dataset"
           managers = [
             {
-              id                     = "zf657dwn"
+              id                     = "d3jh1epf"
               isDisabled             = true
               isResourceCountEnabled = false
               type                   = "Timescrubber"
             },
             {
-              id         = "87a34pjn"
-              isDisabled = false
+              id         = "a05ez3f0"
+              isDisabled = true
               type       = "Vis"
-              vis = {
-                config = {
-                  innerRadius = 0.6
-                  legend = {
-                    placement = "right"
-                    type      = "list"
-                    visible   = true
-                  }
-                  type = "arc"
-                }
-                source = {
-                  table = {
-                    keyField = [
-                      "state",
-                    ]
-                    statsBy = {
-                      fn = "count"
-                    }
-                    timechart = {
-                      fn         = "count_distinct"
-                      fnArgs     = []
-                      resolution = "SINGLE"
-                    }
-                    transformType = "timechart"
-                    type          = "keyvalue"
-                    valueField    = "instance_pkey"
-                  }
-                  type = "table"
-                }
-                type = "circular"
-              }
-            },
-            {
-              id         = "jssp7cxm"
-              isDisabled = false
-              type       = "JsonTree"
             },
           ]
           queryPresentation = {
@@ -734,6 +830,9 @@ resource "observe_dashboard" "redis_monitoring" {
             progressive    = true
             resultKinds = [
               "ResultKindSchema",
+              "ResultKindData",
+              "ResultKindStats",
+              "ResultKindProgress",
             ]
             rollup = {}
           }
@@ -748,7 +847,7 @@ resource "observe_dashboard" "redis_monitoring" {
                   connectMode           = "count"
                   createTime            = "count"
                   currentLocationId     = "count"
-                  datacenter            = "count"
+                  displayName           = "count"
                   host                  = "count"
                   instance_pkey         = "count"
                   location              = "count"
@@ -770,7 +869,7 @@ resource "observe_dashboard" "redis_monitoring" {
                 }
                 datasetQueryId = {
                   ignoreCompress = false
-                  queryId        = "q-8f2vxszg"
+                  queryId        = "q-5ki8kjwf"
                   resultKinds = [
                     "ResultKindSchema",
                     "ResultKindData",
@@ -781,7 +880,7 @@ resource "observe_dashboard" "redis_monitoring" {
                 }
               }
               customName    = "Input"
-              customSummary = "redis"
+              customSummary = "test_gcp_learning-bedbug/Redis Instance"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -796,158 +895,13 @@ resource "observe_dashboard" "redis_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id                = "step-meveek96"
+              id                = "step-khwznicp"
               index             = 0
               isPinned          = false
               opal              = []
               queryPresentation = {}
               type              = "InputStep"
             },
-          ]
-          type = "table"
-          viewModel = {
-            consoleValue = null
-            railCollapseState = {
-              inputsOutputs = false
-              minimap       = false
-              note          = true
-              script        = true
-            }
-            showTimeRuler = true
-            stageTab      = "vis"
-          }
-        }
-        params   = null
-        pipeline = ""
-      },
-      {
-        id = "stage-lmhxifdn"
-        input = [
-          {
-            datasetId   = "${local.redis_instance}"
-            datasetPath = null
-            inputName   = "test_gcp_learning-bedbug/Redis Instance"
-            inputRole   = "Data"
-            stageId     = null
-          },
-        ]
-        layout = {
-          appearance = "VISIBLE"
-          dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
-            columnOrderOverride = {
-              "1" = "Valid From"
-              "2" = "Valid To"
-            }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            containerWidth               = 2143
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            hasDoneAutoLayout            = false
-            maxColumnWidth               = 600
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 20
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
-            selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
-            }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
-          }
-          index = 2
-          inputList = [
-            {
-              datasetId   = "${local.redis_instance}"
-              inputName   = "test_gcp_learning-bedbug/Redis Instance"
-              inputRole   = "Data"
-              isUserInput = false
-            },
-          ]
-          label = "Projects"
-          managers = [
-            {
-              id                     = "bny6gf6m"
-              isDisabled             = true
-              isResourceCountEnabled = false
-              type                   = "Timescrubber"
-            },
-            {
-              id         = "kl7oocyd"
-              isDisabled = false
-              type       = "Vis"
-              vis = {
-                config = {
-                  innerRadius = 0.6
-                  legend = {
-                    placement = "right"
-                    type      = "list"
-                    visible   = true
-                  }
-                  type = "arc"
-                }
-                source = {
-                  table = {
-                    keyField = [
-                      "project_id",
-                    ]
-                    statsBy = {
-                      fn = "count"
-                    }
-                    timechart = {
-                      fn         = "count_distinct"
-                      fnArgs     = []
-                      resolution = "SINGLE"
-                    }
-                    transformType = "timechart"
-                    type          = "keyvalue"
-                    valueField    = "project_id"
-                  }
-                  type = "table"
-                }
-                type = "circular"
-              }
-            },
-          ]
-          queryPresentation = {
-            initialRollupFilter = {
-              mode = "Last"
-            }
-            limit          = 1000
-            linkify        = true
-            loadEverything = false
-            progressive    = true
-            resultKinds = [
-              "ResultKindSchema",
-            ]
-            rollup = {}
-          }
-          renderType     = "TABLE"
-          selectedStepId = null
-          serializable   = true
-          steps = [
             {
               columnStatsTable = {
                 columnFunctions = {
@@ -955,7 +909,7 @@ resource "observe_dashboard" "redis_monitoring" {
                   connectMode           = "count"
                   createTime            = "count"
                   currentLocationId     = "count"
-                  datacenter            = "count"
+                  displayName           = "count"
                   host                  = "count"
                   instance_pkey         = "count"
                   location              = "count"
@@ -977,7 +931,7 @@ resource "observe_dashboard" "redis_monitoring" {
                 }
                 datasetQueryId = {
                   ignoreCompress = false
-                  queryId        = "q-ua4vk8ju"
+                  queryId        = "q-g0a7e318"
                   resultKinds = [
                     "ResultKindSchema",
                     "ResultKindData",
@@ -987,8 +941,7 @@ resource "observe_dashboard" "redis_monitoring" {
                   ]
                 }
               }
-              customName    = "Input"
-              customSummary = "test_gcp_learning-bedbug/Redis Instance"
+              customSummary = ""
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -1003,12 +956,15 @@ resource "observe_dashboard" "redis_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id                = "step-5qbwr3pe"
-              index             = 0
-              isPinned          = false
-              opal              = []
+              id       = "step-599xhajb"
+              index    = 1
+              isPinned = false
+              opal = [
+                "filter instance_pkey = $redis.instance_pkey ",
+                "",
+              ]
               queryPresentation = {}
-              type              = "InputStep"
+              type              = "unknown"
             },
           ]
           type = "table"
@@ -1018,727 +974,19 @@ resource "observe_dashboard" "redis_monitoring" {
               inputsOutputs = false
               minimap       = false
               note          = true
-              script        = true
+              script        = false
             }
             showTimeRuler = true
-            stageTab      = "vis"
+            stageTab      = "table"
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = <<-EOT
+                    filter instance_pkey = $redis.instance_pkey 
+                EOT
       },
       {
-        id = "stage-utxmlh24"
-        input = [
-          {
-            datasetId   = "${local.redis_instance}"
-            datasetPath = null
-            inputName   = "test_gcp_learning-bedbug/Redis Instance"
-            inputRole   = "Data"
-            stageId     = null
-          },
-        ]
-        layout = {
-          appearance = "VISIBLE"
-          dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
-            columnOrderOverride = {
-              "1" = "Valid From"
-              "2" = "Valid To"
-            }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            containerWidth               = 2143
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            hasDoneAutoLayout            = false
-            maxColumnWidth               = 600
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 20
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
-            selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
-            }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
-          }
-          index = 3
-          inputList = [
-            {
-              datasetId   = "${local.redis_instance}"
-              inputName   = "test_gcp_learning-bedbug/Redis Instance"
-              inputRole   = "Data"
-              isUserInput = false
-            },
-          ]
-          label = "Zones"
-          managers = [
-            {
-              id                     = "ig40zb2x"
-              isDisabled             = true
-              isResourceCountEnabled = false
-              type                   = "Timescrubber"
-            },
-            {
-              id         = "lykfpnwu"
-              isDisabled = false
-              type       = "Vis"
-              vis = {
-                config = {
-                  innerRadius = 0.6
-                  legend = {
-                    placement = "right"
-                    type      = "list"
-                    visible   = true
-                  }
-                  type = "arc"
-                }
-                source = {
-                  table = {
-                    keyField = [
-                      "locationId",
-                    ]
-                    statsBy = {
-                      fn = "count"
-                    }
-                    timechart = {
-                      fn         = "count"
-                      resolution = "SINGLE"
-                    }
-                    transformType = "timechart"
-                    type          = "keyvalue"
-                    valueField    = "locationId"
-                  }
-                  type = "table"
-                }
-                type = "circular"
-              }
-            },
-          ]
-          queryPresentation = {
-            initialRollupFilter = {
-              mode = "Last"
-            }
-            limit          = 1000
-            linkify        = true
-            loadEverything = false
-            progressive    = true
-            resultKinds = [
-              "ResultKindSchema",
-            ]
-            rollup = {}
-          }
-          renderType     = "TABLE"
-          selectedStepId = null
-          serializable   = true
-          steps = [
-            {
-              columnStatsTable = {
-                columnFunctions = {}
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-5pw2470r"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
-              customName    = "Input"
-              customSummary = "test_gcp_learning-bedbug/Redis Instance"
-              datasetQuery  = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id                = "step-po499l5k"
-              index             = 0
-              isPinned          = false
-              opal              = []
-              queryPresentation = {}
-              type              = "InputStep"
-            },
-          ]
-          type = "table"
-          viewModel = {
-            consoleValue = null
-            railCollapseState = {
-              inputsOutputs = false
-              minimap       = false
-              note          = true
-              script        = true
-            }
-            showTimeRuler = true
-            stageTab      = "vis"
-          }
-        }
-        params   = null
-        pipeline = ""
-      },
-      {
-        id = "stage-lbqljvi5"
-        input = [
-          {
-            datasetId   = "${local.redis_instance}"
-            datasetPath = null
-            inputName   = "test_gcp_learning-bedbug/Redis Instance"
-            inputRole   = "Data"
-            stageId     = null
-          },
-        ]
-        layout = {
-          appearance = "VISIBLE"
-          dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
-            columnOrderOverride = {
-              "1" = "Valid From"
-              "2" = "Valid To"
-            }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            containerWidth               = 2143
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            hasDoneAutoLayout            = false
-            maxColumnWidth               = 600
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 20
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
-            selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
-            }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
-          }
-          index = 4
-          inputList = [
-            {
-              datasetId   = "${local.redis_instance}"
-              inputName   = "test_gcp_learning-bedbug/Redis Instance"
-              inputRole   = "Data"
-              isUserInput = false
-            },
-          ]
-          label = "Region"
-          managers = [
-            {
-              id                     = "qwgrmipa"
-              isDisabled             = true
-              isResourceCountEnabled = false
-              type                   = "Timescrubber"
-            },
-            {
-              id         = "0sd6ec9l"
-              isDisabled = false
-              type       = "Vis"
-              vis = {
-                config = {
-                  innerRadius = 0.6
-                  legend = {
-                    placement = "right"
-                    type      = "list"
-                    visible   = true
-                  }
-                  type = "arc"
-                }
-                source = {
-                  table = {
-                    keyField = [
-                      "location",
-                    ]
-                    statsBy = {
-                      fn = "count"
-                    }
-                    timechart = {
-                      fn         = "count"
-                      resolution = "SINGLE"
-                    }
-                    transformType = "timechart"
-                    type          = "keyvalue"
-                    valueField    = "location"
-                  }
-                  type = "table"
-                }
-                type = "circular"
-              }
-            },
-          ]
-          queryPresentation = {
-            initialRollupFilter = {
-              mode = "Last"
-            }
-            limit          = 1000
-            linkify        = true
-            loadEverything = false
-            progressive    = true
-            resultKinds = [
-              "ResultKindSchema",
-            ]
-            rollup = {}
-          }
-          renderType     = "TABLE"
-          selectedStepId = null
-          serializable   = true
-          steps = [
-            {
-              columnStatsTable = {
-                columnFunctions = {}
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-dda2drif"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
-              customName    = "Input"
-              customSummary = "test_gcp_learning-bedbug/Redis Instance"
-              datasetQuery  = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id                = "step-yjfddpkj"
-              index             = 0
-              isPinned          = false
-              opal              = []
-              queryPresentation = {}
-              type              = "InputStep"
-            },
-          ]
-          type = "table"
-          viewModel = {
-            consoleValue = null
-            railCollapseState = {
-              inputsOutputs = false
-              minimap       = false
-              note          = true
-              script        = true
-            }
-            showTimeRuler = true
-            stageTab      = "vis"
-          }
-        }
-        params   = null
-        pipeline = ""
-      },
-      {
-        id = "stage-va6o3bts"
-        input = [
-          {
-            datasetId   = "${local.redis_instance}"
-            datasetPath = null
-            inputName   = "test_gcp_learning-bedbug/Redis Instance"
-            inputRole   = "Data"
-            stageId     = null
-          },
-        ]
-        layout = {
-          appearance = "VISIBLE"
-          dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
-            columnOrderOverride = {
-              "1" = "Valid From"
-              "2" = "Valid To"
-            }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            hasDoneAutoLayout            = false
-            maxColumnWidth               = 600
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 20
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
-            selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
-            }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
-          }
-          index = 5
-          inputList = [
-            {
-              datasetId   = "${local.redis_instance}"
-              inputName   = "test_gcp_learning-bedbug/Redis Instance"
-              inputRole   = "Data"
-              isUserInput = false
-            },
-          ]
-          label = "Version"
-          managers = [
-            {
-              id                     = "q3rpmqdk"
-              isDisabled             = true
-              isResourceCountEnabled = false
-              type                   = "Timescrubber"
-            },
-            {
-              id         = "hio68n94"
-              isDisabled = false
-              type       = "Vis"
-              vis = {
-                config = {
-                  innerRadius = 0.6
-                  legend = {
-                    placement = "right"
-                    type      = "list"
-                    visible   = true
-                  }
-                  type = "arc"
-                }
-                source = {
-                  table = {
-                    keyField = [
-                      "redisVersion",
-                    ]
-                    statsBy = {
-                      fn = "count"
-                    }
-                    timechart = {
-                      fn         = "count_distinct"
-                      fnArgs     = []
-                      resolution = "SINGLE"
-                    }
-                    transformType = "timechart"
-                    type          = "keyvalue"
-                    valueField    = "redisVersion"
-                  }
-                  type = "table"
-                }
-                type = "circular"
-              }
-            },
-            {
-              id         = "7lq1piuk"
-              isDisabled = false
-              type       = "JsonTree"
-            },
-          ]
-          queryPresentation = {
-            initialRollupFilter = {
-              mode = "Last"
-            }
-            limit          = 1000
-            linkify        = true
-            loadEverything = false
-            progressive    = true
-            resultKinds = [
-              "ResultKindSchema",
-            ]
-            rollup = {}
-          }
-          renderType     = "TABLE"
-          selectedStepId = null
-          serializable   = true
-          steps = [
-            {
-              customName    = "Input"
-              customSummary = "test_gcp_learning-bedbug/Redis Instance"
-              datasetQuery  = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id                = "step-vjb8pbt4"
-              index             = 0
-              isPinned          = false
-              opal              = []
-              queryPresentation = {}
-              type              = "InputStep"
-            },
-          ]
-          type = "table"
-          viewModel = {
-            consoleValue = null
-            railCollapseState = {
-              inputsOutputs = false
-              minimap       = false
-              note          = true
-              script        = true
-            }
-            showTimeRuler = true
-            stageTab      = "vis"
-          }
-        }
-        params   = null
-        pipeline = ""
-      },
-      {
-        id = "stage-93nehch0"
-        input = [
-          {
-            datasetId   = "${local.redis_instance}"
-            datasetPath = null
-            inputName   = "test_gcp_learning-bedbug/Redis Instance"
-            inputRole   = "Data"
-            stageId     = null
-          },
-        ]
-        layout = {
-          appearance = "VISIBLE"
-          dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
-            columnOrderOverride = {
-              "1" = "Valid From"
-              "2" = "Valid To"
-            }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            hasDoneAutoLayout            = false
-            maxColumnWidth               = 600
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 20
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
-            selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
-            }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
-          }
-          index = 6
-          inputList = [
-            {
-              datasetId   = "${local.redis_instance}"
-              inputName   = "test_gcp_learning-bedbug/Redis Instance"
-              inputRole   = "Data"
-              isUserInput = false
-            },
-          ]
-          label = "Instances"
-          managers = [
-            {
-              id                     = "021y2ra9"
-              isDisabled             = true
-              isResourceCountEnabled = false
-              type                   = "Timescrubber"
-            },
-            {
-              id         = "95zllajp"
-              isDisabled = false
-              type       = "Vis"
-              vis = {
-                config = {
-                  color           = "Default"
-                  colorConfigType = "Color"
-                  fieldConfig = {
-                    unit    = ""
-                    visible = false
-                  }
-                  singleStatLabel = "Instances"
-                  thresholds      = null
-                  type            = "singlefield"
-                }
-                source = {
-                  table = {
-                    field       = "instance_pkey"
-                    groupFields = []
-                    statsBy = {
-                      fn = "count"
-                    }
-                    timechart = {
-                      fn         = "count_distinct"
-                      fnArgs     = []
-                      resolution = "AUTO"
-                    }
-                    transformType = "timechart"
-                    type          = "singlefield"
-                  }
-                  type = "table"
-                }
-                type = "singlevalue"
-              }
-            },
-            {
-              id         = "f387a6mv"
-              isDisabled = false
-              type       = "JsonTree"
-            },
-          ]
-          queryPresentation = {
-            initialRollupFilter = {
-              mode = "Last"
-            }
-            limit          = 1000
-            linkify        = true
-            loadEverything = false
-            progressive    = true
-            resultKinds = [
-              "ResultKindSchema",
-            ]
-            rollup = {}
-          }
-          renderType     = "TABLE"
-          selectedStepId = null
-          serializable   = true
-          steps = [
-            {
-              customName    = "Input"
-              customSummary = "test_gcp_learning-bedbug/Redis Instance"
-              datasetQuery  = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id                = "step-pli154ev"
-              index             = 0
-              isPinned          = false
-              opal              = []
-              queryPresentation = {}
-              type              = "InputStep"
-            },
-          ]
-          type = "table"
-          viewModel = {
-            consoleValue = null
-            railCollapseState = {
-              inputsOutputs = false
-              minimap       = false
-              note          = true
-              script        = true
-            }
-            showTimeRuler = true
-            stageTab      = "vis"
-          }
-        }
-        params   = null
-        pipeline = ""
-      },
-      {
-        id = "stage-xa7yo712"
+        id = "stage-r3msr1xk"
         input = [
           {
             datasetId   = "${local.redis_metrics}"
@@ -1747,1724 +995,12 @@ resource "observe_dashboard" "redis_monitoring" {
             inputRole   = "Data"
             stageId     = null
           },
-        ]
-        layout = {
-          appearance = "VISIBLE"
-          dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
-            columnOrderOverride = {
-              "0" = "instance_pkey"
-              "1" = "valid_from"
-              "2" = "valid_to"
-            }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            hasDoneAutoLayout            = false
-            maxColumnWidth               = 600
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 20
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
-            selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
-            }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
-          }
-          index     = 7
-          inputList = []
-          label     = "Primary Node Command Calls"
-          managers = [
-            {
-              id         = "q7b65ikg"
-              isDisabled = false
-              type       = "Vis"
-              vis = {
-                config = {
-                  color         = "Default"
-                  hideGridLines = false
-                  legend = {
-                    placement = "right"
-                    type      = "list"
-                    visible   = false
-                  }
-                  type = "xy"
-                  xConfig = {
-                    visible = true
-                  }
-                  yConfig = {
-                    axisLabel = "Calls"
-                    visible   = true
-                  }
-                }
-                source = {
-                  table = {
-                    groupFields = [
-                      "hostname",
-                    ]
-                    transformType = "none"
-                    type          = "xy"
-                    x             = "valid_from"
-                    y             = "metric_commands_calls_ybcszjy4"
-                  }
-                  topK = {
-                    k     = 16
-                    order = "Top"
-                    type  = "Auto"
-                  }
-                  type = "table"
-                }
-                type = "timeseries"
-              }
-            },
-          ]
-          queryPresentation = {
-            initialRollupFilter = {
-              mode = "Last"
-            }
-            resultKinds = [
-              "ResultKindSchema",
-            ]
-            rollup      = {}
-            wantBuckets = 600
-          }
-          selectedStepId = null
-          serializable   = true
-          steps = [
-            {
-              customName    = "Input"
-              customSummary = ""
-              datasetQuery  = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id                = "step-miimkhzs"
-              index             = 0
-              isPinned          = false
-              opal              = []
-              queryPresentation = {}
-              type              = "InputStep"
-            },
-            {
-              action = {
-                params = {
-                  expressionList = {
-                    expressions = [
-                      {
-                        dataVis = {
-                          config = {
-                            color         = "Default"
-                            hideGridLines = false
-                            legend = {
-                              placement = "right"
-                              type      = "list"
-                              visible   = false
-                            }
-                            type = "xy"
-                            xConfig = {
-                              visible = true
-                            }
-                            yConfig = {
-                              axisLabel = "Calls"
-                              visible   = true
-                            }
-                          }
-                          source = {
-                            table = {
-                              groupFields = [
-                                "hostname",
-                              ]
-                              transformType = "none"
-                              type          = "xy"
-                              x             = "valid_from"
-                              y             = "metric_commands_calls_ybcszjy4"
-                            }
-                            topK = {
-                              order = "Top"
-                              type  = "Auto"
-                            }
-                            type = "table"
-                          }
-                          type = "timeseries"
-                        }
-                        disableAggregate = false
-                        filterActions = [
-                          {
-                            params = {
-                              columnId    = "role"
-                              columnType  = "string"
-                              filterVerb  = "filter"
-                              isExcluding = false
-                              values = [
-                                "primary",
-                              ]
-                            }
-                            summary = null
-                            type    = "FilterValues"
-                          },
-                        ]
-                        frameDuration = {
-                          num  = 2
-                          unit = "minute"
-                        }
-                        groupBy = [
-                          "hostname",
-                        ]
-                        id            = "metricExpression-qnemg5ri"
-                        lookupActions = []
-                        metric = {
-                          aggregate   = "sum"
-                          datasetId   = "${local.redis_metrics}"
-                          description = <<-EOT
-                                                        Total number of calls for this command in one minute.
-                                                    EOT
-                          heuristics = {
-                            __typename = "MetricHeuristics"
-                            tags = [
-                              {
-                                __typename = "MetricTag"
-                                column     = "role"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "datacenter"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "hostname"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "instance_pkey"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "label"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_category"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_kind"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_kind_text"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_type"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "project_id"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "region"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "value_type"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "value_type_text"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "relationship"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "space"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_labels"
-                                path       = "cmd"
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_labels"
-                                path       = "role"
-                              },
-                            ]
-                            validLinkLabels = [
-                              "Redis Cluster",
-                            ]
-                          }
-                          interval    = null
-                          name        = "commands_calls"
-                          rollup      = "avg"
-                          type        = "delta"
-                          unit        = "1"
-                          userDefined = true
-                        }
-                        showAlignment  = false
-                        showResolution = false
-                        summaryMode    = "over-time"
-                        type           = "metricExpression"
-                        valueColumnId  = "metric_commands_calls_ybcszjy4"
-                      },
-                    ]
-                    selectedExpressionId = "metricExpression-qnemg5ri"
-                  }
-                }
-                summary = null
-                type    = "ExpressionBuilder"
-              }
-              customSummary = "Expression Builder"
-              datasetQuery  = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id       = "step-7fzd1nos"
-              index    = 1
-              isPinned = false
-              opal = [
-                "filter role = \"primary\"",
-                "align frame(back: 2m), metric_commands_calls_ybcszjy4:avg(m(\"commands_calls\"))",
-                "aggregate metric_commands_calls_ybcszjy4:sum(metric_commands_calls_ybcszjy4), group_by(hostname)",
-              ]
-              queryPresentation = {}
-              type              = "unknown"
-            },
-          ]
-          type = "table"
-          viewModel = {
-            consoleValue = <<-EOT
-                            filter role = "primary"
-                            align frame(back: 2m), metric_commands_calls_ybcszjy4:avg(m("commands_calls"))
-                            aggregate metric_commands_calls_ybcszjy4:sum(metric_commands_calls_ybcszjy4), group_by(hostname)
-                        EOT
-            railCollapseState = {
-              inputsOutputs = false
-              minimap       = false
-              note          = true
-              script        = true
-            }
-            showTimeRuler = true
-            stageTab      = "vis"
-          }
-        }
-        params   = null
-        pipeline = <<-EOT
-                    filter role = "primary"
-                    align frame(back: 2m), metric_commands_calls_ybcszjy4:avg(m("commands_calls"))
-                    aggregate metric_commands_calls_ybcszjy4:sum(metric_commands_calls_ybcszjy4), group_by(hostname)
-                EOT
-      },
-      {
-        id = "stage-5il4u0ht"
-        input = [
           {
-            datasetId   = "${local.redis_metrics}"
+            datasetId   = null
             datasetPath = null
-            inputName   = "stats_cpu_utilization_from_test_gcp_learning-bedbug/Redis Metrics"
+            inputName   = "filter_Redis Instance"
             inputRole   = "Data"
-            stageId     = null
-          },
-        ]
-        layout = {
-          appearance = "VISIBLE"
-          dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
-            columnOrderOverride = {
-              "0" = "instance_pkey"
-              "1" = "valid_from"
-              "2" = "valid_to"
-            }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            hasDoneAutoLayout            = false
-            maxColumnWidth               = 600
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 20
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
-            selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
-            }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
-          }
-          index     = 8
-          inputList = []
-          label     = "Primary Node CPU Seconds"
-          managers = [
-            {
-              id         = "bscqgy00"
-              isDisabled = false
-              type       = "Vis"
-              vis = {
-                config = {
-                  color         = "Default"
-                  hideGridLines = false
-                  legend = {
-                    placement = "right"
-                    type      = "list"
-                    visible   = false
-                  }
-                  type = "xy"
-                  xConfig = {
-                    visible = true
-                  }
-                  yConfig = {
-                    unit    = "seconds"
-                    visible = true
-                  }
-                }
-                source = {
-                  table = {
-                    groupFields = [
-                      "hostname",
-                    ]
-                    transformType = "none"
-                    type          = "xy"
-                    x             = "valid_from"
-                    y             = "metric_stats_cpu_utilization_8ieslylf"
-                  }
-                  topK = {
-                    k     = 16
-                    order = "Top"
-                    type  = "Auto"
-                  }
-                  type = "table"
-                }
-                type = "timeseries"
-              }
-            },
-          ]
-          queryPresentation = {
-            initialRollupFilter = {
-              mode = "Last"
-            }
-            resultKinds = [
-              "ResultKindSchema",
-            ]
-            rollup      = {}
-            wantBuckets = 600
-          }
-          selectedStepId = null
-          serializable   = true
-          steps = [
-            {
-              customName    = "Input"
-              customSummary = ""
-              datasetQuery  = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id                = "step-0h6suh18"
-              index             = 0
-              isPinned          = false
-              opal              = []
-              queryPresentation = {}
-              type              = "InputStep"
-            },
-            {
-              action = {
-                params = {
-                  expressionList = {
-                    expressions = [
-                      {
-                        dataVis = {
-                          config = {
-                            color         = "Default"
-                            hideGridLines = false
-                            legend = {
-                              placement = "right"
-                              type      = "list"
-                              visible   = false
-                            }
-                            type = "xy"
-                            xConfig = {
-                              visible = true
-                            }
-                            yConfig = {
-                              unit    = "seconds"
-                              visible = true
-                            }
-                          }
-                          source = {
-                            table = {
-                              groupFields = [
-                                "hostname",
-                              ]
-                              transformType = "none"
-                              type          = "xy"
-                              x             = "valid_from"
-                              y             = "metric_stats_cpu_utilization_8ieslylf"
-                            }
-                            topK = {
-                              order = "Top"
-                              type  = "Auto"
-                            }
-                            type = "table"
-                          }
-                          type = "timeseries"
-                        }
-                        disableAggregate = false
-                        filterActions = [
-                          {
-                            params = {
-                              columnId    = "role"
-                              columnType  = "string"
-                              filterVerb  = "filter"
-                              isExcluding = false
-                              values = [
-                                "primary",
-                              ]
-                            }
-                            summary = null
-                            type    = "FilterValues"
-                          },
-                        ]
-                        frameDuration = {
-                          num  = 5
-                          unit = "minute"
-                        }
-                        groupBy = [
-                          "hostname",
-                        ]
-                        id            = "metricExpression-riu13waw"
-                        lookupActions = []
-                        metric = {
-                          aggregate   = "sum"
-                          datasetId   = "${local.redis_metrics}"
-                          description = <<-EOT
-                                                        CPU-seconds consumed by the Redis server, broken down by system/user space and parent/child relationship.
-                                                    EOT
-                          heuristics = {
-                            __typename = "MetricHeuristics"
-                            tags = [
-                              {
-                                __typename = "MetricTag"
-                                column     = "relationship"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "role"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "space"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "datacenter"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "hostname"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "instance_pkey"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "label"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_category"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_kind"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_kind_text"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_type"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "project_id"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "region"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "value_type"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "value_type_text"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_labels"
-                                path       = "relationship"
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_labels"
-                                path       = "role"
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_labels"
-                                path       = "space"
-                              },
-                            ]
-                            validLinkLabels = [
-                              "Redis Cluster",
-                            ]
-                          }
-                          interval    = null
-                          name        = "stats_cpu_utilization"
-                          rollup      = "rate"
-                          type        = "delta"
-                          unit        = "second"
-                          userDefined = true
-                        }
-                        showAlignment  = false
-                        showResolution = false
-                        summaryMode    = "over-time"
-                        type           = "metricExpression"
-                        valueColumnId  = "metric_stats_cpu_utilization_8ieslylf"
-                      },
-                    ]
-                    selectedExpressionId = "metricExpression-riu13waw"
-                  }
-                }
-                summary = null
-                type    = "ExpressionBuilder"
-              }
-              customSummary = "Expression Builder"
-              datasetQuery  = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id       = "step-ipxrnsu6"
-              index    = 1
-              isPinned = false
-              opal = [
-                "filter role = \"primary\"",
-                "align frame(back: 5m), metric_stats_cpu_utilization_8ieslylf:rate(m(\"stats_cpu_utilization\"))",
-                "aggregate metric_stats_cpu_utilization_8ieslylf:sum(metric_stats_cpu_utilization_8ieslylf), group_by(hostname)",
-              ]
-              queryPresentation = {}
-              type              = "unknown"
-            },
-          ]
-          type = "table"
-          viewModel = {
-            consoleValue = <<-EOT
-                            filter role = "primary"
-                            align frame(back: 5m), metric_stats_cpu_utilization_8ieslylf:rate(m("stats_cpu_utilization"))
-                            aggregate metric_stats_cpu_utilization_8ieslylf:sum(metric_stats_cpu_utilization_8ieslylf), group_by(hostname)
-                        EOT
-            railCollapseState = {
-              inputsOutputs = false
-              minimap       = false
-              note          = true
-              script        = true
-            }
-            showTimeRuler = true
-            stageTab      = "vis"
-          }
-        }
-        params   = null
-        pipeline = <<-EOT
-                    filter role = "primary"
-                    align frame(back: 5m), metric_stats_cpu_utilization_8ieslylf:rate(m("stats_cpu_utilization"))
-                    aggregate metric_stats_cpu_utilization_8ieslylf:sum(metric_stats_cpu_utilization_8ieslylf), group_by(hostname)
-                EOT
-      },
-      {
-        id = "stage-5flbedut"
-        input = [
-          {
-            datasetId   = "${local.redis_metrics}"
-            datasetPath = null
-            inputName   = "keyspace_keys_from_test_gcp_learning-bedbug/Redis Metrics"
-            inputRole   = "Data"
-            stageId     = null
-          },
-        ]
-        layout = {
-          appearance = "VISIBLE"
-          dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
-            columnOrderOverride = {
-              "0" = "instance_pkey"
-              "1" = "valid_from"
-              "2" = "valid_to"
-            }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            hasDoneAutoLayout            = false
-            maxColumnWidth               = 600
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 20
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
-            selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
-            }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
-          }
-          index     = 9
-          inputList = []
-          label     = "Keys"
-          managers = [
-            {
-              id         = "o6w848lt"
-              isDisabled = false
-              type       = "Vis"
-              vis = {
-                config = {
-                  color         = "Default"
-                  hideGridLines = false
-                  legend = {
-                    placement = "right"
-                    type      = "list"
-                    visible   = false
-                  }
-                  type = "xy"
-                  xConfig = {
-                    visible = true
-                  }
-                  yConfig = {
-                    visible = true
-                  }
-                }
-                source = {
-                  table = {
-                    groupFields = [
-                      "hostname",
-                    ]
-                    transformType = "none"
-                    type          = "xy"
-                    x             = "valid_from"
-                    y             = "metric_keyspace_keys_gutc2399"
-                  }
-                  topK = {
-                    k     = 16
-                    order = "Top"
-                    type  = "Auto"
-                  }
-                  type = "table"
-                }
-                type = "timeseries"
-              }
-            },
-          ]
-          queryPresentation = {
-            initialRollupFilter = {
-              mode = "Last"
-            }
-            resultKinds = [
-              "ResultKindSchema",
-            ]
-            rollup      = {}
-            wantBuckets = 600
-          }
-          selectedStepId = null
-          serializable   = true
-          steps = [
-            {
-              customName    = "Input"
-              customSummary = ""
-              datasetQuery  = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id                = "step-8sp3ytp8"
-              index             = 0
-              isPinned          = false
-              opal              = []
-              queryPresentation = {}
-              type              = "InputStep"
-            },
-            {
-              action = {
-                params = {
-                  expressionList = {
-                    expressions = [
-                      {
-                        dataVis = {
-                          config = {
-                            color         = "Default"
-                            hideGridLines = false
-                            legend = {
-                              placement = "right"
-                              type      = "list"
-                              visible   = false
-                            }
-                            type = "xy"
-                            xConfig = {
-                              visible = true
-                            }
-                            yConfig = {
-                              visible = true
-                            }
-                          }
-                          source = {
-                            table = {
-                              groupFields = [
-                                "hostname",
-                              ]
-                              transformType = "none"
-                              type          = "xy"
-                              x             = "valid_from"
-                              y             = "metric_keyspace_keys_gutc2399"
-                            }
-                            topK = {
-                              order = "Top"
-                              type  = "Auto"
-                            }
-                            type = "table"
-                          }
-                          type = "timeseries"
-                        }
-                        disableAggregate = false
-                        filterActions = [
-                          {
-                            params = {
-                              columnId    = "role"
-                              columnType  = "string"
-                              filterVerb  = "filter"
-                              isExcluding = false
-                              values = [
-                                "primary",
-                              ]
-                            }
-                            summary = null
-                            type    = "FilterValues"
-                          },
-                        ]
-                        frameDuration = {
-                          num  = 2
-                          unit = "minute"
-                        }
-                        groupBy = [
-                          "hostname",
-                        ]
-                        id            = "metricExpression-eeifze7a"
-                        lookupActions = []
-                        metric = {
-                          aggregate   = "sum"
-                          datasetId   = "${local.redis_metrics}"
-                          description = <<-EOT
-                                                        Number of keys stored in this database.
-                                                    EOT
-                          heuristics = {
-                            __typename = "MetricHeuristics"
-                            tags = [
-                              {
-                                __typename = "MetricTag"
-                                column     = "role"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "datacenter"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "hostname"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "instance_pkey"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "label"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_category"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_kind"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_kind_text"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_type"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "project_id"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "region"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "value_type"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "value_type_text"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "relationship"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "space"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_labels"
-                                path       = "role"
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_labels"
-                                path       = "db"
-                              },
-                            ]
-                            validLinkLabels = [
-                              "Redis Cluster",
-                            ]
-                          }
-                          interval    = null
-                          name        = "keyspace_keys"
-                          rollup      = "avg"
-                          type        = "gauge"
-                          unit        = "1"
-                          userDefined = true
-                        }
-                        showAlignment  = false
-                        showResolution = false
-                        summaryMode    = "over-time"
-                        type           = "metricExpression"
-                        valueColumnId  = "metric_keyspace_keys_gutc2399"
-                      },
-                    ]
-                    selectedExpressionId = "metricExpression-eeifze7a"
-                  }
-                }
-                summary = null
-                type    = "ExpressionBuilder"
-              }
-              customSummary = "Expression Builder"
-              datasetQuery  = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id       = "step-ne6qrckf"
-              index    = 1
-              isPinned = false
-              opal = [
-                "filter role = \"primary\"",
-                "align frame(back: 2m), metric_keyspace_keys_gutc2399:avg(m(\"keyspace_keys\"))",
-                "aggregate metric_keyspace_keys_gutc2399:sum(metric_keyspace_keys_gutc2399), group_by(hostname)",
-              ]
-              queryPresentation = {}
-              type              = "unknown"
-            },
-          ]
-          type = "table"
-          viewModel = {
-            consoleValue = <<-EOT
-                            filter role = "primary"
-                            align frame(back: 2m), metric_keyspace_keys_gutc2399:avg(m("keyspace_keys"))
-                            aggregate metric_keyspace_keys_gutc2399:sum(metric_keyspace_keys_gutc2399), group_by(hostname)
-                        EOT
-            railCollapseState = {
-              inputsOutputs = false
-              minimap       = false
-              note          = true
-              script        = true
-            }
-            showTimeRuler = true
-            stageTab      = "vis"
-          }
-        }
-        params   = null
-        pipeline = <<-EOT
-                    filter role = "primary"
-                    align frame(back: 2m), metric_keyspace_keys_gutc2399:avg(m("keyspace_keys"))
-                    aggregate metric_keyspace_keys_gutc2399:sum(metric_keyspace_keys_gutc2399), group_by(hostname)
-                EOT
-      },
-      {
-        id = "stage-xmeu7adi"
-        input = [
-          {
-            datasetId   = "${local.redis_metrics}"
-            datasetPath = null
-            inputName   = "clients_connected_from_test_gcp_learning-bedbug/Redis Metrics"
-            inputRole   = "Data"
-            stageId     = null
-          },
-          {
-            datasetId   = "${local.redis_metrics}"
-            datasetPath = null
-            inputName   = "clients_blocked_from_test_gcp_learning-bedbug/Redis Metrics"
-            inputRole   = "Data"
-            stageId     = null
-          },
-        ]
-        layout = {
-          appearance = "VISIBLE"
-          dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
-            columnOrderOverride = {
-              "0" = "instance_pkey"
-              "1" = "valid_from"
-              "2" = "valid_to"
-            }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            containerWidth               = 1311
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            hasDoneAutoLayout            = false
-            maxColumnWidth               = 600
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 20
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
-            selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
-            }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
-          }
-          index     = 10
-          inputList = []
-          label     = "Clients Connected"
-          managers = [
-            {
-              id         = "4vf3mj9l"
-              isDisabled = false
-              type       = "Vis"
-              vis = {
-                config = {
-                  color         = "Default"
-                  hideGridLines = false
-                  legend = {
-                    placement = "right"
-                    type      = "list"
-                    visible   = false
-                  }
-                  type = "xy"
-                  xConfig = {
-                    visible = true
-                  }
-                  yConfig = {
-                    axisLabel = "  "
-                    visible   = true
-                  }
-                }
-                source = {
-                  table = {
-                    groupFields = [
-                      "hostname",
-                    ]
-                    transformType = "none"
-                    type          = "xy"
-                    x             = "valid_from"
-                    y             = "metric_clients_blocked_lfju7wgx"
-                  }
-                  topK = {
-                    k     = 16
-                    order = "Top"
-                    type  = "Auto"
-                  }
-                  type = "table"
-                }
-                type = "timeseries"
-              }
-            },
-            {
-              id                     = "ihjkcyoq"
-              isDisabled             = true
-              isResourceCountEnabled = false
-              type                   = "Timescrubber"
-            },
-          ]
-          queryPresentation = {
-            initialRollupFilter = {
-              mode = "Last"
-            }
-            resultKinds = [
-              "ResultKindSchema",
-            ]
-            rollup      = {}
-            wantBuckets = 600
-          }
-          selectedStepId = null
-          serializable   = true
-          steps = [
-            {
-              customName    = "Input"
-              customSummary = ""
-              datasetQuery  = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id                = "step-kjxngiz3"
-              index             = 0
-              isPinned          = false
-              opal              = []
-              queryPresentation = {}
-              type              = "InputStep"
-            },
-            {
-              action = {
-                params = {
-                  expressionList = {
-                    expressions = [
-                      {
-                        dataVis = {
-                          config = {
-                            color         = "Default"
-                            hideGridLines = false
-                            legend = {
-                              placement = "right"
-                              type      = "list"
-                              visible   = true
-                            }
-                            type    = "xy"
-                            xConfig = {}
-                            yConfig = {
-                              visible = true
-                            }
-                          }
-                          source = {
-                            table = {
-                              groupFields = [
-                                [
-                                  "instance_pkey",
-                                ],
-                              ]
-                              transformType = "none"
-                              type          = "xy"
-                              x             = "valid_from"
-                              y             = "metric_clients_connected_3x4tfwpv"
-                            }
-                            topK = {
-                              order = "Top"
-                              type  = "Auto"
-                            }
-                            type = "table"
-                          }
-                          type = "timeseries"
-                        }
-                        disableAggregate = false
-                        filterActions = [
-                          {
-                            params = {
-                              columnId    = "role"
-                              columnType  = "string"
-                              filterVerb  = "filter"
-                              isExcluding = false
-                              values = [
-                                "primary",
-                              ]
-                            }
-                            summary = null
-                            type    = "FilterValues"
-                          },
-                        ]
-                        frameDuration = {
-                          num  = 2
-                          unit = "minute"
-                        }
-                        groupBy = [
-                          "hostname",
-                        ]
-                        id            = "metricExpression-x89tx4bs"
-                        isCollapsed   = false
-                        lookupActions = []
-                        metric = {
-                          aggregate   = "sum"
-                          datasetId   = "${local.redis_metrics}"
-                          description = <<-EOT
-                                                        Number of client connections.
-                                                    EOT
-                          heuristics = {
-                            __typename = "MetricHeuristics"
-                            tags = [
-                              {
-                                __typename = "MetricTag"
-                                column     = "role"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "datacenter"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "hostname"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "instance_pkey"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "label"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_category"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_kind"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_kind_text"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_type"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "project_id"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "region"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "value_type"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "value_type_text"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "relationship"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "space"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_labels"
-                                path       = "role"
-                              },
-                            ]
-                            validLinkLabels = [
-                              "Redis Cluster",
-                            ]
-                          }
-                          interval    = null
-                          name        = "clients_connected"
-                          rollup      = "avg"
-                          type        = "gauge"
-                          unit        = "1"
-                          userDefined = true
-                        }
-                        showAlignment  = false
-                        showResolution = false
-                        summaryMode    = "over-time"
-                        type           = "metricExpression"
-                        valueColumnId  = "metric_clients_connected_3x4tfwpv"
-                      },
-                      {
-                        dataVis = {
-                          config = {
-                            color         = "Default"
-                            hideGridLines = false
-                            legend = {
-                              placement = "right"
-                              type      = "list"
-                              visible   = false
-                            }
-                            type = "xy"
-                            xConfig = {
-                              visible = true
-                            }
-                            yConfig = {
-                              axisLabel = "  "
-                              visible   = true
-                            }
-                          }
-                          source = {
-                            table = {
-                              groupFields = [
-                                "hostname",
-                              ]
-                              transformType = "none"
-                              type          = "xy"
-                              x             = "valid_from"
-                              y             = "metric_clients_blocked_lfju7wgx"
-                            }
-                            topK = {
-                              order = "Top"
-                              type  = "Auto"
-                            }
-                            type = "table"
-                          }
-                          type = "timeseries"
-                        }
-                        disableAggregate = false
-                        filterActions = [
-                          {
-                            params = {
-                              columnId    = "role"
-                              columnType  = "string"
-                              filterVerb  = "filter"
-                              isExcluding = false
-                              values = [
-                                "primary",
-                              ]
-                            }
-                            summary = null
-                            type    = "FilterValues"
-                          },
-                        ]
-                        frameDuration = {
-                          num  = 2
-                          unit = "minute"
-                        }
-                        groupBy = [
-                          "hostname",
-                        ]
-                        id            = "metricExpression-9ung0c4a"
-                        lookupActions = []
-                        metric = {
-                          aggregate   = "sum"
-                          datasetId   = "${local.redis_metrics}"
-                          description = <<-EOT
-                                                        Number of blocked clients.
-                                                    EOT
-                          heuristics = {
-                            __typename = "MetricHeuristics"
-                            tags = [
-                              {
-                                __typename = "MetricTag"
-                                column     = "role"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "datacenter"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "hostname"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "instance_pkey"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "label"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_category"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_kind"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_kind_text"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_type"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "project_id"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "region"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "value_type"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "value_type_text"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "relationship"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "space"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_labels"
-                                path       = "role"
-                              },
-                            ]
-                            validLinkLabels = [
-                              "Redis Cluster",
-                            ]
-                          }
-                          interval    = null
-                          name        = "clients_blocked"
-                          rollup      = "avg"
-                          type        = "gauge"
-                          unit        = "1"
-                          userDefined = true
-                        }
-                        showAlignment  = false
-                        showResolution = false
-                        summaryMode    = "over-time"
-                        type           = "metricExpression"
-                        valueColumnId  = "metric_clients_blocked_lfju7wgx"
-                      },
-                    ]
-                    selectedExpressionId = "metricExpression-9ung0c4a"
-                  }
-                }
-                summary = null
-                type    = "ExpressionBuilder"
-              }
-              columnStatsTable = {
-                columnFunctions = {}
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-ubdilqdz"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
-              customSummary = "Expression Builder"
-              datasetQuery  = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id       = "step-hugcyxpm"
-              index    = 1
-              isPinned = false
-              opal = [
-                "@A <- @\"clients_connected_from_test_gcp_learning-bedbug/Redis Metrics\" {",
-                "    filter role = \"primary\"",
-                "    align frame(back: 2m), metric_clients_connected_3x4tfwpv:avg(m(\"clients_connected\"))",
-                "    aggregate metric_clients_connected_3x4tfwpv:sum(metric_clients_connected_3x4tfwpv), group_by(hostname)",
-                "}",
-                "@B <- @\"clients_blocked_from_test_gcp_learning-bedbug/Redis Metrics\" {",
-                "    filter role = \"primary\"",
-                "    align frame(back: 2m), metric_clients_blocked_lfju7wgx:avg(m(\"clients_blocked\"))",
-                "    aggregate metric_clients_blocked_lfju7wgx:sum(metric_clients_blocked_lfju7wgx), group_by(hostname)",
-                "}",
-                "<- @B {}",
-              ]
-              queryPresentation = {}
-              type              = "unknown"
-            },
-          ]
-          type = "table"
-          viewModel = {
-            consoleValue = null
-            railCollapseState = {
-              inputsOutputs = false
-              minimap       = false
-              note          = true
-              script        = true
-            }
-            showTimeRuler = true
-            stageTab      = "vis"
-          }
-        }
-        params   = null
-        pipeline = <<-EOT
-                    @A <- @"clients_connected_from_test_gcp_learning-bedbug/Redis Metrics" {
-                        filter role = "primary"
-                        align frame(back: 2m), metric_clients_connected_3x4tfwpv:avg(m("clients_connected"))
-                        aggregate metric_clients_connected_3x4tfwpv:sum(metric_clients_connected_3x4tfwpv), group_by(hostname)
-                    }
-                    @B <- @"clients_blocked_from_test_gcp_learning-bedbug/Redis Metrics" {
-                        filter role = "primary"
-                        align frame(back: 2m), metric_clients_blocked_lfju7wgx:avg(m("clients_blocked"))
-                        aggregate metric_clients_blocked_lfju7wgx:sum(metric_clients_blocked_lfju7wgx), group_by(hostname)
-                    }
-                    <- @B {}
-                EOT
-      },
-      {
-        id = "stage-m6kykgl1"
-        input = [
-          {
-            datasetId   = "${local.redis_metrics}"
-            datasetPath = null
-            inputName   = "stats_memory_usage_ratio_from_test_gcp_learning-bedbug/Redis Metrics"
-            inputRole   = "Data"
-            stageId     = null
+            stageId     = "stage-jt6xxmm2"
           },
         ]
         layout = {
@@ -3519,19 +1055,25 @@ resource "observe_dashboard" "redis_monitoring" {
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index = 11
+          index = 2
           inputList = [
             {
               datasetId   = "${local.redis_metrics}"
-              inputName   = "stats_memory_usage_ratio_from_test_gcp_learning-bedbug/Redis Metrics"
+              inputName   = "commands_calls_from_test_gcp_learning-bedbug/Redis Metrics"
               inputRole   = "Data"
               isUserInput = true
             },
+            {
+              inputName   = "filter_Redis Instance"
+              inputRole   = "Data"
+              isUserInput = true
+              stageId     = "stage-jt6xxmm2"
+            },
           ]
-          label = "Memory Usage Ratio"
+          label = "Total # of calls for this command in one minute (commands_calls)"
           managers = [
             {
-              id         = "d2amf0wk"
+              id         = "y2mnmdk5"
               isDisabled = false
               type       = "Vis"
               vis = {
@@ -3548,23 +1090,19 @@ resource "observe_dashboard" "redis_monitoring" {
                     visible = true
                   }
                   yConfig = {
-                    bounds = {
-                      end   = 100
-                      start = 0
-                    }
-                    unit    = "%"
+                    unit    = ""
                     visible = true
                   }
                 }
                 source = {
                   table = {
                     groupFields = [
-                      "hostname",
+                      "command",
                     ]
                     transformType = "none"
                     type          = "xy"
                     x             = "valid_from"
-                    y             = "metric_stats_memory_usage_ratio_44v2388h"
+                    y             = "metric_commands_calls_1zbspxjt"
                   }
                   topK = {
                     k     = 16
@@ -3607,7 +1145,7 @@ resource "observe_dashboard" "redis_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id                = "step-pvq3lxt2"
+              id                = "step-61yyniv6"
               index             = 0
               isPinned          = false
               opal              = []
@@ -3630,14 +1168,13 @@ resource "observe_dashboard" "redis_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-3q1mday1"
+              id       = "step-k6lo3wnn"
               index    = 1
               isPinned = false
               opal = [
-                "filter role = \"primary\"",
-                "align frame(back: 2m), metric_stats_memory_usage_ratio_44v2388h:avg(m(\"stats_memory_usage_ratio\"))",
-                "aggregate metric_stats_memory_usage_ratio_44v2388h:sum(metric_stats_memory_usage_ratio_44v2388h*100), group_by(hostname)",
-                "",
+                "exists instance_pkey = @\"filter_Redis Instance\".instance_pkey",
+                "align frame(back: 2m), metric_commands_calls_1zbspxjt:rate(m(\"commands_calls\"))",
+                "aggregate metric_commands_calls_1zbspxjt:sum(metric_commands_calls_1zbspxjt), group_by(command)",
               ]
               queryPresentation = {}
               type              = "unknown"
@@ -3658,20 +1195,27 @@ resource "observe_dashboard" "redis_monitoring" {
         }
         params   = null
         pipeline = <<-EOT
-                    filter role = "primary"
-                    align frame(back: 2m), metric_stats_memory_usage_ratio_44v2388h:avg(m("stats_memory_usage_ratio"))
-                    aggregate metric_stats_memory_usage_ratio_44v2388h:sum(metric_stats_memory_usage_ratio_44v2388h*100), group_by(hostname)
+                    exists instance_pkey = @"filter_Redis Instance".instance_pkey
+                    align frame(back: 2m), metric_commands_calls_1zbspxjt:rate(m("commands_calls"))
+                    aggregate metric_commands_calls_1zbspxjt:sum(metric_commands_calls_1zbspxjt), group_by(command)
                 EOT
       },
       {
-        id = "stage-ltpfsi5n"
+        id = "stage-8ibk9wow"
         input = [
           {
             datasetId   = "${local.redis_metrics}"
             datasetPath = null
-            inputName   = "stats_network_traffic_from_test_gcp_learning-bedbug/Redis Metrics"
+            inputName   = "commands_total_time_from_test_gcp_learning-bedbug/Redis Metrics"
             inputRole   = "Data"
             stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "filter_Redis Instance"
+            inputRole   = "Data"
+            stageId     = "stage-jt6xxmm2"
           },
         ]
         layout = {
@@ -3707,12 +1251,18 @@ resource "observe_dashboard" "redis_monitoring" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
             }
             shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
@@ -3720,12 +1270,25 @@ resource "observe_dashboard" "redis_monitoring" {
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index     = 12
-          inputList = []
-          label     = "Network Traffic"
+          index = 3
+          inputList = [
+            {
+              datasetId   = "${local.redis_metrics}"
+              inputName   = "commands_total_time_from_test_gcp_learning-bedbug/Redis Metrics"
+              inputRole   = "Data"
+              isUserInput = true
+            },
+            {
+              inputName   = "filter_Redis Instance"
+              inputRole   = "Data"
+              isUserInput = true
+              stageId     = "stage-jt6xxmm2"
+            },
+          ]
+          label = "The amount of time in microseconds that this command took in the last second"
           managers = [
             {
-              id         = "nr07lpgw"
+              id         = "51crb1po"
               isDisabled = false
               type       = "Vis"
               vis = {
@@ -3742,19 +1305,19 @@ resource "observe_dashboard" "redis_monitoring" {
                     visible = true
                   }
                   yConfig = {
-                    unit    = "By"
+                    unit    = "milliseconds"
                     visible = true
                   }
                 }
                 source = {
                   table = {
                     groupFields = [
-                      "hostname",
+                      "command",
                     ]
                     transformType = "none"
                     type          = "xy"
                     x             = "valid_from"
-                    y             = "metric_stats_network_traffic_5me9224l"
+                    y             = "metric_commands_total_time_1vx369kl"
                   }
                   topK = {
                     k     = 16
@@ -3797,7 +1360,7 @@ resource "observe_dashboard" "redis_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id                = "step-y4kuszgm"
+              id                = "step-v2jud9qz"
               index             = 0
               isPinned          = false
               opal              = []
@@ -3805,192 +1368,7 @@ resource "observe_dashboard" "redis_monitoring" {
               type              = "InputStep"
             },
             {
-              action = {
-                params = {
-                  expressionList = {
-                    expressions = [
-                      {
-                        dataVis = {
-                          config = {
-                            color         = "Default"
-                            hideGridLines = false
-                            legend = {
-                              placement = "right"
-                              type      = "list"
-                              visible   = false
-                            }
-                            type = "xy"
-                            xConfig = {
-                              visible = true
-                            }
-                            yConfig = {
-                              unit    = "By"
-                              visible = true
-                            }
-                          }
-                          source = {
-                            table = {
-                              groupFields = [
-                                "hostname",
-                              ]
-                              transformType = "none"
-                              type          = "xy"
-                              x             = "valid_from"
-                              y             = "metric_stats_network_traffic_5me9224l"
-                            }
-                            topK = {
-                              order = "Top"
-                              type  = "Auto"
-                            }
-                            type = "table"
-                          }
-                          type = "timeseries"
-                        }
-                        disableAggregate = false
-                        filterActions = [
-                          {
-                            params = {
-                              columnId    = "role"
-                              columnType  = "string"
-                              filterVerb  = "filter"
-                              isExcluding = false
-                              values = [
-                                "primary",
-                              ]
-                            }
-                            summary = null
-                            type    = "FilterValues"
-                          },
-                        ]
-                        frameDuration = {
-                          num  = 2
-                          unit = "minute"
-                        }
-                        groupBy = [
-                          "hostname",
-                        ]
-                        id            = "metricExpression-gqp9vr9x"
-                        lookupActions = []
-                        metric = {
-                          aggregate   = "sum"
-                          datasetId   = "${local.redis_metrics}"
-                          description = <<-EOT
-                                                        Total number of bytes sent to/from redis includes bytes from commands themselves, payload data, and delimiters.
-                                                    EOT
-                          heuristics = {
-                            __typename = "MetricHeuristics"
-                            tags = [
-                              {
-                                __typename = "MetricTag"
-                                column     = "role"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "datacenter"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "hostname"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "instance_pkey"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "label"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_category"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_kind"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_kind_text"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_type"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "project_id"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "region"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "value_type"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "value_type_text"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "relationship"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "space"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_labels"
-                                path       = "direction"
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_labels"
-                                path       = "role"
-                              },
-                            ]
-                            validLinkLabels = [
-                              "Redis Cluster",
-                            ]
-                          }
-                          interval    = null
-                          name        = "stats_network_traffic"
-                          rollup      = "avg"
-                          type        = "delta"
-                          unit        = "By"
-                          userDefined = true
-                        }
-                        showAlignment  = false
-                        showResolution = false
-                        summaryMode    = "over-time"
-                        type           = "metricExpression"
-                        valueColumnId  = "metric_stats_network_traffic_5me9224l"
-                      },
-                    ]
-                    selectedExpressionId = "metricExpression-gqp9vr9x"
-                  }
-                }
-                summary = null
-                type    = "ExpressionBuilder"
-              }
-              customSummary = "Expression Builder"
+              customSummary = ""
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -4005,13 +1383,14 @@ resource "observe_dashboard" "redis_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-hh60i0yf"
+              id       = "step-903u02hd"
               index    = 1
               isPinned = false
               opal = [
+                "exists instance_pkey = @\"filter_Redis Instance\".instance_pkey",
                 "filter role = \"primary\"",
-                "align frame(back: 2m), metric_stats_network_traffic_5me9224l:avg(m(\"stats_network_traffic\"))",
-                "aggregate metric_stats_network_traffic_5me9224l:sum(metric_stats_network_traffic_5me9224l), group_by(hostname)",
+                "align frame(back: 2m), metric_commands_total_time_1vx369kl:rate(m(\"commands_total_time\"))",
+                "aggregate metric_commands_total_time_1vx369kl:sum(metric_commands_total_time_1vx369kl), group_by(command)",
               ]
               queryPresentation = {}
               type              = "unknown"
@@ -4032,20 +1411,28 @@ resource "observe_dashboard" "redis_monitoring" {
         }
         params   = null
         pipeline = <<-EOT
+                    exists instance_pkey = @"filter_Redis Instance".instance_pkey
                     filter role = "primary"
-                    align frame(back: 2m), metric_stats_network_traffic_5me9224l:avg(m("stats_network_traffic"))
-                    aggregate metric_stats_network_traffic_5me9224l:sum(metric_stats_network_traffic_5me9224l), group_by(hostname)
+                    align frame(back: 2m), metric_commands_total_time_1vx369kl:rate(m("commands_total_time"))
+                    aggregate metric_commands_total_time_1vx369kl:sum(metric_commands_total_time_1vx369kl), group_by(command)
                 EOT
       },
       {
-        id = "stage-4vx5oqwq"
+        id = "stage-9mulnsts"
         input = [
           {
             datasetId   = "${local.redis_metrics}"
             datasetPath = null
-            inputName   = "stats_connections_total_from_test_gcp_learning-bedbug/Redis Metrics"
+            inputName   = "commands_usec_per_call_from_test_gcp_learning-bedbug/Redis Metrics"
             inputRole   = "Data"
             stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "filter_Redis Instance"
+            inputRole   = "Data"
+            stageId     = "stage-jt6xxmm2"
           },
         ]
         layout = {
@@ -4081,12 +1468,18 @@ resource "observe_dashboard" "redis_monitoring" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
             }
             shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
@@ -4094,12 +1487,25 @@ resource "observe_dashboard" "redis_monitoring" {
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index     = 13
-          inputList = []
-          label     = "Total Connections"
+          index = 4
+          inputList = [
+            {
+              datasetId   = "${local.redis_metrics}"
+              inputName   = "commands_usec_per_call_from_test_gcp_learning-bedbug/Redis Metrics"
+              inputRole   = "Data"
+              isUserInput = true
+            },
+            {
+              inputName   = "filter_Redis Instance"
+              inputRole   = "Data"
+              isUserInput = true
+              stageId     = "stage-jt6xxmm2"
+            },
+          ]
+          label = "Average time per call over 1 minute by command"
           managers = [
             {
-              id         = "hp1uw60d"
+              id         = "0o3u9vxv"
               isDisabled = false
               type       = "Vis"
               vis = {
@@ -4116,19 +1522,19 @@ resource "observe_dashboard" "redis_monitoring" {
                     visible = true
                   }
                   yConfig = {
-                    unit    = "1"
+                    unit    = "milliseconds"
                     visible = true
                   }
                 }
                 source = {
                   table = {
                     groupFields = [
-                      "hostname",
+                      "command",
                     ]
                     transformType = "none"
                     type          = "xy"
                     x             = "valid_from"
-                    y             = "metric_stats_connections_total_46w7dr1w"
+                    y             = "metric_commands_usec_per_call_ywai7d9t"
                   }
                   topK = {
                     k     = 16
@@ -4171,7 +1577,207 @@ resource "observe_dashboard" "redis_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id                = "step-c6yl476d"
+              id                = "step-kni8afq7"
+              index             = 0
+              isPinned          = false
+              opal              = []
+              queryPresentation = {}
+              type              = "InputStep"
+            },
+            {
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-a6cr9jme"
+              index    = 1
+              isPinned = false
+              opal = [
+                "exists instance_pkey = @\"filter_Redis Instance\".instance_pkey",
+                "filter role = \"primary\"",
+                "align frame(back: 2m), metric_commands_usec_per_call_ywai7d9t:avg(m(\"commands_usec_per_call\"))",
+                "aggregate metric_commands_usec_per_call_ywai7d9t:sum(metric_commands_usec_per_call_ywai7d9t), group_by(command)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = <<-EOT
+                    exists instance_pkey = @"filter_Redis Instance".instance_pkey
+                    filter role = "primary"
+                    align frame(back: 2m), metric_commands_usec_per_call_ywai7d9t:avg(m("commands_usec_per_call"))
+                    aggregate metric_commands_usec_per_call_ywai7d9t:sum(metric_commands_usec_per_call_ywai7d9t), group_by(command)
+                EOT
+      },
+      {
+        id = "stage-yothkrri"
+        input = [
+          {
+            datasetId   = "${local.redis_metrics}"
+            datasetPath = null
+            inputName   = "keyspace_keys_from_test_gcp_learning-bedbug/Redis Metrics"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "filter_Redis Instance"
+            inputRole   = "Data"
+            stageId     = "stage-jt6xxmm2"
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight    = true
+            columnFooterHeight = 0
+            columnHeaderHeight = 29
+            columnOrderOverride = {
+              "0" = "instance_pkey"
+              "1" = "valid_from"
+              "2" = "valid_to"
+            }
+            columnVisibility             = {}
+            columnWidths                 = {}
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            hasDoneAutoLayout            = false
+            maxColumnWidth               = 600
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 20
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
+            selection = {
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 0
+            tableView                  = "TABULAR"
+          }
+          index     = 5
+          inputList = []
+          label     = "# of keys stored in this database"
+          managers = [
+            {
+              id         = "u5k7m35w"
+              isDisabled = false
+              type       = "Vis"
+              vis = {
+                config = {
+                  color         = "Default"
+                  hideGridLines = false
+                  legend = {
+                    placement = "right"
+                    type      = "list"
+                    visible   = false
+                  }
+                  type = "xy"
+                  xConfig = {
+                    visible = true
+                  }
+                  yConfig = {
+                    visible = true
+                  }
+                }
+                source = {
+                  table = {
+                    groupFields   = []
+                    transformType = "none"
+                    type          = "xy"
+                    x             = "valid_from"
+                    y             = "metric_keyspace_keys_6fdw8por"
+                  }
+                  topK = {
+                    order = "Top"
+                    type  = "Auto"
+                  }
+                  type = "table"
+                }
+                type = "timeseries"
+              }
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            resultKinds = [
+              "ResultKindSchema",
+            ]
+            rollup      = {}
+            wantBuckets = 600
+          }
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              customName    = "Input"
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-57tod424"
               index             = 0
               isPinned          = false
               opal              = []
@@ -4198,19 +1804,16 @@ resource "observe_dashboard" "redis_monitoring" {
                               visible = true
                             }
                             yConfig = {
-                              unit    = "1"
                               visible = true
                             }
                           }
                           source = {
                             table = {
-                              groupFields = [
-                                "hostname",
-                              ]
+                              groupFields   = []
                               transformType = "none"
                               type          = "xy"
                               x             = "valid_from"
-                              y             = "metric_stats_connections_total_46w7dr1w"
+                              y             = "metric_keyspace_keys_6fdw8por"
                             }
                             topK = {
                               order = "Top"
@@ -4222,6 +1825,28 @@ resource "observe_dashboard" "redis_monitoring" {
                         }
                         disableAggregate = false
                         filterActions = [
+                          {
+                            params = {
+                              foreignKey = {
+                                __typename = "ForeignKey"
+                                dstFields = [
+                                  "instance_pkey",
+                                ]
+                                label = "Redis Instance"
+                                srcFields = [
+                                  "instance_pkey",
+                                ]
+                                targetDataset    = "${local.redis_instance}"
+                                targetStageLabel = null
+                                type             = "foreign"
+                              }
+                              joinInput = {
+                                stageId = "stage-jt6xxmm2"
+                              }
+                            }
+                            summary = null
+                            type    = "ExistsInFilter"
+                          },
                           {
                             params = {
                               columnId    = "role"
@@ -4240,120 +1865,47 @@ resource "observe_dashboard" "redis_monitoring" {
                           num  = 2
                           unit = "minute"
                         }
-                        groupBy = [
-                          "hostname",
-                        ]
-                        id            = "metricExpression-tear26ju"
+                        groupBy       = []
+                        id            = "metricExpression-uwlpmugf"
                         lookupActions = []
                         metric = {
                           aggregate   = "sum"
                           datasetId   = "${local.redis_metrics}"
                           description = <<-EOT
-                                                        Total number of connections accepted by the server.
+                                                        Number of keys stored in this database.
                                                     EOT
-                          heuristics = {
-                            __typename = "MetricHeuristics"
-                            tags = [
-                              {
-                                __typename = "MetricTag"
-                                column     = "role"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "datacenter"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "hostname"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "instance_pkey"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "label"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_category"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_kind"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_kind_text"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_type"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "project_id"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "region"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "value_type"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "value_type_text"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "relationship"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "space"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_labels"
-                                path       = "role"
-                              },
-                            ]
-                            validLinkLabels = [
-                              "Redis Cluster",
-                            ]
-                          }
+                          heuristics  = null
                           interval    = null
-                          name        = "stats_connections_total"
+                          name        = "keyspace_keys"
                           rollup      = "avg"
-                          type        = "delta"
+                          type        = "gauge"
                           unit        = "1"
                           userDefined = true
                         }
+                        metricLink = {
+                          __typename = "ForeignKey"
+                          dstFields = [
+                            "instance_pkey",
+                          ]
+                          label = "Redis Instance"
+                          srcFields = [
+                            "instance_pkey",
+                          ]
+                          targetDataset    = "${local.redis_instance}"
+                          targetStageLabel = null
+                          type             = "foreign"
+                        }
+                        metricLinkInputSource = {
+                          stageId = "stage-jt6xxmm2"
+                        }
                         showAlignment  = false
                         showResolution = false
                         summaryMode    = "over-time"
                         type           = "metricExpression"
-                        valueColumnId  = "metric_stats_connections_total_46w7dr1w"
+                        valueColumnId  = "metric_keyspace_keys_6fdw8por"
                       },
                     ]
-                    selectedExpressionId = "metricExpression-tear26ju"
+                    selectedExpressionId = "metricExpression-uwlpmugf"
                   }
                 }
                 summary = null
@@ -4374,390 +1926,14 @@ resource "observe_dashboard" "redis_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-5ux0elid"
+              id       = "step-85clp81i"
               index    = 1
               isPinned = false
               opal = [
+                "exists instance_pkey = @\"filter_Redis Instance\".instance_pkey",
                 "filter role = \"primary\"",
-                "align frame(back: 2m), metric_stats_connections_total_46w7dr1w:avg(m(\"stats_connections_total\"))",
-                "aggregate metric_stats_connections_total_46w7dr1w:sum(metric_stats_connections_total_46w7dr1w), group_by(hostname)",
-              ]
-              queryPresentation = {}
-              type              = "unknown"
-            },
-          ]
-          type = "table"
-          viewModel = {
-            consoleValue = null
-            railCollapseState = {
-              inputsOutputs = false
-              minimap       = false
-              note          = true
-              script        = true
-            }
-            showTimeRuler = true
-            stageTab      = "vis"
-          }
-        }
-        params   = null
-        pipeline = <<-EOT
-                    filter role = "primary"
-                    align frame(back: 2m), metric_stats_connections_total_46w7dr1w:avg(m("stats_connections_total"))
-                    aggregate metric_stats_connections_total_46w7dr1w:sum(metric_stats_connections_total_46w7dr1w), group_by(hostname)
-                EOT
-      },
-      {
-        id = "stage-pwabkz2q"
-        input = [
-          {
-            datasetId   = "${local.redis_metrics}"
-            datasetPath = null
-            inputName   = "keyspace_avg_ttl_from_test_gcp_learning-bedbug/Redis Metrics"
-            inputRole   = "Data"
-            stageId     = null
-          },
-        ]
-        layout = {
-          appearance = "VISIBLE"
-          dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
-            columnOrderOverride = {
-              "0" = "instance_pkey"
-              "1" = "valid_from"
-              "2" = "valid_to"
-            }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            hasDoneAutoLayout            = false
-            maxColumnWidth               = 600
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 20
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
-            selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
-            }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
-          }
-          index     = 14
-          inputList = []
-          label     = "Keys Average TTL"
-          managers = [
-            {
-              id         = "hj2eq1zz"
-              isDisabled = false
-              type       = "Vis"
-              vis = {
-                config = {
-                  color         = "Default"
-                  hideGridLines = false
-                  legend = {
-                    placement = "right"
-                    type      = "list"
-                    visible   = false
-                  }
-                  type = "xy"
-                  xConfig = {
-                    visible = true
-                  }
-                  yConfig = {
-                    visible = true
-                  }
-                }
-                source = {
-                  table = {
-                    groupFields = [
-                      "hostname",
-                    ]
-                    transformType = "none"
-                    type          = "xy"
-                    x             = "valid_from"
-                    y             = "metric_keyspace_avg_ttl_7s5qqdnq"
-                  }
-                  topK = {
-                    k     = 16
-                    order = "Top"
-                    type  = "Auto"
-                  }
-                  type = "table"
-                }
-                type = "timeseries"
-              }
-            },
-          ]
-          queryPresentation = {
-            initialRollupFilter = {
-              mode = "Last"
-            }
-            resultKinds = [
-              "ResultKindSchema",
-            ]
-            rollup      = {}
-            wantBuckets = 600
-          }
-          selectedStepId = null
-          serializable   = true
-          steps = [
-            {
-              customName    = "Input"
-              customSummary = ""
-              datasetQuery  = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id                = "step-bitmvbp2"
-              index             = 0
-              isPinned          = false
-              opal              = []
-              queryPresentation = {}
-              type              = "InputStep"
-            },
-            {
-              action = {
-                params = {
-                  expressionList = {
-                    expressions = [
-                      {
-                        dataVis = {
-                          config = {
-                            color         = "Default"
-                            hideGridLines = false
-                            legend = {
-                              placement = "right"
-                              type      = "list"
-                              visible   = false
-                            }
-                            type = "xy"
-                            xConfig = {
-                              visible = true
-                            }
-                            yConfig = {
-                              visible = true
-                            }
-                          }
-                          source = {
-                            table = {
-                              groupFields = [
-                                "hostname",
-                              ]
-                              transformType = "none"
-                              type          = "xy"
-                              x             = "valid_from"
-                              y             = "metric_keyspace_avg_ttl_7s5qqdnq"
-                            }
-                            topK = {
-                              order = "Top"
-                              type  = "Auto"
-                            }
-                            type = "table"
-                          }
-                          type = "timeseries"
-                        }
-                        disableAggregate = false
-                        filterActions = [
-                          {
-                            params = {
-                              columnId    = "role"
-                              columnType  = "string"
-                              filterVerb  = "filter"
-                              isExcluding = false
-                              values = [
-                                "primary",
-                              ]
-                            }
-                            summary = null
-                            type    = "FilterValues"
-                          },
-                        ]
-                        frameDuration = {
-                          num  = 2
-                          unit = "minute"
-                        }
-                        groupBy = [
-                          "hostname",
-                        ]
-                        id            = "metricExpression-10h8cahp"
-                        lookupActions = []
-                        metric = {
-                          aggregate   = "sum"
-                          datasetId   = "${local.redis_metrics}"
-                          description = <<-EOT
-                                                        Average TTL for keys in this database.
-                                                    EOT
-                          heuristics = {
-                            __typename = "MetricHeuristics"
-                            tags = [
-                              {
-                                __typename = "MetricTag"
-                                column     = "role"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "datacenter"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "hostname"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "instance_pkey"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "label"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_category"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_kind"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_kind_text"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_type"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "project_id"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "region"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "value_type"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "value_type_text"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "command"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "relationship"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "space"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_labels"
-                                path       = "role"
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_labels"
-                                path       = "db"
-                              },
-                            ]
-                            validLinkLabels = [
-                              "Redis Instance",
-                            ]
-                          }
-                          interval    = null
-                          name        = "keyspace_avg_ttl"
-                          rollup      = "avg"
-                          type        = "gauge"
-                          unit        = "ms"
-                          userDefined = true
-                        }
-                        showAlignment  = false
-                        showResolution = false
-                        summaryMode    = "over-time"
-                        type           = "metricExpression"
-                        valueColumnId  = "metric_keyspace_avg_ttl_7s5qqdnq"
-                      },
-                    ]
-                    selectedExpressionId = "metricExpression-10h8cahp"
-                  }
-                }
-                summary = null
-                type    = "ExpressionBuilder"
-              }
-              customSummary = "Expression Builder"
-              datasetQuery  = null
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id       = "step-58nkc6ea"
-              index    = 1
-              isPinned = false
-              opal = [
-                "filter role = \"primary\"",
-                "align frame(back: 2m), metric_keyspace_avg_ttl_7s5qqdnq:avg(m(\"keyspace_avg_ttl\"))",
-                "aggregate metric_keyspace_avg_ttl_7s5qqdnq:sum(metric_keyspace_avg_ttl_7s5qqdnq), group_by(hostname)",
+                "align frame(back: 2m), metric_keyspace_keys_6fdw8por:avg(m(\"keyspace_keys\"))",
+                "aggregate metric_keyspace_keys_6fdw8por:sum(metric_keyspace_keys_6fdw8por), group_by()",
               ]
               queryPresentation = {}
               type              = "unknown"
@@ -4766,9 +1942,10 @@ resource "observe_dashboard" "redis_monitoring" {
           type = "table"
           viewModel = {
             consoleValue = <<-EOT
+                            exists instance_pkey = @"filter_Redis Instance".instance_pkey
                             filter role = "primary"
-                            align frame(back: 2m), metric_keyspace_avg_ttl_7s5qqdnq:avg(m("keyspace_avg_ttl"))
-                            aggregate metric_keyspace_avg_ttl_7s5qqdnq:sum(metric_keyspace_avg_ttl_7s5qqdnq), group_by(hostname)
+                            align frame(back: 2m), metric_keyspace_keys_6fdw8por:avg(m("keyspace_keys"))
+                            aggregate metric_keyspace_keys_6fdw8por:sum(metric_keyspace_keys_6fdw8por), group_by(instance_pkey)
                         EOT
             railCollapseState = {
               inputsOutputs = false
@@ -4782,13 +1959,14 @@ resource "observe_dashboard" "redis_monitoring" {
         }
         params   = null
         pipeline = <<-EOT
+                    exists instance_pkey = @"filter_Redis Instance".instance_pkey
                     filter role = "primary"
-                    align frame(back: 2m), metric_keyspace_avg_ttl_7s5qqdnq:avg(m("keyspace_avg_ttl"))
-                    aggregate metric_keyspace_avg_ttl_7s5qqdnq:sum(metric_keyspace_avg_ttl_7s5qqdnq), group_by(hostname)
+                    align frame(back: 2m), metric_keyspace_keys_6fdw8por:avg(m("keyspace_keys"))
+                    aggregate metric_keyspace_keys_6fdw8por:sum(metric_keyspace_keys_6fdw8por), group_by()
                 EOT
       },
       {
-        id = "stage-f935xw0s"
+        id = "stage-wds98m8p"
         input = [
           {
             datasetId   = "${local.redis_metrics}"
@@ -4796,6 +1974,13 @@ resource "observe_dashboard" "redis_monitoring" {
             inputName   = "stats_expired_keys_from_test_gcp_learning-bedbug/Redis Metrics"
             inputRole   = "Data"
             stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "filter_Redis Instance"
+            inputRole   = "Data"
+            stageId     = "stage-jt6xxmm2"
           },
         ]
         layout = {
@@ -4844,12 +2029,12 @@ resource "observe_dashboard" "redis_monitoring" {
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index     = 15
+          index     = 6
           inputList = []
-          label     = "Expired Keys"
+          label     = "# of key expiration events"
           managers = [
             {
-              id         = "ex2hdk6v"
+              id         = "ngsn1fc9"
               isDisabled = false
               type       = "Vis"
               vis = {
@@ -4872,12 +2057,12 @@ resource "observe_dashboard" "redis_monitoring" {
                 source = {
                   table = {
                     groupFields = [
-                      "hostname",
+                      "instance_pkey",
                     ]
                     transformType = "none"
                     type          = "xy"
                     x             = "valid_from"
-                    y             = "metric_stats_expired_keys_wbhf0r7g"
+                    y             = "metric_stats_expired_keys_clr7f3tz"
                   }
                   topK = {
                     k     = 16
@@ -4920,7 +2105,7 @@ resource "observe_dashboard" "redis_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id                = "step-b748og96"
+              id                = "step-1ggmqaco"
               index             = 0
               isPinned          = false
               opal              = []
@@ -4953,12 +2138,12 @@ resource "observe_dashboard" "redis_monitoring" {
                           source = {
                             table = {
                               groupFields = [
-                                "hostname",
+                                "instance_pkey",
                               ]
                               transformType = "none"
                               type          = "xy"
                               x             = "valid_from"
-                              y             = "metric_stats_expired_keys_wbhf0r7g"
+                              y             = "metric_stats_expired_keys_clr7f3tz"
                             }
                             topK = {
                               order = "Top"
@@ -4970,6 +2155,28 @@ resource "observe_dashboard" "redis_monitoring" {
                         }
                         disableAggregate = false
                         filterActions = [
+                          {
+                            params = {
+                              foreignKey = {
+                                __typename = "ForeignKey"
+                                dstFields = [
+                                  "instance_pkey",
+                                ]
+                                label = "Redis Instance"
+                                srcFields = [
+                                  "instance_pkey",
+                                ]
+                                targetDataset    = "${local.redis_instance}"
+                                targetStageLabel = null
+                                type             = "foreign"
+                              }
+                              joinInput = {
+                                stageId = "stage-jt6xxmm2"
+                              }
+                            }
+                            summary = null
+                            type    = "ExistsInFilter"
+                          },
                           {
                             params = {
                               columnId    = "role"
@@ -4989,9 +2196,9 @@ resource "observe_dashboard" "redis_monitoring" {
                           unit = "minute"
                         }
                         groupBy = [
-                          "hostname",
+                          "instance_pkey",
                         ]
-                        id            = "metricExpression-3vsmpi6n"
+                        id            = "metricExpression-y2pkuirl"
                         lookupActions = []
                         metric = {
                           aggregate   = "sum"
@@ -5004,12 +2211,7 @@ resource "observe_dashboard" "redis_monitoring" {
                             tags = [
                               {
                                 __typename = "MetricTag"
-                                column     = "role"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "datacenter"
+                                column     = "displayName"
                                 path       = ""
                               },
                               {
@@ -5020,6 +2222,16 @@ resource "observe_dashboard" "redis_monitoring" {
                               {
                                 __typename = "MetricTag"
                                 column     = "instance_pkey"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "region"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "role"
                                 path       = ""
                               },
                               {
@@ -5050,11 +2262,6 @@ resource "observe_dashboard" "redis_monitoring" {
                               {
                                 __typename = "MetricTag"
                                 column     = "project_id"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "region"
                                 path       = ""
                               },
                               {
@@ -5099,14 +2306,30 @@ resource "observe_dashboard" "redis_monitoring" {
                           unit        = "1"
                           userDefined = true
                         }
+                        metricLink = {
+                          __typename = "ForeignKey"
+                          dstFields = [
+                            "instance_pkey",
+                          ]
+                          label = "Redis Instance"
+                          srcFields = [
+                            "instance_pkey",
+                          ]
+                          targetDataset    = "${local.redis_instance}"
+                          targetStageLabel = null
+                          type             = "foreign"
+                        }
+                        metricLinkInputSource = {
+                          stageId = "stage-jt6xxmm2"
+                        }
                         showAlignment  = false
                         showResolution = false
                         summaryMode    = "over-time"
                         type           = "metricExpression"
-                        valueColumnId  = "metric_stats_expired_keys_wbhf0r7g"
+                        valueColumnId  = "metric_stats_expired_keys_clr7f3tz"
                       },
                     ]
-                    selectedExpressionId = "metricExpression-3vsmpi6n"
+                    selectedExpressionId = "metricExpression-y2pkuirl"
                   }
                 }
                 summary = null
@@ -5127,13 +2350,14 @@ resource "observe_dashboard" "redis_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-95lym1yo"
+              id       = "step-mnw0khml"
               index    = 1
               isPinned = false
               opal = [
+                "exists instance_pkey = @\"filter_Redis Instance\".instance_pkey",
                 "filter role = \"primary\"",
-                "align frame(back: 2m), metric_stats_expired_keys_wbhf0r7g:avg(m(\"stats_expired_keys\"))",
-                "aggregate metric_stats_expired_keys_wbhf0r7g:sum(metric_stats_expired_keys_wbhf0r7g), group_by(hostname)",
+                "align frame(back: 2m), metric_stats_expired_keys_clr7f3tz:avg(m(\"stats_expired_keys\"))",
+                "aggregate metric_stats_expired_keys_clr7f3tz:sum(metric_stats_expired_keys_clr7f3tz), group_by(instance_pkey)",
               ]
               queryPresentation = {}
               type              = "unknown"
@@ -5141,11 +2365,7 @@ resource "observe_dashboard" "redis_monitoring" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = <<-EOT
-                            filter role = "primary"
-                            align frame(back: 2m), metric_stats_expired_keys_wbhf0r7g:avg(m("stats_expired_keys"))
-                            aggregate metric_stats_expired_keys_wbhf0r7g:sum(metric_stats_expired_keys_wbhf0r7g), group_by(hostname)
-                        EOT
+            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -5158,13 +2378,14 @@ resource "observe_dashboard" "redis_monitoring" {
         }
         params   = null
         pipeline = <<-EOT
+                    exists instance_pkey = @"filter_Redis Instance".instance_pkey
                     filter role = "primary"
-                    align frame(back: 2m), metric_stats_expired_keys_wbhf0r7g:avg(m("stats_expired_keys"))
-                    aggregate metric_stats_expired_keys_wbhf0r7g:sum(metric_stats_expired_keys_wbhf0r7g), group_by(hostname)
+                    align frame(back: 2m), metric_stats_expired_keys_clr7f3tz:avg(m("stats_expired_keys"))
+                    aggregate metric_stats_expired_keys_clr7f3tz:sum(metric_stats_expired_keys_clr7f3tz), group_by(instance_pkey)
                 EOT
       },
       {
-        id = "stage-9y2jp9iw"
+        id = "stage-yb1taje8"
         input = [
           {
             datasetId   = "${local.redis_metrics}"
@@ -5172,6 +2393,13 @@ resource "observe_dashboard" "redis_monitoring" {
             inputName   = "stats_keyspace_hits_from_test_gcp_learning-bedbug/Redis Metrics"
             inputRole   = "Data"
             stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "filter_Redis Instance"
+            inputRole   = "Data"
+            stageId     = "stage-jt6xxmm2"
           },
         ]
         layout = {
@@ -5181,9 +2409,9 @@ resource "observe_dashboard" "redis_monitoring" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_pkey"
-              "1" = "valid_from"
-              "2" = "valid_to"
+              "0" = "valid_from"
+              "1" = "valid_to"
+              "2" = "instance_pkey"
             }
             columnVisibility             = {}
             columnWidths                 = {}
@@ -5207,12 +2435,18 @@ resource "observe_dashboard" "redis_monitoring" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
             }
             shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
@@ -5220,12 +2454,12 @@ resource "observe_dashboard" "redis_monitoring" {
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index     = 16
+          index     = 7
           inputList = []
-          label     = "Key Hits"
+          label     = "# of successful lookup of keys in the main dictionary"
           managers = [
             {
-              id         = "tjh15j3k"
+              id         = "371gg3mv"
               isDisabled = false
               type       = "Vis"
               vis = {
@@ -5242,22 +2476,18 @@ resource "observe_dashboard" "redis_monitoring" {
                     visible = true
                   }
                   yConfig = {
-                    unit    = "1"
                     visible = true
                   }
                 }
                 source = {
                   table = {
-                    groupFields = [
-                      "hostname",
-                    ]
+                    groupFields   = []
                     transformType = "none"
                     type          = "xy"
                     x             = "valid_from"
-                    y             = "metric_stats_keyspace_hits_zk0gg3ud"
+                    y             = "metric_stats_keyspace_hits_n6hey7pl"
                   }
                   topK = {
-                    k     = 16
                     order = "Top"
                     type  = "Auto"
                   }
@@ -5297,7 +2527,7 @@ resource "observe_dashboard" "redis_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id                = "step-sxo4fg9d"
+              id                = "step-n39fgge3"
               index             = 0
               isPinned          = false
               opal              = []
@@ -5324,19 +2554,16 @@ resource "observe_dashboard" "redis_monitoring" {
                               visible = true
                             }
                             yConfig = {
-                              unit    = "1"
                               visible = true
                             }
                           }
                           source = {
                             table = {
-                              groupFields = [
-                                "hostname",
-                              ]
+                              groupFields   = []
                               transformType = "none"
                               type          = "xy"
                               x             = "valid_from"
-                              y             = "metric_stats_keyspace_hits_zk0gg3ud"
+                              y             = "metric_stats_keyspace_hits_n6hey7pl"
                             }
                             topK = {
                               order = "Top"
@@ -5348,6 +2575,28 @@ resource "observe_dashboard" "redis_monitoring" {
                         }
                         disableAggregate = false
                         filterActions = [
+                          {
+                            params = {
+                              foreignKey = {
+                                __typename = "ForeignKey"
+                                dstFields = [
+                                  "instance_pkey",
+                                ]
+                                label = "Redis Instance"
+                                srcFields = [
+                                  "instance_pkey",
+                                ]
+                                targetDataset    = "${local.redis_instance}"
+                                targetStageLabel = null
+                                type             = "foreign"
+                              }
+                              joinInput = {
+                                stageId = "stage-jt6xxmm2"
+                              }
+                            }
+                            summary = null
+                            type    = "ExistsInFilter"
+                          },
                           {
                             params = {
                               columnId    = "role"
@@ -5366,10 +2615,8 @@ resource "observe_dashboard" "redis_monitoring" {
                           num  = 2
                           unit = "minute"
                         }
-                        groupBy = [
-                          "hostname",
-                        ]
-                        id            = "metricExpression-rm1jhh4o"
+                        groupBy       = []
+                        id            = "metricExpression-7br0iwuc"
                         lookupActions = []
                         metric = {
                           aggregate   = "sum"
@@ -5382,12 +2629,7 @@ resource "observe_dashboard" "redis_monitoring" {
                             tags = [
                               {
                                 __typename = "MetricTag"
-                                column     = "role"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "datacenter"
+                                column     = "displayName"
                                 path       = ""
                               },
                               {
@@ -5398,6 +2640,16 @@ resource "observe_dashboard" "redis_monitoring" {
                               {
                                 __typename = "MetricTag"
                                 column     = "instance_pkey"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "region"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "role"
                                 path       = ""
                               },
                               {
@@ -5428,11 +2680,6 @@ resource "observe_dashboard" "redis_monitoring" {
                               {
                                 __typename = "MetricTag"
                                 column     = "project_id"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "region"
                                 path       = ""
                               },
                               {
@@ -5477,14 +2724,30 @@ resource "observe_dashboard" "redis_monitoring" {
                           unit        = "1"
                           userDefined = true
                         }
+                        metricLink = {
+                          __typename = "ForeignKey"
+                          dstFields = [
+                            "instance_pkey",
+                          ]
+                          label = "Redis Instance"
+                          srcFields = [
+                            "instance_pkey",
+                          ]
+                          targetDataset    = "${local.redis_instance}"
+                          targetStageLabel = null
+                          type             = "foreign"
+                        }
+                        metricLinkInputSource = {
+                          stageId = "stage-jt6xxmm2"
+                        }
                         showAlignment  = false
                         showResolution = false
                         summaryMode    = "over-time"
                         type           = "metricExpression"
-                        valueColumnId  = "metric_stats_keyspace_hits_zk0gg3ud"
+                        valueColumnId  = "metric_stats_keyspace_hits_n6hey7pl"
                       },
                     ]
-                    selectedExpressionId = "metricExpression-rm1jhh4o"
+                    selectedExpressionId = "metricExpression-7br0iwuc"
                   }
                 }
                 summary = null
@@ -5505,13 +2768,14 @@ resource "observe_dashboard" "redis_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-o3gc9o53"
+              id       = "step-hid85kwz"
               index    = 1
               isPinned = false
               opal = [
+                "exists instance_pkey = @\"filter_Redis Instance\".instance_pkey",
                 "filter role = \"primary\"",
-                "align frame(back: 2m), metric_stats_keyspace_hits_zk0gg3ud:avg(m(\"stats_keyspace_hits\"))",
-                "aggregate metric_stats_keyspace_hits_zk0gg3ud:sum(metric_stats_keyspace_hits_zk0gg3ud), group_by(hostname)",
+                "align frame(back: 2m), metric_stats_keyspace_hits_n6hey7pl:avg(m(\"stats_keyspace_hits\"))",
+                "aggregate metric_stats_keyspace_hits_n6hey7pl:sum(metric_stats_keyspace_hits_n6hey7pl), group_by()",
               ]
               queryPresentation = {}
               type              = "unknown"
@@ -5519,11 +2783,7 @@ resource "observe_dashboard" "redis_monitoring" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = <<-EOT
-                            filter role = "primary"
-                            align frame(back: 2m), metric_stats_keyspace_hits_zk0gg3ud:avg(m("stats_keyspace_hits"))
-                            aggregate metric_stats_keyspace_hits_zk0gg3ud:sum(metric_stats_keyspace_hits_zk0gg3ud), group_by(hostname)
-                        EOT
+            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -5536,13 +2796,14 @@ resource "observe_dashboard" "redis_monitoring" {
         }
         params   = null
         pipeline = <<-EOT
+                    exists instance_pkey = @"filter_Redis Instance".instance_pkey
                     filter role = "primary"
-                    align frame(back: 2m), metric_stats_keyspace_hits_zk0gg3ud:avg(m("stats_keyspace_hits"))
-                    aggregate metric_stats_keyspace_hits_zk0gg3ud:sum(metric_stats_keyspace_hits_zk0gg3ud), group_by(hostname)
+                    align frame(back: 2m), metric_stats_keyspace_hits_n6hey7pl:avg(m("stats_keyspace_hits"))
+                    aggregate metric_stats_keyspace_hits_n6hey7pl:sum(metric_stats_keyspace_hits_n6hey7pl), group_by()
                 EOT
       },
       {
-        id = "stage-9x9a8h1f"
+        id = "stage-t1p8enlp"
         input = [
           {
             datasetId   = "${local.redis_metrics}"
@@ -5550,6 +2811,13 @@ resource "observe_dashboard" "redis_monitoring" {
             inputName   = "stats_keyspace_misses_from_test_gcp_learning-bedbug/Redis Metrics"
             inputRole   = "Data"
             stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "filter_Redis Instance"
+            inputRole   = "Data"
+            stageId     = "stage-jt6xxmm2"
           },
         ]
         layout = {
@@ -5559,9 +2827,9 @@ resource "observe_dashboard" "redis_monitoring" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_pkey"
-              "1" = "valid_from"
-              "2" = "valid_to"
+              "0" = "valid_from"
+              "1" = "valid_to"
+              "2" = "instance_pkey"
             }
             columnVisibility             = {}
             columnWidths                 = {}
@@ -5585,12 +2853,18 @@ resource "observe_dashboard" "redis_monitoring" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
             }
             shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
@@ -5598,12 +2872,12 @@ resource "observe_dashboard" "redis_monitoring" {
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index     = 17
+          index     = 8
           inputList = []
-          label     = "Key Misses"
+          label     = "# of failed lookup of keys in the main dictionary"
           managers = [
             {
-              id         = "wu2ar5ea"
+              id         = "himobrv4"
               isDisabled = false
               type       = "Vis"
               vis = {
@@ -5620,24 +2894,18 @@ resource "observe_dashboard" "redis_monitoring" {
                     visible = true
                   }
                   yConfig = {
-                    unit    = "1"
                     visible = true
                   }
                 }
                 source = {
                   table = {
-                    groupFields = [
-                      [
-                        "instance_pkey",
-                      ],
-                    ]
+                    groupFields   = []
                     transformType = "none"
                     type          = "xy"
                     x             = "valid_from"
-                    y             = "metric_stats_keyspace_misses_85e379pl"
+                    y             = "metric_stats_keyspace_misses_f1jy5fad"
                   }
                   topK = {
-                    k     = 16
                     order = "Top"
                     type  = "Auto"
                   }
@@ -5677,7 +2945,7 @@ resource "observe_dashboard" "redis_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id                = "step-hcgpv754"
+              id                = "step-38d44nsv"
               index             = 0
               isPinned          = false
               opal              = []
@@ -5704,21 +2972,16 @@ resource "observe_dashboard" "redis_monitoring" {
                               visible = true
                             }
                             yConfig = {
-                              unit    = "1"
                               visible = true
                             }
                           }
                           source = {
                             table = {
-                              groupFields = [
-                                [
-                                  "instance_pkey",
-                                ],
-                              ]
+                              groupFields   = []
                               transformType = "none"
                               type          = "xy"
                               x             = "valid_from"
-                              y             = "metric_stats_keyspace_misses_85e379pl"
+                              y             = "metric_stats_keyspace_misses_f1jy5fad"
                             }
                             topK = {
                               order = "Top"
@@ -5730,6 +2993,28 @@ resource "observe_dashboard" "redis_monitoring" {
                         }
                         disableAggregate = false
                         filterActions = [
+                          {
+                            params = {
+                              foreignKey = {
+                                __typename = "ForeignKey"
+                                dstFields = [
+                                  "instance_pkey",
+                                ]
+                                label = "Redis Instance"
+                                srcFields = [
+                                  "instance_pkey",
+                                ]
+                                targetDataset    = "${local.redis_instance}"
+                                targetStageLabel = null
+                                type             = "foreign"
+                              }
+                              joinInput = {
+                                stageId = "stage-jt6xxmm2"
+                              }
+                            }
+                            summary = null
+                            type    = "ExistsInFilter"
+                          },
                           {
                             params = {
                               columnId    = "role"
@@ -5748,12 +3033,8 @@ resource "observe_dashboard" "redis_monitoring" {
                           num  = 2
                           unit = "minute"
                         }
-                        groupBy = [
-                          [
-                            "instance_pkey",
-                          ],
-                        ]
-                        id            = "metricExpression-0y9af9qt"
+                        groupBy       = []
+                        id            = "metricExpression-x9m3dor7"
                         lookupActions = []
                         metric = {
                           aggregate   = "sum"
@@ -5766,12 +3047,7 @@ resource "observe_dashboard" "redis_monitoring" {
                             tags = [
                               {
                                 __typename = "MetricTag"
-                                column     = "role"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "datacenter"
+                                column     = "displayName"
                                 path       = ""
                               },
                               {
@@ -5782,6 +3058,16 @@ resource "observe_dashboard" "redis_monitoring" {
                               {
                                 __typename = "MetricTag"
                                 column     = "instance_pkey"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "region"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "role"
                                 path       = ""
                               },
                               {
@@ -5812,11 +3098,6 @@ resource "observe_dashboard" "redis_monitoring" {
                               {
                                 __typename = "MetricTag"
                                 column     = "project_id"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "region"
                                 path       = ""
                               },
                               {
@@ -5861,14 +3142,30 @@ resource "observe_dashboard" "redis_monitoring" {
                           unit        = "1"
                           userDefined = true
                         }
+                        metricLink = {
+                          __typename = "ForeignKey"
+                          dstFields = [
+                            "instance_pkey",
+                          ]
+                          label = "Redis Instance"
+                          srcFields = [
+                            "instance_pkey",
+                          ]
+                          targetDataset    = "${local.redis_instance}"
+                          targetStageLabel = null
+                          type             = "foreign"
+                        }
+                        metricLinkInputSource = {
+                          stageId = "stage-jt6xxmm2"
+                        }
                         showAlignment  = false
                         showResolution = false
                         summaryMode    = "over-time"
                         type           = "metricExpression"
-                        valueColumnId  = "metric_stats_keyspace_misses_85e379pl"
+                        valueColumnId  = "metric_stats_keyspace_misses_f1jy5fad"
                       },
                     ]
-                    selectedExpressionId = "metricExpression-0y9af9qt"
+                    selectedExpressionId = "metricExpression-x9m3dor7"
                   }
                 }
                 summary = null
@@ -5889,13 +3186,14 @@ resource "observe_dashboard" "redis_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-b67rbcfb"
+              id       = "step-m8zamc7f"
               index    = 1
               isPinned = false
               opal = [
+                "exists instance_pkey = @\"filter_Redis Instance\".instance_pkey",
                 "filter role = \"primary\"",
-                "align frame(back: 2m), metric_stats_keyspace_misses_85e379pl:avg(m(\"stats_keyspace_misses\"))",
-                "aggregate metric_stats_keyspace_misses_85e379pl:sum(metric_stats_keyspace_misses_85e379pl), group_by(instance_pkey)",
+                "align frame(back: 2m), metric_stats_keyspace_misses_f1jy5fad:avg(m(\"stats_keyspace_misses\"))",
+                "aggregate metric_stats_keyspace_misses_f1jy5fad:sum(metric_stats_keyspace_misses_f1jy5fad), group_by()",
               ]
               queryPresentation = {}
               type              = "unknown"
@@ -5916,20 +3214,256 @@ resource "observe_dashboard" "redis_monitoring" {
         }
         params   = null
         pipeline = <<-EOT
+                    exists instance_pkey = @"filter_Redis Instance".instance_pkey
                     filter role = "primary"
-                    align frame(back: 2m), metric_stats_keyspace_misses_85e379pl:avg(m("stats_keyspace_misses"))
-                    aggregate metric_stats_keyspace_misses_85e379pl:sum(metric_stats_keyspace_misses_85e379pl), group_by(instance_pkey)
+                    align frame(back: 2m), metric_stats_keyspace_misses_f1jy5fad:avg(m("stats_keyspace_misses"))
+                    aggregate metric_stats_keyspace_misses_f1jy5fad:sum(metric_stats_keyspace_misses_f1jy5fad), group_by()
                 EOT
       },
       {
-        id = "stage-debafcpb"
+        id = "stage-ehr1gzq0"
         input = [
           {
             datasetId   = "${local.redis_metrics}"
             datasetPath = null
-            inputName   = "keyspace_keys_with_expiration_from_test_gcp_learning-bedbug/Redis Metrics"
+            inputName   = "stats_cache_hit_ratio_from_test_gcp_learning-bedbug/Redis Metrics"
             inputRole   = "Data"
             stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "filter_Redis Instance"
+            inputRole   = "Data"
+            stageId     = "stage-jt6xxmm2"
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight    = true
+            columnFooterHeight = 0
+            columnHeaderHeight = 29
+            columnOrderOverride = {
+              "0" = "valid_from"
+              "1" = "valid_to"
+              "2" = "instance_pkey"
+            }
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 2143
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            hasDoneAutoLayout            = false
+            maxColumnWidth               = 600
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 20
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
+            selection = {
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 0
+            tableView                  = "TABULAR"
+          }
+          index = 9
+          inputList = [
+            {
+              datasetId   = "${local.redis_metrics}"
+              inputName   = "stats_cache_hit_ratio_from_test_gcp_learning-bedbug/Redis Metrics"
+              inputRole   = "Data"
+              isUserInput = true
+            },
+            {
+              inputName   = "filter_Redis Instance"
+              inputRole   = "Data"
+              isUserInput = true
+              stageId     = "stage-jt6xxmm2"
+            },
+          ]
+          label = "Cache Hit ratio %"
+          managers = [
+            {
+              id         = "i6mvzf89"
+              isDisabled = false
+              type       = "Vis"
+              vis = {
+                config = {
+                  color         = "Default"
+                  hideGridLines = false
+                  legend = {
+                    placement = "right"
+                    type      = "list"
+                    visible   = false
+                  }
+                  type = "xy"
+                  xConfig = {
+                    visible = true
+                  }
+                  yConfig = {
+                    visible = true
+                  }
+                }
+                source = {
+                  table = {
+                    groupFields   = []
+                    transformType = "none"
+                    type          = "xy"
+                    x             = "valid_from"
+                    y             = "metric_stats_cache_hit_ratio_59poxrmz"
+                  }
+                  topK = {
+                    order = "Top"
+                    type  = "Auto"
+                  }
+                  type = "table"
+                }
+                type = "timeseries"
+              }
+            },
+            {
+              id                     = "szf964he"
+              isDisabled             = true
+              isResourceCountEnabled = false
+              type                   = "Timescrubber"
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            resultKinds = [
+              "ResultKindSchema",
+            ]
+            rollup      = {}
+            wantBuckets = 600
+          }
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              customName    = "Input"
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-swky5537"
+              index             = 0
+              isPinned          = false
+              opal              = []
+              queryPresentation = {}
+              type              = "InputStep"
+            },
+            {
+              columnStatsTable = {
+                columnFunctions = {}
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-sj1hjvzb"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-fwbjsxzv"
+              index    = 1
+              isPinned = false
+              opal = [
+                "exists instance_pkey = @\"filter_Redis Instance\".instance_pkey",
+                "filter role = \"primary\"",
+                "align frame(back: 2m), metric_stats_cache_hit_ratio_59poxrmz:avg(m(\"stats_cache_hit_ratio\"))",
+                "aggregate metric_stats_cache_hit_ratio_59poxrmz:sum(metric_stats_cache_hit_ratio_59poxrmz*100), group_by()",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = <<-EOT
+                    exists instance_pkey = @"filter_Redis Instance".instance_pkey
+                    filter role = "primary"
+                    align frame(back: 2m), metric_stats_cache_hit_ratio_59poxrmz:avg(m("stats_cache_hit_ratio"))
+                    aggregate metric_stats_cache_hit_ratio_59poxrmz:sum(metric_stats_cache_hit_ratio_59poxrmz*100), group_by()
+                EOT
+      },
+      {
+        id = "stage-0ho2ak92"
+        input = [
+          {
+            datasetId   = "${local.redis_metrics}"
+            datasetPath = null
+            inputName   = "stats_memory_usage_ratio_from_test_gcp_learning-bedbug/Redis Metrics"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "filter_Redis Instance"
+            inputRole   = "Data"
+            stageId     = "stage-jt6xxmm2"
           },
         ]
         layout = {
@@ -5978,12 +3512,25 @@ resource "observe_dashboard" "redis_monitoring" {
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index     = 18
-          inputList = []
-          label     = "Keys With Expiration"
+          index = 10
+          inputList = [
+            {
+              datasetId   = "${local.redis_metrics}"
+              inputName   = "stats_memory_usage_ratio_from_test_gcp_learning-bedbug/Redis Metrics"
+              inputRole   = "Data"
+              isUserInput = true
+            },
+            {
+              inputName   = "filter_Redis Instance"
+              inputRole   = "Data"
+              isUserInput = true
+              stageId     = "stage-jt6xxmm2"
+            },
+          ]
+          label = "Memory usage as a ratio of maximum memory"
           managers = [
             {
-              id         = "rzsgrawi"
+              id         = "zwuqjkoh"
               isDisabled = false
               type       = "Vis"
               vis = {
@@ -6000,22 +3547,21 @@ resource "observe_dashboard" "redis_monitoring" {
                     visible = true
                   }
                   yConfig = {
-                    unit    = "1"
                     visible = true
                   }
                 }
                 source = {
                   table = {
                     groupFields = [
-                      "hostname",
+                      "instance_pkey",
                     ]
                     transformType = "none"
                     type          = "xy"
                     x             = "valid_from"
-                    y             = "metric_keyspace_keys_with_expiration_ov8o9z71"
+                    y             = "metric_stats_memory_usage_ratio_753dc9fz"
                   }
                   topK = {
-                    k     = 100
+                    k     = 16
                     order = "Top"
                     type  = "Auto"
                   }
@@ -6033,7 +3579,7 @@ resource "observe_dashboard" "redis_monitoring" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 50
+            wantBuckets = 600
           }
           selectedStepId = null
           serializable   = true
@@ -6055,7 +3601,432 @@ resource "observe_dashboard" "redis_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id                = "step-w411f7au"
+              id                = "step-y1rvwqst"
+              index             = 0
+              isPinned          = false
+              opal              = []
+              queryPresentation = {}
+              type              = "InputStep"
+            },
+            {
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-m2w6vlvm"
+              index    = 1
+              isPinned = false
+              opal = [
+                "exists instance_pkey = @\"filter_Redis Instance\".instance_pkey",
+                "filter role = \"primary\"",
+                "align frame(back: 2m), metric_stats_memory_usage_ratio_753dc9fz:avg(m(\"stats_memory_usage_ratio\"))",
+                "aggregate metric_stats_memory_usage_ratio_753dc9fz:sum(metric_stats_memory_usage_ratio_753dc9fz *100), group_by(instance_pkey)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = <<-EOT
+                    exists instance_pkey = @"filter_Redis Instance".instance_pkey
+                    filter role = "primary"
+                    align frame(back: 2m), metric_stats_memory_usage_ratio_753dc9fz:avg(m("stats_memory_usage_ratio"))
+                    aggregate metric_stats_memory_usage_ratio_753dc9fz:sum(metric_stats_memory_usage_ratio_753dc9fz *100), group_by(instance_pkey)
+                EOT
+      },
+      {
+        id = "stage-kblmpc8o"
+        input = [
+          {
+            datasetId   = "${local.redis_metrics}"
+            datasetPath = null
+            inputName   = "stats_cpu_utilization_from_test_gcp_learning-bedbug/Redis Metrics"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "filter_Redis Instance"
+            inputRole   = "Data"
+            stageId     = "stage-jt6xxmm2"
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight    = true
+            columnFooterHeight = 0
+            columnHeaderHeight = 29
+            columnOrderOverride = {
+              "0" = "instance_pkey"
+              "1" = "space"
+              "2" = "valid_from"
+              "3" = "valid_to"
+              "4" = "relationship"
+            }
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 2143
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            hasDoneAutoLayout            = false
+            maxColumnWidth               = 600
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 20
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
+            selection = {
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 0
+            tableView                  = "TABULAR"
+          }
+          index = 11
+          inputList = [
+            {
+              datasetId   = "${local.redis_metrics}"
+              inputName   = "stats_cpu_utilization_from_test_gcp_learning-bedbug/Redis Metrics"
+              inputRole   = "Data"
+              isUserInput = true
+            },
+            {
+              inputName   = "filter_Redis Instance"
+              inputRole   = "Data"
+              isUserInput = true
+              stageId     = "stage-jt6xxmm2"
+            },
+          ]
+          label = "CPU-seconds consumed by the Redis server, broken down by system/user space"
+          managers = [
+            {
+              id         = "pbkj65ge"
+              isDisabled = false
+              type       = "Vis"
+              vis = {
+                config = {
+                  color         = "Default"
+                  hideGridLines = false
+                  legend = {
+                    placement = "right"
+                    type      = "list"
+                    visible   = false
+                  }
+                  type = "xy"
+                  xConfig = {
+                    visible = true
+                  }
+                  yConfig = {
+                    unit    = "seconds"
+                    visible = true
+                  }
+                }
+                source = {
+                  table = {
+                    groupFields = [
+                      "instance_pkey",
+                      "space",
+                    ]
+                    transformType = "none"
+                    type          = "xy"
+                    x             = "valid_from"
+                    y             = "metric_stats_cpu_utilization_790asu9w"
+                  }
+                  topK = {
+                    k     = 16
+                    order = "Top"
+                    type  = "Auto"
+                  }
+                  type = "table"
+                }
+                type = "timeseries"
+              }
+            },
+            {
+              id                     = "821btkyl"
+              isDisabled             = true
+              isResourceCountEnabled = false
+              type                   = "Timescrubber"
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            resultKinds = [
+              "ResultKindSchema",
+            ]
+            rollup      = {}
+            wantBuckets = 600
+          }
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              customName    = "Input"
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-sh6p4bbf"
+              index             = 0
+              isPinned          = false
+              opal              = []
+              queryPresentation = {}
+              type              = "InputStep"
+            },
+            {
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-ljtf2g9w"
+              index    = 1
+              isPinned = false
+              opal = [
+                "exists instance_pkey = @\"filter_Redis Instance\".instance_pkey",
+                "filter role = \"primary\"",
+                "align frame(back: 2m), metric_stats_cpu_utilization_790asu9w:rate(m(\"stats_cpu_utilization\"))",
+                "aggregate metric_stats_cpu_utilization_790asu9w:round(sum(metric_stats_cpu_utilization_790asu9w),5), group_by(instance_pkey, space)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = <<-EOT
+                    exists instance_pkey = @"filter_Redis Instance".instance_pkey
+                    filter role = "primary"
+                    align frame(back: 2m), metric_stats_cpu_utilization_790asu9w:rate(m("stats_cpu_utilization"))
+                    aggregate metric_stats_cpu_utilization_790asu9w:round(sum(metric_stats_cpu_utilization_790asu9w),5), group_by(instance_pkey, space)
+                EOT
+      },
+      {
+        id = "stage-kuf5r7f3"
+        input = [
+          {
+            datasetId   = "${local.redis_metrics}"
+            datasetPath = null
+            inputName   = "stats_network_traffic_from_test_gcp_learning-bedbug/Redis Metrics"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "filter_Redis Instance"
+            inputRole   = "Data"
+            stageId     = "stage-jt6xxmm2"
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight    = true
+            columnFooterHeight = 0
+            columnHeaderHeight = 29
+            columnOrderOverride = {
+              "0" = "instance_pkey"
+              "1" = "valid_from"
+              "2" = "valid_to"
+            }
+            columnVisibility             = {}
+            columnWidths                 = {}
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            hasDoneAutoLayout            = false
+            maxColumnWidth               = 600
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 20
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
+            selection = {
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 0
+            tableView                  = "TABULAR"
+          }
+          index     = 12
+          inputList = []
+          label     = "Total number of bytes sent to/from redis"
+          managers = [
+            {
+              id         = "qsgn01tt"
+              isDisabled = false
+              type       = "Vis"
+              vis = {
+                config = {
+                  color         = "Default"
+                  hideGridLines = false
+                  legend = {
+                    placement = "right"
+                    type      = "list"
+                    visible   = false
+                  }
+                  type = "xy"
+                  xConfig = {
+                    visible = true
+                  }
+                  yConfig = {
+                    unit    = "bytes"
+                    visible = true
+                  }
+                }
+                source = {
+                  table = {
+                    groupFields = [
+                      "instance_pkey",
+                    ]
+                    transformType = "none"
+                    type          = "xy"
+                    x             = "valid_from"
+                    y             = "metric_stats_network_traffic_qe2motyy"
+                  }
+                  topK = {
+                    k     = 16
+                    order = "Top"
+                    type  = "Auto"
+                  }
+                  type = "table"
+                }
+                type = "timeseries"
+              }
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            resultKinds = [
+              "ResultKindSchema",
+            ]
+            rollup      = {}
+            wantBuckets = 600
+          }
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              customName    = "Input"
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-l6ig60kz"
               index             = 0
               isPinned          = false
               opal              = []
@@ -6082,19 +4053,19 @@ resource "observe_dashboard" "redis_monitoring" {
                               visible = true
                             }
                             yConfig = {
-                              unit    = "1"
+                              unit    = "bytes"
                               visible = true
                             }
                           }
                           source = {
                             table = {
                               groupFields = [
-                                "hostname",
+                                "instance_pkey",
                               ]
                               transformType = "none"
                               type          = "xy"
                               x             = "valid_from"
-                              y             = "metric_keyspace_keys_with_expiration_ov8o9z71"
+                              y             = "metric_stats_network_traffic_qe2motyy"
                             }
                             topK = {
                               order = "Top"
@@ -6108,16 +4079,25 @@ resource "observe_dashboard" "redis_monitoring" {
                         filterActions = [
                           {
                             params = {
-                              columnId    = "role"
-                              columnType  = "string"
-                              filterVerb  = "filter"
-                              isExcluding = false
-                              values = [
-                                "primary",
-                              ]
+                              foreignKey = {
+                                __typename = "ForeignKey"
+                                dstFields = [
+                                  "instance_pkey",
+                                ]
+                                label = "Redis Instance"
+                                srcFields = [
+                                  "instance_pkey",
+                                ]
+                                targetDataset    = "${local.redis_instance}"
+                                targetStageLabel = null
+                                type             = "foreign"
+                              }
+                              joinInput = {
+                                stageId = "stage-jt6xxmm2"
+                              }
                             }
                             summary = null
-                            type    = "FilterValues"
+                            type    = "ExistsInFilter"
                           },
                         ]
                         frameDuration = {
@@ -6125,32 +4105,145 @@ resource "observe_dashboard" "redis_monitoring" {
                           unit = "minute"
                         }
                         groupBy = [
-                          "hostname",
+                          "instance_pkey",
                         ]
-                        id            = "metricExpression-i218e0rg"
+                        id            = "metricExpression-v29zhmyn"
                         lookupActions = []
                         metric = {
                           aggregate   = "sum"
                           datasetId   = "${local.redis_metrics}"
                           description = <<-EOT
-                                                        Number of keys with an expiration in this database.
+                                                        Total number of bytes sent to/from redis includes bytes from commands themselves, payload data, and delimiters.
                                                     EOT
-                          heuristics  = null
+                          heuristics = {
+                            __typename = "MetricHeuristics"
+                            tags = [
+                              {
+                                __typename = "MetricTag"
+                                column     = "displayName"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "hostname"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "instance_pkey"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "region"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "role"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "label"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "metric_category"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "metric_kind"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "metric_kind_text"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "metric_type"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "project_id"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "value_type"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "value_type_text"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "command"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "relationship"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "space"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "metric_labels"
+                                path       = "direction"
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "metric_labels"
+                                path       = "role"
+                              },
+                            ]
+                            validLinkLabels = [
+                              "Redis Instance",
+                            ]
+                          }
                           interval    = null
-                          name        = "keyspace_keys_with_expiration"
+                          name        = "stats_network_traffic"
                           rollup      = "avg"
-                          type        = "gauge"
-                          unit        = "1"
+                          type        = "delta"
+                          unit        = "By"
                           userDefined = true
+                        }
+                        metricLink = {
+                          __typename = "ForeignKey"
+                          dstFields = [
+                            "instance_pkey",
+                          ]
+                          label = "Redis Instance"
+                          srcFields = [
+                            "instance_pkey",
+                          ]
+                          targetDataset    = "${local.redis_instance}"
+                          targetStageLabel = null
+                          type             = "foreign"
+                        }
+                        metricLinkInputSource = {
+                          stageId = "stage-jt6xxmm2"
                         }
                         showAlignment  = false
                         showResolution = false
                         summaryMode    = "over-time"
                         type           = "metricExpression"
-                        valueColumnId  = "metric_keyspace_keys_with_expiration_ov8o9z71"
+                        valueColumnId  = "metric_stats_network_traffic_qe2motyy"
                       },
                     ]
-                    selectedExpressionId = "metricExpression-i218e0rg"
+                    selectedExpressionId = "metricExpression-v29zhmyn"
                   }
                 }
                 summary = null
@@ -6171,13 +4264,13 @@ resource "observe_dashboard" "redis_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-j87g67ug"
+              id       = "step-0w3u5geq"
               index    = 1
               isPinned = false
               opal = [
-                "filter role = \"primary\"",
-                "align frame(back: 2m), metric_keyspace_keys_with_expiration_ov8o9z71:avg(m(\"keyspace_keys_with_expiration\"))",
-                "aggregate metric_keyspace_keys_with_expiration_ov8o9z71:sum(metric_keyspace_keys_with_expiration_ov8o9z71), group_by(hostname)",
+                "exists instance_pkey = @\"filter_Redis Instance\".instance_pkey",
+                "align frame(back: 2m), metric_stats_network_traffic_qe2motyy:avg(m(\"stats_network_traffic\"))",
+                "aggregate metric_stats_network_traffic_qe2motyy:sum(metric_stats_network_traffic_qe2motyy), group_by(instance_pkey)",
               ]
               queryPresentation = {}
               type              = "unknown"
@@ -6198,9 +4291,1057 @@ resource "observe_dashboard" "redis_monitoring" {
         }
         params   = null
         pipeline = <<-EOT
+                    exists instance_pkey = @"filter_Redis Instance".instance_pkey
+                    align frame(back: 2m), metric_stats_network_traffic_qe2motyy:avg(m("stats_network_traffic"))
+                    aggregate metric_stats_network_traffic_qe2motyy:sum(metric_stats_network_traffic_qe2motyy), group_by(instance_pkey)
+                EOT
+      },
+      {
+        id = "stage-xbo28v7v"
+        input = [
+          {
+            datasetId   = "${local.redis_metrics}"
+            datasetPath = null
+            inputName   = "stats_connections_total_from_test_gcp_learning-bedbug/Redis Metrics"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "filter_Redis Instance"
+            inputRole   = "Data"
+            stageId     = "stage-jt6xxmm2"
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight    = true
+            columnFooterHeight = 0
+            columnHeaderHeight = 29
+            columnOrderOverride = {
+              "0" = "instance_pkey"
+              "1" = "valid_from"
+              "2" = "valid_to"
+            }
+            columnVisibility             = {}
+            columnWidths                 = {}
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            hasDoneAutoLayout            = false
+            maxColumnWidth               = 600
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 20
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
+            selection = {
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 0
+            tableView                  = "TABULAR"
+          }
+          index     = 13
+          inputList = []
+          label     = "Total number of connections accepted by the server"
+          managers = [
+            {
+              id         = "6ixc6wmm"
+              isDisabled = false
+              type       = "Vis"
+              vis = {
+                config = {
+                  color         = "Default"
+                  hideGridLines = false
+                  legend = {
+                    placement = "right"
+                    type      = "list"
+                    visible   = false
+                  }
+                  type = "xy"
+                  xConfig = {
+                    visible = true
+                  }
+                  yConfig = {
+                    unit    = "bytes"
+                    visible = true
+                  }
+                }
+                source = {
+                  table = {
+                    groupFields   = []
+                    transformType = "none"
+                    type          = "xy"
+                    x             = "valid_from"
+                    y             = "metric_stats_connections_total_0ajegqu4"
+                  }
+                  topK = {
+                    order = "Top"
+                    type  = "Auto"
+                  }
+                  type = "table"
+                }
+                type = "timeseries"
+              }
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            resultKinds = [
+              "ResultKindSchema",
+            ]
+            rollup      = {}
+            wantBuckets = 600
+          }
+          selectedStepId = "step-wd5qezql"
+          serializable   = true
+          steps = [
+            {
+              customName    = "Input"
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-4l56kbzu"
+              index             = 0
+              isPinned          = false
+              opal              = []
+              queryPresentation = {}
+              type              = "InputStep"
+            },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        dataVis = {
+                          config = {
+                            color         = "Default"
+                            hideGridLines = false
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = false
+                            }
+                            type = "xy"
+                            xConfig = {
+                              visible = true
+                            }
+                            yConfig = {
+                              unit    = "bytes"
+                              visible = true
+                            }
+                          }
+                          source = {
+                            table = {
+                              groupFields   = []
+                              transformType = "none"
+                              type          = "xy"
+                              x             = "valid_from"
+                              y             = "metric_stats_connections_total_0ajegqu4"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "timeseries"
+                        }
+                        disableAggregate = false
+                        filterActions = [
+                          {
+                            params = {
+                              foreignKey = {
+                                __typename = "ForeignKey"
+                                dstFields = [
+                                  "instance_pkey",
+                                ]
+                                label = "Redis Instance"
+                                srcFields = [
+                                  "instance_pkey",
+                                ]
+                                targetDataset    = "${local.redis_instance}"
+                                targetStageLabel = null
+                                type             = "foreign"
+                              }
+                              joinInput = {
+                                stageId = "stage-jt6xxmm2"
+                              }
+                            }
+                            summary = null
+                            type    = "ExistsInFilter"
+                          },
+                        ]
+                        frameDuration = {
+                          num  = 2
+                          unit = "minute"
+                        }
+                        groupBy       = []
+                        id            = "metricExpression-v29zhmyn"
+                        lookupActions = []
+                        metric = {
+                          aggregate   = "sum"
+                          datasetId   = "${local.redis_metrics}"
+                          description = <<-EOT
+                                                        Total number of connections accepted by the server.
+                                                    EOT
+                          heuristics = {
+                            __typename = "MetricHeuristics"
+                            tags = [
+                              {
+                                __typename = "MetricTag"
+                                column     = "displayName"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "hostname"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "instance_pkey"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "region"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "role"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "label"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "metric_category"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "metric_kind"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "metric_kind_text"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "metric_type"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "project_id"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "value_type"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "value_type_text"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "command"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "relationship"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "space"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "metric_labels"
+                                path       = "role"
+                              },
+                            ]
+                            validLinkLabels = [
+                              "Redis Instance",
+                            ]
+                          }
+                          interval    = null
+                          name        = "stats_connections_total"
+                          rollup      = "avg"
+                          type        = "delta"
+                          unit        = "1"
+                          userDefined = true
+                        }
+                        metricLink = {
+                          __typename = "ForeignKey"
+                          dstFields = [
+                            "instance_pkey",
+                          ]
+                          label = "Redis Instance"
+                          srcFields = [
+                            "instance_pkey",
+                          ]
+                          targetDataset    = "${local.redis_instance}"
+                          targetStageLabel = null
+                          type             = "foreign"
+                        }
+                        metricLinkInputSource = {
+                          stageId = "stage-jt6xxmm2"
+                        }
+                        showAlignment  = false
+                        showResolution = false
+                        summaryMode    = "over-time"
+                        type           = "metricExpression"
+                        valueColumnId  = "metric_stats_connections_total_0ajegqu4"
+                      },
+                    ]
+                    selectedExpressionId = "metricExpression-v29zhmyn"
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-wd5qezql"
+              index    = 1
+              isPinned = false
+              opal = [
+                "exists instance_pkey = @\"filter_Redis Instance\".instance_pkey",
+                "align frame(back: 2m), metric_stats_connections_total_0ajegqu4:avg(m(\"stats_connections_total\"))",
+                "aggregate metric_stats_connections_total_0ajegqu4:sum(metric_stats_connections_total_0ajegqu4), group_by()",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = <<-EOT
+                            exists instance_pkey = @"filter_Redis Instance".instance_pkey
+                            align frame(back: 2m), metric_stats_connections_total_0ajegqu4:avg(m("stats_connections_total"))
+                            aggregate metric_stats_connections_total_0ajegqu4:sum(metric_stats_connections_total_0ajegqu4), group_by()
+                        EOT
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = <<-EOT
+                    exists instance_pkey = @"filter_Redis Instance".instance_pkey
+                    align frame(back: 2m), metric_stats_connections_total_0ajegqu4:avg(m("stats_connections_total"))
+                    aggregate metric_stats_connections_total_0ajegqu4:sum(metric_stats_connections_total_0ajegqu4), group_by()
+                EOT
+      },
+      {
+        id = "stage-kp5jhjdv"
+        input = [
+          {
+            datasetId   = "${local.redis_metrics}"
+            datasetPath = null
+            inputName   = "clients_connected_from_test_gcp_learning-bedbug/Redis Metrics"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "filter_Redis Instance"
+            inputRole   = "Data"
+            stageId     = "stage-jt6xxmm2"
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight    = true
+            columnFooterHeight = 0
+            columnHeaderHeight = 29
+            columnOrderOverride = {
+              "0" = "instance_pkey"
+              "1" = "valid_from"
+              "2" = "valid_to"
+            }
+            columnVisibility             = {}
+            columnWidths                 = {}
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            hasDoneAutoLayout            = false
+            maxColumnWidth               = 600
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 20
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
+            selection = {
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 0
+            tableView                  = "TABULAR"
+          }
+          index = 14
+          inputList = [
+            {
+              datasetId   = "${local.redis_metrics}"
+              inputName   = "clients_connected_from_test_gcp_learning-bedbug/Redis Metrics"
+              inputRole   = "Data"
+              isUserInput = true
+            },
+            {
+              inputName   = "filter_Redis Instance"
+              inputRole   = "Data"
+              isUserInput = true
+              stageId     = "stage-jt6xxmm2"
+            },
+          ]
+          label = "Number of client connections"
+          managers = [
+            {
+              id         = "z82r9t87"
+              isDisabled = false
+              type       = "Vis"
+              vis = {
+                config = {
+                  color         = "Default"
+                  hideGridLines = false
+                  legend = {
+                    placement = "right"
+                    type      = "list"
+                    visible   = false
+                  }
+                  type = "xy"
+                  xConfig = {
+                    visible = true
+                  }
+                  yConfig = {
+                    visible = true
+                  }
+                }
+                source = {
+                  table = {
+                    groupFields = [
+                      "instance_pkey",
+                    ]
+                    transformType = "none"
+                    type          = "xy"
+                    x             = "valid_from"
+                    y             = "metric_clients_connected_e3qjll1a"
+                  }
+                  topK = {
+                    k     = 16
+                    order = "Top"
+                    type  = "Auto"
+                  }
+                  type = "table"
+                }
+                type = "timeseries"
+              }
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            resultKinds = [
+              "ResultKindSchema",
+            ]
+            rollup      = {}
+            wantBuckets = 600
+          }
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              customName    = "Input"
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-6xc2yfb9"
+              index             = 0
+              isPinned          = false
+              opal              = []
+              queryPresentation = {}
+              type              = "InputStep"
+            },
+            {
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-d0f4t8o4"
+              index    = 1
+              isPinned = false
+              opal = [
+                "exists instance_pkey = @\"filter_Redis Instance\".instance_pkey",
+                "filter role = \"primary\"",
+                "align frame(back: 2m), metric_clients_connected_e3qjll1a:avg(m(\"clients_connected\"))",
+                "aggregate metric_clients_connected_e3qjll1a:sum(metric_clients_connected_e3qjll1a), group_by(instance_pkey)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            showTimeRuler = true
+            stageTab      = "vis"
+          }
+        }
+        params   = null
+        pipeline = <<-EOT
+                    exists instance_pkey = @"filter_Redis Instance".instance_pkey
                     filter role = "primary"
-                    align frame(back: 2m), metric_keyspace_keys_with_expiration_ov8o9z71:avg(m("keyspace_keys_with_expiration"))
-                    aggregate metric_keyspace_keys_with_expiration_ov8o9z71:sum(metric_keyspace_keys_with_expiration_ov8o9z71), group_by(hostname)
+                    align frame(back: 2m), metric_clients_connected_e3qjll1a:avg(m("clients_connected"))
+                    aggregate metric_clients_connected_e3qjll1a:sum(metric_clients_connected_e3qjll1a), group_by(instance_pkey)
+                EOT
+      },
+      {
+        id = "stage-zmb32x6w"
+        input = [
+          {
+            datasetId   = "${local.redis_instance}"
+            datasetPath = null
+            inputName   = "test_gcp_learning-bedbug/Redis Instance"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight    = true
+            columnFooterHeight = 0
+            columnHeaderHeight = 29
+            columnOrderOverride = {
+              "1" = "Valid From"
+              "2" = "Valid To"
+            }
+            columnVisibility = {
+              _c_instance_properties_path = false
+              instance_pkey               = false
+            }
+            columnWidths                 = {}
+            containerWidth               = 2143
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = true
+            hasDoneAutoLayout            = false
+            maxColumnWidth               = 600
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 20
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
+            selection = {
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 0
+            tableView                  = "TABULAR"
+          }
+          index = 15
+          inputList = [
+            {
+              datasetId   = "${local.redis_instance}"
+              inputName   = "test_gcp_learning-bedbug/Redis Instance"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+          ]
+          label = "Properties"
+          managers = [
+            {
+              id                     = "874dqnjh"
+              isDisabled             = true
+              isResourceCountEnabled = false
+              type                   = "Timescrubber"
+            },
+            {
+              id         = "1cw8fys5"
+              isDisabled = true
+              type       = "Vis"
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            limit          = 1000
+            linkify        = true
+            loadEverything = false
+            progressive    = true
+            resultKinds = [
+              "ResultKindSchema",
+              "ResultKindData",
+              "ResultKindStats",
+              "ResultKindProgress",
+            ]
+            rollup = {}
+          }
+          renderType     = "TABLE"
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              customName    = "Input"
+              customSummary = "test_gcp_learning-bedbug/Redis Instance"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-ggplevzw"
+              index             = 0
+              isPinned          = false
+              opal              = []
+              queryPresentation = {}
+              type              = "InputStep"
+            },
+            {
+              columnStatsTable = {
+                columnFunctions = {}
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-tmp5uw00"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-4q606eh4"
+              index    = 1
+              isPinned = false
+              opal = [
+                "filter instance_pkey = $redis.instance_pkey ",
+                "",
+                "make_col instance_properties: make_object(Tier: tier, Read_Replica_Mode: readReplicasMode, Replica_Count: replicaCount, Primary_Location: locationId, Version: redisVersion)",
+                "",
+                "flatten instance_properties",
+                "",
+                "pick_col",
+                "\t@.\"Valid From\",",
+                " \t@.\"Valid To\",",
+                "  \tinstance_pkey,_c_instance_properties_path,",
+                "   Property: replace(_c_instance_properties_path,'_',' '),",
+                "   Value: _c_instance_properties_value",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = false
+            }
+            showTimeRuler = true
+            stageTab      = "table"
+          }
+        }
+        params   = null
+        pipeline = <<-EOT
+                    filter instance_pkey = $redis.instance_pkey 
+                    
+                    make_col instance_properties: make_object(Tier: tier, Read_Replica_Mode: readReplicasMode, Replica_Count: replicaCount, Primary_Location: locationId, Version: redisVersion)
+                    
+                    flatten instance_properties
+                    
+                    pick_col
+                    	@."Valid From",
+                     	@."Valid To",
+                      	instance_pkey,_c_instance_properties_path,
+                       Property: replace(_c_instance_properties_path,'_',' '),
+                       Value: _c_instance_properties_value
+                EOT
+      },
+      {
+        id = "stage-rp98umdc"
+        input = [
+          {
+            datasetId   = "${local.redis_instance}"
+            datasetPath = null
+            inputName   = "test_gcp_learning-bedbug/Redis Instance"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight    = true
+            columnFooterHeight = 0
+            columnHeaderHeight = 29
+            columnOrderOverride = {
+              "1" = "_c_instance_properties_path"
+              "2" = "Valid From"
+              "3" = "Valid To"
+            }
+            columnVisibility = {
+              _c_instance_properties_path = false
+              instance_pkey               = false
+            }
+            columnWidths = {
+              Value = 462
+            }
+            containerWidth               = 285
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = true
+            hasDoneAutoLayout            = false
+            maxColumnWidth               = 600
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 20
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
+            selection = {
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
+            }
+            shouldAutoLayout           = false
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 0
+            tableView                  = "TABULAR"
+          }
+          index = 16
+          inputList = [
+            {
+              datasetId   = "${local.redis_instance}"
+              inputName   = "test_gcp_learning-bedbug/Redis Instance"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+          ]
+          label = "Connection Properties"
+          managers = [
+            {
+              id                     = "qy4a8j7m"
+              isDisabled             = true
+              isResourceCountEnabled = false
+              type                   = "Timescrubber"
+            },
+            {
+              id         = "o0c71dzx"
+              isDisabled = true
+              type       = "Vis"
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            limit          = 1000
+            linkify        = true
+            loadEverything = false
+            progressive    = true
+            resultKinds = [
+              "ResultKindSchema",
+              "ResultKindData",
+              "ResultKindStats",
+              "ResultKindProgress",
+            ]
+            rollup = {}
+          }
+          renderType     = "TABLE"
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              customName    = "Input"
+              customSummary = "test_gcp_learning-bedbug/Redis Instance"
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-etkccztz"
+              index             = 0
+              isPinned          = false
+              opal              = []
+              queryPresentation = {}
+              type              = "InputStep"
+            },
+            {
+              columnStatsTable = {
+                columnFunctions = {}
+                datasetQueryId = {
+                  ignoreCompress = false
+                  queryId        = "q-pphydqqk"
+                  resultKinds = [
+                    "ResultKindSchema",
+                    "ResultKindData",
+                  ]
+                  tableTypes = [
+                    "TABULAR",
+                  ]
+                }
+              }
+              customSummary = ""
+              datasetQuery  = null
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-8xlmk08h"
+              index    = 1
+              isPinned = false
+              opal = [
+                "filter instance_pkey = $redis.instance_pkey ",
+                "",
+                "make_col instance_properties: make_object(Primary_Endpoint: host,Authorized_Network: authorizedNetwork, Connection_mode: connectMode, IP_range: reservedIpRange)",
+                "",
+                "flatten instance_properties",
+                "",
+                "pick_col",
+                "\t@.\"Valid From\",",
+                " \t@.\"Valid To\",",
+                "  \tinstance_pkey,_c_instance_properties_path,",
+                "   Property: replace(_c_instance_properties_path,'_',' '),",
+                "   Value: _c_instance_properties_value",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = false
+            }
+            showTimeRuler = true
+            stageTab      = "table"
+          }
+        }
+        params   = null
+        pipeline = <<-EOT
+                    filter instance_pkey = $redis.instance_pkey 
+                    
+                    make_col instance_properties: make_object(Primary_Endpoint: host,Authorized_Network: authorizedNetwork, Connection_mode: connectMode, IP_range: reservedIpRange)
+                    
+                    flatten instance_properties
+                    
+                    pick_col
+                    	@."Valid From",
+                     	@."Valid To",
+                      	instance_pkey,_c_instance_properties_path,
+                       Property: replace(_c_instance_properties_path,'_',' '),
+                       Value: _c_instance_properties_value
                 EOT
       },
     ]

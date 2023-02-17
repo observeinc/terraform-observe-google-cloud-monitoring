@@ -14,9 +14,11 @@ locals {
 
 
   metrics_definitions_overrides = {
-    cpu_utilization = {
+    calls = {
       rollup = "rate"
-      unit   = "second"
+    }
+    total_time = {
+      rollup = "rate"
     }
   }
 }

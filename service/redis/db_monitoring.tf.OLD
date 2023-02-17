@@ -1,5 +1,5 @@
 
-# terraform import observe_dashboard.redis_monitoring 41726050
+# terraform import observe_dashboard.redis_monitoring 41726051
 resource "observe_dashboard" "redis_monitoring" {
   description = local.dashboard_description
   layout = jsonencode(
@@ -146,29 +146,11 @@ resource "observe_dashboard" "redis_monitoring" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-ffmn95en"
-                  stageId  = "stage-m6kykgl1"
-                }
-                layout = {
-                  h           = 19
-                  i           = "card-ffmn95en"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 5
-                  x           = 7
-                  y           = 0
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
                   id       = "card-fj9vimnu"
                   stageId  = "stage-5il4u0ht"
                 }
                 layout = {
-                  h           = 10
+                  h           = 12
                   i           = "card-fj9vimnu"
                   isDraggable = true
                   isResizable = true
@@ -177,24 +159,6 @@ resource "observe_dashboard" "redis_monitoring" {
                   w           = 7
                   x           = 0
                   y           = 0
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-ul9r334r"
-                  stageId  = "stage-ltpfsi5n"
-                }
-                layout = {
-                  h           = 9
-                  i           = "card-ul9r334r"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 7
-                  x           = 0
-                  y           = 10
                 }
               },
               {
@@ -210,9 +174,27 @@ resource "observe_dashboard" "redis_monitoring" {
                   isResizable = true
                   moved       = false
                   static      = false
-                  w           = 4
-                  x           = 4
-                  y           = 19
+                  w           = 5
+                  x           = 7
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-ul9r334r"
+                  stageId  = "stage-ltpfsi5n"
+                }
+                layout = {
+                  h           = 12
+                  i           = "card-ul9r334r"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 7
+                  x           = 0
+                  y           = 12
                 }
               },
               {
@@ -228,9 +210,27 @@ resource "observe_dashboard" "redis_monitoring" {
                   isResizable = true
                   moved       = false
                   static      = false
-                  w           = 4
+                  w           = 5
+                  x           = 7
+                  y           = 12
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-ffmn95en"
+                  stageId  = "stage-m6kykgl1"
+                }
+                layout = {
+                  h           = 12
+                  i           = "card-ffmn95en"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 7
                   x           = 0
-                  y           = 19
+                  y           = 24
                 }
               },
               {
@@ -246,9 +246,9 @@ resource "observe_dashboard" "redis_monitoring" {
                   isResizable = true
                   moved       = false
                   static      = false
-                  w           = 4
-                  x           = 8
-                  y           = 19
+                  w           = 5
+                  x           = 7
+                  y           = 24
                 }
               },
             ]
@@ -265,36 +265,36 @@ resource "observe_dashboard" "redis_monitoring" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-6f5r2354"
-                  stageId  = "stage-9y2jp9iw"
+                  id       = "card-7t6mn4so"
+                  stageId  = "stage-5flbedut"
                 }
                 layout = {
-                  h           = 11
-                  i           = "card-6f5r2354"
+                  h           = 9
+                  i           = "card-7t6mn4so"
                   isDraggable = true
                   isResizable = true
                   moved       = false
                   static      = false
-                  w           = 7
-                  x           = 5
+                  w           = 4
+                  x           = 0
                   y           = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-7t6mn4so"
-                  stageId  = "stage-5flbedut"
+                  id       = "card-dqirum77"
+                  stageId  = "stage-debafcpb"
                 }
                 layout = {
-                  h           = 22
-                  i           = "card-7t6mn4so"
+                  h           = 9
+                  i           = "card-dqirum77"
                   isDraggable = true
                   isResizable = true
                   moved       = false
                   static      = false
-                  w           = 2
-                  x           = 0
+                  w           = 4
+                  x           = 4
                   y           = 0
                 }
               },
@@ -305,33 +305,15 @@ resource "observe_dashboard" "redis_monitoring" {
                   stageId  = "stage-f935xw0s"
                 }
                 layout = {
-                  h           = 11
+                  h           = 9
                   i           = "card-mu054jxi"
                   isDraggable = true
                   isResizable = true
                   moved       = false
                   static      = false
-                  w           = 3
-                  x           = 2
+                  w           = 4
+                  x           = 8
                   y           = 0
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-2zvn76nh"
-                  stageId  = "stage-9x9a8h1f"
-                }
-                layout = {
-                  h           = 11
-                  i           = "card-2zvn76nh"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 7
-                  x           = 5
-                  y           = 11
                 }
               },
               {
@@ -341,15 +323,51 @@ resource "observe_dashboard" "redis_monitoring" {
                   stageId  = "stage-pwabkz2q"
                 }
                 layout = {
-                  h           = 11
+                  h           = 10
                   i           = "card-y5bhgr41"
                   isDraggable = true
                   isResizable = true
                   moved       = false
                   static      = false
-                  w           = 3
-                  x           = 2
-                  y           = 11
+                  w           = 4
+                  x           = 0
+                  y           = 9
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-6f5r2354"
+                  stageId  = "stage-9y2jp9iw"
+                }
+                layout = {
+                  h           = 10
+                  i           = "card-6f5r2354"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 4
+                  x           = 4
+                  y           = 9
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-2zvn76nh"
+                  stageId  = "stage-9x9a8h1f"
+                }
+                layout = {
+                  h           = 10
+                  i           = "card-2zvn76nh"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 4
+                  x           = 8
+                  y           = 9
                 }
               },
             ]
@@ -369,16 +387,16 @@ resource "observe_dashboard" "redis_monitoring" {
                   id       = "card-r4fj9zi6"
                   text     = <<-EOT
                                         ### Memorystore for Redis
-                                                                                                                                                                                                        
+                                                                                                                                                                
                                         [https://cloud.google.com/memorystore/docs/redis/redis-overview](https://cloud.google.com/memorystore/docs/redis/redis-overview)
-                                                                                                                                                                                                        
+                                                                                                                                                                
                                         Memorystore for Redis provides a fully-managed service that is powered by the Redis in-memory data store to build application caches that provide sub-millisecond data access.
-                                                                                                                                                                                                        
+                                                                                                                                                                
                                         ### Use cases for Memorystore for Redis
-                                                                                                                                                                                                        
+                                                                                                                                                                
                                         Memorystore for Redis provides a fast, in-memory store for use cases that require fast, real-time processing of data. From simple caching use cases to real time analytics, Memorystore for Redis provides the performance you need.
-                                                                                                                                                                                                        
-                                                                                                                                                                                                  
+                                                                                                                                                                
+                                                                                                                                                          
                                     EOT
                   title    = "Untitled Text"
                 }
@@ -401,10 +419,10 @@ resource "observe_dashboard" "redis_monitoring" {
                   text     = <<-EOT
                                         ### Notes
                                         Metrics are sampled every 60s and may take up to 240s to display.
-                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                
                                         To use this application you must implement the terraform-google-collection and the terraform google module with enable_service_redis set to true.
-                                                                                                                                                                                                                                                                                        
-                                                                                                                                                                                                                                                                                      
+                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                              
                                     EOT
                   title    = "Untitled Text"
                 }
@@ -421,7 +439,7 @@ resource "observe_dashboard" "redis_monitoring" {
                 }
               },
             ]
-            lastModified = 1676598347706
+            lastModified = 1676526595794
           },
         ]
       }
@@ -446,9 +464,9 @@ resource "observe_dashboard" "redis_monitoring" {
             viewType = "input"
           },
         ]
-        selectedStageId = "stage-debafcpb"
+        selectedStageId = "stage-9y2jp9iw"
         timeRange = {
-          display               = "Today 16:30:08 → 17:30:08"
+          display               = "Past 60 minutes"
           endTime               = null
           millisFromCurrentTime = 3600000
           originalDisplay       = "Past 60 minutes"
@@ -688,7 +706,7 @@ resource "observe_dashboard" "redis_monitoring" {
               type       = "Vis"
               vis = {
                 config = {
-                  innerRadius = 0.6
+                  innerRadius = 0
                   legend = {
                     placement = "right"
                     type      = "list"
@@ -900,10 +918,10 @@ resource "observe_dashboard" "redis_monitoring" {
               type       = "Vis"
               vis = {
                 config = {
-                  innerRadius = 0.6
+                  innerRadius = 0
                   legend = {
                     placement = "right"
-                    type      = "list"
+                    type      = "pieChartAnnotation"
                     visible   = true
                   }
                   type = "arc"
@@ -1107,10 +1125,10 @@ resource "observe_dashboard" "redis_monitoring" {
               type       = "Vis"
               vis = {
                 config = {
-                  innerRadius = 0.6
+                  innerRadius = 0
                   legend = {
                     placement = "right"
-                    type      = "list"
+                    type      = "pieChartAnnotation"
                     visible   = true
                   }
                   type = "arc"
@@ -1289,10 +1307,10 @@ resource "observe_dashboard" "redis_monitoring" {
               type       = "Vis"
               vis = {
                 config = {
-                  innerRadius = 0.6
+                  innerRadius = 0
                   legend = {
                     placement = "right"
-                    type      = "list"
+                    type      = "pieChartAnnotation"
                     visible   = true
                   }
                   type = "arc"
@@ -1470,10 +1488,10 @@ resource "observe_dashboard" "redis_monitoring" {
               type       = "Vis"
               vis = {
                 config = {
-                  innerRadius = 0.6
+                  innerRadius = 0
                   legend = {
                     placement = "right"
-                    type      = "list"
+                    type      = "pieChartAnnotation"
                     visible   = true
                   }
                   type = "arc"
@@ -1809,7 +1827,7 @@ resource "observe_dashboard" "redis_monitoring" {
                   legend = {
                     placement = "right"
                     type      = "list"
-                    visible   = false
+                    visible   = true
                   }
                   type = "xy"
                   xConfig = {
@@ -1831,7 +1849,7 @@ resource "observe_dashboard" "redis_monitoring" {
                     y             = "metric_commands_calls_ybcszjy4"
                   }
                   topK = {
-                    k     = 16
+                    k     = 25
                     order = "Top"
                     type  = "Auto"
                   }
@@ -1849,7 +1867,7 @@ resource "observe_dashboard" "redis_monitoring" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 400
           }
           selectedStepId = null
           serializable   = true
@@ -1891,7 +1909,7 @@ resource "observe_dashboard" "redis_monitoring" {
                             legend = {
                               placement = "right"
                               type      = "list"
-                              visible   = false
+                              visible   = true
                             }
                             type = "xy"
                             xConfig = {
@@ -2187,7 +2205,7 @@ resource "observe_dashboard" "redis_monitoring" {
                   legend = {
                     placement = "right"
                     type      = "list"
-                    visible   = false
+                    visible   = true
                   }
                   type = "xy"
                   xConfig = {
@@ -2209,7 +2227,7 @@ resource "observe_dashboard" "redis_monitoring" {
                     y             = "metric_stats_cpu_utilization_8ieslylf"
                   }
                   topK = {
-                    k     = 16
+                    k     = 25
                     order = "Top"
                     type  = "Auto"
                   }
@@ -2227,7 +2245,7 @@ resource "observe_dashboard" "redis_monitoring" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 400
           }
           selectedStepId = null
           serializable   = true
@@ -2269,7 +2287,7 @@ resource "observe_dashboard" "redis_monitoring" {
                             legend = {
                               placement = "right"
                               type      = "list"
-                              visible   = false
+                              visible   = true
                             }
                             type = "xy"
                             xConfig = {
@@ -2570,7 +2588,7 @@ resource "observe_dashboard" "redis_monitoring" {
                   legend = {
                     placement = "right"
                     type      = "list"
-                    visible   = false
+                    visible   = true
                   }
                   type = "xy"
                   xConfig = {
@@ -2591,7 +2609,7 @@ resource "observe_dashboard" "redis_monitoring" {
                     y             = "metric_keyspace_keys_gutc2399"
                   }
                   topK = {
-                    k     = 16
+                    k     = 25
                     order = "Top"
                     type  = "Auto"
                   }
@@ -2609,7 +2627,7 @@ resource "observe_dashboard" "redis_monitoring" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 400
           }
           selectedStepId = null
           serializable   = true
@@ -2651,7 +2669,7 @@ resource "observe_dashboard" "redis_monitoring" {
                             legend = {
                               placement = "right"
                               type      = "list"
-                              visible   = false
+                              visible   = true
                             }
                             type = "xy"
                             xConfig = {
@@ -2954,7 +2972,7 @@ resource "observe_dashboard" "redis_monitoring" {
                   legend = {
                     placement = "right"
                     type      = "list"
-                    visible   = false
+                    visible   = true
                   }
                   type = "xy"
                   xConfig = {
@@ -2976,7 +2994,7 @@ resource "observe_dashboard" "redis_monitoring" {
                     y             = "metric_clients_blocked_lfju7wgx"
                   }
                   topK = {
-                    k     = 16
+                    k     = 25
                     order = "Top"
                     type  = "Auto"
                   }
@@ -3000,7 +3018,7 @@ resource "observe_dashboard" "redis_monitoring" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 400
           }
           selectedStepId = null
           serializable   = true
@@ -3211,7 +3229,7 @@ resource "observe_dashboard" "redis_monitoring" {
                             legend = {
                               placement = "right"
                               type      = "list"
-                              visible   = false
+                              visible   = true
                             }
                             type = "xy"
                             xConfig = {
@@ -3500,18 +3518,12 @@ resource "observe_dashboard" "redis_monitoring" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
             shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
@@ -3519,16 +3531,9 @@ resource "observe_dashboard" "redis_monitoring" {
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index = 11
-          inputList = [
-            {
-              datasetId   = "${local.redis_metrics}"
-              inputName   = "stats_memory_usage_ratio_from_test_gcp_learning-bedbug/Redis Metrics"
-              inputRole   = "Data"
-              isUserInput = true
-            },
-          ]
-          label = "Memory Usage Ratio"
+          index     = 11
+          inputList = []
+          label     = "Memory Usage Ratio"
           managers = [
             {
               id         = "d2amf0wk"
@@ -3541,7 +3546,7 @@ resource "observe_dashboard" "redis_monitoring" {
                   legend = {
                     placement = "right"
                     type      = "list"
-                    visible   = false
+                    visible   = true
                   }
                   type = "xy"
                   xConfig = {
@@ -3552,7 +3557,7 @@ resource "observe_dashboard" "redis_monitoring" {
                       end   = 100
                       start = 0
                     }
-                    unit    = "%"
+                    unit    = "Percent"
                     visible = true
                   }
                 }
@@ -3567,7 +3572,7 @@ resource "observe_dashboard" "redis_monitoring" {
                     y             = "metric_stats_memory_usage_ratio_44v2388h"
                   }
                   topK = {
-                    k     = 16
+                    k     = 25
                     order = "Top"
                     type  = "Auto"
                   }
@@ -3585,7 +3590,7 @@ resource "observe_dashboard" "redis_monitoring" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 400
           }
           selectedStepId = null
           serializable   = true
@@ -3615,7 +3620,191 @@ resource "observe_dashboard" "redis_monitoring" {
               type              = "InputStep"
             },
             {
-              customSummary = ""
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        dataVis = {
+                          config = {
+                            color         = "Default"
+                            hideGridLines = false
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type = "xy"
+                            xConfig = {
+                              visible = true
+                            }
+                            yConfig = {
+                              bounds = {
+                                end   = 100
+                                start = 0
+                              }
+                              unit    = "Percent"
+                              visible = true
+                            }
+                          }
+                          source = {
+                            table = {
+                              groupFields = [
+                                "hostname",
+                              ]
+                              transformType = "none"
+                              type          = "xy"
+                              x             = "valid_from"
+                              y             = "metric_stats_memory_usage_ratio_44v2388h"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "timeseries"
+                        }
+                        disableAggregate = false
+                        filterActions = [
+                          {
+                            params = {
+                              columnId    = "role"
+                              columnType  = "string"
+                              filterVerb  = "filter"
+                              isExcluding = false
+                              values = [
+                                "primary",
+                              ]
+                            }
+                            summary = null
+                            type    = "FilterValues"
+                          },
+                        ]
+                        frameDuration = {
+                          num  = 2
+                          unit = "minute"
+                        }
+                        groupBy = [
+                          "hostname",
+                        ]
+                        id            = "metricExpression-oynzpjwq"
+                        lookupActions = []
+                        metric = {
+                          aggregate   = "sum"
+                          datasetId   = "${local.redis_metrics}"
+                          description = <<-EOT
+                                                        Memory usage as a ratio of maximum memory.
+                                                    EOT
+                          heuristics = {
+                            __typename = "MetricHeuristics"
+                            tags = [
+                              {
+                                __typename = "MetricTag"
+                                column     = "role"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "datacenter"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "hostname"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "instance_pkey"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "label"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "metric_category"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "metric_kind"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "metric_kind_text"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "metric_type"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "project_id"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "region"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "value_type"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "value_type_text"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "relationship"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "space"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "metric_labels"
+                                path       = "role"
+                              },
+                            ]
+                            validLinkLabels = [
+                              "Redis Cluster",
+                            ]
+                          }
+                          interval    = null
+                          name        = "stats_memory_usage_ratio"
+                          rollup      = "avg"
+                          type        = "gauge"
+                          unit        = "1"
+                          userDefined = true
+                        }
+                        showAlignment  = false
+                        showResolution = false
+                        summaryMode    = "over-time"
+                        type           = "metricExpression"
+                        valueColumnId  = "metric_stats_memory_usage_ratio_44v2388h"
+                      },
+                    ]
+                    selectedExpressionId = "metricExpression-oynzpjwq"
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
               datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
@@ -3630,14 +3819,13 @@ resource "observe_dashboard" "redis_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-3q1mday1"
+              id       = "step-buee89o5"
               index    = 1
               isPinned = false
               opal = [
                 "filter role = \"primary\"",
                 "align frame(back: 2m), metric_stats_memory_usage_ratio_44v2388h:avg(m(\"stats_memory_usage_ratio\"))",
-                "aggregate metric_stats_memory_usage_ratio_44v2388h:sum(metric_stats_memory_usage_ratio_44v2388h*100), group_by(hostname)",
-                "",
+                "aggregate metric_stats_memory_usage_ratio_44v2388h:sum(metric_stats_memory_usage_ratio_44v2388h), group_by(hostname)",
               ]
               queryPresentation = {}
               type              = "unknown"
@@ -3645,7 +3833,11 @@ resource "observe_dashboard" "redis_monitoring" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
+            consoleValue = <<-EOT
+                            filter role = "primary"
+                            align frame(back: 2m), metric_stats_memory_usage_ratio_44v2388h:avg(m("stats_memory_usage_ratio"))
+                            aggregate metric_stats_memory_usage_ratio_44v2388h:sum(metric_stats_memory_usage_ratio_44v2388h), group_by(hostname)
+                        EOT
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -3660,7 +3852,7 @@ resource "observe_dashboard" "redis_monitoring" {
         pipeline = <<-EOT
                     filter role = "primary"
                     align frame(back: 2m), metric_stats_memory_usage_ratio_44v2388h:avg(m("stats_memory_usage_ratio"))
-                    aggregate metric_stats_memory_usage_ratio_44v2388h:sum(metric_stats_memory_usage_ratio_44v2388h*100), group_by(hostname)
+                    aggregate metric_stats_memory_usage_ratio_44v2388h:sum(metric_stats_memory_usage_ratio_44v2388h), group_by(hostname)
                 EOT
       },
       {
@@ -3735,7 +3927,7 @@ resource "observe_dashboard" "redis_monitoring" {
                   legend = {
                     placement = "right"
                     type      = "list"
-                    visible   = false
+                    visible   = true
                   }
                   type = "xy"
                   xConfig = {
@@ -3757,7 +3949,7 @@ resource "observe_dashboard" "redis_monitoring" {
                     y             = "metric_stats_network_traffic_5me9224l"
                   }
                   topK = {
-                    k     = 16
+                    k     = 25
                     order = "Top"
                     type  = "Auto"
                   }
@@ -3775,7 +3967,7 @@ resource "observe_dashboard" "redis_monitoring" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 400
           }
           selectedStepId = null
           serializable   = true
@@ -3817,7 +4009,7 @@ resource "observe_dashboard" "redis_monitoring" {
                             legend = {
                               placement = "right"
                               type      = "list"
-                              visible   = false
+                              visible   = true
                             }
                             type = "xy"
                             xConfig = {
@@ -4109,7 +4301,7 @@ resource "observe_dashboard" "redis_monitoring" {
                   legend = {
                     placement = "right"
                     type      = "list"
-                    visible   = false
+                    visible   = true
                   }
                   type = "xy"
                   xConfig = {
@@ -4131,7 +4323,7 @@ resource "observe_dashboard" "redis_monitoring" {
                     y             = "metric_stats_connections_total_46w7dr1w"
                   }
                   topK = {
-                    k     = 16
+                    k     = 25
                     order = "Top"
                     type  = "Auto"
                   }
@@ -4149,7 +4341,7 @@ resource "observe_dashboard" "redis_monitoring" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 400
           }
           selectedStepId = null
           serializable   = true
@@ -4191,7 +4383,7 @@ resource "observe_dashboard" "redis_monitoring" {
                             legend = {
                               placement = "right"
                               type      = "list"
-                              visible   = false
+                              visible   = true
                             }
                             type = "xy"
                             xConfig = {
@@ -4478,12 +4670,10 @@ resource "observe_dashboard" "redis_monitoring" {
                   legend = {
                     placement = "right"
                     type      = "list"
-                    visible   = false
+                    visible   = true
                   }
-                  type = "xy"
-                  xConfig = {
-                    visible = true
-                  }
+                  type    = "xy"
+                  xConfig = {}
                   yConfig = {
                     visible = true
                   }
@@ -4499,7 +4689,7 @@ resource "observe_dashboard" "redis_monitoring" {
                     y             = "metric_keyspace_avg_ttl_7s5qqdnq"
                   }
                   topK = {
-                    k     = 16
+                    k     = 25
                     order = "Top"
                     type  = "Auto"
                   }
@@ -4517,7 +4707,7 @@ resource "observe_dashboard" "redis_monitoring" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 400
           }
           selectedStepId = null
           serializable   = true
@@ -4559,12 +4749,10 @@ resource "observe_dashboard" "redis_monitoring" {
                             legend = {
                               placement = "right"
                               type      = "list"
-                              visible   = false
+                              visible   = true
                             }
-                            type = "xy"
-                            xConfig = {
-                              visible = true
-                            }
+                            type    = "xy"
+                            xConfig = {}
                             yConfig = {
                               visible = true
                             }
@@ -4859,12 +5047,10 @@ resource "observe_dashboard" "redis_monitoring" {
                   legend = {
                     placement = "right"
                     type      = "list"
-                    visible   = false
+                    visible   = true
                   }
-                  type = "xy"
-                  xConfig = {
-                    visible = true
-                  }
+                  type    = "xy"
+                  xConfig = {}
                   yConfig = {
                     visible = true
                   }
@@ -4880,7 +5066,7 @@ resource "observe_dashboard" "redis_monitoring" {
                     y             = "metric_stats_expired_keys_wbhf0r7g"
                   }
                   topK = {
-                    k     = 16
+                    k     = 25
                     order = "Top"
                     type  = "Auto"
                   }
@@ -4898,7 +5084,7 @@ resource "observe_dashboard" "redis_monitoring" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 400
           }
           selectedStepId = null
           serializable   = true
@@ -4940,12 +5126,10 @@ resource "observe_dashboard" "redis_monitoring" {
                             legend = {
                               placement = "right"
                               type      = "list"
-                              visible   = false
+                              visible   = true
                             }
-                            type = "xy"
-                            xConfig = {
-                              visible = true
-                            }
+                            type    = "xy"
+                            xConfig = {}
                             yConfig = {
                               visible = true
                             }
@@ -5235,7 +5419,7 @@ resource "observe_dashboard" "redis_monitoring" {
                   legend = {
                     placement = "right"
                     type      = "list"
-                    visible   = false
+                    visible   = true
                   }
                   type = "xy"
                   xConfig = {
@@ -5257,7 +5441,7 @@ resource "observe_dashboard" "redis_monitoring" {
                     y             = "metric_stats_keyspace_hits_zk0gg3ud"
                   }
                   topK = {
-                    k     = 16
+                    k     = 25
                     order = "Top"
                     type  = "Auto"
                   }
@@ -5275,7 +5459,7 @@ resource "observe_dashboard" "redis_monitoring" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 400
           }
           selectedStepId = null
           serializable   = true
@@ -5317,7 +5501,7 @@ resource "observe_dashboard" "redis_monitoring" {
                             legend = {
                               placement = "right"
                               type      = "list"
-                              visible   = false
+                              visible   = true
                             }
                             type = "xy"
                             xConfig = {
@@ -5613,7 +5797,7 @@ resource "observe_dashboard" "redis_monitoring" {
                   legend = {
                     placement = "right"
                     type      = "list"
-                    visible   = false
+                    visible   = true
                   }
                   type = "xy"
                   xConfig = {
@@ -5637,7 +5821,7 @@ resource "observe_dashboard" "redis_monitoring" {
                     y             = "metric_stats_keyspace_misses_85e379pl"
                   }
                   topK = {
-                    k     = 16
+                    k     = 25
                     order = "Top"
                     type  = "Auto"
                   }
@@ -5655,7 +5839,7 @@ resource "observe_dashboard" "redis_monitoring" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 400
           }
           selectedStepId = null
           serializable   = true
@@ -5697,7 +5881,7 @@ resource "observe_dashboard" "redis_monitoring" {
                             legend = {
                               placement = "right"
                               type      = "list"
-                              visible   = false
+                              visible   = true
                             }
                             type = "xy"
                             xConfig = {
@@ -5927,7 +6111,7 @@ resource "observe_dashboard" "redis_monitoring" {
           {
             datasetId   = "${local.redis_metrics}"
             datasetPath = null
-            inputName   = "keyspace_keys_with_expiration_from_test_gcp_learning-bedbug/Redis Metrics"
+            inputName   = "keyspace_keys_with_expiration_from_Redis/Metrics"
             inputRole   = "Data"
             stageId     = null
           },
@@ -5993,7 +6177,7 @@ resource "observe_dashboard" "redis_monitoring" {
                   legend = {
                     placement = "right"
                     type      = "list"
-                    visible   = false
+                    visible   = true
                   }
                   type = "xy"
                   xConfig = {
@@ -6015,7 +6199,7 @@ resource "observe_dashboard" "redis_monitoring" {
                     y             = "metric_keyspace_keys_with_expiration_ov8o9z71"
                   }
                   topK = {
-                    k     = 100
+                    k     = 25
                     order = "Top"
                     type  = "Auto"
                   }
@@ -6033,7 +6217,7 @@ resource "observe_dashboard" "redis_monitoring" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 50
+            wantBuckets = 400
           }
           selectedStepId = null
           serializable   = true
@@ -6075,7 +6259,7 @@ resource "observe_dashboard" "redis_monitoring" {
                             legend = {
                               placement = "right"
                               type      = "list"
-                              visible   = false
+                              visible   = true
                             }
                             type = "xy"
                             xConfig = {
