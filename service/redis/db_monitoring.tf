@@ -6207,4 +6207,3 @@ resource "observe_dashboard" "redis_monitoring" {
   )
   workspace = local.workspace
 }
-

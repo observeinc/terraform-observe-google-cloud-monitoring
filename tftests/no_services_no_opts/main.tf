@@ -37,7 +37,6 @@ module "default" {
 
   # enable_service_memcache = false
 
-
   feature_flags = {
     "use_name_format_in_preferred_path" = true
   }
