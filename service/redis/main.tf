@@ -35,6 +35,13 @@ locals {
       freshness   = lookup(local.freshness, "redis_metrics", var.freshness_default_duration)
       description = "This dataset contains redis metrics"
     }
+
+    memory_monitor = {
+      workspace   = local.workspace
+      name        = format(var.name_format, "Memory Usage")
+      freshness   = lookup(local.freshness, "redis_metrics", var.freshness_default_duration)
+      description = "This monitor alerts on memory usage above a threshold"
+    }
   }
 
   base_module = var.google
