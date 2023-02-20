@@ -60,7 +60,7 @@ run_single() {
         ${CMD} destroy -auto-approve -input=false | grep -C 1 "Destroy complete!"
     }
 
-    ${CMD} init
+    ${CMD} init -upgrade
     trap 'cleanup $? $LINENO' EXIT
     ${CMD} apply -auto-approve -input=false
 
