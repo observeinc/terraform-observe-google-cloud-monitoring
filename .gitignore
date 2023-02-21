@@ -51,3 +51,7 @@ dashboards/config.ini
 config.ini
 scratch.txt
 service/cloudsql/dashboard_monitoring.old
+__pycache__
+*.zip
+sample_infrastructure/service_modules/compute/flask/testenv
+sample_infrastructure/sockshop
