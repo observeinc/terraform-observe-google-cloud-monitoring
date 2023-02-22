@@ -1,5 +1,6 @@
 resource "observe_monitor" "redis_memory_usage" {
   count       = local.enable_monitors ? 1 : 0
+  disabled    = true
   is_template = true
   inputs      = { "redis_metrics" = one(observe_dataset.redis_metrics).oid }
   name        = local.datasets.memory_monitor.name
