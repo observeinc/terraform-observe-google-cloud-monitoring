@@ -1,5 +1,5 @@
 module "gcp_ubuntu_box" {
-  source      = "/Users/arthur/content_eng/content-eng-arthur/modules/gcp/compute_ubuntu_attached_bucket"
+  source      = "../helper_modules/gcp/compute_ubuntu_attached_bucket"
   region      = var.region
   zone        = var.zone
   project_id  = var.project_id

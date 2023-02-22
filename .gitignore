@@ -46,12 +46,11 @@ service/cloudsql/e2e/README.md
 gettfdef.sh
 
 MakefileLocal
-service/__pycache__/createMetricsLocal.cpython-39.pyc
-dashboards/config.ini
-config.ini
+*.ini
 scratch.txt
-service/cloudsql/dashboard_monitoring.old
 __pycache__
 *.zip
 sample_infrastructure/service_modules/compute/flask/testenv
 sample_infrastructure/sockshop
+*OLD*
+*.old

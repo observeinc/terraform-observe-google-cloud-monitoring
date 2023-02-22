@@ -19,3 +19,5 @@ sudo yum install apache2 -y
 sudo service apache2 restart
 
 echo "<h3>Web Server: ${HOSTNAME}</h3>" | sudo tee /var/www/html/index.html
+
+${append_script}

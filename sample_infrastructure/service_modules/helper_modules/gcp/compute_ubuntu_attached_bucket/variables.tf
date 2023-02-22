@@ -1,18 +1,18 @@
-variable "observe" {
-  description = "variables for agent config"
-  type = object({
-    domain                        = string,
-    customer_id                   = string,
-    datastream_token              = string,
-    install_linux_host_monitoring = bool
-  })
-  default = {
-    domain : "observe-staging.com",
-    install_linux_host_monitoring : true,
-    customer_id : null,
-    datastream_token : null
-  }
-}
+# variable "observe" {
+#   description = "variables for agent config"
+#   type = object({
+#     domain                        = string,
+#     customer_id                   = string,
+#     datastream_token              = string,
+#     install_linux_host_monitoring = bool
+#   })
+#   default = {
+#     domain : "observe-staging.com",
+#     install_linux_host_monitoring : true,
+#     customer_id : null,
+#     datastream_token : null
+#   }
+# }
 
 variable "public_key_path" {
   description = "Public key path"
@@ -118,13 +118,29 @@ variable "region" {
 
 variable "name_format" {
   type    = string
-  default = "gcp-test-%s"
+  default = "arthur-util-%s"
 }
 
 variable "compute_instance_count" {
-  default = 2
+  default = 1
 }
 
 # variable "config_bucket_name" {
 #   type = string
 # }
+
+variable "open_ports" {
+  default = ["22", "80", "8080"]
+}
+
+variable "open_ports_udp" {
+  default = []
+}
+
+variable "source_ranges" {
+  default = ["0.0.0.0/0"]
+}
+
+variable "metadata_startup_script" {
+  default = null
+}

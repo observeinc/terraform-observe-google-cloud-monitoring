@@ -1,32 +1,33 @@
-# resource "random_id" "bucket_prefix" {
-#   byte_length = 8
-# }
+resource "random_id" "bucket_prefix" {
+  byte_length = 8
+}
 
-# # Bucket for files to transfer to compute instances
-# resource "google_storage_bucket" "bucket" {
-#   name                        = format(var.name_format, "${random_id.bucket_prefix.hex}-compute-source") # Every bucket name must be globally unique
-#   location                    = "US"
-#   uniform_bucket_level_access = true
-#   project                     = var.project_id
-#   force_destroy               = true
-# }
+# Bucket for files to transfer to compute instances
+resource "google_storage_bucket" "bucket" {
+  name                        = format(var.name_format, "${random_id.bucket_prefix.hex}-compute-source") # Every bucket name must be globally unique
+  location                    = "US"
+  uniform_bucket_level_access = true
+  project                     = var.project_id
+  force_destroy               = true
+}
 
 # list of files to upload
 locals {
   list_of_files = [
-    { source : "flask/main.py", name : "flask/main.py" },
-    { source : "flask/templates/home.html", name : "flask/templates/home.html" },
+    { source : "stuff_for_s3/README.md", name : "README.md" },
   ]
+
+  bucket_name = google_storage_bucket.bucket.name
 }
 
 # upload list of files
-# resource "google_storage_bucket_object" "object" {
-#   for_each = { for key, value in local.list_of_files : key => value }
+resource "google_storage_bucket_object" "object" {
+  for_each = { for key, value in local.list_of_files : key => value }
 
-#   name   = each.value.name
-#   bucket = var.config_bucket_name
-#   source = "${path.module}/${each.value.source}" # Add path to the zipped function source code
-# }
+  name   = each.value.name
+  bucket = local.bucket_name
+  source = "${path.module}/${each.value.source}" # Add path to the zipped function source code
+}
 
 # create file in bucket
 # resource "google_storage_bucket_object" "object_script" {
