@@ -9,7 +9,6 @@ import os
 
 from opentelemetry.instrumentation.mysql import MySQLInstrumentor
 
-MySQLInstrumentor().instrument()
 
 mysql_host = os.getenv("MYSQL_HOST")
 mysql_dbname = os.getenv("MYSQL_DBNAME")
@@ -63,13 +62,15 @@ def main(request) -> typing.List[dict]:
             return repr(e), 500
 
         try:
-            connection = mysql.connector.connect(
-                host=mysql_host,
-                database=mysql_dbname,
-                user=mysql_user,
-                password=mysql_password,
+            connection = MySQLInstrumentor().instrument_connection(
+                mysql.connector.connect(
+                    host=mysql_host,
+                    database=mysql_dbname,
+                    user=mysql_user,
+                    password=mysql_password,
+                )
             )
-
+            # MySQLInstrumentor().instrument_connection(connection, my_trace)
             if connection.is_connected():
                 db_info = connection.get_server_info()
                 with my_trace.start_as_current_span(f"connection-mysql") as span:

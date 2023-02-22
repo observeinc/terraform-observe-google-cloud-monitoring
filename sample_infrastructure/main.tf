@@ -1,6 +1,6 @@
 locals {
   name_format = var.name_format
-  hack        = "${module.function_bigquery.bucket_object.md5hash}=1"
+  hack        = "${module.function_bigquery.bucket_object.md5hash}=123"
 }
 
 # Create a big query dataset and tables
