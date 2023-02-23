@@ -71,7 +71,7 @@ resource "google_cloudfunctions_function" "this" {
   #   labels = var.labels
 
   # vpc connector allows function to connect to redis instance
-  # vpc_connector = google_vpc_access_connector.connector.id
+  vpc_connector = var.vpc_connector_id
 }
 
 

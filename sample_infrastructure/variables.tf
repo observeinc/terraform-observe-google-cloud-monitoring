@@ -8,6 +8,16 @@ variable "region" {
   description = "GCP region to deploy sample env"
 }
 
+variable "zone1" {
+  type        = string
+  description = "GCP zone"
+}
+
+variable "zone2" {
+  type        = string
+  description = "GCP alternate zone"
+}
+
 variable "name_format" {
   type        = string
   description = "Format string to use for infra names."

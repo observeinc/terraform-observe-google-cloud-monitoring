@@ -82,3 +82,8 @@ variable "function_max_instances" {
   type        = number
   default     = 5
 }
+
+variable "vpc_connector_id" {
+  type    = string
+  default = null
+}
