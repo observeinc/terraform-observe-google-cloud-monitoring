@@ -1,0 +1,16 @@
+name: Daily tftests run
+
+on:
+  workflow_dispatch:
+  # every day at 10pm PST
+  schedule:
+    - cron: "0 6 * * *"
+
+jobs:
+  daily-ci-tests:
+    uses: observeinc/.github/.github/workflows/terraform-observe_scheduler.yaml@main
+    secrets: inherit
+    with:
+      # you can opt out of ci-tests scheduled by adding a list of "jobs" ids for the 
+      # tests that you want to skip, like so...
+      skip: '{"jobs": ["conventional-commits", "single-commit"]}'
