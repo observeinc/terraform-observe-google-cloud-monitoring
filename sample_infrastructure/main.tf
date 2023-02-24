@@ -1,7 +1,7 @@
 locals {
   name_format = var.name_format
   # There is a stupid bug that makes permissions for cloud scheduler not work right unless I change this when it has inconsitent plan
-  hack = "${module.function_bigquery.bucket_object.md5hash}=123"
+  hack = "${module.function_bigquery.bucket_object.md5hash}=12345"
 }
 
 #------------------------------------------------------------------------#
@@ -55,7 +55,6 @@ module "bigquery" {
   project_id = var.project_id
   # region      = var.region
   name_format = local.name_format
-  # config_bucket_name = module.config_bucket[0].bucket_name
 }
 
 #------------------------------------------------------------------------#

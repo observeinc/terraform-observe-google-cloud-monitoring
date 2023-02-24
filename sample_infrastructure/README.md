@@ -8,6 +8,11 @@ Contents of this folder have terraform and other code needed to deploy sample in
 !!!Code assumes you have a project set up with proper permissions!!!
 See "Sample project creation terraform" below for example
 
+KNOWN ISSUE - If you get the error "Error: Provider produced inconsistent final plan" referencing cloud scheduler change the local variable string in main.tf
+```
+hack = "${module.function_bigquery.bucket_object.md5hash}=1234"
+```
+
 main.tf file in this directory contains modules to deploy infrastructure
 
 It is designed to be read from top to bottom and you can comment out everything and deploy modules one at a time working from top to bottom.
