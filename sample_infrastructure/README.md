@@ -17,3 +17,8 @@ The collection folder contains terraform to deploy collection resources to GCP u
 
 Code assumes you have a project set up with proper permissions
 
+# Deploying sock-shop on GKE instance
+Current code is here - https://github.com/observeinc/content-eng-sock-shop-temp/tree/main/sockshop
+
+Sock-shop deployment with OTEL instrumentation is under development and will change but there should be a link to deployable versions here
+
