@@ -127,26 +127,3 @@ resource "google_compute_backend_service" "backend_service_flask" {
     max_rate_per_instance = 5
   }
 }
-
-# resource "google_compute_backend_service" "functio_backend_service" {
-#   name          = format(var.name_format, "functon-backend-service")
-#   project       = var.project_id
-#   port_name     = "http"
-#   protocol      = "HTTP"
-#   # health_checks = ["${google_compute_health_check.healthcheck.self_link}"]
-
-#   backend {
-#     group                 = google_compute_region_network_endpoint_group.function_neg.id
-#   }
-# }
-
-# # show external ip address of load balancer
-# resource "google_compute_region_network_endpoint_group" "function_neg" {
-#   project               = var.project_id
-#   name                  = format(var.name_format, "function-neg")
-#   network_endpoint_type = "SERVERLESS"
-#   region                = var.region
-#   cloud_function {
-#     function = var.function_name
-#   }
-# }

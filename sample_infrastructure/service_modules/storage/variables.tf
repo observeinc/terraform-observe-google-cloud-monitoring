@@ -3,10 +3,10 @@ variable "project_id" {
   description = "First project I want to create provider for"
 }
 
-variable "region" {
-  type        = string
-  description = "First region I want to create provider for"
-}
+# variable "region" {
+#   type        = string
+#   description = "First region I want to create provider for"
+# }
 
 variable "name_format" {
   type        = string
@@ -15,11 +15,13 @@ variable "name_format" {
 }
 
 variable "bucket_count" {
-  type    = number
-  default = 2
+  type        = number
+  default     = 2
+  description = "buckets to create"
 }
 
 variable "force_destroy" {
-  type    = bool
-  default = true
+  type        = bool
+  default     = true
+  description = "force destroy bucket"
 }

@@ -92,6 +92,7 @@ variable "project_name" {
 
 variable "project_id" {
   type = string
+  description = "GCP project to deploy to"
 }
 
 variable "org_id" {

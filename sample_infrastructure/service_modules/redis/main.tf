@@ -29,7 +29,7 @@ eval "$gcloud_delete_instance"
 
 
 resource "google_redis_instance" "cache" {
-  name           = "ha-memory-cache"
+  name           = format(var.name_format, "ha-memory-cache")
   tier           = "STANDARD_HA"
   memory_size_gb = 1
   project        = var.project_id

@@ -38,9 +38,9 @@ Function code is organized here - sample_infrastructure/python_scripts
 # create a compute based otel collector pointed at observe
 #------------------------------------------------------------------------#
 module "compute_otel_collector" {
-  source      = "./service_modules/compute_otel_collector"
-  project_id  = var.project_id
-  region      = var.region
+  source     = "./service_modules/compute_otel_collector"
+  project_id = var.project_id
+  # region      = var.region
   zone        = "${var.region}-a"
   name_format = format(var.name_format, "otel-%s")
   observe     = var.observe
@@ -51,9 +51,9 @@ module "compute_otel_collector" {
 #------------------------------------------------------------------------#
 # Important - tables expire based on dataset property see module for details
 module "bigquery" {
-  source      = "./service_modules/bigquery"
-  project_id  = var.project_id
-  region      = var.region
+  source     = "./service_modules/bigquery"
+  project_id = var.project_id
+  # region      = var.region
   name_format = local.name_format
   # config_bucket_name = module.config_bucket[0].bucket_name
 }
@@ -127,7 +127,7 @@ module "cloudsql" {
   project_id      = var.project_id
   region          = var.region
   name_format     = format(var.name_format, "sql-%s")
-  DATABASE_FILTER = ["MYSQL_8_0", "POSTGRES_14"] # WARNING SQL SERVER IS EXPENSIVE "MYSQL_8_0", "POSTGRES_14", "SQLSERVER_2019_STANDARD"]
+  database_filter = ["MYSQL_8_0", "POSTGRES_14"] # WARNING SQL SERVER IS EXPENSIVE "MYSQL_8_0", "POSTGRES_14", "SQLSERVER_2019_STANDARD"]
 }
 
 #------------------------------------------------------------------------#
@@ -277,7 +277,7 @@ module "gke" {
 #------------------------------------------------------------------------#
 # Create container registry
 #------------------------------------------------------------------------#
-resource "google_artifact_registry_repository" "my-repo" {
+resource "google_artifact_registry_repository" "my_repo" {
   location      = var.region
   project       = var.project_id
   repository_id = "sockshop-registry"

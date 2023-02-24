@@ -7,10 +7,10 @@ terraform {
       version = ">= 4.18.0"
     }
 
-    # observe = {
-    #   source  = "terraform.observeinc.com/observeinc/observe"
-    #   version = "~> 0.11.0"
-    # }
+    random = {
+      source  = "hashicorp/random"
+      version = ">= 3.4.3"
+    }
   }
   required_version = ">= 1.2"
 }

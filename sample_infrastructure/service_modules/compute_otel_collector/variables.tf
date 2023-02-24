@@ -3,10 +3,10 @@ variable "project_id" {
   description = "First project I want to create provider for"
 }
 
-variable "region" {
-  type        = string
-  description = "First region I want to create provider for"
-}
+# variable "region" {
+#   type        = string
+#   description = "First region I want to create provider for"
+# }
 
 
 variable "zone" {
@@ -31,4 +31,5 @@ variable "observe" {
     customer_id      = "YOURS"
     datastream_token = "YOURS"
   }
+  description = "observe environment datastream connection details"
 }

@@ -1,6 +1,6 @@
 module "gcp_ubuntu_box" {
-  source      = "../helper_modules/gcp/compute_ubuntu_attached_bucket"
-  region      = var.region
+  source = "../helper_modules/gcp/compute_ubuntu_attached_bucket"
+  # region      = var.region
   zone        = var.zone
   project_id  = var.project_id
   name_format = var.name_format

@@ -45,7 +45,7 @@ output "gke" {
 # tf output -json | jq -r '.gke.value'
 
 output "google_artifact_registry_repository" {
-  value     = google_artifact_registry_repository.my-repo
+  value     = google_artifact_registry_repository.my_repo
   sensitive = true
 }
 # tf output -json | jq -r '.google_artifact_registry_repository.value'

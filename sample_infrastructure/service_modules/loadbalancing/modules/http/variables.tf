@@ -1,20 +1,21 @@
 variable "project_id" {
-  type = string
+  type        = string
+  description = "GCP project to deploy to"
 }
 
 variable "region" {
-  type = string
+  type        = string
+  description = "GCP region to deploy to"
 }
 
 variable "name_format" {
-  type    = string
-  default = "gcp-test-%s"
+  type        = string
+  default     = "gcp-test-%s"
+  description = "name prefix"
 }
 
 variable "target_group_instances" {
-  default = []
-}
-
-variable "function_name" {
-  type = string
+  default     = []
+  description = "target_group_instances"
+  type        = list(any)
 }

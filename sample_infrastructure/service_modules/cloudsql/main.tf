@@ -1,6 +1,6 @@
 
 locals {
-  databases = { for key, value in var.DATABASE_VALUES : key => value if contains(var.DATABASE_FILTER, key) }
+  databases = { for key, value in var.database_values : key => value if contains(var.database_filter, key) }
 
   # database_set = flatten([
   #   for set in var.instance_set : [
@@ -124,17 +124,17 @@ resource "google_sql_user" "users" {
   deletion_policy = "ABANDON"
 }
 
-locals {
-  db_var = flatten([for key, value in google_sql_database_instance.instances :
-    {
-      db            = key
-      host          = value.public_ip_address
-      username      = google_sql_user.users[key].name
-      password      = google_sql_user.users[key].password
-      database_name = local.databases[key].database
-    }
-  ])
-}
+# locals {
+#   db_var = flatten([for key, value in google_sql_database_instance.instances :
+#     {
+#       db            = key
+#       host          = value.public_ip_address
+#       username      = google_sql_user.users[key].name
+#       password      = google_sql_user.users[key].password
+#       database_name = local.databases[key].database
+#     }
+#   ])
+# }
 
 # resource "local_file" "db" {
 #   content  = jsonencode(local.db_var)

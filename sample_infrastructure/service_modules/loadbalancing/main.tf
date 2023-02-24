@@ -2,16 +2,16 @@ locals {
 
 }
 
-data "google_compute_network" "default" {
-  name    = "default"
-  project = var.project_id
-}
+# data "google_compute_network" "default" {
+#   name    = "default"
+#   project = var.project_id
+# }
 
-data "google_compute_subnetwork" "uswest1" {
-  project = var.project_id
-  name    = "default"
-  region  = "us-west1"
-}
+# data "google_compute_subnetwork" "uswest1" {
+#   project = var.project_id
+#   name    = "default"
+#   region  = "us-west1"
+# }
 
 resource "google_compute_global_address" "my_ip" {
   name    = format(var.name_format, "static-load-balancer")
@@ -177,7 +177,6 @@ module "http_load_balancer" {
   name_format            = var.name_format
   target_group_instances = var.target_group_instances
   region                 = var.region
-  function_name          = var.function_name
 }
 
 module "network_load_balancer" {

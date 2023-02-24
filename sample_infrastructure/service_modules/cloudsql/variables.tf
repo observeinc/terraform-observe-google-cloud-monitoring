@@ -1,12 +1,12 @@
 
-variable "DATABASE_FILTER" {
+variable "database_filter" {
   type        = list(any)
   description = "list of database platforms to filter"
   default     = ["MYSQL_8_0", "POSTGRES_14"]
   # default     = ["MYSQL_8_0", "POSTGRES_14", "SQLSERVER_2019_STANDARD"]
 }
 
-variable "DATABASE_VALUES" {
+variable "database_values" {
   type        = map(any)
   description = "list of database platforms to filter"
   default = {
@@ -65,16 +65,19 @@ variable "DATABASE_VALUES" {
 }
 
 variable "project_id" {
-  type = string
+  type        = string
+  description = "GCP project to deploy to"
 }
 
 variable "region" {
-  type = string
+  type        = string
+  description = "GCP region to deploy to"
 }
 
 variable "name_format" {
-  type    = string
-  default = "gcp-test-%s"
+  type        = string
+  default     = "gcp-test-%s"
+  description = "name prefix"
 }
 
 # variable "database_instance_count" {
@@ -82,7 +85,9 @@ variable "name_format" {
 # }
 
 variable "random_int_keeper" {
-  default = 1
+  default     = 1
+  type        = number
+  description = "random number"
 }
 
 # variable "config_bucket_name" {

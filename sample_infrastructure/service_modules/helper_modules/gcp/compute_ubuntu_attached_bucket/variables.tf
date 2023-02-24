@@ -21,6 +21,7 @@ variable "public_key_path" {
   type        = string
 }
 
+# tflint-ignore: terraform_unused_declarations
 variable "private_key_path" {
   description = "Private key path"
   nullable    = false
@@ -28,14 +29,15 @@ variable "private_key_path" {
   type        = string
 }
 
-variable "use_branch_name" {
-  default     = "main"
-  description = "git repository branch to use"
-  type        = string
-}
+# variable "use_branch_name" {
+#   default     = "main"
+#   description = "git repository branch to use"
+#   type        = string
+# }
 
 variable "compute_values" {
   description = "variable for what compute instances to create"
+  type        = map(any)
   default = {
     #https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts
     UBUNTU_22_04_LTS = {
@@ -109,20 +111,25 @@ variable "zone" {
 }
 
 variable "project_id" {
-  type = string
+  type        = string
+  description = "GCP project to deploy to"
 }
 
-variable "region" {
-  type = string
-}
+# variable "region" {
+#   type        = string
+#   description = "GCP region to deploy to"
+# }
 
 variable "name_format" {
-  type    = string
-  default = "arthur-util-%s"
+  type        = string
+  default     = "arthur-util-%s"
+  description = "name prefix"
 }
 
 variable "compute_instance_count" {
-  default = 1
+  default     = 1
+  type        = number
+  description = "compute_instance_count"
 }
 
 # variable "config_bucket_name" {
@@ -130,17 +137,25 @@ variable "compute_instance_count" {
 # }
 
 variable "open_ports" {
-  default = ["22", "80", "8080"]
+  default     = ["22", "80", "8080"]
+  type        = list(string)
+  description = "list of open ports"
 }
 
 variable "open_ports_udp" {
-  default = []
+  default     = []
+  type        = list(string)
+  description = "list of open udp ports"
 }
 
 variable "source_ranges" {
-  default = ["0.0.0.0/0"]
+  default     = ["0.0.0.0/0"]
+  type        = list(string)
+  description = "list of ips allowed to access - defaults to wide open"
 }
 
 variable "metadata_startup_script" {
-  default = null
+  default     = null
+  type        = string
+  description = "content to append to base startup script"
 }

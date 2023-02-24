@@ -38,10 +38,10 @@ locals {
   # }
 
   # For dynamic access config block in instance
-  access_config = {
-    "0" = []
-    "1" = [{}]
-  }
+  # access_config = {
+  #   "0" = []
+  #   "1" = [{}]
+  # }
 
 }
 
@@ -91,7 +91,7 @@ resource "google_compute_instance" "instances" {
     }
   }
 
-  // Local SSD disk
+  #  Local SSD disk
   # scratch_disk {
   #   interface = "SCSI"
   # }

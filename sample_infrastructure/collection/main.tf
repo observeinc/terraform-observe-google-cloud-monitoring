@@ -11,14 +11,14 @@ data "observe_workspace" "default" {
   name = "Default"
 }
 
-data "observe_datastream" "GCP" {
+data "observe_datastream" "gcp" {
   name      = "GCP"
   workspace = local.workspace.oid
 }
 
 locals {
   workspace  = data.observe_workspace.default
-  datastream = data.observe_datastream.GCP
+  datastream = data.observe_datastream.gcp
 }
 
 module "monitoring_poller" {
