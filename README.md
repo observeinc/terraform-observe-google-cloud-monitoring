@@ -47,6 +47,7 @@ module "google" {
 | <a name="module_iam"></a> [iam](#module\_iam) | ./service/iam | n/a |
 | <a name="module_load_balancing"></a> [load\_balancing](#module\_load\_balancing) | ./service/loadbalancing | n/a |
 | <a name="module_pubsub"></a> [pubsub](#module\_pubsub) | ./service/pubsub | n/a |
+| <a name="module_redis"></a> [redis](#module\_redis) | ./service/redis | n/a |
 | <a name="module_storage"></a> [storage](#module\_storage) | ./service/storage | n/a |
 
 ## Resources
@@ -85,6 +86,7 @@ module "google" {
 | <a name="input_enable_service_gke"></a> [enable\_service\_gke](#input\_enable\_service\_gke) | Enable GKE service. | `bool` | `true` | no |
 | <a name="input_enable_service_load_balancing"></a> [enable\_service\_load\_balancing](#input\_enable\_service\_load\_balancing) | Enable Cloud Load Balancing service. | `bool` | `true` | no |
 | <a name="input_enable_service_pubsub"></a> [enable\_service\_pubsub](#input\_enable\_service\_pubsub) | Enable Pub Sub service. | `bool` | `true` | no |
+| <a name="input_enable_service_redis"></a> [enable\_service\_redis](#input\_enable\_service\_redis) | Enable Redis service. | `bool` | `true` | no |
 | <a name="input_enable_service_storage"></a> [enable\_service\_storage](#input\_enable\_service\_storage) | Enable Cloud Storage service. | `bool` | `true` | no |
 | <a name="input_feature_flags"></a> [feature\_flags](#input\_feature\_flags) | Toggle features which are being rolled out or phased out. | `map(bool)` | `{}` | no |
 | <a name="input_freshness_default_duration"></a> [freshness\_default\_duration](#input\_freshness\_default\_duration) | Default dataset freshness. Can be overridden with freshness input | `string` | `"5m"` | no |
@@ -113,6 +115,7 @@ module "google" {
 | <a name="output_metrics"></a> [metrics](#output\_metrics) | n/a |
 | <a name="output_projects"></a> [projects](#output\_projects) | n/a |
 | <a name="output_pubsub_events"></a> [pubsub\_events](#output\_pubsub\_events) | n/a |
+| <a name="output_redis"></a> [redis](#output\_redis) | n/a |
 | <a name="output_resource_asset_inventory_records"></a> [resource\_asset\_inventory\_records](#output\_resource\_asset\_inventory\_records) | n/a |
 | <a name="output_storage"></a> [storage](#output\_storage) | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

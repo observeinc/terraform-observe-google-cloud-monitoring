@@ -26,6 +26,7 @@ resource "observe_dataset" "cloudscheduler_logs" {
             project_id:string(resourceLabelsJson.project_id)
             
         make_col http_status:int64(httpRequest.status)
+        make_col asset_inventory_name: string_concat("projects/",project_id,"/locations/",location,"/jobs/",job_id)
 
     EOF
   }
@@ -35,13 +36,24 @@ resource "observe_dataset" "cloudscheduler_logs" {
         pick_col 
             timestamp,
             project_id,
+            asset_inventory_name,
             location,
             job_id,
             http_status,
             status,
             targetType,
             url
+            
+        add_key asset_inventory_name
     EOF
   }
+}
+
+resource "observe_link" "job" {
+  workspace = var.workspace.oid
+  source    = observe_dataset.cloudscheduler_logs.oid
+  target    = observe_dataset.cloud_scheduler_jobs.oid
+  fields    = ["asset_inventory_name"]
+  label     = "log"
 }
 
