@@ -6,7 +6,7 @@ data "observe_workspace" "default" {
 
 data "observe_datastream" "default" {
   workspace = data.observe_workspace.default.oid
-  name      = "System"
+  name      = var.default_datastream
 }
 
 module "all_services_all_opts" {
@@ -24,8 +24,11 @@ module "all_services_all_opts" {
   enable_service_bigquery       = true
   enable_service_gke            = true
   enable_service_cloudscheduler = true
+  enable_service_redis          = true
+  # enable_service_memcache       = true
 
   feature_flags = {
     "use_name_format_in_preferred_path" = true
   }
+  freshness_default_duration = var.freshness_default_duration
 }

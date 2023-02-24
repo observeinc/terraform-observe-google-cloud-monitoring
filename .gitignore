@@ -30,7 +30,6 @@ override.tf.json
 .DS_Store
 .vscode
 *.terraform.lock.hcl
-
 *.tf-e
 
 *metrics.json
@@ -51,7 +50,7 @@ scratch.txt
 __pycache__
 *.zip
 sample_infrastructure/service_modules/compute/flask/testenv
-
 *OLD*
 *.old
 sample_infrastructure/rust_scripts
+

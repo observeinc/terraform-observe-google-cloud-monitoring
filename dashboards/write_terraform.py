@@ -8,6 +8,7 @@
 
 # ./write_terraform.py -d 41146418 -n ../service/cloudfunctions/cloudfunctionsDashboard.tf -e arthur-eng-tenant
 
+# ./write_terraform.py -d 41720572 -n ../service/redis/db_monitoring.tf -e arthur-stage-tenant-128
 # see https://github.com/observeinc/content-eng-tools/blob/main/engage_datasets/config/configfile.ini for example config file
 
 """This file is for converting json produced by getTerraform GraphQL method"""
@@ -30,8 +31,7 @@ try:
     from gql.transport.requests import RequestsHTTPTransport
 except ImportError:
     subprocess.check_call([sys.executable, "-m", "pip", "install", "gql"])
-    subprocess.check_call([sys.executable, "-m", "pip",
-                          "install", "requests-toolbelt"])
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "requests-toolbelt"])
     from gql import gql, Client
     from gql.transport.requests import RequestsHTTPTransport
 
@@ -256,8 +256,7 @@ def write_dashboard():
             f"""{variable_name} = resource.observe_dataset.{variable_name}.id"""
         )
         # get worspace and name for replacement with variables
-        workspace_oid = re.findall(
-            'workspace[^"]*("[^"]*")', line["terraform"])[0]
+        workspace_oid = re.findall('workspace[^"]*("[^"]*")', line["terraform"])[0]
         name = re.findall('name[^"]*("[^"]*")', line["terraform"])[0]
 
         # replace
@@ -309,6 +308,8 @@ def write_dashboard():
             line = line.replace(DASHBOARD_NAME, "${local.dashboard_name}")
 
             fp.write(line)
+            if 'resource "observe_dashboard"' in line:
+                fp.write("description = local.dashboard_description\n")
 
     os.remove(TMP_FILE_NAME)
 
@@ -316,8 +317,7 @@ def write_dashboard():
     os.system(terraform_command)
 
 
-parser = argparse.ArgumentParser(
-    description="Observe UI to Terraform Object script")
+parser = argparse.ArgumentParser(description="Observe UI to Terraform Object script")
 parser.add_argument("-d", dest="dash_id", action="store", required=True)
 parser.add_argument("-e", dest="env", action="store")
 parser.add_argument("-n", dest="output_name", action="store")

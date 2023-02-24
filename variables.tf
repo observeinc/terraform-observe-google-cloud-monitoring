@@ -144,4 +144,18 @@ variable "enable_service_gke" {
   EOF
 }
 
+variable "enable_service_redis" {
+  type        = bool
+  default     = true
+  description = <<-EOF
+    Enable Redis service.
+  EOF
+}
 
+# variable "enable_service_memcache" {
+#   type        = bool
+#   default     = true
+#   description = <<-EOF
+#     Enable Memcache service.
+#   EOF
+# }

@@ -6,7 +6,7 @@ data "observe_workspace" "default" {
 
 data "observe_datastream" "default" {
   workspace = data.observe_workspace.default.oid
-  name      = "System"
+  name      = var.default_datastream
 }
 
 module "all_services_def_opts" {
