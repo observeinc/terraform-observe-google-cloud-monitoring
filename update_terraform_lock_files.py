@@ -8,6 +8,10 @@ def terraform_init():
     os.system("terraform init -upgrade")
 
     walker("./service", exclude=set(["__pycache__", "dashStuff", "example"]))
+    walker(
+        "./sample_infrastructure",
+        exclude=set(["python_scripts", "rust_scripts", "images"]),
+    )
     walker("./tftests", exclude=set([]))
 
 

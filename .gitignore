@@ -50,7 +50,7 @@ scratch.txt
 __pycache__
 *.zip
 sample_infrastructure/service_modules/compute/flask/testenv
-sample_infrastructure/sockshop
 *OLD*
 *.old
+sample_infrastructure/rust_scripts
 
