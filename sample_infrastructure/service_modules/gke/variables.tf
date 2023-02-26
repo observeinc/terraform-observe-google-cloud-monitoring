@@ -30,6 +30,12 @@ variable "name_format" {
 
 variable "gke_num_nodes" {
   type        = number
-  default     = 2
+  default     = 1
   description = "number of gke nodes"
+}
+
+variable "node_machine_type" {
+  type        = string
+  default     = "n1-standard-1"
+  description = "machine type for nodes"
 }

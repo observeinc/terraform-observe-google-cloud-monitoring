@@ -38,6 +38,20 @@ output "cloudsql" {
 }
 # tf output -json | jq -r '.cloudsql.value.connection_string'
 
+output "function_mysql" {
+  value     = module.function_mysql
+  sensitive = true
+}
+# tf output -json | jq -r '.function_mysql.value.cloud_function_trigger'
+
+output "function_postgres" {
+  value     = module.function_postgres
+  sensitive = true
+}
+# tf output -json | jq -r '.function_postgres.value'
+
+
+
 output "gke" {
   value     = module.gke
   sensitive = true
@@ -49,5 +63,18 @@ output "google_artifact_registry_repository" {
   sensitive = true
 }
 # tf output -json | jq -r '.google_artifact_registry_repository.value'
+
+
+output "redis" {
+  value     = module.redis
+  sensitive = true
+}
+# tf output -json | jq -r '.redis.value'
+
+output "function_redis" {
+  value     = module.function_redis
+  sensitive = true
+}
+# tf output -json | jq -r '.function_redis.value'
 
 

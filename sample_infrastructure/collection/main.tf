@@ -1,7 +1,7 @@
 module "observe_gcp_collection" {
-  # source = "../../../terraform-google-collection"
-  source = "observeinc/collection/google"
-  name   = format(var.name_format, "env")
+  source = "../../../terraform-google-collection"
+  # source = "observeinc/collection/google"
+  name = format(var.name_format, "env")
 
   resource        = "projects/${var.project_id}"
   enable_function = true

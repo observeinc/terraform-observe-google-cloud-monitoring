@@ -26,6 +26,7 @@ variable "metric_prefixes" {
     "serviceruntime.googleapis.com/",
     "loadbalancing.googleapis.com/",
     "kubernetes.io/",
-    "redis.googleapis.com/"
+    "redis.googleapis.com/",
+    "run.googleapis.com/"
   ]
 }

@@ -1,7 +1,9 @@
 locals {
   name_format = var.name_format
+
+  # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   # There is a stupid bug that makes permissions for cloud scheduler not work right unless I change this when it has inconsitent plan
-  hack = "${module.function_bigquery.bucket_object.md5hash}=12345"
+  hack = "${module.function_bigquery.bucket_object.md5hash}=123456"
 }
 
 #------------------------------------------------------------------------#
@@ -267,10 +269,11 @@ module "cloud_scheduler_postgres_read" {
 # Create kubernetes cluster
 #------------------------------------------------------------------------#
 module "gke" {
-  source      = "./service_modules/gke"
-  project_id  = var.project_id
-  region      = var.region
-  name_format = var.name_format
+  source            = "./service_modules/gke"
+  project_id        = var.project_id
+  region            = var.region
+  name_format       = var.name_format
+  node_machine_type = "n1-standard-2"
 }
 
 #------------------------------------------------------------------------#
@@ -367,3 +370,15 @@ module "cloud_scheduler_redis_read" {
   "method" : "read" }))
   md5hash = local.hack
 }
+
+#------------------------------------------------------------------------#
+# Create cloud run instance
+#------------------------------------------------------------------------#
+module "cloud_run" {
+  source      = "./service_modules/cloud_run"
+  project_id  = var.project_id
+  region      = var.region
+  name_format = format(var.name_format, "redread-%s")
+
+}
+# need to add Eventarc trigger service to projects
