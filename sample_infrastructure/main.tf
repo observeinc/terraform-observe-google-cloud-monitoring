@@ -24,12 +24,14 @@ observe = {
 
 Modules are for each part of the GCP stack we have built services for
 
-Modules for each deployed serve are here - sample_infrastructure/service_modules
+Modules for each deployed service are here - sample_infrastructure/service_modules
 
-Modules can be repeated as long as you chage names
+Modules can be repeated as long as you change names
 
 Function code is organized here - sample_infrastructure/python_scripts
 -- All functions are designed to use otel collector and are triggered by cloud scheduler jobs
+
+-- Using locust python library we can load infrastruced as well - implementation under way in separate repo
 
 
 */
