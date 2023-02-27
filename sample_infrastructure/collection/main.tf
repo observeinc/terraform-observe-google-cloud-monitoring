@@ -1,7 +1,7 @@
 module "observe_gcp_collection" {
-  source = "../../../terraform-google-collection"
-  # source = "observeinc/collection/google"
-  name = format(var.name_format, "env")
+  #source = "../../../terraform-google-collection"
+  source = "observeinc/collection/google"
+  name   = format(var.name_format, "env")
 
   resource        = "projects/${var.project_id}"
   enable_function = true
@@ -21,6 +21,9 @@ locals {
   datastream = data.observe_datastream.gcp
 }
 
+###############################################################
+# OPTIONAL - Pollers can be deployed via the UI in the GCP App
+###############################################################
 module "monitoring_poller" {
   source                           = "git@github.com:observeinc/terraform-observe-google.git//sources/monitoring"
   workspace                        = local.workspace

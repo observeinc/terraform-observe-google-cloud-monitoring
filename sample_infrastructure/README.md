@@ -4,6 +4,7 @@ Contents of this folder have terraform and other code needed to deploy sample in
 ![Sample Infrastructure](./images/GCP_Sample_Infra.jpeg)
 
 # How to deploy sample infrastructure
+https://www.notion.so/observeinc/Sample-Environments-bcc2ca6ea18c4def909fb862470f005d?pvs=4#c1e8903a2a9f48c08711526b6de884d2
 
 !!!Code assumes you have a project set up with proper permissions!!!
 See "Sample project creation terraform" below for example
