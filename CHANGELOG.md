@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/observeinc/terraform-observe-google/compare/v1.1.0...v1.2.0) (2023-02-27)
+
+
+### Features
+
+* add redis service ([#144](https://github.com/observeinc/terraform-observe-google/issues/144)) ([286f244](https://github.com/observeinc/terraform-observe-google/commit/286f244e6dca642518f4419c653c991354968437))
+
+
+
 # [1.1.0](https://github.com/observeinc/terraform-observe-google/compare/v1.0.3...v1.1.0) (2023-02-14)
 
 
