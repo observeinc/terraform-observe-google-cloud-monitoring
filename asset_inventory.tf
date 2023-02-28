@@ -140,6 +140,7 @@ resource "observe_dataset" "resource_asset_inventory_records" {
     pipeline = <<-EOF
       pick_col 
         time,
+        update_time,
         deleted,
         parent_project_id,
         project_id,
