@@ -38,3 +38,34 @@ resource "observe_dataset" "artifact_registry_instances" {
   }
 }
 
+
+resource "observe_dataset" "artifact_registry_images" {
+  workspace   = local.datasets.artifact_registry_images.workspace
+  name        = local.datasets.artifact_registry_images.name
+  freshness   = local.datasets.artifact_registry_images.freshness
+  description = local.datasets.artifact_registry_images.description
+
+  inputs = {
+    "events" = var.google.resource_asset_inventory_records.oid
+  }
+
+  stage {
+    pipeline = <<-EOF
+        filter asset_type = "artifactregistry.googleapis.com/DockerImage"
+        make_col imageSizeBytes:string(data.imageSizeBytes),
+            mediaType:string(data.mediaType),
+            name_1:string(data.name),
+            tags:data.tags,
+            uploadTime:string(data.uploadTime),
+            uri:string(data.uri)
+
+        EOF
+  }
+
+  stage {
+
+    pipeline = <<-EOF
+
+      EOF
+  }
+}

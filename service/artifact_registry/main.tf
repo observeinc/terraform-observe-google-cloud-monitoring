@@ -22,6 +22,13 @@ locals {
       description = "This dataset is used to create Artifact Registry Resources"
     }
 
+    artifact_registry_images = {
+      workspace   = local.workspace.oid
+      name        = format(var.name_format, "Container Images")
+      freshness   = lookup(local.freshness, "artifact_registry_images", var.freshness_default_duration)
+      description = "This dataset is used to create Artifact Registry Images Resources"
+    }
+
     # cloud_functions_metrics = {
     #   workspace   = local.workspace
     #   name        = format(var.name_format, "Metrics")
