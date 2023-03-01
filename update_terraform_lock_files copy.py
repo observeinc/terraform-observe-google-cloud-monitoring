@@ -12,6 +12,10 @@ def terraform_init():
         "./sample_infrastructure",
         exclude=set(["python_scripts", "rust_scripts", "images"]),
     )
+    walker(
+        "./sample_infrastructure/service_modules",
+        exclude=set(["python_scripts", "rust_scripts", "images"]),
+    )
     walker("./tftests", exclude=set([]))
 
 

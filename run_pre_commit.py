@@ -5,12 +5,32 @@ import os
 
 def pre():
     os.system(f"pre-commit run --files *")
-    walker("./service", exclude=set(["__pycache__", "dashStuff", "example"]))
+    # walker("./service", exclude=set(["__pycache__", "dashStuff", "example"]))
     walker(
         "./sample_infrastructure",
-        exclude=set(["python_scripts", "rust_scripts", "images"]),
+        exclude=set(
+            [
+                "python_scripts",
+                "rust_scripts",
+                "images",
+                ".terraform",
+                "docker_files",
+            ]
+        ),
     )
-    walker("./tftests", exclude=set([]))
+    walker(
+        "./sample_infrastructure/service_modules",
+        exclude=set(
+            [
+                "python_scripts",
+                "rust_scripts",
+                "images",
+                ".terraform",
+                "docker_files",
+            ]
+        ),
+    )
+    # walker("./tftests", exclude=set([]))
 
 
 def walker(dir_path, exclude):
@@ -20,10 +40,12 @@ def walker(dir_path, exclude):
 
         for dir_name in dirs:
             if root == dir_path:
+                print("--------------------------------")
                 print(f"Root: {root}")
                 print(f"Sub: {dir_name}")
+                print(f"{dir_path}/{dir_name}")
                 print("--------------------------------")
-                os.system(f"pre-commit run --files *")
+                os.system(f"pre-commit run --files {dir_path}/{dir_name}/*")
 
 
 if __name__ == "__main__":
