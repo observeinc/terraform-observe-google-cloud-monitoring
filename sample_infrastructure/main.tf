@@ -48,6 +48,7 @@ module "compute_otel_collector" {
   zone        = "${var.region}-a"
   name_format = format(var.name_format, "otel-%s")
   observe     = var.observe
+  experiments = [module_variable_optional_attrs]
 }
 
 #------------------------------------------------------------------------#

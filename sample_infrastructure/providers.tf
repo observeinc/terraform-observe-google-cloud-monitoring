@@ -19,7 +19,6 @@ terraform {
     }
   }
   required_version = ">= 1.3.1"
-  # experiments      = [module_variable_optional_attrs]
 }
 
 provider "google" {
