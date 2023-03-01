@@ -1,3 +1,4 @@
+
 module "observe_gcp_collection" {
   #source = "../../../terraform-google-collection"
   source = "observeinc/collection/google"
@@ -25,6 +26,7 @@ locals {
 # OPTIONAL - Pollers can be deployed via the UI in the GCP App
 ###############################################################
 module "monitoring_poller" {
+  # tflint-ignore: terraform_module_pinned_source
   source                           = "git@github.com:observeinc/terraform-observe-google.git//sources/monitoring"
   workspace                        = local.workspace
   datastream                       = local.datastream
@@ -38,7 +40,9 @@ module "monitoring_poller" {
 
 }
 
+
 module "pubsub_poller" {
+  # tflint-ignore: terraform_module_pinned_source
   source                           = "git@github.com:observeinc/terraform-observe-google.git//sources/pubsub"
   workspace                        = local.workspace
   datastream                       = local.datastream
