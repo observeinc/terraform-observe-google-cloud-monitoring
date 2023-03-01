@@ -8,6 +8,7 @@ from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExport
 from opentelemetry.sdk.trace.export import BatchSpanProcessor, ConsoleSpanExporter
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 from opentelemetry.instrumentation.mysql import MySQLInstrumentor
+from opentelemetry.exporter.cloud_trace import CloudTraceSpanExporter
 
 MySQLInstrumentor().instrument()
 
@@ -16,6 +17,7 @@ resource = Resource(attributes={SERVICE_NAME: "cloud_function_mysql"})
 disable_logging = os.getenv("DISABLE_LOGGING")
 console_logging = os.getenv("CONSOLE_LOGGING", "TRUE")
 collector_logging = os.getenv("COLLECTOR_LOGGING", "TRUE")
+cloudtrace_logging = os.getenv("CLOUDTRACE_LOGGING", "TRUE")
 collector_endpoint = os.getenv("COLLECTOR_ENDPOINT", "http://localhost:4317")
 
 provider = sdktrace.TracerProvider(resource=resource)
@@ -39,6 +41,12 @@ if disable_logging is None:
         print("Collector Logging Enabled")
         _processor = BatchSpanProcessor(OTLPSpanExporter(endpoint=collector_endpoint))
         provider.add_span_processor(_processor)
+
+    if cloudtrace_logging.upper() == "TRUE":
+        print("Cloudtrace Logging Enabled")
+
+        _processor3 = BatchSpanProcessor(CloudTraceSpanExporter())
+        provider.add_span_processor(_processor3)
 
     trace.set_tracer_provider(provider)
 

@@ -3,7 +3,7 @@ locals {
 
   # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   # There is a stupid bug that makes permissions for cloud scheduler not work right unless I change this when it has inconsitent plan
-  hack = "${module.function_bigquery.bucket_object.md5hash}=123456"
+  hack = "${module.function_bigquery.bucket_object.md5hash}=1234567"
 }
 
 #------------------------------------------------------------------------#

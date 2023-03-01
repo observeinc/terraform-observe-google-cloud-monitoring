@@ -21,6 +21,7 @@ variable "function_roles" {
 
   default = [
     "roles/browser", # for viewing projects
+    "roles/cloudtrace.agent",
   ]
 }
 
