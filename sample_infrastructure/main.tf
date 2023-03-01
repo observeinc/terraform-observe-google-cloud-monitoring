@@ -74,7 +74,8 @@ module "function_bigquery" {
     "roles/browser", # for viewing projects
     "roles/bigquery.jobUser",
     "roles/bigquery.dataViewer",
-    "roles/bigquery.dataEditor"
+    "roles/bigquery.dataEditor",
+    "roles/cloudtrace.agent",
   ]
   environment_variables = {
     CONSOLE_LOGGING    = "TRUE"
@@ -144,6 +145,7 @@ module "function_mysql" {
   name_format = format(var.name_format, "mysql-%s")
   function_roles = [
     "roles/browser", # for viewing projects
+    "roles/cloudtrace.agent",
   ]
 
   environment_variables = {
@@ -153,6 +155,7 @@ module "function_mysql" {
     MYSQL_PASSWORD     = module.cloudsql.connection_string.MYSQL_8_0.password
     CONSOLE_LOGGING    = "TRUE"
     COLLECTOR_LOGGING  = "TRUE"
+    CLOUDTRACE_LOGGING = "TRUE"
     COLLECTOR_ENDPOINT = "http://${module.compute_otel_collector.gcp_ubuntu_box.compute_instances.UBUNTU_20_04_LTS_0.public_ip}:4317"
   }
   source_dir  = "./python_scripts/function_code/mysql"
@@ -220,6 +223,7 @@ module "function_postgres" {
   name_format = format(var.name_format, "postgres-%s")
   function_roles = [
     "roles/browser", # for viewing projects
+    "roles/cloudtrace.agent",
   ]
 
   environment_variables = {
@@ -327,6 +331,7 @@ module "function_redis" {
   name_format = format(var.name_format, "redis-%s")
   function_roles = [
     "roles/browser", # for viewing projects
+    "roles/cloudtrace.agent",
   ]
 
   environment_variables = {
