@@ -67,7 +67,8 @@ variable "include_metric_type_prefixes" {
     "kubernetes.io/",
     "redis.googleapis.com",
     "memcache.googleapis.com",
-    "vpcaccess.googleapis.com"
+    "vpcaccess.googleapis.com",
+    "run.googleapis.com/"
   ]
   description = <<-EOF
     Metrics with these Metric Types with these prefixes will be fetched.
