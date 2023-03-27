@@ -89,6 +89,15 @@ variable "enable_service_cloudfunctions" {
   EOF
 }
 
+variable "enable_service_cloudrun" {
+  type        = bool
+  default     = true
+  description = <<-EOF
+    Enable Cloud Run service.
+  EOF
+}
+
+
 variable "enable_service_cloudsql" {
   type        = bool
   default     = true

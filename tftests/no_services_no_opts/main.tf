@@ -25,7 +25,10 @@ module "default" {
   enable_service_cloudscheduler = false
   enable_service_gke            = false
   enable_service_redis          = false
-  # enable_service_memcache       = false
+  enable_service_cloudrun       = false
+
+
+  # enable_service_memcache = false
 
   feature_flags = ["use_name_format_in_preferred_path"]
 }
