@@ -20,7 +20,6 @@ resource "observe_dataset" "cloud_run_metrics" {
       filter resource_type = "run" or resource_type = "cloud_run_revision"
       
       make_col 
-        function_name:string(resource_labels.function_name),
         project_id:string(resource_labels.project_id),
         region:string(resource_labels.region),
         metric: replace(split_part(metric_type, "googleapis.com/", 2), "/", "_"),
@@ -37,8 +36,7 @@ resource "observe_dataset" "cloud_run_metrics" {
         value,
         value_type,
         project_id,
-        region,
-        function_name,
+        region,        
         serviceAssetKey
       add_key serviceAssetKey
     EOF
@@ -107,13 +105,14 @@ resource "observe_dataset" "cloud_run_metrics" {
 }
 }
 
-resource "observe_link" "cloud_run_service" {
+resource "observe_link" "cloud_run_metrics" {
   workspace = var.workspace.oid
-  source    = observe_dataset.cloud_run_instances.oid
-  target    = observe_dataset.cloud_run_metrics.oid
+  source    = observe_dataset.cloud_run_metrics.oid
+  target    = observe_dataset.cloud_run_service_instances.oid
   fields    = ["serviceAssetKey"]
-  label     = "metrics"
+  label     = "service_name"
 }
+
 
 # resource "observe_link" "run_metrics" {
 #   for_each = length(observe_dataset.cloud_run_metrics) > 0 ? {
