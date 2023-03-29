@@ -128,7 +128,9 @@ module "cloudrun" {
   freshness_default_duration = var.freshness_default_duration
   feature_flags              = var.feature_flags
 
-  google = local.base_module
+  google = merge(local.base_module, {
+    cloudsql = one(module.cloudsql[*].cloudsql)
+  })
 }
 
 module "cloudsql" {
