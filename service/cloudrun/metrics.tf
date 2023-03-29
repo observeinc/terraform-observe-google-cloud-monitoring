@@ -6,8 +6,6 @@ locals {
 
 }
 resource "observe_dataset" "cloud_run_metrics" {
-  count = local.enable_metrics ? 1 : 0
-
   workspace   = local.datasets.cloud_run_metrics.workspace
   name        = local.datasets.cloud_run_metrics.name
   freshness   = local.datasets.cloud_run_metrics.freshness
@@ -25,8 +23,12 @@ resource "observe_dataset" "cloud_run_metrics" {
         function_name:string(resource_labels.function_name),
         project_id:string(resource_labels.project_id),
         region:string(resource_labels.region),
-        metric: replace(split_part(metric_type, "googleapis.com/", 2), "/", "_")
-
+        metric: replace(split_part(metric_type, "googleapis.com/", 2), "/", "_"),
+        serviceAssetKey: string_concat("//run.googleapis.com/projects/", string(resource_labels.project_id), "/locations/", string(resource_labels.location), "/services/", string(resource_labels.service_name))
+      EOF
+  }
+  stage {
+    pipeline = <<-EOF
       pick_col
         end_time,
         metric,
@@ -36,8 +38,9 @@ resource "observe_dataset" "cloud_run_metrics" {
         value_type,
         project_id,
         region,
-        function_name 
-         
+        function_name,
+        serviceAssetKey
+      add_key serviceAssetKey
     EOF
   }
 
@@ -102,6 +105,14 @@ resource "observe_dataset" "cloud_run_metrics" {
 
     EOF
 }
+}
+
+resource "observe_link" "cloud_run_service" {
+  workspace = var.workspace.oid
+  source    = observe_dataset.cloud_run_instances.oid
+  target    = observe_dataset.cloud_run_metrics.oid
+  fields    = ["serviceAssetKey"]
+  label     = "metrics"
 }
 
 # resource "observe_link" "run_metrics" {
