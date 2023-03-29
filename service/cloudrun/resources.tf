@@ -1,8 +1,8 @@
-resource "observe_dataset" "cloud_run_instances" {
-  workspace   = local.datasets.cloud_run_instances.workspace
-  name        = local.datasets.cloud_run_instances.name
-  freshness   = local.datasets.cloud_run_instances.freshness
-  description = local.datasets.cloud_run_instances.description
+resource "observe_dataset" "cloud_run_service_instances" {
+  workspace   = local.datasets.cloud_run_service_instances.workspace
+  name        = local.datasets.cloud_run_service_instances.name
+  freshness   = local.datasets.cloud_run_service_instances.freshness
+  description = local.datasets.cloud_run_service_instances.description
 
   inputs = {
     "events" = var.google.resource_asset_inventory_records.oid
@@ -39,15 +39,15 @@ resource "observe_dataset" "cloud_run_instances" {
 
       make_col cloud_sql_instances:string_concat(project_id, ":", split_part(string(spec.template.metadata.annotations['run.googleapis.com/cloudsql-instances']), ":", 3))
 
-      add_key cloud_sql_instances
+      add_key cloud_sql_instances, serviceName
       set_label serviceName
     EOF
   }
 }
 
-resource "observe_link" "cloud_sql" {
+resource "observe_link" "cloud_run_service_instances" {
   workspace = var.workspace.oid
-  source    = observe_dataset.cloud_run_instances.oid
+  source    = observe_dataset.cloud_run_service_instances.oid
   target    = var.google.cloudsql.oid
   fields    = ["cloud_sql_instances:database_id"]
   label     = "cloud_sql"
