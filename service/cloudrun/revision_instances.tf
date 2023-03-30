@@ -75,7 +75,8 @@ resource "observe_dataset" "cloud_run_revision_instances" {
         deleted,
         primary_key(name),
         valid_for(ttl)
-
+      
+      add_key revisionName
       add_key cloudSqlInstances
       set_label revisionName
     EOF
@@ -128,6 +129,16 @@ resource "observe_preferred_path" "cloud_run_revision_to_cloud_run_service" {
   workspace   = local.datasets.cloud_run_revision_instances.workspace
   step {
     link    = observe_link.cloud_run_revisions["Service"].oid
+    reverse = false
+  }
+}
+resource "observe_preferred_path" "cloud_run_revision_to_metrics" {
+  name        = "Metrics referred by Cloud Run Revision"
+  description = "Metrics from the Cloud Run Revision"
+  source      = observe_dataset.cloud_run_revision_instances.oid
+  workspace   = local.datasets.cloud_run_revision_instances.workspace
+  step {
+    link    = observe_link.cloud_run_revisions["Metrics"].oid
     reverse = false
   }
 }
