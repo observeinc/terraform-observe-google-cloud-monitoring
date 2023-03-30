@@ -117,7 +117,7 @@ resource "observe_link" "cloud_run_metrics" {
 # resource "observe_link" "run_metrics" {
 #   for_each = length(observe_dataset.cloud_run_metrics) > 0 ? {
 #     "Cloud Run" = {
-#       target = observe_dataset.cloud_run_instances.oid
+#       target = observe_dataset.cloud_run_service_instances.oid
 #       fields = ["project_id:projectId", "region", "function_name:functionName"]
 #     }
 #   } : {}
@@ -137,7 +137,7 @@ resource "observe_link" "cloud_run_metrics" {
 #   }
 
 #   workspace = var.workspace.oid
-#   source    = observe_dataset.cloud_run_instances.oid
+#   source    = observe_dataset.cloud_run_service_instances.oid
 #   target    = each.value.target
 #   fields    = each.value.fields
 #   label     = each.key
