@@ -21,7 +21,14 @@ locals {
       workspace   = local.workspace
       name        = format(var.name_format, "Service Instances")
       freshness   = lookup(local.freshness, "cloud_run_service_instances", var.freshness_default_duration)
-      description = "This dataset is used to create Cloud Run Service Resources"
+      description = "This dataset is used to create Cloud Run Service instances"
+    }
+
+    cloud_run_revision_instances = {
+      workspace   = local.workspace
+      name        = format(var.name_format, "Revision Instances")
+      freshness   = lookup(local.freshness, "cloud_run_revision_instances", var.freshness_default_duration)
+      description = "This dataset is used to create Cloud Run Revision instances"
     }
 
     cloud_run_metrics = {
