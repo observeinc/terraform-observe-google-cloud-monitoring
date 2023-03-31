@@ -105,13 +105,13 @@ resource "observe_dataset" "cloud_run_metrics" {
 }
 }
 
-resource "observe_link" "cloud_run_metrics" {
-  workspace = var.workspace.oid
-  source    = observe_dataset.cloud_run_metrics.oid
-  target    = observe_dataset.cloud_run_service_instances.oid
-  fields    = ["serviceAssetKey"]
-  label     = "service_name"
-}
+# resource "observe_link" "cloud_run_metrics" {
+#   workspace = var.workspace.oid
+#   source    = observe_dataset.cloud_run_metrics.oid
+#   target    = observe_dataset.cloud_run_service_instances.oid
+#   fields    = ["serviceAssetKey:name"]
+#   label     = "service_name"
+# }
 
 
 # resource "observe_link" "run_metrics" {

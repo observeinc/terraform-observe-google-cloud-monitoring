@@ -78,6 +78,7 @@ resource "observe_dataset" "cloud_run_revision_instances" {
       
       add_key revisionName
       add_key cloudSqlInstances
+      add_key parent
       set_label revisionName
     EOF
   }

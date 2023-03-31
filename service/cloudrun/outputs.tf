@@ -9,3 +9,9 @@
 # output "function_metrics" {
 #   value = local.enable_metrics ? observe_dataset.cloud_functions_metrics[0] : null
 # }
+
+
+output "datasets" {
+  value = data.observe_oid.datasets 
+}
+
