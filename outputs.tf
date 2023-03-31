@@ -38,6 +38,10 @@ output "cloud_functions" {
   value = local.enable_service_cloudfunctions ? module.cloudfunctions[0] : null
 }
 
+output "cloud_run" {
+  value = local.enable_service_cloudrun ? module.cloudrun[0] : null
+}
+
 output "cloud_sql" {
   value = local.enable_service_cloudsql ? module.cloudsql[0] : null
 }
