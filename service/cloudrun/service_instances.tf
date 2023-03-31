@@ -117,13 +117,13 @@ resource "observe_preferred_path" "cloud_run_service_to_cloud_run_revision" {
   }
 }
 
-resource "observe_preferred_path" "cloud_run_service_to_metrics" {
-  name        = "Metrics referred by Cloud Run Service"
-  description = "Metrics from the Cloud Run Service"
-  source      = observe_dataset.cloud_run_service_instances.oid
-  workspace   = local.datasets.cloud_run_service_instances.workspace
-  step {
-    link    = observe_link.cloud_run_services["Metrics"].oid
-    reverse = false
-  }
-}
+# resource "observe_preferred_path" "cloud_run_service_to_metrics" {
+#   name        = "Metrics referred by Cloud Run Service"
+#   description = "Metrics from the Cloud Run Service"
+#   source      = observe_dataset.cloud_run_service_instances.oid
+#   workspace   = local.datasets.cloud_run_service_instances.workspace
+#   step {
+#     link    = observe_link.cloud_run_services["Metrics"].oid
+#     reverse = false
+#   }
+# }
