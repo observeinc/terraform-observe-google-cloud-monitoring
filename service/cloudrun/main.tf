@@ -14,8 +14,10 @@ locals {
   google = merge(var.google, {
     cloud_run_service_instances  = observe_dataset.cloud_run_service_instances
     cloud_run_revision_instances = observe_dataset.cloud_run_revision_instances
+    cloud_run_metrics = observe_dataset.cloud_run_metrics
   })
-  cloud_run_service_instances = resource.observe_dataset.cloud_run_service_instances.id
+  
+  #cloud_run_service_instances = resource.observe_dataset.cloud_run_service_instances.id
   #cloud_functions_metrics   = resource.observe_dataset.cloud_functions_metrics[0].id
   #cloud_functions_logs      = resource.observe_dataset.cloud_functions_function_logs.id
   #dashboard_name            = format(var.name_format, "Monitoring")
