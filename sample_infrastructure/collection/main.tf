@@ -1,7 +1,7 @@
 module "observe_gcp_collection" {
-  source = "../../../terraform-google-collection"
-  # source = "observeinc/collection/google"
-  name = format(var.name_format, "env")
+  # source = "../../../terraform-google-collection"
+  source = "observeinc/collection/google"
+  name   = format(var.name_format, "env")
 
   resource        = "projects/${var.project_id}"
   enable_function = true
@@ -22,7 +22,7 @@ locals {
 }
 
 module "monitoring_poller" {
-  source                           = "git@github.com:observeinc/terraform-observe-google.git//sources/monitoring"
+  source                           = "../../sources/monitoring"
   workspace                        = local.workspace
   datastream                       = local.datastream
   name                             = format(var.name_format, "metrics")
@@ -36,7 +36,7 @@ module "monitoring_poller" {
 }
 
 module "pubsub_poller" {
-  source                           = "git@github.com:observeinc/terraform-observe-google.git//sources/pubsub"
+  source                           = "../../sources/pubsub"
   workspace                        = local.workspace
   datastream                       = local.datastream
   name                             = format(var.name_format, "assets-logs")

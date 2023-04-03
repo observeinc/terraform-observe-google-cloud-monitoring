@@ -384,7 +384,7 @@ resource "observe_dashboard" "redis_instance_v2" {
           {
             defaultValue = {
               link = {
-                datasetId = "${local.redis_instance}"
+                datasetId = local.redis_instance
                 primaryKeyValue = [
                   {
                     name = "instance_pkey"
@@ -407,7 +407,7 @@ resource "observe_dashboard" "redis_instance_v2" {
             id                    = "redis"
             name                  = "Redis Instance"
             valueKind = {
-              keyForDatasetId = "${local.redis_instance}"
+              keyForDatasetId = local.redis_instance
               type            = "LINK"
             }
             viewType = "resource-input"
@@ -435,7 +435,7 @@ resource "observe_dashboard" "redis_instance_v2" {
       {
         defaultValue = {
           link = {
-            datasetId = "${local.redis_instance}"
+            datasetId = local.redis_instance
             primaryKeyValue = [
               {
                 name = "instance_pkey"
@@ -457,7 +457,7 @@ resource "observe_dashboard" "redis_instance_v2" {
         name = "Redis Instance"
         valueKind = {
           arrayItemType   = null
-          keyForDatasetId = "${local.redis_instance}"
+          keyForDatasetId = local.redis_instance
           type            = "LINK"
         }
       },
@@ -469,7 +469,7 @@ resource "observe_dashboard" "redis_instance_v2" {
         id = "stage-pajoygss"
         input = [
           {
-            datasetId   = "${local.redis_instance}"
+            datasetId   = local.redis_instance
             datasetPath = null
             inputName   = "test_gcp_learning-bedbug/Redis Instance"
             inputRole   = "Data"
@@ -535,7 +535,7 @@ resource "observe_dashboard" "redis_instance_v2" {
           index = 0
           inputList = [
             {
-              datasetId   = "${local.redis_instance}"
+              datasetId   = local.redis_instance
               inputName   = "test_gcp_learning-bedbug/Redis Instance"
               inputRole   = "Data"
               isUserInput = false
@@ -738,7 +738,7 @@ resource "observe_dashboard" "redis_instance_v2" {
         id = "stage-jt6xxmm2"
         input = [
           {
-            datasetId   = "${local.redis_instance}"
+            datasetId   = local.redis_instance
             datasetPath = null
             inputName   = "test_gcp_learning-bedbug/Redis Instance"
             inputRole   = "Data"
@@ -800,7 +800,7 @@ resource "observe_dashboard" "redis_instance_v2" {
           index = 1
           inputList = [
             {
-              datasetId   = "${local.redis_instance}"
+              datasetId   = local.redis_instance
               inputName   = "test_gcp_learning-bedbug/Redis Instance"
               inputRole   = "Data"
               isUserInput = false
@@ -989,7 +989,7 @@ resource "observe_dashboard" "redis_instance_v2" {
         id = "stage-r3msr1xk"
         input = [
           {
-            datasetId   = "${local.redis_metrics}"
+            datasetId   = local.redis_metrics
             datasetPath = null
             inputName   = "commands_calls_from_test_gcp_learning-bedbug/Redis Metrics"
             inputRole   = "Data"
@@ -1058,7 +1058,7 @@ resource "observe_dashboard" "redis_instance_v2" {
           index = 2
           inputList = [
             {
-              datasetId   = "${local.redis_metrics}"
+              datasetId   = local.redis_metrics
               inputName   = "commands_calls_from_test_gcp_learning-bedbug/Redis Metrics"
               inputRole   = "Data"
               isUserInput = true
@@ -1204,7 +1204,7 @@ resource "observe_dashboard" "redis_instance_v2" {
         id = "stage-8ibk9wow"
         input = [
           {
-            datasetId   = "${local.redis_metrics}"
+            datasetId   = local.redis_metrics
             datasetPath = null
             inputName   = "commands_total_time_from_test_gcp_learning-bedbug/Redis Metrics"
             inputRole   = "Data"
@@ -1273,7 +1273,7 @@ resource "observe_dashboard" "redis_instance_v2" {
           index = 3
           inputList = [
             {
-              datasetId   = "${local.redis_metrics}"
+              datasetId   = local.redis_metrics
               inputName   = "commands_total_time_from_test_gcp_learning-bedbug/Redis Metrics"
               inputRole   = "Data"
               isUserInput = true
@@ -1421,7 +1421,7 @@ resource "observe_dashboard" "redis_instance_v2" {
         id = "stage-9mulnsts"
         input = [
           {
-            datasetId   = "${local.redis_metrics}"
+            datasetId   = local.redis_metrics
             datasetPath = null
             inputName   = "commands_usec_per_call_from_test_gcp_learning-bedbug/Redis Metrics"
             inputRole   = "Data"
@@ -1490,7 +1490,7 @@ resource "observe_dashboard" "redis_instance_v2" {
           index = 4
           inputList = [
             {
-              datasetId   = "${local.redis_metrics}"
+              datasetId   = local.redis_metrics
               inputName   = "commands_usec_per_call_from_test_gcp_learning-bedbug/Redis Metrics"
               inputRole   = "Data"
               isUserInput = true
@@ -1638,7 +1638,7 @@ resource "observe_dashboard" "redis_instance_v2" {
         id = "stage-yothkrri"
         input = [
           {
-            datasetId   = "${local.redis_metrics}"
+            datasetId   = local.redis_metrics
             datasetPath = null
             inputName   = "keyspace_keys_from_test_gcp_learning-bedbug/Redis Metrics"
             inputRole   = "Data"
@@ -1836,7 +1836,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                                 srcFields = [
                                   "instance_pkey",
                                 ]
-                                targetDataset    = "${local.redis_instance}"
+                                targetDataset    = local.redis_instance
                                 targetStageLabel = null
                                 type             = "foreign"
                               }
@@ -1870,7 +1870,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                         lookupActions = []
                         metric = {
                           aggregate   = "sum"
-                          datasetId   = "${local.redis_metrics}"
+                          datasetId   = local.redis_metrics
                           description = <<-EOT
                                                         Number of keys stored in this database.
                                                     EOT
@@ -1891,7 +1891,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                           srcFields = [
                             "instance_pkey",
                           ]
-                          targetDataset    = "${local.redis_instance}"
+                          targetDataset    = local.redis_instance
                           targetStageLabel = null
                           type             = "foreign"
                         }
@@ -1969,7 +1969,7 @@ resource "observe_dashboard" "redis_instance_v2" {
         id = "stage-wds98m8p"
         input = [
           {
-            datasetId   = "${local.redis_metrics}"
+            datasetId   = local.redis_metrics
             datasetPath = null
             inputName   = "stats_expired_keys_from_test_gcp_learning-bedbug/Redis Metrics"
             inputRole   = "Data"
@@ -2166,7 +2166,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                                 srcFields = [
                                   "instance_pkey",
                                 ]
-                                targetDataset    = "${local.redis_instance}"
+                                targetDataset    = local.redis_instance
                                 targetStageLabel = null
                                 type             = "foreign"
                               }
@@ -2202,7 +2202,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                         lookupActions = []
                         metric = {
                           aggregate   = "sum"
-                          datasetId   = "${local.redis_metrics}"
+                          datasetId   = local.redis_metrics
                           description = <<-EOT
                                                         Total number of key expiration events.
                                                     EOT
@@ -2315,7 +2315,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                           srcFields = [
                             "instance_pkey",
                           ]
-                          targetDataset    = "${local.redis_instance}"
+                          targetDataset    = local.redis_instance
                           targetStageLabel = null
                           type             = "foreign"
                         }
@@ -2388,7 +2388,7 @@ resource "observe_dashboard" "redis_instance_v2" {
         id = "stage-yb1taje8"
         input = [
           {
-            datasetId   = "${local.redis_metrics}"
+            datasetId   = local.redis_metrics
             datasetPath = null
             inputName   = "stats_keyspace_hits_from_test_gcp_learning-bedbug/Redis Metrics"
             inputRole   = "Data"
@@ -2586,7 +2586,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                                 srcFields = [
                                   "instance_pkey",
                                 ]
-                                targetDataset    = "${local.redis_instance}"
+                                targetDataset    = local.redis_instance
                                 targetStageLabel = null
                                 type             = "foreign"
                               }
@@ -2620,7 +2620,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                         lookupActions = []
                         metric = {
                           aggregate   = "sum"
-                          datasetId   = "${local.redis_metrics}"
+                          datasetId   = local.redis_metrics
                           description = <<-EOT
                                                         Number of successful lookup of keys in the main dictionary.
                                                     EOT
@@ -2733,7 +2733,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                           srcFields = [
                             "instance_pkey",
                           ]
-                          targetDataset    = "${local.redis_instance}"
+                          targetDataset    = local.redis_instance
                           targetStageLabel = null
                           type             = "foreign"
                         }
@@ -2806,7 +2806,7 @@ resource "observe_dashboard" "redis_instance_v2" {
         id = "stage-t1p8enlp"
         input = [
           {
-            datasetId   = "${local.redis_metrics}"
+            datasetId   = local.redis_metrics
             datasetPath = null
             inputName   = "stats_keyspace_misses_from_test_gcp_learning-bedbug/Redis Metrics"
             inputRole   = "Data"
@@ -3004,7 +3004,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                                 srcFields = [
                                   "instance_pkey",
                                 ]
-                                targetDataset    = "${local.redis_instance}"
+                                targetDataset    = local.redis_instance
                                 targetStageLabel = null
                                 type             = "foreign"
                               }
@@ -3038,7 +3038,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                         lookupActions = []
                         metric = {
                           aggregate   = "sum"
-                          datasetId   = "${local.redis_metrics}"
+                          datasetId   = local.redis_metrics
                           description = <<-EOT
                                                         Number of failed lookup of keys in the main dictionary.
                                                     EOT
@@ -3151,7 +3151,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                           srcFields = [
                             "instance_pkey",
                           ]
-                          targetDataset    = "${local.redis_instance}"
+                          targetDataset    = local.redis_instance
                           targetStageLabel = null
                           type             = "foreign"
                         }
@@ -3224,7 +3224,7 @@ resource "observe_dashboard" "redis_instance_v2" {
         id = "stage-ehr1gzq0"
         input = [
           {
-            datasetId   = "${local.redis_metrics}"
+            datasetId   = local.redis_metrics
             datasetPath = null
             inputName   = "stats_cache_hit_ratio_from_test_gcp_learning-bedbug/Redis Metrics"
             inputRole   = "Data"
@@ -3288,7 +3288,7 @@ resource "observe_dashboard" "redis_instance_v2" {
           index = 9
           inputList = [
             {
-              datasetId   = "${local.redis_metrics}"
+              datasetId   = local.redis_metrics
               inputName   = "stats_cache_hit_ratio_from_test_gcp_learning-bedbug/Redis Metrics"
               inputRole   = "Data"
               isUserInput = true
@@ -3452,7 +3452,7 @@ resource "observe_dashboard" "redis_instance_v2" {
         id = "stage-0ho2ak92"
         input = [
           {
-            datasetId   = "${local.redis_metrics}"
+            datasetId   = local.redis_metrics
             datasetPath = null
             inputName   = "stats_memory_usage_ratio_from_test_gcp_learning-bedbug/Redis Metrics"
             inputRole   = "Data"
@@ -3515,7 +3515,7 @@ resource "observe_dashboard" "redis_instance_v2" {
           index = 10
           inputList = [
             {
-              datasetId   = "${local.redis_metrics}"
+              datasetId   = local.redis_metrics
               inputName   = "stats_memory_usage_ratio_from_test_gcp_learning-bedbug/Redis Metrics"
               inputRole   = "Data"
               isUserInput = true
@@ -3662,7 +3662,7 @@ resource "observe_dashboard" "redis_instance_v2" {
         id = "stage-kblmpc8o"
         input = [
           {
-            datasetId   = "${local.redis_metrics}"
+            datasetId   = local.redis_metrics
             datasetPath = null
             inputName   = "stats_cpu_utilization_from_test_gcp_learning-bedbug/Redis Metrics"
             inputRole   = "Data"
@@ -3728,7 +3728,7 @@ resource "observe_dashboard" "redis_instance_v2" {
           index = 11
           inputList = [
             {
-              datasetId   = "${local.redis_metrics}"
+              datasetId   = local.redis_metrics
               inputName   = "stats_cpu_utilization_from_test_gcp_learning-bedbug/Redis Metrics"
               inputRole   = "Data"
               isUserInput = true
@@ -3883,7 +3883,7 @@ resource "observe_dashboard" "redis_instance_v2" {
         id = "stage-kuf5r7f3"
         input = [
           {
-            datasetId   = "${local.redis_metrics}"
+            datasetId   = local.redis_metrics
             datasetPath = null
             inputName   = "stats_network_traffic_from_test_gcp_learning-bedbug/Redis Metrics"
             inputRole   = "Data"
@@ -4088,7 +4088,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                                 srcFields = [
                                   "instance_pkey",
                                 ]
-                                targetDataset    = "${local.redis_instance}"
+                                targetDataset    = local.redis_instance
                                 targetStageLabel = null
                                 type             = "foreign"
                               }
@@ -4111,7 +4111,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                         lookupActions = []
                         metric = {
                           aggregate   = "sum"
-                          datasetId   = "${local.redis_metrics}"
+                          datasetId   = local.redis_metrics
                           description = <<-EOT
                                                         Total number of bytes sent to/from redis includes bytes from commands themselves, payload data, and delimiters.
                                                     EOT
@@ -4229,7 +4229,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                           srcFields = [
                             "instance_pkey",
                           ]
-                          targetDataset    = "${local.redis_instance}"
+                          targetDataset    = local.redis_instance
                           targetStageLabel = null
                           type             = "foreign"
                         }
@@ -4300,7 +4300,7 @@ resource "observe_dashboard" "redis_instance_v2" {
         id = "stage-xbo28v7v"
         input = [
           {
-            datasetId   = "${local.redis_metrics}"
+            datasetId   = local.redis_metrics
             datasetPath = null
             inputName   = "stats_connections_total_from_test_gcp_learning-bedbug/Redis Metrics"
             inputRole   = "Data"
@@ -4500,7 +4500,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                                 srcFields = [
                                   "instance_pkey",
                                 ]
-                                targetDataset    = "${local.redis_instance}"
+                                targetDataset    = local.redis_instance
                                 targetStageLabel = null
                                 type             = "foreign"
                               }
@@ -4521,7 +4521,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                         lookupActions = []
                         metric = {
                           aggregate   = "sum"
-                          datasetId   = "${local.redis_metrics}"
+                          datasetId   = local.redis_metrics
                           description = <<-EOT
                                                         Total number of connections accepted by the server.
                                                     EOT
@@ -4634,7 +4634,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                           srcFields = [
                             "instance_pkey",
                           ]
-                          targetDataset    = "${local.redis_instance}"
+                          targetDataset    = local.redis_instance
                           targetStageLabel = null
                           type             = "foreign"
                         }
@@ -4709,7 +4709,7 @@ resource "observe_dashboard" "redis_instance_v2" {
         id = "stage-kp5jhjdv"
         input = [
           {
-            datasetId   = "${local.redis_metrics}"
+            datasetId   = local.redis_metrics
             datasetPath = null
             inputName   = "clients_connected_from_test_gcp_learning-bedbug/Redis Metrics"
             inputRole   = "Data"
@@ -4772,7 +4772,7 @@ resource "observe_dashboard" "redis_instance_v2" {
           index = 14
           inputList = [
             {
-              datasetId   = "${local.redis_metrics}"
+              datasetId   = local.redis_metrics
               inputName   = "clients_connected_from_test_gcp_learning-bedbug/Redis Metrics"
               inputRole   = "Data"
               isUserInput = true
@@ -4919,7 +4919,7 @@ resource "observe_dashboard" "redis_instance_v2" {
         id = "stage-zmb32x6w"
         input = [
           {
-            datasetId   = "${local.redis_instance}"
+            datasetId   = local.redis_instance
             datasetPath = null
             inputName   = "test_gcp_learning-bedbug/Redis Instance"
             inputRole   = "Data"
@@ -4984,7 +4984,7 @@ resource "observe_dashboard" "redis_instance_v2" {
           index = 15
           inputList = [
             {
-              datasetId   = "${local.redis_instance}"
+              datasetId   = local.redis_instance
               inputName   = "test_gcp_learning-bedbug/Redis Instance"
               inputRole   = "Data"
               isUserInput = false
@@ -5132,7 +5132,7 @@ resource "observe_dashboard" "redis_instance_v2" {
         id = "stage-rp98umdc"
         input = [
           {
-            datasetId   = "${local.redis_instance}"
+            datasetId   = local.redis_instance
             datasetPath = null
             inputName   = "test_gcp_learning-bedbug/Redis Instance"
             inputRole   = "Data"
@@ -5200,7 +5200,7 @@ resource "observe_dashboard" "redis_instance_v2" {
           index = 16
           inputList = [
             {
-              datasetId   = "${local.redis_instance}"
+              datasetId   = local.redis_instance
               inputName   = "test_gcp_learning-bedbug/Redis Instance"
               inputRole   = "Data"
               isUserInput = false

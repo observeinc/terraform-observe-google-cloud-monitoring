@@ -615,10 +615,10 @@ resource "observe_dashboard" "storage_monitoring" {
         parameters = [
           {
             controlledFilterStageId = "stage-uypv6jle"
-            datasetId               = "${local.storage_buckets}"
+            datasetId               = local.storage_buckets
             defaultValue = {
               datasetref = {
-                datasetId = "${local.storage_buckets}"
+                datasetId = local.storage_buckets
               }
             }
             emptyValueEncoding    = "null"
@@ -731,7 +731,7 @@ resource "observe_dashboard" "storage_monitoring" {
       {
         defaultValue = {
           datasetref = {
-            datasetId = "${local.storage_buckets}"
+            datasetId = local.storage_buckets
           }
         }
         id   = "bucket"
@@ -798,7 +798,7 @@ resource "observe_dashboard" "storage_monitoring" {
         id = "stage-qf9xy4cj"
         input = [
           {
-            datasetId   = "${local.storage_metrics}"
+            datasetId   = local.storage_metrics
             datasetPath = null
             inputName   = "Google/GCP/Storage Metrics"
             inputRole   = "Data"
@@ -857,7 +857,7 @@ resource "observe_dashboard" "storage_monitoring" {
           index = 0
           inputList = [
             {
-              datasetId   = "${local.storage_metrics}"
+              datasetId   = local.storage_metrics
               inputName   = "Google/GCP/Storage Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -1044,7 +1044,7 @@ resource "observe_dashboard" "storage_monitoring" {
         id = "stage-e74yetzm"
         input = [
           {
-            datasetId   = "${local.storage_metrics}"
+            datasetId   = local.storage_metrics
             datasetPath = null
             inputName   = "Google/GCP/Storage Metrics"
             inputRole   = "Data"
@@ -1103,7 +1103,7 @@ resource "observe_dashboard" "storage_monitoring" {
           index = 1
           inputList = [
             {
-              datasetId   = "${local.storage_metrics}"
+              datasetId   = local.storage_metrics
               inputName   = "Google/GCP/Storage Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -1304,7 +1304,7 @@ resource "observe_dashboard" "storage_monitoring" {
         id = "stage-9w4wt70e"
         input = [
           {
-            datasetId   = "${local.storage_metrics}"
+            datasetId   = local.storage_metrics
             datasetPath = null
             inputName   = "Google/GCP/Storage Metrics"
             inputRole   = "Data"
@@ -1363,7 +1363,7 @@ resource "observe_dashboard" "storage_monitoring" {
           index = 2
           inputList = [
             {
-              datasetId   = "${local.storage_metrics}"
+              datasetId   = local.storage_metrics
               inputName   = "Google/GCP/Storage Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -1543,7 +1543,7 @@ resource "observe_dashboard" "storage_monitoring" {
         id = "stage-h4sd9auv"
         input = [
           {
-            datasetId   = "${local.storage_metrics}"
+            datasetId   = local.storage_metrics
             datasetPath = null
             inputName   = "Google/GCP/Storage Metrics"
             inputRole   = "Data"
@@ -1602,7 +1602,7 @@ resource "observe_dashboard" "storage_monitoring" {
           index = 3
           inputList = [
             {
-              datasetId   = "${local.storage_metrics}"
+              datasetId   = local.storage_metrics
               inputName   = "Google/GCP/Storage Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -1794,7 +1794,7 @@ resource "observe_dashboard" "storage_monitoring" {
         id = "stage-cod6x3nx"
         input = [
           {
-            datasetId   = "${local.storage_metrics}"
+            datasetId   = local.storage_metrics
             datasetPath = null
             inputName   = "Google/GCP/Storage Metrics"
             inputRole   = "Data"
@@ -1853,7 +1853,7 @@ resource "observe_dashboard" "storage_monitoring" {
           index = 4
           inputList = [
             {
-              datasetId   = "${local.storage_metrics}"
+              datasetId   = local.storage_metrics
               inputName   = "Google/GCP/Storage Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -2044,7 +2044,7 @@ resource "observe_dashboard" "storage_monitoring" {
         id = "stage-fozm2am2"
         input = [
           {
-            datasetId   = "${local.storage_metrics}"
+            datasetId   = local.storage_metrics
             datasetPath = null
             inputName   = "Google/GCP/Storage Metrics"
             inputRole   = "Data"
@@ -2103,7 +2103,7 @@ resource "observe_dashboard" "storage_monitoring" {
           index = 5
           inputList = [
             {
-              datasetId   = "${local.storage_metrics}"
+              datasetId   = local.storage_metrics
               inputName   = "Google/GCP/Storage Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -2291,7 +2291,7 @@ resource "observe_dashboard" "storage_monitoring" {
         id = "stage-7fd9npob"
         input = [
           {
-            datasetId   = "${local.storage_metrics}"
+            datasetId   = local.storage_metrics
             datasetPath = null
             inputName   = "Google/GCP/Storage Metrics"
             inputRole   = "Data"
@@ -2350,7 +2350,7 @@ resource "observe_dashboard" "storage_monitoring" {
           index = 6
           inputList = [
             {
-              datasetId   = "${local.storage_metrics}"
+              datasetId   = local.storage_metrics
               inputName   = "Google/GCP/Storage Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -2551,7 +2551,7 @@ resource "observe_dashboard" "storage_monitoring" {
         id = "stage-kri8q1gp"
         input = [
           {
-            datasetId   = "${local.storage_metrics}"
+            datasetId   = local.storage_metrics
             datasetPath = null
             inputName   = "Google/GCP/Storage Metrics"
             inputRole   = "Data"
@@ -2610,7 +2610,7 @@ resource "observe_dashboard" "storage_monitoring" {
           index = 7
           inputList = [
             {
-              datasetId   = "${local.storage_metrics}"
+              datasetId   = local.storage_metrics
               inputName   = "Google/GCP/Storage Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -2811,7 +2811,7 @@ resource "observe_dashboard" "storage_monitoring" {
         id = "stage-e4v5dib4"
         input = [
           {
-            datasetId   = "${local.storage_metrics}"
+            datasetId   = local.storage_metrics
             datasetPath = null
             inputName   = "Google/GCP/Storage Metrics"
             inputRole   = "Data"
@@ -2870,7 +2870,7 @@ resource "observe_dashboard" "storage_monitoring" {
           index = 8
           inputList = [
             {
-              datasetId   = "${local.storage_metrics}"
+              datasetId   = local.storage_metrics
               inputName   = "Google/GCP/Storage Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -3072,7 +3072,7 @@ resource "observe_dashboard" "storage_monitoring" {
         id = "stage-smetllii"
         input = [
           {
-            datasetId   = "${local.storage_metrics}"
+            datasetId   = local.storage_metrics
             datasetPath = null
             inputName   = "Google/GCP/Storage Metrics"
             inputRole   = "Data"
@@ -3131,7 +3131,7 @@ resource "observe_dashboard" "storage_monitoring" {
           index = 9
           inputList = [
             {
-              datasetId   = "${local.storage_metrics}"
+              datasetId   = local.storage_metrics
               inputName   = "Google/GCP/Storage Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -3343,7 +3343,7 @@ resource "observe_dashboard" "storage_monitoring" {
         id = "stage-lub7w2o2"
         input = [
           {
-            datasetId   = "${local.storage_logs}"
+            datasetId   = local.storage_logs
             datasetPath = null
             inputName   = "Google/GCP/Storage Logs"
             inputRole   = "Data"
@@ -3402,7 +3402,7 @@ resource "observe_dashboard" "storage_monitoring" {
           index = 10
           inputList = [
             {
-              datasetId   = "${local.storage_logs}"
+              datasetId   = local.storage_logs
               inputName   = "Google/GCP/Storage Logs"
               inputRole   = "Data"
               isUserInput = false
@@ -3603,7 +3603,7 @@ resource "observe_dashboard" "storage_monitoring" {
         id = "stage-z8gm45fx"
         input = [
           {
-            datasetId   = "${local.storage_metrics}"
+            datasetId   = local.storage_metrics
             datasetPath = null
             inputName   = "Google/GCP/Storage Metrics"
             inputRole   = "Data"
@@ -3662,7 +3662,7 @@ resource "observe_dashboard" "storage_monitoring" {
           index = 11
           inputList = [
             {
-              datasetId   = "${local.storage_metrics}"
+              datasetId   = local.storage_metrics
               inputName   = "Google/GCP/Storage Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -3848,7 +3848,7 @@ resource "observe_dashboard" "storage_monitoring" {
         id = "stage-awa0frdk"
         input = [
           {
-            datasetId   = "${local.storage_buckets}"
+            datasetId   = local.storage_buckets
             datasetPath = null
             inputName   = "Google/GCP/Storage Buckets"
             inputRole   = "Data"
@@ -3912,7 +3912,7 @@ resource "observe_dashboard" "storage_monitoring" {
           index = 12
           inputList = [
             {
-              datasetId   = "${local.storage_buckets}"
+              datasetId   = local.storage_buckets
               inputName   = "Google/GCP/Storage Buckets"
               inputRole   = "Data"
               isUserInput = false
@@ -4121,7 +4121,7 @@ resource "observe_dashboard" "storage_monitoring" {
         id = "stage-9fecnrid"
         input = [
           {
-            datasetId   = "${local.storage_buckets}"
+            datasetId   = local.storage_buckets
             datasetPath = null
             inputName   = "Google/GCP/Storage Buckets"
             inputRole   = "Data"
@@ -4187,7 +4187,7 @@ resource "observe_dashboard" "storage_monitoring" {
           index = 13
           inputList = [
             {
-              datasetId   = "${local.storage_buckets}"
+              datasetId   = local.storage_buckets
               inputName   = "Google/GCP/Storage Buckets"
               inputRole   = "Data"
               isUserInput = false
@@ -4400,7 +4400,7 @@ resource "observe_dashboard" "storage_monitoring" {
         id = "stage-4xzggfvj"
         input = [
           {
-            datasetId   = "${local.storage_metrics}"
+            datasetId   = local.storage_metrics
             datasetPath = null
             inputName   = "Google/GCP/Storage Metrics"
             inputRole   = "Data"
@@ -4459,7 +4459,7 @@ resource "observe_dashboard" "storage_monitoring" {
           index = 14
           inputList = [
             {
-              datasetId   = "${local.storage_metrics}"
+              datasetId   = local.storage_metrics
               inputName   = "Google/GCP/Storage Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -4662,7 +4662,7 @@ resource "observe_dashboard" "storage_monitoring" {
         id = "stage-vxxkhlyz"
         input = [
           {
-            datasetId   = "${local.storage_metrics}"
+            datasetId   = local.storage_metrics
             datasetPath = null
             inputName   = "Google/GCP/Storage Metrics"
             inputRole   = "Data"
@@ -4721,7 +4721,7 @@ resource "observe_dashboard" "storage_monitoring" {
           index = 15
           inputList = [
             {
-              datasetId   = "${local.storage_metrics}"
+              datasetId   = local.storage_metrics
               inputName   = "Google/GCP/Storage Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -4928,7 +4928,7 @@ resource "observe_dashboard" "storage_monitoring" {
             stageId     = null
           },
           {
-            datasetId   = "${local.projects_collection_enabled}"
+            datasetId   = local.projects_collection_enabled
             datasetPath = null
             inputName   = "Backup_Google/GCP/Projects"
             inputRole   = "Data"
@@ -4989,7 +4989,7 @@ resource "observe_dashboard" "storage_monitoring" {
               parameterId = "bucket"
             },
             {
-              datasetId   = "${local.projects_collection_enabled}"
+              datasetId   = local.projects_collection_enabled
               inputName   = "Backup_Google/GCP/Projects"
               inputRole   = "Data"
               isUserInput = true
@@ -5370,7 +5370,7 @@ resource "observe_dashboard" "storage_monitoring" {
         id = "stage-4gu1bh8l"
         input = [
           {
-            datasetId   = "${local.storage_metrics}"
+            datasetId   = local.storage_metrics
             datasetPath = null
             inputName   = "Backup_Google/GCP/Storage Metrics"
             inputRole   = "Data"
@@ -5429,7 +5429,7 @@ resource "observe_dashboard" "storage_monitoring" {
           index = 18
           inputList = [
             {
-              datasetId   = "${local.storage_metrics}"
+              datasetId   = local.storage_metrics
               inputName   = "Backup_Google/GCP/Storage Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -5845,7 +5845,7 @@ resource "observe_dashboard" "storage_monitoring" {
         id = "stage-1lywvj39"
         input = [
           {
-            datasetId   = "${local.resource_asset_inventory_records}"
+            datasetId   = local.resource_asset_inventory_records
             datasetPath = null
             inputName   = "Backup_Google/GCP/Asset Inventory Records"
             inputRole   = "Data"
@@ -5899,7 +5899,7 @@ resource "observe_dashboard" "storage_monitoring" {
           index = 20
           inputList = [
             {
-              datasetId   = "${local.resource_asset_inventory_records}"
+              datasetId   = local.resource_asset_inventory_records
               inputName   = "Backup_Google/GCP/Asset Inventory Records"
               inputRole   = "Data"
               isUserInput = false
@@ -6082,7 +6082,7 @@ resource "observe_dashboard" "storage_monitoring" {
         id = "stage-uypv6jle"
         input = [
           {
-            datasetId   = "${local.storage_buckets}"
+            datasetId   = local.storage_buckets
             datasetPath = null
             inputName   = "dev/Storage Buckets"
             inputRole   = "Data"
@@ -6136,7 +6136,7 @@ resource "observe_dashboard" "storage_monitoring" {
           index = 21
           inputList = [
             {
-              datasetId   = "${local.storage_buckets}"
+              datasetId   = local.storage_buckets
               inputName   = "dev/Storage Buckets"
               inputRole   = "Data"
               isUserInput = false

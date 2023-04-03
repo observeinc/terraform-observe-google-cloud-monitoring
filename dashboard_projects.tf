@@ -41,10 +41,10 @@ resource "observe_dashboard" "project_input" {
         parameters = [
           {
             controlledFilterStageId = "stage-42zbv3ex"
-            datasetId               = "${local.projects_collection_enabled}"
+            datasetId               = local.projects_collection_enabled
             defaultValue = {
               datasetref = {
-                datasetId = "${local.projects_collection_enabled}"
+                datasetId = local.projects_collection_enabled
               }
             }
             emptyValueEncoding    = "null"
@@ -79,7 +79,7 @@ resource "observe_dashboard" "project_input" {
       {
         defaultValue = {
           datasetref = {
-            datasetId = "${local.projects_collection_enabled}"
+            datasetId = local.projects_collection_enabled
           }
         }
         id   = "input-parameter-nsjl7kcg"
@@ -98,7 +98,7 @@ resource "observe_dashboard" "project_input" {
         id = "stage-42zbv3ex"
         input = [
           {
-            datasetId   = "${local.projects_collection_enabled}"
+            datasetId   = local.projects_collection_enabled
             datasetPath = null
             inputName   = "eng/Projects Collection Enabled"
             inputRole   = "Data"
@@ -154,7 +154,7 @@ resource "observe_dashboard" "project_input" {
           index = 0
           inputList = [
             {
-              datasetId   = "${local.projects_collection_enabled}"
+              datasetId   = local.projects_collection_enabled
               inputName   = "eng/Projects Collection Enabled"
               inputRole   = "Data"
               isUserInput = false

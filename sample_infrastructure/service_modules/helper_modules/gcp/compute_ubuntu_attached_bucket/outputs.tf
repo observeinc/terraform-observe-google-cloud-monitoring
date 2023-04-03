@@ -27,7 +27,7 @@ output "user_data" {
 
 output "target_group_instances" {
   value = flatten([for key, value in google_compute_instance.instances :
-  "${value.self_link}" if contains(local.target_group_instances, key)])
+  value.self_link if contains(local.target_group_instances, key)])
 }
 
 # output "script_map" {

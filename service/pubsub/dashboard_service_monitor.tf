@@ -167,10 +167,10 @@ resource "observe_dashboard" "pubsub_pubsub_service_input2" {
         parameters = [
           {
             controlledFilterStageId = "stage-pql8ktv1"
-            datasetId               = "${local.pubsub_service}"
+            datasetId               = local.pubsub_service
             defaultValue = {
               datasetref = {
-                datasetId = "${local.pubsub_service}"
+                datasetId = local.pubsub_service
               }
             }
             emptyValueEncoding    = "null"
@@ -205,7 +205,7 @@ resource "observe_dashboard" "pubsub_pubsub_service_input2" {
       {
         defaultValue = {
           datasetref = {
-            datasetId = "${local.pubsub_service}"
+            datasetId = local.pubsub_service
           }
         }
         id   = "input-parameter-ghoggkda"
@@ -224,7 +224,7 @@ resource "observe_dashboard" "pubsub_pubsub_service_input2" {
         id = "stage-pql8ktv1"
         input = [
           {
-            datasetId   = "${local.pubsub_service}"
+            datasetId   = local.pubsub_service
             datasetPath = null
             inputName   = "stage/PubSub Service"
             inputRole   = "Data"
@@ -279,7 +279,7 @@ resource "observe_dashboard" "pubsub_pubsub_service_input2" {
           index = 0
           inputList = [
             {
-              datasetId   = "${local.pubsub_service}"
+              datasetId   = local.pubsub_service
               inputName   = "stage/PubSub Service"
               inputRole   = "Data"
               isUserInput = false
@@ -806,7 +806,7 @@ resource "observe_dashboard" "pubsub_pubsub_service_input2" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.pubsub_service_api_metrics}"
+                    datasetId   = local.pubsub_service_api_metrics
                     description = <<-EOT
                                             The count of completed requests. Sampled every 60s and may take up to 180s to display.
                                         EOT
@@ -824,7 +824,7 @@ resource "observe_dashboard" "pubsub_pubsub_service_input2" {
                       srcFields = [
                         "service",
                       ]
-                      targetDataset    = "${local.pubsub_service}"
+                      targetDataset    = local.pubsub_service
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -1011,7 +1011,7 @@ resource "observe_dashboard" "pubsub_pubsub_service_input2" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.pubsub_service_api_metrics}"
+                    datasetId   = local.pubsub_service_api_metrics
                     description = <<-EOT
                                             Distribution of request sizes in bytes recorded at request completion. Sampled every 60s and may take up to 180s to display.
                                         EOT
@@ -1029,7 +1029,7 @@ resource "observe_dashboard" "pubsub_pubsub_service_input2" {
                       srcFields = [
                         "service",
                       ]
-                      targetDataset    = "${local.pubsub_service}"
+                      targetDataset    = local.pubsub_service
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -1197,7 +1197,7 @@ resource "observe_dashboard" "pubsub_pubsub_service_input2" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.pubsub_service_api_metrics}"
+                    datasetId   = local.pubsub_service_api_metrics
                     description = <<-EOT
                                             Distribution of response sizes in bytes recorded at request completion. Sampled every 60s and may take up to 180s to display.
                                         EOT
@@ -1215,7 +1215,7 @@ resource "observe_dashboard" "pubsub_pubsub_service_input2" {
                       srcFields = [
                         "service",
                       ]
-                      targetDataset    = "${local.pubsub_service}"
+                      targetDataset    = local.pubsub_service
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -1383,7 +1383,7 @@ resource "observe_dashboard" "pubsub_pubsub_service_input2" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.pubsub_service_api_metrics}"
+                    datasetId   = local.pubsub_service_api_metrics
                     description = <<-EOT
                                             Distribution of latencies in seconds for non-streaming requests. Sampled every 60s and may take up to 180s to display.
                                         EOT
@@ -1404,7 +1404,7 @@ resource "observe_dashboard" "pubsub_pubsub_service_input2" {
                       srcFields = [
                         "service",
                       ]
-                      targetDataset    = "${local.pubsub_service}"
+                      targetDataset    = local.pubsub_service
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -1578,7 +1578,7 @@ resource "observe_dashboard" "pubsub_pubsub_service_input2" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.pubsub_service_quota_metrics}"
+                    datasetId   = local.pubsub_service_quota_metrics
                     description = <<-EOT
                                             The total consumed allocation quota. Values reported more than 1/min are dropped. If no changes are received in quota usage, the last value is repeated at least every 24 hours. Sampled every 60s and may take up to  to display.
                                         EOT
@@ -1599,7 +1599,7 @@ resource "observe_dashboard" "pubsub_pubsub_service_input2" {
                       srcFields = [
                         "service",
                       ]
-                      targetDataset    = "${local.pubsub_service}"
+                      targetDataset    = local.pubsub_service
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -1773,7 +1773,7 @@ resource "observe_dashboard" "pubsub_pubsub_service_input2" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.pubsub_service_quota_metrics}"
+                    datasetId   = local.pubsub_service_quota_metrics
                     description = <<-EOT
                                             The total consumed rate quota.
                                         EOT
@@ -1791,7 +1791,7 @@ resource "observe_dashboard" "pubsub_pubsub_service_input2" {
                       srcFields = [
                         "service",
                       ]
-                      targetDataset    = "${local.pubsub_service}"
+                      targetDataset    = local.pubsub_service
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -1865,7 +1865,7 @@ resource "observe_dashboard" "pubsub_pubsub_service_input2" {
         id = "stage-uzvzxv6l"
         input = [
           {
-            datasetId   = "${local.pubsub_service_quota_metrics}"
+            datasetId   = local.pubsub_service_quota_metrics
             datasetPath = null
             inputName   = "stage/PubSub Service Quota Metrics"
             inputRole   = "Data"
@@ -1940,7 +1940,7 @@ resource "observe_dashboard" "pubsub_pubsub_service_input2" {
           index = 9
           inputList = [
             {
-              datasetId   = "${local.pubsub_service_quota_metrics}"
+              datasetId   = local.pubsub_service_quota_metrics
               inputName   = "stage/PubSub Service Quota Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -2116,7 +2116,7 @@ resource "observe_dashboard" "pubsub_pubsub_service_input2" {
         id = "stage-k6i0z4rs"
         input = [
           {
-            datasetId   = "${local.pubsub_service_quota_metrics}"
+            datasetId   = local.pubsub_service_quota_metrics
             datasetPath = null
             inputName   = "stage/PubSub Service Quota Metrics"
             inputRole   = "Data"
@@ -2190,7 +2190,7 @@ resource "observe_dashboard" "pubsub_pubsub_service_input2" {
           index = 10
           inputList = [
             {
-              datasetId   = "${local.pubsub_service_quota_metrics}"
+              datasetId   = local.pubsub_service_quota_metrics
               inputName   = "stage/PubSub Service Quota Metrics"
               inputRole   = "Data"
               isUserInput = false

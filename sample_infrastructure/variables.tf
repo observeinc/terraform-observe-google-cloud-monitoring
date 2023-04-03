@@ -29,5 +29,6 @@ variable "observe" {
     customer_id      = optional(string)
     datastream_token = optional(string)
   })
-  default = null
+  default     = null
+  description = "Object with Observe credentials"
 }

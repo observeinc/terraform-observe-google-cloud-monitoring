@@ -113,10 +113,10 @@ resource "observe_dashboard" "pubsub_subscription_input" {
         parameters = [
           {
             controlledFilterStageId = "stage-39iw1hg0"
-            datasetId               = "${local.pubsub_subscriptions}"
+            datasetId               = local.pubsub_subscriptions
             defaultValue = {
               datasetref = {
-                datasetId = "${local.pubsub_subscriptions}"
+                datasetId = local.pubsub_subscriptions
               }
             }
             emptyValueEncoding    = "null"
@@ -151,7 +151,7 @@ resource "observe_dashboard" "pubsub_subscription_input" {
       {
         defaultValue = {
           datasetref = {
-            datasetId = "${local.pubsub_subscriptions}"
+            datasetId = local.pubsub_subscriptions
           }
         }
         id   = "input-parameter-r4djwcuh"
@@ -170,7 +170,7 @@ resource "observe_dashboard" "pubsub_subscription_input" {
         id = "stage-39iw1hg0"
         input = [
           {
-            datasetId   = "${local.pubsub_subscriptions}"
+            datasetId   = local.pubsub_subscriptions
             datasetPath = null
             inputName   = "stage/PubSub Subscriptions"
             inputRole   = "Data"
@@ -226,7 +226,7 @@ resource "observe_dashboard" "pubsub_subscription_input" {
           index = 0
           inputList = [
             {
-              datasetId   = "${local.pubsub_subscriptions}"
+              datasetId   = local.pubsub_subscriptions
               inputName   = "stage/PubSub Subscriptions"
               inputRole   = "Data"
               isUserInput = false
@@ -657,7 +657,7 @@ resource "observe_dashboard" "pubsub_subscription_input" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.pubsub_subscription_metrics}"
+                    datasetId   = local.pubsub_subscription_metrics
                     description = <<-EOT
                                             Cumulative cost of operations, measured in bytes. This is used to measure quota utilization. Sampled every 60s and may take up to 240s to display.
                                         EOT
@@ -675,7 +675,7 @@ resource "observe_dashboard" "pubsub_subscription_input" {
                       srcFields = [
                         "subscription_key",
                       ]
-                      targetDataset    = "${local.pubsub_subscriptions}"
+                      targetDataset    = local.pubsub_subscriptions
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -885,7 +885,7 @@ resource "observe_dashboard" "pubsub_subscription_input" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.pubsub_subscription_metrics}"
+                    datasetId   = local.pubsub_subscription_metrics
                     description = <<-EOT
                                             Cumulative count of messages sent by Cloud Pub/Sub to subscriber clients, grouped by delivery type. Sampled every 60s and may take up to 240s to display.
                                         EOT
@@ -903,7 +903,7 @@ resource "observe_dashboard" "pubsub_subscription_input" {
                       srcFields = [
                         "subscription_key",
                       ]
-                      targetDataset    = "${local.pubsub_subscriptions}"
+                      targetDataset    = local.pubsub_subscriptions
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -1095,7 +1095,7 @@ resource "observe_dashboard" "pubsub_subscription_input" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.pubsub_subscription_metrics}"
+                    datasetId   = local.pubsub_subscription_metrics
                     description = <<-EOT
                                             Cumulative count of streaming pull responses, grouped by result. Sampled every 60s and may take up to 120s to display.
                                         EOT
@@ -1113,7 +1113,7 @@ resource "observe_dashboard" "pubsub_subscription_input" {
                       srcFields = [
                         "subscription_key",
                       ]
-                      targetDataset    = "${local.pubsub_subscriptions}"
+                      targetDataset    = local.pubsub_subscriptions
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -1305,7 +1305,7 @@ resource "observe_dashboard" "pubsub_subscription_input" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.pubsub_subscription_metrics}"
+                    datasetId   = local.pubsub_subscription_metrics
                     description = <<-EOT
                                             Cumulative count of configuration changes for each subscription, grouped by operation type and result. Sampled every 60s and may take up to 240s to display.
                                         EOT
@@ -1323,7 +1323,7 @@ resource "observe_dashboard" "pubsub_subscription_input" {
                       srcFields = [
                         "subscription_key",
                       ]
-                      targetDataset    = "${local.pubsub_subscriptions}"
+                      targetDataset    = local.pubsub_subscriptions
                       targetStageLabel = null
                       type             = "foreign"
                     }

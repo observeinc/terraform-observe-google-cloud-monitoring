@@ -216,10 +216,10 @@ resource "observe_dashboard" "disk_monitoring" {
         parameters = [
           {
             controlledFilterStageId = "stage-0kx81gai"
-            datasetId               = "${local.compute_disk}"
+            datasetId               = local.compute_disk
             defaultValue = {
               datasetref = {
-                datasetId = "${local.compute_disk}"
+                datasetId = local.compute_disk
               }
             }
             emptyValueEncoding    = "null"
@@ -254,7 +254,7 @@ resource "observe_dashboard" "disk_monitoring" {
       {
         defaultValue = {
           datasetref = {
-            datasetId = "${local.compute_disk}"
+            datasetId = local.compute_disk
           }
         }
         id   = "input-parameter-isvd5249"
@@ -273,7 +273,7 @@ resource "observe_dashboard" "disk_monitoring" {
         id = "stage-0kx81gai"
         input = [
           {
-            datasetId   = "${local.compute_disk}"
+            datasetId   = local.compute_disk
             datasetPath = null
             inputName   = "gcp-cost-test/Compute Disk"
             inputRole   = "Data"
@@ -328,7 +328,7 @@ resource "observe_dashboard" "disk_monitoring" {
           index = 0
           inputList = [
             {
-              datasetId   = "${local.compute_disk}"
+              datasetId   = local.compute_disk
               inputName   = "gcp-cost-test/Compute Disk"
               inputRole   = "Data"
               isUserInput = false
@@ -2213,7 +2213,7 @@ resource "observe_dashboard" "disk_monitoring" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.compute_metrics}"
+                    datasetId   = local.compute_metrics
                     description = "Auto Detected Metric"
                     groupBy = [
                       "computeDiskInstanceAssetKey",
@@ -2316,7 +2316,7 @@ resource "observe_dashboard" "disk_monitoring" {
                       srcFields = [
                         "computeDiskInstanceAssetKey",
                       ]
-                      targetDataset    = "${local.compute_disk}"
+                      targetDataset    = local.compute_disk
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -2531,7 +2531,7 @@ resource "observe_dashboard" "disk_monitoring" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.compute_metrics}"
+                    datasetId   = local.compute_metrics
                     description = "Auto Detected Metric"
                     groupBy = [
                       "computeDiskInstanceAssetKey",
@@ -2634,7 +2634,7 @@ resource "observe_dashboard" "disk_monitoring" {
                       srcFields = [
                         "computeDiskInstanceAssetKey",
                       ]
-                      targetDataset    = "${local.compute_disk}"
+                      targetDataset    = local.compute_disk
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -2806,7 +2806,7 @@ resource "observe_dashboard" "disk_monitoring" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.compute_metrics}"
+                    datasetId   = local.compute_metrics
                     description = <<-EOT
                                             The cumulative time spent on the I/O operations that are in progress; that is, the actual time in queue and when disks were busy. Requests issued in parallel are counted as a single one. For Container-Optimized OS, or Ubuntu running GKE.
                                         EOT
@@ -2824,7 +2824,7 @@ resource "observe_dashboard" "disk_monitoring" {
                       srcFields = [
                         "computeDiskInstanceAssetKey",
                       ]
-                      targetDataset    = "${local.compute_disk}"
+                      targetDataset    = local.compute_disk
                       targetStageLabel = null
                       type             = "foreign"
                     }

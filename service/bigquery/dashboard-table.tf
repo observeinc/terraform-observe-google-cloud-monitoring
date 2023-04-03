@@ -191,7 +191,7 @@ resource "observe_dashboard" "bigquery_tables_manual" {
           index = 0
           inputList = [
             {
-              datasetId   = "${local.bigquery_table}"
+              datasetId   = local.bigquery_table
               inputName   = "GCP/BigQuery Table"
               inputRole   = "Data"
               isUserInput = false

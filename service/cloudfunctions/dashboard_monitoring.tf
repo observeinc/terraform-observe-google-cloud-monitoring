@@ -286,10 +286,10 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
         parameters = [
           {
             controlledFilterStageId = "stage-1pcbjwdr"
-            datasetId               = "${local.cloud_functions_instances}"
+            datasetId               = local.cloud_functions_instances
             defaultValue = {
               datasetref = {
-                datasetId = "${local.cloud_functions_instances}"
+                datasetId = local.cloud_functions_instances
               }
             }
             emptyValueEncoding    = "null"
@@ -325,7 +325,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
       {
         defaultValue = {
           datasetref = {
-            datasetId = "${local.cloud_functions_instances}"
+            datasetId = local.cloud_functions_instances
           }
         }
         id   = "cloudFunctions"
@@ -344,7 +344,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
         id = "stage-hmpks85q"
         input = [
           {
-            datasetId   = "${local.cloud_functions_instances}"
+            datasetId   = local.cloud_functions_instances
             datasetPath = null
             inputName   = "content-eng-1/Cloud Functions Function"
             inputRole   = "Data"
@@ -407,7 +407,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           index = 0
           inputList = [
             {
-              datasetId   = "${local.cloud_functions_instances}"
+              datasetId   = local.cloud_functions_instances
               inputName   = "content-eng-1/Cloud Functions Function"
               inputRole   = "Data"
               isUserInput = false
@@ -452,7 +452,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.cloud_functions_metrics}"
+                    datasetId   = local.cloud_functions_metrics
                     description = "Auto Detected Metric"
                     groupBy = [
                       "project_id",
@@ -493,7 +493,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                       ]
                     }
                     id = {
-                      datasetId = "${local.cloud_functions_metrics}"
+                      datasetId = local.cloud_functions_metrics
                       name      = "function_active_instances"
                     }
                     interval = null
@@ -510,7 +510,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                         "region",
                         "function_name",
                       ]
-                      targetDataset    = "${local.cloud_functions_instances}"
+                      targetDataset    = local.cloud_functions_instances
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -651,7 +651,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
         id = "stage-f0whobgm"
         input = [
           {
-            datasetId   = "${local.cloud_functions_metrics}"
+            datasetId   = local.cloud_functions_metrics
             datasetPath = null
             inputName   = "content-eng-1/Cloud Functions Function Metrics"
             inputRole   = "Data"
@@ -716,7 +716,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           index = 1
           inputList = [
             {
-              datasetId   = "${local.cloud_functions_metrics}"
+              datasetId   = local.cloud_functions_metrics
               inputName   = "content-eng-1/Cloud Functions Function Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -902,7 +902,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
         id = "stage-r41eirof"
         input = [
           {
-            datasetId   = "${local.cloud_functions_instances}"
+            datasetId   = local.cloud_functions_instances
             datasetPath = null
             inputName   = "content-eng-1/Cloud Functions Function"
             inputRole   = "Data"
@@ -964,7 +964,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           index = 2
           inputList = [
             {
-              datasetId   = "${local.cloud_functions_instances}"
+              datasetId   = local.cloud_functions_instances
               inputName   = "content-eng-1/Cloud Functions Function"
               inputRole   = "Data"
               isUserInput = false
@@ -1009,7 +1009,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.cloud_functions_metrics}"
+                    datasetId   = local.cloud_functions_metrics
                     description = <<-EOT
                                             Outgoing network traffic of function, in bytes. Sampled every 60s and may take up to 240s to display.
                                         EOT
@@ -1062,7 +1062,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                       ]
                     }
                     id = {
-                      datasetId = "${local.cloud_functions_metrics}"
+                      datasetId = local.cloud_functions_metrics
                       name      = "function_network_egress"
                     }
                     interval = 60000
@@ -1079,7 +1079,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                         "region",
                         "function_name",
                       ]
-                      targetDataset    = "${local.cloud_functions_instances}"
+                      targetDataset    = local.cloud_functions_instances
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -1184,7 +1184,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
         id = "stage-4jcselfm"
         input = [
           {
-            datasetId   = "${local.cloud_functions_instances}"
+            datasetId   = local.cloud_functions_instances
             datasetPath = null
             inputName   = "content-eng-1/Cloud Functions Function"
             inputRole   = "Data"
@@ -1246,7 +1246,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           index = 3
           inputList = [
             {
-              datasetId   = "${local.cloud_functions_instances}"
+              datasetId   = local.cloud_functions_instances
               inputName   = "content-eng-1/Cloud Functions Function"
               inputRole   = "Data"
               isUserInput = false
@@ -1291,7 +1291,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.cloud_functions_metrics}"
+                    datasetId   = local.cloud_functions_metrics
                     description = <<-EOT
                                             Count of function executions broken down by status. Sampled every 60s and may take up to 240s to display.
                                         EOT
@@ -1349,7 +1349,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                       ]
                     }
                     id = {
-                      datasetId = "${local.cloud_functions_metrics}"
+                      datasetId = local.cloud_functions_metrics
                       name      = "function_execution_count"
                     }
                     interval = 60000
@@ -1366,7 +1366,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                         "region",
                         "function_name",
                       ]
-                      targetDataset    = "${local.cloud_functions_instances}"
+                      targetDataset    = local.cloud_functions_instances
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -1471,7 +1471,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
         id = "stage-v80el32j"
         input = [
           {
-            datasetId   = "${local.cloud_functions_metrics}"
+            datasetId   = local.cloud_functions_metrics
             datasetPath = null
             inputName   = "content-eng-1/Cloud Functions Function Metrics"
             inputRole   = "Data"
@@ -1536,7 +1536,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           index = 4
           inputList = [
             {
-              datasetId   = "${local.cloud_functions_metrics}"
+              datasetId   = local.cloud_functions_metrics
               inputName   = "content-eng-1/Cloud Functions Function Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -1744,7 +1744,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
         id = "stage-ra65e7v9"
         input = [
           {
-            datasetId   = "${local.cloud_functions_logs}"
+            datasetId   = local.cloud_functions_logs
             datasetPath = null
             inputName   = "content-eng-1/Cloud Functions Function Logs"
             inputRole   = "Data"
@@ -1803,7 +1803,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           index = 5
           inputList = [
             {
-              datasetId   = "${local.cloud_functions_logs}"
+              datasetId   = local.cloud_functions_logs
               inputName   = "content-eng-1/Cloud Functions Function Logs"
               inputRole   = "Data"
               isUserInput = false
@@ -2007,7 +2007,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
         id = "stage-ifk44t3v"
         input = [
           {
-            datasetId   = "${local.cloud_functions_logs}"
+            datasetId   = local.cloud_functions_logs
             datasetPath = null
             inputName   = "content-eng-1/Cloud Functions Function Logs"
             inputRole   = "Data"
@@ -2072,7 +2072,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           index = 6
           inputList = [
             {
-              datasetId   = "${local.cloud_functions_logs}"
+              datasetId   = local.cloud_functions_logs
               inputName   = "content-eng-1/Cloud Functions Function Logs"
               inputRole   = "Data"
               isUserInput = false
@@ -2812,7 +2812,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
         id = "stage-1pcbjwdr"
         input = [
           {
-            datasetId   = "${local.cloud_functions_instances}"
+            datasetId   = local.cloud_functions_instances
             datasetPath = null
             inputName   = "Google/Cloud Functions Instances"
             inputRole   = "Data"
@@ -2867,7 +2867,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           index = 10
           inputList = [
             {
-              datasetId   = "${local.cloud_functions_instances}"
+              datasetId   = local.cloud_functions_instances
               inputName   = "Google/Cloud Functions Instances"
               inputRole   = "Data"
               isUserInput = false
