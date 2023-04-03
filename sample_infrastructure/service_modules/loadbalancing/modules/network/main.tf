@@ -29,7 +29,7 @@ resource "google_compute_target_pool" "default" {
 
   instances = var.target_group_instances
 
-  health_checks = google_compute_http_health_check.default.*.name
+  health_checks = google_compute_http_health_check.default[*].name
 }
 
 # ------------------------------------------------------------------------------

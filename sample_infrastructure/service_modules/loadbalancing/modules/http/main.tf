@@ -105,7 +105,7 @@ resource "google_compute_backend_service" "backend_service_apache" {
   project       = var.project_id
   port_name     = "http"
   protocol      = "HTTP"
-  health_checks = ["${google_compute_health_check.healthcheck.self_link}"]
+  health_checks = [google_compute_health_check.healthcheck.self_link]
 
   backend {
     group                 = google_compute_instance_group.web_private_group.self_link
@@ -119,7 +119,7 @@ resource "google_compute_backend_service" "backend_service_flask" {
   project       = var.project_id
   port_name     = "flask"
   protocol      = "HTTP"
-  health_checks = ["${google_compute_health_check.healthcheck_8080.self_link}"]
+  health_checks = [google_compute_health_check.healthcheck_8080.self_link]
 
   backend {
     group                 = google_compute_instance_group.web_private_group.self_link
