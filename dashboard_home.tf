@@ -797,10 +797,10 @@ resource "observe_dashboard" "app_home" {
         parameters = [
           {
             controlledFilterStageId = "stage-j2c2ofq9"
-            datasetId               = "${local.projects_collection_enabled}"
+            datasetId               = local.projects_collection_enabled
             defaultValue = {
               datasetref = {
-                datasetId = "${local.projects_collection_enabled}"
+                datasetId = local.projects_collection_enabled
               }
             }
             emptyValueEncoding    = "null"
@@ -869,7 +869,7 @@ resource "observe_dashboard" "app_home" {
       {
         defaultValue = {
           datasetref = {
-            datasetId = "${local.projects_collection_enabled}"
+            datasetId = local.projects_collection_enabled
           }
         }
         id   = "input-parameter-z5n5j9ss"
@@ -912,7 +912,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-j2c2ofq9"
         input = [
           {
-            datasetId   = "${local.projects_collection_enabled}"
+            datasetId   = local.projects_collection_enabled
             datasetPath = null
             inputName   = "Projects Collection Enabled"
             inputRole   = "Data"
@@ -967,7 +967,7 @@ resource "observe_dashboard" "app_home" {
           index = 0
           inputList = [
             {
-              datasetId   = "${local.projects_collection_enabled}"
+              datasetId   = local.projects_collection_enabled
               inputName   = "Projects Collection Enabled"
               inputRole   = "Data"
               isUserInput = false
@@ -1037,7 +1037,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-5qcgtbj0"
         input = [
           {
-            datasetId   = "${local.resources_asset_inventory}"
+            datasetId   = local.resources_asset_inventory
             datasetPath = null
             inputName   = "Resources Asset Inventory"
             inputRole   = "Data"
@@ -1112,7 +1112,7 @@ resource "observe_dashboard" "app_home" {
           index = 1
           inputList = [
             {
-              datasetId   = "${local.resources_asset_inventory}"
+              datasetId   = local.resources_asset_inventory
               inputName   = "Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
@@ -1316,7 +1316,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-6tpj44f3"
         input = [
           {
-            datasetId   = "${local.pubsub_topics}"
+            datasetId   = local.pubsub_topics
             datasetPath = null
             inputName   = "PubSub Service"
             inputRole   = "Data"
@@ -1383,7 +1383,7 @@ resource "observe_dashboard" "app_home" {
           index = 2
           inputList = [
             {
-              datasetId   = "${local.pubsub_topics}"
+              datasetId   = local.pubsub_topics
               inputName   = "PubSub Service"
               inputRole   = "Data"
               isUserInput = false
@@ -1428,7 +1428,7 @@ resource "observe_dashboard" "app_home" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.pubsub_service_quota_metrics}"
+                    datasetId   = local.pubsub_service_quota_metrics
                     description = <<-EOT
                                             The limit for the quota. Sampled every 86400s and may take up to  to display.
                                         EOT
@@ -1523,7 +1523,7 @@ resource "observe_dashboard" "app_home" {
                       srcFields = [
                         "service",
                       ]
-                      targetDataset    = "${local.pubsub_topics}"
+                      targetDataset    = local.pubsub_topics
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -1879,7 +1879,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-xrowv4mm"
         input = [
           {
-            datasetId   = "${local.resources_asset_inventory}"
+            datasetId   = local.resources_asset_inventory
             datasetPath = null
             inputName   = "Resources Asset Inventory"
             inputRole   = "Data"
@@ -1955,7 +1955,7 @@ resource "observe_dashboard" "app_home" {
           index = 4
           inputList = [
             {
-              datasetId   = "${local.resources_asset_inventory}"
+              datasetId   = local.resources_asset_inventory
               inputName   = "Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
@@ -2115,7 +2115,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-i0tj2v1q"
         input = [
           {
-            datasetId   = "${local.metrics}"
+            datasetId   = local.metrics
             datasetPath = null
             inputName   = "Metrics"
             inputRole   = "Data"
@@ -2184,7 +2184,7 @@ resource "observe_dashboard" "app_home" {
           index = 5
           inputList = [
             {
-              datasetId   = "${local.metrics}"
+              datasetId   = local.metrics
               inputName   = "Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -2362,7 +2362,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-0ln1husq"
         input = [
           {
-            datasetId   = "${local.metrics}"
+            datasetId   = local.metrics
             datasetPath = null
             inputName   = "Metrics"
             inputRole   = "Data"
@@ -2424,7 +2424,7 @@ resource "observe_dashboard" "app_home" {
           index = 6
           inputList = [
             {
-              datasetId   = "${local.metrics}"
+              datasetId   = local.metrics
               inputName   = "Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -2563,7 +2563,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-21nn95t9"
         input = [
           {
-            datasetId   = "${local.resources_asset_inventory}"
+            datasetId   = local.resources_asset_inventory
             datasetPath = null
             inputName   = "Resources Asset Inventory"
             inputRole   = "Data"
@@ -2635,7 +2635,7 @@ resource "observe_dashboard" "app_home" {
           index = 7
           inputList = [
             {
-              datasetId   = "${local.resources_asset_inventory}"
+              datasetId   = local.resources_asset_inventory
               inputName   = "Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
@@ -2787,14 +2787,14 @@ resource "observe_dashboard" "app_home" {
         id = "stage-228m0syx"
         input = [
           {
-            datasetId   = "${local.compute_instance}"
+            datasetId   = local.compute_instance
             datasetPath = null
             inputName   = "Compute Instance"
             inputRole   = "Data"
             stageId     = null
           },
           {
-            datasetId   = "${local.compute_metrics}"
+            datasetId   = local.compute_metrics
             datasetPath = null
             inputName   = "Compute Metrics"
             inputRole   = "Data"
@@ -2858,13 +2858,13 @@ resource "observe_dashboard" "app_home" {
           index = 8
           inputList = [
             {
-              datasetId   = "${local.compute_instance}"
+              datasetId   = local.compute_instance
               inputName   = "Compute Instance"
               inputRole   = "Data"
               isUserInput = false
             },
             {
-              datasetId   = "${local.compute_metrics}"
+              datasetId   = local.compute_metrics
               inputName   = "Compute Metrics"
               inputRole   = "Data"
               isUserInput = true
@@ -3060,7 +3060,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-ip7wr03z"
         input = [
           {
-            datasetId   = "${local.compute_instance}"
+            datasetId   = local.compute_instance
             datasetPath = null
             inputName   = "Compute Instance"
             inputRole   = "Data"
@@ -3125,7 +3125,7 @@ resource "observe_dashboard" "app_home" {
           index = 9
           inputList = [
             {
-              datasetId   = "${local.compute_instance}"
+              datasetId   = local.compute_instance
               inputName   = "Compute Instance"
               inputRole   = "Data"
               isUserInput = false
@@ -3170,7 +3170,7 @@ resource "observe_dashboard" "app_home" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.compute_metrics}"
+                    datasetId   = local.compute_metrics
                     description = "Auto Detected Metric"
                     groupBy = [
                       "computeInstanceAssetKey",
@@ -3268,7 +3268,7 @@ resource "observe_dashboard" "app_home" {
                       srcFields = [
                         "computeInstanceAssetKey",
                       ]
-                      targetDataset    = "${local.compute_instance}"
+                      targetDataset    = local.compute_instance
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -3385,7 +3385,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-5mrjhjg1"
         input = [
           {
-            datasetId   = "${local.compute_instance}"
+            datasetId   = local.compute_instance
             datasetPath = null
             inputName   = "Compute Instance"
             inputRole   = "Data"
@@ -3450,7 +3450,7 @@ resource "observe_dashboard" "app_home" {
           index = 10
           inputList = [
             {
-              datasetId   = "${local.compute_instance}"
+              datasetId   = local.compute_instance
               inputName   = "Compute Instance"
               inputRole   = "Data"
               isUserInput = false
@@ -3495,7 +3495,7 @@ resource "observe_dashboard" "app_home" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.compute_metrics}"
+                    datasetId   = local.compute_metrics
                     description = "Auto Detected Metric"
                     groupBy = [
                       "computeInstanceAssetKey",
@@ -3593,7 +3593,7 @@ resource "observe_dashboard" "app_home" {
                       srcFields = [
                         "computeInstanceAssetKey",
                       ]
-                      targetDataset    = "${local.compute_instance}"
+                      targetDataset    = local.compute_instance
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -3710,7 +3710,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-s2m8jiqp"
         input = [
           {
-            datasetId   = "${local.compute_instance}"
+            datasetId   = local.compute_instance
             datasetPath = null
             inputName   = "Compute Instance"
             inputRole   = "Data"
@@ -3774,7 +3774,7 @@ resource "observe_dashboard" "app_home" {
           index = 11
           inputList = [
             {
-              datasetId   = "${local.compute_instance}"
+              datasetId   = local.compute_instance
               inputName   = "Compute Instance"
               inputRole   = "Data"
               isUserInput = false
@@ -3819,7 +3819,7 @@ resource "observe_dashboard" "app_home" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.compute_metrics}"
+                    datasetId   = local.compute_metrics
                     description = "Auto Detected Metric"
                     groupBy = [
                       "computeInstanceAssetKey",
@@ -3928,7 +3928,7 @@ resource "observe_dashboard" "app_home" {
                       srcFields = [
                         "computeInstanceAssetKey",
                       ]
-                      targetDataset    = "${local.compute_instance}"
+                      targetDataset    = local.compute_instance
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -4031,7 +4031,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-unvyak3n"
         input = [
           {
-            datasetId   = "${local.compute_instance}"
+            datasetId   = local.compute_instance
             datasetPath = null
             inputName   = "Compute Instance"
             inputRole   = "Data"
@@ -4095,7 +4095,7 @@ resource "observe_dashboard" "app_home" {
           index = 12
           inputList = [
             {
-              datasetId   = "${local.compute_instance}"
+              datasetId   = local.compute_instance
               inputName   = "Compute Instance"
               inputRole   = "Data"
               isUserInput = false
@@ -4140,7 +4140,7 @@ resource "observe_dashboard" "app_home" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.compute_metrics}"
+                    datasetId   = local.compute_metrics
                     description = "Auto Detected Metric"
                     groupBy = [
                       "computeInstanceAssetKey",
@@ -4249,7 +4249,7 @@ resource "observe_dashboard" "app_home" {
                       srcFields = [
                         "computeInstanceAssetKey",
                       ]
-                      targetDataset    = "${local.compute_instance}"
+                      targetDataset    = local.compute_instance
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -4352,7 +4352,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-g5xahf72"
         input = [
           {
-            datasetId   = "${local.resources_asset_inventory}"
+            datasetId   = local.resources_asset_inventory
             datasetPath = null
             inputName   = "Resources Asset Inventory"
             inputRole   = "Data"
@@ -4424,7 +4424,7 @@ resource "observe_dashboard" "app_home" {
           index = 13
           inputList = [
             {
-              datasetId   = "${local.resources_asset_inventory}"
+              datasetId   = local.resources_asset_inventory
               inputName   = "Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
@@ -4592,7 +4592,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-iv0som0b"
         input = [
           {
-            datasetId   = "${local.resources_asset_inventory}"
+            datasetId   = local.resources_asset_inventory
             datasetPath = null
             inputName   = "Resources Asset Inventory"
             inputRole   = "Data"
@@ -4663,7 +4663,7 @@ resource "observe_dashboard" "app_home" {
           index = 14
           inputList = [
             {
-              datasetId   = "${local.resources_asset_inventory}"
+              datasetId   = local.resources_asset_inventory
               inputName   = "Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
@@ -4817,7 +4817,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-yvtup4f7"
         input = [
           {
-            datasetId   = "${local.resources_asset_inventory}"
+            datasetId   = local.resources_asset_inventory
             datasetPath = null
             inputName   = "Resources Asset Inventory"
             inputRole   = "Data"
@@ -4888,7 +4888,7 @@ resource "observe_dashboard" "app_home" {
           index = 15
           inputList = [
             {
-              datasetId   = "${local.resources_asset_inventory}"
+              datasetId   = local.resources_asset_inventory
               inputName   = "Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
@@ -5042,7 +5042,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-jliidcnd"
         input = [
           {
-            datasetId   = "${local.resources_asset_inventory}"
+            datasetId   = local.resources_asset_inventory
             datasetPath = null
             inputName   = "Resources Asset Inventory"
             inputRole   = "Data"
@@ -5114,7 +5114,7 @@ resource "observe_dashboard" "app_home" {
           index = 16
           inputList = [
             {
-              datasetId   = "${local.resources_asset_inventory}"
+              datasetId   = local.resources_asset_inventory
               inputName   = "Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
@@ -5355,7 +5355,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-2b1wmvm0"
         input = [
           {
-            datasetId   = "${local.resources_asset_inventory}"
+            datasetId   = local.resources_asset_inventory
             datasetPath = null
             inputName   = "Resources Asset Inventory"
             inputRole   = "Data"
@@ -5427,7 +5427,7 @@ resource "observe_dashboard" "app_home" {
           index = 17
           inputList = [
             {
-              datasetId   = "${local.resources_asset_inventory}"
+              datasetId   = local.resources_asset_inventory
               inputName   = "Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
@@ -5648,7 +5648,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-pe50l3py"
         input = [
           {
-            datasetId   = "${local.resources_asset_inventory}"
+            datasetId   = local.resources_asset_inventory
             datasetPath = null
             inputName   = "Resources Asset Inventory"
             inputRole   = "Data"
@@ -5720,7 +5720,7 @@ resource "observe_dashboard" "app_home" {
           index = 18
           inputList = [
             {
-              datasetId   = "${local.resources_asset_inventory}"
+              datasetId   = local.resources_asset_inventory
               inputName   = "Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
@@ -5963,7 +5963,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-fqygx54m"
         input = [
           {
-            datasetId   = "${local.resources_asset_inventory}"
+            datasetId   = local.resources_asset_inventory
             datasetPath = null
             inputName   = "Resources Asset Inventory"
             inputRole   = "Data"
@@ -6035,7 +6035,7 @@ resource "observe_dashboard" "app_home" {
           index = 19
           inputList = [
             {
-              datasetId   = "${local.resources_asset_inventory}"
+              datasetId   = local.resources_asset_inventory
               inputName   = "Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
@@ -6270,7 +6270,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-zb4jkng5"
         input = [
           {
-            datasetId   = "${local.cloud_functions_metrics}"
+            datasetId   = local.cloud_functions_metrics
             datasetPath = null
             inputName   = "Cloud Functions Metrics"
             inputRole   = "Data"
@@ -6335,7 +6335,7 @@ resource "observe_dashboard" "app_home" {
           index = 20
           inputList = [
             {
-              datasetId   = "${local.cloud_functions_metrics}"
+              datasetId   = local.cloud_functions_metrics
               inputName   = "Cloud Functions Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -6542,7 +6542,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-se0b58dq"
         input = [
           {
-            datasetId   = "${local.cloud_functions_instances}"
+            datasetId   = local.cloud_functions_instances
             datasetPath = null
             inputName   = "Cloud Functions Instances"
             inputRole   = "Data"
@@ -6605,7 +6605,7 @@ resource "observe_dashboard" "app_home" {
           index = 21
           inputList = [
             {
-              datasetId   = "${local.cloud_functions_instances}"
+              datasetId   = local.cloud_functions_instances
               inputName   = "Cloud Functions Instances"
               inputRole   = "Data"
               isUserInput = false
@@ -6827,7 +6827,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-lpdgwarl"
         input = [
           {
-            datasetId   = "${local.cloud_functions_metrics}"
+            datasetId   = local.cloud_functions_metrics
             datasetPath = null
             inputName   = "Cloud Functions Metrics"
             inputRole   = "Data"
@@ -6891,7 +6891,7 @@ resource "observe_dashboard" "app_home" {
           index = 22
           inputList = [
             {
-              datasetId   = "${local.cloud_functions_metrics}"
+              datasetId   = local.cloud_functions_metrics
               inputName   = "Cloud Functions Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -7059,7 +7059,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-syrkb3qn"
         input = [
           {
-            datasetId   = "${local.storage_buckets}"
+            datasetId   = local.storage_buckets
             datasetPath = null
             inputName   = "Storage Buckets"
             inputRole   = "Data"
@@ -7121,7 +7121,7 @@ resource "observe_dashboard" "app_home" {
           index = 23
           inputList = [
             {
-              datasetId   = "${local.storage_buckets}"
+              datasetId   = local.storage_buckets
               inputName   = "Storage Buckets"
               inputRole   = "Data"
               isUserInput = false
@@ -7166,7 +7166,7 @@ resource "observe_dashboard" "app_home" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.storage_metrics}"
+                    datasetId   = local.storage_metrics
                     description = <<-EOT
                                             Delta count of API calls, grouped by the API method name and response code. Sampled every 60s and may take up to 120s to display.
                                         EOT
@@ -7231,7 +7231,7 @@ resource "observe_dashboard" "app_home" {
                       srcFields = [
                         "bucket_name",
                       ]
-                      targetDataset    = "${local.storage_buckets}"
+                      targetDataset    = local.storage_buckets
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -7347,7 +7347,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-j45262wb"
         input = [
           {
-            datasetId   = "${local.pubsub_service_quota_metrics}"
+            datasetId   = local.pubsub_service_quota_metrics
             datasetPath = null
             inputName   = "PubSub Service Quota Metrics"
             inputRole   = "Data"
@@ -7423,7 +7423,7 @@ resource "observe_dashboard" "app_home" {
           index = 24
           inputList = [
             {
-              datasetId   = "${local.pubsub_service_quota_metrics}"
+              datasetId   = local.pubsub_service_quota_metrics
               inputName   = "PubSub Service Quota Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -7615,7 +7615,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-daa0tsou"
         input = [
           {
-            datasetId   = "${local.pubsub_service_quota_metrics}"
+            datasetId   = local.pubsub_service_quota_metrics
             datasetPath = null
             inputName   = "PubSub Service Quota Metrics"
             inputRole   = "Data"
@@ -7686,7 +7686,7 @@ resource "observe_dashboard" "app_home" {
           index = 25
           inputList = [
             {
-              datasetId   = "${local.pubsub_service_quota_metrics}"
+              datasetId   = local.pubsub_service_quota_metrics
               inputName   = "PubSub Service Quota Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -7838,7 +7838,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-fa5121vu"
         input = [
           {
-            datasetId   = "${local.pubsub_service_quota_metrics}"
+            datasetId   = local.pubsub_service_quota_metrics
             datasetPath = null
             inputName   = "PubSub Service Quota Metrics"
             inputRole   = "Data"
@@ -7910,7 +7910,7 @@ resource "observe_dashboard" "app_home" {
           index = 26
           inputList = [
             {
-              datasetId   = "${local.pubsub_service_quota_metrics}"
+              datasetId   = local.pubsub_service_quota_metrics
               inputName   = "PubSub Service Quota Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -8060,7 +8060,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-dd4tnu00"
         input = [
           {
-            datasetId   = "${local.cloud_functions_instances}"
+            datasetId   = local.cloud_functions_instances
             datasetPath = null
             inputName   = "Cloud Functions Instances"
             inputRole   = "Data"
@@ -8074,7 +8074,7 @@ resource "observe_dashboard" "app_home" {
             stageId     = null
           },
           {
-            datasetId   = "${local.cloud_functions_logs}"
+            datasetId   = local.cloud_functions_logs
             datasetPath = null
             inputName   = "CloudFunctionsLogs"
             inputRole   = "Data"
@@ -8130,7 +8130,7 @@ resource "observe_dashboard" "app_home" {
           index = 27
           inputList = [
             {
-              datasetId   = "${local.cloud_functions_instances}"
+              datasetId   = local.cloud_functions_instances
               inputName   = "Cloud Functions Instances"
               inputRole   = "Data"
               isUserInput = false
@@ -8142,7 +8142,7 @@ resource "observe_dashboard" "app_home" {
               parameterId = "input-parameter-z5n5j9ss"
             },
             {
-              datasetId   = "${local.cloud_functions_logs}"
+              datasetId   = local.cloud_functions_logs
               inputName   = "CloudFunctionsLogs"
               inputRole   = "Data"
               isUserInput = true
@@ -8387,7 +8387,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-ybs0phel"
         input = [
           {
-            datasetId   = "${local.storage_buckets}"
+            datasetId   = local.storage_buckets
             datasetPath = null
             inputName   = "Storage Buckets"
             inputRole   = "Data"
@@ -8401,7 +8401,7 @@ resource "observe_dashboard" "app_home" {
             stageId     = null
           },
           {
-            datasetId   = "${local.storage_metrics}"
+            datasetId   = local.storage_metrics
             datasetPath = null
             inputName   = "Storage Metrics"
             inputRole   = "Data"
@@ -8463,7 +8463,7 @@ resource "observe_dashboard" "app_home" {
           index = 28
           inputList = [
             {
-              datasetId   = "${local.storage_buckets}"
+              datasetId   = local.storage_buckets
               inputName   = "Storage Buckets"
               inputRole   = "Data"
               isUserInput = false
@@ -8475,7 +8475,7 @@ resource "observe_dashboard" "app_home" {
               parameterId = "input-parameter-z5n5j9ss"
             },
             {
-              datasetId   = "${local.storage_metrics}"
+              datasetId   = local.storage_metrics
               inputName   = "Storage Metrics"
               inputRole   = "Data"
               isUserInput = true
@@ -8688,7 +8688,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-te6t9rwt"
         input = [
           {
-            datasetId   = "${local.cloud_sql_instance}"
+            datasetId   = local.cloud_sql_instance
             datasetPath = null
             inputName   = "Cloud SQL Instance"
             inputRole   = "Data"
@@ -8744,7 +8744,7 @@ resource "observe_dashboard" "app_home" {
           index = 29
           inputList = [
             {
-              datasetId   = "${local.cloud_sql_instance}"
+              datasetId   = local.cloud_sql_instance
               inputName   = "Cloud SQL Instance"
               inputRole   = "Data"
               isUserInput = false
@@ -8783,7 +8783,7 @@ resource "observe_dashboard" "app_home" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.cloud_sql_metrics}"
+                    datasetId   = local.cloud_sql_metrics
                     description = "Auto Detected Metric"
                     groupBy = [
                       "database_id",
@@ -8866,7 +8866,7 @@ resource "observe_dashboard" "app_home" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetDataset    = local.cloud_sql_instance
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -8978,7 +8978,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-jytc9moz"
         input = [
           {
-            datasetId   = "${local.cloud_sql_instance}"
+            datasetId   = local.cloud_sql_instance
             datasetPath = null
             inputName   = "Cloud SQL Instance"
             inputRole   = "Data"
@@ -9033,7 +9033,7 @@ resource "observe_dashboard" "app_home" {
           index = 30
           inputList = [
             {
-              datasetId   = "${local.cloud_sql_instance}"
+              datasetId   = local.cloud_sql_instance
               inputName   = "Cloud SQL Instance"
               inputRole   = "Data"
               isUserInput = false
@@ -9072,7 +9072,7 @@ resource "observe_dashboard" "app_home" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.cloud_sql_metrics_combo}"
+                    datasetId   = local.cloud_sql_metrics_combo
                     description = <<-EOT
                                             Combination of network connection metrics.
                                         EOT
@@ -9167,7 +9167,7 @@ resource "observe_dashboard" "app_home" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetDataset    = local.cloud_sql_instance
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -9245,7 +9245,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-5ln1jd7h"
         input = [
           {
-            datasetId   = "${local.cloud_sql_instance}"
+            datasetId   = local.cloud_sql_instance
             datasetPath = null
             inputName   = "Cloud SQL Instance"
             inputRole   = "Data"
@@ -9300,7 +9300,7 @@ resource "observe_dashboard" "app_home" {
           index = 31
           inputList = [
             {
-              datasetId   = "${local.cloud_sql_instance}"
+              datasetId   = local.cloud_sql_instance
               inputName   = "Cloud SQL Instance"
               inputRole   = "Data"
               isUserInput = false
@@ -9339,7 +9339,7 @@ resource "observe_dashboard" "app_home" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.cloud_sql_metrics}"
+                    datasetId   = local.cloud_sql_metrics
                     description = "Auto Detected Metric"
                     groupBy = [
                       "database_id",
@@ -9422,7 +9422,7 @@ resource "observe_dashboard" "app_home" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetDataset    = local.cloud_sql_instance
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -9500,7 +9500,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-b1chj5cm"
         input = [
           {
-            datasetId   = "${local.cloud_sql_instance}"
+            datasetId   = local.cloud_sql_instance
             datasetPath = null
             inputName   = "Cloud SQL Instance"
             inputRole   = "Data"
@@ -9555,7 +9555,7 @@ resource "observe_dashboard" "app_home" {
           index = 32
           inputList = [
             {
-              datasetId   = "${local.cloud_sql_instance}"
+              datasetId   = local.cloud_sql_instance
               inputName   = "Cloud SQL Instance"
               inputRole   = "Data"
               isUserInput = false
@@ -9594,7 +9594,7 @@ resource "observe_dashboard" "app_home" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.cloud_sql_metrics}"
+                    datasetId   = local.cloud_sql_metrics
                     description = "Auto Detected Metric"
                     groupBy = [
                       "database_id",
@@ -9677,7 +9677,7 @@ resource "observe_dashboard" "app_home" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetDataset    = local.cloud_sql_instance
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -9755,7 +9755,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-adtkr7tf"
         input = [
           {
-            datasetId   = "${local.resources_asset_inventory}"
+            datasetId   = local.resources_asset_inventory
             datasetPath = null
             inputName   = "Resources Asset Inventory"
             inputRole   = "Data"
@@ -9827,7 +9827,7 @@ resource "observe_dashboard" "app_home" {
           index = 33
           inputList = [
             {
-              datasetId   = "${local.resources_asset_inventory}"
+              datasetId   = local.resources_asset_inventory
               inputName   = "Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false
@@ -9993,7 +9993,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-rcjq4hxw"
         input = [
           {
-            datasetId   = "${local.cloud_scheduler_jobs}"
+            datasetId   = local.cloud_scheduler_jobs
             datasetPath = null
             inputName   = "Cloud Scheduler Jobs"
             inputRole   = "Data"
@@ -10056,7 +10056,7 @@ resource "observe_dashboard" "app_home" {
           index = 34
           inputList = [
             {
-              datasetId   = "${local.cloud_scheduler_jobs}"
+              datasetId   = local.cloud_scheduler_jobs
               inputName   = "Cloud Scheduler Jobs"
               inputRole   = "Data"
               isUserInput = false
@@ -10202,7 +10202,7 @@ resource "observe_dashboard" "app_home" {
         id = "stage-fgwg2rh6"
         input = [
           {
-            datasetId   = "${local.resources_asset_inventory}"
+            datasetId   = local.resources_asset_inventory
             datasetPath = null
             inputName   = "Resources Asset Inventory"
             inputRole   = "Data"
@@ -10278,7 +10278,7 @@ resource "observe_dashboard" "app_home" {
           index = 35
           inputList = [
             {
-              datasetId   = "${local.resources_asset_inventory}"
+              datasetId   = local.resources_asset_inventory
               inputName   = "Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false

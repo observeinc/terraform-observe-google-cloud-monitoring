@@ -168,10 +168,10 @@ resource "observe_dashboard" "bigquery_dataset" {
         parameters = [
           {
             controlledFilterStageId = "stage-2t3h88hk"
-            datasetId               = "${local.bigquery_dataset}"
+            datasetId               = local.bigquery_dataset
             defaultValue = {
               datasetref = {
-                datasetId = "${local.bigquery_dataset}"
+                datasetId = local.bigquery_dataset
               }
             }
             emptyValueEncoding    = "null"
@@ -207,7 +207,7 @@ resource "observe_dashboard" "bigquery_dataset" {
       {
         defaultValue = {
           datasetref = {
-            datasetId = "${local.bigquery_dataset}"
+            datasetId = local.bigquery_dataset
           }
         }
         id   = "dataset"
@@ -226,7 +226,7 @@ resource "observe_dashboard" "bigquery_dataset" {
         id = "stage-4fida6ze"
         input = [
           {
-            datasetId   = "${local.bigquery_dataset}"
+            datasetId   = local.bigquery_dataset
             datasetPath = null
             inputName   = "content-eng-1/BigQuery Dataset"
             inputRole   = "Data"
@@ -282,7 +282,7 @@ resource "observe_dashboard" "bigquery_dataset" {
           index = 0
           inputList = [
             {
-              datasetId   = "${local.bigquery_dataset}"
+              datasetId   = local.bigquery_dataset
               inputName   = "content-eng-1/BigQuery Dataset"
               inputRole   = "Data"
               isUserInput = false
@@ -323,14 +323,14 @@ resource "observe_dashboard" "bigquery_dataset" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.bigquery_metrics}"
+                    datasetId   = local.bigquery_metrics
                     description = <<-EOT
                                             Number of tables. Sampled every 1800s and may take up to 10800s to display.
                                         EOT
                     groupBy     = []
                     heuristics  = null
                     id = {
-                      datasetId = "${local.bigquery_metrics}"
+                      datasetId = local.bigquery_metrics
                       name      = "storage_table_count"
                     }
                     interval = 1800000
@@ -345,7 +345,7 @@ resource "observe_dashboard" "bigquery_dataset" {
                         "datasetId",
                         "projectId",
                       ]
-                      targetDataset    = "${local.bigquery_dataset}"
+                      targetDataset    = local.bigquery_dataset
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -447,7 +447,7 @@ resource "observe_dashboard" "bigquery_dataset" {
         id = "stage-7ylg47aa"
         input = [
           {
-            datasetId   = "${local.bigquery_metrics}"
+            datasetId   = local.bigquery_metrics
             datasetPath = null
             inputName   = "content-eng-1/BigQuery Metrics"
             inputRole   = "Data"
@@ -512,7 +512,7 @@ resource "observe_dashboard" "bigquery_dataset" {
           index = 1
           inputList = [
             {
-              datasetId   = "${local.bigquery_metrics}"
+              datasetId   = local.bigquery_metrics
               inputName   = "content-eng-1/BigQuery Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -691,7 +691,7 @@ resource "observe_dashboard" "bigquery_dataset" {
         id = "stage-fz39wjfx"
         input = [
           {
-            datasetId   = "${local.bigquery_dataset}"
+            datasetId   = local.bigquery_dataset
             datasetPath = null
             inputName   = "content-eng-1/BigQuery Dataset"
             inputRole   = "Data"
@@ -747,7 +747,7 @@ resource "observe_dashboard" "bigquery_dataset" {
           index = 2
           inputList = [
             {
-              datasetId   = "${local.bigquery_dataset}"
+              datasetId   = local.bigquery_dataset
               inputName   = "content-eng-1/BigQuery Dataset"
               inputRole   = "Data"
               isUserInput = false
@@ -887,7 +887,7 @@ resource "observe_dashboard" "bigquery_dataset" {
         id = "stage-lfvf7894"
         input = [
           {
-            datasetId   = "${local.bigquery_dataset}"
+            datasetId   = local.bigquery_dataset
             datasetPath = null
             inputName   = "content-eng-1/BigQuery Dataset"
             inputRole   = "Data"
@@ -943,7 +943,7 @@ resource "observe_dashboard" "bigquery_dataset" {
           index = 3
           inputList = [
             {
-              datasetId   = "${local.bigquery_dataset}"
+              datasetId   = local.bigquery_dataset
               inputName   = "content-eng-1/BigQuery Dataset"
               inputRole   = "Data"
               isUserInput = false
@@ -1103,7 +1103,7 @@ resource "observe_dashboard" "bigquery_dataset" {
         id = "stage-6r1ernau"
         input = [
           {
-            datasetId   = "${local.bigquery_dataset}"
+            datasetId   = local.bigquery_dataset
             datasetPath = null
             inputName   = "content-eng-1/BigQuery Dataset"
             inputRole   = "Data"
@@ -1159,7 +1159,7 @@ resource "observe_dashboard" "bigquery_dataset" {
           index = 4
           inputList = [
             {
-              datasetId   = "${local.bigquery_dataset}"
+              datasetId   = local.bigquery_dataset
               inputName   = "content-eng-1/BigQuery Dataset"
               inputRole   = "Data"
               isUserInput = false
@@ -1299,7 +1299,7 @@ resource "observe_dashboard" "bigquery_dataset" {
         id = "stage-e36zjn6n"
         input = [
           {
-            datasetId   = "${local.bigquery_dataset}"
+            datasetId   = local.bigquery_dataset
             datasetPath = null
             inputName   = "content-eng-1/BigQuery Dataset"
             inputRole   = "Data"
@@ -1355,7 +1355,7 @@ resource "observe_dashboard" "bigquery_dataset" {
           index = 5
           inputList = [
             {
-              datasetId   = "${local.bigquery_dataset}"
+              datasetId   = local.bigquery_dataset
               inputName   = "content-eng-1/BigQuery Dataset"
               inputRole   = "Data"
               isUserInput = false
@@ -1396,7 +1396,7 @@ resource "observe_dashboard" "bigquery_dataset" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.bigquery_metrics}"
+                    datasetId   = local.bigquery_metrics
                     description = <<-EOT
                                             Number of tables. Sampled every 1800s and may take up to 10800s to display.
                                         EOT
@@ -1406,7 +1406,7 @@ resource "observe_dashboard" "bigquery_dataset" {
                     ]
                     heuristics = null
                     id = {
-                      datasetId = "${local.bigquery_metrics}"
+                      datasetId = local.bigquery_metrics
                       name      = "storage_table_count"
                     }
                     interval = 1800000
@@ -1421,7 +1421,7 @@ resource "observe_dashboard" "bigquery_dataset" {
                         "dataset_id",
                         "project_id",
                       ]
-                      targetDataset    = "${local.bigquery_dataset}"
+                      targetDataset    = local.bigquery_dataset
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -1522,7 +1522,7 @@ resource "observe_dashboard" "bigquery_dataset" {
         id = "stage-5nmw07cg"
         input = [
           {
-            datasetId   = "${local.bigquery_metrics}"
+            datasetId   = local.bigquery_metrics
             datasetPath = null
             inputName   = "content-eng-1/BigQuery Metrics"
             inputRole   = "Data"
@@ -1585,7 +1585,7 @@ resource "observe_dashboard" "bigquery_dataset" {
           index = 6
           inputList = [
             {
-              datasetId   = "${local.bigquery_metrics}"
+              datasetId   = local.bigquery_metrics
               inputName   = "content-eng-1/BigQuery Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -1745,7 +1745,7 @@ resource "observe_dashboard" "bigquery_dataset" {
         id = "stage-2t3h88hk"
         input = [
           {
-            datasetId   = "${local.bigquery_dataset}"
+            datasetId   = local.bigquery_dataset
             datasetPath = null
             inputName   = "GCP/BigQuery Dataset"
             inputRole   = "Data"
@@ -1801,7 +1801,7 @@ resource "observe_dashboard" "bigquery_dataset" {
           index = 7
           inputList = [
             {
-              datasetId   = "${local.bigquery_dataset}"
+              datasetId   = local.bigquery_dataset
               inputName   = "GCP/BigQuery Dataset"
               inputRole   = "Data"
               isUserInput = false
