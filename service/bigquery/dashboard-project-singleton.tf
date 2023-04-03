@@ -283,7 +283,7 @@ resource "observe_dashboard" "bigquery_project_overview" {
             id                    = "project"
             name                  = "project"
             valueKind = {
-              keyForDatasetId = "${local.projects_collection_enabled}"
+              keyForDatasetId = local.projects_collection_enabled
               type            = "LINK"
             }
             viewType = "resource-input"
@@ -362,7 +362,7 @@ resource "observe_dashboard" "bigquery_project_overview" {
         id = "stage-05ysgkw0"
         input = [
           {
-            datasetId   = "${local.bigquery_metrics}"
+            datasetId   = local.bigquery_metrics
             datasetPath = null
             inputName   = "GCP/BigQuery Metrics"
             inputRole   = "Data"
@@ -414,7 +414,7 @@ resource "observe_dashboard" "bigquery_project_overview" {
           index = 0
           inputList = [
             {
-              datasetId   = "${local.bigquery_metrics}"
+              datasetId   = local.bigquery_metrics
               inputName   = "GCP/BigQuery Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -453,7 +453,7 @@ resource "observe_dashboard" "bigquery_project_overview" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.bigquery_metrics}"
+                    datasetId   = local.bigquery_metrics
                     description = <<-EOT
                                             In flight queries. Sampled every 60s and may take up to 420s to display.
                                         EOT
@@ -512,7 +512,7 @@ resource "observe_dashboard" "bigquery_project_overview" {
                       ]
                     }
                     id = {
-                      datasetId = "${local.bigquery_metrics}"
+                      datasetId = local.bigquery_metrics
                       name      = "query_count"
                     }
                     interval    = 60000
@@ -613,7 +613,7 @@ resource "observe_dashboard" "bigquery_project_overview" {
         id = "stage-q74drd16"
         input = [
           {
-            datasetId   = "${local.bigquery_metrics}"
+            datasetId   = local.bigquery_metrics
             datasetPath = null
             inputName   = "GCP/BigQuery Metrics"
             inputRole   = "Data"
@@ -668,7 +668,7 @@ resource "observe_dashboard" "bigquery_project_overview" {
           index = 1
           inputList = [
             {
-              datasetId   = "${local.bigquery_metrics}"
+              datasetId   = local.bigquery_metrics
               inputName   = "GCP/BigQuery Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -843,7 +843,7 @@ resource "observe_dashboard" "bigquery_project_overview" {
                       {
                         metric = {
                           aggregate   = "sum"
-                          datasetId   = "${local.bigquery_metrics}"
+                          datasetId   = local.bigquery_metrics
                           description = <<-EOT
                                                         Distribution of execution times for queries that completed successfully within the last sampling interval. Incomplete and failed queries are not included. Sampled every 60s and may take up to 420s to display.
                                                     EOT
@@ -902,7 +902,7 @@ resource "observe_dashboard" "bigquery_project_overview" {
                             ]
                           }
                           id = {
-                            datasetId = "${local.bigquery_metrics}"
+                            datasetId = local.bigquery_metrics
                             name      = "query_execution_times"
                           }
                           interval    = 60000
@@ -921,7 +921,7 @@ resource "observe_dashboard" "bigquery_project_overview" {
                       {
                         metric = {
                           aggregate   = "sum"
-                          datasetId   = "${local.bigquery_metrics}"
+                          datasetId   = local.bigquery_metrics
                           description = <<-EOT
                                                         Distribution of execution times for queries that completed successfully within the last sampling interval. Incomplete and failed queries are not included. Sampled every 60s and may take up to 420s to display.
                                                     EOT
@@ -980,7 +980,7 @@ resource "observe_dashboard" "bigquery_project_overview" {
                             ]
                           }
                           id = {
-                            datasetId = "${local.bigquery_metrics}"
+                            datasetId = local.bigquery_metrics
                             name      = "query_execution_times"
                           }
                           interval    = 60000
@@ -1058,7 +1058,7 @@ resource "observe_dashboard" "bigquery_project_overview" {
         id = "stage-i99crhhz"
         input = [
           {
-            datasetId   = "${local.bigquery_metrics}"
+            datasetId   = local.bigquery_metrics
             datasetPath = null
             inputName   = "GCP/BigQuery Metrics"
             inputRole   = "Data"
@@ -1112,7 +1112,7 @@ resource "observe_dashboard" "bigquery_project_overview" {
           index = 2
           inputList = [
             {
-              datasetId   = "${local.bigquery_metrics}"
+              datasetId   = local.bigquery_metrics
               inputName   = "GCP/BigQuery Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -1151,7 +1151,7 @@ resource "observe_dashboard" "bigquery_project_overview" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.bigquery_metrics}"
+                    datasetId   = local.bigquery_metrics
                     description = <<-EOT
                                             In flight jobs. Sampled every 60s and may take up to 420s to display.
                                         EOT
@@ -1215,7 +1215,7 @@ resource "observe_dashboard" "bigquery_project_overview" {
                       ]
                     }
                     id = {
-                      datasetId = "${local.bigquery_metrics}"
+                      datasetId = local.bigquery_metrics
                       name      = "job_num_in_flight"
                     }
                     interval    = 60000
@@ -1380,7 +1380,7 @@ resource "observe_dashboard" "bigquery_project_overview" {
         id = "stage-40twjv29"
         input = [
           {
-            datasetId   = "${local.bigquery_metrics}"
+            datasetId   = local.bigquery_metrics
             datasetPath = null
             inputName   = "GCP/BigQuery Metrics"
             inputRole   = "Data"
@@ -1432,7 +1432,7 @@ resource "observe_dashboard" "bigquery_project_overview" {
           index = 3
           inputList = [
             {
-              datasetId   = "${local.bigquery_metrics}"
+              datasetId   = local.bigquery_metrics
               inputName   = "GCP/BigQuery Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -1471,7 +1471,7 @@ resource "observe_dashboard" "bigquery_project_overview" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.bigquery_metrics}"
+                    datasetId   = local.bigquery_metrics
                     description = <<-EOT
                                             In flight jobs. Sampled every 60s and may take up to 420s to display.
                                         EOT
@@ -1535,7 +1535,7 @@ resource "observe_dashboard" "bigquery_project_overview" {
                       ]
                     }
                     id = {
-                      datasetId = "${local.bigquery_metrics}"
+                      datasetId = local.bigquery_metrics
                       name      = "job_num_in_flight"
                     }
                     interval    = 60000
@@ -1683,7 +1683,7 @@ resource "observe_dashboard" "bigquery_project_overview" {
         id = "stage-vp64h9fo"
         input = [
           {
-            datasetId   = "${local.bigquery_job_logs}"
+            datasetId   = local.bigquery_job_logs
             datasetPath = null
             inputName   = "GCP/BigQuery Job Logs"
             inputRole   = "Data"
@@ -1735,7 +1735,7 @@ resource "observe_dashboard" "bigquery_project_overview" {
           index = 4
           inputList = [
             {
-              datasetId   = "${local.bigquery_job_logs}"
+              datasetId   = local.bigquery_job_logs
               inputName   = "GCP/BigQuery Job Logs"
               inputRole   = "Data"
               isUserInput = false
@@ -1933,7 +1933,7 @@ resource "observe_dashboard" "bigquery_project_overview" {
         id = "stage-dqzbn1at"
         input = [
           {
-            datasetId   = "${local.bigquery_job_logs}"
+            datasetId   = local.bigquery_job_logs
             datasetPath = null
             inputName   = "GCP/BigQuery Job Logs"
             inputRole   = "Data"
@@ -1984,7 +1984,7 @@ resource "observe_dashboard" "bigquery_project_overview" {
           index = 5
           inputList = [
             {
-              datasetId   = "${local.bigquery_job_logs}"
+              datasetId   = local.bigquery_job_logs
               inputName   = "GCP/BigQuery Job Logs"
               inputRole   = "Data"
               isUserInput = false

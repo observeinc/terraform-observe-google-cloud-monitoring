@@ -429,10 +429,10 @@ resource "observe_dashboard" "redis_monitoring" {
         parameters = [
           {
             controlledFilterStageId = "stage-5if3k3ks"
-            datasetId               = "${local.redis_instance}"
+            datasetId               = local.redis_instance
             defaultValue = {
               datasetref = {
-                datasetId = "${local.redis_instance}"
+                datasetId = local.redis_instance
               }
             }
             emptyValueEncoding    = "null"
@@ -467,7 +467,7 @@ resource "observe_dashboard" "redis_monitoring" {
       {
         defaultValue = {
           datasetref = {
-            datasetId = "${local.redis_instance}"
+            datasetId = local.redis_instance
           }
         }
         id   = "input-parameter-5maomrv2"
@@ -486,7 +486,7 @@ resource "observe_dashboard" "redis_monitoring" {
         id = "stage-5if3k3ks"
         input = [
           {
-            datasetId   = "${local.redis_instance}"
+            datasetId   = local.redis_instance
             datasetPath = null
             inputName   = "test_gcp_learning-bedbug/Redis Instance"
             inputRole   = "Data"
@@ -541,7 +541,7 @@ resource "observe_dashboard" "redis_monitoring" {
           index = 0
           inputList = [
             {
-              datasetId   = "${local.redis_instance}"
+              datasetId   = local.redis_instance
               inputName   = "test_gcp_learning-bedbug/Redis Instance"
               inputRole   = "Data"
               isUserInput = false
@@ -907,7 +907,7 @@ resource "observe_dashboard" "redis_monitoring" {
         id = "stage-xa7yo712"
         input = [
           {
-            datasetId   = "${local.redis_metrics}"
+            datasetId   = local.redis_metrics
             datasetPath = null
             inputName   = "commands_calls_from_GCP/Redis Metrics"
             inputRole   = "Data"
@@ -971,7 +971,7 @@ resource "observe_dashboard" "redis_monitoring" {
           index = 2
           inputList = [
             {
-              datasetId   = "${local.redis_metrics}"
+              datasetId   = local.redis_metrics
               inputName   = "commands_calls_from_GCP/Redis Metrics"
               inputRole   = "Data"
               isUserInput = true
@@ -1155,7 +1155,7 @@ resource "observe_dashboard" "redis_monitoring" {
             stageId     = null
           },
           {
-            datasetId   = "${local.redis_metrics}"
+            datasetId   = local.redis_metrics
             datasetPath = null
             inputName   = "stats_cpu_utilization_from_GCP/Redis Metrics"
             inputRole   = "Data"
@@ -1217,7 +1217,7 @@ resource "observe_dashboard" "redis_monitoring" {
               parameterId = "input-parameter-5maomrv2"
             },
             {
-              datasetId   = "${local.redis_metrics}"
+              datasetId   = local.redis_metrics
               inputName   = "stats_cpu_utilization_from_GCP/Redis Metrics"
               inputRole   = "Data"
               isUserInput = true
@@ -1372,7 +1372,7 @@ resource "observe_dashboard" "redis_monitoring" {
             stageId     = null
           },
           {
-            datasetId   = "${local.redis_metrics}"
+            datasetId   = local.redis_metrics
             datasetPath = null
             inputName   = "keyspace_keys_from_GCP/Redis Metrics"
             inputRole   = "Data"
@@ -1440,7 +1440,7 @@ resource "observe_dashboard" "redis_monitoring" {
               parameterId = "input-parameter-5maomrv2"
             },
             {
-              datasetId   = "${local.redis_metrics}"
+              datasetId   = local.redis_metrics
               inputName   = "keyspace_keys_from_GCP/Redis Metrics"
               inputRole   = "Data"
               isUserInput = true
@@ -1594,7 +1594,7 @@ resource "observe_dashboard" "redis_monitoring" {
             stageId     = null
           },
           {
-            datasetId   = "${local.redis_metrics}"
+            datasetId   = local.redis_metrics
             datasetPath = null
             inputName   = "clients_connected_from_GCP/Redis Metrics"
             inputRole   = "Data"
@@ -1663,7 +1663,7 @@ resource "observe_dashboard" "redis_monitoring" {
               parameterId = "input-parameter-5maomrv2"
             },
             {
-              datasetId   = "${local.redis_metrics}"
+              datasetId   = local.redis_metrics
               inputName   = "clients_connected_from_GCP/Redis Metrics"
               inputRole   = "Data"
               isUserInput = true
@@ -1814,7 +1814,7 @@ resource "observe_dashboard" "redis_monitoring" {
         id = "stage-m6kykgl1"
         input = [
           {
-            datasetId   = "${local.redis_metrics}"
+            datasetId   = local.redis_metrics
             datasetPath = null
             inputName   = "stats_memory_usage_ratio_from_test_gcp_learning-bedbug/Redis Metrics"
             inputRole   = "Data"
@@ -1877,7 +1877,7 @@ resource "observe_dashboard" "redis_monitoring" {
           index = 6
           inputList = [
             {
-              datasetId   = "${local.redis_metrics}"
+              datasetId   = local.redis_metrics
               inputName   = "stats_memory_usage_ratio_from_test_gcp_learning-bedbug/Redis Metrics"
               inputRole   = "Data"
               isUserInput = true
@@ -2037,7 +2037,7 @@ resource "observe_dashboard" "redis_monitoring" {
             stageId     = null
           },
           {
-            datasetId   = "${local.redis_metrics}"
+            datasetId   = local.redis_metrics
             datasetPath = null
             inputName   = "stats_network_traffic_from_GCP/Redis Metrics"
             inputRole   = "Data"
@@ -2105,7 +2105,7 @@ resource "observe_dashboard" "redis_monitoring" {
               parameterId = "input-parameter-5maomrv2"
             },
             {
-              datasetId   = "${local.redis_metrics}"
+              datasetId   = local.redis_metrics
               inputName   = "stats_network_traffic_from_GCP/Redis Metrics"
               inputRole   = "Data"
               isUserInput = true
@@ -2260,7 +2260,7 @@ resource "observe_dashboard" "redis_monitoring" {
             stageId     = null
           },
           {
-            datasetId   = "${local.redis_metrics}"
+            datasetId   = local.redis_metrics
             datasetPath = null
             inputName   = "stats_connections_total_from_GCP/Redis Metrics"
             inputRole   = "Data"
@@ -2328,7 +2328,7 @@ resource "observe_dashboard" "redis_monitoring" {
               parameterId = "input-parameter-5maomrv2"
             },
             {
-              datasetId   = "${local.redis_metrics}"
+              datasetId   = local.redis_metrics
               inputName   = "stats_connections_total_from_GCP/Redis Metrics"
               inputRole   = "Data"
               isUserInput = true
@@ -2483,7 +2483,7 @@ resource "observe_dashboard" "redis_monitoring" {
             stageId     = null
           },
           {
-            datasetId   = "${local.redis_metrics}"
+            datasetId   = local.redis_metrics
             datasetPath = null
             inputName   = "keyspace_avg_ttl_from_GCP/Redis Metrics"
             inputRole   = "Data"
@@ -2551,7 +2551,7 @@ resource "observe_dashboard" "redis_monitoring" {
               parameterId = "input-parameter-5maomrv2"
             },
             {
-              datasetId   = "${local.redis_metrics}"
+              datasetId   = local.redis_metrics
               inputName   = "keyspace_avg_ttl_from_GCP/Redis Metrics"
               inputRole   = "Data"
               isUserInput = true
@@ -2705,7 +2705,7 @@ resource "observe_dashboard" "redis_monitoring" {
             stageId     = null
           },
           {
-            datasetId   = "${local.redis_metrics}"
+            datasetId   = local.redis_metrics
             datasetPath = null
             inputName   = "stats_expired_keys_from_GCP/Redis Metrics"
             inputRole   = "Data"
@@ -2773,7 +2773,7 @@ resource "observe_dashboard" "redis_monitoring" {
               parameterId = "input-parameter-5maomrv2"
             },
             {
-              datasetId   = "${local.redis_metrics}"
+              datasetId   = local.redis_metrics
               inputName   = "stats_expired_keys_from_GCP/Redis Metrics"
               inputRole   = "Data"
               isUserInput = true
@@ -2927,7 +2927,7 @@ resource "observe_dashboard" "redis_monitoring" {
             stageId     = null
           },
           {
-            datasetId   = "${local.redis_metrics}"
+            datasetId   = local.redis_metrics
             datasetPath = null
             inputName   = "stats_keyspace_hits_from_GCP/Redis Metrics"
             inputRole   = "Data"
@@ -2995,7 +2995,7 @@ resource "observe_dashboard" "redis_monitoring" {
               parameterId = "input-parameter-5maomrv2"
             },
             {
-              datasetId   = "${local.redis_metrics}"
+              datasetId   = local.redis_metrics
               inputName   = "stats_keyspace_hits_from_GCP/Redis Metrics"
               inputRole   = "Data"
               isUserInput = true
@@ -3150,7 +3150,7 @@ resource "observe_dashboard" "redis_monitoring" {
             stageId     = null
           },
           {
-            datasetId   = "${local.redis_metrics}"
+            datasetId   = local.redis_metrics
             datasetPath = null
             inputName   = "stats_keyspace_misses_from_GCP/Redis Metrics"
             inputRole   = "Data"
@@ -3218,7 +3218,7 @@ resource "observe_dashboard" "redis_monitoring" {
               parameterId = "input-parameter-5maomrv2"
             },
             {
-              datasetId   = "${local.redis_metrics}"
+              datasetId   = local.redis_metrics
               inputName   = "stats_keyspace_misses_from_GCP/Redis Metrics"
               inputRole   = "Data"
               isUserInput = true
@@ -3375,7 +3375,7 @@ resource "observe_dashboard" "redis_monitoring" {
             stageId     = null
           },
           {
-            datasetId   = "${local.redis_metrics}"
+            datasetId   = local.redis_metrics
             datasetPath = null
             inputName   = "keyspace_keys_with_expiration_from_GCP/Redis Metrics"
             inputRole   = "Data"
@@ -3443,7 +3443,7 @@ resource "observe_dashboard" "redis_monitoring" {
               parameterId = "input-parameter-5maomrv2"
             },
             {
-              datasetId   = "${local.redis_metrics}"
+              datasetId   = local.redis_metrics
               inputName   = "keyspace_keys_with_expiration_from_GCP/Redis Metrics"
               inputRole   = "Data"
               isUserInput = true

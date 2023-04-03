@@ -42,10 +42,10 @@ resource "observe_dashboard" "resource_monitoring" {
         parameters = [
           {
             controlledFilterStageId = "stage-7ajs8338"
-            datasetId               = "${local.resources_asset_inventory}"
+            datasetId               = local.resources_asset_inventory
             defaultValue = {
               datasetref = {
-                datasetId = "${local.resources_asset_inventory}"
+                datasetId = local.resources_asset_inventory
               }
             }
             emptyValueEncoding    = "null"
@@ -80,7 +80,7 @@ resource "observe_dashboard" "resource_monitoring" {
       {
         defaultValue = {
           datasetref = {
-            datasetId = "${local.resources_asset_inventory}"
+            datasetId = local.resources_asset_inventory
           }
         }
         id   = "input-parameter-r2120qwo"
@@ -99,7 +99,7 @@ resource "observe_dashboard" "resource_monitoring" {
         id = "stage-7ajs8338"
         input = [
           {
-            datasetId   = "${local.resources_asset_inventory}"
+            datasetId   = local.resources_asset_inventory
             datasetPath = null
             inputName   = "dev/Resources Asset Inventory"
             inputRole   = "Data"
@@ -153,7 +153,7 @@ resource "observe_dashboard" "resource_monitoring" {
           index = 0
           inputList = [
             {
-              datasetId   = "${local.resources_asset_inventory}"
+              datasetId   = local.resources_asset_inventory
               inputName   = "dev/Resources Asset Inventory"
               inputRole   = "Data"
               isUserInput = false

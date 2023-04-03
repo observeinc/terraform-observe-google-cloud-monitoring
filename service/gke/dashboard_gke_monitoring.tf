@@ -251,10 +251,10 @@ resource "observe_dashboard" "gke_monitoring" {
         parameters = [
           {
             controlledFilterStageId = "stage-551njtne"
-            datasetId               = "${local.gke_cluster}"
+            datasetId               = local.gke_cluster
             defaultValue = {
               datasetref = {
-                datasetId = "${local.gke_cluster}"
+                datasetId = local.gke_cluster
               }
             }
             emptyValueEncoding    = "null"
@@ -289,7 +289,7 @@ resource "observe_dashboard" "gke_monitoring" {
       {
         defaultValue = {
           datasetref = {
-            datasetId = "${local.gke_cluster}"
+            datasetId = local.gke_cluster
           }
         }
         id   = "input-parameter-21mm2wi0"
@@ -308,7 +308,7 @@ resource "observe_dashboard" "gke_monitoring" {
         id = "stage-551njtne"
         input = [
           {
-            datasetId   = "${local.gke_cluster}"
+            datasetId   = local.gke_cluster
             datasetPath = null
             inputName   = "gcp-cost-test/GKE Clusters"
             inputRole   = "Data"
@@ -364,7 +364,7 @@ resource "observe_dashboard" "gke_monitoring" {
           index = 0
           inputList = [
             {
-              datasetId   = "${local.gke_cluster}"
+              datasetId   = local.gke_cluster
               inputName   = "gcp-cost-test/GKE Clusters"
               inputRole   = "Data"
               isUserInput = false
@@ -1354,7 +1354,7 @@ resource "observe_dashboard" "gke_monitoring" {
         id = "stage-y3ptdg09"
         input = [
           {
-            datasetId   = "${local.compute_instance}"
+            datasetId   = local.compute_instance
             datasetPath = null
             inputName   = "gcp-cost-test/Compute Instance"
             inputRole   = "Data"
@@ -1417,7 +1417,7 @@ resource "observe_dashboard" "gke_monitoring" {
           index = 6
           inputList = [
             {
-              datasetId   = "${local.compute_instance}"
+              datasetId   = local.compute_instance
               inputName   = "gcp-cost-test/Compute Instance"
               inputRole   = "Data"
               isUserInput = false
@@ -1463,7 +1463,7 @@ resource "observe_dashboard" "gke_monitoring" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.compute_metrics}"
+                    datasetId   = local.compute_metrics
                     description = "Auto Detected Metric"
                     groupBy = [
                       "computeInstanceAssetKey",
@@ -1556,7 +1556,7 @@ resource "observe_dashboard" "gke_monitoring" {
                       srcFields = [
                         "computeInstanceAssetKey",
                       ]
-                      targetDataset    = "${local.compute_instance}"
+                      targetDataset    = local.compute_instance
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -1727,7 +1727,7 @@ resource "observe_dashboard" "gke_monitoring" {
         id = "stage-k7p4bw80"
         input = [
           {
-            datasetId   = "${local.compute_instance}"
+            datasetId   = local.compute_instance
             datasetPath = null
             inputName   = "gcp-cost-test/Compute Instance"
             inputRole   = "Data"
@@ -1795,7 +1795,7 @@ resource "observe_dashboard" "gke_monitoring" {
           index = 7
           inputList = [
             {
-              datasetId   = "${local.compute_instance}"
+              datasetId   = local.compute_instance
               inputName   = "gcp-cost-test/Compute Instance"
               inputRole   = "Data"
               isUserInput = false
@@ -1840,7 +1840,7 @@ resource "observe_dashboard" "gke_monitoring" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.compute_metrics}"
+                    datasetId   = local.compute_metrics
                     description = "Auto Detected Metric"
                     groupBy = [
                       "computeInstanceAssetKey",
@@ -1938,7 +1938,7 @@ resource "observe_dashboard" "gke_monitoring" {
                       srcFields = [
                         "computeInstanceAssetKey",
                       ]
-                      targetDataset    = "${local.compute_instance}"
+                      targetDataset    = local.compute_instance
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -2041,7 +2041,7 @@ resource "observe_dashboard" "gke_monitoring" {
         id = "stage-70ozhtnp"
         input = [
           {
-            datasetId   = "${local.compute_instance}"
+            datasetId   = local.compute_instance
             datasetPath = null
             inputName   = "gcp-cost-test/Compute Instance"
             inputRole   = "Data"
@@ -2109,7 +2109,7 @@ resource "observe_dashboard" "gke_monitoring" {
           index = 8
           inputList = [
             {
-              datasetId   = "${local.compute_instance}"
+              datasetId   = local.compute_instance
               inputName   = "gcp-cost-test/Compute Instance"
               inputRole   = "Data"
               isUserInput = false
@@ -2154,7 +2154,7 @@ resource "observe_dashboard" "gke_monitoring" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.compute_metrics}"
+                    datasetId   = local.compute_metrics
                     description = "Auto Detected Metric"
                     groupBy = [
                       "computeInstanceAssetKey",
@@ -2252,7 +2252,7 @@ resource "observe_dashboard" "gke_monitoring" {
                       srcFields = [
                         "computeInstanceAssetKey",
                       ]
-                      targetDataset    = "${local.compute_instance}"
+                      targetDataset    = local.compute_instance
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -2355,7 +2355,7 @@ resource "observe_dashboard" "gke_monitoring" {
         id = "stage-uxxml2cm"
         input = [
           {
-            datasetId   = "${local.compute_instance}"
+            datasetId   = local.compute_instance
             datasetPath = null
             inputName   = "gcp-cost-test/Compute Instance"
             inputRole   = "Data"
@@ -2418,7 +2418,7 @@ resource "observe_dashboard" "gke_monitoring" {
           index = 9
           inputList = [
             {
-              datasetId   = "${local.compute_instance}"
+              datasetId   = local.compute_instance
               inputName   = "gcp-cost-test/Compute Instance"
               inputRole   = "Data"
               isUserInput = false

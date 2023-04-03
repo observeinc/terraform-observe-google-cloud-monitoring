@@ -248,7 +248,7 @@ resource "observe_dashboard" "total_cost_of_ownership" {
         id = "stage-k0zvl6is"
         input = [
           {
-            datasetId   = "${local.pubsub_events}"
+            datasetId   = local.pubsub_events
             datasetPath = null
             inputName   = "gcp-cost-test/PubSub Events"
             inputRole   = "Data"
@@ -306,7 +306,7 @@ resource "observe_dashboard" "total_cost_of_ownership" {
           index = 0
           inputList = [
             {
-              datasetId   = "${local.pubsub_events}"
+              datasetId   = local.pubsub_events
               inputName   = "gcp-cost-test/PubSub Events"
               inputRole   = "Data"
               isUserInput = false

@@ -164,10 +164,10 @@ resource "observe_dashboard" "bigquery_project" {
         parameters = [
           {
             controlledFilterStageId = "stage-u6a45ve1"
-            datasetId               = "${local.projects_collection_enabled}"
+            datasetId               = local.projects_collection_enabled
             defaultValue = {
               datasetref = {
-                datasetId = "${local.projects_collection_enabled}"
+                datasetId = local.projects_collection_enabled
               }
             }
             emptyValueEncoding    = "null"
@@ -203,7 +203,7 @@ resource "observe_dashboard" "bigquery_project" {
       {
         defaultValue = {
           datasetref = {
-            datasetId = "${local.projects_collection_enabled}"
+            datasetId = local.projects_collection_enabled
           }
         }
         id   = "project"
@@ -222,7 +222,7 @@ resource "observe_dashboard" "bigquery_project" {
         id = "stage-c08qvrlg"
         input = [
           {
-            datasetId   = "${local.bigquery_metrics}"
+            datasetId   = local.bigquery_metrics
             datasetPath = null
             inputName   = "content-eng-1/BigQuery Metrics"
             inputRole   = "Data"
@@ -281,7 +281,7 @@ resource "observe_dashboard" "bigquery_project" {
           index = 0
           inputList = [
             {
-              datasetId   = "${local.bigquery_metrics}"
+              datasetId   = local.bigquery_metrics
               inputName   = "content-eng-1/BigQuery Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -446,7 +446,7 @@ resource "observe_dashboard" "bigquery_project" {
                       {
                         metric = {
                           aggregate   = "sum"
-                          datasetId   = "${local.bigquery_metrics}"
+                          datasetId   = local.bigquery_metrics
                           description = <<-EOT
                                                         In flight queries. Sampled every 60s and may take up to 420s to display.
                                                     EOT
@@ -502,7 +502,7 @@ resource "observe_dashboard" "bigquery_project" {
                             ]
                           }
                           id = {
-                            datasetId = "${local.bigquery_metrics}"
+                            datasetId = local.bigquery_metrics
                             name      = "query_count"
                           }
                           interval    = 60000
@@ -521,7 +521,7 @@ resource "observe_dashboard" "bigquery_project" {
                       {
                         metric = {
                           aggregate   = "sum"
-                          datasetId   = "${local.bigquery_metrics}"
+                          datasetId   = local.bigquery_metrics
                           description = <<-EOT
                                                         In flight queries. Sampled every 60s and may take up to 420s to display.
                                                     EOT
@@ -577,7 +577,7 @@ resource "observe_dashboard" "bigquery_project" {
                             ]
                           }
                           id = {
-                            datasetId = "${local.bigquery_metrics}"
+                            datasetId = local.bigquery_metrics
                             name      = "query_count"
                           }
                           interval    = 60000
@@ -657,7 +657,7 @@ resource "observe_dashboard" "bigquery_project" {
         id = "stage-s2699v7w"
         input = [
           {
-            datasetId   = "${local.bigquery_job_logs}"
+            datasetId   = local.bigquery_job_logs
             datasetPath = null
             inputName   = "content-eng-1/BigQuery Logs"
             inputRole   = "Data"
@@ -718,7 +718,7 @@ resource "observe_dashboard" "bigquery_project" {
           index = 1
           inputList = [
             {
-              datasetId   = "${local.bigquery_job_logs}"
+              datasetId   = local.bigquery_job_logs
               inputName   = "content-eng-1/BigQuery Logs"
               inputRole   = "Data"
               isUserInput = true
@@ -904,7 +904,7 @@ resource "observe_dashboard" "bigquery_project" {
         id = "stage-ddhb1f5d"
         input = [
           {
-            datasetId   = "${local.bigquery_job_logs}"
+            datasetId   = local.bigquery_job_logs
             datasetPath = null
             inputName   = "content-eng-1/BigQuery Logs"
             inputRole   = "Data"
@@ -965,7 +965,7 @@ resource "observe_dashboard" "bigquery_project" {
           index = 2
           inputList = [
             {
-              datasetId   = "${local.bigquery_job_logs}"
+              datasetId   = local.bigquery_job_logs
               inputName   = "content-eng-1/BigQuery Logs"
               inputRole   = "Data"
               isUserInput = true
@@ -1156,7 +1156,7 @@ resource "observe_dashboard" "bigquery_project" {
         id = "stage-0gkg2i6q"
         input = [
           {
-            datasetId   = "${local.bigquery_metrics}"
+            datasetId   = local.bigquery_metrics
             datasetPath = null
             inputName   = "content-eng-1/BigQuery Metrics"
             inputRole   = "Data"
@@ -1228,7 +1228,7 @@ resource "observe_dashboard" "bigquery_project" {
           index = 3
           inputList = [
             {
-              datasetId   = "${local.bigquery_metrics}"
+              datasetId   = local.bigquery_metrics
               inputName   = "content-eng-1/BigQuery Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -1312,7 +1312,7 @@ resource "observe_dashboard" "bigquery_project" {
                 srcFields = [
                   "project_id",
                 ]
-                targetDataset    = "${local.projects_collection_enabled}"
+                targetDataset    = local.projects_collection_enabled
                 targetLabelField = "projectNumber"
                 type             = "linked"
               }
@@ -1454,7 +1454,7 @@ resource "observe_dashboard" "bigquery_project" {
                       {
                         metric = {
                           aggregate   = "sum"
-                          datasetId   = "${local.bigquery_metrics}"
+                          datasetId   = local.bigquery_metrics
                           description = <<-EOT
                                                         In flight jobs. Sampled every 60s and may take up to 420s to display.
                                                     EOT
@@ -1520,7 +1520,7 @@ resource "observe_dashboard" "bigquery_project" {
                             ]
                           }
                           id = {
-                            datasetId = "${local.bigquery_metrics}"
+                            datasetId = local.bigquery_metrics
                             name      = "job_num_in_flight"
                           }
                           interval    = 60000
@@ -1539,7 +1539,7 @@ resource "observe_dashboard" "bigquery_project" {
                       {
                         metric = {
                           aggregate   = "sum"
-                          datasetId   = "${local.bigquery_metrics}"
+                          datasetId   = local.bigquery_metrics
                           description = <<-EOT
                                                         In flight jobs. Sampled every 60s and may take up to 420s to display.
                                                     EOT
@@ -1605,7 +1605,7 @@ resource "observe_dashboard" "bigquery_project" {
                             ]
                           }
                           id = {
-                            datasetId = "${local.bigquery_metrics}"
+                            datasetId = local.bigquery_metrics
                             name      = "job_num_in_flight"
                           }
                           interval    = 60000
@@ -1686,7 +1686,7 @@ resource "observe_dashboard" "bigquery_project" {
         id = "stage-u6a45ve1"
         input = [
           {
-            datasetId   = "${local.projects_collection_enabled}"
+            datasetId   = local.projects_collection_enabled
             datasetPath = null
             inputName   = "GCP/Projects"
             inputRole   = "Data"
@@ -1740,7 +1740,7 @@ resource "observe_dashboard" "bigquery_project" {
           index = 4
           inputList = [
             {
-              datasetId   = "${local.projects_collection_enabled}"
+              datasetId   = local.projects_collection_enabled
               inputName   = "GCP/Projects"
               inputRole   = "Data"
               isUserInput = false
@@ -1811,7 +1811,7 @@ resource "observe_dashboard" "bigquery_project" {
         id = "stage-z0jt4uxu"
         input = [
           {
-            datasetId   = "${local.bigquery_metrics}"
+            datasetId   = local.bigquery_metrics
             datasetPath = null
             inputName   = "GCP/BigQuery Metrics"
             inputRole   = "Data"
@@ -1874,7 +1874,7 @@ resource "observe_dashboard" "bigquery_project" {
           index = 5
           inputList = [
             {
-              datasetId   = "${local.bigquery_metrics}"
+              datasetId   = local.bigquery_metrics
               inputName   = "GCP/BigQuery Metrics"
               inputRole   = "Data"
               isUserInput = false

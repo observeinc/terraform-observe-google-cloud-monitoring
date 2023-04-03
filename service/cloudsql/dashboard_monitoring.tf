@@ -462,10 +462,10 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
         parameters = [
           {
             controlledFilterStageId = "stage-9zde4fcc"
-            datasetId               = "${local.cloud_sql_instance}"
+            datasetId               = local.cloud_sql_instance
             defaultValue = {
               datasetref = {
-                datasetId = "${local.cloud_sql_instance}"
+                datasetId = local.cloud_sql_instance
               }
             }
             emptyValueEncoding    = "null"
@@ -501,7 +501,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
       {
         defaultValue = {
           datasetref = {
-            datasetId = "${local.cloud_sql_instance}"
+            datasetId = local.cloud_sql_instance
           }
         }
         id   = "dbResource"
@@ -616,7 +616,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.cloud_sql_metrics}"
+                    datasetId   = local.cloud_sql_metrics
                     description = <<-EOT
                                             Current CPU utilization represented as a percentage of the reserved CPU that is currently in use. Values are typically numbers between 0.0 and 1.0 but might exceed 1.0. Charts display the values as a percentage between 0% and 100% or more. Sampled every 60s and may take up to 210s to display.
                                         EOT
@@ -625,7 +625,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                     ]
                     heuristics = null
                     id = {
-                      datasetId = "${local.cloud_sql_metrics}"
+                      datasetId = local.cloud_sql_metrics
                       name      = "database_cpu_utilization"
                     }
                     interval = 60000
@@ -638,7 +638,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetDataset    = local.cloud_sql_instance
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -848,7 +848,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.cloud_sql_metrics}"
+                    datasetId   = local.cloud_sql_metrics
                     description = <<-EOT
                                             Data utilization in bytes. Sampled every 60s and may take up to 210s to display.
                                         EOT
@@ -857,7 +857,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                     ]
                     heuristics = null
                     id = {
-                      datasetId = "${local.cloud_sql_metrics}"
+                      datasetId = local.cloud_sql_metrics
                       name      = "database_disk_bytes_used"
                     }
                     interval = 60000
@@ -870,7 +870,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetDataset    = local.cloud_sql_instance
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -1080,7 +1080,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.cloud_sql_metrics}"
+                    datasetId   = local.cloud_sql_metrics
                     description = <<-EOT
                                             Delta count of data disk read IO operations. Sampled every 60s and may take up to 210s to display.
                                         EOT
@@ -1089,7 +1089,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                     ]
                     heuristics = null
                     id = {
-                      datasetId = "${local.cloud_sql_metrics}"
+                      datasetId = local.cloud_sql_metrics
                       name      = "database_disk_read_ops_count"
                     }
                     interval = 60000
@@ -1102,7 +1102,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetDataset    = local.cloud_sql_instance
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -1312,7 +1312,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.cloud_sql_metrics_combo}"
+                    datasetId   = local.cloud_sql_metrics_combo
                     description = <<-EOT
                                             Combination of network connection metrics.
                                         EOT
@@ -1398,7 +1398,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                       ]
                     }
                     id = {
-                      datasetId = "${local.cloud_sql_metrics_combo}"
+                      datasetId = local.cloud_sql_metrics_combo
                       name      = "all_database_network_connections"
                     }
                     interval = 60000
@@ -1411,7 +1411,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetDataset    = local.cloud_sql_instance
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -1683,7 +1683,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.cloud_sql_metrics}"
+                    datasetId   = local.cloud_sql_metrics
                     description = <<-EOT
                                             Delta count of data disk write IO operations. Sampled every 60s and may take up to 210s to display.
                                         EOT
@@ -1692,7 +1692,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                     ]
                     heuristics = null
                     id = {
-                      datasetId = "${local.cloud_sql_metrics}"
+                      datasetId = local.cloud_sql_metrics
                       name      = "database_disk_write_ops_count"
                     }
                     interval = 60000
@@ -1705,7 +1705,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetDataset    = local.cloud_sql_instance
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -1915,7 +1915,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.cloud_sql_metrics}"
+                    datasetId   = local.cloud_sql_metrics
                     description = <<-EOT
                                             Delta count of bytes received through the network. Sampled every 60s and may take up to 210s to display.
                                         EOT
@@ -1924,7 +1924,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                     ]
                     heuristics = null
                     id = {
-                      datasetId = "${local.cloud_sql_metrics}"
+                      datasetId = local.cloud_sql_metrics
                       name      = "database_network_received_bytes_count"
                     }
                     interval = 60000
@@ -1937,7 +1937,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetDataset    = local.cloud_sql_instance
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -2146,7 +2146,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.cloud_sql_metrics}"
+                    datasetId   = local.cloud_sql_metrics
                     description = <<-EOT
                                             Delta count of bytes sent through the network. Sampled every 60s and may take up to 210s to display.
                                         EOT
@@ -2155,7 +2155,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                     ]
                     heuristics = null
                     id = {
-                      datasetId = "${local.cloud_sql_metrics}"
+                      datasetId = local.cloud_sql_metrics
                       name      = "database_network_sent_bytes_count"
                     }
                     interval = 60000
@@ -2168,7 +2168,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetDataset    = local.cloud_sql_instance
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -2342,7 +2342,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.cloud_sql_metrics}"
+                    datasetId   = local.cloud_sql_metrics
                     description = <<-EOT
                                             Maximum data disk size in bytes. Sampled every 60s and may take up to 210s to display.
                                         EOT
@@ -2351,7 +2351,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                     ]
                     heuristics = null
                     id = {
-                      datasetId = "${local.cloud_sql_metrics}"
+                      datasetId = local.cloud_sql_metrics
                       name      = "database_disk_quota"
                     }
                     interval = 60000
@@ -2364,7 +2364,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetDataset    = local.cloud_sql_instance
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -3147,7 +3147,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.cloud_sql_metrics}"
+                    datasetId   = local.cloud_sql_metrics
                     description = <<-EOT
                                                       The current serving state of the Cloud SQL instance.
                                             Because there are seven possible states, seven data points are returned.
@@ -3167,7 +3167,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                     ]
                     heuristics = null
                     id = {
-                      datasetId = "${local.cloud_sql_metrics}"
+                      datasetId = local.cloud_sql_metrics
                       name      = "database_instance_state"
                     }
                     interval = 60000
@@ -3180,7 +3180,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetDataset    = local.cloud_sql_instance
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -3301,7 +3301,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             stageId     = null
           },
           {
-            datasetId   = "${local.cloud_sql_logs_error}"
+            datasetId   = local.cloud_sql_logs_error
             datasetPath = null
             inputName   = "Cloud SQL Logs Error"
             inputRole   = "Data"
@@ -3359,7 +3359,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               parameterId = "dbResource"
             },
             {
-              datasetId   = "${local.cloud_sql_logs_error}"
+              datasetId   = local.cloud_sql_logs_error
               inputName   = "Cloud SQL Logs Error"
               inputRole   = "Data"
               isUserInput = true
@@ -4075,7 +4075,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.cloud_sql_metrics}"
+                    datasetId   = local.cloud_sql_metrics
                     description = "Auto Detected Metric"
                     groupBy = [
                       "metric_labels",
@@ -4155,7 +4155,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                       ]
                     }
                     id = {
-                      datasetId = "${local.cloud_sql_metrics}"
+                      datasetId = local.cloud_sql_metrics
                       name      = "database_disk_bytes_used_by_data_type"
                     }
                     interval = null
@@ -4168,7 +4168,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetDataset    = local.cloud_sql_instance
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -4376,7 +4376,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.cloud_sql_metrics_wide}"
+                    datasetId   = local.cloud_sql_metrics_wide
                     description = <<-EOT
                                             Percentage of disk quota used
                                         EOT
@@ -4417,7 +4417,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                       ]
                     }
                     id = {
-                      datasetId = "${local.cloud_sql_metrics_wide}"
+                      datasetId = local.cloud_sql_metrics_wide
                       name      = "percent_disk_used"
                     }
                     interval = 60000
@@ -4430,7 +4430,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetDataset    = local.cloud_sql_instance
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -4542,7 +4542,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
         id = "stage-9zde4fcc"
         input = [
           {
-            datasetId   = "${local.cloud_sql_instance}"
+            datasetId   = local.cloud_sql_instance
             datasetPath = null
             inputName   = "GCP/Cloud SQL Jobs"
             inputRole   = "Data"
@@ -4597,7 +4597,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           index = 17
           inputList = [
             {
-              datasetId   = "${local.cloud_sql_instance}"
+              datasetId   = local.cloud_sql_instance
               inputName   = "GCP/Cloud SQL Jobs"
               inputRole   = "Data"
               isUserInput = false
@@ -4667,7 +4667,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
         id = "stage-dbityb73"
         input = [
           {
-            datasetId   = "${local.cloud_sql_metrics}"
+            datasetId   = local.cloud_sql_metrics
             datasetPath = null
             inputName   = "database_instance_state_from_GCP/Cloud SQL Metrics"
             inputRole   = "Data"
@@ -4863,7 +4863,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                         lookupActions = []
                         metric = {
                           aggregate   = "sum"
-                          datasetId   = "${local.cloud_sql_metrics}"
+                          datasetId   = local.cloud_sql_metrics
                           description = "Auto Detected Metric"
                           heuristics = {
                             __typename = "MetricHeuristics"

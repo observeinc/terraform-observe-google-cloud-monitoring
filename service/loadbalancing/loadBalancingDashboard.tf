@@ -643,10 +643,10 @@ resource "observe_dashboard" "load_balancing_monitoring" {
         parameters = [
           {
             controlledFilterStageId = "stage-g03tiiey"
-            datasetId               = "${local.load_balancing_load_balancers}"
+            datasetId               = local.load_balancing_load_balancers
             defaultValue = {
               datasetref = {
-                datasetId = "${local.load_balancing_load_balancers}"
+                datasetId = local.load_balancing_load_balancers
               }
             }
             emptyValueEncoding    = "null"
@@ -780,7 +780,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
       {
         defaultValue = {
           datasetref = {
-            datasetId = "${local.load_balancing_load_balancers}"
+            datasetId = local.load_balancing_load_balancers
           }
         }
         id   = "loadBalancer"
@@ -859,7 +859,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
         id = "stage-uywqiqvc"
         input = [
           {
-            datasetId   = "${local.load_balancing_metrics}"
+            datasetId   = local.load_balancing_metrics
             datasetPath = null
             inputName   = "Google/GCP/Load Balancing Metrics"
             inputRole   = "Data"
@@ -923,7 +923,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           index = 0
           inputList = [
             {
-              datasetId   = "${local.load_balancing_metrics}"
+              datasetId   = local.load_balancing_metrics
               inputName   = "Google/GCP/Load Balancing Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -1114,7 +1114,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
         id = "stage-3zbaxk0o"
         input = [
           {
-            datasetId   = "${local.load_balancing_metrics}"
+            datasetId   = local.load_balancing_metrics
             datasetPath = null
             inputName   = "Google/GCP/Load Balancing Metrics"
             inputRole   = "Data"
@@ -1178,7 +1178,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           index = 1
           inputList = [
             {
-              datasetId   = "${local.load_balancing_metrics}"
+              datasetId   = local.load_balancing_metrics
               inputName   = "Google/GCP/Load Balancing Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -1364,7 +1364,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
         id = "stage-q1xd6oka"
         input = [
           {
-            datasetId   = "${local.load_balancing_metrics}"
+            datasetId   = local.load_balancing_metrics
             datasetPath = null
             inputName   = "Google/GCP/Load Balancing Metrics"
             inputRole   = "Data"
@@ -1428,7 +1428,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           index = 2
           inputList = [
             {
-              datasetId   = "${local.load_balancing_metrics}"
+              datasetId   = local.load_balancing_metrics
               inputName   = "Google/GCP/Load Balancing Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -1640,7 +1640,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
         id = "stage-167x70ol"
         input = [
           {
-            datasetId   = "${local.load_balancing_metrics}"
+            datasetId   = local.load_balancing_metrics
             datasetPath = null
             inputName   = "Google/GCP/Load Balancing Metrics"
             inputRole   = "Data"
@@ -1704,7 +1704,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           index = 3
           inputList = [
             {
-              datasetId   = "${local.load_balancing_metrics}"
+              datasetId   = local.load_balancing_metrics
               inputName   = "Google/GCP/Load Balancing Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -1885,7 +1885,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
         id = "stage-gcfx82a3"
         input = [
           {
-            datasetId   = "${local.load_balancing_metrics}"
+            datasetId   = local.load_balancing_metrics
             datasetPath = null
             inputName   = "Google/GCP/Load Balancing Metrics"
             inputRole   = "Data"
@@ -1949,7 +1949,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           index = 4
           inputList = [
             {
-              datasetId   = "${local.load_balancing_metrics}"
+              datasetId   = local.load_balancing_metrics
               inputName   = "Google/GCP/Load Balancing Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -2117,7 +2117,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
         id = "stage-pmkx32rn"
         input = [
           {
-            datasetId   = "${local.load_balancing_metrics}"
+            datasetId   = local.load_balancing_metrics
             datasetPath = null
             inputName   = "Google/GCP/Load Balancing Metrics"
             inputRole   = "Data"
@@ -2181,7 +2181,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           index = 5
           inputList = [
             {
-              datasetId   = "${local.load_balancing_metrics}"
+              datasetId   = local.load_balancing_metrics
               inputName   = "Google/GCP/Load Balancing Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -2372,7 +2372,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
         id = "stage-vvzswmar"
         input = [
           {
-            datasetId   = "${local.load_balancing_metrics}"
+            datasetId   = local.load_balancing_metrics
             datasetPath = null
             inputName   = "Google/GCP/Load Balancing Metrics"
             inputRole   = "Data"
@@ -2435,7 +2435,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           index = 6
           inputList = [
             {
-              datasetId   = "${local.load_balancing_metrics}"
+              datasetId   = local.load_balancing_metrics
               inputName   = "Google/GCP/Load Balancing Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -2604,7 +2604,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
         id = "stage-tww25crx"
         input = [
           {
-            datasetId   = "${local.load_balancing_metrics}"
+            datasetId   = local.load_balancing_metrics
             datasetPath = null
             inputName   = "Google/GCP/Load Balancing Metrics"
             inputRole   = "Data"
@@ -2618,7 +2618,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             stageId     = null
           },
           {
-            datasetId   = "${local.load_balancing_load_balancers}"
+            datasetId   = local.load_balancing_load_balancers
             datasetPath = null
             inputName   = "Google/GCP/Load Balancing Load Balancers"
             inputRole   = "Data"
@@ -2679,7 +2679,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           index = 7
           inputList = [
             {
-              datasetId   = "${local.load_balancing_metrics}"
+              datasetId   = local.load_balancing_metrics
               inputName   = "Google/GCP/Load Balancing Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -2691,7 +2691,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               parameterId = "loadBalancer"
             },
             {
-              datasetId   = "${local.load_balancing_load_balancers}"
+              datasetId   = local.load_balancing_load_balancers
               inputName   = "Google/GCP/Load Balancing Load Balancers"
               inputRole   = "Data"
               isUserInput = false
@@ -2916,7 +2916,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
         id = "stage-1jze8q9d"
         input = [
           {
-            datasetId   = "${local.load_balancing_metrics}"
+            datasetId   = local.load_balancing_metrics
             datasetPath = null
             inputName   = "Google/GCP/Load Balancing Metrics"
             inputRole   = "Data"
@@ -2980,7 +2980,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           index = 8
           inputList = [
             {
-              datasetId   = "${local.load_balancing_metrics}"
+              datasetId   = local.load_balancing_metrics
               inputName   = "Google/GCP/Load Balancing Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -4163,7 +4163,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
         id = "stage-6x2c0fqw"
         input = [
           {
-            datasetId   = "${local.load_balancing_metrics}"
+            datasetId   = local.load_balancing_metrics
             datasetPath = null
             inputName   = "Backup_Google/GCP/Load Balancing Metrics"
             inputRole   = "Data"
@@ -4222,7 +4222,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           index = 13
           inputList = [
             {
-              datasetId   = "${local.load_balancing_metrics}"
+              datasetId   = local.load_balancing_metrics
               inputName   = "Backup_Google/GCP/Load Balancing Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -4415,7 +4415,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
         id = "stage-s77mb9b4"
         input = [
           {
-            datasetId   = "${local.load_balancing_metrics}"
+            datasetId   = local.load_balancing_metrics
             datasetPath = null
             inputName   = "Backup_Google/GCP/Load Balancing Metrics"
             inputRole   = "Data"
@@ -4477,7 +4477,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           index = 14
           inputList = [
             {
-              datasetId   = "${local.load_balancing_metrics}"
+              datasetId   = local.load_balancing_metrics
               inputName   = "Backup_Google/GCP/Load Balancing Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -4647,7 +4647,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
         id = "stage-y2e5spse"
         input = [
           {
-            datasetId   = "${local.load_balancing_metrics}"
+            datasetId   = local.load_balancing_metrics
             datasetPath = null
             inputName   = "Backup_Google/GCP/Load Balancing Metrics"
             inputRole   = "Data"
@@ -4709,7 +4709,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           index = 15
           inputList = [
             {
-              datasetId   = "${local.load_balancing_metrics}"
+              datasetId   = local.load_balancing_metrics
               inputName   = "Backup_Google/GCP/Load Balancing Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -4879,7 +4879,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
         id = "stage-rrq0jgcr"
         input = [
           {
-            datasetId   = "${local.load_balancing_metrics}"
+            datasetId   = local.load_balancing_metrics
             datasetPath = null
             inputName   = "Google/GCP/Load Balancing Metrics"
             inputRole   = "Data"
@@ -4939,7 +4939,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           index = 16
           inputList = [
             {
-              datasetId   = "${local.load_balancing_metrics}"
+              datasetId   = local.load_balancing_metrics
               inputName   = "Google/GCP/Load Balancing Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -5103,7 +5103,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
         id = "stage-bkt8och9"
         input = [
           {
-            datasetId   = "${local.load_balancing_metrics}"
+            datasetId   = local.load_balancing_metrics
             datasetPath = null
             inputName   = "Google/GCP/Load Balancing Metrics"
             inputRole   = "Data"
@@ -5163,7 +5163,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           index = 17
           inputList = [
             {
-              datasetId   = "${local.load_balancing_metrics}"
+              datasetId   = local.load_balancing_metrics
               inputName   = "Google/GCP/Load Balancing Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -5335,7 +5335,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
         id = "stage-r21aa1ok"
         input = [
           {
-            datasetId   = "${local.load_balancing_metrics}"
+            datasetId   = local.load_balancing_metrics
             datasetPath = null
             inputName   = "Google/GCP/Load Balancing Metrics"
             inputRole   = "Data"
@@ -5395,7 +5395,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           index = 18
           inputList = [
             {
-              datasetId   = "${local.load_balancing_metrics}"
+              datasetId   = local.load_balancing_metrics
               inputName   = "Google/GCP/Load Balancing Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -5567,7 +5567,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
         id = "stage-rnz800xh"
         input = [
           {
-            datasetId   = "${local.load_balancing_config_audit_logs}"
+            datasetId   = local.load_balancing_config_audit_logs
             datasetPath = null
             inputName   = "Backup_Google/GCP/Load Balancing Config Audit Logs"
             inputRole   = "Data"
@@ -5626,7 +5626,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           index = 19
           inputList = [
             {
-              datasetId   = "${local.load_balancing_config_audit_logs}"
+              datasetId   = local.load_balancing_config_audit_logs
               inputName   = "Backup_Google/GCP/Load Balancing Config Audit Logs"
               inputRole   = "Data"
               isUserInput = false
@@ -5803,7 +5803,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
         id = "stage-bh2zikve"
         input = [
           {
-            datasetId   = "${local.load_balancing_config_audit_logs}"
+            datasetId   = local.load_balancing_config_audit_logs
             datasetPath = null
             inputName   = "Backup_Google/GCP/Load Balancing Config Audit Logs"
             inputRole   = "Data"
@@ -5862,7 +5862,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           index = 20
           inputList = [
             {
-              datasetId   = "${local.load_balancing_config_audit_logs}"
+              datasetId   = local.load_balancing_config_audit_logs
               inputName   = "Backup_Google/GCP/Load Balancing Config Audit Logs"
               inputRole   = "Data"
               isUserInput = false
@@ -5995,7 +5995,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
         id = "stage-mxe2zska"
         input = [
           {
-            datasetId   = "${local.load_balancing_config_audit_logs}"
+            datasetId   = local.load_balancing_config_audit_logs
             datasetPath = null
             inputName   = "Backup_Google/GCP/Load Balancing Config Audit Logs"
             inputRole   = "Data"
@@ -6054,7 +6054,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           index = 21
           inputList = [
             {
-              datasetId   = "${local.load_balancing_config_audit_logs}"
+              datasetId   = local.load_balancing_config_audit_logs
               inputName   = "Backup_Google/GCP/Load Balancing Config Audit Logs"
               inputRole   = "Data"
               isUserInput = false
@@ -6187,7 +6187,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
         id = "stage-9kd7zyuk"
         input = [
           {
-            datasetId   = "${local.load_balancing_config_audit_logs}"
+            datasetId   = local.load_balancing_config_audit_logs
             datasetPath = null
             inputName   = "Backup_Google/GCP/Load Balancing Config Audit Logs"
             inputRole   = "Data"
@@ -6246,7 +6246,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           index = 22
           inputList = [
             {
-              datasetId   = "${local.load_balancing_config_audit_logs}"
+              datasetId   = local.load_balancing_config_audit_logs
               inputName   = "Backup_Google/GCP/Load Balancing Config Audit Logs"
               inputRole   = "Data"
               isUserInput = false
@@ -6667,7 +6667,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             stageId     = null
           },
           {
-            datasetId   = "${local.load_balancing_health_checks}"
+            datasetId   = local.load_balancing_health_checks
             datasetPath = null
             inputName   = "Backup_Google/GCP/Load Balancing Health Checks"
             inputRole   = "Data"
@@ -6736,7 +6736,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               parameterId = "loadBalancer"
             },
             {
-              datasetId   = "${local.load_balancing_health_checks}"
+              datasetId   = local.load_balancing_health_checks
               inputName   = "Backup_Google/GCP/Load Balancing Health Checks"
               inputRole   = "Data"
               isUserInput = true
@@ -7465,7 +7465,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
         id = "stage-g03tiiey"
         input = [
           {
-            datasetId   = "${local.load_balancing_load_balancers}"
+            datasetId   = local.load_balancing_load_balancers
             datasetPath = null
             inputName   = "dev/Load Balancing Load Balancers"
             inputRole   = "Data"
@@ -7520,7 +7520,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           index = 27
           inputList = [
             {
-              datasetId   = "${local.load_balancing_load_balancers}"
+              datasetId   = local.load_balancing_load_balancers
               inputName   = "dev/Load Balancing Load Balancers"
               inputRole   = "Data"
               isUserInput = false

@@ -363,7 +363,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
           {
             defaultValue = {
               link = {
-                datasetId = "${local.cloud_sql_instance}"
+                datasetId = local.cloud_sql_instance
                 primaryKeyValue = [
                   {
                     name = "assetInventoryName"
@@ -392,7 +392,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
             id                    = "database"
             name                  = "Database"
             valueKind = {
-              keyForDatasetId = "${local.cloud_sql_instance}"
+              keyForDatasetId = local.cloud_sql_instance
               type            = "LINK"
             }
             viewType = "resource-input"
@@ -420,7 +420,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
       {
         defaultValue = {
           link = {
-            datasetId = "${local.cloud_sql_instance}"
+            datasetId = local.cloud_sql_instance
             primaryKeyValue = [
               {
                 name = "assetInventoryName"
@@ -448,7 +448,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
         name = "Database"
         valueKind = {
           arrayItemType   = null
-          keyForDatasetId = "${local.cloud_sql_instance}"
+          keyForDatasetId = local.cloud_sql_instance
           type            = "LINK"
         }
       },
@@ -460,7 +460,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
         id = "stage-liidj0lt"
         input = [
           {
-            datasetId   = "${local.cloud_sql_instance}"
+            datasetId   = local.cloud_sql_instance
             datasetPath = null
             inputName   = "stage/${local.dashboard_name_singleton}"
             inputRole   = "Data"
@@ -522,7 +522,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
           index = 0
           inputList = [
             {
-              datasetId   = "${local.cloud_sql_instance}"
+              datasetId   = local.cloud_sql_instance
               inputName   = "stage/${local.dashboard_name_singleton}"
               inputRole   = "Data"
               isUserInput = false
@@ -741,7 +741,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
         id = "stage-8bcawmdj"
         input = [
           {
-            datasetId   = "${local.cloud_sql_instance}"
+            datasetId   = local.cloud_sql_instance
             datasetPath = null
             inputName   = "stage/${local.dashboard_name_singleton}"
             inputRole   = "Data"
@@ -803,7 +803,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
           index = 1
           inputList = [
             {
-              datasetId   = "${local.cloud_sql_instance}"
+              datasetId   = local.cloud_sql_instance
               inputName   = "stage/${local.dashboard_name_singleton}"
               inputRole   = "Data"
               isUserInput = false
@@ -1021,7 +1021,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
         id = "stage-pxayzmmz"
         input = [
           {
-            datasetId   = "${local.cloud_sql_instance}"
+            datasetId   = local.cloud_sql_instance
             datasetPath = null
             inputName   = "stage/${local.dashboard_name_singleton}"
             inputRole   = "Data"
@@ -1087,7 +1087,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
           index = 2
           inputList = [
             {
-              datasetId   = "${local.cloud_sql_instance}"
+              datasetId   = local.cloud_sql_instance
               inputName   = "stage/${local.dashboard_name_singleton}"
               inputRole   = "Data"
               isUserInput = false
@@ -1250,7 +1250,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
         id = "stage-8alrwr6w"
         input = [
           {
-            datasetId   = "${local.cloud_sql_instance}"
+            datasetId   = local.cloud_sql_instance
             datasetPath = null
             inputName   = "stage/${local.dashboard_name_singleton}"
             inputRole   = "Data"
@@ -1319,7 +1319,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
           index = 3
           inputList = [
             {
-              datasetId   = "${local.cloud_sql_instance}"
+              datasetId   = local.cloud_sql_instance
               inputName   = "stage/${local.dashboard_name_singleton}"
               inputRole   = "Data"
               isUserInput = false
@@ -1594,7 +1594,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
         id = "stage-wwog6ily"
         input = [
           {
-            datasetId   = "${local.cloud_sql_instance}"
+            datasetId   = local.cloud_sql_instance
             datasetPath = null
             inputName   = "stage/${local.dashboard_name_singleton}"
             inputRole   = "Data"
@@ -1667,7 +1667,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
           index = 4
           inputList = [
             {
-              datasetId   = "${local.cloud_sql_instance}"
+              datasetId   = local.cloud_sql_instance
               inputName   = "stage/${local.dashboard_name_singleton}"
               inputRole   = "Data"
               isUserInput = false
@@ -1872,7 +1872,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
         id = "stage-ac0jjmlb"
         input = [
           {
-            datasetId   = "${local.cloud_sql_metrics_combo}"
+            datasetId   = local.cloud_sql_metrics_combo
             datasetPath = null
             inputName   = "stage/Cloud SQL Metrics Combo"
             inputRole   = "Data"
@@ -1924,7 +1924,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
           index = 5
           inputList = [
             {
-              datasetId   = "${local.cloud_sql_metrics_combo}"
+              datasetId   = local.cloud_sql_metrics_combo
               inputName   = "stage/Cloud SQL Metrics Combo"
               inputRole   = "Data"
               isUserInput = false
@@ -2126,7 +2126,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
         id = "stage-y873vvzo"
         input = [
           {
-            datasetId   = "${local.cloud_sql_metrics}"
+            datasetId   = local.cloud_sql_metrics
             datasetPath = null
             inputName   = "stage/Cloud SQL Metrics"
             inputRole   = "Data"
@@ -2178,7 +2178,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
           index = 6
           inputList = [
             {
-              datasetId   = "${local.cloud_sql_metrics}"
+              datasetId   = local.cloud_sql_metrics
               inputName   = "stage/Cloud SQL Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -2524,7 +2524,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
         id = "stage-8jlila4s"
         input = [
           {
-            datasetId   = "${local.cloud_sql_metrics}"
+            datasetId   = local.cloud_sql_metrics
             datasetPath = null
             inputName   = "stage/Cloud SQL Metrics"
             inputRole   = "Data"
@@ -2581,7 +2581,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
           index = 7
           inputList = [
             {
-              datasetId   = "${local.cloud_sql_metrics}"
+              datasetId   = local.cloud_sql_metrics
               inputName   = "stage/Cloud SQL Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -2810,7 +2810,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
         id = "stage-xaa089nn"
         input = [
           {
-            datasetId   = "${local.cloud_sql_logs_postgres_data_access}"
+            datasetId   = local.cloud_sql_logs_postgres_data_access
             datasetPath = null
             inputName   = "stage/Cloud SQL Logs Postgres Data Access"
             inputRole   = "Data"
@@ -2868,7 +2868,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
           index = 8
           inputList = [
             {
-              datasetId   = "${local.cloud_sql_logs_postgres_data_access}"
+              datasetId   = local.cloud_sql_logs_postgres_data_access
               inputName   = "stage/Cloud SQL Logs Postgres Data Access"
               inputRole   = "Data"
               isUserInput = false
@@ -3040,7 +3040,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
         id = "stage-kfkxop2i"
         input = [
           {
-            datasetId   = "${local.cloud_sql_logs_error}"
+            datasetId   = local.cloud_sql_logs_error
             datasetPath = null
             inputName   = "stage/Cloud SQL Logs Error"
             inputRole   = "Data"
@@ -3096,7 +3096,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
           index = 9
           inputList = [
             {
-              datasetId   = "${local.cloud_sql_logs_error}"
+              datasetId   = local.cloud_sql_logs_error
               inputName   = "stage/Cloud SQL Logs Error"
               inputRole   = "Data"
               isUserInput = false
@@ -3419,7 +3419,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
         id = "stage-ytbrb1ty"
         input = [
           {
-            datasetId   = "${local.cloud_sql_logs_error}"
+            datasetId   = local.cloud_sql_logs_error
             datasetPath = null
             inputName   = "stage/Cloud SQL Logs Error"
             inputRole   = "Data"
@@ -3473,7 +3473,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
           index = 10
           inputList = [
             {
-              datasetId   = "${local.cloud_sql_logs_error}"
+              datasetId   = local.cloud_sql_logs_error
               inputName   = "stage/Cloud SQL Logs Error"
               inputRole   = "Data"
               isUserInput = false
@@ -3683,7 +3683,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
         id = "stage-quszu4mo"
         input = [
           {
-            datasetId   = "${local.cloud_sql_instance}"
+            datasetId   = local.cloud_sql_instance
             datasetPath = null
             inputName   = "stage/${local.dashboard_name_singleton}"
             inputRole   = "Data"
@@ -3741,7 +3741,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
           index = 11
           inputList = [
             {
-              datasetId   = "${local.cloud_sql_instance}"
+              datasetId   = local.cloud_sql_instance
               inputName   = "stage/${local.dashboard_name_singleton}"
               inputRole   = "Data"
               isUserInput = false
@@ -3780,7 +3780,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.cloud_sql_metrics_wide}"
+                    datasetId   = local.cloud_sql_metrics_wide
                     description = <<-EOT
                                             Percentage of disk quota used
                                         EOT
@@ -3830,7 +3830,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetDataset    = local.cloud_sql_instance
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -4002,7 +4002,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
         id = "stage-tr71x96b"
         input = [
           {
-            datasetId   = "${local.cloud_sql_instance}"
+            datasetId   = local.cloud_sql_instance
             datasetPath = null
             inputName   = "stage/${local.dashboard_name_singleton}"
             inputRole   = "Data"
@@ -4064,7 +4064,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
           index = 12
           inputList = [
             {
-              datasetId   = "${local.cloud_sql_instance}"
+              datasetId   = local.cloud_sql_instance
               inputName   = "stage/${local.dashboard_name_singleton}"
               inputRole   = "Data"
               isUserInput = false
@@ -4338,7 +4338,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.cloud_sql_metrics}"
+                    datasetId   = local.cloud_sql_metrics
                     description = "Auto Detected Metric"
                     groupBy = [
                       "database_id",
@@ -4421,7 +4421,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetDataset    = local.cloud_sql_instance
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -4529,7 +4529,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
         id = "stage-5xzio1og"
         input = [
           {
-            datasetId   = "${local.cloud_sql_metrics}"
+            datasetId   = local.cloud_sql_metrics
             datasetPath = null
             inputName   = "stage/Cloud SQL Metrics"
             inputRole   = "Data"
@@ -4589,7 +4589,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
           index = 14
           inputList = [
             {
-              datasetId   = "${local.cloud_sql_metrics}"
+              datasetId   = local.cloud_sql_metrics
               inputName   = "stage/Cloud SQL Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -4974,7 +4974,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.cloud_sql_metrics}"
+                    datasetId   = local.cloud_sql_metrics
                     description = "Auto Detected Metric"
                     groupBy = [
                       "database_id",
@@ -5057,7 +5057,7 @@ resource "observe_dashboard" "cloud_sql_instance" {
                       srcFields = [
                         "database_id",
                       ]
-                      targetDataset    = "${local.cloud_sql_instance}"
+                      targetDataset    = local.cloud_sql_instance
                       targetStageLabel = null
                       type             = "foreign"
                     }

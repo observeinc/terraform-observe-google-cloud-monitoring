@@ -14,6 +14,8 @@ variable "name_format" {
 }
 
 variable "metric_prefixes" {
+  description = "Default metric prefixes to poll"
+  type        = list(string)
   default = [
     "cloudfunctions.googleapis.com/",
     "logging.googleapis.com/",

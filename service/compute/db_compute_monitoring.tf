@@ -429,10 +429,10 @@ resource "observe_dashboard" "compute_monitoring" {
         parameters = [
           {
             controlledFilterStageId = "stage-heng8s54"
-            datasetId               = "${local.compute_instance}"
+            datasetId               = local.compute_instance
             defaultValue = {
               datasetref = {
-                datasetId = "${local.compute_instance}"
+                datasetId = local.compute_instance
               }
             }
             emptyValueEncoding    = "null"
@@ -468,7 +468,7 @@ resource "observe_dashboard" "compute_monitoring" {
       {
         defaultValue = {
           datasetref = {
-            datasetId = "${local.compute_instance}"
+            datasetId = local.compute_instance
           }
         }
         id   = "computeID"
@@ -2246,7 +2246,7 @@ resource "observe_dashboard" "compute_monitoring" {
         id = "stage-7schdd0k"
         input = [
           {
-            datasetId   = "${local.compute_metrics}"
+            datasetId   = local.compute_metrics
             datasetPath = null
             inputName   = "Compute Metrics"
             inputRole   = "Data"
@@ -2308,7 +2308,7 @@ resource "observe_dashboard" "compute_monitoring" {
           index = 8
           inputList = [
             {
-              datasetId   = "${local.compute_metrics}"
+              datasetId   = local.compute_metrics
               inputName   = "Compute Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -2479,7 +2479,7 @@ resource "observe_dashboard" "compute_monitoring" {
         id = "stage-j7trzfmb"
         input = [
           {
-            datasetId   = "${local.compute_metrics}"
+            datasetId   = local.compute_metrics
             datasetPath = null
             inputName   = "Compute Metrics"
             inputRole   = "Data"
@@ -2541,7 +2541,7 @@ resource "observe_dashboard" "compute_monitoring" {
           index = 9
           inputList = [
             {
-              datasetId   = "${local.compute_metrics}"
+              datasetId   = local.compute_metrics
               inputName   = "Compute Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -2712,7 +2712,7 @@ resource "observe_dashboard" "compute_monitoring" {
         id = "stage-pmsu1uzz"
         input = [
           {
-            datasetId   = "${local.compute_metrics}"
+            datasetId   = local.compute_metrics
             datasetPath = null
             inputName   = "resource"
             inputRole   = "Data"
@@ -2780,7 +2780,7 @@ resource "observe_dashboard" "compute_monitoring" {
           index = 10
           inputList = [
             {
-              datasetId   = "${local.compute_metrics}"
+              datasetId   = local.compute_metrics
               inputName   = "resource"
               inputRole   = "Data"
               isUserInput = false
@@ -2959,7 +2959,7 @@ resource "observe_dashboard" "compute_monitoring" {
         id = "stage-kmd3xtah"
         input = [
           {
-            datasetId   = "${local.compute_metrics}"
+            datasetId   = local.compute_metrics
             datasetPath = null
             inputName   = "Compute Metrics"
             inputRole   = "Data"
@@ -3022,7 +3022,7 @@ resource "observe_dashboard" "compute_monitoring" {
           index = 11
           inputList = [
             {
-              datasetId   = "${local.compute_metrics}"
+              datasetId   = local.compute_metrics
               inputName   = "Compute Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -3205,7 +3205,7 @@ resource "observe_dashboard" "compute_monitoring" {
         id = "stage-d4h31odg"
         input = [
           {
-            datasetId   = "${local.compute_metrics}"
+            datasetId   = local.compute_metrics
             datasetPath = null
             inputName   = "Compute Metrics"
             inputRole   = "Data"
@@ -3268,7 +3268,7 @@ resource "observe_dashboard" "compute_monitoring" {
           index = 12
           inputList = [
             {
-              datasetId   = "${local.compute_metrics}"
+              datasetId   = local.compute_metrics
               inputName   = "Compute Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -3451,7 +3451,7 @@ resource "observe_dashboard" "compute_monitoring" {
         id = "stage-3ks89dsy"
         input = [
           {
-            datasetId   = "${local.compute_metrics}"
+            datasetId   = local.compute_metrics
             datasetPath = null
             inputName   = "Compute Metrics"
             inputRole   = "Data"
@@ -3514,7 +3514,7 @@ resource "observe_dashboard" "compute_monitoring" {
           index = 13
           inputList = [
             {
-              datasetId   = "${local.compute_metrics}"
+              datasetId   = local.compute_metrics
               inputName   = "Compute Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -3701,7 +3701,7 @@ resource "observe_dashboard" "compute_monitoring" {
         id = "stage-q8h3nsju"
         input = [
           {
-            datasetId   = "${local.compute_metrics}"
+            datasetId   = local.compute_metrics
             datasetPath = null
             inputName   = "Compute Metrics"
             inputRole   = "Data"
@@ -3763,7 +3763,7 @@ resource "observe_dashboard" "compute_monitoring" {
           index = 14
           inputList = [
             {
-              datasetId   = "${local.compute_metrics}"
+              datasetId   = local.compute_metrics
               inputName   = "Compute Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -3934,7 +3934,7 @@ resource "observe_dashboard" "compute_monitoring" {
         id = "stage-9qqbf5wc"
         input = [
           {
-            datasetId   = "${local.compute_metrics}"
+            datasetId   = local.compute_metrics
             datasetPath = null
             inputName   = "Compute Metrics"
             inputRole   = "Data"
@@ -3996,7 +3996,7 @@ resource "observe_dashboard" "compute_monitoring" {
           index = 15
           inputList = [
             {
-              datasetId   = "${local.compute_metrics}"
+              datasetId   = local.compute_metrics
               inputName   = "Compute Metrics"
               inputRole   = "Data"
               isUserInput = false
@@ -4566,7 +4566,7 @@ resource "observe_dashboard" "compute_monitoring" {
         id = "stage-heng8s54"
         input = [
           {
-            datasetId   = "${local.compute_instance}"
+            datasetId   = local.compute_instance
             datasetPath = null
             inputName   = "GCP/Compute Instance"
             inputRole   = "Data"
@@ -4621,7 +4621,7 @@ resource "observe_dashboard" "compute_monitoring" {
           index = 18
           inputList = [
             {
-              datasetId   = "${local.compute_instance}"
+              datasetId   = local.compute_instance
               inputName   = "GCP/Compute Instance"
               inputRole   = "Data"
               isUserInput = false

@@ -134,10 +134,10 @@ resource "observe_dashboard" "pubsub_monitoring" {
         parameters = [
           {
             controlledFilterStageId = "stage-tq5xbjvj"
-            datasetId               = "${local.pubsub_topics}"
+            datasetId               = local.pubsub_topics
             defaultValue = {
               datasetref = {
-                datasetId = "${local.pubsub_topics}"
+                datasetId = local.pubsub_topics
               }
             }
             emptyValueEncoding    = "null"
@@ -172,7 +172,7 @@ resource "observe_dashboard" "pubsub_monitoring" {
       {
         defaultValue = {
           datasetref = {
-            datasetId = "${local.pubsub_topics}"
+            datasetId = local.pubsub_topics
           }
         }
         id   = "input-parameter-j9o4mgmh"
@@ -191,7 +191,7 @@ resource "observe_dashboard" "pubsub_monitoring" {
         id = "stage-tq5xbjvj"
         input = [
           {
-            datasetId   = "${local.pubsub_topics}"
+            datasetId   = local.pubsub_topics
             datasetPath = null
             inputName   = "stage/PubSub Topics"
             inputRole   = "Data"
@@ -246,7 +246,7 @@ resource "observe_dashboard" "pubsub_monitoring" {
           index = 0
           inputList = [
             {
-              datasetId   = "${local.pubsub_topics}"
+              datasetId   = local.pubsub_topics
               inputName   = "stage/PubSub Topics"
               inputRole   = "Data"
               isUserInput = false
@@ -583,7 +583,7 @@ resource "observe_dashboard" "pubsub_monitoring" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.pubsub_topic_metrics}"
+                    datasetId   = local.pubsub_topic_metrics
                     description = <<-EOT
                                             Cost of operations, measured in bytes. This is used to measure utilization for quotas. Sampled every 60s and may take up to 240s to display.
                                         EOT
@@ -601,7 +601,7 @@ resource "observe_dashboard" "pubsub_monitoring" {
                       srcFields = [
                         "topic_primary_key",
                       ]
-                      targetDataset    = "${local.pubsub_topics}"
+                      targetDataset    = local.pubsub_topics
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -792,7 +792,7 @@ resource "observe_dashboard" "pubsub_monitoring" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.pubsub_topic_metrics}"
+                    datasetId   = local.pubsub_topic_metrics
                     description = <<-EOT
                                             Distribution of publish message sizes in bytes. Sampled every 60s and may take up to 240s to display.
                                         EOT
@@ -810,7 +810,7 @@ resource "observe_dashboard" "pubsub_monitoring" {
                       srcFields = [
                         "topic_primary_key",
                       ]
-                      targetDataset    = "${local.pubsub_topics}"
+                      targetDataset    = local.pubsub_topics
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -981,7 +981,7 @@ resource "observe_dashboard" "pubsub_monitoring" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.pubsub_topic_metrics}"
+                    datasetId   = local.pubsub_topic_metrics
                     description = <<-EOT
                                             Cumulative count of publish requests, grouped by result. Sampled every 60s and may take up to 120s to display.
                                         EOT
@@ -999,7 +999,7 @@ resource "observe_dashboard" "pubsub_monitoring" {
                       srcFields = [
                         "topic_primary_key",
                       ]
-                      targetDataset    = "${local.pubsub_topics}"
+                      targetDataset    = local.pubsub_topics
                       targetStageLabel = null
                       type             = "foreign"
                     }
@@ -1176,7 +1176,7 @@ resource "observe_dashboard" "pubsub_monitoring" {
                 source = {
                   metric = {
                     aggregate   = "sum"
-                    datasetId   = "${local.pubsub_topic_metrics}"
+                    datasetId   = local.pubsub_topic_metrics
                     description = <<-EOT
                                             Cumulative count of configuration changes, grouped by operation type and result. Sampled every 60s and may take up to 240s to display.
                                         EOT
@@ -1194,7 +1194,7 @@ resource "observe_dashboard" "pubsub_monitoring" {
                       srcFields = [
                         "topic_primary_key",
                       ]
-                      targetDataset    = "${local.pubsub_topics}"
+                      targetDataset    = local.pubsub_topics
                       targetStageLabel = null
                       type             = "foreign"
                     }
