@@ -1,4 +1,4 @@
-# GCP App
+# Google Cloud Platform (GCP) App
 
 The GCP app provides the base models for GCP infrastructure such as:
 
