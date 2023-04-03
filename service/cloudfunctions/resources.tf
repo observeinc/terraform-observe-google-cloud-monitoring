@@ -3,6 +3,7 @@ resource "observe_dataset" "cloud_functions_instances" {
   name        = local.datasets.cloud_functions_instances.name
   freshness   = local.datasets.cloud_functions_instances.freshness
   description = local.datasets.cloud_functions_instances.description
+  icon_url    = "computer-hardware/macbook-keys/function-mac"
 
   inputs = {
     "events" = var.google.resource_asset_inventory_records.oid

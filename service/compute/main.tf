@@ -65,6 +65,7 @@ resource "observe_dataset" "compute_instance" {
   name        = format(var.name_format, "Instance")
   freshness   = lookup(local.freshness, "compute", var.freshness_default_duration)
   description = "This dataset is used to create Compute Resources"
+  icon_url    = "network/network-hardware/server"
   inputs = {
     "events"          = var.google.resource_asset_inventory_records.oid
     "instance_groups" = observe_dataset.instance_group.oid
