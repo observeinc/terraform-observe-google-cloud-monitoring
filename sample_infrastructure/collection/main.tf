@@ -42,6 +42,6 @@ module "pubsub_poller" {
   description                      = "terraform only poller"
   project                          = var.project_id
   service_account_private_key_json = base64decode(module.observe_gcp_collection.service_account_key.private_key)
-  # subscription                     = module.observe_gcp_collection.subscription.name
+  subscription                     = module.observe_gcp_collection.subscription.name
 
 }
