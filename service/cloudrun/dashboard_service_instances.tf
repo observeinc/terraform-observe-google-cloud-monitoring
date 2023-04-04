@@ -1,5 +1,6 @@
+
 # terraform import observe_dashboard.copy_of_cloud_run_service_instance 42047241
-resource "observe_dashboard" "cloud_run_service_instance" {
+resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
   layout = jsonencode(
     {
       autoPack = true
@@ -9,19 +10,19 @@ resource "observe_dashboard" "cloud_run_service_instance" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-743uluut"
+              id       = "card-vyyyksaj"
               title    = "Dashboard Content"
             }
             items = [
               {
                 card = {
                   cardType    = "parameter"
-                  id          = "card-unaslmwg"
+                  id          = "card-fm77734o"
                   parameterId = "service"
                 }
                 layout = {
                   h           = 4
-                  i           = "card-unaslmwg"
+                  i           = "card-fm77734o"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -37,12 +38,12 @@ resource "observe_dashboard" "cloud_run_service_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-0q98e39f"
+                  id       = "card-3431t16d"
                   stageId  = "stage-d3muqp6x"
                 }
                 layout = {
                   h           = 10
-                  i           = "card-0q98e39f"
+                  i           = "card-3431t16d"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -55,12 +56,12 @@ resource "observe_dashboard" "cloud_run_service_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-1oij5wg1"
+                  id       = "card-51rjt82k"
                   stageId  = "stage-usqocagm"
                 }
                 layout = {
                   h           = 20
-                  i           = "card-1oij5wg1"
+                  i           = "card-51rjt82k"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -73,12 +74,12 @@ resource "observe_dashboard" "cloud_run_service_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-wwggll1j"
+                  id       = "card-nqwlkdyn"
                   stageId  = "stage-y49asn8v"
                 }
                 layout = {
                   h           = 10
-                  i           = "card-wwggll1j"
+                  i           = "card-nqwlkdyn"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -91,12 +92,12 @@ resource "observe_dashboard" "cloud_run_service_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-3tu1rpah"
+                  id       = "card-hc5wgq94"
                   stageId  = "stage-xfaje78y"
                 }
                 layout = {
                   h           = 16
-                  i           = "card-3tu1rpah"
+                  i           = "card-hc5wgq94"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -109,12 +110,12 @@ resource "observe_dashboard" "cloud_run_service_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-0ve8kreb"
+                  id       = "card-v0eklhtm"
                   stageId  = "stage-cszzz5l0"
                 }
                 layout = {
                   h           = 16
-                  i           = "card-0ve8kreb"
+                  i           = "card-v0eklhtm"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -127,12 +128,12 @@ resource "observe_dashboard" "cloud_run_service_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-db9ozpk4"
+                  id       = "card-h8h60d4q"
                   stageId  = "stage-6hdreo6b"
                 }
                 layout = {
                   h           = 16
-                  i           = "card-db9ozpk4"
+                  i           = "card-h8h60d4q"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -145,12 +146,12 @@ resource "observe_dashboard" "cloud_run_service_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-jnmye2by"
+                  id       = "card-tf5ars3h"
                   stageId  = "stage-2feq36jp"
                 }
                 layout = {
                   h           = 14
-                  i           = "card-jnmye2by"
+                  i           = "card-tf5ars3h"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -163,12 +164,12 @@ resource "observe_dashboard" "cloud_run_service_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-dbzrbnqr"
+                  id       = "card-ovfahzg2"
                   stageId  = "stage-c9pakqs6"
                 }
                 layout = {
                   h           = 14
-                  i           = "card-dbzrbnqr"
+                  i           = "card-ovfahzg2"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -181,12 +182,12 @@ resource "observe_dashboard" "cloud_run_service_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-ma6prxw9"
+                  id       = "card-2dz6n03y"
                   stageId  = "stage-3461wl06"
                 }
                 layout = {
                   h           = 14
-                  i           = "card-ma6prxw9"
+                  i           = "card-2dz6n03y"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -199,12 +200,12 @@ resource "observe_dashboard" "cloud_run_service_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-7r5w8zzq"
+                  id       = "card-bqjniftb"
                   stageId  = "stage-rciwhao7"
                 }
                 layout = {
                   h           = 15
-                  i           = "card-7r5w8zzq"
+                  i           = "card-bqjniftb"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -217,12 +218,12 @@ resource "observe_dashboard" "cloud_run_service_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-sfh1rt50"
+                  id       = "card-r4dvq46w"
                   stageId  = "stage-wjaw71sv"
                 }
                 layout = {
                   h           = 15
-                  i           = "card-sfh1rt50"
+                  i           = "card-r4dvq46w"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -235,12 +236,12 @@ resource "observe_dashboard" "cloud_run_service_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-e4khhrnd"
+                  id       = "card-jr9ayy5o"
                   stageId  = "stage-zxogck66"
                 }
                 layout = {
                   h           = 15
-                  i           = "card-e4khhrnd"
+                  i           = "card-jr9ayy5o"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -253,12 +254,12 @@ resource "observe_dashboard" "cloud_run_service_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-wfs1qgj7"
+                  id       = "card-k5tyzb2m"
                   stageId  = "stage-736a6lgq"
                 }
                 layout = {
                   h           = 12
-                  i           = "card-wfs1qgj7"
+                  i           = "card-k5tyzb2m"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -288,7 +289,7 @@ resource "observe_dashboard" "cloud_run_service_instance" {
             viewType = "resource-input"
           },
         ]
-        selectedStageId = "stage-61ojysx3"
+        selectedStageId = "stage-y49asn8v"
         timeRange = {
           display               = "Past 7 days"
           endTime               = null
@@ -304,7 +305,7 @@ resource "observe_dashboard" "cloud_run_service_instance" {
       }
     }
   )
-  name = local.cloud_run_service_dashboard_name 
+  name = local.cloud_run_service_dashboard_name
   parameters = jsonencode(
     [
       {
@@ -523,18 +524,12 @@ resource "observe_dashboard" "cloud_run_service_instance" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
@@ -592,7 +587,7 @@ resource "observe_dashboard" "cloud_run_service_instance" {
                     y             = "A_container_instance_count_sum"
                   }
                   topK = {
-                    k     = 50
+                    k     = 16
                     order = "Top"
                     type  = "Auto"
                   }
@@ -610,7 +605,7 @@ resource "observe_dashboard" "cloud_run_service_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 200
+            wantBuckets = 600
           }
           selectedStepId = null
           serializable   = true
@@ -971,7 +966,7 @@ resource "observe_dashboard" "cloud_run_service_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 200
+            wantBuckets = 600
           }
           selectedStepId = null
           serializable   = true
@@ -1361,7 +1356,7 @@ resource "observe_dashboard" "cloud_run_service_instance" {
                     y             = "A_request_count_sum"
                   }
                   topK = {
-                    k     = 50
+                    k     = 16
                     order = "Top"
                     type  = "Auto"
                   }
@@ -1383,7 +1378,7 @@ resource "observe_dashboard" "cloud_run_service_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 200
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -1691,14 +1686,14 @@ resource "observe_dashboard" "cloud_run_service_instance" {
               containerConcurrency = 126
               containerPort        = 87
             }
-            containerWidth               = 1196
+            containerWidth               = 2143
             contextMenuXCoord            = null
             contextMenuYCoord            = null
             defaultColumnWidth           = 70
             disableFixedLeftColumns      = false
             eventLinkColumnId            = null
             fetchPageSize                = 100
-            hasCalculatedColumnWidths    = true
+            hasCalculatedColumnWidths    = false
             maxColumnWidth               = 600
             maxMeasuredColumnHeaderWidth = {}
             maxMeasuredColumnWidth       = {}
@@ -1957,7 +1952,7 @@ resource "observe_dashboard" "cloud_run_service_instance" {
                     y             = "value"
                   }
                   topK = {
-                    k    = 50
+                    k    = 16
                     type = "Auto"
                   }
                   type = "table"
@@ -1978,7 +1973,7 @@ resource "observe_dashboard" "cloud_run_service_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 200
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -2137,18 +2132,12 @@ resource "observe_dashboard" "cloud_run_service_instance" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
@@ -2223,7 +2212,7 @@ resource "observe_dashboard" "cloud_run_service_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 200
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -2617,7 +2606,7 @@ resource "observe_dashboard" "cloud_run_service_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 200
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -2966,7 +2955,7 @@ resource "observe_dashboard" "cloud_run_service_instance" {
                 columnName = "A_container_billable_instance_time_avg"
               },
             ]
-            wantBuckets = 200
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -3277,7 +3266,7 @@ resource "observe_dashboard" "cloud_run_service_instance" {
                     y             = "A_container_network_sent_bytes_count_sum"
                   }
                   topK = {
-                    k     = 50
+                    k     = 16
                     order = "Top"
                     type  = "Auto"
                   }
@@ -3299,7 +3288,7 @@ resource "observe_dashboard" "cloud_run_service_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 200
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -3660,7 +3649,7 @@ resource "observe_dashboard" "cloud_run_service_instance" {
                     y             = "A_container_network_received_bytes_count_sum"
                   }
                   topK = {
-                    k     = 50
+                    k     = 16
                     order = "Top"
                     type  = "Auto"
                   }
@@ -3682,7 +3671,7 @@ resource "observe_dashboard" "cloud_run_service_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 200
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -3998,7 +3987,7 @@ resource "observe_dashboard" "cloud_run_service_instance" {
                     y             = "value"
                   }
                   topK = {
-                    k    = 50
+                    k    = 16
                     type = "Auto"
                   }
                   type = "table"
@@ -4019,7 +4008,7 @@ resource "observe_dashboard" "cloud_run_service_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 200
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -4260,7 +4249,7 @@ resource "observe_dashboard" "cloud_run_service_instance" {
                 columnName = "Latest Revision Name "
               },
             ]
-            wantBuckets = 200
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -4457,7 +4446,7 @@ resource "observe_dashboard" "cloud_run_service_instance" {
               revisionServed   = 229
               traffic          = 968
             }
-            containerWidth               = 1196
+            containerWidth               = 2143
             contextMenuXCoord            = null
             contextMenuYCoord            = null
             defaultColumnWidth           = 70
@@ -4571,7 +4560,7 @@ resource "observe_dashboard" "cloud_run_service_instance" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-qeb1ks12"
+              id       = "step-j7buwz6v"
               index    = 1
               isPinned = false
               opal = [
@@ -4581,7 +4570,7 @@ resource "observe_dashboard" "cloud_run_service_instance" {
                 "",
                 "make_col percent:if_null(_c_traffic_value.percent, 0)",
                 "make_col latestRevision:if(_c_traffic_value.latestRevision=true, true, false) ",
-                "make_col revisionServed: if(_c_traffic_value.latestRevision=true, revisionName, _c_traffic_value.revisionName)",
+                "make_col revisionServed: string(if(_c_traffic_value.latestRevision=true, revisionName, _c_traffic_value.revisionName))",
                 "",
                 "pick_col ",
                 "    @.\"Valid From\",",
@@ -4592,6 +4581,7 @@ resource "observe_dashboard" "cloud_run_service_instance" {
                 "    latestRevision,",
                 "    percent",
                 "",
+                "set_label revisionServed",
               ]
               queryPresentation = {}
               type              = "unknown"
@@ -4618,7 +4608,7 @@ resource "observe_dashboard" "cloud_run_service_instance" {
                     
                     make_col percent:if_null(_c_traffic_value.percent, 0)
                     make_col latestRevision:if(_c_traffic_value.latestRevision=true, true, false) 
-                    make_col revisionServed: if(_c_traffic_value.latestRevision=true, revisionName, _c_traffic_value.revisionName)
+                    make_col revisionServed: string(if(_c_traffic_value.latestRevision=true, revisionName, _c_traffic_value.revisionName))
                     
                     pick_col 
                         @."Valid From",
@@ -4628,177 +4618,9 @@ resource "observe_dashboard" "cloud_run_service_instance" {
                         revisionServed,
                         latestRevision,
                         percent
+                    
+                    set_label revisionServed
                 EOT
-      },
-      {
-        id = "stage-4z0d0q3r"
-        input = [
-          {
-            datasetId   = local.cloud_run_service_instances
-            datasetPath = null
-            inputName   = "test_gcp_sure-leopard/Cloud Run Service Instances"
-            inputRole   = "Data"
-            stageId     = null
-          },
-        ]
-        layout = {
-          appearance = "VISIBLE"
-          dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
-            columnOrderOverride = {
-              "0" = "serviceName"
-              "2" = "Valid From"
-              "3" = "Valid To"
-            }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            containerWidth               = 1196
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = true
-            maxColumnWidth               = 600
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            maxMeasuredRowHeight         = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 50
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
-            selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
-            }
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
-          }
-          index = 44
-          inputList = [
-            {
-              datasetId   = local.cloud_run_service_instances
-              inputName   = "test_gcp_sure-leopard/Cloud Run Service Instances"
-              inputRole   = "Data"
-              isUserInput = false
-            },
-          ]
-          label = "Stage 15"
-          managers = [
-            {
-              id         = "nqm5zoxq"
-              isDisabled = false
-              type       = "JsonTree"
-            },
-            {
-              id                     = "oys3wluk"
-              isDisabled             = false
-              isResourceCountEnabled = false
-              type                   = "Timescrubber"
-            },
-          ]
-          queryPresentation = {
-            initialRollupFilter = {
-              mode = "Last"
-            }
-            limit          = 1000
-            linkify        = true
-            loadEverything = false
-            progressive    = true
-            resultKinds = [
-              "ResultKindStats",
-              "ResultKindData",
-              "ResultKindSchema",
-              "ResultKindProgress",
-            ]
-            rollup = {}
-          }
-          renderType     = "TABLE"
-          selectedStepId = null
-          serializable   = true
-          steps = [
-            {
-              customName    = "Input"
-              customSummary = "test_gcp_sure-leopard/Cloud Run Service Instances"
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id                = "step-sf1ma4xu"
-              index             = 0
-              isPinned          = false
-              opal              = []
-              queryPresentation = {}
-              type              = "InputStep"
-            },
-            {
-              customSummary = ""
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id       = "step-qmjhdatg"
-              index    = 1
-              isPinned = false
-              opal = [
-                "exists serviceAssetKey=$service.serviceAssetKey",
-              ]
-              queryPresentation = {}
-              type              = "unknown"
-            },
-          ]
-          type = "table"
-          viewModel = {
-            consoleValue = null
-            railCollapseState = {
-              inputsOutputs = false
-              minimap       = false
-              note          = true
-              script        = true
-            }
-            showTimeRuler = true
-            stageTab      = "table"
-          }
-        }
-        params   = null
-        pipeline = "exists serviceAssetKey=$service.serviceAssetKey"
       },
     ]
   )

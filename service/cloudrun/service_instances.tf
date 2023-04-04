@@ -142,27 +142,27 @@ resource "observe_link" "cloud_run_services" {
   )
 }
 
-resource "observe_preferred_path" "cloud_run_service_to_cloud_run_revision" {
-  name        = "Cloud Run Revision Instances"
-  description = "Cloud Run Revision Instances"
-  source      = observe_dataset.cloud_run_service_instances.oid
-  workspace   = local.datasets.cloud_run_service_instances.workspace
-  step {
-    link    = observe_link.cloud_run_services["Latest Revision Instance"].oid
-    reverse = false
-  }
-}
+# resource "observe_preferred_path" "cloud_run_service_to_cloud_run_revision" {
+#   name        = "Cloud Run Revision Instances"
+#   description = "Cloud Run Revision Instances"
+#   source      = observe_dataset.cloud_run_service_instances.oid
+#   workspace   = local.datasets.cloud_run_service_instances.workspace
+#   step {
+#     link    = observe_link.cloud_run_services["Latest Revision Instance"].oid
+#     reverse = false
+#   }
+# }
 
-resource "observe_preferred_path" "cloud_run_service_to_cloud_sql" {
-  name        = "CloudSQL Instances used by Cloud Run Services"
-  description = "CloudSQL Instances used by Cloud Run Services"
-  source      = observe_dataset.cloud_run_service_instances.oid
-  workspace   = local.datasets.cloud_run_service_instances.workspace
-  step {
-    link    = observe_link.cloud_run_services["CloudSQL Instance"].oid
-    reverse = false
-  }
-}
+# resource "observe_preferred_path" "cloud_run_service_to_cloud_sql" {
+#   name        = "CloudSQL Instances used by Cloud Run Services"
+#   description = "CloudSQL Instances used by Cloud Run Services"
+#   source      = observe_dataset.cloud_run_service_instances.oid
+#   workspace   = local.datasets.cloud_run_service_instances.workspace
+#   step {
+#     link    = observe_link.cloud_run_services["CloudSQL Instance"].oid
+#     reverse = false
+#   }
+# }
 
 # resource "observe_preferred_path" "cloud_run_service_to_metrics" {
 #   name        = "Metrics referred by Cloud Run Service"
@@ -174,3 +174,14 @@ resource "observe_preferred_path" "cloud_run_service_to_cloud_sql" {
 #     reverse = false
 #   }
 # }
+# resource "observe_preferred_path" "cloud_run_service_to_metrics" {
+#   name        = "Cloud Run Service Metrics"
+#   description = "Cloud Run Service Metrics"
+#   source      = observe_dataset.cloud_run_service_instances.oid
+#   workspace   = local.datasets.cloud_run_service_instances.workspace
+#   step {
+#     link    = observe_link.cloud_run_services["Metrics"].oid
+#     reverse = false
+#   }
+# }
+
