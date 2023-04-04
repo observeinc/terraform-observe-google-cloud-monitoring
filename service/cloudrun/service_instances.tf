@@ -31,6 +31,7 @@ resource "observe_dataset" "cloud_run_service_instances" {
         // Linked revision metadata
         latestCreatedRevisionName:string(data.status.latestCreatedRevisionName),
         revisionName:string(data.status.latestReadyRevisionName),
+        traffic:data.spec.traffic,
         // Extended fields
         spec:object(data.spec),
         containers:data.spec.template.spec.containers
@@ -53,18 +54,20 @@ resource "observe_dataset" "cloud_run_service_instances" {
       @services <- @ {
         make_resource options(expiry:4h),
           // Links
-          database_id,
+          serviceName,
           revisionName,
+          database_id,        
           // General
           project_id,
           // Service metadata
-          serviceName,
+         
           serviceUid,
           env,
           image,
           container,
           ttl,
           deleted,
+          traffic,
           primary_key(serviceAssetKey),
           valid_for(ttl)
               
@@ -73,6 +76,7 @@ resource "observe_dataset" "cloud_run_service_instances" {
           deleted:false
         
         add_key revisionName
+        add_key serviceName
         add_key database_id
         
         set_label serviceName

@@ -22,6 +22,8 @@ resource "observe_dataset" "cloud_run_metrics" {
       make_col 
         project_id:string(resource_labels.project_id),
         region:string(resource_labels.region),
+        serviceName:string(resource_labels.service_name),
+        revisionName:string(resource_labels.revision_name),
         metric: replace(split_part(metric_type, "googleapis.com/", 2), "/", "_"),
         serviceAssetKey: string_concat("//run.googleapis.com/projects/", string(resource_labels.project_id), "/locations/", string(resource_labels.location), "/services/", string(resource_labels.service_name))
       EOF
@@ -33,6 +35,8 @@ resource "observe_dataset" "cloud_run_metrics" {
         metric,
         metric_kind,
         metric_labels,
+        serviceName,
+        revisionName,
         value,
         value_type,
         project_id,
