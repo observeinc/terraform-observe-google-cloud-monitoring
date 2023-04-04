@@ -1,6 +1,5 @@
-
-resource "observe_dashboard" "dashboard_service_instances" {
-  count = local.dashboards.dashboard_service_instances.create ? 1 : 0
+# terraform import observe_dashboard.copy_of_cloud_run_service_instance 42047241
+resource "observe_dashboard" "cloud_run_service_instance" {
   layout = jsonencode(
     {
       autoPack = true
@@ -10,19 +9,19 @@ resource "observe_dashboard" "dashboard_service_instances" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-sxrrmmnh"
+              id       = "card-743uluut"
               title    = "Dashboard Content"
             }
             items = [
               {
                 card = {
                   cardType    = "parameter"
-                  id          = "card-0raufher"
+                  id          = "card-unaslmwg"
                   parameterId = "service"
                 }
                 layout = {
                   h           = 4
-                  i           = "card-0raufher"
+                  i           = "card-unaslmwg"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -38,12 +37,12 @@ resource "observe_dashboard" "dashboard_service_instances" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-fxa8gz4i"
+                  id       = "card-0q98e39f"
                   stageId  = "stage-d3muqp6x"
                 }
                 layout = {
                   h           = 10
-                  i           = "card-fxa8gz4i"
+                  i           = "card-0q98e39f"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -56,12 +55,12 @@ resource "observe_dashboard" "dashboard_service_instances" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-oud48bly"
+                  id       = "card-1oij5wg1"
                   stageId  = "stage-usqocagm"
                 }
                 layout = {
                   h           = 20
-                  i           = "card-oud48bly"
+                  i           = "card-1oij5wg1"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -74,12 +73,12 @@ resource "observe_dashboard" "dashboard_service_instances" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-t2oxs35t"
+                  id       = "card-wwggll1j"
                   stageId  = "stage-y49asn8v"
                 }
                 layout = {
                   h           = 10
-                  i           = "card-t2oxs35t"
+                  i           = "card-wwggll1j"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -92,12 +91,12 @@ resource "observe_dashboard" "dashboard_service_instances" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-1q8hoekb"
+                  id       = "card-3tu1rpah"
                   stageId  = "stage-xfaje78y"
                 }
                 layout = {
                   h           = 16
-                  i           = "card-1q8hoekb"
+                  i           = "card-3tu1rpah"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -110,12 +109,12 @@ resource "observe_dashboard" "dashboard_service_instances" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-1soxyife"
+                  id       = "card-0ve8kreb"
                   stageId  = "stage-cszzz5l0"
                 }
                 layout = {
                   h           = 16
-                  i           = "card-1soxyife"
+                  i           = "card-0ve8kreb"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -128,12 +127,12 @@ resource "observe_dashboard" "dashboard_service_instances" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-nvm6jm9h"
+                  id       = "card-db9ozpk4"
                   stageId  = "stage-6hdreo6b"
                 }
                 layout = {
                   h           = 16
-                  i           = "card-nvm6jm9h"
+                  i           = "card-db9ozpk4"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -146,12 +145,12 @@ resource "observe_dashboard" "dashboard_service_instances" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-7fcieh32"
+                  id       = "card-jnmye2by"
                   stageId  = "stage-2feq36jp"
                 }
                 layout = {
                   h           = 14
-                  i           = "card-7fcieh32"
+                  i           = "card-jnmye2by"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -164,12 +163,12 @@ resource "observe_dashboard" "dashboard_service_instances" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-j1i8pz16"
+                  id       = "card-dbzrbnqr"
                   stageId  = "stage-c9pakqs6"
                 }
                 layout = {
                   h           = 14
-                  i           = "card-j1i8pz16"
+                  i           = "card-dbzrbnqr"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -182,12 +181,12 @@ resource "observe_dashboard" "dashboard_service_instances" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-ni27e3us"
+                  id       = "card-ma6prxw9"
                   stageId  = "stage-3461wl06"
                 }
                 layout = {
                   h           = 14
-                  i           = "card-ni27e3us"
+                  i           = "card-ma6prxw9"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -200,12 +199,12 @@ resource "observe_dashboard" "dashboard_service_instances" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-3lbn30ue"
+                  id       = "card-7r5w8zzq"
                   stageId  = "stage-rciwhao7"
                 }
                 layout = {
                   h           = 15
-                  i           = "card-3lbn30ue"
+                  i           = "card-7r5w8zzq"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -218,12 +217,12 @@ resource "observe_dashboard" "dashboard_service_instances" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-x84goxv9"
+                  id       = "card-sfh1rt50"
                   stageId  = "stage-wjaw71sv"
                 }
                 layout = {
                   h           = 15
-                  i           = "card-x84goxv9"
+                  i           = "card-sfh1rt50"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -236,12 +235,12 @@ resource "observe_dashboard" "dashboard_service_instances" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-xchtjgav"
+                  id       = "card-e4khhrnd"
                   stageId  = "stage-zxogck66"
                 }
                 layout = {
                   h           = 15
-                  i           = "card-xchtjgav"
+                  i           = "card-e4khhrnd"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -254,12 +253,12 @@ resource "observe_dashboard" "dashboard_service_instances" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-ru3g5e7y"
+                  id       = "card-wfs1qgj7"
                   stageId  = "stage-736a6lgq"
                 }
                 layout = {
                   h           = 12
-                  i           = "card-ru3g5e7y"
+                  i           = "card-wfs1qgj7"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -283,13 +282,13 @@ resource "observe_dashboard" "dashboard_service_instances" {
             id                    = "service"
             name                  = "Service "
             valueKind = {
-              keyForDatasetId = local.dashboards.dashboard_service_instances.datasets["cloud_run_service_instances"].id
+              keyForDatasetId = local.cloud_run_service_instances
               type            = "LINK"
             }
             viewType = "resource-input"
           },
         ]
-        selectedStageId = "stage-d3muqp6x"
+        selectedStageId = "stage-61ojysx3"
         timeRange = {
           display               = "Past 7 days"
           endTime               = null
@@ -305,7 +304,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
       }
     }
   )
-  name = local.dashboards.dashboard_service_instances.name
+  name = local.cloud_run_service_dashboard_name 
   parameters = jsonencode(
     [
       {
@@ -314,7 +313,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
         name         = "Service "
         valueKind = {
           arrayItemType   = null
-          keyForDatasetId = local.dashboards.dashboard_service_instances.datasets["cloud_run_service_instances"].id
+          keyForDatasetId = local.cloud_run_service_instances
           type            = "LINK"
         }
       },
@@ -326,7 +325,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
         id = "stage-61ojysx3"
         input = [
           {
-            datasetId   = local.dashboards.dashboard_service_instances.datasets["cloud_run_metrics"].id
+            datasetId   = local.cloud_run_metrics
             datasetPath = null
             inputName   = "cloud_run_metrics"
             inputRole   = "Data"
@@ -378,13 +377,13 @@ resource "observe_dashboard" "dashboard_service_instances" {
           index = 0
           inputList = [
             {
-              datasetId   = local.dashboards.dashboard_service_instances.datasets["cloud_run_metrics"].id
+              datasetId   = local.cloud_run_metrics
               inputName   = "cloud_run_metrics"
               inputRole   = "Data"
               isUserInput = false
             },
           ]
-          label = "Base Metrics - Cloud Run Service Instance"
+          label = "Base Metrics - Cloud_Run_Service_Instance"
           managers = [
             {
               id                     = "16hq23lo"
@@ -593,7 +592,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
                     y             = "A_container_instance_count_sum"
                   }
                   topK = {
-                    k     = 16
+                    k     = 50
                     order = "Top"
                     type  = "Auto"
                   }
@@ -611,7 +610,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 200
           }
           selectedStepId = null
           serializable   = true
@@ -732,7 +731,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
                         lookupActions = []
                         metric = {
                           aggregate   = "sum"
-                          datasetId   = local.dashboards.dashboard_service_instances.datasets["cloud_run_metrics"].id
+                          datasetId   = local.cloud_run_metrics
                           description = <<-EOT
                                                         Number of container instances that exist, broken down by state.
                                                     EOT
@@ -845,7 +844,9 @@ resource "observe_dashboard" "dashboard_service_instances" {
         pipeline = <<-EOT
                     filter serviceAssetKey=$service.serviceAssetKey
                     //lookup serviceAssetKey = @service_name.serviceAssetKey, filter_service_name : @service_name.serviceName
-
+                    
+                    
+                    
                     align frame(back: 1m), A_container_instance_count_sum:sum(m("container_instance_count"))
                     aggregate A_container_instance_count_sum:sum(A_container_instance_count_sum), group_by(metric_labels)
                 EOT
@@ -894,18 +895,12 @@ resource "observe_dashboard" "dashboard_service_instances" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
@@ -976,7 +971,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 200
           }
           selectedStepId = null
           serializable   = true
@@ -1102,7 +1097,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
                         ]
                         metric = {
                           aggregate   = "ob-no-reagg"
-                          datasetId   = local.dashboards.dashboard_service_instances.datasets["cloud_run_metrics"].id
+                          datasetId   = local.cloud_run_metrics
                           description = <<-EOT
                                                         Container CPU utilization distribution across all container instances.
                                                     EOT
@@ -1214,7 +1209,9 @@ resource "observe_dashboard" "dashboard_service_instances" {
             consoleValue = <<-EOT
                             filter serviceAssetKey=$service.serviceAssetKey
                             //lookup serviceAssetKey = @service_name.serviceAssetKey, filter_service_name : @service_name.serviceName
-
+                            
+                            
+                            
                             @A <- @ {
                                 align A_container_cpu_utilizations_sum:avg(m("container_cpu_utilizations"))
                                 aggregate A_container_cpu_utilizations_sum:sum(A_container_cpu_utilizations_sum), group_by(serviceAssetKey)
@@ -1240,7 +1237,9 @@ resource "observe_dashboard" "dashboard_service_instances" {
         pipeline = <<-EOT
                     filter serviceAssetKey=$service.serviceAssetKey
                     //lookup serviceAssetKey = @service_name.serviceAssetKey, filter_service_name : @service_name.serviceName
-
+                    
+                    
+                    
                     @A <- @ {
                         align frame(back: 1m), A_container_cpu_utilizations_sum:avg(m("container_cpu_utilizations"))
                         make_event
@@ -1296,18 +1295,12 @@ resource "observe_dashboard" "dashboard_service_instances" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
@@ -1368,7 +1361,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
                     y             = "A_request_count_sum"
                   }
                   topK = {
-                    k     = 16
+                    k     = 50
                     order = "Top"
                     type  = "Auto"
                   }
@@ -1390,7 +1383,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 200
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -1513,7 +1506,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
                         lookupActions = []
                         metric = {
                           aggregate   = "sum"
-                          datasetId   = local.dashboards.dashboard_service_instances.datasets["cloud_run_metrics"].id
+                          datasetId   = local.cloud_run_metrics
                           description = <<-EOT
                                                         Number of requests reaching the revision. Excludes requests that are not reaching your container instances for example, unauthorized requests or when maximum number of instances is reached. Captured at the end of the request lifecycle.
                                                     EOT
@@ -1625,7 +1618,9 @@ resource "observe_dashboard" "dashboard_service_instances" {
             consoleValue = <<-EOT
                             filter serviceAssetKey=$service.serviceAssetKey
                             //lookup serviceAssetKey = @service_name.serviceAssetKey, filter_service_name : @service_name.serviceName
-
+                            
+                            
+                            
                             @A <- @ {
                                 align A_request_count_sum:avg(m("request_count"))
                                 aggregate A_request_count_sum:sum(A_request_count_sum), group_by(string(metric_labels.response_code))
@@ -1648,7 +1643,9 @@ resource "observe_dashboard" "dashboard_service_instances" {
         pipeline = <<-EOT
                     filter serviceAssetKey=$service.serviceAssetKey
                     //lookup serviceAssetKey = @service_name.serviceAssetKey, filter_service_name : @service_name.serviceName
-
+                    
+                    
+                    
                     @A <- @ {
                         align frame(back: 1m), A_request_count_sum:rate(m("request_count"))
                         aggregate A_request_count_sum:sum(A_request_count_sum), group_by(string(metric_labels.response_code))
@@ -1662,7 +1659,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
         id = "stage-usqocagm"
         input = [
           {
-            datasetId   = local.dashboards.dashboard_service_instances.datasets["cloud_run_revision_instances"].id
+            datasetId   = local.cloud_run_revision_instances
             datasetPath = null
             inputName   = "cloud_run_revision_instances"
             inputRole   = "Data"
@@ -1694,7 +1691,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
               containerConcurrency = 126
               containerPort        = 87
             }
-            containerWidth               = 2143
+            containerWidth               = 1196
             contextMenuXCoord            = null
             contextMenuYCoord            = null
             defaultColumnWidth           = 70
@@ -1715,18 +1712,12 @@ resource "observe_dashboard" "dashboard_service_instances" {
             scrollToColumn               = "containerPort"
             scrollToRow                  = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
@@ -1736,7 +1727,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
           index = 4
           inputList = [
             {
-              datasetId   = local.dashboards.dashboard_service_instances.datasets["cloud_run_revision_instances"].id
+              datasetId   = local.cloud_run_revision_instances
               inputName   = "cloud_run_revision_instances"
               inputRole   = "Data"
               isUserInput = false
@@ -1833,7 +1824,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
           viewModel = {
             consoleValue = <<-EOT
                             filter serviceAssetKey=$service.serviceAssetKey
-
+                            
                             make_col cpuLimit:string(container.resources.limits.cpu),
                                 memoryLimit:string(container.resources.limits.memory),
                                 containerPort:int64(container.ports[0].containerPort),
@@ -1852,7 +1843,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
         params   = null
         pipeline = <<-EOT
                     filter serviceAssetKey=$service.serviceAssetKey
-
+                    
                     make_col cpuLimit:string(container.resources.limits.cpu),
                         memoryLimit:string(container.resources.limits.memory),
                         containerPort:int64(container.ports[0].containerPort),
@@ -1904,18 +1895,12 @@ resource "observe_dashboard" "dashboard_service_instances" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
@@ -1972,7 +1957,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
                     y             = "value"
                   }
                   topK = {
-                    k    = 16
+                    k    = 50
                     type = "Auto"
                   }
                   type = "table"
@@ -1993,7 +1978,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 200
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -2238,7 +2223,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 200
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -2246,7 +2231,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "Base Metrics - Cloud Run Service Instance_-61oj"
+              customSummary = "cloud_run_base_metrics_stage"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2321,7 +2306,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
                         lookupActions = []
                         metric = {
                           aggregate   = "sum"
-                          datasetId   = local.dashboards.dashboard_service_instances.datasets["cloud_run_metrics"].id
+                          datasetId   = local.cloud_run_metrics
                           description = <<-EOT
                                                         Container memory utilization distribution across all container instances.
                                                     EOT
@@ -2544,18 +2529,12 @@ resource "observe_dashboard" "dashboard_service_instances" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
@@ -2638,7 +2617,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 200
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -2646,7 +2625,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "Base Metrics - Cloud Run Service Instance_-61oj"
+              customSummary = "cloud_run_base_metrics_stage"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2729,7 +2708,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
                         lookupActions = []
                         metric = {
                           aggregate   = "sum"
-                          datasetId   = local.dashboards.dashboard_service_instances.datasets["cloud_run_metrics"].id
+                          datasetId   = local.cloud_run_metrics
                           description = <<-EOT
                                                         Distribution of time spent starting a new container instance in milliseconds.
                                                     EOT
@@ -2892,18 +2871,12 @@ resource "observe_dashboard" "dashboard_service_instances" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
@@ -2993,7 +2966,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
                 columnName = "A_container_billable_instance_time_avg"
               },
             ]
-            wantBuckets = 600
+            wantBuckets = 200
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -3001,7 +2974,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "Base Metrics - Cloud Run Service Instance_-61oj"
+              customSummary = "cloud_run_base_metrics_stage"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3085,7 +3058,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
                         lookupActions = []
                         metric = {
                           aggregate   = "ob-no-reagg"
-                          datasetId   = local.dashboards.dashboard_service_instances.datasets["cloud_run_metrics"].id
+                          datasetId   = local.cloud_run_metrics
                           description = <<-EOT
                                                         Billable time aggregated across all container instances. For a given container instance, billable time occurs when the container instance is starting or at least one request is being processed. Billable time is rounded up to the nearest 100 milliseconds. Examples: If a revision with 2 container instances has been continuously serving traffic in the last minute, the value is 2s/s with the default "rate" aligner. If a single request lasting 30ms was received by a revision in the past minute, it is rounded up to 100ms and averaged to 1.7ms/s over the minute with the default "rate" aligner.
                                                     EOT
@@ -3238,18 +3211,12 @@ resource "observe_dashboard" "dashboard_service_instances" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
@@ -3310,7 +3277,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
                     y             = "A_container_network_sent_bytes_count_sum"
                   }
                   topK = {
-                    k     = 16
+                    k     = 50
                     order = "Top"
                     type  = "Auto"
                   }
@@ -3332,7 +3299,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 200
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -3340,7 +3307,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "Base Metrics - Cloud Run Service Instance_-61oj"
+              customSummary = "cloud_run_base_metrics_stage"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3465,7 +3432,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
                         lookupActions = []
                         metric = {
                           aggregate   = "sum"
-                          datasetId   = local.dashboards.dashboard_service_instances.datasets["cloud_run_metrics"].id
+                          datasetId   = local.cloud_run_metrics
                           description = <<-EOT
                                                         Outgoing socket and HTTP response traffic, in bytes.
                                                     EOT
@@ -3627,18 +3594,12 @@ resource "observe_dashboard" "dashboard_service_instances" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
@@ -3699,7 +3660,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
                     y             = "A_container_network_received_bytes_count_sum"
                   }
                   topK = {
-                    k     = 16
+                    k     = 50
                     order = "Top"
                     type  = "Auto"
                   }
@@ -3721,7 +3682,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 200
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -3729,7 +3690,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "Base Metrics - Cloud Run Service Instance_-61oj"
+              customSummary = "cloud_run_base_metrics_stage"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3816,7 +3777,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
                         lookupActions = []
                         metric = {
                           aggregate   = "sum"
-                          datasetId   = local.dashboards.dashboard_service_instances.datasets["cloud_run_metrics"].id
+                          datasetId   = local.cloud_run_metrics
                           description = <<-EOT
                                                         Incoming socket and HTTP response traffic, in bytes.
                                                     EOT
@@ -3976,18 +3937,12 @@ resource "observe_dashboard" "dashboard_service_instances" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
@@ -4043,7 +3998,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
                     y             = "value"
                   }
                   topK = {
-                    k    = 16
+                    k    = 50
                     type = "Auto"
                   }
                   type = "table"
@@ -4064,7 +4019,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 200
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -4072,7 +4027,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "Base Metrics - Cloud Run Service Instance_-61oj"
+              customSummary = "cloud_run_base_metrics_stage"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4184,7 +4139,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
         id = "stage-d3muqp6x"
         input = [
           {
-            datasetId   = local.dashboards.dashboard_service_instances.datasets["cloud_run_service_instances"].id
+            datasetId   = local.cloud_run_service_instances
             datasetPath = null
             inputName   = "cloud_run_service_instances"
             inputRole   = "Data"
@@ -4227,18 +4182,12 @@ resource "observe_dashboard" "dashboard_service_instances" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
@@ -4248,7 +4197,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
           index = 12
           inputList = [
             {
-              datasetId   = local.dashboards.dashboard_service_instances.datasets["cloud_run_service_instances"].id
+              datasetId   = local.cloud_run_service_instances
               inputName   = "cloud_run_service_instances"
               inputRole   = "Data"
               isUserInput = false
@@ -4311,7 +4260,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
                 columnName = "Latest Revision Name "
               },
             ]
-            wantBuckets = 600
+            wantBuckets = 200
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -4319,7 +4268,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "Base Metrics - Cloud Run Service Instance_-61oj"
+              customSummary = "cloud_run_service_instances"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4466,7 +4415,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
         id = "stage-y49asn8v"
         input = [
           {
-            datasetId   = local.dashboards.dashboard_service_instances.datasets["cloud_run_service_instances"].id
+            datasetId   = local.cloud_run_service_instances
             datasetPath = null
             inputName   = "cloud_run_service_instances"
             inputRole   = "Data"
@@ -4508,7 +4457,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
               revisionServed   = 229
               traffic          = 968
             }
-            containerWidth               = 2143
+            containerWidth               = 1196
             contextMenuXCoord            = null
             contextMenuYCoord            = null
             defaultColumnWidth           = 70
@@ -4529,18 +4478,12 @@ resource "observe_dashboard" "dashboard_service_instances" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
@@ -4550,7 +4493,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
           index = 13
           inputList = [
             {
-              datasetId   = local.dashboards.dashboard_service_instances.datasets["cloud_run_service_instances"].id
+              datasetId   = local.cloud_run_service_instances
               inputName   = "cloud_run_service_instances"
               inputRole   = "Data"
               isUserInput = false
@@ -4592,7 +4535,7 @@ resource "observe_dashboard" "dashboard_service_instances" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "test_gcp_sure-leopard/Cloud Run Service Instances"
+              customSummary = "cloud_run_service_instances"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4670,13 +4613,13 @@ resource "observe_dashboard" "dashboard_service_instances" {
         params   = null
         pipeline = <<-EOT
                     filter serviceAssetKey=$service.serviceAssetKey
-
+                    
                     flatten_single traffic
-
+                    
                     make_col percent:if_null(_c_traffic_value.percent, 0)
                     make_col latestRevision:if(_c_traffic_value.latestRevision=true, true, false) 
                     make_col revisionServed: if(_c_traffic_value.latestRevision=true, revisionName, _c_traffic_value.revisionName)
-
+                    
                     pick_col 
                         @."Valid From",
                         @."Valid To",
@@ -4687,7 +4630,178 @@ resource "observe_dashboard" "dashboard_service_instances" {
                         percent
                 EOT
       },
+      {
+        id = "stage-4z0d0q3r"
+        input = [
+          {
+            datasetId   = local.cloud_run_service_instances
+            datasetPath = null
+            inputName   = "test_gcp_sure-leopard/Cloud Run Service Instances"
+            inputRole   = "Data"
+            stageId     = null
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight    = true
+            columnFooterHeight = 0
+            columnHeaderHeight = 29
+            columnOrderOverride = {
+              "0" = "serviceName"
+              "2" = "Valid From"
+              "3" = "Valid To"
+            }
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1196
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = true
+            maxColumnWidth               = 600
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
+            selection = {
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
+            }
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 0
+            tableView                  = "TABULAR"
+          }
+          index = 44
+          inputList = [
+            {
+              datasetId   = local.cloud_run_service_instances
+              inputName   = "test_gcp_sure-leopard/Cloud Run Service Instances"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+          ]
+          label = "Stage 15"
+          managers = [
+            {
+              id         = "nqm5zoxq"
+              isDisabled = false
+              type       = "JsonTree"
+            },
+            {
+              id                     = "oys3wluk"
+              isDisabled             = false
+              isResourceCountEnabled = false
+              type                   = "Timescrubber"
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            limit          = 1000
+            linkify        = true
+            loadEverything = false
+            progressive    = true
+            resultKinds = [
+              "ResultKindStats",
+              "ResultKindData",
+              "ResultKindSchema",
+              "ResultKindProgress",
+            ]
+            rollup = {}
+          }
+          renderType     = "TABLE"
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              customName    = "Input"
+              customSummary = "test_gcp_sure-leopard/Cloud Run Service Instances"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-sf1ma4xu"
+              index             = 0
+              isPinned          = false
+              opal              = []
+              queryPresentation = {}
+              type              = "InputStep"
+            },
+            {
+              customSummary = ""
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-qmjhdatg"
+              index    = 1
+              isPinned = false
+              opal = [
+                "exists serviceAssetKey=$service.serviceAssetKey",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            consoleValue = null
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            showTimeRuler = true
+            stageTab      = "table"
+          }
+        }
+        params   = null
+        pipeline = "exists serviceAssetKey=$service.serviceAssetKey"
+      },
     ]
   )
-  workspace = var.workspace.oid
+  workspace = local.workspace
 }
+

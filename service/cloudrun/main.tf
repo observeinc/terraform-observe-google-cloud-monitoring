@@ -1,16 +1,16 @@
 locals {
   # creates a map of dashboards to deploy
-  dashboards = {
-    for k, v in {
-      dashboard_service_instances  = { name = "Service Instance" }
-      dashboard_revision_instances = { name = "Revision Instance" }
-    } : k =>
-    {
-      create   = lookup(v, "create", true)
-      name     = format(var.name_format, v.name)
-      datasets = data.observe_oid.datasets
-    }
-  }
+  # dashboards = {
+  #   for k, v in {
+  #     dashboard_service_instances  = { name = "Service Instance" }
+  #     dashboard_revision_instances = { name = "Revision Instance" }
+  #   } : k =>
+  #   {
+  #     create   = lookup(v, "create", true)
+  #     name     = format(var.name_format, v.name)
+  #     datasets = data.observe_oid.datasets
+  #   }
+  # }
   google = merge(var.google, {
     cloud_run_service_instances  = observe_dataset.cloud_run_service_instances
     cloud_run_revision_instances = observe_dataset.cloud_run_revision_instances
