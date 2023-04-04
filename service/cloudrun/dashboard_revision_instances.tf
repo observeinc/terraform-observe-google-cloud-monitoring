@@ -1,5 +1,4 @@
-
-# terraform import observe_dashboard.cloud_run_revision_instance 42038640
+# terraform import observe_dashboard.cloud_run_revision_instance 42049529
 resource "observe_dashboard" "cloud_run_revision_instance" {
   layout = jsonencode(
     {
@@ -10,208 +9,296 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-48x8ofo2"
+              id       = "card-gt1v5cca"
               title    = "Dashboard Content"
             }
             items = [
               {
                 card = {
-                  cardType = "stage"
-                  id       = "card-x0kdyl6s"
-                  stageId  = "stage-s6hd9w9r"
+                  cardType    = "parameter"
+                  id          = "card-1t94kazi"
+                  parameterId = "revision"
                 }
                 layout = {
-                  h = 16
-                  i = "card-x0kdyl6s"
-                  w = 2
-                  x = 0
-                  y = 0
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-zlkl2cix"
-                  stageId  = "stage-owvgp5ik"
-                }
-                layout = {
-                  h = 16
-                  i = "card-zlkl2cix"
-                  w = 1
-                  x = 5
-                  y = 0
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-ugsl80z3"
-                  stageId  = "stage-2w0h5by8"
-                }
-                layout = {
-                  h = 16
-                  i = "card-ugsl80z3"
-                  w = 1
-                  x = 4
-                  y = 0
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-wym0yyxy"
-                  stageId  = "stage-7kiu4s55"
-                }
-                layout = {
-                  h = 16
-                  i = "card-wym0yyxy"
-                  w = 2
-                  x = 2
-                  y = 0
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-7svjd5tt"
-                  stageId  = "stage-uzxt2gjg"
-                }
-                layout = {
-                  h = 16
-                  i = "card-7svjd5tt"
-                  w = 6
-                  x = 6
-                  y = 0
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-g7n4ti5r"
-                  stageId  = "stage-7sze4czq"
-                }
-                layout = {
-                  h = 20
-                  i = "card-g7n4ti5r"
-                  w = 5
-                  x = 7
-                  y = 16
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-jlh9n3rt"
-                  stageId  = "stage-6q1j06k5"
-                }
-                layout = {
-                  h = 10
-                  i = "card-jlh9n3rt"
-                  w = 2
-                  x = 0
-                  y = 16
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-ra9qugk3"
-                  stageId  = "stage-ufgma5j1"
-                }
-                layout = {
-                  h = 20
-                  i = "card-ra9qugk3"
-                  w = 5
-                  x = 2
-                  y = 16
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-m3d8oadj"
-                  stageId  = "stage-9ie7yoz2"
-                }
-                layout = {
-                  h = 10
-                  i = "card-m3d8oadj"
-                  w = 2
-                  x = 0
-                  y = 26
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-lyfqknzx"
-                  stageId  = "stage-20h4toz2"
-                }
-                layout = {
-                  h = 16
-                  i = "card-lyfqknzx"
-                  w = 4
-                  x = 8
-                  y = 36
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-aah5arw8"
-                  stageId  = "stage-9eiha1ve"
-                }
-                layout = {
-                  h = 16
-                  i = "card-aah5arw8"
-                  w = 4
-                  x = 0
-                  y = 36
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-qw2ckfbk"
-                  stageId  = "stage-7ckxhvg3"
-                }
-                layout = {
-                  h = 16
-                  i = "card-qw2ckfbk"
-                  w = 4
-                  x = 4
-                  y = 36
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-n84r69le"
-                  stageId  = "stage-dlpgnpgk"
-                }
-                layout = {
-                  h = 18
-                  i = "card-n84r69le"
-                  w = 6
-                  x = 0
-                  y = 52
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-7wlomw0u"
-                  stageId  = "stage-h2x6mnph"
-                }
-                layout = {
-                  h = 18
-                  i = "card-7wlomw0u"
-                  w = 6
-                  x = 6
-                  y = 52
+                  h           = 4
+                  i           = "card-1t94kazi"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  resizeHandles = [
+                    "e",
+                  ]
+                  static = false
+                  w      = 12
+                  x      = 0
+                  y      = 0
                 }
               },
             ]
             lastModified = 1680636584251
+          },
+          {
+            card = {
+              cardType = "section"
+              closed   = false
+              id       = "section-rdeilnv2"
+              title    = "Panels"
+            }
+            items = [
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-do04ph59"
+                  stageId  = "stage-s6hd9w9r"
+                }
+                layout = {
+                  h           = 16
+                  i           = "card-do04ph59"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 2
+                  x           = 0
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-hi8ijoo5"
+                  stageId  = "stage-owvgp5ik"
+                }
+                layout = {
+                  h           = 16
+                  i           = "card-hi8ijoo5"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 1
+                  x           = 5
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-u3ky3jc8"
+                  stageId  = "stage-2w0h5by8"
+                }
+                layout = {
+                  h           = 16
+                  i           = "card-u3ky3jc8"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 1
+                  x           = 4
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-qz0szwwx"
+                  stageId  = "stage-7kiu4s55"
+                }
+                layout = {
+                  h           = 16
+                  i           = "card-qz0szwwx"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 2
+                  x           = 2
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-f6gbwzli"
+                  stageId  = "stage-uzxt2gjg"
+                }
+                layout = {
+                  h           = 16
+                  i           = "card-f6gbwzli"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 6
+                  x           = 6
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-r8on76u9"
+                  stageId  = "stage-7sze4czq"
+                }
+                layout = {
+                  h           = 20
+                  i           = "card-r8on76u9"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 5
+                  x           = 7
+                  y           = 16
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-zeq17sre"
+                  stageId  = "stage-6q1j06k5"
+                }
+                layout = {
+                  h           = 10
+                  i           = "card-zeq17sre"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 2
+                  x           = 0
+                  y           = 16
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-jpe4leuq"
+                  stageId  = "stage-ufgma5j1"
+                }
+                layout = {
+                  h           = 20
+                  i           = "card-jpe4leuq"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 5
+                  x           = 2
+                  y           = 16
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-o8e6bt4j"
+                  stageId  = "stage-9ie7yoz2"
+                }
+                layout = {
+                  h           = 10
+                  i           = "card-o8e6bt4j"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 2
+                  x           = 0
+                  y           = 26
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-7da7cmbe"
+                  stageId  = "stage-20h4toz2"
+                }
+                layout = {
+                  h           = 16
+                  i           = "card-7da7cmbe"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 4
+                  x           = 8
+                  y           = 36
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-h3b11sbj"
+                  stageId  = "stage-9eiha1ve"
+                }
+                layout = {
+                  h           = 16
+                  i           = "card-h3b11sbj"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 4
+                  x           = 0
+                  y           = 36
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-21e6py8l"
+                  stageId  = "stage-7ckxhvg3"
+                }
+                layout = {
+                  h           = 16
+                  i           = "card-21e6py8l"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 4
+                  x           = 4
+                  y           = 36
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-h0foshno"
+                  stageId  = "stage-dlpgnpgk"
+                }
+                layout = {
+                  h           = 18
+                  i           = "card-h0foshno"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 6
+                  x           = 0
+                  y           = 52
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-qle22rlw"
+                  stageId  = "stage-h2x6mnph"
+                }
+                layout = {
+                  h           = 18
+                  i           = "card-qle22rlw"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 6
+                  x           = 6
+                  y           = 52
+                }
+              },
+            ]
+            lastModified = 1680647203110
           },
         ]
       }
@@ -551,7 +638,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               serviceUid           = false
             }
             columnWidths                 = {}
-            containerWidth               = 3023
+            containerWidth               = 1072
             contextMenuXCoord            = null
             contextMenuYCoord            = null
             defaultColumnWidth           = 70
@@ -815,7 +902,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                 columnName = "A_CloudRunRevisionInstances_count_distinct_exact"
               },
             ]
-            wantBuckets = 800
+            wantBuckets = 100
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -1119,7 +1206,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                 columnName = "A_CloudRunRevisionInstances_count_distinct_exact"
               },
             ]
-            wantBuckets = 800
+            wantBuckets = 100
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -1419,7 +1506,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                 columnName = "A_minScale_count_distinct_exact"
               },
             ]
-            wantBuckets = 800
+            wantBuckets = 50
           }
           selectedStepId = null
           serializable   = true
@@ -1679,7 +1766,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 800
+            wantBuckets = 50
           }
           selectedStepId = null
           serializable   = true
@@ -1938,7 +2025,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 800
+            wantBuckets = 100
           }
           selectedStepId = null
           serializable   = true
@@ -2197,7 +2284,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 800
+            wantBuckets = 100
           }
           selectedStepId = null
           serializable   = true
@@ -2337,7 +2424,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
           {
             datasetId   = local.cloud_run_metrics
             datasetPath = null
-            inputName   = "container_cpu_utilizations_from_42020094"
+            inputName   = "container_cpu_utilizations_from_41970327"
             inputRole   = "Data"
             stageId     = null
           },
@@ -2433,7 +2520,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                     y             = "A_container_cpu_utilizations_sum"
                   }
                   topK = {
-                    k     = 12
+                    k     = 50
                     order = "Top"
                     type  = "Auto"
                   }
@@ -2451,7 +2538,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 800
+            wantBuckets = 200
           }
           selectedStepId = null
           serializable   = true
@@ -2714,7 +2801,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
           {
             datasetId   = local.cloud_run_metrics
             datasetPath = null
-            inputName   = "container_memory_utilizations_from_42020094"
+            inputName   = "container_memory_utilizations_from_41970327"
             inputRole   = "Data"
             stageId     = null
           },
@@ -2811,7 +2898,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                     y             = "B_formula"
                   }
                   topK = {
-                    k    = 12
+                    k    = 50
                     type = "Auto"
                   }
                   type = "table"
@@ -2828,7 +2915,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 800
+            wantBuckets = 200
           }
           selectedStepId = null
           serializable   = true
@@ -3102,7 +3189,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               index    = 1
               isPinned = false
               opal = [
-                "@A <- @container_memory_utilizations_from_42020094 {",
+                "@A <- @container_memory_utilizations_from_41970327 {",
                 "    exists revisionName = @\"filter_Revision Instance\".revisionName",
                 "    align A_container_memory_utilizations_sum:avg(m(\"container_memory_utilizations\"))",
                 "    aggregate A_container_memory_utilizations_sum:sum(A_container_memory_utilizations_sum), group_by(revisionName)",
@@ -3145,7 +3232,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
         }
         params   = null
         pipeline = <<-EOT
-                    @A <- @container_memory_utilizations_from_42020094 {
+                    @A <- @container_memory_utilizations_from_41970327 {
                         exists revisionName = @"filter_Revision Instance".revisionName
                         align A_container_memory_utilizations_sum:avg(m("container_memory_utilizations"))
                         aggregate A_container_memory_utilizations_sum:sum(A_container_memory_utilizations_sum), group_by(revisionName)
@@ -3283,7 +3370,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                     y             = "A_request_count_sum"
                   }
                   topK = {
-                    k     = 12
+                    k     = 50
                     order = "Top"
                     type  = "Auto"
                   }
@@ -3307,7 +3394,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 800
+            wantBuckets = 200
           }
           selectedStepId = null
           serializable   = true
@@ -3588,7 +3675,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
           {
             datasetId   = local.cloud_run_metrics
             datasetPath = null
-            inputName   = "request_latencies_from_42020094"
+            inputName   = "request_latencies_from_41970327"
             inputRole   = "Data"
             stageId     = null
           },
@@ -3690,7 +3777,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                     y             = "A_request_latencies_sum"
                   }
                   topK = {
-                    k     = 12
+                    k     = 50
                     order = "Top"
                     type  = "Auto"
                   }
@@ -3708,7 +3795,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 800
+            wantBuckets = 200
           }
           selectedStepId = null
           serializable   = true
@@ -3994,7 +4081,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
           {
             datasetId   = local.cloud_run_metrics
             datasetPath = null
-            inputName   = "container_startup_latencies_from_42020094"
+            inputName   = "container_startup_latencies_from_41970327"
             inputRole   = "Data"
             stageId     = null
           },
@@ -4099,7 +4186,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                     y             = "A_container_startup_latencies_sum"
                   }
                   topK = {
-                    k     = 12
+                    k     = 50
                     order = "Top"
                     type  = "Auto"
                   }
@@ -4117,7 +4204,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 800
+            wantBuckets = 200
           }
           selectedStepId = null
           serializable   = true
@@ -4408,7 +4495,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             columnOrderOverride          = {}
             columnVisibility             = {}
             columnWidths                 = {}
-            containerWidth               = 3023
+            containerWidth               = 1072
             contextMenuXCoord            = null
             contextMenuYCoord            = null
             defaultColumnWidth           = 70
@@ -4628,14 +4715,14 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             columnWidths = {
               textPayload = 1721
             }
-            containerWidth               = 3023
+            containerWidth               = 1072
             contextMenuXCoord            = null
             contextMenuYCoord            = null
             defaultColumnWidth           = 70
             disableFixedLeftColumns      = false
             eventLinkColumnId            = null
             fetchPageSize                = 100
-            hasCalculatedColumnWidths    = true
+            hasCalculatedColumnWidths    = false
             maxColumnWidth               = 600
             maxMeasuredColumnHeaderWidth = {}
             maxMeasuredColumnWidth       = {}
@@ -4649,18 +4736,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
@@ -4816,3 +4897,4 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
   )
   workspace = local.workspace
 }
+
