@@ -54,6 +54,8 @@ resource "observe_dataset" "cloud_run_service_logs" {
         trace
               
       add_key assetInventoryName
+      add_key serviceName
+      add_key revisionName
     EOF
   }
 }
@@ -93,56 +95,54 @@ resource "observe_dataset" "cloud_run_audit_logs" {
         location,
         serviceName,
         revisionName
+
+      add_key serviceName
+      add_key revisionName
     EOF
   }
 }
 
-# resource "observe_link" "function_logs" {
-#   workspace = var.workspace.oid
-#   source    = observe_dataset.cloud_functions_function_logs.oid
-#   target    = each.value.target
-#   fields    = each.value.fields
-#   label     = each.key
-
-#   for_each = {
-#     "Cloud Function" = {
-#       target = observe_dataset.cloud_functions_instances.oid
-#       fields = ["projectId", "region", "functionName"]
-#     }
-#   }
-# }
-
-# resource "observe_link" "audit_logs" {
-#   workspace = var.workspace.oid
-#   source    = observe_dataset.cloud_functions_audit_logs.oid
-#   target    = each.value.target
-#   fields    = each.value.fields
-#   label     = each.key
-
-#   for_each = {
-#     "Cloud Function" = {
-#       target = observe_dataset.cloud_functions_instances.oid
-#       fields = ["projectId", "region", "functionName"]
-#     }
-#   }
-# }
+resource "observe_link" "cloud_run_service_logs" {
+  workspace = var.workspace.oid
+  source    = observe_dataset.cloud_run_service_logs.oid
+  target    = each.value.target
+  fields    = each.value.fields
+  label     = each.key
+  for_each = merge(
+    {
+      "Service Instance" = {
+        target = observe_dataset.cloud_run_service_instances.oid
+        fields = ["serviceName"]
+      }
+    },
+    {
+      "Revision Instance" = {
+        target = observe_dataset.cloud_run_revision_instances.oid
+        fields = ["revisionName"]
+      }
+    }
+  )
+}
 
 
-# // if textPayload is not null, it's an function log
-# filter resourceType = "cloud_run_revision" 
-# //filter contains(severity, "")
-
-# make_col 
-#   serviceName:string(resourceLabels.service_name),
-#   projectId:string(resourceLabels.project_id),
-#   location:string(resourceLabels.location)
-
-# // make_col assetInventoryName: string_concat("//cloudfunctions.googleapis.com/projects/",projectId,"/locations/",region,"/functions/",functionName)
-# // // ex - //cloudfunctions.googleapis.com/projects/content-testpproj-stage-1/locations/us-west1/functions/extension-export-cloud-scheduler-v2
-
-# pick_col 
-#    timestamp,
-#    receiveTimestamp,
-#    logName,
-#    severity,
-#    textPayload,
+resource "observe_link" "cloud_run_audit_logs" {
+  workspace = var.workspace.oid
+  source    = observe_dataset.cloud_run_audit_logs.oid
+  target    = each.value.target
+  fields    = each.value.fields
+  label     = each.key
+  for_each = merge(
+    {
+      "Service Instance" = {
+        target = observe_dataset.cloud_run_service_instances.oid
+        fields = ["serviceName"]
+      }
+    },
+    {
+      "Revision Instance" = {
+        target = observe_dataset.cloud_run_revision_instances.oid
+        fields = ["revisionName"]
+      }
+    }
+  )
+}

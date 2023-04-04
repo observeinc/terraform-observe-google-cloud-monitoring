@@ -57,18 +57,19 @@ resource "observe_dataset" "cloud_run_revision_instances" {
       @revisions <- @ {
         make_resource options(expiry:15m),
           // Links
+          revisionName,
+           serviceName,
           database_id,
           serviceAssetKey,
           // General
           creationTimestamp,
           location,
           project_id,
-          // Revision metadata
-          revisionName,
+          // Revision metadata          
           revisionUid,
           // Linked service metadata
           serviceUid,
-          serviceName,
+       
           // Container properties
           image,
           env,
