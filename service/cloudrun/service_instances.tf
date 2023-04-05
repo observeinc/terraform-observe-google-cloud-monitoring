@@ -133,7 +133,7 @@ resource "observe_link" "cloud_run_services" {
         target = var.google.cloudsql.oid
         fields = ["database_id"]
       }
-    }:{}
+    } : {}
     ,
     {
       "Metrics" = {

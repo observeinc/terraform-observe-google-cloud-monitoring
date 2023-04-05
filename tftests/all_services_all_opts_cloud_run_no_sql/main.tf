@@ -17,7 +17,7 @@ module "all_services_all_opts" {
 
   # grep -rh "variable \"enable" --include variables.tf | sed -e 's/^[ \t]*//'| sed -e 's/variable//g' | sed -e 's/{//g' | sed -e 's/"//g'| sort | uniq 
   enable_service_cloudfunctions = true
-  enable_service_cloudsql       = false 
+  enable_service_cloudsql       = false
   enable_service_compute        = true
   enable_service_load_balancing = true
   enable_service_storage        = true
