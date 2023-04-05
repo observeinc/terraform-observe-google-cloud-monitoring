@@ -1,8 +1,8 @@
 locals {
-  enable_metrics = lookup(var.feature_flags, "metrics", true)
+  # enable_metrics = lookup(var.feature_flags, "metrics", true)
   # tflint-ignore: terraform_unused_declarations
   enable_monitors = lookup(var.feature_flags, "monitors", true)
-  enable_both     = local.enable_monitors && local.enable_metrics
+  # enable_both     = local.enable_monitors && local.enable_metrics
 
 }
 resource "observe_dataset" "cloud_run_metrics" {

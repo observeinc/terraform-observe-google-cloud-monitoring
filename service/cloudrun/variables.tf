@@ -9,6 +9,7 @@ variable "name_format" {
   default     = "%s"
 }
 
+# tflint-ignore: terraform_unused_declarations
 variable "max_expiry" {
   type        = string
   description = "Maximum expiry time for resources."
@@ -56,14 +57,4 @@ variable "metric_launch_stages" {
   description = "Used by metric interface to pick metrics to include"
 }
 
-variable "metric_thresholds" {
-  description = "Variable for configuring thresholds on metrics"
-  type        = map(any)
-  default = {
-    Execution_Times = {
-      compare_function = "greater",
-      value            = 5000000000,
-      disabled         = true
-    }
-  }
-}
+
