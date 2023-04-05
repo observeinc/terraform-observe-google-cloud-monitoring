@@ -3,6 +3,7 @@ resource "observe_dataset" "gke_events" {
   name        = format(var.name_format, "Cluster Events")
   freshness   = lookup(local.freshness, "gke", var.freshness_default_duration)
   description = "This dataset contains events for GKE Cluster Resources"
+  icon_url    = "city/city-buildings/city-buildings"
   inputs = {
     "events" = var.google.asset_inventory_records.oid
   }
