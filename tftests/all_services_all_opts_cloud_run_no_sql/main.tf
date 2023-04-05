@@ -9,21 +9,47 @@ data "observe_datastream" "default" {
   name      = var.default_datastream
 }
 
-module "all_services_def_opts" {
+module "all_services_all_opts" {
   source      = "../.."
   workspace   = data.observe_workspace.default
   datastream  = data.observe_datastream.default
   name_format = "test_gcp_${random_pet.test.id}/%s"
+
   # grep -rh "variable \"enable" --include variables.tf | sed -e 's/^[ \t]*//'| sed -e 's/variable//g' | sed -e 's/{//g' | sed -e 's/"//g'| sort | uniq 
   enable_service_cloudfunctions = true
-  enable_service_cloudsql       = true
+  enable_service_cloudsql       = false 
   enable_service_compute        = true
   enable_service_load_balancing = true
   enable_service_storage        = true
   enable_service_bigquery       = true
-  enable_service_cloudrun       = true 
+  enable_service_gke            = true
+  enable_service_cloudscheduler = true
+  enable_service_redis          = true
+  enable_service_cloudrun       = true
+  # enable_service_memcache       = true
 
   feature_flags = {
     "use_name_format_in_preferred_path" = true
   }
+  freshness_default_duration = var.freshness_default_duration
 }
+
+# locals {
+#   domain     = "observe-staging.com"
+#   customer   = "128156313706"
+#   user_email = "nikhil.dua@observeinc.com"
+#   user_password = "MkotOW47u$m*!jsb"
+# }
+
+
+# data "aws_secretsmanager_secret" "secret" {
+#   name = format("tf-password-%s-%s", local.domain, local.customer)
+# }
+
+# data "aws_secretsmanager_secret_version" "secret" {
+#   secret_id = data.aws_secretsmanager_secret.secret.id
+# }
+
+# provider "aws" {
+#   region = "us-west-2"
+# }

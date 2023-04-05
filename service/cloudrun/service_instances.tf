@@ -127,12 +127,14 @@ resource "observe_link" "cloud_run_services" {
         fields = ["revisionName"]
       }
     },
+    var.google.cloudsql != null ? ## Only create link if CloudSql exists 
     {
       "CloudSQL Instance" = {
         target = var.google.cloudsql.oid
         fields = ["database_id"]
       }
-    },
+    }:{}
+    ,
     {
       "Metrics" = {
         target = observe_dataset.cloud_run_metrics.oid

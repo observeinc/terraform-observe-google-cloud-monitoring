@@ -35,6 +35,9 @@ module "default" {
 
   enable_service_redis = false
 
+  enable_service_cloudrun = false 
+
+
   # enable_service_memcache = false
 
   feature_flags = {
