@@ -54,6 +54,14 @@ module "google" {
 
 | Name | Type |
 |------|------|
+| observe_bookmark.asset_inventory_events | resource |
+| observe_bookmark.cloudfunction | resource |
+| observe_bookmark.cloudsql | resource |
+| observe_bookmark.compute | resource |
+| observe_bookmark.gke | resource |
+| observe_bookmark.home_dashboard | resource |
+| observe_bookmark.logs | resource |
+| observe_bookmark_group.start | resource |
 | observe_dashboard.app_home | resource |
 | observe_dashboard.project_input | resource |
 | observe_dashboard.resource_monitoring | resource |

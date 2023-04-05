@@ -92,6 +92,7 @@ resource "observe_dataset" "cloud_sql_instance" {
   name        = local.datasets.cloud_sql_instance.name
   freshness   = local.datasets.cloud_sql_instance.freshness
   description = local.datasets.cloud_sql_instance.description
+  icon_url    = "data/database-operations/database"
 
   inputs = {
     "events" = var.google.resource_asset_inventory_records.oid,
