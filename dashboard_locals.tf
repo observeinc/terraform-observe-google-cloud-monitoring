@@ -29,7 +29,7 @@ locals {
   base_datasets = <<-EOT
                           ### Base Datasets
                         
-                        - [Datastream](workspace/${local.workspace_id}/dataset/event/${local.datastream_name}-${local.datastream_dataset_id}) - All other pre-built data sets for the GCP application are derived from here.
+                        - [Datastream](/workspace/${local.workspace_id}/dataset/event/${local.datastream_name}-${local.datastream_dataset_id}) - All other pre-built data sets for the GCP application are derived from here.
                         
                         - [Asset Inventory](/workspace/${local.workspace_id}/dataset/event/Asset-Inventory-Records-${local.asset_inventory})  - This shows a list of all GCP for each project you are collecting data for. Pre-built Resources are derived from this dataset. 
                         
