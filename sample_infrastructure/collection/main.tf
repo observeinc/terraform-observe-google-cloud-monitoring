@@ -30,7 +30,6 @@ module "monitoring_poller" {
   project                          = var.project_id
   service_account_private_key_json = base64decode(module.observe_gcp_collection.service_account_key.private_key)
 
-
   include_metric_type_prefixes = var.metric_prefixes
 
 }
