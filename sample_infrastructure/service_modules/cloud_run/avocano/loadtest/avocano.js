@@ -6,7 +6,7 @@ export const options = {
     homepage: {
       executor: 'constant-arrival-rate',
       exec: 'homepage',
-      rate: 10,
+      rate: 20,
       timeUnit: '1s',
       duration: '30m',
       startTime: '5s',
@@ -17,7 +17,7 @@ export const options = {
     products: {
       executor: 'constant-arrival-rate',
       exec: 'products',
-      rate: 10,
+      rate: 20,
       timeUnit: '1s',
       duration: '30m',
       startTime: '5s',
@@ -28,7 +28,7 @@ export const options = {
     view_random_product: {
       executor: 'constant-arrival-rate',
       exec: 'view_random_product',
-      rate: 10,
+      rate: 20,
       timeUnit: '1s',
       duration: '30m',
       startTime: '5s',
@@ -39,7 +39,7 @@ export const options = {
     purchase_random_product: {
       executor: 'constant-arrival-rate',
       exec: 'purchase_random_product',
-      rate: 10,
+      rate: 20,
       timeUnit: '1s',
       duration: '30m',
       startTime: '5s',

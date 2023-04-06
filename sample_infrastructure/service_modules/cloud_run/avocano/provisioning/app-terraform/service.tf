@@ -32,6 +32,7 @@ resource "google_cloud_run_v2_service" "server" {
         value = "gcp_trace"
       }
       resources {
+        cpu_idle = true
         limits = {
           cpu = "1000m"
         }
@@ -47,7 +48,7 @@ resource "google_cloud_run_v2_service" "server" {
         }
       }
     }
-    max_instance_request_concurrency = 1
+    max_instance_request_concurrency = 80
     annotations = {
       "autoscaling.knative.dev/maxScale"      = "100"
       "run.googleapis.com/cloudsql-instances" = google_sql_database_instance.postgres.connection_name
