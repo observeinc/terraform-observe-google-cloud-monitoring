@@ -13,19 +13,6 @@
 # limitations under the License.
 
 steps:
-  - id: loadtest-terraform destroy
-    name: hashicorp/terraform
-    dir: provisioning/loadtest-terraform
-    env:
-      - PROJECT_ID=$PROJECT_ID
-      - REGION=$_REGION
-    script: |
-      #!/bin/sh
-
-      terraform init -backend-config="bucket=terraform-${PROJECT_ID}"
-      terraform destroy -auto-approve -no-color \
-        -var project_id=${PROJECT_ID} \
-        -var region=${REGION}
   - id: app-terraform destroy
     name: hashicorp/terraform
     dir: provisioning/app-terraform

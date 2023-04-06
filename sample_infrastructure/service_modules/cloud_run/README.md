@@ -9,7 +9,7 @@
 # Commands
  - Navigate to the `avocano` directory
  - Run `./setup deploy` to deploy resources (takes ~10 minutes), watch for the console to output the website endpoint
- - When they're no longer required, run `./setup destroy` to destroy resources
+ - When they're no longer required, run `gcloud builds submit --config provisioning/destroy.cloudbuild.yaml` to destroy resources
  - Optionally you may prefer to run the simpler version on the root directly using `terraform deploy` from the `service_modules/cloud_run` folder instead
  - Additionally you choose to either update the server code, load tests, or run only the terraform:
   - `./provisioning/server.update.sh` - Deploys any updates to the server code including TF
