@@ -12,7 +12,9 @@ resource "google_cloud_run_v2_job" "loadtest" {
           value = var.project_id
         }
       }
+      timeout = "2700s" # 45 minutes, since the test runs for 30 minutes
     }
+    task_count = 1
   }
   depends_on = [
     google_cloud_run_v2_service.server

@@ -1,3 +1,4 @@
+# https://cloud.google.com/run/docs/reference/rpc/google.cloud.run.v2
 resource "google_cloud_run_v2_service" "server" {
   name     = var.service_name
   location = var.region
@@ -30,6 +31,11 @@ resource "google_cloud_run_v2_service" "server" {
         name  = "OTEL_TRACES_EXPORTER"
         value = "gcp_trace"
       }
+      resources {
+        limits = {
+          cpu = "1000m"
+        }
+      }
       startup_probe {
         http_get {
           path = "/ready"
@@ -41,6 +47,7 @@ resource "google_cloud_run_v2_service" "server" {
         }
       }
     }
+    max_instance_request_concurrency = 1
     annotations = {
       "autoscaling.knative.dev/maxScale"      = "100"
       "run.googleapis.com/cloudsql-instances" = google_sql_database_instance.postgres.connection_name

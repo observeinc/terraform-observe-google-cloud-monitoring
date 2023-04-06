@@ -22,7 +22,7 @@ export SERVICE_NAME=server
 gcloud builds submit --config provisioning/server.cloudbuild.yaml
 
 # Apply Terraform (updates server)
-gcloud builds submit --config provisioning/app-terraform.cloudbuild.yaml
+gcloud builds submit --config provisioning/terraform.cloudbuild.yaml
 
 # Run database migration job
 gcloud beta run jobs execute migrate --region $REGION
