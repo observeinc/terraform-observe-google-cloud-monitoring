@@ -41,6 +41,10 @@ function deploy {
   echo "Build client image"
   gcloud builds submit --config provisioning/client-image.cloudbuild.yaml
 
+  echo "Build load test image"
+  gcloud builds submit --config provisioning/loadtest.cloudbuild.yaml
+
+
   echo "Configuring Terraform"
   export TFSTATE_BUCKET=terraform-${PROJECT_ID}
   gsutil mb gs://$TFSTATE_BUCKET || true

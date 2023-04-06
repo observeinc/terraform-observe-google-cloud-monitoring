@@ -28,25 +28,24 @@ steps:
         "gcr.io/$PROJECT_ID/$_IMAGE_NAME",
         ".",
       ]
-  - id: create and schedule loadtest cloud run job
-    name: hashicorp/terraform
-    dir: provisioning/loadtest-terraform
-    env:
-      - PROJECT_ID=$PROJECT_ID
-      - REGION=$_REGION
-    script: |
-      #!/bin/sh
+  # - id: create and schedule loadtest cloud run job
+  #   name: hashicorp/terraform
+  #   dir: provisioning/loadtest-terraform
+  #   env:
+  #     - PROJECT_ID=$PROJECT_ID
+  #     - REGION=$_REGION
+  #   script: |
+  #     #!/bin/sh
 
-      terraform init -backend-config="bucket=terraform-${PROJECT_ID}"
-      terraform apply -auto-approve -no-color \
-        -var project_id=${PROJECT_ID} \
-        -var region=${REGION}
+  #     terraform init -backend-config="bucket=terraform-${PROJECT_ID}"
+  #     terraform apply -auto-approve -no-color \
+  #       -var project_id=${PROJECT_ID} \
+  #       -var region=${REGION}
 
 images:
   - gcr.io/$PROJECT_ID/$_IMAGE_NAME
 
 substitutions:
-  _REGION: us-central1
   _IMAGE_NAME: loadtest
 
 options:
