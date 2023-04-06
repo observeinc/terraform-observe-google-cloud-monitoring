@@ -9,7 +9,7 @@ This fetches data from gcp api and creates a json file to be read by next functi
 ```
 ./serviceUtilities.py fetch_metric_descriptors -o compute/computemetrics.json -m "compute.googleapis.com"
 
-./serviceUtilities.py fetch_metric_descriptors -o cloudrun/computemetrics.json -m "run.googleapis.com"
+./serviceUtilities.py fetch_metric_descriptors -o cloudrun/cloudrunmetrics.json -m "run.googleapis.com"
 
 ./serviceUtilities.py fetch_metric_descriptors -o bigquery/bigquerymetrics.json -m "bigquery.googleapis.com"
 

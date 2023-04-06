@@ -9,7 +9,7 @@ data "observe_datastream" "default" {
   name      = var.default_datastream
 }
 
-module "all_services_all_opts" {
+module "all_services_all_opts_cloud_run_no_sql" {
   source      = "../.."
   workspace   = data.observe_workspace.default
   datastream  = data.observe_datastream.default
@@ -33,23 +33,3 @@ module "all_services_all_opts" {
   }
   freshness_default_duration = var.freshness_default_duration
 }
-
-# locals {
-#   domain     = "observe-staging.com"
-#   customer   = "128156313706"
-#   user_email = "nikhil.dua@observeinc.com"
-#   user_password = "MkotOW47u$m*!jsb"
-# }
-
-
-# data "aws_secretsmanager_secret" "secret" {
-#   name = format("tf-password-%s-%s", local.domain, local.customer)
-# }
-
-# data "aws_secretsmanager_secret_version" "secret" {
-#   secret_id = data.aws_secretsmanager_secret.secret.id
-# }
-
-# provider "aws" {
-#   region = "us-west-2"
-# }
