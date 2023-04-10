@@ -1,5 +1,5 @@
 locals {
-  
+
   freshness = merge({}, var.freshness_overrides)
   workspace = var.workspace.oid
 

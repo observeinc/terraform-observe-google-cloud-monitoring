@@ -1,28 +1,27 @@
-
-# terraform import observe_dashboard.copy_of_cloud_run_service_instance 42047241
-resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
+# terraform import observe_dashboard.cloud_run_service_instance 42077622
+resource "observe_dashboard" "cloud_run_service_instance" {
   layout = jsonencode(
     {
-      autoPack = true
+      autoPack = false
       gridLayout = {
         sections = [
           {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-vyyyksaj"
+              id       = "card-vtn9qse4"
               title    = "Dashboard Content"
             }
             items = [
               {
                 card = {
                   cardType    = "parameter"
-                  id          = "card-fm77734o"
+                  id          = "card-mq0oyyb8"
                   parameterId = "service"
                 }
                 layout = {
                   h           = 4
-                  i           = "card-fm77734o"
+                  i           = "card-mq0oyyb8"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -35,242 +34,274 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                   y      = 0
                 }
               },
+            ]
+            lastModified = 1680822734037
+          },
+          {
+            card = {
+              cardType = "section"
+              closed   = false
+              id       = "card-l55rbhbf"
+              title    = "Revision Details"
+            }
+            items = [
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-3431t16d"
+                  id       = "card-uhnlwszo"
                   stageId  = "stage-d3muqp6x"
                 }
                 layout = {
-                  h           = 10
-                  i           = "card-3431t16d"
+                  h           = 12
+                  i           = "card-uhnlwszo"
                   isDraggable = true
                   isResizable = true
                   moved       = false
                   static      = false
-                  w           = 3
+                  w           = 4
                   x           = 0
-                  y           = 4
+                  y           = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-51rjt82k"
+                  id       = "card-sri8ssze"
                   stageId  = "stage-usqocagm"
                 }
                 layout = {
-                  h           = 20
-                  i           = "card-51rjt82k"
+                  h           = 25
+                  i           = "card-sri8ssze"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 8
+                  x           = 4
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-7f9vmkef"
+                  stageId  = "stage-y49asn8v"
+                }
+                layout = {
+                  h           = 13
+                  i           = "card-7f9vmkef"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 4
+                  x           = 0
+                  y           = 12
+                }
+              },
+            ]
+            lastModified = 1680822743333
+          },
+          {
+            card = {
+              cardType = "section"
+              closed   = false
+              id       = "card-btywl0gr"
+              title    = "Container Details"
+            }
+            items = [
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-jm2q91iq"
+                  stageId  = "stage-zxogck66"
+                }
+                layout = {
+                  h           = 16
+                  i           = "card-jm2q91iq"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 4
+                  x           = 8
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-9a41xfpq"
+                  stageId  = "stage-6hdreo6b"
+                }
+                layout = {
+                  h           = 16
+                  i           = "card-9a41xfpq"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 4
+                  x           = 0
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-kygxb5yd"
+                  stageId  = "stage-3461wl06"
+                }
+                layout = {
+                  h           = 16
+                  i           = "card-kygxb5yd"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 4
+                  x           = 4
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-bvm7fasv"
+                  stageId  = "stage-cszzz5l0"
+                }
+                layout = {
+                  h           = 16
+                  i           = "card-bvm7fasv"
                   isDraggable = true
                   isResizable = true
                   moved       = false
                   static      = false
                   w           = 6
-                  x           = 3
-                  y           = 4
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-nqwlkdyn"
-                  stageId  = "stage-y49asn8v"
-                }
-                layout = {
-                  h           = 10
-                  i           = "card-nqwlkdyn"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
                   x           = 0
-                  y           = 14
+                  y           = 16
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-hc5wgq94"
+                  id       = "card-8rqvvrys"
                   stageId  = "stage-xfaje78y"
                 }
                 layout = {
                   h           = 16
-                  i           = "card-hc5wgq94"
+                  i           = "card-8rqvvrys"
                   isDraggable = true
                   isResizable = true
                   moved       = false
                   static      = false
-                  w           = 3
+                  w           = 6
                   x           = 6
-                  y           = 24
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-v0eklhtm"
-                  stageId  = "stage-cszzz5l0"
-                }
-                layout = {
-                  h           = 16
-                  i           = "card-v0eklhtm"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
-                  x           = 3
-                  y           = 24
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-h8h60d4q"
-                  stageId  = "stage-6hdreo6b"
-                }
-                layout = {
-                  h           = 16
-                  i           = "card-h8h60d4q"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
-                  x           = 0
-                  y           = 24
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-tf5ars3h"
-                  stageId  = "stage-2feq36jp"
-                }
-                layout = {
-                  h           = 14
-                  i           = "card-tf5ars3h"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
-                  x           = 6
-                  y           = 40
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-ovfahzg2"
-                  stageId  = "stage-c9pakqs6"
-                }
-                layout = {
-                  h           = 14
-                  i           = "card-ovfahzg2"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
-                  x           = 3
-                  y           = 40
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-2dz6n03y"
-                  stageId  = "stage-3461wl06"
-                }
-                layout = {
-                  h           = 14
-                  i           = "card-2dz6n03y"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
-                  x           = 0
-                  y           = 40
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-bqjniftb"
-                  stageId  = "stage-rciwhao7"
-                }
-                layout = {
-                  h           = 15
-                  i           = "card-bqjniftb"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
-                  x           = 6
-                  y           = 54
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-r4dvq46w"
-                  stageId  = "stage-wjaw71sv"
-                }
-                layout = {
-                  h           = 15
-                  i           = "card-r4dvq46w"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
-                  x           = 3
-                  y           = 54
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-jr9ayy5o"
-                  stageId  = "stage-zxogck66"
-                }
-                layout = {
-                  h           = 15
-                  i           = "card-jr9ayy5o"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
-                  x           = 0
-                  y           = 54
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-k5tyzb2m"
-                  stageId  = "stage-736a6lgq"
-                }
-                layout = {
-                  h           = 12
-                  i           = "card-k5tyzb2m"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 9
-                  x           = 0
-                  y           = 69
+                  y           = 16
                 }
               },
             ]
-            lastModified = 1680628906701
+          },
+          {
+            card = {
+              cardType = "section"
+              closed   = false
+              id       = "card-npg1k9jc"
+              title    = "Network Details"
+            }
+            items = [
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-0lpawqjt"
+                  stageId  = "stage-736a6lgq"
+                }
+                layout = {
+                  h           = 16
+                  i           = "card-0lpawqjt"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 4
+                  x           = 0
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-6avy8a1b"
+                  stageId  = "stage-2feq36jp"
+                }
+                layout = {
+                  h           = 16
+                  i           = "card-6avy8a1b"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 4
+                  x           = 8
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-v4oojv2z"
+                  stageId  = "stage-c9pakqs6"
+                }
+                layout = {
+                  h           = 16
+                  i           = "card-v4oojv2z"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 4
+                  x           = 4
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-1zs6878o"
+                  stageId  = "stage-rciwhao7"
+                }
+                layout = {
+                  h           = 18
+                  i           = "card-1zs6878o"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 6
+                  x           = 6
+                  y           = 16
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-hyvx1sky"
+                  stageId  = "stage-wjaw71sv"
+                }
+                layout = {
+                  h           = 18
+                  i           = "card-hyvx1sky"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 6
+                  x           = 0
+                  y           = 16
+                }
+              },
+            ]
+            lastModified = 1681153044205
           },
         ]
       }
@@ -289,17 +320,17 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
             viewType = "resource-input"
           },
         ]
-        selectedStageId = "stage-y49asn8v"
+        selectedStageId = "stage-rciwhao7"
         timeRange = {
-          display               = "Past 7 days"
+          display               = "Past 24 hours"
           endTime               = null
-          millisFromCurrentTime = 604800000
-          originalDisplay       = "Past 7 days"
+          millisFromCurrentTime = 86400000
+          originalDisplay       = "Past 24 hours"
           startTime             = null
           timeRangeInfo = {
             key        = "PRESETS"
             name       = "Presets"
-            presetType = "PAST_7_DAYS"
+            presetType = "PAST_24_HOURS"
           }
         }
       }
@@ -464,7 +495,6 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -559,20 +589,20 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
               type       = "Vis"
               vis = {
                 config = {
-                  color         = "Default"
+                  areaFillType  = "SolidFill"
+                  color         = "Yellow"
                   hideGridLines = false
                   legend = {
                     placement = "right"
                     type      = "list"
                     visible   = true
                   }
-                  type = "xy"
+                  lineCurveType = "Step"
+                  type          = "xy"
                   xConfig = {
                     visible = true
                   }
                   yConfig = {
-                    bounds  = {}
-                    unit    = ""
                     visible = true
                   }
                 }
@@ -581,13 +611,20 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                     groupFields = [
                       "metric_labels",
                     ]
+                    statsBy = {
+                      fn = "avg"
+                    }
+                    timechart = {
+                      fn         = "avg"
+                      resolution = "AUTO"
+                    }
                     transformType = "none"
                     type          = "xy"
                     x             = "valid_from"
                     y             = "A_container_instance_count_sum"
                   }
                   topK = {
-                    k     = 16
+                    k     = 25
                     order = "Top"
                     type  = "Auto"
                   }
@@ -605,7 +642,7 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 400
           }
           selectedStepId = null
           serializable   = true
@@ -675,20 +712,20 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                         autoResolution = true
                         dataVis = {
                           config = {
-                            color         = "Default"
+                            areaFillType  = "SolidFill"
+                            color         = "Yellow"
                             hideGridLines = false
                             legend = {
                               placement = "right"
                               type      = "list"
                               visible   = true
                             }
-                            type = "xy"
+                            lineCurveType = "Step"
+                            type          = "xy"
                             xConfig = {
                               visible = true
                             }
                             yConfig = {
-                              bounds  = {}
-                              unit    = ""
                               visible = true
                             }
                           }
@@ -697,6 +734,13 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                               groupFields = [
                                 "metric_labels",
                               ]
+                              statsBy = {
+                                fn = "avg"
+                              }
+                              timechart = {
+                                fn         = "avg"
+                                resolution = "AUTO"
+                              }
                               transformType = "none"
                               type          = "xy"
                               x             = "valid_from"
@@ -821,10 +865,6 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = <<-EOT
-                            align A_container_instance_count_sum:sum(m("container_instance_count"))
-                            aggregate A_container_instance_count_sum:sum(A_container_instance_count_sum), group_by(metric_labels)
-                        EOT
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -919,36 +959,39 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
               type       = "Vis"
               vis = {
                 config = {
-                  color         = "Default"
-                  hideGridLines = false
+                  interpolate = true
                   legend = {
                     placement = "right"
                     type      = "list"
                     visible   = false
                   }
-                  type = "xy"
+                  type = "stacked_area"
                   xConfig = {
                     visible = true
                   }
                   yConfig = {
-                    unit    = "%"
+                    unit    = "percent (0-100)"
                     visible = true
                   }
                 }
                 source = {
                   table = {
-                    groupFields   = []
+                    groupFields = []
+                    statsBy = {
+                      fn = "avg"
+                    }
+                    timechart = {
+                      fn         = "avg"
+                      resolution = "AUTO"
+                    }
                     transformType = "none"
                     type          = "xy"
                     x             = "valid_from"
                     y             = "Avg_CPU_Utilization "
                   }
-                  topK = {
-                    type = "Auto"
-                  }
                   type = "table"
                 }
-                type = "timeseries"
+                type = "stacked_area"
               }
             },
             {
@@ -966,7 +1009,7 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 400
           }
           selectedStepId = null
           serializable   = true
@@ -1113,36 +1156,39 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                       {
                         dataVis = {
                           config = {
-                            color         = "Default"
-                            hideGridLines = false
+                            interpolate = true
                             legend = {
                               placement = "right"
                               type      = "list"
                               visible   = false
                             }
-                            type = "xy"
+                            type = "stacked_area"
                             xConfig = {
                               visible = true
                             }
                             yConfig = {
-                              unit    = "%"
+                              unit    = "percent (0-100)"
                               visible = true
                             }
                           }
                           source = {
                             table = {
-                              groupFields   = []
+                              groupFields = []
+                              statsBy = {
+                                fn = "avg"
+                              }
+                              timechart = {
+                                fn         = "avg"
+                                resolution = "AUTO"
+                              }
                               transformType = "none"
                               type          = "xy"
                               x             = "valid_from"
                               y             = "Avg_CPU_Utilization "
                             }
-                            topK = {
-                              type = "Auto"
-                            }
                             type = "table"
                           }
-                          type = "timeseries"
+                          type = "stacked_area"
                         }
                         filterActions = []
                         formula       = "A*100"
@@ -1201,23 +1247,6 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = <<-EOT
-                            filter serviceAssetKey=$service.serviceAssetKey
-                            //lookup serviceAssetKey = @service_name.serviceAssetKey, filter_service_name : @service_name.serviceName
-                            
-                            
-                            
-                            @A <- @ {
-                                align A_container_cpu_utilizations_sum:avg(m("container_cpu_utilizations"))
-                                aggregate A_container_cpu_utilizations_sum:sum(A_container_cpu_utilizations_sum), group_by(serviceAssetKey)
-                                make_event
-                            }
-                            @B <- @A {
-                                aggregate A: any_not_null(A_container_cpu_utilizations_sum), group_by(serviceAssetKey)
-                                make_col B_formula: A*100
-                            }
-                            <- @B {}
-                        EOT
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -1325,19 +1354,19 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
               type       = "Vis"
               vis = {
                 config = {
-                  color         = "Default"
-                  hideGridLines = false
+                  areaFillType = "SolidFill"
                   legend = {
                     placement = "right"
                     type      = "list"
-                    visible   = false
+                    visible   = true
                   }
-                  type = "xy"
+                  type                = "bar"
+                  xAxisLabelPlacement = "horizontal"
                   xConfig = {
                     visible = true
                   }
                   yConfig = {
-                    axisLabel = "/ sec "
+                    axisLabel = "request/sec"
                     unit      = ""
                     visible   = true
                   }
@@ -1350,19 +1379,27 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                         path = "response_code"
                       },
                     ]
+                    statsBy = {
+                      fn = "avg"
+                    }
+                    timechart = {
+                      fn         = "avg"
+                      fnArgs     = null
+                      resolution = "AUTO"
+                    }
                     transformType = "none"
                     type          = "xy"
                     x             = "valid_from"
                     y             = "A_request_count_sum"
                   }
                   topK = {
-                    k     = 16
+                    k     = 25
                     order = "Top"
                     type  = "Auto"
                   }
                   type = "table"
                 }
-                type = "timeseries"
+                type = "bar"
               }
             },
           ]
@@ -1378,7 +1415,7 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -1441,22 +1478,22 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                   expressionList = {
                     expressions = [
                       {
-                        autoFrame = false
+                        autoFrame = true
                         dataVis = {
                           config = {
-                            color         = "Default"
-                            hideGridLines = false
+                            areaFillType = "SolidFill"
                             legend = {
                               placement = "right"
                               type      = "list"
-                              visible   = false
+                              visible   = true
                             }
-                            type = "xy"
+                            type                = "bar"
+                            xAxisLabelPlacement = "horizontal"
                             xConfig = {
                               visible = true
                             }
                             yConfig = {
-                              axisLabel = "/ sec "
+                              axisLabel = "request/sec"
                               unit      = ""
                               visible   = true
                             }
@@ -1469,6 +1506,14 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                                   path = "response_code"
                                 },
                               ]
+                              statsBy = {
+                                fn = "avg"
+                              }
+                              timechart = {
+                                fn         = "avg"
+                                fnArgs     = null
+                                resolution = "AUTO"
+                              }
                               transformType = "none"
                               type          = "xy"
                               x             = "valid_from"
@@ -1480,7 +1525,7 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                             }
                             type = "table"
                           }
-                          type = "timeseries"
+                          type = "bar"
                         }
                         disableAggregate = false
                         filterActions    = []
@@ -1597,7 +1642,7 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
               isPinned = false
               opal = [
                 "@A <- @ {",
-                "    align frame(back: 1m), A_request_count_sum:rate(m(\"request_count\"))",
+                "    align A_request_count_sum:rate(m(\"request_count\"))",
                 "    aggregate A_request_count_sum:sum(A_request_count_sum), group_by(string(metric_labels.response_code))",
                 "}",
                 "@B <- @ {",
@@ -1610,20 +1655,6 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = <<-EOT
-                            filter serviceAssetKey=$service.serviceAssetKey
-                            //lookup serviceAssetKey = @service_name.serviceAssetKey, filter_service_name : @service_name.serviceName
-                            
-                            
-                            
-                            @A <- @ {
-                                align A_request_count_sum:avg(m("request_count"))
-                                aggregate A_request_count_sum:sum(A_request_count_sum), group_by(string(metric_labels.response_code))
-                            }
-                            @B <- @ {
-                            }
-                            <- @A {}
-                        EOT
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -1642,7 +1673,7 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                     
                     
                     @A <- @ {
-                        align frame(back: 1m), A_request_count_sum:rate(m("request_count"))
+                        align A_request_count_sum:rate(m("request_count"))
                         aggregate A_request_count_sum:sum(A_request_count_sum), group_by(string(metric_labels.response_code))
                     }
                     @B <- @ {
@@ -1673,20 +1704,21 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
               "3" = "Valid To"
             }
             columnVisibility = {
-              container        = false
-              location         = false
-              project_id       = false
-              revisionAssetKey = false
-              serviceAssetKey  = false
-              serviceName      = false
-              serviceUid       = false
+              "Service Instance" = false
+              container          = false
+              location           = false
+              project_id         = false
+              revisionAssetKey   = false
+              serviceAssetKey    = false
+              serviceName        = false
+              serviceUid         = false
             }
             columnWidths = {
               "CloudSQL Instance"  = 102
               containerConcurrency = 126
               containerPort        = 87
             }
-            containerWidth               = 2143
+            containerWidth               = 1880
             contextMenuXCoord            = null
             contextMenuYCoord            = null
             defaultColumnWidth           = 70
@@ -1704,15 +1736,19 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
             rowHeaderWidth               = 33
             rowHeights                   = {}
             rowSizeIncrement             = 1
-            scrollToColumn               = "containerPort"
+            scrollToColumn               = "creationTimestamp"
             scrollToRow                  = 0
             selection = {
-              cells                = {}
+              cells = {
+                image = {
+                  "3" = true
+                }
+              }
               columnSelectSequence = []
               columns              = {}
               highlightState       = {}
               rows                 = {}
-              selectionType        = "table"
+              selectionType        = "cell"
             }
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
@@ -1737,7 +1773,7 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
               type                   = "Timescrubber"
             },
             {
-              id         = "8s7g4fcl"
+              id         = "5djkv7g4"
               isDisabled = false
               type       = "JsonTree"
             },
@@ -1800,16 +1836,20 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-uy7kmtd1"
+              id       = "step-h5v3pvvr"
               index    = 1
               isPinned = false
               opal = [
                 "filter serviceAssetKey=$service.serviceAssetKey",
-                "",
+                "                            ",
                 "make_col cpuLimit:string(container.resources.limits.cpu),",
                 "    memoryLimit:string(container.resources.limits.memory),",
                 "    containerPort:int64(container.ports[0].containerPort),",
                 "    name:string(container.ports[0].name)",
+                "",
+                "",
+                "sort asc(creationTimestamp)",
+                "",
               ]
               queryPresentation = {}
               type              = "unknown"
@@ -1817,14 +1857,6 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = <<-EOT
-                            filter serviceAssetKey=$service.serviceAssetKey
-                            
-                            make_col cpuLimit:string(container.resources.limits.cpu),
-                                memoryLimit:string(container.resources.limits.memory),
-                                containerPort:int64(container.ports[0].containerPort),
-                                name:string(container.ports[0].name)
-                        EOT
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -1838,11 +1870,14 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
         params   = null
         pipeline = <<-EOT
                     filter serviceAssetKey=$service.serviceAssetKey
-                    
+                                                
                     make_col cpuLimit:string(container.resources.limits.cpu),
                         memoryLimit:string(container.resources.limits.memory),
                         containerPort:int64(container.ports[0].containerPort),
                         name:string(container.ports[0].name)
+                    
+                    
+                    sort asc(creationTimestamp)
                 EOT
       },
       {
@@ -1952,7 +1987,7 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                     y             = "value"
                   }
                   topK = {
-                    k    = 16
+                    k    = 25
                     type = "Auto"
                   }
                   type = "table"
@@ -1973,7 +2008,7 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -2051,7 +2086,6 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -2167,36 +2201,39 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
               type       = "Vis"
               vis = {
                 config = {
-                  color         = "Default"
-                  hideGridLines = false
+                  interpolate = true
                   legend = {
                     placement = "right"
                     type      = "list"
-                    visible   = true
+                    visible   = false
                   }
-                  type = "xy"
+                  type = "stacked_area"
                   xConfig = {
                     visible = true
                   }
                   yConfig = {
-                    unit    = "%"
+                    unit    = "percent (0-100)"
                     visible = true
                   }
                 }
                 source = {
                   table = {
-                    groupFields   = []
+                    groupFields = []
+                    statsBy = {
+                      fn = "avg"
+                    }
+                    timechart = {
+                      fn         = "avg"
+                      resolution = "AUTO"
+                    }
                     transformType = "none"
                     type          = "xy"
                     x             = "valid_from"
                     y             = "Avg_Memory_Utilization "
                   }
-                  topK = {
-                    type = "Auto"
-                  }
                   type = "table"
                 }
-                type = "timeseries"
+                type = "stacked_area"
               }
             },
           ]
@@ -2212,7 +2249,7 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -2348,36 +2385,39 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                       {
                         dataVis = {
                           config = {
-                            color         = "Default"
-                            hideGridLines = false
+                            interpolate = true
                             legend = {
                               placement = "right"
                               type      = "list"
-                              visible   = true
+                              visible   = false
                             }
-                            type = "xy"
+                            type = "stacked_area"
                             xConfig = {
                               visible = true
                             }
                             yConfig = {
-                              unit    = "%"
+                              unit    = "percent (0-100)"
                               visible = true
                             }
                           }
                           source = {
                             table = {
-                              groupFields   = []
+                              groupFields = []
+                              statsBy = {
+                                fn = "avg"
+                              }
+                              timechart = {
+                                fn         = "avg"
+                                resolution = "AUTO"
+                              }
                               transformType = "none"
                               type          = "xy"
                               x             = "valid_from"
                               y             = "Avg_Memory_Utilization "
                             }
-                            topK = {
-                              type = "Auto"
-                            }
                             type = "table"
                           }
-                          type = "timeseries"
+                          type = "stacked_area"
                         }
                         filterActions = []
                         formula       = "A*100"
@@ -2437,18 +2477,6 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = <<-EOT
-                            @A <- @ {
-                                align frame(back: 2m), A_container_memory_utilizations_sum:avg(m("container_memory_utilizations"))
-                                aggregate A_container_memory_utilizations_sum:sum(A_container_memory_utilizations_sum), group_by()
-                                make_event
-                            }
-                            @B <- @A {
-                                aggregate A: any_not_null(A_container_memory_utilizations_sum), group_by()
-                                make_col B_formula: A*100
-                            }
-                            <- @B {}
-                        EOT
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -2491,9 +2519,9 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "valid_from"
-              "1" = "valid_to"
-              "2" = "serviceAssetKey"
+              "0" = "revisionName"
+              "1" = "valid_from"
+              "2" = "valid_to"
             }
             columnVisibility             = {}
             columnWidths                 = {}
@@ -2553,16 +2581,17 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
               type       = "Vis"
               vis = {
                 config = {
-                  color         = "Default"
-                  hideGridLines = false
+                  areaFillType = "SolidFill"
                   legend = {
                     placement = "right"
                     type      = "list"
                     visible   = true
                   }
-                  type = "xy"
+                  type                = "bar"
+                  xAxisLabelPlacement = "horizontal"
                   xConfig = {
-                    visible = true
+                    axisLabel = ""
+                    visible   = true
                   }
                   yConfig = {
                     unit    = "milliseconds"
@@ -2571,12 +2600,15 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                 }
                 source = {
                   table = {
-                    groupFields = []
+                    groupFields = [
+                      "revisionName",
+                    ]
                     statsBy = {
                       fn = "avg"
                     }
                     timechart = {
                       fn         = "avg"
+                      fnArgs     = null
                       resolution = "AUTO"
                     }
                     transformType = "none"
@@ -2585,12 +2617,13 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                     y             = "Avg_Container_Startup_Latency "
                   }
                   topK = {
+                    k     = 25
                     order = "Top"
                     type  = "Auto"
                   }
                   type = "table"
                 }
-                type = "timeseries"
+                type = "bar"
               }
             },
           ]
@@ -2606,7 +2639,7 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -2641,19 +2674,25 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                   expressionList = {
                     expressions = [
                       {
-                        autoFrame = true
+                        alignDuration = {
+                          num  = 30
+                          unit = "minute"
+                        }
+                        autoFrame      = true
+                        autoResolution = true
                         dataVis = {
                           config = {
-                            color         = "Default"
-                            hideGridLines = false
+                            areaFillType = "SolidFill"
                             legend = {
                               placement = "right"
                               type      = "list"
                               visible   = true
                             }
-                            type = "xy"
+                            type                = "bar"
+                            xAxisLabelPlacement = "horizontal"
                             xConfig = {
-                              visible = true
+                              axisLabel = ""
+                              visible   = true
                             }
                             yConfig = {
                               unit    = "milliseconds"
@@ -2662,12 +2701,15 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                           }
                           source = {
                             table = {
-                              groupFields = []
+                              groupFields = [
+                                "revisionName",
+                              ]
                               statsBy = {
                                 fn = "avg"
                               }
                               timechart = {
                                 fn         = "avg"
+                                fnArgs     = null
                                 resolution = "AUTO"
                               }
                               transformType = "none"
@@ -2681,16 +2723,18 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                             }
                             type = "table"
                           }
-                          type = "timeseries"
+                          type = "bar"
                         }
                         disableAggregate = false
                         filterActions    = []
                         frameDuration = {
-                          num  = 2
+                          num  = 120
                           unit = "minute"
                         }
-                        groupBy = []
-                        id      = "metricExpression-6kdxml53"
+                        groupBy = [
+                          "revisionName",
+                        ]
+                        id = "metricExpression-6kdxml53"
                         inputSource = {
                           stageId = "stage-3461wl06"
                         }
@@ -2743,10 +2787,9 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                         }
                         name           = "Avg_Container_Startup_Latency "
                         showAlignment  = true
-                        showResolution = false
+                        showResolution = true
                         summaryMode    = "over-time"
                         type           = "metricExpression"
-                        valueColumnId  = "A_container_startup_latencies_sum"
                       },
                     ]
                     multiExpression = {
@@ -2782,7 +2825,7 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
               isPinned = false
               opal = [
                 "align \"Avg_Container_Startup_Latency \":avg(m(\"container_startup_latencies\"))",
-                "aggregate \"Avg_Container_Startup_Latency \":sum(@.\"Avg_Container_Startup_Latency \"), group_by()",
+                "aggregate \"Avg_Container_Startup_Latency \":sum(@.\"Avg_Container_Startup_Latency \"), group_by(revisionName)",
               ]
               queryPresentation = {}
               type              = "unknown"
@@ -2790,10 +2833,6 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = <<-EOT
-                            align "Avg_Container_Startup_Latency ":avg(m("container_startup_latencies"))
-                            aggregate "Avg_Container_Startup_Latency ":sum(@."Avg_Container_Startup_Latency "), group_by()
-                        EOT
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -2807,7 +2846,7 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
         params   = null
         pipeline = <<-EOT
                     align "Avg_Container_Startup_Latency ":avg(m("container_startup_latencies"))
-                    aggregate "Avg_Container_Startup_Latency ":sum(@."Avg_Container_Startup_Latency "), group_by()
+                    aggregate "Avg_Container_Startup_Latency ":sum(@."Avg_Container_Startup_Latency "), group_by(revisionName)
                 EOT
       },
       {
@@ -2836,6 +2875,7 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
               "5" = "project_id"
               "6" = "region"
               "7" = "serviceAssetKey"
+              "8" = "revisionAssetKey"
             }
             columnVisibility             = {}
             columnWidths                 = {}
@@ -2900,7 +2940,7 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                   legend = {
                     placement = "right"
                     type      = "list"
-                    visible   = true
+                    visible   = false
                   }
                   type = "xy"
                   xConfig = {
@@ -2955,7 +2995,7 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                 columnName = "A_container_billable_instance_time_avg"
               },
             ]
-            wantBuckets = 600
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -2998,7 +3038,7 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                             legend = {
                               placement = "right"
                               type      = "list"
-                              visible   = true
+                              visible   = false
                             }
                             type = "xy"
                             xConfig = {
@@ -3139,10 +3179,6 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = <<-EOT
-                            align frame(back: 2m), A_container_billable_instance_time_sum:avg(m("container_billable_instance_time"))
-                            aggregate A_container_billable_instance_time_sum:sum(A_container_billable_instance_time_sum), group_by()
-                        EOT
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -3235,20 +3271,19 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
               type       = "Vis"
               vis = {
                 config = {
-                  color         = "Default"
-                  hideGridLines = false
+                  interpolate = true
                   legend = {
                     placement = "right"
                     type      = "list"
-                    visible   = true
+                    visible   = false
                   }
-                  type = "xy"
+                  type = "stacked_area"
                   xConfig = {
                     visible = true
                   }
                   yConfig = {
-                    axisLabel = "/ s "
-                    unit      = "By"
+                    axisLabel = "/ sec "
+                    unit      = "bytes"
                     visible   = true
                   }
                 }
@@ -3260,19 +3295,26 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                         path = "kind"
                       },
                     ]
+                    statsBy = {
+                      fn = "avg"
+                    }
+                    timechart = {
+                      fn         = "avg"
+                      resolution = "AUTO"
+                    }
                     transformType = "none"
                     type          = "xy"
                     x             = "valid_from"
                     y             = "A_container_network_sent_bytes_count_sum"
                   }
                   topK = {
-                    k     = 16
+                    k     = 25
                     order = "Top"
                     type  = "Auto"
                   }
                   type = "table"
                 }
-                type = "timeseries"
+                type = "stacked_area"
               }
             },
           ]
@@ -3288,7 +3330,7 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -3364,20 +3406,19 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                         autoFrame = true
                         dataVis = {
                           config = {
-                            color         = "Default"
-                            hideGridLines = false
+                            interpolate = true
                             legend = {
                               placement = "right"
                               type      = "list"
-                              visible   = true
+                              visible   = false
                             }
-                            type = "xy"
+                            type = "stacked_area"
                             xConfig = {
                               visible = true
                             }
                             yConfig = {
-                              axisLabel = "/ s "
-                              unit      = "By"
+                              axisLabel = "/ sec "
+                              unit      = "bytes"
                               visible   = true
                             }
                           }
@@ -3389,6 +3430,13 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                                   path = "kind"
                                 },
                               ]
+                              statsBy = {
+                                fn = "avg"
+                              }
+                              timechart = {
+                                fn         = "avg"
+                                resolution = "AUTO"
+                              }
                               transformType = "none"
                               type          = "xy"
                               x             = "valid_from"
@@ -3400,7 +3448,7 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                             }
                             type = "table"
                           }
-                          type = "timeseries"
+                          type = "stacked_area"
                         }
                         disableAggregate = false
                         filterActions    = []
@@ -3518,10 +3566,6 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = <<-EOT
-                            align A_container_network_sent_bytes_count_sum:rate(m("container_network_sent_bytes_count"))
-                            aggregate A_container_network_sent_bytes_count_sum:sum(A_container_network_sent_bytes_count_sum), group_by(string(metric_labels.kind))
-                        EOT
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -3618,20 +3662,19 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
               type       = "Vis"
               vis = {
                 config = {
-                  color         = "Default"
-                  hideGridLines = false
+                  interpolate = true
                   legend = {
                     placement = "right"
                     type      = "list"
-                    visible   = true
+                    visible   = false
                   }
-                  type = "xy"
+                  type = "stacked_area"
                   xConfig = {
                     visible = true
                   }
                   yConfig = {
-                    axisLabel = "/ s "
-                    unit      = "By"
+                    axisLabel = "/ sec "
+                    unit      = "bytes"
                     visible   = true
                   }
                 }
@@ -3643,19 +3686,25 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                         path = "kind"
                       },
                     ]
+                    statsBy = {
+                      fn = "avg"
+                    }
+                    timechart = {
+                      fn         = "avg"
+                      resolution = "AUTO"
+                    }
                     transformType = "none"
                     type          = "xy"
                     x             = "valid_from"
                     y             = "A_container_network_received_bytes_count_sum"
                   }
                   topK = {
-                    k     = 16
                     order = "Top"
                     type  = "Auto"
                   }
                   type = "table"
                 }
-                type = "timeseries"
+                type = "stacked_area"
               }
             },
           ]
@@ -3671,7 +3720,7 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -3709,20 +3758,19 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                         autoFrame = true
                         dataVis = {
                           config = {
-                            color         = "Default"
-                            hideGridLines = false
+                            interpolate = true
                             legend = {
                               placement = "right"
                               type      = "list"
-                              visible   = true
+                              visible   = false
                             }
-                            type = "xy"
+                            type = "stacked_area"
                             xConfig = {
                               visible = true
                             }
                             yConfig = {
-                              axisLabel = "/ s "
-                              unit      = "By"
+                              axisLabel = "/ sec "
+                              unit      = "bytes"
                               visible   = true
                             }
                           }
@@ -3734,6 +3782,13 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                                   path = "kind"
                                 },
                               ]
+                              statsBy = {
+                                fn = "avg"
+                              }
+                              timechart = {
+                                fn         = "avg"
+                                resolution = "AUTO"
+                              }
                               transformType = "none"
                               type          = "xy"
                               x             = "valid_from"
@@ -3745,7 +3800,7 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                             }
                             type = "table"
                           }
-                          type = "timeseries"
+                          type = "stacked_area"
                         }
                         disableAggregate = false
                         filterActions    = []
@@ -3863,10 +3918,6 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = <<-EOT
-                            align A_container_network_received_bytes_count_sum:rate(m("container_network_received_bytes_count"))
-                            aggregate A_container_network_received_bytes_count_sum:sum(A_container_network_received_bytes_count_sum), group_by(string(metric_labels.kind))
-                        EOT
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -3897,7 +3948,7 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight    = true
+            autoTableHeight    = false
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
@@ -3935,7 +3986,7 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
             }
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
-            tableHeight                = 0
+            tableHeight                = 444
             tableView                  = "TABULAR"
           }
           index = 11
@@ -3987,7 +4038,7 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                     y             = "value"
                   }
                   topK = {
-                    k    = 16
+                    k    = 25
                     type = "Auto"
                   }
                   type = "table"
@@ -4008,7 +4059,7 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -4086,7 +4137,6 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -4249,7 +4299,7 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
                 columnName = "Latest Revision Name "
               },
             ]
-            wantBuckets = 600
+            wantBuckets = 200
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -4386,7 +4436,6 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = "filter serviceAssetKey=$service.serviceAssetKey"
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -4418,10 +4467,11 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "serviceName"
-              "1" = "_c_traffic_path"
-              "2" = "Valid From"
-              "3" = "Valid To"
+              "0" = "revisionServed"
+              "1" = "serviceName"
+              "2" = "_c_traffic_path"
+              "3" = "Valid From"
+              "4" = "Valid To"
             }
             columnVisibility = {
               "CloudSQL Instance"        = false
@@ -4446,7 +4496,7 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
               revisionServed   = 229
               traffic          = 968
             }
-            containerWidth               = 2143
+            containerWidth               = 1880
             contextMenuXCoord            = null
             contextMenuYCoord            = null
             defaultColumnWidth           = 70
@@ -4497,7 +4547,7 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
               type                   = "Timescrubber"
             },
             {
-              id         = "yydcjs51"
+              id         = "7h751ivm"
               isDisabled = false
               type       = "JsonTree"
             },
@@ -4589,7 +4639,6 @@ resource "observe_dashboard" "copy_of_cloud_run_service_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
