@@ -25,7 +25,8 @@ resource "observe_dataset" "cloud_run_metrics" {
         serviceName:string(resource_labels.service_name),
         revisionName:string(resource_labels.revision_name),
         metric: replace(split_part(metric_type, "googleapis.com/", 2), "/", "_"),
-        serviceAssetKey: string_concat("//run.googleapis.com/projects/", string(resource_labels.project_id), "/locations/", string(resource_labels.location), "/services/", string(resource_labels.service_name))
+        serviceAssetKey: string_concat("//run.googleapis.com/projects/", string(resource_labels.project_id), "/locations/", string(resource_labels.location), "/services/", string(resource_labels.service_name)),
+        revisionAssetKey: string_concat("//run.googleapis.com/projects/", string(resource_labels.project_id), "/locations/", string(resource_labels.location), "/revisions/", string(resource_labels.revision_name))
       EOF
   }
   stage {
@@ -41,7 +42,8 @@ resource "observe_dataset" "cloud_run_metrics" {
         value_type,
         project_id,
         region,        
-        serviceAssetKey
+        serviceAssetKey,
+        revisionAssetKey
       add_key serviceAssetKey
     EOF
   }
@@ -107,6 +109,28 @@ resource "observe_dataset" "cloud_run_metrics" {
 
     EOF
 }
+}
+
+resource "observe_link" "cloud_run_metrics" {
+  workspace = var.workspace.oid
+  source    = observe_dataset.cloud_run_metrics.oid
+  target    = each.value.target
+  fields    = each.value.fields
+  label     = each.key
+  for_each = merge(
+    {
+      "Service Instance" = {
+        target = observe_dataset.cloud_run_service_instances.oid
+        fields = ["serviceAssetKey"]
+      }
+    },
+    {
+      "Revision Instance" = {
+        target = observe_dataset.cloud_run_revision_instances.oid
+        fields = ["revisionAssetKey"]
+      }
+    }
+  )
 }
 
 # resource "observe_link" "cloud_run_metrics" {
