@@ -1,4 +1,4 @@
-# terraform import observe_dashboard.cloud_run_revision_instance 42049529
+# terraform import observe_dashboard.cloud_run_revision_instance 42038640
 resource "observe_dashboard" "cloud_run_revision_instance" {
   layout = jsonencode(
     {
@@ -9,19 +9,19 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-gt1v5cca"
+              id       = "card-ebm42ug3"
               title    = "Dashboard Content"
             }
             items = [
               {
                 card = {
                   cardType    = "parameter"
-                  id          = "card-1t94kazi"
+                  id          = "card-y75ur1hr"
                   parameterId = "revision"
                 }
                 layout = {
                   h           = 4
-                  i           = "card-1t94kazi"
+                  i           = "card-y75ur1hr"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -41,19 +41,19 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "section-rdeilnv2"
+              id       = "card-fft1ijax"
               title    = "Panels"
             }
             items = [
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-do04ph59"
+                  id       = "card-wz1bggpt"
                   stageId  = "stage-s6hd9w9r"
                 }
                 layout = {
                   h           = 16
-                  i           = "card-do04ph59"
+                  i           = "card-wz1bggpt"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -66,35 +66,17 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-hi8ijoo5"
-                  stageId  = "stage-owvgp5ik"
-                }
-                layout = {
-                  h           = 16
-                  i           = "card-hi8ijoo5"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 1
-                  x           = 5
-                  y           = 0
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-u3ky3jc8"
+                  id       = "card-toiag91r"
                   stageId  = "stage-2w0h5by8"
                 }
                 layout = {
-                  h           = 16
-                  i           = "card-u3ky3jc8"
+                  h           = 8
+                  i           = "card-toiag91r"
                   isDraggable = true
                   isResizable = true
                   moved       = false
                   static      = false
-                  w           = 1
+                  w           = 2
                   x           = 4
                   y           = 0
                 }
@@ -102,12 +84,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-qz0szwwx"
+                  id       = "card-p4srgi6u"
                   stageId  = "stage-7kiu4s55"
                 }
                 layout = {
                   h           = 16
-                  i           = "card-qz0szwwx"
+                  i           = "card-p4srgi6u"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -120,12 +102,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-f6gbwzli"
+                  id       = "card-uyjglxfu"
                   stageId  = "stage-uzxt2gjg"
                 }
                 layout = {
                   h           = 16
-                  i           = "card-f6gbwzli"
+                  i           = "card-uyjglxfu"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -138,12 +120,30 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-r8on76u9"
+                  id       = "card-ndn4u9cf"
+                  stageId  = "stage-owvgp5ik"
+                }
+                layout = {
+                  h           = 8
+                  i           = "card-ndn4u9cf"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 2
+                  x           = 4
+                  y           = 8
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-nhx70j1f"
                   stageId  = "stage-7sze4czq"
                 }
                 layout = {
                   h           = 20
-                  i           = "card-r8on76u9"
+                  i           = "card-nhx70j1f"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -156,12 +156,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-zeq17sre"
+                  id       = "card-9vpyxsjf"
                   stageId  = "stage-6q1j06k5"
                 }
                 layout = {
                   h           = 10
-                  i           = "card-zeq17sre"
+                  i           = "card-9vpyxsjf"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -174,12 +174,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-jpe4leuq"
+                  id       = "card-k6xkqwea"
                   stageId  = "stage-ufgma5j1"
                 }
                 layout = {
                   h           = 20
-                  i           = "card-jpe4leuq"
+                  i           = "card-k6xkqwea"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -192,12 +192,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-o8e6bt4j"
+                  id       = "card-dkhrg0j3"
                   stageId  = "stage-9ie7yoz2"
                 }
                 layout = {
                   h           = 10
-                  i           = "card-o8e6bt4j"
+                  i           = "card-dkhrg0j3"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -210,12 +210,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-7da7cmbe"
+                  id       = "card-23v5zyna"
                   stageId  = "stage-20h4toz2"
                 }
                 layout = {
                   h           = 16
-                  i           = "card-7da7cmbe"
+                  i           = "card-23v5zyna"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -228,12 +228,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-h3b11sbj"
+                  id       = "card-9bkppbcm"
                   stageId  = "stage-9eiha1ve"
                 }
                 layout = {
                   h           = 16
-                  i           = "card-h3b11sbj"
+                  i           = "card-9bkppbcm"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -246,12 +246,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-21e6py8l"
+                  id       = "card-pf78teq0"
                   stageId  = "stage-7ckxhvg3"
                 }
                 layout = {
                   h           = 16
-                  i           = "card-21e6py8l"
+                  i           = "card-pf78teq0"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -264,17 +264,17 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-h0foshno"
+                  id       = "card-7l6bq4np"
                   stageId  = "stage-dlpgnpgk"
                 }
                 layout = {
                   h           = 18
-                  i           = "card-h0foshno"
+                  i           = "card-7l6bq4np"
                   isDraggable = true
                   isResizable = true
                   moved       = false
                   static      = false
-                  w           = 6
+                  w           = 12
                   x           = 0
                   y           = 52
                 }
@@ -282,23 +282,23 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-qle22rlw"
+                  id       = "card-3szrntjf"
                   stageId  = "stage-h2x6mnph"
                 }
                 layout = {
                   h           = 18
-                  i           = "card-qle22rlw"
+                  i           = "card-3szrntjf"
                   isDraggable = true
                   isResizable = true
                   moved       = false
                   static      = false
-                  w           = 6
-                  x           = 6
-                  y           = 52
+                  w           = 12
+                  x           = 0
+                  y           = 70
                 }
               },
             ]
-            lastModified = 1680647203110
+            lastModified = 1681145602579
           },
         ]
       }
@@ -306,44 +306,6 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
         isModified = false
         parameters = [
           {
-            defaultValue = {
-              link = {
-                datasetId = local.cloud_run_revision_instances
-                primaryKeyValue = [
-                  {
-                    name = "database_id"
-                    value = {
-                      string = "content-eng-abhishek:psql"
-                    }
-                  },
-                  {
-                    name = "project_id"
-                    value = {
-                      string = "content-eng-abhishek"
-                    }
-                  },
-                  {
-                    name = "revisionAssetKey"
-                    value = {
-                      string = "//run.googleapis.com/projects/content-eng-abhishek/locations/us-central1/revisions/server-00003-vit"
-                    }
-                  },
-                  {
-                    name = "revisionName"
-                    value = {
-                      string = "server-00003-vit"
-                    }
-                  },
-                  {
-                    name = "serviceAssetKey"
-                    value = {
-                      string = "//run.googleapis.com/projects/content-eng-abhishek/locations/us-central1/services/server"
-                    }
-                  },
-                ]
-                storedLabel = "server-00003-vit"
-              }
-            }
             emptyValueEncoding    = "null"
             emptyValueLabelOption = "null"
             id                    = "revision"
@@ -375,46 +337,9 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
   parameters = jsonencode(
     [
       {
-        defaultValue = {
-          link = {
-            datasetId = local.cloud_run_revision_instances
-            primaryKeyValue = [
-              {
-                name = "database_id"
-                value = {
-                  string = "content-eng-abhishek:psql"
-                }
-              },
-              {
-                name = "project_id"
-                value = {
-                  string = "content-eng-abhishek"
-                }
-              },
-              {
-                name = "revisionAssetKey"
-                value = {
-                  string = "//run.googleapis.com/projects/content-eng-abhishek/locations/us-central1/revisions/server-00003-vit"
-                }
-              },
-              {
-                name = "revisionName"
-                value = {
-                  string = "server-00003-vit"
-                }
-              },
-              {
-                name = "serviceAssetKey"
-                value = {
-                  string = "//run.googleapis.com/projects/content-eng-abhishek/locations/us-central1/services/server"
-                }
-              },
-            ]
-            storedLabel = "server-00003-vit"
-          }
-        }
-        id   = "revision"
-        name = "Revision"
+        defaultValue = null
+        id           = "revision"
+        name         = "Revision"
         valueKind = {
           arrayItemType   = null
           keyForDatasetId = local.cloud_run_revision_instances
@@ -459,7 +384,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             disableFixedLeftColumns      = false
             eventLinkColumnId            = null
             fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
+            hasCalculatedColumnWidths    = true
             maxColumnWidth               = 600
             maxMeasuredColumnHeaderWidth = {}
             maxMeasuredColumnWidth       = {}
@@ -467,7 +392,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             minColumnWidth               = 60
             minRowHeight                 = 30
             preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 50
+            rowHeaderWidth               = 33
             rowHeights                   = {}
             rowSizeIncrement             = 1
             scrollToColumn               = null
@@ -638,7 +563,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               serviceUid           = false
             }
             columnWidths                 = {}
-            containerWidth               = 1072
+            containerWidth               = 1491
             contextMenuXCoord            = null
             contextMenuYCoord            = null
             defaultColumnWidth           = 70
@@ -659,12 +584,18 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
             }
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
@@ -684,14 +615,9 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
           managers = [
             {
               id                     = "b22xm8hj"
-              isDisabled             = false
+              isDisabled             = true
               isResourceCountEnabled = false
               type                   = "Timescrubber"
-            },
-            {
-              id         = "za33g121"
-              isDisabled = false
-              type       = "JsonTree"
             },
           ]
           queryPresentation = {
@@ -1506,7 +1432,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                 columnName = "A_minScale_count_distinct_exact"
               },
             ]
-            wantBuckets = 50
+            wantBuckets = 100
           }
           selectedStepId = null
           serializable   = true
@@ -1766,7 +1692,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 50
+            wantBuckets = 100
           }
           selectedStepId = null
           serializable   = true
@@ -2424,7 +2350,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
           {
             datasetId   = local.cloud_run_metrics
             datasetPath = null
-            inputName   = "container_cpu_utilizations_from_41970327"
+            inputName   = "container_cpu_utilizations_from_42020094"
             inputRole   = "Data"
             stageId     = null
           },
@@ -2520,7 +2446,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                     y             = "A_container_cpu_utilizations_sum"
                   }
                   topK = {
-                    k     = 50
+                    k     = 25
                     order = "Top"
                     type  = "Auto"
                   }
@@ -2538,7 +2464,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 200
+            wantBuckets = 400
           }
           selectedStepId = null
           serializable   = true
@@ -2801,7 +2727,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
           {
             datasetId   = local.cloud_run_metrics
             datasetPath = null
-            inputName   = "container_memory_utilizations_from_41970327"
+            inputName   = "container_memory_utilizations_from_42020094"
             inputRole   = "Data"
             stageId     = null
           },
@@ -2898,7 +2824,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                     y             = "B_formula"
                   }
                   topK = {
-                    k    = 50
+                    k    = 25
                     type = "Auto"
                   }
                   type = "table"
@@ -2915,7 +2841,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 200
+            wantBuckets = 400
           }
           selectedStepId = null
           serializable   = true
@@ -3189,7 +3115,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               index    = 1
               isPinned = false
               opal = [
-                "@A <- @container_memory_utilizations_from_41970327 {",
+                "@A <- @container_memory_utilizations_from_42020094 {",
                 "    exists revisionName = @\"filter_Revision Instance\".revisionName",
                 "    align A_container_memory_utilizations_sum:avg(m(\"container_memory_utilizations\"))",
                 "    aggregate A_container_memory_utilizations_sum:sum(A_container_memory_utilizations_sum), group_by(revisionName)",
@@ -3232,7 +3158,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
         }
         params   = null
         pipeline = <<-EOT
-                    @A <- @container_memory_utilizations_from_41970327 {
+                    @A <- @container_memory_utilizations_from_42020094 {
                         exists revisionName = @"filter_Revision Instance".revisionName
                         align A_container_memory_utilizations_sum:avg(m("container_memory_utilizations"))
                         aggregate A_container_memory_utilizations_sum:sum(A_container_memory_utilizations_sum), group_by(revisionName)
@@ -3299,12 +3225,18 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
             }
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
@@ -3675,7 +3607,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
           {
             datasetId   = local.cloud_run_metrics
             datasetPath = null
-            inputName   = "request_latencies_from_41970327"
+            inputName   = "request_latencies_from_42020094"
             inputRole   = "Data"
             stageId     = null
           },
@@ -4050,14 +3982,34 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               queryPresentation = {}
               type              = "unknown"
             },
+            {
+              customSummary = ""
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-vo387coi"
+              index    = 2
+              isPinned = false
+              opal = [
+                "",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = <<-EOT
-                            exists revisionName = @"filter_Revision Instance".revisionName
-                            align A_request_latencies_sum:avg(m("request_latencies"))
-                            aggregate A_request_latencies_sum:sum(A_request_latencies_sum), group_by(revisionName)
-                        EOT
+            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -4081,7 +4033,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
           {
             datasetId   = local.cloud_run_metrics
             datasetPath = null
-            inputName   = "container_startup_latencies_from_41970327"
+            inputName   = "container_startup_latencies_from_42020094"
             inputRole   = "Data"
             stageId     = null
           },
@@ -4489,13 +4441,15 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight              = true
-            columnFooterHeight           = 0
-            columnHeaderHeight           = 29
-            columnOrderOverride          = {}
-            columnVisibility             = {}
-            columnWidths                 = {}
-            containerWidth               = 1072
+            autoTableHeight     = true
+            columnFooterHeight  = 0
+            columnHeaderHeight  = 29
+            columnOrderOverride = {}
+            columnVisibility    = {}
+            columnWidths = {
+              latency = 349
+            }
+            containerWidth               = 3007
             contextMenuXCoord            = null
             contextMenuYCoord            = null
             defaultColumnWidth           = 70
@@ -4516,16 +4470,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              cells = {
-                userAgent = {
-                  "3" = true
-                }
-              }
+              cells                = {}
               columnSelectSequence = []
               columns              = {}
               highlightState       = {}
               rows                 = {}
-              selectionType        = "cell"
+              selectionType        = "table"
             }
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
@@ -4551,14 +4501,9 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
           managers = [
             {
               id                     = "4gien97s"
-              isDisabled             = false
+              isDisabled             = true
               isResourceCountEnabled = false
               type                   = "Timescrubber"
-            },
-            {
-              id         = "2ymudt5v"
-              isDisabled = false
-              type       = "JsonTree"
             },
           ]
           queryPresentation = {
@@ -4619,7 +4564,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-kv2k7xos"
+              id       = "step-3nim3jpe"
               index    = 1
               isPinned = false
               opal = [
@@ -4629,6 +4574,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                 "",
                 "pick_col",
                 "  timestamp,",
+                "  trace:trace,",
                 "  remoteIp:string(httpRequest.remoteIp),",
                 "  protocol:string(httpRequest.protocol),",
                 "  userAgent:string(httpRequest.userAgent),",
@@ -4638,7 +4584,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                 "  requestSize:int64(httpRequest.requestSize),",
                 "  status:string(httpRequest.status),",
                 "  responseSize:int64(httpRequest.responseSize),",
-                "  latency:string(httpRequest.latency)",
+                "  latency:latency",
                 "",
                 "sort desc(latency)",
                 "limit 100",
@@ -4668,6 +4614,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                     
                     pick_col
                       timestamp,
+                      trace:trace,
                       remoteIp:string(httpRequest.remoteIp),
                       protocol:string(httpRequest.protocol),
                       userAgent:string(httpRequest.userAgent),
@@ -4677,7 +4624,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                       requestSize:int64(httpRequest.requestSize),
                       status:string(httpRequest.status),
                       responseSize:int64(httpRequest.responseSize),
-                      latency:string(httpRequest.latency)
+                      latency:latency
                     
                     sort desc(latency)
                     limit 100
@@ -4715,7 +4662,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             columnWidths = {
               textPayload = 1721
             }
-            containerWidth               = 1072
+            containerWidth               = 3007
             contextMenuXCoord            = null
             contextMenuYCoord            = null
             defaultColumnWidth           = 70
@@ -4767,14 +4714,9 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
           managers = [
             {
               id                     = "vqoiishj"
-              isDisabled             = false
+              isDisabled             = true
               isResourceCountEnabled = false
               type                   = "Timescrubber"
-            },
-            {
-              id         = "z09hmnr3"
-              isDisabled = false
-              type       = "JsonTree"
             },
           ]
           queryPresentation = {
@@ -4835,12 +4777,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-71dwwx6o"
+              id       = "step-jll5g1we"
               index    = 1
               isPinned = false
               opal = [
                 "exists revisionName=@\"Revision Summary_-usqo\".revisionName",
-                "filter logType=\"stderr\" or severity=\"ERROR\"",
+                "filter severity=\"ERROR\" or (logType=\"stderr\" and not contains(textPayload, \"INFO\"))",
                 "",
                 "set_col_visible",
                 "  projectId:false,",
@@ -4853,8 +4795,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                 "  status:false,",
                 "  responseSize:false,",
                 "  latency:false,",
-                "  requestUrl:false,",
-                "  trace:false",
+                "  requestUrl:false",
               ]
               queryPresentation = {}
               type              = "unknown"
@@ -4876,7 +4817,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
         params   = null
         pipeline = <<-EOT
                     exists revisionName=@"Revision Summary_-usqo".revisionName
-                    filter logType="stderr" or severity="ERROR"
+                    filter severity="ERROR" or (logType="stderr" and not contains(textPayload, "INFO"))
                     
                     set_col_visible
                       projectId:false,
@@ -4889,12 +4830,10 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                       status:false,
                       responseSize:false,
                       latency:false,
-                      requestUrl:false,
-                      trace:false
+                      requestUrl:false
                 EOT
       },
     ]
   )
   workspace = local.workspace
 }
-
