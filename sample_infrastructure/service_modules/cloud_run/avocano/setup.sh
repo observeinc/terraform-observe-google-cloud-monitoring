@@ -68,8 +68,11 @@ function deploy {
   echo "Running Cloud Build for the Application"
   gcloud builds submit --config provisioning/deploy.cloudbuild.yaml --substitutions _REGION=${REGION}
 
-  echo "Setup database"
+  echo "Setting up database"
   gcloud beta run jobs execute setup --wait --region $REGION
+
+  echo "Runing UI tests" 
+  gcloud builds submit --config provisioning/test-deployment.yaml  --substitutions _REGION="${REGION}"
 
   echo "Website now available at https://${PROJECT_ID}.firebaseapp.com"
 }
