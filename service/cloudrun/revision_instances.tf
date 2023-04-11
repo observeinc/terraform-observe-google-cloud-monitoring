@@ -41,7 +41,8 @@ resource "observe_dataset" "cloud_run_revision_instances" {
         maxScale:int64(data.metadata.annotations["autoscaling.knative.dev/maxScale"]),
         minScale:int64(data.metadata.annotations["autoscaling.knative.dev/minScale"]),
         cpuThrottling:bool(data.metadata.annotations["run.googleapis.com/cpu-throttling"]),
-        startupCpuBoost:if(bool(data.metadata.annotations['run.googleapis.com/startup-cpu-boost']), true, false)
+        startupCpuBoost:if(bool(data.metadata.annotations['run.googleapis.com/startup-cpu-boost']), true, false),
+        conditions:data.status.conditions
       flatten_single containers
       rename_col container:_c_containers_value
       drop_col _c_containers_flattenid, _c_containers_path
@@ -55,7 +56,42 @@ resource "observe_dataset" "cloud_run_revision_instances" {
   stage {
     pipeline = <<-EOF
       @revisions <- @ {
-        make_resource options(expiry:15m),
+        make_col
+          statusConditions:pivot_array(array(conditions), "type", "status"),
+          statusMessages:pivot_array(array(conditions), "type", "message"),
+          statusLastTransitionTimes:pivot_array(array(conditions), "type", "lastTransitionTime")
+        
+        make_col
+          status: make_object(
+            ready: make_object(
+              status: string(statusConditions["Ready"]),
+              message: string(statusMessages["Ready"])
+            ),
+            active: make_object(
+              status: string(statusConditions["Active"]),
+              message: string(statusMessages["Active"])
+            ),
+            containerHealthy: make_object(
+              status: string(statusConditions["ContainerHealthy"]),
+              message: string(statusMessages["ContainerHealthy"])
+            )
+          )
+        
+        make_col retired:status.active.status="False" and status.active.message="Revision retired."
+        make_col
+          status:case(
+            status.ready.status="True" and status.active.status="True" and status.containerHealthy.status="True", "Healthy",
+            retired or (status.active.status="Unknown" and status.containerHealthy.status="True"), "Inactive",
+            status.ready.status="False" or status.containerHealthy.status="False", "Unhealthy")
+        make_col
+          health: case(
+            status="Healthy", "🟩",
+            status="Inactive", "⬜️",
+            status="Unhealthy", "🟥"
+          )
+        make_resource options(expiry:${var.max_expiry}),
+          health,
+          status,
           // Links
           revisionName,
            serviceName,

@@ -9,19 +9,19 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-ebm42ug3"
+              id       = "card-tfksyzce"
               title    = "Dashboard Content"
             }
             items = [
               {
                 card = {
                   cardType    = "parameter"
-                  id          = "card-y75ur1hr"
+                  id          = "card-ti4j3i8y"
                   parameterId = "revision"
                 }
                 layout = {
                   h           = 4
-                  i           = "card-y75ur1hr"
+                  i           = "card-ti4j3i8y"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -41,37 +41,19 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-fft1ijax"
+              id       = "card-n00r19h6"
               title    = "Panels"
             }
             items = [
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-wz1bggpt"
-                  stageId  = "stage-s6hd9w9r"
-                }
-                layout = {
-                  h           = 16
-                  i           = "card-wz1bggpt"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 2
-                  x           = 0
-                  y           = 0
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-toiag91r"
+                  id       = "card-d7qh05j2"
                   stageId  = "stage-2w0h5by8"
                 }
                 layout = {
                   h           = 8
-                  i           = "card-toiag91r"
+                  i           = "card-d7qh05j2"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -84,30 +66,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-p4srgi6u"
-                  stageId  = "stage-7kiu4s55"
-                }
-                layout = {
-                  h           = 16
-                  i           = "card-p4srgi6u"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 2
-                  x           = 2
-                  y           = 0
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-uyjglxfu"
+                  id       = "card-td01n36q"
                   stageId  = "stage-uzxt2gjg"
                 }
                 layout = {
                   h           = 16
-                  i           = "card-uyjglxfu"
+                  i           = "card-td01n36q"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -120,12 +84,48 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-ndn4u9cf"
+                  id       = "card-z45oenzt"
+                  stageId  = "stage-stztoqtz"
+                }
+                layout = {
+                  h           = 16
+                  i           = "card-z45oenzt"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 2
+                  x           = 0
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-p9qhst5y"
+                  stageId  = "stage-s6hd9w9r"
+                }
+                layout = {
+                  h           = 8
+                  i           = "card-p9qhst5y"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 2
+                  x           = 2
+                  y           = 0
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-zk1ogmh8"
                   stageId  = "stage-owvgp5ik"
                 }
                 layout = {
                   h           = 8
-                  i           = "card-ndn4u9cf"
+                  i           = "card-zk1ogmh8"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -138,12 +138,48 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-nhx70j1f"
+                  id       = "card-b8fp56gz"
+                  stageId  = "stage-7kiu4s55"
+                }
+                layout = {
+                  h           = 8
+                  i           = "card-b8fp56gz"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 2
+                  x           = 2
+                  y           = 8
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-gpmjlh31"
+                  stageId  = "stage-6q1j06k5"
+                }
+                layout = {
+                  h           = 10
+                  i           = "card-gpmjlh31"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 2
+                  x           = 0
+                  y           = 16
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-wljlx13x"
                   stageId  = "stage-7sze4czq"
                 }
                 layout = {
                   h           = 20
-                  i           = "card-nhx70j1f"
+                  i           = "card-wljlx13x"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -156,30 +192,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-9vpyxsjf"
-                  stageId  = "stage-6q1j06k5"
-                }
-                layout = {
-                  h           = 10
-                  i           = "card-9vpyxsjf"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 2
-                  x           = 0
-                  y           = 16
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-k6xkqwea"
+                  id       = "card-m960lwet"
                   stageId  = "stage-ufgma5j1"
                 }
                 layout = {
                   h           = 20
-                  i           = "card-k6xkqwea"
+                  i           = "card-m960lwet"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -192,12 +210,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-dkhrg0j3"
+                  id       = "card-s7cmnz5k"
                   stageId  = "stage-9ie7yoz2"
                 }
                 layout = {
                   h           = 10
-                  i           = "card-dkhrg0j3"
+                  i           = "card-s7cmnz5k"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -210,12 +228,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-23v5zyna"
+                  id       = "card-0w7k2zj4"
                   stageId  = "stage-20h4toz2"
                 }
                 layout = {
                   h           = 16
-                  i           = "card-23v5zyna"
+                  i           = "card-0w7k2zj4"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -228,12 +246,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-9bkppbcm"
+                  id       = "card-4rfnzdkk"
                   stageId  = "stage-9eiha1ve"
                 }
                 layout = {
                   h           = 16
-                  i           = "card-9bkppbcm"
+                  i           = "card-4rfnzdkk"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -246,12 +264,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-pf78teq0"
+                  id       = "card-30dsufqd"
                   stageId  = "stage-7ckxhvg3"
                 }
                 layout = {
                   h           = 16
-                  i           = "card-pf78teq0"
+                  i           = "card-30dsufqd"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -264,12 +282,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-7l6bq4np"
+                  id       = "card-sajhxz9l"
                   stageId  = "stage-dlpgnpgk"
                 }
                 layout = {
                   h           = 18
-                  i           = "card-7l6bq4np"
+                  i           = "card-sajhxz9l"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -282,12 +300,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-3szrntjf"
+                  id       = "card-8680pkhe"
                   stageId  = "stage-h2x6mnph"
                 }
                 layout = {
                   h           = 18
-                  i           = "card-3szrntjf"
+                  i           = "card-8680pkhe"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -298,7 +316,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                 }
               },
             ]
-            lastModified = 1681145602579
+            lastModified = 1681223350046
           },
         ]
       }
@@ -317,7 +335,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             viewType = "resource-input"
           },
         ]
-        selectedStageId = "stage-h2x6mnph"
+        selectedStageId = "stage-7kiu4s55"
         timeRange = {
           display               = "Past 4 hours"
           endTime               = null
@@ -384,7 +402,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             disableFixedLeftColumns      = false
             eventLinkColumnId            = null
             fetchPageSize                = 100
-            hasCalculatedColumnWidths    = true
+            hasCalculatedColumnWidths    = false
             maxColumnWidth               = 600
             maxMeasuredColumnHeaderWidth = {}
             maxMeasuredColumnWidth       = {}
@@ -392,7 +410,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             minColumnWidth               = 60
             minRowHeight                 = 30
             preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 33
+            rowHeaderWidth               = 50
             rowHeights                   = {}
             rowSizeIncrement             = 1
             scrollToColumn               = null
@@ -505,7 +523,6 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -679,7 +696,6 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -688,6 +704,275 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             }
             showTimeRuler = true
             stageTab      = "table"
+          }
+        }
+        params   = null
+        pipeline = ""
+      },
+      {
+        id = "stage-stztoqtz"
+        input = [
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "Revision Summary_-uzxt"
+            inputRole   = "Data"
+            stageId     = "stage-uzxt2gjg"
+          },
+        ]
+        layout = {
+          appearance = "VISIBLE"
+          dataTableViewState = {
+            autoTableHeight    = false
+            columnFooterHeight = 0
+            columnHeaderHeight = 29
+            columnOrderOverride = {
+              "0" = "revisionName"
+              "2" = "Valid From"
+              "3" = "Valid To"
+            }
+            columnVisibility = {
+              "CloudSQL Instance"  = false
+              "Revision Instance"  = false
+              "Service Instance"   = false
+              containerConcurrency = false
+              cpuThrottling        = false
+              database_id          = false
+              maxScale             = false
+              minScale             = false
+              serviceAssetKey      = false
+              serviceName          = false
+              serviceUid           = false
+            }
+            columnWidths                 = {}
+            containerWidth               = 3023
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = true
+            maxColumnWidth               = 600
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
+            selection = {
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
+            }
+            summaryColumnOrderOverride = {}
+            summaryColumnVisibility    = {}
+            tableHeight                = 436
+            tableView                  = "TABULAR"
+          }
+          index = 2
+          inputList = [
+            {
+              inputName   = "Revision Summary_-uzxt"
+              inputRole   = "Data"
+              isUserInput = false
+              stageId     = "stage-uzxt2gjg"
+            },
+          ]
+          label = "Revision Status"
+          managers = [
+            {
+              id                     = "z78ut73n"
+              isDisabled             = true
+              isResourceCountEnabled = false
+              type                   = "Timescrubber"
+            },
+            {
+              id         = "m43x7txa"
+              isDisabled = false
+              type       = "Vis"
+              vis = {
+                config = {
+                  color           = "Default"
+                  colorConfigType = "Color"
+                  fieldConfig = {
+                    unit    = ""
+                    visible = false
+                  }
+                  thresholds = null
+                  type       = "singlefield"
+                }
+                source = {
+                  table = {
+                    field       = "status"
+                    groupFields = []
+                    statsBy = {
+                      fn = "count"
+                    }
+                    timechart = {
+                      fn         = "count"
+                      fnArgs     = null
+                      resolution = "AUTO"
+                    }
+                    transformType = "none"
+                    type          = "singlefield"
+                  }
+                  topK = {
+                    order = "Top"
+                    type  = "Auto"
+                  }
+                  type = "table"
+                }
+                type = "singlevalue"
+              }
+            },
+          ]
+          queryPresentation = {
+            initialRollupFilter = {
+              mode = "Last"
+            }
+            rollup      = {}
+            wantBuckets = 100
+          }
+          selectedStepId = null
+          serializable   = true
+          steps = [
+            {
+              customName    = "Input"
+              customSummary = "Revision Summary_-uzxt"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-t8m2rbfi"
+              index             = 0
+              isPinned          = false
+              opal              = []
+              queryPresentation = {}
+              type              = "InputStep"
+            },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        columnId = "status"
+                        dataVis = {
+                          config = {
+                            color           = "Default"
+                            colorConfigType = "Color"
+                            fieldConfig = {
+                              unit    = ""
+                              visible = false
+                            }
+                            thresholds = null
+                            type       = "singlefield"
+                          }
+                          source = {
+                            table = {
+                              field       = "status"
+                              groupFields = []
+                              statsBy = {
+                                fn = "count"
+                              }
+                              timechart = {
+                                fn         = "count"
+                                fnArgs     = null
+                                resolution = "AUTO"
+                              }
+                              transformType = "none"
+                              type          = "singlefield"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "singlevalue"
+                        }
+                        filterActions = []
+                        groupBy       = []
+                        id            = "datasetQueryExpression-808njigy"
+                        lookupActions = []
+                        primaryKey = [
+                          "revisionAssetKey",
+                        ]
+                        summaryFunction = "count_distinct_exact"
+                        summaryMode     = "no-aggregate"
+                        type            = "datasetQueryExpression"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-zzslds2p"
+                      lookupActions = []
+                      type          = "multiExpression"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-808njigy",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-1bx0sgyj"
+              index             = 1
+              isPinned          = false
+              opal              = []
+              queryPresentation = {}
+              type              = "unknown"
+            },
+          ]
+          type = "table"
+          viewModel = {
+            railCollapseState = {
+              inputsOutputs = false
+              minimap       = false
+              note          = true
+              script        = true
+            }
+            showTimeRuler = true
+            stageTab      = "vis"
           }
         }
         params   = null
@@ -752,7 +1037,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index = 2
+          index = 3
           inputList = [
             {
               datasetId   = local.cloud_run_revision_instances
@@ -775,7 +1060,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               type       = "Vis"
               vis = {
                 config = {
-                  color           = "Default"
+                  color           = "Blue"
                   colorConfigType = "Color"
                   fieldConfig = {
                     unit    = "millicores"
@@ -892,7 +1177,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                         columnId = "cpuLimit"
                         dataVis = {
                           config = {
-                            color           = "Default"
+                            color           = "Blue"
                             colorConfigType = "Color"
                             fieldConfig = {
                               unit    = "millicores"
@@ -975,11 +1260,6 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = <<-EOT
-                            filter revisionAssetKey=$revision.revisionAssetKey
-                            make_col
-                              cpuLimit:string(container.resources.limits.cpu)
-                        EOT
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -1044,19 +1324,25 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
             }
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index = 3
+          index = 4
           inputList = [
             {
               datasetId   = local.cloud_run_revision_instances
@@ -1079,7 +1365,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               type       = "Vis"
               vis = {
                 config = {
-                  color           = "Default"
+                  color           = "Blue"
                   colorConfigType = "Color"
                   fieldConfig = {
                     unit    = "Mi"
@@ -1196,7 +1482,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                         columnId = "memoryLimit"
                         dataVis = {
                           config = {
-                            color           = "Default"
+                            color           = "Blue"
                             colorConfigType = "Color"
                             fieldConfig = {
                               unit    = "Mi"
@@ -1279,11 +1565,6 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = <<-EOT
-                            filter revisionAssetKey=$revision.revisionAssetKey
-                            make_col
-                              memoryLimit:string(container.resources.limits.memory)
-                        EOT
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -1360,7 +1641,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index = 4
+          index = 5
           inputList = [
             {
               inputName   = "Revision Summary_-usqo"
@@ -1553,7 +1834,6 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = ""
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -1626,7 +1906,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index = 5
+          index = 6
           inputList = [
             {
               inputName   = "Revision Summary_-usqo"
@@ -1812,7 +2092,6 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = ""
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -1885,7 +2164,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index = 6
+          index = 7
           inputList = [
             {
               inputName   = "Revision Summary_-usqo"
@@ -2071,7 +2350,6 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = ""
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -2144,7 +2422,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index = 7
+          index = 8
           inputList = [
             {
               inputName   = "Revision Summary_-usqo"
@@ -2330,7 +2608,6 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = ""
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -2408,7 +2685,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index     = 8
+          index     = 9
           inputList = []
           label     = "Container CPU Utilization"
           managers = [
@@ -2699,11 +2976,6 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = <<-EOT
-                            exists revisionName = @"filter_Revision Instance".revisionName
-                            align A_container_cpu_utilizations_sum:avg(m("container_cpu_utilizations"))
-                            aggregate A_container_cpu_utilizations_sum:sum(A_container_cpu_utilizations_sum), group_by(revisionName)
-                        EOT
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -2785,7 +3057,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index     = 9
+          index     = 10
           inputList = []
           label     = "Container Memory Utilization"
           managers = [
@@ -3133,19 +3405,6 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = <<-EOT
-                            @A <- @container_memory_utilizations_from_42020094 {
-                                exists revisionName = @"filter_Revision Instance".revisionName
-                                align A_container_memory_utilizations_sum:avg(m("container_memory_utilizations"))
-                                aggregate A_container_memory_utilizations_sum:sum(A_container_memory_utilizations_sum), group_by(revisionName)
-                                make_event
-                            }
-                            @B <- @A {
-                                aggregate A: any_not_null(A_container_memory_utilizations_sum), group_by(revisionName)
-                                make_col B_formula: A*100
-                            }
-                            <- @B {}
-                        EOT
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -3225,25 +3484,19 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index = 10
+          index = 11
           inputList = [
             {
               datasetId   = local.cloud_run_metrics
@@ -3581,7 +3834,6 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -3665,7 +3917,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index     = 11
+          index     = 12
           inputList = []
           label     = "Request Latencies"
           managers = [
@@ -4009,7 +4261,6 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -4091,7 +4342,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index     = 12
+          index     = 13
           inputList = []
           label     = "Container Startup Latency"
           managers = [
@@ -4398,11 +4649,6 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = <<-EOT
-                            exists revisionName = @"filter_Revision Instance".revisionName
-                            align A_container_startup_latencies_sum:avg(m("container_startup_latencies"))
-                            aggregate A_container_startup_latencies_sum:sum(A_container_startup_latencies_sum), group_by(revisionName)
-                        EOT
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -4482,7 +4728,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index = 13
+          index = 14
           inputList = [
             {
               datasetId   = local.cloud_run_logs
@@ -4595,7 +4841,6 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -4669,7 +4914,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             disableFixedLeftColumns      = false
             eventLinkColumnId            = null
             fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
+            hasCalculatedColumnWidths    = true
             maxColumnWidth               = 600
             maxMeasuredColumnHeaderWidth = {}
             maxMeasuredColumnWidth       = {}
@@ -4695,7 +4940,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             tableHeight                = 0
             tableView                  = "TABULAR"
           }
-          index = 14
+          index = 15
           inputList = [
             {
               datasetId   = local.cloud_run_logs
@@ -4803,7 +5048,6 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
