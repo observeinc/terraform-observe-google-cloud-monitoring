@@ -1,6 +1,10 @@
+locals {
+  load_test_region = "us-east1"  
+}
+
 resource "google_cloud_run_v2_job" "loadtest" {
   name         = "loadtest"
-  location     = var.region
+  location     = local.load_test_region
   launch_stage = "BETA"
 
   template {
@@ -32,7 +36,7 @@ resource "google_service_account" "scheduler_sa" {
 
 resource "google_cloud_run_v2_job_iam_member" "invoker" {
   project  = var.project_id
-  location = var.region
+  location = local.load_test_region
   name     = google_cloud_run_v2_job.loadtest.name
   role     = "roles/run.invoker"
   member   = "serviceAccount:${google_service_account.scheduler_sa.email}"
@@ -50,7 +54,7 @@ resource "google_cloud_scheduler_job" "trigger_loadtest" {
 
   http_target {
     http_method = "POST"
-    uri         = "https://${var.region}-run.googleapis.com/apis/run.googleapis.com/v1/namespaces/${data.google_project.project.number}/jobs/${google_cloud_run_v2_job.loadtest.name}:run"
+    uri         = "https://${local.load_test_region}-run.googleapis.com/apis/run.googleapis.com/v1/namespaces/${data.google_project.project.number}/jobs/${google_cloud_run_v2_job.loadtest.name}:run"
 
     oauth_token {
       service_account_email = google_service_account.scheduler_sa.email
