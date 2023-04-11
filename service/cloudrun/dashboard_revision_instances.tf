@@ -9,19 +9,19 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-tfksyzce"
+              id       = "card-cru9f4ks"
               title    = "Dashboard Content"
             }
             items = [
               {
                 card = {
                   cardType    = "parameter"
-                  id          = "card-ti4j3i8y"
+                  id          = "card-u7nm6wii"
                   parameterId = "revision"
                 }
                 layout = {
                   h           = 4
-                  i           = "card-ti4j3i8y"
+                  i           = "card-u7nm6wii"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -41,19 +41,19 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-n00r19h6"
-              title    = "Panels"
+              id       = "card-q3xnca3m"
+              title    = "General"
             }
             items = [
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-d7qh05j2"
+                  id       = "card-6jwjx68k"
                   stageId  = "stage-2w0h5by8"
                 }
                 layout = {
                   h           = 8
-                  i           = "card-d7qh05j2"
+                  i           = "card-6jwjx68k"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -66,12 +66,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-td01n36q"
+                  id       = "card-pqos5vv6"
                   stageId  = "stage-uzxt2gjg"
                 }
                 layout = {
                   h           = 16
-                  i           = "card-td01n36q"
+                  i           = "card-pqos5vv6"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -84,12 +84,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-z45oenzt"
+                  id       = "card-xwx9uxbg"
                   stageId  = "stage-stztoqtz"
                 }
                 layout = {
                   h           = 16
-                  i           = "card-z45oenzt"
+                  i           = "card-xwx9uxbg"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -102,12 +102,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-p9qhst5y"
+                  id       = "card-2t3373ox"
                   stageId  = "stage-s6hd9w9r"
                 }
                 layout = {
                   h           = 8
-                  i           = "card-p9qhst5y"
+                  i           = "card-2t3373ox"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -120,12 +120,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-zk1ogmh8"
+                  id       = "card-wc3kqkyu"
                   stageId  = "stage-owvgp5ik"
                 }
                 layout = {
                   h           = 8
-                  i           = "card-zk1ogmh8"
+                  i           = "card-wc3kqkyu"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -138,12 +138,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-b8fp56gz"
+                  id       = "card-mays8afi"
                   stageId  = "stage-7kiu4s55"
                 }
                 layout = {
                   h           = 8
-                  i           = "card-b8fp56gz"
+                  i           = "card-mays8afi"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -156,12 +156,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-gpmjlh31"
+                  id       = "card-lmdio52d"
                   stageId  = "stage-6q1j06k5"
                 }
                 layout = {
                   h           = 10
-                  i           = "card-gpmjlh31"
+                  i           = "card-lmdio52d"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -174,12 +174,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-wljlx13x"
+                  id       = "card-faluz2me"
                   stageId  = "stage-7sze4czq"
                 }
                 layout = {
                   h           = 20
-                  i           = "card-wljlx13x"
+                  i           = "card-faluz2me"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -192,12 +192,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-m960lwet"
+                  id       = "card-d59a5viz"
                   stageId  = "stage-ufgma5j1"
                 }
                 layout = {
                   h           = 20
-                  i           = "card-m960lwet"
+                  i           = "card-d59a5viz"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -210,12 +210,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-s7cmnz5k"
+                  id       = "card-3vl8ztza"
                   stageId  = "stage-9ie7yoz2"
                 }
                 layout = {
                   h           = 10
-                  i           = "card-s7cmnz5k"
+                  i           = "card-3vl8ztza"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -228,30 +228,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-0w7k2zj4"
-                  stageId  = "stage-20h4toz2"
-                }
-                layout = {
-                  h           = 16
-                  i           = "card-0w7k2zj4"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 4
-                  x           = 8
-                  y           = 36
-                }
-              },
-              {
-                card = {
-                  cardType = "stage"
-                  id       = "card-4rfnzdkk"
+                  id       = "card-nfurvci9"
                   stageId  = "stage-9eiha1ve"
                 }
                 layout = {
                   h           = 16
-                  i           = "card-4rfnzdkk"
+                  i           = "card-nfurvci9"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -264,12 +246,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-30dsufqd"
+                  id       = "card-snujs30z"
                   stageId  = "stage-7ckxhvg3"
                 }
                 layout = {
                   h           = 16
-                  i           = "card-30dsufqd"
+                  i           = "card-snujs30z"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -282,12 +264,30 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-sajhxz9l"
+                  id       = "card-0axbqg66"
+                  stageId  = "stage-h556rs4j"
+                }
+                layout = {
+                  h           = 16
+                  i           = "card-0axbqg66"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 4
+                  x           = 8
+                  y           = 36
+                }
+              },
+              {
+                card = {
+                  cardType = "stage"
+                  id       = "card-thdcnsgc"
                   stageId  = "stage-dlpgnpgk"
                 }
                 layout = {
                   h           = 18
-                  i           = "card-sajhxz9l"
+                  i           = "card-thdcnsgc"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -300,12 +300,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-8680pkhe"
+                  id       = "card-7hpnuowh"
                   stageId  = "stage-h2x6mnph"
                 }
                 layout = {
                   h           = 18
-                  i           = "card-8680pkhe"
+                  i           = "card-7hpnuowh"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -316,7 +316,48 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                 }
               },
             ]
-            lastModified = 1681223350046
+            lastModified = 1681233175408
+          },
+          {
+            card = {
+              cardType = "section"
+              closed   = false
+              id       = "card-vn37dyxo"
+              title    = "Information"
+            }
+            items = [
+              {
+                card = {
+                  cardType = "text"
+                  id       = "card-8weo4i10"
+                  text     = <<-EOT
+                                        ## GCP/Cloud Run Revision
+                                        Each deployment to a service creates a revision. A revision consists of a specific container image, along with environment settings such as environment variables, memory limits, or concurrency value.
+                                        
+                                        Revisions are immutable: once a revision has been created, it cannot be modified. For example, when you deploy a container image to a new Cloud Run service, the first revision is created. If you then deploy a different container image to that same service, a second revision is created. If you subsequently set an environment variable, a third revision is created, and so on.
+                                        
+                                        Requests are automatically routed as soon as possible to the latest healthy service revision.
+                                        
+                                        For information on managing Cloud Run Revisions, visit https://cloud.google.com/run/docs/managing/revisions
+                                        
+                                        For information related to APIs, Terraform, or client libraries, visit https://cloud.google.com/run/docs/apis
+                                    EOT
+                  title    = "Untitled Text"
+                }
+                layout = {
+                  h           = 15
+                  i           = "card-8weo4i10"
+                  isDraggable = true
+                  isResizable = true
+                  moved       = false
+                  static      = false
+                  w           = 5
+                  x           = 0
+                  y           = 0
+                }
+              },
+            ]
+            lastModified = 1681238377501
           },
         ]
       }
@@ -335,17 +376,17 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             viewType = "resource-input"
           },
         ]
-        selectedStageId = "stage-7kiu4s55"
+        selectedStageId = "stage-h556rs4j"
         timeRange = {
-          display               = "Past 4 hours"
+          display               = "Past 7 days"
           endTime               = null
-          millisFromCurrentTime = 14400000
-          originalDisplay       = "Past 4 hours"
+          millisFromCurrentTime = 604800000
+          originalDisplay       = "Past 7 days"
           startTime             = null
           timeRangeInfo = {
             key        = "PRESETS"
             name       = "Presets"
-            presetType = "PAST_4_HOURS"
+            presetType = "PAST_7_DAYS"
           }
         }
       }
@@ -580,7 +621,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               serviceUid           = false
             }
             columnWidths                 = {}
-            containerWidth               = 1491
+            containerWidth               = 1512
             contextMenuXCoord            = null
             contextMenuYCoord            = null
             defaultColumnWidth           = 70
@@ -752,7 +793,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             disableFixedLeftColumns      = false
             eventLinkColumnId            = null
             fetchPageSize                = 100
-            hasCalculatedColumnWidths    = true
+            hasCalculatedColumnWidths    = false
             maxColumnWidth               = 600
             maxMeasuredColumnHeaderWidth = {}
             maxMeasuredColumnWidth       = {}
@@ -766,18 +807,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
@@ -807,7 +842,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               type       = "Vis"
               vis = {
                 config = {
-                  color           = "Default"
+                  color           = "Green"
                   colorConfigType = "Color"
                   fieldConfig = {
                     unit    = ""
@@ -818,8 +853,10 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                 }
                 source = {
                   table = {
-                    field       = "status"
-                    groupFields = []
+                    field = "status"
+                    groupFields = [
+                      "statusMessage",
+                    ]
                     statsBy = {
                       fn = "count"
                     }
@@ -832,6 +869,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                     type          = "singlefield"
                   }
                   topK = {
+                    k     = 100
                     order = "Top"
                     type  = "Auto"
                   }
@@ -845,6 +883,9 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             initialRollupFilter = {
               mode = "Last"
             }
+            resultKinds = [
+              "ResultKindSchema",
+            ]
             rollup      = {}
             wantBuckets = 100
           }
@@ -875,6 +916,31 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
               type              = "InputStep"
             },
             {
+              customSummary = ""
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-4qgharbd"
+              index    = 1
+              isPinned = false
+              opal = [
+                "make_col",
+                "  statusMessage: case(statusMessage!=\"-\", split_part(statusMessage, \". \", 1), true, \"\")",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+            {
               action = {
                 params = {
                   expressionList = {
@@ -883,7 +949,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                         columnId = "status"
                         dataVis = {
                           config = {
-                            color           = "Default"
+                            color           = "Green"
                             colorConfigType = "Color"
                             fieldConfig = {
                               unit    = ""
@@ -894,8 +960,10 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                           }
                           source = {
                             table = {
-                              field       = "status"
-                              groupFields = []
+                              field = "status"
+                              groupFields = [
+                                "statusMessage",
+                              ]
                               statsBy = {
                                 fn = "count"
                               }
@@ -916,8 +984,10 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                           type = "singlevalue"
                         }
                         filterActions = []
-                        groupBy       = []
-                        id            = "datasetQueryExpression-808njigy"
+                        groupBy = [
+                          "statusMessage",
+                        ]
+                        id            = "datasetQueryExpression-o6oh6lbq"
                         lookupActions = []
                         primaryKey = [
                           "revisionAssetKey",
@@ -929,12 +999,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                     ]
                     multiExpression = {
                       filterActions = []
-                      id            = "multiExpression-zzslds2p"
+                      id            = "multiExpression-o2jllf05"
                       lookupActions = []
                       type          = "multiExpression"
                     }
                     selectedExpressionIds = [
-                      "datasetQueryExpression-808njigy",
+                      "datasetQueryExpression-o6oh6lbq",
                     ]
                   }
                 }
@@ -955,8 +1025,8 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                   "SUMMARY",
                 ]
               }
-              id                = "step-1bx0sgyj"
-              index             = 1
+              id                = "step-ktafr5q8"
+              index             = 2
               isPinned          = false
               opal              = []
               queryPresentation = {}
@@ -976,7 +1046,10 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = <<-EOT
+                    make_col
+                      statusMessage: case(statusMessage!="-", split_part(statusMessage, ". ", 1), true, "")
+                EOT
       },
       {
         id = "stage-s6hd9w9r"
@@ -1324,18 +1397,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
@@ -3484,12 +3551,18 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
             }
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
@@ -3854,7 +3927,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                 EOT
       },
       {
-        id = "stage-20h4toz2"
+        id = "stage-h556rs4j"
         input = [
           {
             datasetId   = local.cloud_run_metrics
@@ -3868,7 +3941,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             datasetPath = null
             inputName   = "filter_Revision Instance"
             inputRole   = "Data"
-            stageId     = "stage-usqocagm"
+            stageId     = "stage-uzxt2gjg"
           },
         ]
         layout = {
@@ -3878,9 +3951,9 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "revisionName"
-              "1" = "valid_from"
-              "2" = "valid_to"
+              "0" = "valid_from"
+              "1" = "valid_to"
+              "2" = "revisionAssetKey"
             }
             columnVisibility             = {}
             columnWidths                 = {}
@@ -3922,52 +3995,42 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
           label     = "Request Latencies"
           managers = [
             {
-              id         = "hmjmpg54"
+              id         = "0scww01s"
               isDisabled = false
               type       = "Vis"
               vis = {
                 config = {
-                  interpolate = true
+                  color         = "Default"
+                  hideGridLines = false
                   legend = {
-                    placement = "right"
+                    placement = "bottom"
                     type      = "list"
                     visible   = false
                   }
-                  type = "stacked_area"
+                  type = "xy"
                   xConfig = {
                     visible = true
                   }
                   yConfig = {
+                    unit    = "milliseconds"
                     visible = true
                   }
                 }
                 source = {
                   table = {
-                    groupFields = [
-                      [
-                        "revisionName",
-                      ],
-                    ]
-                    statsBy = {
-                      fn = "avg"
-                    }
-                    timechart = {
-                      fn         = "avg"
-                      resolution = "AUTO"
-                    }
+                    groupFields   = []
                     transformType = "none"
                     type          = "xy"
                     x             = "valid_from"
                     y             = "A_request_latencies_sum"
                   }
                   topK = {
-                    k     = 50
                     order = "Top"
                     type  = "Auto"
                   }
                   type = "table"
                 }
-                type = "stacked_area"
+                type = "timeseries"
               }
             },
           ]
@@ -4000,7 +4063,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                   "SUMMARY",
                 ]
               }
-              id                = "step-0r24vzj7"
+              id                = "step-76i1q8yv"
               index             = 0
               isPinned          = false
               opal              = []
@@ -4020,34 +4083,25 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                         autoFrame = true
                         dataVis = {
                           config = {
-                            interpolate = true
+                            color         = "Default"
+                            hideGridLines = false
                             legend = {
-                              placement = "right"
+                              placement = "bottom"
                               type      = "list"
                               visible   = false
                             }
-                            type = "stacked_area"
+                            type = "xy"
                             xConfig = {
                               visible = true
                             }
                             yConfig = {
+                              unit    = "milliseconds"
                               visible = true
                             }
                           }
                           source = {
                             table = {
-                              groupFields = [
-                                [
-                                  "revisionName",
-                                ],
-                              ]
-                              statsBy = {
-                                fn = "avg"
-                              }
-                              timechart = {
-                                fn         = "avg"
-                                resolution = "AUTO"
-                              }
+                              groupFields   = []
                               transformType = "none"
                               type          = "xy"
                               x             = "valid_from"
@@ -4059,7 +4113,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                             }
                             type = "table"
                           }
-                          type = "stacked_area"
+                          type = "timeseries"
                         }
                         disableAggregate = false
                         filterActions = [
@@ -4068,18 +4122,18 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                               foreignKey = {
                                 __typename = "ForeignKey"
                                 dstFields = [
-                                  "revisionName",
+                                  "revisionAssetKey",
                                 ]
                                 label = "Revision Instance"
                                 srcFields = [
-                                  "revisionName",
+                                  "revisionAssetKey",
                                 ]
                                 targetDataset    = local.cloud_run_revision_instances
                                 targetStageLabel = null
                                 type             = "foreign"
                               }
                               joinInput = {
-                                stageId = "stage-usqocagm"
+                                stageId = "stage-uzxt2gjg"
                               }
                             }
                             summary = null
@@ -4088,14 +4142,10 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                         ]
                         frameDuration = {
                           num  = 120
-                          unit = "minute"
+                          unit = "second"
                         }
-                        groupBy = [
-                          [
-                            "revisionName",
-                          ],
-                        ]
-                        id = "metricExpression-uzo9dzgn"
+                        groupBy = []
+                        id      = "metricExpression-raxbbw33"
                         inputSource = {
                           datasetId = local.cloud_run_metrics
                         }
@@ -4111,17 +4161,22 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                             tags = [
                               {
                                 __typename = "MetricTag"
+                                column     = "revisionAssetKey"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "revisionName"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
                                 column     = "metric_kind"
                                 path       = ""
                               },
                               {
                                 __typename = "MetricTag"
                                 column     = "project_id"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "revisionName"
                                 path       = ""
                               },
                               {
@@ -4175,18 +4230,18 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                         metricLink = {
                           __typename = "ForeignKey"
                           dstFields = [
-                            "revisionName",
+                            "revisionAssetKey",
                           ]
                           label = "Revision Instance"
                           srcFields = [
-                            "revisionName",
+                            "revisionAssetKey",
                           ]
                           targetDataset    = local.cloud_run_revision_instances
                           targetStageLabel = null
                           type             = "foreign"
                         }
                         metricLinkInputSource = {
-                          stageId = "stage-usqocagm"
+                          stageId = "stage-uzxt2gjg"
                         }
                         showAlignment  = true
                         showResolution = true
@@ -4197,12 +4252,12 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                     ]
                     multiExpression = {
                       filterActions = []
-                      id            = "multiExpression-iy6fpdus"
+                      id            = "multiExpression-2nezn6z5"
                       lookupActions = []
                       type          = "multiExpression"
                     }
                     selectedExpressionIds = [
-                      "metricExpression-uzo9dzgn",
+                      "metricExpression-raxbbw33",
                     ]
                   }
                 }
@@ -4223,37 +4278,13 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-1725556u"
+              id       = "step-b94ff54h"
               index    = 1
               isPinned = false
               opal = [
-                "exists revisionName = @\"filter_Revision Instance\".revisionName",
+                "exists revisionAssetKey = @\"filter_Revision Instance\".revisionAssetKey",
                 "align A_request_latencies_sum:avg(m(\"request_latencies\"))",
-                "aggregate A_request_latencies_sum:sum(A_request_latencies_sum), group_by(revisionName)",
-              ]
-              queryPresentation = {}
-              type              = "unknown"
-            },
-            {
-              customSummary = ""
-              datasetQueryId = {
-                ignoreCompress = false
-                queryId        = null
-                resultKinds = [
-                  "ResultKindSchema",
-                  "ResultKindData",
-                  "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
-              }
-              id       = "step-vo387coi"
-              index    = 2
-              isPinned = false
-              opal = [
-                "",
+                "aggregate A_request_latencies_sum:sum(A_request_latencies_sum), group_by()",
               ]
               queryPresentation = {}
               type              = "unknown"
@@ -4273,9 +4304,9 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
         }
         params   = null
         pipeline = <<-EOT
-                    exists revisionName = @"filter_Revision Instance".revisionName
+                    exists revisionAssetKey = @"filter_Revision Instance".revisionAssetKey
                     align A_request_latencies_sum:avg(m("request_latencies"))
-                    aggregate A_request_latencies_sum:sum(A_request_latencies_sum), group_by(revisionName)
+                    aggregate A_request_latencies_sum:sum(A_request_latencies_sum), group_by()
                 EOT
       },
       {
@@ -4695,7 +4726,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             columnWidths = {
               latency = 349
             }
-            containerWidth               = 3007
+            containerWidth               = 3035
             contextMenuXCoord            = null
             contextMenuYCoord            = null
             defaultColumnWidth           = 70
@@ -4907,7 +4938,7 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             columnWidths = {
               textPayload = 1721
             }
-            containerWidth               = 3007
+            containerWidth               = 3035
             contextMenuXCoord            = null
             contextMenuYCoord            = null
             defaultColumnWidth           = 70
@@ -4928,12 +4959,18 @@ resource "observe_dashboard" "cloud_run_revision_instance" {
             scrollToColumn               = null
             scrollToRow                  = 0
             selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
+              anchoredCellSelection   = null
+              anchoredColumnSelection = null
+              anchoredRowSelection    = null
+              cells                   = {}
+              columnSelectSequence    = []
+              columns                 = {}
+              highlightState          = {}
+              lastCellSelection       = null
+              lastColumnSelection     = null
+              lastRowSelection        = null
+              rows                    = {}
+              selectionType           = "table"
             }
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}

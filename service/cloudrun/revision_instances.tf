@@ -62,7 +62,7 @@ resource "observe_dataset" "cloud_run_revision_instances" {
           statusLastTransitionTimes:pivot_array(array(conditions), "type", "lastTransitionTime")
         
         make_col
-          status: make_object(
+          condition: make_object(
             ready: make_object(
               status: string(statusConditions["Ready"]),
               message: string(statusMessages["Ready"])
@@ -77,24 +77,26 @@ resource "observe_dataset" "cloud_run_revision_instances" {
             )
           )
         
-        make_col retired:status.active.status="False" and status.active.message="Revision retired."
+        make_col retired:condition.active.status="False" and condition.active.message="Revision retired."
         make_col
           status:case(
-            status.ready.status="True" and status.active.status="True" and status.containerHealthy.status="True", "Healthy",
-            retired or (status.active.status="Unknown" and status.containerHealthy.status="True"), "Inactive",
-            status.ready.status="False" or status.containerHealthy.status="False", "Unhealthy")
+            condition.ready.status="True" and condition.active.status="True" and condition.containerHealthy.status="True", "Healthy",
+            retired or (condition.active.status="Unknown" and condition.containerHealthy.status="True"), "Inactive",
+            condition.ready.status="False" or condition.containerHealthy.status="False", "Unhealthy")
         make_col
           health: case(
             status="Healthy", "🟩",
             status="Inactive", "⬜️",
             status="Unhealthy", "🟥"
           )
+        make_col statusMessage: case(status="Healthy", "-", status="Inactive", "Revision retired or inactive", status="Unhealthy", condition.ready.message)
         make_resource options(expiry:${var.max_expiry}),
           health,
           status,
+          statusMessage,
           // Links
           revisionName,
-           serviceName,
+          serviceName,
           database_id,
           serviceAssetKey,
           // General
