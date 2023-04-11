@@ -33,6 +33,14 @@ function deploy {
   export REGION=${REGION:=us-central1} # default us-central1 region if not defined
   export PROJECTNUM=$(gcloud projects describe ${PROJECT_ID} --format='value(projectNumber)')
 
+  echo "Enabling required service APIs..."
+  gcloud services enable \
+    firebase.googleapis.com \
+    cloudresourcemanager.googleapis.com \
+    cloudbuild.googleapis.com \
+    iam.googleapis.com \
+    --project=$PROJECT_ID
+
   echo "Running setup.sh against ${PROJECT_ID} in ${REGION}"
 
   echo "Setup Firebase Builder"
@@ -44,9 +52,8 @@ function deploy {
   echo "Build load test image"
   gcloud builds submit --config provisioning/loadtest.cloudbuild.yaml
 
-
   echo "Configuring Terraform"
-  export TFSTATE_BUCKET=terraform-${PROJECT_ID}
+  export TFSTATE_BUCKET=terraform-${PROJECT_ID}-avocano
   gsutil mb gs://$TFSTATE_BUCKET || true
 
   echo "Granting Cloud Build permissions"
@@ -73,8 +80,15 @@ function destroy {
   export REGION=${REGION:=us-central1} # default us-central1 region if not defined
   export PROJECTNUM=$(gcloud projects describe ${PROJECT_ID} --format='value(projectNumber)')
 
+  echo "Terminating any running loadtest jobs from us-east1"
+  gcloud beta run jobs executions list \
+    --region us-east1 \
+    --job loadtest \
+    --format json | jq -r '.[] | select(.status.completionTime | . == null) | objects | .metadata.name' |
+    xargs -I {} gcloud beta run jobs executions delete --region $REGION "{}" --quiet
+
   echo "Configuring Terraform"
-  export TFSTATE_BUCKET=terraform-${PROJECT_ID}
+  export TFSTATE_BUCKET=terraform-${PROJECT_ID}-avocano
   gsutil mb gs://$TFSTATE_BUCKET || true
 
   echo "Granting Cloud Build permissions"
