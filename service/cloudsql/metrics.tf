@@ -245,11 +245,11 @@ resource "observe_link" "cloud_sql_metrics" {
     }
 
 
-    "Cloud SQL Metrics Wide" = {
-      target = observe_dataset.cloud_sql_instance.oid
-      fields = ["database_id"]
-      source = observe_dataset.cloud_sql_metrics_wide[0].oid
-    }
+    # "Cloud SQL Metrics Wide" = {
+    #   target = observe_dataset.cloud_sql_instance.oid
+    #   fields = ["database_id"]
+    #   source = observe_dataset.cloud_sql_metrics_wide[0].oid
+    # }
   } : {}
 
   workspace = var.workspace.oid
