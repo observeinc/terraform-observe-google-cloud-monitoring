@@ -16,40 +16,40 @@ resource "observe_dataset" "cloud_sql_logs_error" {
 
 }
 
-resource "observe_link" "sql_error_logs" {
-  workspace = var.workspace.oid
-  source    = each.value.source
-  target    = each.value.target
-  fields    = each.value.fields
-  label     = each.key
+# resource "observe_link" "sql_error_logs" {
+#   workspace = var.workspace.oid
+#   source    = each.value.source
+#   target    = each.value.target
+#   fields    = each.value.fields
+#   label     = each.key
 
-  for_each = {
+#   for_each = {
 
-    "DatabaseErrors" = {
-      target = observe_dataset.cloud_sql_instance.oid
-      fields = ["database_id"]
-      source = observe_dataset.cloud_sql_logs_error.oid
-    }
-    ## If we want to create an error log for each platform 
-    # "PostGresDatabaseAccess" = {
-    #   target = observe_dataset.cloud_sql_instance.oid
-    #   fields = ["database_id"]
-    #   source = observe_dataset.postgres_error_logs.oid
-    # }
+#     "DatabaseErrors" = {
+#       target = observe_dataset.cloud_sql_instance.oid
+#       fields = ["database_id"]
+#       source = observe_dataset.cloud_sql_logs_error.oid
+#     }
+#     ## If we want to create an error log for each platform 
+#     # "PostGresDatabaseAccess" = {
+#     #   target = observe_dataset.cloud_sql_instance.oid
+#     #   fields = ["database_id"]
+#     #   source = observe_dataset.postgres_error_logs.oid
+#     # }
 
-    # "MySQLDatabaseError" = {
-    #   target = observe_dataset.cloud_sql_instance.oid
-    #   fields = ["database_id"]
-    #   source = observe_dataset.mysql_error_logs.oid
-    # }
+#     # "MySQLDatabaseError" = {
+#     #   target = observe_dataset.cloud_sql_instance.oid
+#     #   fields = ["database_id"]
+#     #   source = observe_dataset.mysql_error_logs.oid
+#     # }
 
-    # "SQLServerDatabaseError" = {
-    #   target = observe_dataset.cloud_sql_instance.oid
-    #   fields = ["database_id"]
-    #   source = observe_dataset.sqlserver_error_logs.oid
-    # }
-  }
-}
+#     # "SQLServerDatabaseError" = {
+#     #   target = observe_dataset.cloud_sql_instance.oid
+#     #   fields = ["database_id"]
+#     #   source = observe_dataset.sqlserver_error_logs.oid
+#     # }
+#   }
+# }
 
 ## If we want to create an error log for each platform 
 

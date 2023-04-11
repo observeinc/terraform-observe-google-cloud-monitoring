@@ -113,24 +113,24 @@ resource "observe_dataset" "mysql_data_access_logs" {
   }
 }
 
-resource "observe_link" "sql_access_logs" {
-  workspace = var.workspace.oid
-  source    = each.value.source
-  target    = each.value.target
-  fields    = each.value.fields
-  label     = each.key
+# resource "observe_link" "sql_access_logs" {
+#   workspace = var.workspace.oid
+#   source    = each.value.source
+#   target    = each.value.target
+#   fields    = each.value.fields
+#   label     = each.key
 
-  for_each = {
-    "PostGresDatabaseAccess" = {
-      target = observe_dataset.cloud_sql_instance.oid
-      fields = ["database_id"]
-      source = observe_dataset.postgres_data_access_logs.oid
-    }
+#   for_each = {
+#     "PostGresDatabaseAccess" = {
+#       target = observe_dataset.cloud_sql_instance.oid
+#       fields = ["database_id"]
+#       source = observe_dataset.postgres_data_access_logs.oid
+#     }
 
-    "MySQLDatabaseAccess" = {
-      target = observe_dataset.cloud_sql_instance.oid
-      fields = ["database_id"]
-      source = observe_dataset.mysql_data_access_logs.oid
-    }
-  }
-}
+#     "MySQLDatabaseAccess" = {
+#       target = observe_dataset.cloud_sql_instance.oid
+#       fields = ["database_id"]
+#       source = observe_dataset.mysql_data_access_logs.oid
+#     }
+#   }
+# }
