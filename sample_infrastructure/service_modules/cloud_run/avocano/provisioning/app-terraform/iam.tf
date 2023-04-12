@@ -3,9 +3,8 @@
 
 locals {
   # Helpers for the clunky formatting of these values
-  automation_SA = "serviceAccount:${google_service_account.automation.email}"
-  server_SA     = "serviceAccount:${google_service_account.server.email}"
-  client_SA     = "serviceAccount:${google_service_account.client.email}"
+  automation_sa = "serviceAccount:${google_service_account.automation.email}"
+  server_sa     = "serviceAccount:${google_service_account.server.email}"
 }
 
 resource "google_service_account" "server" {
@@ -30,7 +29,7 @@ resource "google_service_account" "automation" {
 resource "google_project_iam_binding" "server_permissions" {
   project    = var.project_id
   role       = "roles/cloudsql.client"
-  members    = [local.server_SA, local.automation_SA]
+  members    = [local.server_sa, local.automation_sa]
   depends_on = [google_service_account.server, google_service_account.automation]
 }
 
@@ -39,7 +38,7 @@ resource "google_project_iam_binding" "server_permissions" {
 resource "google_project_iam_binding" "server_introspection" {
   project    = var.project_id
   role       = "roles/run.viewer"
-  members    = [local.server_SA]
+  members    = [local.server_sa]
   depends_on = [google_service_account.server]
 }
 
@@ -47,6 +46,6 @@ resource "google_project_iam_binding" "server_introspection" {
 resource "google_project_iam_binding" "server_traceagent" {
   project    = var.project_id
   role       = "roles/cloudtrace.agent"
-  members    = [local.server_SA]
+  members    = [local.server_sa]
   depends_on = [google_service_account.server]
 }

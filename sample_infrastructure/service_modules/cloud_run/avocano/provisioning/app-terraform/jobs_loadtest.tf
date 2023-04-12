@@ -1,5 +1,5 @@
 locals {
-  load_test_region = "us-east1"  
+  load_test_region = "us-east1"
 }
 
 resource "google_cloud_run_v2_job" "loadtest" {

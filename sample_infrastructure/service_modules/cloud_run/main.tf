@@ -56,10 +56,10 @@ resource "google_cloud_run_service" "fake_service_client" {
 resource "null_resource" "execute_loadtest" {
   provisioner "local-exec" {
     interpreter = ["bash", "-exc"]
-    command     = "ab -n 5000 -c 10 ${google_cloud_run_service.fake_service_client.status.0.url}/"
+    command     = "ab -n 5000 -c 10 ${google_cloud_run_service.fake_service_client.status[0].url}/"
   }
   triggers = {
-    always_run = var.always_run_load_tests ? "${timestamp()}" : false
+    always_run = var.always_run_load_tests ? timestamp() : false
   }
 
   depends_on = [
