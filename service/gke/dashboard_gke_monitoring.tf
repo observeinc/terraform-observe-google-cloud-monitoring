@@ -1,13 +1,7 @@
-locals {
-  workspace              = var.workspace.oid
-  cluster_dashboard_name = format(var.name_format, "GKE Monitoring")
-  gke_cluster            = resource.observe_dataset.gke_clusters.id
-  compute_instance       = var.google.compute_instance.id
-  compute_metrics        = var.google.compute_metrics.id
-}
-# terraform import observe_dashboard.gke_monitoring 41294555
+# terraform import observe_dashboard.gke_monitoring 42157162
 resource "observe_dashboard" "gke_monitoring" {
-  description = "Dashboard for monitoring Google Kubernetes Engine resources"
+  count       = local.gke_monitoring_dashboard_enable
+  description = local.gke_monitoring_dashboard_description
   layout = jsonencode(
     {
       autoPack = true
@@ -17,7 +11,7 @@ resource "observe_dashboard" "gke_monitoring" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-lag2487b"
+              id       = "card-gdukonjz"
               title    = "Dashboard Content"
             }
             items        = []
@@ -27,19 +21,19 @@ resource "observe_dashboard" "gke_monitoring" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "section-wfrgx7e4"
+              id       = "card-vlch8l8y"
               title    = "Overview"
             }
             items = [
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-1pzj121t"
+                  id       = "card-2kinr4a4"
                   stageId  = "stage-th4n9kww"
                 }
                 layout = {
                   h           = 12
-                  i           = "card-1pzj121t"
+                  i           = "card-2kinr4a4"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -52,12 +46,12 @@ resource "observe_dashboard" "gke_monitoring" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-h5tdzlki"
+                  id       = "card-fyumgjml"
                   stageId  = "stage-nk04p7pj"
                 }
                 layout = {
                   h           = 12
-                  i           = "card-h5tdzlki"
+                  i           = "card-fyumgjml"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -70,12 +64,12 @@ resource "observe_dashboard" "gke_monitoring" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-ehnrcj43"
+                  id       = "card-0em4rvc8"
                   stageId  = "stage-uxxml2cm"
                 }
                 layout = {
                   h           = 12
-                  i           = "card-ehnrcj43"
+                  i           = "card-0em4rvc8"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -88,12 +82,12 @@ resource "observe_dashboard" "gke_monitoring" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-ec9c6uex"
+                  id       = "card-xb1qi1mt"
                   stageId  = "stage-f3mqbv1q"
                 }
                 layout = {
                   h           = 12
-                  i           = "card-ec9c6uex"
+                  i           = "card-xb1qi1mt"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -106,12 +100,12 @@ resource "observe_dashboard" "gke_monitoring" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-3omhm2x7"
+                  id       = "card-rdbuav29"
                   stageId  = "stage-0b7bgpw9"
                 }
                 layout = {
                   h           = 12
-                  i           = "card-3omhm2x7"
+                  i           = "card-rdbuav29"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -124,12 +118,12 @@ resource "observe_dashboard" "gke_monitoring" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-kxuveagm"
+                  id       = "card-p5smpx6s"
                   stageId  = "stage-krcupcxj"
                 }
                 layout = {
                   h           = 12
-                  i           = "card-kxuveagm"
+                  i           = "card-p5smpx6s"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -142,12 +136,12 @@ resource "observe_dashboard" "gke_monitoring" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-3mpba3us"
+                  id       = "card-xxaqyg16"
                   stageId  = "stage-y3ptdg09"
                 }
                 layout = {
                   h           = 18
-                  i           = "card-3mpba3us"
+                  i           = "card-xxaqyg16"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -160,12 +154,12 @@ resource "observe_dashboard" "gke_monitoring" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-fonp6pnc"
+                  id       = "card-2xpcdnjc"
                   stageId  = "stage-k7p4bw80"
                 }
                 layout = {
                   h           = 13
-                  i           = "card-fonp6pnc"
+                  i           = "card-2xpcdnjc"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -178,12 +172,12 @@ resource "observe_dashboard" "gke_monitoring" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-fmx69shc"
+                  id       = "card-b8tc35ci"
                   stageId  = "stage-70ozhtnp"
                 }
                 layout = {
                   h           = 13
-                  i           = "card-fmx69shc"
+                  i           = "card-b8tc35ci"
                   isDraggable = true
                   isResizable = true
                   moved       = false
@@ -194,55 +188,6 @@ resource "observe_dashboard" "gke_monitoring" {
                 }
               },
             ]
-          },
-          {
-            card = {
-              cardType = "section"
-              closed   = false
-              id       = "section-bassziob"
-              title    = "Notes"
-            }
-            items = [
-              {
-                card = {
-                  cardType = "text"
-                  id       = "card-ccny6rf5"
-                  text     = "### I need some notes here"
-                  title    = "Untitled Text"
-                }
-                layout = {
-                  h           = 14
-                  i           = "card-ccny6rf5"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 6
-                  x           = 0
-                  y           = 0
-                }
-              },
-              {
-                card = {
-                  cardType = "text"
-                  id       = "card-iusc3rif"
-                  text     = "### More Illuminating Commentary Here"
-                  title    = "Untitled Text"
-                }
-                layout = {
-                  h           = 14
-                  i           = "card-iusc3rif"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 6
-                  x           = 6
-                  y           = 0
-                }
-              },
-            ]
-            lastModified = 1666988242410
           },
         ]
       }
@@ -267,7 +212,7 @@ resource "observe_dashboard" "gke_monitoring" {
             viewType = "input"
           },
         ]
-        selectedStageId = "stage-uxxml2cm"
+        selectedStageId = "stage-y3ptdg09"
         timeRange = {
           display               = "Past 4 hours"
           endTime               = null
@@ -283,7 +228,7 @@ resource "observe_dashboard" "gke_monitoring" {
       }
     }
   )
-  name = local.cluster_dashboard_name
+  name = local.gke_monitoring_dashboard_name
   parameters = jsonencode(
     [
       {
@@ -317,51 +262,7 @@ resource "observe_dashboard" "gke_monitoring" {
         ]
         layout = {
           appearance = "HIDDEN"
-          dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
-            columnOrderOverride = {
-              "0" = "cluster_name"
-              "1" = "gkeClusterAssetKey"
-              "2" = "Valid From"
-              "3" = "Valid To"
-            }
-            columnVisibility            = {}
-            columnWidths                = {}
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
-            selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
-            }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
-          }
-          index = 0
+          index      = 0
           inputList = [
             {
               datasetId   = local.gke_cluster
@@ -390,7 +291,6 @@ resource "observe_dashboard" "gke_monitoring" {
             {
               customName    = "Input"
               customSummary = "gcp-cost-test/GKE Clusters"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -416,7 +316,6 @@ resource "observe_dashboard" "gke_monitoring" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -463,25 +362,26 @@ resource "observe_dashboard" "gke_monitoring" {
               initialClusterVersion    = 141
               initialNodeCount         = 182
             }
-            containerWidth              = 2156
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            containerWidth               = 2156
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -490,7 +390,6 @@ resource "observe_dashboard" "gke_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -539,9 +438,14 @@ resource "observe_dashboard" "gke_monitoring" {
                       fn         = "count"
                       resolution = "SINGLE"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "keyvalue"
-                    valueField    = "region"
+                    valueField    = "A_region_count"
+                  }
+                  topK = {
+                    k     = 100
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -561,33 +465,21 @@ resource "observe_dashboard" "gke_monitoring" {
               "ResultKindSchema",
             ]
             rollup = {}
+            sort = [
+              {
+                ascending  = false
+                columnName = "A_region_count"
+              },
+            ]
+            wantBuckets = 1
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  assetInventoryName = "count"
-                  cluster_name       = "count"
-                  region             = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-dx1iwkfu"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
               customSummary = "gkeCluster"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -608,10 +500,101 @@ resource "observe_dashboard" "gke_monitoring" {
               queryPresentation = {}
               type              = "InputStep"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "region"
+                        dataVis = {
+                          config = {
+                            innerRadius = 0.6
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type = "arc"
+                          }
+                          source = {
+                            table = {
+                              keyField = [
+                                "region",
+                              ]
+                              statsBy = {
+                                fn = "count"
+                              }
+                              timechart = {
+                                fn         = "count"
+                                resolution = "SINGLE"
+                              }
+                              transformType = "none"
+                              type          = "keyvalue"
+                              valueField    = "A_region_count"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "circular"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "region",
+                        ]
+                        id              = "datasetQueryExpression-1gbbqj36"
+                        lookupActions   = []
+                        summarizeVerb   = "statsby"
+                        summaryFunction = "count"
+                        summaryMode     = "single"
+                        type            = "datasetQueryExpression"
+                        valueColumnId   = "A_region_count"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-yzmqpoi7"
+                      lookupActions = []
+                      type          = "multiExpression"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-1gbbqj36",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-l96sj22u"
+              index    = 1
+              isPinned = false
+              opal = [
+                "statsby A_region_count:count(region), group_by(region)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -623,7 +606,7 @@ resource "observe_dashboard" "gke_monitoring" {
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = "statsby A_region_count:count(region), group_by(region)"
       },
       {
         id = "stage-krcupcxj"
@@ -658,24 +641,26 @@ resource "observe_dashboard" "gke_monitoring" {
               initialClusterVersion    = 141
               initialNodeCount         = 182
             }
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            containerWidth               = null
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -684,7 +669,6 @@ resource "observe_dashboard" "gke_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -733,9 +717,14 @@ resource "observe_dashboard" "gke_monitoring" {
                       fn         = "count"
                       resolution = "SINGLE"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "keyvalue"
-                    valueField    = "project_id"
+                    valueField    = "A_project_id_count"
+                  }
+                  topK = {
+                    k     = 100
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -755,6 +744,13 @@ resource "observe_dashboard" "gke_monitoring" {
               "ResultKindSchema",
             ]
             rollup = {}
+            sort = [
+              {
+                ascending  = false
+                columnName = "A_project_id_count"
+              },
+            ]
+            wantBuckets = 1
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -763,7 +759,6 @@ resource "observe_dashboard" "gke_monitoring" {
             {
               customName    = "Input"
               customSummary = "gkeCluster"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -784,10 +779,101 @@ resource "observe_dashboard" "gke_monitoring" {
               queryPresentation = {}
               type              = "InputStep"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "project_id"
+                        dataVis = {
+                          config = {
+                            innerRadius = 0.6
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type = "arc"
+                          }
+                          source = {
+                            table = {
+                              keyField = [
+                                "project_id",
+                              ]
+                              statsBy = {
+                                fn = "count"
+                              }
+                              timechart = {
+                                fn         = "count"
+                                resolution = "SINGLE"
+                              }
+                              transformType = "none"
+                              type          = "keyvalue"
+                              valueField    = "A_project_id_count"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "circular"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "project_id",
+                        ]
+                        id              = "datasetQueryExpression-zfywezpv"
+                        lookupActions   = []
+                        summarizeVerb   = "statsby"
+                        summaryFunction = "count"
+                        summaryMode     = "single"
+                        type            = "datasetQueryExpression"
+                        valueColumnId   = "A_project_id_count"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-aqza91sz"
+                      lookupActions = []
+                      type          = "multiExpression"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-zfywezpv",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-mlhxnvs8"
+              index    = 1
+              isPinned = false
+              opal = [
+                "statsby A_project_id_count:count(project_id), group_by(project_id)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -799,7 +885,7 @@ resource "observe_dashboard" "gke_monitoring" {
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = "statsby A_project_id_count:count(project_id), group_by(project_id)"
       },
       {
         id = "stage-f3mqbv1q"
@@ -819,9 +905,9 @@ resource "observe_dashboard" "gke_monitoring" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "cluster_name"
-              "1" = "gkeClusterAssetKey"
-              "2" = "Valid From"
+              "0" = "_c_valid_from"
+              "1" = "_c_valid_to"
+              "2" = "cluster_name"
               "3" = "Valid To"
             }
             columnVisibility = {}
@@ -834,25 +920,26 @@ resource "observe_dashboard" "gke_monitoring" {
               initialClusterVersion    = 141
               initialNodeCount         = 182
             }
-            containerWidth              = 2145
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            containerWidth               = 2145
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -861,7 +948,6 @@ resource "observe_dashboard" "gke_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -902,7 +988,7 @@ resource "observe_dashboard" "gke_monitoring" {
                 }
                 source = {
                   table = {
-                    field       = "gkeClusterAssetKey"
+                    field       = "A_gkeClusterAssetKey_count_distinct_exact"
                     groupFields = []
                     statsBy = {
                       fn = "count"
@@ -912,8 +998,12 @@ resource "observe_dashboard" "gke_monitoring" {
                       fnArgs     = null
                       resolution = "AUTO"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "singlefield"
+                  }
+                  topK = {
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -932,30 +1022,16 @@ resource "observe_dashboard" "gke_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {}
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-fd2vztuj"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
               customSummary = "gkeCluster"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -976,10 +1052,101 @@ resource "observe_dashboard" "gke_monitoring" {
               queryPresentation = {}
               type              = "InputStep"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "gkeClusterAssetKey"
+                        dataVis = {
+                          config = {
+                            color           = "Default"
+                            colorConfigType = "Color"
+                            fieldConfig = {
+                              unit    = null
+                              visible = false
+                            }
+                            singleStatLabel = "GKE Clusters"
+                            thresholds      = null
+                            type            = "singlefield"
+                          }
+                          source = {
+                            table = {
+                              field       = "A_gkeClusterAssetKey_count_distinct_exact"
+                              groupFields = []
+                              statsBy = {
+                                fn = "count"
+                              }
+                              timechart = {
+                                fn         = "count_distinct_exact"
+                                fnArgs     = null
+                                resolution = "AUTO"
+                              }
+                              transformType = "none"
+                              type          = "singlefield"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "singlevalue"
+                        }
+                        filterActions       = []
+                        groupBy             = []
+                        id                  = "datasetQueryExpression-6zqempqp"
+                        lookupActions       = []
+                        summarizeVerb       = "statsby"
+                        summaryFunction     = "count_distinct_exact"
+                        summaryFunctionArgs = null
+                        summaryMode         = "over-time"
+                        type                = "datasetQueryExpression"
+                        valueColumnId       = "A_gkeClusterAssetKey_count_distinct_exact"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-gvsqys7l"
+                      lookupActions = []
+                      type          = "multiExpression"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-6zqempqp",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-9cwarogb"
+              index    = 1
+              isPinned = false
+              opal = [
+                "timechart options(empty_bins:true), A_gkeClusterAssetKey_count_distinct_exact:count_distinct_exact(gkeClusterAssetKey), group_by()",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -991,7 +1158,7 @@ resource "observe_dashboard" "gke_monitoring" {
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = "timechart options(empty_bins:true), A_gkeClusterAssetKey_count_distinct_exact:count_distinct_exact(gkeClusterAssetKey), group_by()"
       },
       {
         id = "stage-th4n9kww"
@@ -1026,24 +1193,26 @@ resource "observe_dashboard" "gke_monitoring" {
               initialClusterVersion    = 141
               initialNodeCount         = 182
             }
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            containerWidth               = null
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -1052,7 +1221,6 @@ resource "observe_dashboard" "gke_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -1101,9 +1269,14 @@ resource "observe_dashboard" "gke_monitoring" {
                       fn         = "count"
                       resolution = "SINGLE"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "keyvalue"
-                    valueField    = "currentMasterVersion"
+                    valueField    = "A_currentMasterVersion_count"
+                  }
+                  topK = {
+                    k     = 100
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -1123,6 +1296,13 @@ resource "observe_dashboard" "gke_monitoring" {
               "ResultKindSchema",
             ]
             rollup = {}
+            sort = [
+              {
+                ascending  = false
+                columnName = "A_currentMasterVersion_count"
+              },
+            ]
+            wantBuckets = 1
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -1131,7 +1311,6 @@ resource "observe_dashboard" "gke_monitoring" {
             {
               customName    = "Input"
               customSummary = "gkeCluster"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1152,10 +1331,101 @@ resource "observe_dashboard" "gke_monitoring" {
               queryPresentation = {}
               type              = "InputStep"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "currentMasterVersion"
+                        dataVis = {
+                          config = {
+                            innerRadius = 0.6
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type = "arc"
+                          }
+                          source = {
+                            table = {
+                              keyField = [
+                                "currentMasterVersion",
+                              ]
+                              statsBy = {
+                                fn = "count"
+                              }
+                              timechart = {
+                                fn         = "count"
+                                resolution = "SINGLE"
+                              }
+                              transformType = "none"
+                              type          = "keyvalue"
+                              valueField    = "A_currentMasterVersion_count"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "circular"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "currentMasterVersion",
+                        ]
+                        id              = "datasetQueryExpression-lbow43qd"
+                        lookupActions   = []
+                        summarizeVerb   = "statsby"
+                        summaryFunction = "count"
+                        summaryMode     = "single"
+                        type            = "datasetQueryExpression"
+                        valueColumnId   = "A_currentMasterVersion_count"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-8kfzdx63"
+                      lookupActions = []
+                      type          = "multiExpression"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-lbow43qd",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-xr72dy1f"
+              index    = 1
+              isPinned = false
+              opal = [
+                "statsby A_currentMasterVersion_count:count(currentMasterVersion), group_by(currentMasterVersion)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -1167,7 +1437,7 @@ resource "observe_dashboard" "gke_monitoring" {
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = "statsby A_currentMasterVersion_count:count(currentMasterVersion), group_by(currentMasterVersion)"
       },
       {
         id = "stage-nk04p7pj"
@@ -1202,24 +1472,26 @@ resource "observe_dashboard" "gke_monitoring" {
               initialClusterVersion    = 141
               initialNodeCount         = 182
             }
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            containerWidth               = null
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -1228,7 +1500,6 @@ resource "observe_dashboard" "gke_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -1277,9 +1548,14 @@ resource "observe_dashboard" "gke_monitoring" {
                       fn         = "count"
                       resolution = "SINGLE"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "keyvalue"
-                    valueField    = "currentNodeVersion"
+                    valueField    = "A_currentNodeVersion_count"
+                  }
+                  topK = {
+                    k     = 100
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -1304,6 +1580,13 @@ resource "observe_dashboard" "gke_monitoring" {
               "ResultKindSchema",
             ]
             rollup = {}
+            sort = [
+              {
+                ascending  = false
+                columnName = "A_currentNodeVersion_count"
+              },
+            ]
+            wantBuckets = 1
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -1312,7 +1595,6 @@ resource "observe_dashboard" "gke_monitoring" {
             {
               customName    = "Input"
               customSummary = "gkeCluster"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1333,10 +1615,101 @@ resource "observe_dashboard" "gke_monitoring" {
               queryPresentation = {}
               type              = "InputStep"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "currentNodeVersion"
+                        dataVis = {
+                          config = {
+                            innerRadius = 0.6
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type = "arc"
+                          }
+                          source = {
+                            table = {
+                              keyField = [
+                                "currentNodeVersion",
+                              ]
+                              statsBy = {
+                                fn = "count"
+                              }
+                              timechart = {
+                                fn         = "count"
+                                resolution = "SINGLE"
+                              }
+                              transformType = "none"
+                              type          = "keyvalue"
+                              valueField    = "A_currentNodeVersion_count"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "circular"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "currentNodeVersion",
+                        ]
+                        id              = "datasetQueryExpression-016xm6a8"
+                        lookupActions   = []
+                        summarizeVerb   = "statsby"
+                        summaryFunction = "count"
+                        summaryMode     = "single"
+                        type            = "datasetQueryExpression"
+                        valueColumnId   = "A_currentNodeVersion_count"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-vgk0koit"
+                      lookupActions = []
+                      type          = "multiExpression"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-016xm6a8",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-xhuvziz7"
+              index    = 1
+              isPinned = false
+              opal = [
+                "statsby A_currentNodeVersion_count:count(currentNodeVersion), group_by(currentNodeVersion)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -1348,11 +1721,18 @@ resource "observe_dashboard" "gke_monitoring" {
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = "statsby A_currentNodeVersion_count:count(currentNodeVersion), group_by(currentNodeVersion)"
       },
       {
         id = "stage-y3ptdg09"
         input = [
+          {
+            datasetId   = local.compute_instance
+            datasetPath = null
+            inputName   = "instance"
+            inputRole   = "Data"
+            stageId     = null
+          },
           {
             datasetId   = local.compute_instance
             datasetPath = null
@@ -1364,6 +1744,13 @@ resource "observe_dashboard" "gke_monitoring" {
             datasetId   = null
             datasetPath = null
             inputName   = "gkeCluster"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = local.compute_metrics
+            datasetPath = null
+            inputName   = "compute_metrics"
             inputRole   = "Data"
             stageId     = null
           },
@@ -1379,27 +1766,28 @@ resource "observe_dashboard" "gke_monitoring" {
               "2" = "Valid From"
               "3" = "Valid To"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 2145
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 2145
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -1408,7 +1796,6 @@ resource "observe_dashboard" "gke_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -1416,6 +1803,12 @@ resource "observe_dashboard" "gke_monitoring" {
           }
           index = 6
           inputList = [
+            {
+              datasetId   = local.compute_instance
+              inputName   = "instance"
+              inputRole   = "Data"
+              isUserInput = false
+            },
             {
               datasetId   = local.compute_instance
               inputName   = "gcp-cost-test/Compute Instance"
@@ -1427,6 +1820,12 @@ resource "observe_dashboard" "gke_monitoring" {
               inputRole   = "Data"
               isUserInput = true
               parameterId = "input-parameter-21mm2wi0"
+            },
+            {
+              datasetId   = local.compute_metrics
+              inputName   = "compute_metrics"
+              inputRole   = "Data"
+              isUserInput = true
             },
           ]
           label = "Node CPU Utilization"
@@ -1461,112 +1860,21 @@ resource "observe_dashboard" "gke_monitoring" {
                   }
                 }
                 source = {
-                  metric = {
-                    aggregate   = "sum"
-                    datasetId   = local.compute_metrics
-                    description = "Auto Detected Metric"
-                    groupBy = [
+                  table = {
+                    groupFields = [
                       "computeInstanceAssetKey",
                     ]
-                    heuristics = {
-                      __typename = "MetricHeuristics"
-                      tags = [
-                        {
-                          __typename = "MetricTag"
-                          column     = "computeInstanceAssetKey"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "compute_instance_name"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "zone"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "region"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "label"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_category"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_kind"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_kind_text"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_type"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "project_id"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "value_type"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "value_type_text"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "computeDiskInstanceAssetKey"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_labels"
-                          path       = "instance_name"
-                        },
-                      ]
-                      validLinkLabels = [
-                        "ComputeMetrics to Compute Instance",
-                      ]
-                    }
-                    interval = null
-                    link = {
-                      __typename = "ForeignKey"
-                      dstFields = [
-                        "computeInstanceAssetKey",
-                      ]
-                      label = "ComputeMetrics to Compute Instance"
-                      srcFields = [
-                        "computeInstanceAssetKey",
-                      ]
-                      targetDataset    = local.compute_instance
-                      targetStageLabel = null
-                      type             = "foreign"
-                    }
-                    name        = "instance_cpu_utilization"
-                    rollup      = "avg"
-                    type        = "gauge"
-                    unit        = ""
-                    userDefined = false
+                    transformType = "none"
+                    type          = "xy"
+                    x             = "valid_from"
+                    y             = "A_instance_cpu_utilization_sum"
                   }
-                  type = "metric"
+                  topK = {
+                    k     = 16
+                    order = "Top"
+                    type  = "Auto"
+                  }
+                  type = "table"
                 }
                 type = "timeseries"
               }
@@ -1583,50 +1891,16 @@ resource "observe_dashboard" "gke_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  computeInstanceAssetKey = "count"
-                  cpuPlatform             = "count"
-                  creationTime            = "count"
-                  deleted                 = "count"
-                  deletionProtection      = "count"
-                  gkeClusterAssetKey      = "count"
-                  instance_group_name     = "count"
-                  instance_name           = "count"
-                  labels                  = "count"
-                  machineType             = "count"
-                  network                 = "count"
-                  networkIP               = "count"
-                  publicIP                = "count"
-                  region                  = "count"
-                  status                  = "count"
-                  subnetwork              = "count"
-                  tags                    = "count"
-                  ttl                     = "count"
-                  zone                    = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-kkvt67zu"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
-              customSummary = "gcp-cost-test/Compute Instance"
-              datasetQuery  = null
+              customSummary = "instance_cpu_utilization"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1648,42 +1922,7 @@ resource "observe_dashboard" "gke_monitoring" {
               type              = "InputStep"
             },
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  computeInstanceAssetKey = "count"
-                  cpuPlatform             = "count"
-                  creationTime            = "count"
-                  deleted                 = "count"
-                  deletionProtection      = "count"
-                  gkeClusterAssetKey      = "count"
-                  instance_group_name     = "count"
-                  instance_name           = "count"
-                  labels                  = "count"
-                  machineType             = "count"
-                  network                 = "count"
-                  networkIP               = "count"
-                  publicIP                = "count"
-                  region                  = "count"
-                  status                  = "count"
-                  subnetwork              = "count"
-                  tags                    = "count"
-                  ttl                     = "count"
-                  zone                    = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-lvx6an7a"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1697,11 +1936,15 @@ resource "observe_dashboard" "gke_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-fgn8x4wb"
+              id       = "step-f997vcek"
               index    = 1
               isPinned = false
               opal = [
                 "exists gkeClusterAssetKey = @gkeCluster.gkeClusterAssetKey",
+                "follow computeInstanceAssetKey = @compute_metrics.computeInstanceAssetKey",
+                "",
+                "align frame(back: 2m), A_instance_cpu_utilization_sum:avg(m(\"instance_cpu_utilization\"))",
+                "aggregate A_instance_cpu_utilization_sum:sum(A_instance_cpu_utilization_sum), group_by(computeInstanceAssetKey)",
               ]
               queryPresentation = {}
               type              = "unknown"
@@ -1709,7 +1952,6 @@ resource "observe_dashboard" "gke_monitoring" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -1721,11 +1963,24 @@ resource "observe_dashboard" "gke_monitoring" {
           }
         }
         params   = null
-        pipeline = "exists gkeClusterAssetKey = @gkeCluster.gkeClusterAssetKey"
+        pipeline = <<-EOT
+                    exists gkeClusterAssetKey = @gkeCluster.gkeClusterAssetKey
+                    follow computeInstanceAssetKey = @compute_metrics.computeInstanceAssetKey
+                    
+                    align frame(back: 2m), A_instance_cpu_utilization_sum:avg(m("instance_cpu_utilization"))
+                    aggregate A_instance_cpu_utilization_sum:sum(A_instance_cpu_utilization_sum), group_by(computeInstanceAssetKey)
+                EOT
       },
       {
         id = "stage-k7p4bw80"
         input = [
+          {
+            datasetId   = local.compute_instance
+            datasetPath = null
+            inputName   = "instance"
+            inputRole   = "Data"
+            stageId     = null
+          },
           {
             datasetId   = local.compute_instance
             datasetPath = null
@@ -1740,6 +1995,13 @@ resource "observe_dashboard" "gke_monitoring" {
             inputRole   = "Data"
             stageId     = null
           },
+          {
+            datasetId   = local.compute_metrics
+            datasetPath = null
+            inputName   = "compute_metrics"
+            inputRole   = "Data"
+            stageId     = null
+          },
         ]
         layout = {
           appearance = "VISIBLE"
@@ -1748,45 +2010,43 @@ resource "observe_dashboard" "gke_monitoring" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_name"
-              "2" = "Valid From"
-              "3" = "Valid To"
+              "0" = "computeInstanceAssetKey"
+              "1" = "valid_from"
+              "2" = "valid_to"
+              "3" = "instance_name"
+              "4" = "Valid From"
+              "5" = "Valid To"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = null
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -1794,6 +2054,12 @@ resource "observe_dashboard" "gke_monitoring" {
           }
           index = 7
           inputList = [
+            {
+              datasetId   = local.compute_instance
+              inputName   = "instance"
+              inputRole   = "Data"
+              isUserInput = false
+            },
             {
               datasetId   = local.compute_instance
               inputName   = "gcp-cost-test/Compute Instance"
@@ -1805,6 +2071,12 @@ resource "observe_dashboard" "gke_monitoring" {
               inputRole   = "Data"
               isUserInput = true
               parameterId = "input-parameter-21mm2wi0"
+            },
+            {
+              datasetId   = local.compute_metrics
+              inputName   = "compute_metrics"
+              inputRole   = "Data"
+              isUserInput = true
             },
           ]
           label = "Node Network Bytes Sent"
@@ -1838,117 +2110,21 @@ resource "observe_dashboard" "gke_monitoring" {
                   }
                 }
                 source = {
-                  metric = {
-                    aggregate   = "sum"
-                    datasetId   = local.compute_metrics
-                    description = "Auto Detected Metric"
-                    groupBy = [
+                  table = {
+                    groupFields = [
                       "computeInstanceAssetKey",
                     ]
-                    heuristics = {
-                      __typename = "MetricHeuristics"
-                      tags = [
-                        {
-                          __typename = "MetricTag"
-                          column     = "computeInstanceAssetKey"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "compute_instance_name"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "zone"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "region"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "label"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_category"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_kind"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_kind_text"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_type"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "project_id"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "value_type"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "value_type_text"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "computeDiskInstanceAssetKey"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_labels"
-                          path       = "instance_name"
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_labels"
-                          path       = "loadbalanced"
-                        },
-                      ]
-                      validLinkLabels = [
-                        "ComputeMetrics to Compute Instance",
-                      ]
-                    }
-                    interval = null
-                    link = {
-                      __typename = "ForeignKey"
-                      dstFields = [
-                        "computeInstanceAssetKey",
-                      ]
-                      label = "ComputeMetrics to Compute Instance"
-                      srcFields = [
-                        "computeInstanceAssetKey",
-                      ]
-                      targetDataset    = local.compute_instance
-                      targetStageLabel = null
-                      type             = "foreign"
-                    }
-                    name        = "instance_network_sent_bytes_count"
-                    rollup      = "avg"
-                    type        = "gauge"
-                    unit        = "bytes"
-                    userDefined = false
+                    transformType = "none"
+                    type          = "xy"
+                    x             = "valid_from"
+                    y             = "A_instance_network_sent_bytes_count_sum"
                   }
-                  type = "metric"
+                  topK = {
+                    k     = 16
+                    order = "Top"
+                    type  = "Auto"
+                  }
+                  type = "table"
                 }
                 type = "timeseries"
               }
@@ -1965,16 +2141,16 @@ resource "observe_dashboard" "gke_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 600
           }
           renderType     = "TABLE"
-          selectedStepId = "step-nv00u91u"
+          selectedStepId = null
           serializable   = true
           steps = [
             {
               customName    = "Input"
-              customSummary = "gcp-cost-test/Compute Instance"
-              datasetQuery  = null
+              customSummary = "instance"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1997,7 +2173,6 @@ resource "observe_dashboard" "gke_monitoring" {
             },
             {
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2011,11 +2186,15 @@ resource "observe_dashboard" "gke_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-nv00u91u"
+              id       = "step-sp5epu1y"
               index    = 1
               isPinned = false
               opal = [
                 "exists gkeClusterAssetKey = @gkeCluster.gkeClusterAssetKey",
+                "follow computeInstanceAssetKey = @compute_metrics.computeInstanceAssetKey",
+                "",
+                "align frame(back: 2m), A_instance_network_sent_bytes_count_sum:avg(m(\"instance_network_sent_bytes_count\"))",
+                "aggregate A_instance_network_sent_bytes_count_sum:sum(A_instance_network_sent_bytes_count_sum), group_by(computeInstanceAssetKey)",
               ]
               queryPresentation = {}
               type              = "unknown"
@@ -2023,7 +2202,6 @@ resource "observe_dashboard" "gke_monitoring" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -2035,11 +2213,24 @@ resource "observe_dashboard" "gke_monitoring" {
           }
         }
         params   = null
-        pipeline = "exists gkeClusterAssetKey = @gkeCluster.gkeClusterAssetKey"
+        pipeline = <<-EOT
+                    exists gkeClusterAssetKey = @gkeCluster.gkeClusterAssetKey
+                    follow computeInstanceAssetKey = @compute_metrics.computeInstanceAssetKey
+                    
+                    align frame(back: 2m), A_instance_network_sent_bytes_count_sum:avg(m("instance_network_sent_bytes_count"))
+                    aggregate A_instance_network_sent_bytes_count_sum:sum(A_instance_network_sent_bytes_count_sum), group_by(computeInstanceAssetKey)
+                EOT
       },
       {
         id = "stage-70ozhtnp"
         input = [
+          {
+            datasetId   = local.compute_instance
+            datasetPath = null
+            inputName   = "instance"
+            inputRole   = "Data"
+            stageId     = null
+          },
           {
             datasetId   = local.compute_instance
             datasetPath = null
@@ -2054,6 +2245,13 @@ resource "observe_dashboard" "gke_monitoring" {
             inputRole   = "Data"
             stageId     = null
           },
+          {
+            datasetId   = local.compute_metrics
+            datasetPath = null
+            inputName   = "compute_metrics"
+            inputRole   = "Data"
+            stageId     = null
+          },
         ]
         layout = {
           appearance = "VISIBLE"
@@ -2062,45 +2260,43 @@ resource "observe_dashboard" "gke_monitoring" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_name"
-              "2" = "Valid From"
-              "3" = "Valid To"
+              "0" = "computeInstanceAssetKey"
+              "1" = "valid_from"
+              "2" = "valid_to"
+              "3" = "instance_name"
+              "4" = "Valid From"
+              "5" = "Valid To"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 2429
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -2108,6 +2304,12 @@ resource "observe_dashboard" "gke_monitoring" {
           }
           index = 8
           inputList = [
+            {
+              datasetId   = local.compute_instance
+              inputName   = "instance"
+              inputRole   = "Data"
+              isUserInput = false
+            },
             {
               datasetId   = local.compute_instance
               inputName   = "gcp-cost-test/Compute Instance"
@@ -2119,6 +2321,12 @@ resource "observe_dashboard" "gke_monitoring" {
               inputRole   = "Data"
               isUserInput = true
               parameterId = "input-parameter-21mm2wi0"
+            },
+            {
+              datasetId   = local.compute_metrics
+              inputName   = "compute_metrics"
+              inputRole   = "Data"
+              isUserInput = true
             },
           ]
           label = "Node Network Bytes Received"
@@ -2136,133 +2344,31 @@ resource "observe_dashboard" "gke_monitoring" {
               vis = {
                 config = {
                   color         = "Default"
-                  hideGridLines = true
+                  hideGridLines = false
                   legend = {
                     placement = "right"
                     type      = "list"
                     visible   = true
                   }
-                  type = "xy"
-                  xConfig = {
-                    visible = true
-                  }
+                  type    = "xy"
+                  xConfig = {}
                   yConfig = {
-                    unit    = "bytes"
                     visible = true
                   }
                 }
                 source = {
-                  metric = {
-                    aggregate   = "sum"
-                    datasetId   = local.compute_metrics
-                    description = "Auto Detected Metric"
-                    groupBy = [
-                      "computeInstanceAssetKey",
+                  table = {
+                    groupFields = [
+                      [
+                        "computeInstanceAssetKey",
+                      ],
                     ]
-                    heuristics = {
-                      __typename = "MetricHeuristics"
-                      tags = [
-                        {
-                          __typename = "MetricTag"
-                          column     = "computeInstanceAssetKey"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "compute_instance_name"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "zone"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "region"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "label"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_category"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_kind"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_kind_text"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_type"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "project_id"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "value_type"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "value_type_text"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "computeDiskInstanceAssetKey"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_labels"
-                          path       = "instance_name"
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_labels"
-                          path       = "loadbalanced"
-                        },
-                      ]
-                      validLinkLabels = [
-                        "ComputeMetrics to Compute Instance",
-                      ]
-                    }
-                    interval = null
-                    link = {
-                      __typename = "ForeignKey"
-                      dstFields = [
-                        "computeInstanceAssetKey",
-                      ]
-                      label = "ComputeMetrics to Compute Instance"
-                      srcFields = [
-                        "computeInstanceAssetKey",
-                      ]
-                      targetDataset    = local.compute_instance
-                      targetStageLabel = null
-                      type             = "foreign"
-                    }
-                    name        = "instance_network_received_bytes_count"
-                    rollup      = "avg"
-                    type        = "gauge"
-                    unit        = "bytes"
-                    userDefined = false
+                    transformType = "none"
+                    type          = "xy"
+                    x             = "valid_from"
+                    y             = "A_instance_network_received_bytes_count_sum"
                   }
-                  type = "metric"
+                  type = "table"
                 }
                 type = "timeseries"
               }
@@ -2279,16 +2385,16 @@ resource "observe_dashboard" "gke_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 600
           }
           renderType     = "TABLE"
-          selectedStepId = "step-0wpw9a3a"
+          selectedStepId = null
           serializable   = true
           steps = [
             {
               customName    = "Input"
-              customSummary = "gcp-cost-test/Compute Instance"
-              datasetQuery  = null
+              customSummary = "instance"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2311,7 +2417,6 @@ resource "observe_dashboard" "gke_monitoring" {
             },
             {
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2325,19 +2430,60 @@ resource "observe_dashboard" "gke_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-0wpw9a3a"
+              id       = "step-kr1k3otm"
               index    = 1
               isPinned = false
               opal = [
                 "exists gkeClusterAssetKey = @gkeCluster.gkeClusterAssetKey",
+                "follow computeInstanceAssetKey = @compute_metrics.computeInstanceAssetKey",
+                "",
+                "align frame(back: 2m), A_instance_network_received_bytes_count_sum:avg(m(\"instance_network_received_bytes_count\"))",
+                "aggregate A_instance_network_received_bytes_count_sum:sum(A_instance_network_received_bytes_count_sum), group_by(computeInstanceAssetKey)",
               ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = []
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-wmuymjcx"
+                      lookupActions = []
+                      type          = "multiExpression"
+                    }
+                    selectedExpressionIds = []
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id                = "step-2nkboe21"
+              index             = 2
+              isPinned          = false
+              opal              = []
               queryPresentation = {}
               type              = "unknown"
             },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -2349,7 +2495,13 @@ resource "observe_dashboard" "gke_monitoring" {
           }
         }
         params   = null
-        pipeline = "exists gkeClusterAssetKey = @gkeCluster.gkeClusterAssetKey"
+        pipeline = <<-EOT
+                    exists gkeClusterAssetKey = @gkeCluster.gkeClusterAssetKey
+                    follow computeInstanceAssetKey = @compute_metrics.computeInstanceAssetKey
+                    
+                    align frame(back: 2m), A_instance_network_received_bytes_count_sum:avg(m("instance_network_received_bytes_count"))
+                    aggregate A_instance_network_received_bytes_count_sum:sum(A_instance_network_received_bytes_count_sum), group_by(computeInstanceAssetKey)
+                EOT
       },
       {
         id = "stage-uxxml2cm"
@@ -2376,31 +2528,33 @@ resource "observe_dashboard" "gke_monitoring" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_name"
-              "2" = "Valid From"
+              "0" = "_c_valid_from"
+              "1" = "_c_valid_to"
+              "2" = "instance_name"
               "3" = "Valid To"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 2145
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 2145
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -2409,7 +2563,6 @@ resource "observe_dashboard" "gke_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -2456,7 +2609,7 @@ resource "observe_dashboard" "gke_monitoring" {
                 }
                 source = {
                   table = {
-                    field       = "computeInstanceAssetKey"
+                    field       = "A_computeInstanceAssetKey_count"
                     groupFields = []
                     statsBy = {
                       fn = "count"
@@ -2466,8 +2619,12 @@ resource "observe_dashboard" "gke_monitoring" {
                       fnArgs     = null
                       resolution = "AUTO"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "singlefield"
+                  }
+                  topK = {
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -2486,7 +2643,8 @@ resource "observe_dashboard" "gke_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 600
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -2495,7 +2653,6 @@ resource "observe_dashboard" "gke_monitoring" {
             {
               customName    = "Input"
               customSummary = "gcp-cost-test/Compute Instance"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2517,22 +2674,7 @@ resource "observe_dashboard" "gke_monitoring" {
               type              = "InputStep"
             },
             {
-              columnStatsTable = {
-                columnFunctions = {}
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-nupwz1ql"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2555,10 +2697,101 @@ resource "observe_dashboard" "gke_monitoring" {
               queryPresentation = {}
               type              = "unknown"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "computeInstanceAssetKey"
+                        dataVis = {
+                          config = {
+                            color           = "Default"
+                            colorConfigType = "Color"
+                            fieldConfig = {
+                              unit    = null
+                              visible = false
+                            }
+                            singleStatLabel = "Nodes"
+                            thresholds      = null
+                            type            = "singlefield"
+                          }
+                          source = {
+                            table = {
+                              field       = "A_computeInstanceAssetKey_count"
+                              groupFields = []
+                              statsBy = {
+                                fn = "count"
+                              }
+                              timechart = {
+                                fn         = "count"
+                                fnArgs     = null
+                                resolution = "AUTO"
+                              }
+                              transformType = "none"
+                              type          = "singlefield"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "singlevalue"
+                        }
+                        filterActions       = []
+                        groupBy             = []
+                        id                  = "datasetQueryExpression-xda760v8"
+                        lookupActions       = []
+                        summarizeVerb       = "statsby"
+                        summaryFunction     = "count"
+                        summaryFunctionArgs = null
+                        summaryMode         = "over-time"
+                        type                = "datasetQueryExpression"
+                        valueColumnId       = "A_computeInstanceAssetKey_count"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-lqy4hfwk"
+                      lookupActions = []
+                      type          = "multiExpression"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-xda760v8",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-3i9ftbx2"
+              index    = 2
+              isPinned = false
+              opal = [
+                "timechart options(empty_bins:true), A_computeInstanceAssetKey_count:count(computeInstanceAssetKey), group_by()",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -2570,7 +2803,10 @@ resource "observe_dashboard" "gke_monitoring" {
           }
         }
         params   = null
-        pipeline = "exists gkeClusterAssetKey = @gkeCluster.gkeClusterAssetKey"
+        pipeline = <<-EOT
+                    exists gkeClusterAssetKey = @gkeCluster.gkeClusterAssetKey
+                    timechart options(empty_bins:true), A_computeInstanceAssetKey_count:count(computeInstanceAssetKey), group_by()
+                EOT
       },
     ]
   )

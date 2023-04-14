@@ -6,14 +6,15 @@ locals {
   use_name_format_in_preferred_path = lookup(var.feature_flags, "use_name_format_in_preferred_path", false)
 
   freshness = merge({}, var.freshness_overrides)
-  /*
 
-  workspace = local.datasets.REPLACE_WITH_DATASET_NAME.workspace
-  name        = local.datasets.REPLACE_WITH_DATASET_NAME.name
-  freshness   = local.datasets.REPLACE_WITH_DATASET_NAME.freshness
-  description = local.datasets.REPLACE_WITH_DATASET_NAME.description
+  workspace                            = var.workspace.oid
+  gke_monitoring_dashboard_enable      = 1
+  gke_monitoring_dashboard_description = "GKE Monitoring Dashboard"
+  gke_monitoring_dashboard_name        = format(var.name_format, "Monitoring")
+  gke_cluster                          = resource.observe_dataset.gke_clusters.id
+  compute_instance                     = var.google.compute_instance.id
+  compute_metrics                      = var.google.compute_metrics.id
 
-*/
 
   datasets = {
     gke_logs = {
