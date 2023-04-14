@@ -1,3 +1,21 @@
+# [1.3.0](https://github.com/observeinc/terraform-observe-google/compare/v1.2.0...v1.3.0) (2023-04-14)
+
+
+### Bug Fixes
+
+* base dataset reference ([#149](https://github.com/observeinc/terraform-observe-google/issues/149)) ([1db74ba](https://github.com/observeinc/terraform-observe-google/commit/1db74bafefedcf5ca5ebf983cf8b907c6bae1331))
+* **dashboard gke:** broken metrics and incomplete panels ([#167](https://github.com/observeinc/terraform-observe-google/issues/167)) ([cc2dbcf](https://github.com/observeinc/terraform-observe-google/commit/cc2dbcf1801ae37d440d5311834f7053e3d64e13))
+* remove duplicate deferred foreign keys ([#165](https://github.com/observeinc/terraform-observe-google/issues/165)) ([b3201b4](https://github.com/observeinc/terraform-observe-google/commit/b3201b48811ca9d590648d22858f231ea37e8051))
+* updates app overview page to reflect new naming ([#145](https://github.com/observeinc/terraform-observe-google/issues/145)) ([a76efd0](https://github.com/observeinc/terraform-observe-google/commit/a76efd0649c4051111140a66855af03fc0666d37))
+
+
+### Features
+
+* add customizable homepage ([#154](https://github.com/observeinc/terraform-observe-google/issues/154)) ([98fa49a](https://github.com/observeinc/terraform-observe-google/commit/98fa49a2516fbca1d36744027d9b253604b5c906))
+* sample infra for GCP Cloud Run ([#153](https://github.com/observeinc/terraform-observe-google/issues/153)) ([5cf5aea](https://github.com/observeinc/terraform-observe-google/commit/5cf5aea6f2244aa492a9ad3a8c72b42cde60a6f6))
+
+
+
 # [1.2.0](https://github.com/observeinc/terraform-observe-google/compare/v1.1.0...v1.2.0) (2023-02-27)
 
 
