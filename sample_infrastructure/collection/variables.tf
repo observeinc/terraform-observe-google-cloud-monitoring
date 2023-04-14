@@ -3,6 +3,12 @@ variable "project_id" {
   description = "GCP project to deploy sample env"
 }
 
+variable "datastream_name" {
+  type        = string
+  description = "GCP datastream"
+  default     = "GCP"
+}
+
 variable "region" {
   type        = string
   description = "GCP region to deploy sample env"
@@ -32,3 +38,8 @@ variable "metric_prefixes" {
     "run.googleapis.com/"
   ]
 }
+
+# variable "workspace" {
+#   type        = object({ oid = string, id = string })
+#   description = "Workspace to apply module to."
+# }

@@ -3,8 +3,9 @@ module "observe_gcp_collection" {
   source = "observeinc/collection/google"
   name   = format(var.name_format, "env")
 
-  resource        = "projects/${var.project_id}"
-  enable_function = true
+  resource                     = "projects/${var.project_id}"
+  enable_function              = true
+  function_available_memory_mb = 512
 }
 
 data "observe_workspace" "default" {
@@ -12,7 +13,7 @@ data "observe_workspace" "default" {
 }
 
 data "observe_datastream" "gcp" {
-  name      = "GCP"
+  name      = var.datastream_name
   workspace = local.workspace.oid
 }
 
