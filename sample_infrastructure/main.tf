@@ -273,7 +273,8 @@ module "gke" {
   project_id        = var.project_id
   region            = var.region
   name_format       = var.name_format
-  node_machine_type = "n1-standard-2"
+  node_machine_type = "n1-standard-4"
+  gke_num_nodes     = 1
 }
 
 #------------------------------------------------------------------------#
