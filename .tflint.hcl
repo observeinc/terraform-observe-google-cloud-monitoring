@@ -1,0 +1,66 @@
+plugin "observeinc" {
+  enabled = true
+
+  version = "0.1.3"
+  source  = "github.com/observeinc/tflint-ruleset-observeinc"
+
+  signing_key = <<-KEY
+  -----BEGIN PGP PUBLIC KEY BLOCK-----
+
+  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
+  VucyTJKBzTcTtzo=
+  =fbjA
+  -----END PGP PUBLIC KEY BLOCK-----
+  KEY
+}
+
+# require descriptions on all datasets
+rule "observe_dataset_description" {
+  enabled = false
+}
