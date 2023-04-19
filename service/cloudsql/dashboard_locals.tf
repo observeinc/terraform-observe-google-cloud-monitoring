@@ -1,6 +1,6 @@
 locals {
   workspace = var.workspace.oid
-  // uses latest write terrafom iteration
+  # uses latest write terrafom iteration
   cloud_sql_monitoring_dashboard_name        = format(var.name_format, "Monitoring")
   cloud_sql_monitoring_dashboard_description = "CloudSQL Instances Monitoring Dashboard"
   cloud_sql_monitoring_dashboard_enable      = 1
