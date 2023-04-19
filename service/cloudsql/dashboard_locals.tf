@@ -1,6 +1,10 @@
 locals {
-  workspace                           = var.workspace.oid
-  dashboard_name_monitoring           = format(var.name_format, "Monitoring")
+  workspace = var.workspace.oid
+  # uses latest write terrafom iteration
+  cloud_sql_monitoring_dashboard_name        = format(var.name_format, "Monitoring")
+  cloud_sql_monitoring_dashboard_description = "CloudSQL Instances Monitoring Dashboard"
+  cloud_sql_monitoring_dashboard_enable      = 1
+
   dashboard_name_singleton            = format(var.name_format, "Instance")
   cloud_sql_instance                  = observe_dataset.cloud_sql_instance.id
   cloud_sql_metrics                   = one(observe_dataset.cloud_sql_metrics[*].id)

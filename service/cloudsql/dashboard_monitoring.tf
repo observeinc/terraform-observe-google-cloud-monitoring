@@ -1,7 +1,7 @@
-# terraform import observe_dashboard.cloud_sql_monitoring_fix 41214839
+# terraform import observe_dashboard.cloud_sql_monitoring 42183890
 resource "observe_dashboard" "cloud_sql_monitoring" {
-  description = "Dashboard for monitoring Cloud SQL resources"
-  count       = local.enable_metrics ? 1 : 0
+  count       = local.cloud_sql_monitoring_dashboard_enable
+  description = local.cloud_sql_monitoring_dashboard_description
   layout = jsonencode(
     {
       autoPack = true
@@ -11,7 +11,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "section-wuw4j2eb"
+              id       = "card-xwauvrx1"
               title    = "Dashboard Content"
             }
             items        = []
@@ -21,135 +21,107 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-rpqqyqcw"
+              id       = "card-ml7vqqr0"
               title    = "Summary"
             }
             items = [
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-ficrlmsm"
+                  id       = "card-uou67gtb"
                   stageId  = "stage-2iknse1z"
                 }
                 layout = {
-                  h           = 10
-                  i           = "card-ficrlmsm"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
-                  x           = 0
-                  y           = 0
+                  h = 10
+                  i = "card-uou67gtb"
+                  w = 3
+                  x = 0
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-0ps6gj5i"
+                  id       = "card-rxn64icf"
                   stageId  = "stage-h169l5vk"
                 }
                 layout = {
-                  h           = 10
-                  i           = "card-0ps6gj5i"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
-                  x           = 3
-                  y           = 0
+                  h = 10
+                  i = "card-rxn64icf"
+                  w = 3
+                  x = 3
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-4dhmql3r"
+                  id       = "card-4spcpgg5"
                   stageId  = "stage-gcd1nb81"
                 }
                 layout = {
-                  h           = 10
-                  i           = "card-4dhmql3r"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
-                  x           = 6
-                  y           = 0
+                  h = 10
+                  i = "card-4spcpgg5"
+                  w = 3
+                  x = 6
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-ceys4rth"
+                  id       = "card-9xr3r8q1"
                   stageId  = "stage-zx1ijn1u"
                   title    = "Installed Version"
                 }
                 layout = {
-                  h           = 10
-                  i           = "card-ceys4rth"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
-                  x           = 9
-                  y           = 0
+                  h = 10
+                  i = "card-9xr3r8q1"
+                  w = 3
+                  x = 9
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-9ma40tce"
+                  id       = "card-u4zd3fb5"
                   stageId  = "stage-bv986tcd"
                 }
                 layout = {
-                  h           = 24
-                  i           = "card-9ma40tce"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 5
-                  x           = 7
-                  y           = 10
+                  h = 24
+                  i = "card-u4zd3fb5"
+                  w = 5
+                  x = 7
+                  y = 10
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-ulkvdn6h"
+                  id       = "card-ujbspai3"
                   stageId  = "stage-dbityb73"
                 }
                 layout = {
-                  h           = 12
-                  i           = "card-ulkvdn6h"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 7
-                  x           = 0
-                  y           = 10
+                  h = 12
+                  i = "card-ujbspai3"
+                  w = 7
+                  x = 0
+                  y = 10
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-icvxavrk"
+                  id       = "card-1owf82wz"
                   stageId  = "stage-9e63b4hp"
                 }
                 layout = {
-                  h           = 11
-                  i           = "card-icvxavrk"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 7
-                  x           = 0
-                  y           = 22
+                  h = 11
+                  i = "card-1owf82wz"
+                  w = 7
+                  x = 0
+                  y = 22
                 }
               },
             ]
@@ -159,138 +131,110 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-tzs7rt28"
+              id       = "card-b2lrnlmb"
               title    = "Monitoring"
             }
             items = [
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-pfowjtb2"
+                  id       = "card-0eblpc8r"
                   stageId  = "stage-bxss6s26"
                 }
                 layout = {
-                  h           = 21
-                  i           = "card-pfowjtb2"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 7
-                  x           = 0
-                  y           = 0
+                  h = 21
+                  i = "card-0eblpc8r"
+                  w = 7
+                  x = 0
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-5uhumddp"
+                  id       = "card-6u78nl4n"
                   stageId  = "stage-urrvnw15"
                   title    = "Network Bytes Sent"
                 }
                 layout = {
-                  h           = 11
-                  i           = "card-5uhumddp"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 5
-                  x           = 7
-                  y           = 0
+                  h = 11
+                  i = "card-6u78nl4n"
+                  w = 5
+                  x = 7
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-hs7zxyku"
+                  id       = "card-ck135ejj"
                   stageId  = "stage-mpne8ae1"
                   title    = "Network Bytes Received"
                 }
                 layout = {
-                  h           = 10
-                  i           = "card-hs7zxyku"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 5
-                  x           = 7
-                  y           = 11
+                  h = 10
+                  i = "card-ck135ejj"
+                  w = 5
+                  x = 7
+                  y = 11
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-hlazpqqf"
+                  id       = "card-y6bz7a4w"
                   stageId  = "stage-6qjozjl6"
                   title    = "Disk Read Operations"
                 }
                 layout = {
-                  h           = 8
-                  i           = "card-hlazpqqf"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 12
-                  x           = 0
-                  y           = 21
+                  h = 8
+                  i = "card-y6bz7a4w"
+                  w = 12
+                  x = 0
+                  y = 21
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-30lvhmz6"
+                  id       = "card-ru6qn87f"
                   stageId  = "stage-1zwm1yf7"
                   title    = "Disk Write Operations"
                 }
                 layout = {
-                  h           = 8
-                  i           = "card-30lvhmz6"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 12
-                  x           = 0
-                  y           = 29
+                  h = 8
+                  i = "card-ru6qn87f"
+                  w = 12
+                  x = 0
+                  y = 29
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-237mdmxw"
+                  id       = "card-6f65l6ui"
                   stageId  = "stage-wy53129b"
                 }
                 layout = {
-                  h           = 12
-                  i           = "card-237mdmxw"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 12
-                  x           = 0
-                  y           = 37
+                  h = 12
+                  i = "card-6f65l6ui"
+                  w = 12
+                  x = 0
+                  y = 37
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-n0hfgwy2"
+                  id       = "card-z87f7zko"
                   stageId  = "stage-perdox7c"
                 }
                 layout = {
-                  h           = 12
-                  i           = "card-n0hfgwy2"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 12
-                  x           = 0
-                  y           = 49
+                  h = 12
+                  i = "card-z87f7zko"
+                  w = 12
+                  x = 0
+                  y = 49
                 }
               },
             ]
@@ -299,65 +243,53 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-8w7v9p1w"
+              id       = "card-qplhqz4o"
               title    = "System"
             }
             items = [
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-d2u8px48"
+                  id       = "card-ew3lcm66"
                   stageId  = "stage-m3remp1v"
                   title    = "Disk Bytes Used"
                 }
                 layout = {
-                  h           = 11
-                  i           = "card-d2u8px48"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 5
-                  x           = 7
-                  y           = 0
+                  h = 11
+                  i = "card-ew3lcm66"
+                  w = 5
+                  x = 7
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-64vrxoc6"
+                  id       = "card-rixqaxea"
                   stageId  = "stage-x113jq90"
                   title    = "CPU Utilization"
                 }
                 layout = {
-                  h           = 22
-                  i           = "card-64vrxoc6"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 7
-                  x           = 0
-                  y           = 0
+                  h = 22
+                  i = "card-rixqaxea"
+                  w = 7
+                  x = 0
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-kl464mcf"
+                  id       = "card-ybgs3rim"
                   stageId  = "stage-5g6dfyg1"
                   title    = "Disk Quota"
                 }
                 layout = {
-                  h           = 11
-                  i           = "card-kl464mcf"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 5
-                  x           = 7
-                  y           = 11
+                  h = 11
+                  i = "card-ybgs3rim"
+                  w = 5
+                  x = 7
+                  y = 11
                 }
               },
             ]
@@ -366,90 +298,82 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-fmre7o05"
+              id       = "card-ufo9o86m"
               title    = "Documentation"
             }
             items = [
               {
                 card = {
                   cardType = "text"
-                  id       = "card-prktimcl"
+                  id       = "card-e6w06oqv"
                   text     = <<-EOT
                                         ### Google Cloud SQL
-                                                                                                                        
+                                                                                                                                                                
                                         [https://cloud.google.com/sql/docs](https://cloud.google.com/sql/docs)
-                                                                                                                        
+                                                                                                                                                                
                                         Cloud SQL is a fully-managed database service that helps you set up, maintain, manage, and administer your relational databases on Google Cloud Platform.
-                                                                                                                        
+                                                                                                                                                                
                                         ### Use cases for Cloud SQL
-                                                                                                                        
+                                                                                                                                                                
                                         Cloud SQL provides a cloud-based alternative to local MySQL, PostgreSQL, and SQL Server databases. You should use Cloud SQL if you want to spend less time managing your database and more time using it.
-                                                                                                                        
+                                                                                                                                                                
                                         Many applications running on Compute Engine, App Engine and other services in Google Cloud use Cloud SQL for database storage
-                                                                                                                        
+                                                                                                                                                                
                                         ### What is a Cloud SQL instance?
-                                                                                                                        
+                                                                                                                                                                
                                         Each Cloud SQL instance is powered by a virtual machine (VM) running on a host Google Cloud server. Each VM operates the database program, such as MySQL Server, PostgreSQL, or SQL Server, and service agents that provide supporting services, such as logging and monitoring. The high availability option also provides a standby VM in another zone with a configuration that's identical to the primary VM.
-                                                                                                                        
+                                                                                                                                                                
                                         The database is stored on a scalable, durable network storage device called a persistent disk that attaches to the VM. A static IP address sits in front of each VM to ensure that the IP address an application connects to persists throughout the lifetime of the Cloud SQL instance.
                                     EOT
                   title    = "Untitled Text"
                 }
                 layout = {
-                  h           = 34
-                  i           = "card-prktimcl"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 6
-                  x           = 0
-                  y           = 0
+                  h = 34
+                  i = "card-e6w06oqv"
+                  w = 6
+                  x = 0
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "text"
-                  id       = "card-98advz0r"
+                  id       = "card-4sx1iica"
                   text     = <<-EOT
                                         ### Notes
-                                                                                                                        
+                                                                                                                                                                
                                         To use this application you must implement the terraform-google-collection and the terraform google module with either the enable_service_all or the enable_service_cloudsql set to true.
-                                                                                                                        
+                                                                                                                                                                
                                         ### Freshness
-                                                                                                                        
+                                                                                                                                                                
                                         Freshness determines how often your data will be refreshed.
-                                                                                                                        
+                                                                                                                                                                
                                         Defaults:
-                                                                                                                        
+                                                                                                                                                                
                                          - cloudsql: 5m
                                          - metrics:  1m 
                                          - logging:  1m
-                                                                                                                        
+                                                                                                                                                                
                                         ### Metric Types
-                                                                                                                        
+                                                                                                                                                                
                                         A gauge metric, in which the value measures a specific instant in time. For example, metrics measuring CPU utilization are gauge metrics; each point records the CPU utilization at the time of measurement. Another example of a gauge metric is the current temperature.
-                                                                                                                        
+                                                                                                                                                                
                                         A delta metric, in which the value measures the change since it was last recorded. For example, metrics measuring request counts are delta metrics; each value records how many requests were received since the last data point was recorded.
-                                                                                                                        
+                                                                                                                                                                
                                         A cumulative metric, in which the value constantly increases over time. For example, a metric for sent bytes might be cumulative; each value records the total number of bytes sent by a service at that time.
-                                                                                                                        
+                                                                                                                                                                
                                         ### Database Specific
-                                                                                                                        
+                                                                                                                                                                
                                         For database specific metrics please graphlink to Cloud SQL Metrics table
                                     EOT
                   title    = "Untitled Text"
                 }
                 layout = {
-                  h           = 34
-                  i           = "card-98advz0r"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 6
-                  x           = 6
-                  y           = 0
+                  h = 34
+                  i = "card-4sx1iica"
+                  w = 6
+                  x = 6
+                  y = 0
                 }
               },
             ]
@@ -478,9 +402,9 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             viewType = "input"
           },
         ]
-        selectedStageId = "stage-dbityb73"
+        selectedStageId = "stage-x113jq90"
         timeRange = {
-          display               = "Today 11:50:06 → 15:50:06"
+          display               = "Past 4 hours"
           endTime               = null
           millisFromCurrentTime = 14400000
           originalDisplay       = "Past 4 hours"
@@ -495,7 +419,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
       }
     }
   )
-  name = local.dashboard_name_monitoring
+  name = local.cloud_sql_monitoring_dashboard_name
   parameters = jsonencode(
     [
       {
@@ -520,9 +444,23 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
         id = "stage-x113jq90"
         input = [
           {
+            datasetId   = local.cloud_sql_metrics
+            datasetPath = null
+            inputName   = "database_cpu_utilization"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
             datasetId   = null
             datasetPath = null
             inputName   = "dbResource"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "filter_Cloud SQL"
             inputRole   = "Data"
             stageId     = null
           },
@@ -539,27 +477,28 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               "2" = "Valid From"
               "3" = "Valid To"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1313
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1313
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -568,7 +507,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 179
@@ -577,9 +515,21 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           index = 0
           inputList = [
             {
+              datasetId   = local.cloud_sql_metrics
+              inputName   = "database_cpu_utilization"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+            {
               inputName   = "dbResource"
               inputRole   = "Data"
               isUserInput = false
+              parameterId = "dbResource"
+            },
+            {
+              inputName   = "filter_Cloud SQL"
+              inputRole   = "Data"
+              isUserInput = true
               parameterId = "dbResource"
             },
           ]
@@ -614,41 +564,20 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   }
                 }
                 source = {
-                  metric = {
-                    aggregate   = "sum"
-                    datasetId   = local.cloud_sql_metrics
-                    description = <<-EOT
-                                            Current CPU utilization represented as a percentage of the reserved CPU that is currently in use. Values are typically numbers between 0.0 and 1.0 but might exceed 1.0. Charts display the values as a percentage between 0% and 100% or more. Sampled every 60s and may take up to 210s to display.
-                                        EOT
-                    groupBy = [
+                  table = {
+                    groupFields = [
                       "database_id",
                     ]
-                    heuristics = null
-                    id = {
-                      datasetId = local.cloud_sql_metrics
-                      name      = "database_cpu_utilization"
-                    }
-                    interval = 60000
-                    link = {
-                      __typename = "ForeignKey"
-                      dstFields = [
-                        "database_id",
-                      ]
-                      label = "Cloud SQL"
-                      srcFields = [
-                        "database_id",
-                      ]
-                      targetDataset    = local.cloud_sql_instance
-                      targetStageLabel = null
-                      type             = "foreign"
-                    }
-                    name        = "database_cpu_utilization"
-                    rollup      = "avg"
-                    type        = "gauge"
-                    unit        = "10^2.%"
-                    userDefined = true
+                    transformType = "none"
+                    type          = "xy"
+                    x             = "valid_from"
+                    y             = "A_database_cpu_utilization_sum"
                   }
-                  type = "metric"
+                  topK = {
+                    order = "Top"
+                    type  = "Auto"
+                  }
+                  type = "table"
                 }
                 type = "timeseries"
               }
@@ -665,52 +594,16 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  availabilityType         = "count"
-                  backendType              = "count"
-                  backupConfiguration      = "count"
-                  createTime               = "count"
-                  current_state            = "count"
-                  dataDiskSizeGb           = "count"
-                  dataDiskType             = "count"
-                  databaseFlags            = "count"
-                  databaseInstalledVersion = "count"
-                  databaseVersion          = "count"
-                  database_id              = "count"
-                  gceZone                  = "count"
-                  ipAddressPrimary         = "count"
-                  ipAddresses              = "count"
-                  ipConfiguration          = "count"
-                  label                    = "count"
-                  name                     = "count"
-                  project_id               = "count"
-                  region                   = "count"
-                  state                    = "count"
-                  tier                     = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-mbtcl9k3"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
-              customSummary = "dbResource"
-              datasetQuery  = null
+              customSummary = "database_cpu_utilization"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -731,10 +624,35 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               queryPresentation = {}
               type              = "InputStep"
             },
+            {
+              customSummary = ""
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-1h2qj78s"
+              index    = 1
+              isPinned = false
+              opal = [
+                "exists database_id = @\"filter_Cloud SQL\".database_id",
+                "align A_database_cpu_utilization_sum:avg(m(\"database_cpu_utilization\"))",
+                "aggregate A_database_cpu_utilization_sum:sum(A_database_cpu_utilization_sum), group_by(database_id)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -746,15 +664,33 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = <<-EOT
+                    exists database_id = @"filter_Cloud SQL".database_id
+                    align A_database_cpu_utilization_sum:avg(m("database_cpu_utilization"))
+                    aggregate A_database_cpu_utilization_sum:sum(A_database_cpu_utilization_sum), group_by(database_id)
+                EOT
       },
       {
         id = "stage-m3remp1v"
         input = [
           {
+            datasetId   = local.cloud_sql_metrics
+            datasetPath = null
+            inputName   = "database_disk_bytes_used"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
             datasetId   = null
             datasetPath = null
             inputName   = "dbResource"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "filter_Cloud SQL"
             inputRole   = "Data"
             stageId     = null
           },
@@ -771,27 +707,28 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               "2" = "Valid From"
               "3" = "Valid To"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1313
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1313
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -800,7 +737,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 179
@@ -809,9 +745,21 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           index = 1
           inputList = [
             {
+              datasetId   = local.cloud_sql_metrics
+              inputName   = "database_disk_bytes_used"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+            {
               inputName   = "dbResource"
               inputRole   = "Data"
               isUserInput = false
+              parameterId = "dbResource"
+            },
+            {
+              inputName   = "filter_Cloud SQL"
+              inputRole   = "Data"
+              isUserInput = true
               parameterId = "dbResource"
             },
           ]
@@ -846,41 +794,20 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   }
                 }
                 source = {
-                  metric = {
-                    aggregate   = "sum"
-                    datasetId   = local.cloud_sql_metrics
-                    description = <<-EOT
-                                            Data utilization in bytes. Sampled every 60s and may take up to 210s to display.
-                                        EOT
-                    groupBy = [
+                  table = {
+                    groupFields = [
                       "database_id",
                     ]
-                    heuristics = null
-                    id = {
-                      datasetId = local.cloud_sql_metrics
-                      name      = "database_disk_bytes_used"
-                    }
-                    interval = 60000
-                    link = {
-                      __typename = "ForeignKey"
-                      dstFields = [
-                        "database_id",
-                      ]
-                      label = "Cloud SQL"
-                      srcFields = [
-                        "database_id",
-                      ]
-                      targetDataset    = local.cloud_sql_instance
-                      targetStageLabel = null
-                      type             = "foreign"
-                    }
-                    name        = "database_disk_bytes_used"
-                    rollup      = "avg"
-                    type        = "gauge"
-                    unit        = "By"
-                    userDefined = true
+                    transformType = "none"
+                    type          = "xy"
+                    x             = "valid_from"
+                    y             = "A_database_disk_bytes_used_sum"
                   }
-                  type = "metric"
+                  topK = {
+                    order = "Top"
+                    type  = "Auto"
+                  }
+                  type = "table"
                 }
                 type = "timeseries"
               }
@@ -897,52 +824,16 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  availabilityType         = "count"
-                  backendType              = "count"
-                  backupConfiguration      = "count"
-                  createTime               = "count"
-                  current_state            = "count"
-                  dataDiskSizeGb           = "count"
-                  dataDiskType             = "count"
-                  databaseFlags            = "count"
-                  databaseInstalledVersion = "count"
-                  databaseVersion          = "count"
-                  database_id              = "count"
-                  gceZone                  = "count"
-                  ipAddressPrimary         = "count"
-                  ipAddresses              = "count"
-                  ipConfiguration          = "count"
-                  label                    = "count"
-                  name                     = "count"
-                  project_id               = "count"
-                  region                   = "count"
-                  state                    = "count"
-                  tier                     = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-1jxwgj7b"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
-              customSummary = "dbResource"
-              datasetQuery  = null
+              customSummary = "database_disk_bytes_used"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -963,10 +854,35 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               queryPresentation = {}
               type              = "InputStep"
             },
+            {
+              customSummary = ""
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-mgi5dv1n"
+              index    = 1
+              isPinned = false
+              opal = [
+                "exists database_id = @\"filter_Cloud SQL\".database_id",
+                "align A_database_disk_bytes_used_sum:avg(m(\"database_disk_bytes_used\"))",
+                "aggregate A_database_disk_bytes_used_sum:sum(A_database_disk_bytes_used_sum), group_by(database_id)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -978,15 +894,33 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = <<-EOT
+                    exists database_id = @"filter_Cloud SQL".database_id
+                    align A_database_disk_bytes_used_sum:avg(m("database_disk_bytes_used"))
+                    aggregate A_database_disk_bytes_used_sum:sum(A_database_disk_bytes_used_sum), group_by(database_id)
+                EOT
       },
       {
         id = "stage-6qjozjl6"
         input = [
           {
+            datasetId   = local.cloud_sql_metrics
+            datasetPath = null
+            inputName   = "database_disk_read_ops_count"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
             datasetId   = null
             datasetPath = null
             inputName   = "dbResource"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "filter_Cloud SQL"
             inputRole   = "Data"
             stageId     = null
           },
@@ -998,32 +932,35 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "name"
-              "1" = "label"
-              "2" = "Valid From"
-              "3" = "Valid To"
+              "0" = "database_id"
+              "1" = "valid_from"
+              "2" = "valid_to"
+              "3" = "name"
+              "4" = "Valid From"
+              "5" = "Valid To"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1313
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1313
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -1032,7 +969,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 179
@@ -1041,9 +977,21 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           index = 2
           inputList = [
             {
+              datasetId   = local.cloud_sql_metrics
+              inputName   = "database_disk_read_ops_count"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+            {
               inputName   = "dbResource"
               inputRole   = "Data"
               isUserInput = false
+              parameterId = "dbResource"
+            },
+            {
+              inputName   = "filter_Cloud SQL"
+              inputRole   = "Data"
+              isUserInput = true
               parameterId = "dbResource"
             },
           ]
@@ -1078,41 +1026,21 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   }
                 }
                 source = {
-                  metric = {
-                    aggregate   = "sum"
-                    datasetId   = local.cloud_sql_metrics
-                    description = <<-EOT
-                                            Delta count of data disk read IO operations. Sampled every 60s and may take up to 210s to display.
-                                        EOT
-                    groupBy = [
+                  table = {
+                    groupFields = [
                       "database_id",
                     ]
-                    heuristics = null
-                    id = {
-                      datasetId = local.cloud_sql_metrics
-                      name      = "database_disk_read_ops_count"
-                    }
-                    interval = 60000
-                    link = {
-                      __typename = "ForeignKey"
-                      dstFields = [
-                        "database_id",
-                      ]
-                      label = "Cloud SQL"
-                      srcFields = [
-                        "database_id",
-                      ]
-                      targetDataset    = local.cloud_sql_instance
-                      targetStageLabel = null
-                      type             = "foreign"
-                    }
-                    name        = "database_disk_read_ops_count"
-                    rollup      = "avg"
-                    type        = "delta"
-                    unit        = ""
-                    userDefined = true
+                    transformType = "none"
+                    type          = "xy"
+                    x             = "valid_from"
+                    y             = "A_database_disk_read_ops_count_sum"
                   }
-                  type = "metric"
+                  topK = {
+                    k     = 25
+                    order = "Top"
+                    type  = "Auto"
+                  }
+                  type = "table"
                 }
                 type = "timeseries"
               }
@@ -1129,52 +1057,16 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  availabilityType         = "count"
-                  backendType              = "count"
-                  backupConfiguration      = "count"
-                  createTime               = "count"
-                  current_state            = "count"
-                  dataDiskSizeGb           = "count"
-                  dataDiskType             = "count"
-                  databaseFlags            = "count"
-                  databaseInstalledVersion = "count"
-                  databaseVersion          = "count"
-                  database_id              = "count"
-                  gceZone                  = "count"
-                  ipAddressPrimary         = "count"
-                  ipAddresses              = "count"
-                  ipConfiguration          = "count"
-                  label                    = "count"
-                  name                     = "count"
-                  project_id               = "count"
-                  region                   = "count"
-                  state                    = "count"
-                  tier                     = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-4cz8d1lq"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
-              customSummary = "dbResource"
-              datasetQuery  = null
+              customSummary = "database_disk_read_ops_count"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1195,10 +1087,35 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               queryPresentation = {}
               type              = "InputStep"
             },
+            {
+              customSummary = ""
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-27xmybdh"
+              index    = 1
+              isPinned = false
+              opal = [
+                "exists database_id = @\"filter_Cloud SQL\".database_id",
+                "align A_database_disk_read_ops_count_sum:avg(m(\"database_disk_read_ops_count\"))",
+                "aggregate A_database_disk_read_ops_count_sum:sum(A_database_disk_read_ops_count_sum), group_by(database_id)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -1210,15 +1127,33 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = <<-EOT
+                    exists database_id = @"filter_Cloud SQL".database_id
+                    align A_database_disk_read_ops_count_sum:avg(m("database_disk_read_ops_count"))
+                    aggregate A_database_disk_read_ops_count_sum:sum(A_database_disk_read_ops_count_sum), group_by(database_id)
+                EOT
       },
       {
         id = "stage-bxss6s26"
         input = [
           {
+            datasetId   = local.cloud_sql_metrics_combo
+            datasetPath = null
+            inputName   = "all_database_network_connections"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
             datasetId   = null
             datasetPath = null
             inputName   = "dbResource"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "filter_Cloud SQL Metrics Combo"
             inputRole   = "Data"
             stageId     = null
           },
@@ -1230,32 +1165,35 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "name"
-              "1" = "label"
-              "2" = "Valid From"
-              "3" = "Valid To"
+              "0" = "database_id"
+              "1" = "valid_from"
+              "2" = "valid_to"
+              "3" = "name"
+              "4" = "Valid From"
+              "5" = "Valid To"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1505
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1505
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -1264,7 +1202,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 179
@@ -1273,9 +1210,21 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           index = 3
           inputList = [
             {
+              datasetId   = local.cloud_sql_metrics_combo
+              inputName   = "all_database_network_connections"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+            {
               inputName   = "dbResource"
               inputRole   = "Data"
               isUserInput = false
+              parameterId = "dbResource"
+            },
+            {
+              inputName   = "filter_Cloud SQL Metrics Combo"
+              inputRole   = "Data"
+              isUserInput = true
               parameterId = "dbResource"
             },
           ]
@@ -1310,118 +1259,21 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   }
                 }
                 source = {
-                  metric = {
-                    aggregate   = "sum"
-                    datasetId   = local.cloud_sql_metrics_combo
-                    description = <<-EOT
-                                            Combination of network connection metrics.
-                                        EOT
-                    groupBy = [
+                  table = {
+                    groupFields = [
                       "database_id",
                     ]
-                    heuristics = {
-                      __typename = "MetricHeuristics"
-                      tags = [
-                        {
-                          __typename = "MetricTag"
-                          column     = "database_id"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "database_platform"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "label"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_category"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_type"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_kind"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_kind_text"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "project_id"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "region"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "value_type"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "value_type_text"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "instance_state_label"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_labels"
-                          path       = "database"
-                        },
-                      ]
-                      validLinkLabels = [
-                        "Cloud SQL Metrics Combo",
-                      ]
-                    }
-                    id = {
-                      datasetId = local.cloud_sql_metrics_combo
-                      name      = "all_database_network_connections"
-                    }
-                    interval = 60000
-                    link = {
-                      __typename = "ForeignKey"
-                      dstFields = [
-                        "database_id",
-                      ]
-                      label = "Cloud SQL Metrics Combo"
-                      srcFields = [
-                        "database_id",
-                      ]
-                      targetDataset    = local.cloud_sql_instance
-                      targetStageLabel = null
-                      type             = "foreign"
-                    }
-                    name        = "all_database_network_connections"
-                    rollup      = "avg"
-                    type        = "gauge"
-                    unit        = ""
-                    userDefined = true
+                    transformType = "none"
+                    type          = "xy"
+                    x             = "valid_from"
+                    y             = "A_all_database_network_connections_sum"
                   }
-                  type = "metric"
+                  topK = {
+                    k     = 25
+                    order = "Top"
+                    type  = "Auto"
+                  }
+                  type = "table"
                 }
                 type = "timeseries"
               }
@@ -1438,52 +1290,16 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  availabilityType         = "count"
-                  backendType              = "count"
-                  backupConfiguration      = "count"
-                  createTime               = "count"
-                  current_state            = "count"
-                  dataDiskSizeGb           = "count"
-                  dataDiskType             = "count"
-                  databaseFlags            = "count"
-                  databaseInstalledVersion = "count"
-                  databaseVersion          = "count"
-                  database_id              = "count"
-                  gceZone                  = "count"
-                  ipAddressPrimary         = "count"
-                  ipAddresses              = "count"
-                  ipConfiguration          = "count"
-                  label                    = "count"
-                  name                     = "count"
-                  project_id               = "count"
-                  region                   = "count"
-                  state                    = "count"
-                  tier                     = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-e9n2d41m"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
-              customSummary = "dbResource"
-              datasetQuery  = null
+              customSummary = "all_database_network_connections"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1505,45 +1321,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               type              = "InputStep"
             },
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  availabilityType         = "count"
-                  backendType              = "count"
-                  backupConfiguration      = "count"
-                  createTime               = "count"
-                  current_state            = "count"
-                  dataDiskSizeGb           = "count"
-                  dataDiskType             = "count"
-                  databaseFlags            = "count"
-                  databaseInstalledVersion = "count"
-                  databaseVersion          = "count"
-                  database_id              = "count"
-                  gceZone                  = "count"
-                  ipAddressPrimary         = "count"
-                  ipAddresses              = "count"
-                  ipConfiguration          = "count"
-                  label                    = "count"
-                  name                     = "count"
-                  project_id               = "count"
-                  region                   = "count"
-                  state                    = "count"
-                  tier                     = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-n083qp1o"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
-              customName    = " (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1557,11 +1335,14 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-qcuofu0h"
+              id       = "step-7i1x9dsx"
               index    = 1
               isPinned = false
               opal = [
                 "",
+                "exists database_id = @\"filter_Cloud SQL Metrics Combo\".database_id",
+                "align A_all_database_network_connections_sum:avg(m(\"all_database_network_connections\"))",
+                "aggregate A_all_database_network_connections_sum:sum(A_all_database_network_connections_sum), group_by(database_id)",
               ]
               queryPresentation = {}
               type              = "unknown"
@@ -1569,7 +1350,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -1581,15 +1361,34 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = <<-EOT
+                    
+                    exists database_id = @"filter_Cloud SQL Metrics Combo".database_id
+                    align A_all_database_network_connections_sum:avg(m("all_database_network_connections"))
+                    aggregate A_all_database_network_connections_sum:sum(A_all_database_network_connections_sum), group_by(database_id)
+                EOT
       },
       {
         id = "stage-1zwm1yf7"
         input = [
           {
+            datasetId   = local.cloud_sql_metrics
+            datasetPath = null
+            inputName   = "database_disk_write_ops_count"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
             datasetId   = null
             datasetPath = null
             inputName   = "dbResource"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "filter_Cloud SQL"
             inputRole   = "Data"
             stageId     = null
           },
@@ -1601,32 +1400,35 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "name"
-              "1" = "label"
-              "2" = "Valid From"
-              "3" = "Valid To"
+              "0" = "database_id"
+              "1" = "valid_from"
+              "2" = "valid_to"
+              "3" = "name"
+              "4" = "Valid From"
+              "5" = "Valid To"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1313
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1313
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -1635,7 +1437,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 179
@@ -1644,9 +1445,21 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           index = 4
           inputList = [
             {
+              datasetId   = local.cloud_sql_metrics
+              inputName   = "database_disk_write_ops_count"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+            {
               inputName   = "dbResource"
               inputRole   = "Data"
               isUserInput = false
+              parameterId = "dbResource"
+            },
+            {
+              inputName   = "filter_Cloud SQL"
+              inputRole   = "Data"
+              isUserInput = true
               parameterId = "dbResource"
             },
           ]
@@ -1681,41 +1494,21 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   }
                 }
                 source = {
-                  metric = {
-                    aggregate   = "sum"
-                    datasetId   = local.cloud_sql_metrics
-                    description = <<-EOT
-                                            Delta count of data disk write IO operations. Sampled every 60s and may take up to 210s to display.
-                                        EOT
-                    groupBy = [
+                  table = {
+                    groupFields = [
                       "database_id",
                     ]
-                    heuristics = null
-                    id = {
-                      datasetId = local.cloud_sql_metrics
-                      name      = "database_disk_write_ops_count"
-                    }
-                    interval = 60000
-                    link = {
-                      __typename = "ForeignKey"
-                      dstFields = [
-                        "database_id",
-                      ]
-                      label = "Cloud SQL"
-                      srcFields = [
-                        "database_id",
-                      ]
-                      targetDataset    = local.cloud_sql_instance
-                      targetStageLabel = null
-                      type             = "foreign"
-                    }
-                    name        = "database_disk_write_ops_count"
-                    rollup      = "avg"
-                    type        = "delta"
-                    unit        = ""
-                    userDefined = true
+                    transformType = "none"
+                    type          = "xy"
+                    x             = "valid_from"
+                    y             = "A_database_disk_write_ops_count_sum"
                   }
-                  type = "metric"
+                  topK = {
+                    k     = 25
+                    order = "Top"
+                    type  = "Auto"
+                  }
+                  type = "table"
                 }
                 type = "timeseries"
               }
@@ -1732,52 +1525,16 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  availabilityType         = "count"
-                  backendType              = "count"
-                  backupConfiguration      = "count"
-                  createTime               = "count"
-                  current_state            = "count"
-                  dataDiskSizeGb           = "count"
-                  dataDiskType             = "count"
-                  databaseFlags            = "count"
-                  databaseInstalledVersion = "count"
-                  databaseVersion          = "count"
-                  database_id              = "count"
-                  gceZone                  = "count"
-                  ipAddressPrimary         = "count"
-                  ipAddresses              = "count"
-                  ipConfiguration          = "count"
-                  label                    = "count"
-                  name                     = "count"
-                  project_id               = "count"
-                  region                   = "count"
-                  state                    = "count"
-                  tier                     = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-hs9ztnxd"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
-              customSummary = "dbResource"
-              datasetQuery  = null
+              customSummary = "database_disk_write_ops_count"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1798,10 +1555,35 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               queryPresentation = {}
               type              = "InputStep"
             },
+            {
+              customSummary = ""
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-ea1khwl9"
+              index    = 1
+              isPinned = false
+              opal = [
+                "exists database_id = @\"filter_Cloud SQL\".database_id",
+                "align  A_database_disk_write_ops_count_sum:avg(m(\"database_disk_write_ops_count\"))",
+                "aggregate A_database_disk_write_ops_count_sum:sum(A_database_disk_write_ops_count_sum), group_by(database_id)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -1813,15 +1595,33 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = <<-EOT
+                    exists database_id = @"filter_Cloud SQL".database_id
+                    align  A_database_disk_write_ops_count_sum:avg(m("database_disk_write_ops_count"))
+                    aggregate A_database_disk_write_ops_count_sum:sum(A_database_disk_write_ops_count_sum), group_by(database_id)
+                EOT
       },
       {
         id = "stage-mpne8ae1"
         input = [
           {
+            datasetId   = local.cloud_sql_metrics
+            datasetPath = null
+            inputName   = "database_network_received_bytes_count"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
             datasetId   = null
             datasetPath = null
             inputName   = "dbResource"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "filter_Cloud SQL"
             inputRole   = "Data"
             stageId     = null
           },
@@ -1833,32 +1633,35 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "name"
-              "1" = "label"
-              "2" = "Valid From"
-              "3" = "Valid To"
+              "0" = "database_id"
+              "1" = "valid_from"
+              "2" = "valid_to"
+              "3" = "name"
+              "4" = "Valid From"
+              "5" = "Valid To"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1313
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1313
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -1867,7 +1670,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 179
@@ -1876,9 +1678,21 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           index = 5
           inputList = [
             {
+              datasetId   = local.cloud_sql_metrics
+              inputName   = "database_network_received_bytes_count"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+            {
               inputName   = "dbResource"
               inputRole   = "Data"
               isUserInput = false
+              parameterId = "dbResource"
+            },
+            {
+              inputName   = "filter_Cloud SQL"
+              inputRole   = "Data"
+              isUserInput = true
               parameterId = "dbResource"
             },
           ]
@@ -1913,41 +1727,21 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   }
                 }
                 source = {
-                  metric = {
-                    aggregate   = "sum"
-                    datasetId   = local.cloud_sql_metrics
-                    description = <<-EOT
-                                            Delta count of bytes received through the network. Sampled every 60s and may take up to 210s to display.
-                                        EOT
-                    groupBy = [
+                  table = {
+                    groupFields = [
                       "database_id",
                     ]
-                    heuristics = null
-                    id = {
-                      datasetId = local.cloud_sql_metrics
-                      name      = "database_network_received_bytes_count"
-                    }
-                    interval = 60000
-                    link = {
-                      __typename = "ForeignKey"
-                      dstFields = [
-                        "database_id",
-                      ]
-                      label = "Cloud SQL"
-                      srcFields = [
-                        "database_id",
-                      ]
-                      targetDataset    = local.cloud_sql_instance
-                      targetStageLabel = null
-                      type             = "foreign"
-                    }
-                    name        = "database_network_received_bytes_count"
-                    rollup      = "avg"
-                    type        = "delta"
-                    unit        = "By"
-                    userDefined = true
+                    transformType = "none"
+                    type          = "xy"
+                    x             = "valid_from"
+                    y             = "A_database_network_received_bytes_count_sum"
                   }
-                  type = "metric"
+                  topK = {
+                    k     = 25
+                    order = "Top"
+                    type  = "Auto"
+                  }
+                  type = "table"
                 }
                 type = "timeseries"
               }
@@ -1964,52 +1758,16 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  availabilityType         = "count"
-                  backendType              = "count"
-                  backupConfiguration      = "count"
-                  createTime               = "count"
-                  current_state            = "count"
-                  dataDiskSizeGb           = "count"
-                  dataDiskType             = "count"
-                  databaseFlags            = "count"
-                  databaseInstalledVersion = "count"
-                  databaseVersion          = "count"
-                  database_id              = "count"
-                  gceZone                  = "count"
-                  ipAddressPrimary         = "count"
-                  ipAddresses              = "count"
-                  ipConfiguration          = "count"
-                  label                    = "count"
-                  name                     = "count"
-                  project_id               = "count"
-                  region                   = "count"
-                  state                    = "count"
-                  tier                     = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-lfc2v4xe"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
-              customSummary = "dbResource"
-              datasetQuery  = null
+              customSummary = "database_network_received_bytes_count"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2030,10 +1788,35 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               queryPresentation = {}
               type              = "InputStep"
             },
+            {
+              customSummary = ""
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-nt3ascjt"
+              index    = 1
+              isPinned = false
+              opal = [
+                "exists database_id = @\"filter_Cloud SQL\".database_id",
+                "align A_database_network_received_bytes_count_sum:avg(m(\"database_network_received_bytes_count\"))",
+                "aggregate A_database_network_received_bytes_count_sum:sum(A_database_network_received_bytes_count_sum), group_by(database_id)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -2045,15 +1828,33 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = <<-EOT
+                    exists database_id = @"filter_Cloud SQL".database_id
+                    align A_database_network_received_bytes_count_sum:avg(m("database_network_received_bytes_count"))
+                    aggregate A_database_network_received_bytes_count_sum:sum(A_database_network_received_bytes_count_sum), group_by(database_id)
+                EOT
       },
       {
         id = "stage-urrvnw15"
         input = [
           {
+            datasetId   = local.cloud_sql_metrics
+            datasetPath = null
+            inputName   = "database_network_sent_bytes_count"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
             datasetId   = null
             datasetPath = null
             inputName   = "dbResource"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "filter_Cloud SQL"
             inputRole   = "Data"
             stageId     = null
           },
@@ -2065,31 +1866,35 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "name"
-              "1" = "label"
-              "2" = "Valid From"
-              "3" = "Valid To"
+              "0" = "database_id"
+              "1" = "valid_from"
+              "2" = "valid_to"
+              "3" = "name"
+              "4" = "Valid From"
+              "5" = "Valid To"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = null
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -2098,7 +1903,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 179
@@ -2107,9 +1911,21 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           index = 6
           inputList = [
             {
+              datasetId   = local.cloud_sql_metrics
+              inputName   = "database_network_sent_bytes_count"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+            {
               inputName   = "dbResource"
               inputRole   = "Data"
               isUserInput = false
+              parameterId = "dbResource"
+            },
+            {
+              inputName   = "filter_Cloud SQL"
+              inputRole   = "Data"
+              isUserInput = true
               parameterId = "dbResource"
             },
           ]
@@ -2144,41 +1960,21 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   }
                 }
                 source = {
-                  metric = {
-                    aggregate   = "sum"
-                    datasetId   = local.cloud_sql_metrics
-                    description = <<-EOT
-                                            Delta count of bytes sent through the network. Sampled every 60s and may take up to 210s to display.
-                                        EOT
-                    groupBy = [
+                  table = {
+                    groupFields = [
                       "database_id",
                     ]
-                    heuristics = null
-                    id = {
-                      datasetId = local.cloud_sql_metrics
-                      name      = "database_network_sent_bytes_count"
-                    }
-                    interval = 60000
-                    link = {
-                      __typename = "ForeignKey"
-                      dstFields = [
-                        "database_id",
-                      ]
-                      label = "Cloud SQL"
-                      srcFields = [
-                        "database_id",
-                      ]
-                      targetDataset    = local.cloud_sql_instance
-                      targetStageLabel = null
-                      type             = "foreign"
-                    }
-                    name        = "database_network_sent_bytes_count"
-                    rollup      = "avg"
-                    type        = "delta"
-                    unit        = "By"
-                    userDefined = true
+                    transformType = "none"
+                    type          = "xy"
+                    x             = "valid_from"
+                    y             = "A_database_network_sent_bytes_count_sum"
                   }
-                  type = "metric"
+                  topK = {
+                    k     = 25
+                    order = "Top"
+                    type  = "Auto"
+                  }
+                  type = "table"
                 }
                 type = "timeseries"
               }
@@ -2195,7 +1991,8 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -2203,8 +2000,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "dbResource"
-              datasetQuery  = null
+              customSummary = "database_network_sent_bytes_count"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2225,10 +2021,35 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               queryPresentation = {}
               type              = "InputStep"
             },
+            {
+              customSummary = ""
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-pg2xz5hc"
+              index    = 1
+              isPinned = false
+              opal = [
+                "exists database_id = @\"filter_Cloud SQL\".database_id",
+                "align A_database_network_sent_bytes_count_sum:avg(m(\"database_network_sent_bytes_count\"))",
+                "aggregate A_database_network_sent_bytes_count_sum:sum(A_database_network_sent_bytes_count_sum), group_by(database_id)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -2240,15 +2061,33 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = <<-EOT
+                    exists database_id = @"filter_Cloud SQL".database_id
+                    align A_database_network_sent_bytes_count_sum:avg(m("database_network_sent_bytes_count"))
+                    aggregate A_database_network_sent_bytes_count_sum:sum(A_database_network_sent_bytes_count_sum), group_by(database_id)
+                EOT
       },
       {
         id = "stage-5g6dfyg1"
         input = [
           {
+            datasetId   = local.cloud_sql_metrics
+            datasetPath = null
+            inputName   = "database_disk_quota"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
             datasetId   = null
             datasetPath = null
             inputName   = "dbResource"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "filter_Cloud SQL"
             inputRole   = "Data"
             stageId     = null
           },
@@ -2265,27 +2104,28 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               "2" = "Valid From"
               "3" = "Valid To"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1313
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1313
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -2294,7 +2134,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 179
@@ -2303,9 +2142,21 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           index = 7
           inputList = [
             {
+              datasetId   = local.cloud_sql_metrics
+              inputName   = "database_disk_quota"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+            {
               inputName   = "dbResource"
               inputRole   = "Data"
               isUserInput = false
+              parameterId = "dbResource"
+            },
+            {
+              inputName   = "filter_Cloud SQL"
+              inputRole   = "Data"
+              isUserInput = true
               parameterId = "dbResource"
             },
           ]
@@ -2340,41 +2191,20 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   }
                 }
                 source = {
-                  metric = {
-                    aggregate   = "sum"
-                    datasetId   = local.cloud_sql_metrics
-                    description = <<-EOT
-                                            Maximum data disk size in bytes. Sampled every 60s and may take up to 210s to display.
-                                        EOT
-                    groupBy = [
+                  table = {
+                    groupFields = [
                       "database_id",
                     ]
-                    heuristics = null
-                    id = {
-                      datasetId = local.cloud_sql_metrics
-                      name      = "database_disk_quota"
-                    }
-                    interval = 60000
-                    link = {
-                      __typename = "ForeignKey"
-                      dstFields = [
-                        "database_id",
-                      ]
-                      label = "Cloud SQL"
-                      srcFields = [
-                        "database_id",
-                      ]
-                      targetDataset    = local.cloud_sql_instance
-                      targetStageLabel = null
-                      type             = "foreign"
-                    }
-                    name        = "database_disk_quota"
-                    rollup      = "avg"
-                    type        = "gauge"
-                    unit        = "By"
-                    userDefined = true
+                    transformType = "none"
+                    type          = "xy"
+                    x             = "valid_from"
+                    y             = "A_database_disk_quota_sum"
                   }
-                  type = "metric"
+                  topK = {
+                    order = "Top"
+                    type  = "Auto"
+                  }
+                  type = "table"
                 }
                 type = "timeseries"
               }
@@ -2391,52 +2221,16 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 200
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  availabilityType         = "count"
-                  backendType              = "count"
-                  backupConfiguration      = "count"
-                  createTime               = "count"
-                  current_state            = "count"
-                  dataDiskSizeGb           = "count"
-                  dataDiskType             = "count"
-                  databaseFlags            = "count"
-                  databaseInstalledVersion = "count"
-                  databaseVersion          = "count"
-                  database_id              = "count"
-                  gceZone                  = "count"
-                  ipAddressPrimary         = "count"
-                  ipAddresses              = "count"
-                  ipConfiguration          = "count"
-                  label                    = "count"
-                  name                     = "count"
-                  project_id               = "count"
-                  region                   = "count"
-                  state                    = "count"
-                  tier                     = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-o8ggatjl"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
-              customSummary = "dbResource"
-              datasetQuery  = null
+              customSummary = "database_disk_quota"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2457,10 +2251,35 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               queryPresentation = {}
               type              = "InputStep"
             },
+            {
+              customSummary = ""
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-2801s8q5"
+              index    = 1
+              isPinned = false
+              opal = [
+                "exists database_id = @\"filter_Cloud SQL\".database_id",
+                "align A_database_disk_quota_sum:avg(m(\"database_disk_quota\"))",
+                "aggregate A_database_disk_quota_sum:sum(A_database_disk_quota_sum), group_by(database_id)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -2472,7 +2291,11 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = <<-EOT
+                    exists database_id = @"filter_Cloud SQL".database_id
+                    align A_database_disk_quota_sum:avg(m("database_disk_quota"))
+                    aggregate A_database_disk_quota_sum:sum(A_database_disk_quota_sum), group_by(database_id)
+                EOT
       },
       {
         id = "stage-zx1ijn1u"
@@ -2497,27 +2320,28 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               "2" = "Valid From"
               "3" = "Valid To"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1313
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1313
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -2526,7 +2350,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 179
@@ -2575,9 +2398,14 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                       fn         = "count"
                       resolution = "SINGLE"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "keyvalue"
-                    valueField    = "databaseInstalledVersion"
+                    valueField    = "A_databaseInstalledVersion_count"
+                  }
+                  topK = {
+                    k     = 100
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -2597,51 +2425,21 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               "ResultKindSchema",
             ]
             rollup = {}
+            sort = [
+              {
+                ascending  = false
+                columnName = "A_databaseInstalledVersion_count"
+              },
+            ]
+            wantBuckets = 1
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  availabilityType         = "count"
-                  backendType              = "count"
-                  backupConfiguration      = "count"
-                  createTime               = "count"
-                  current_state            = "count"
-                  dataDiskSizeGb           = "count"
-                  dataDiskType             = "count"
-                  databaseFlags            = "count"
-                  databaseInstalledVersion = "count"
-                  databaseVersion          = "count"
-                  database_id              = "count"
-                  gceZone                  = "count"
-                  ipAddressPrimary         = "count"
-                  ipAddresses              = "count"
-                  ipConfiguration          = "count"
-                  label                    = "count"
-                  name                     = "count"
-                  project_id               = "count"
-                  region                   = "count"
-                  state                    = "count"
-                  tier                     = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-8lv71j4g"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
               customSummary = "dbResource"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2662,10 +2460,101 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               queryPresentation = {}
               type              = "InputStep"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "databaseInstalledVersion"
+                        dataVis = {
+                          config = {
+                            innerRadius = 0
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = false
+                            }
+                            type = "arc"
+                          }
+                          source = {
+                            table = {
+                              keyField = [
+                                "databaseInstalledVersion",
+                              ]
+                              statsBy = {
+                                fn = "count"
+                              }
+                              timechart = {
+                                fn         = "count"
+                                resolution = "SINGLE"
+                              }
+                              transformType = "none"
+                              type          = "keyvalue"
+                              valueField    = "A_databaseInstalledVersion_count"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "circular"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "databaseInstalledVersion",
+                        ]
+                        id              = "datasetQueryExpression-mxx2fal8"
+                        lookupActions   = []
+                        summarizeVerb   = "statsby"
+                        summaryFunction = "count"
+                        summaryMode     = "single"
+                        type            = "datasetQueryExpression"
+                        valueColumnId   = "A_databaseInstalledVersion_count"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-kmvjmfzk"
+                      lookupActions = []
+                      type          = "multiExpression"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-mxx2fal8",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-q341zbt2"
+              index    = 1
+              isPinned = false
+              opal = [
+                "statsby A_databaseInstalledVersion_count:count(databaseInstalledVersion), group_by(databaseInstalledVersion)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -2677,7 +2566,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = "statsby A_databaseInstalledVersion_count:count(databaseInstalledVersion), group_by(databaseInstalledVersion)"
       },
       {
         id = "stage-2iknse1z"
@@ -2701,27 +2590,28 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               "2" = "Valid From"
               "3" = "Valid To"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1505
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1505
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -2730,7 +2620,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -2779,9 +2668,14 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                       fn         = "count"
                       resolution = "SINGLE"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "keyvalue"
-                    valueField    = "region"
+                    valueField    = "A_region_count"
+                  }
+                  topK = {
+                    k     = 100
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -2801,50 +2695,21 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               "ResultKindSchema",
             ]
             rollup = {}
+            sort = [
+              {
+                ascending  = false
+                columnName = "A_region_count"
+              },
+            ]
+            wantBuckets = 1
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  availabilityType         = "count"
-                  backendType              = "count"
-                  backupConfiguration      = "count"
-                  createTime               = "count"
-                  current_state            = "count"
-                  dataDiskSizeGb           = "count"
-                  dataDiskType             = "count"
-                  databaseFlags            = "count"
-                  databaseInstalledVersion = "count"
-                  databaseVersion          = "count"
-                  database_id              = "count"
-                  gceZone                  = "count"
-                  ipAddressPrimary         = "count"
-                  ipAddresses              = "count"
-                  ipConfiguration          = "count"
-                  name                     = "count"
-                  project_id               = "count"
-                  region                   = "count"
-                  state                    = "count"
-                  tier                     = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-80j2510x"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
               customSummary = "dbResource"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2865,10 +2730,101 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               queryPresentation = {}
               type              = "InputStep"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "region"
+                        dataVis = {
+                          config = {
+                            innerRadius = 0.6
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type = "arc"
+                          }
+                          source = {
+                            table = {
+                              keyField = [
+                                "region",
+                              ]
+                              statsBy = {
+                                fn = "count"
+                              }
+                              timechart = {
+                                fn         = "count"
+                                resolution = "SINGLE"
+                              }
+                              transformType = "none"
+                              type          = "keyvalue"
+                              valueField    = "A_region_count"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "circular"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "region",
+                        ]
+                        id              = "datasetQueryExpression-b78z19uk"
+                        lookupActions   = []
+                        summarizeVerb   = "statsby"
+                        summaryFunction = "count"
+                        summaryMode     = "single"
+                        type            = "datasetQueryExpression"
+                        valueColumnId   = "A_region_count"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-elhxsmbr"
+                      lookupActions = []
+                      type          = "multiExpression"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-b78z19uk",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-k1dnx8ws"
+              index    = 1
+              isPinned = false
+              opal = [
+                "statsby A_region_count:count(region), group_by(region)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -2880,7 +2836,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = "statsby A_region_count:count(region), group_by(region)"
       },
       {
         id = "stage-gcd1nb81"
@@ -2904,26 +2860,28 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               "2" = "Valid From"
               "3" = "Valid To"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = null
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -2932,7 +2890,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -2981,9 +2938,14 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                       fn         = "count"
                       resolution = "SINGLE"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "keyvalue"
-                    valueField    = "project_id"
+                    valueField    = "A_project_id_count"
+                  }
+                  topK = {
+                    k     = 100
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -3003,6 +2965,13 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               "ResultKindSchema",
             ]
             rollup = {}
+            sort = [
+              {
+                ascending  = false
+                columnName = "A_project_id_count"
+              },
+            ]
+            wantBuckets = 1
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -3011,7 +2980,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             {
               customName    = "Input"
               customSummary = "dbResource"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3032,10 +3000,101 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               queryPresentation = {}
               type              = "InputStep"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "project_id"
+                        dataVis = {
+                          config = {
+                            innerRadius = 0.6
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type = "arc"
+                          }
+                          source = {
+                            table = {
+                              keyField = [
+                                "project_id",
+                              ]
+                              statsBy = {
+                                fn = "count"
+                              }
+                              timechart = {
+                                fn         = "count"
+                                resolution = "SINGLE"
+                              }
+                              transformType = "none"
+                              type          = "keyvalue"
+                              valueField    = "A_project_id_count"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "circular"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "project_id",
+                        ]
+                        id              = "datasetQueryExpression-hvlahv1e"
+                        lookupActions   = []
+                        summarizeVerb   = "statsby"
+                        summaryFunction = "count"
+                        summaryMode     = "single"
+                        type            = "datasetQueryExpression"
+                        valueColumnId   = "A_project_id_count"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-v4jgctx5"
+                      lookupActions = []
+                      type          = "multiExpression"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-hvlahv1e",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-mb3rvs1w"
+              index    = 1
+              isPinned = false
+              opal = [
+                "statsby A_project_id_count:count(project_id), group_by(project_id)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -3047,15 +3106,29 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = "statsby A_project_id_count:count(project_id), group_by(project_id)"
       },
       {
         id = "stage-pe9mq2em"
         input = [
           {
+            datasetId   = local.cloud_sql_metrics
+            datasetPath = null
+            inputName   = "database_instance_state"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
             datasetId   = null
             datasetPath = null
             inputName   = "dbResource"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "filter_Cloud SQL"
             inputRole   = "Data"
             stageId     = null
           },
@@ -3068,30 +3141,32 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             columnHeaderHeight = 29
             columnOrderOverride = {
               "0" = "name"
-              "2" = "Valid From"
-              "3" = "Valid To"
+              "1" = "valid_from"
+              "2" = "valid_to"
+              "4" = "Valid From"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1313
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1313
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -3100,7 +3175,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -3109,9 +3183,21 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           index = 11
           inputList = [
             {
+              datasetId   = local.cloud_sql_metrics
+              inputName   = "database_instance_state"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+            {
               inputName   = "dbResource"
               inputRole   = "Data"
               isUserInput = false
+              parameterId = "dbResource"
+            },
+            {
+              inputName   = "filter_Cloud SQL"
+              inputRole   = "Data"
+              isUserInput = true
               parameterId = "dbResource"
             },
           ]
@@ -3145,53 +3231,21 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   }
                 }
                 source = {
-                  metric = {
-                    aggregate   = "sum"
-                    datasetId   = local.cloud_sql_metrics
-                    description = <<-EOT
-                                                      The current serving state of the Cloud SQL instance.
-                                            Because there are seven possible states, seven data points are returned.
-                                            Each of them has a different field value representing each state.
-                                            Only the one that matches the current state of the instance is TRUE. All the others are FALSE.
-                                            The state can be one of the following:
-                                            RUNNING:  The instance is running, or is ready to run when accessed.
-                                            SUSPENDED: The instance is not available, for example due to problems with billing.
-                                            RUNNABLE: The instance has been stopped by owner. It is not currently running, but it's ready to be restarted.
-                                            PENDING_CREATE: The instance is being created.
-                                            MAINTENANCE: The instance is down for maintenance.
-                                            FAILED: The instance creation failed.
-                                            UNKNOWN_STATE: The state of the instance is unknown. Sampled every 60s and may take up to 210s to display.
-                                        EOT
-                    groupBy = [
+                  table = {
+                    groupFields = [
                       "instance_state_label",
                     ]
-                    heuristics = null
-                    id = {
-                      datasetId = local.cloud_sql_metrics
-                      name      = "database_instance_state"
-                    }
-                    interval = 60000
-                    link = {
-                      __typename = "ForeignKey"
-                      dstFields = [
-                        "database_id",
-                      ]
-                      label = "Cloud SQL"
-                      srcFields = [
-                        "database_id",
-                      ]
-                      targetDataset    = local.cloud_sql_instance
-                      targetStageLabel = null
-                      type             = "foreign"
-                    }
-                    name        = "database_instance_state"
-                    resolution  = 300000
-                    rollup      = "sum"
-                    type        = "gauge"
-                    unit        = ""
-                    userDefined = true
+                    transformType = "none"
+                    type          = "xy"
+                    x             = "valid_from"
+                    y             = "A_database_instance_state_sum"
                   }
-                  type = "metric"
+                  topK = {
+                    k     = 25
+                    order = "Top"
+                    type  = "Auto"
+                  }
+                  type = "table"
                 }
                 type = "bar"
               }
@@ -3208,51 +3262,16 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  availabilityType         = "count"
-                  backendType              = "count"
-                  backupConfiguration      = "count"
-                  createTime               = "count"
-                  current_state            = "count"
-                  dataDiskSizeGb           = "count"
-                  dataDiskType             = "count"
-                  databaseFlags            = "count"
-                  databaseInstalledVersion = "count"
-                  databaseVersion          = "count"
-                  database_id              = "count"
-                  gceZone                  = "count"
-                  ipAddressPrimary         = "count"
-                  ipAddresses              = "count"
-                  ipConfiguration          = "count"
-                  name                     = "count"
-                  project_id               = "count"
-                  region                   = "count"
-                  state                    = "count"
-                  tier                     = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-70bagzha"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
-              customSummary = "dbResource"
-              datasetQuery  = null
+              customSummary = "database_instance_state"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3273,10 +3292,35 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               queryPresentation = {}
               type              = "InputStep"
             },
+            {
+              customSummary = ""
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-c8z4x0v3"
+              index    = 1
+              isPinned = false
+              opal = [
+                "exists database_id = @\"filter_Cloud SQL\".database_id",
+                "align A_database_instance_state_sum:sum(m(\"database_instance_state\"))",
+                "aggregate A_database_instance_state_sum:sum(A_database_instance_state_sum), group_by(instance_state_label)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -3288,7 +3332,11 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = <<-EOT
+                    exists database_id = @"filter_Cloud SQL".database_id
+                    align A_database_instance_state_sum:sum(m("database_instance_state"))
+                    aggregate A_database_instance_state_sum:sum(A_database_instance_state_sum), group_by(instance_state_label)
+                EOT
       },
       {
         id = "stage-9e63b4hp"
@@ -3311,31 +3359,32 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight             = true
-            columnFooterHeight          = 0
-            columnHeaderHeight          = 29
-            columnOrderOverride         = {}
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1311
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = true
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            autoTableHeight              = true
+            columnFooterHeight           = 0
+            columnHeaderHeight           = 29
+            columnOrderOverride          = {}
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1504
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = true
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 33
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -3344,7 +3393,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -3369,51 +3417,14 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           managers = [
             {
               id                     = "hp2cuf8g"
-              isDisabled             = true
+              isDisabled             = false
               isResourceCountEnabled = false
               type                   = "Timescrubber"
             },
             {
-              id         = "ecmky31q"
-              isDisabled = true
-              type       = "Vis"
-              vis = {
-                config = {
-                  color         = "Default"
-                  hideGridLines = false
-                  legend = {
-                    placement = "right"
-                    type      = "list"
-                    visible   = true
-                  }
-                  type = "xy"
-                  xConfig = {
-                    visible = true
-                  }
-                  yConfig = {
-                    visible = true
-                  }
-                }
-                source = {
-                  table = {
-                    groupFields = [
-                      "severity",
-                    ]
-                    statsBy = {
-                      fn = "count"
-                    }
-                    timechart = {
-                      fn         = "count"
-                      resolution = "AUTO"
-                    }
-                    transformType = "timechart"
-                    type          = "xy"
-                    y             = "severity"
-                  }
-                  type = "table"
-                }
-                type = "timeseries"
-              }
+              id         = "3brr3os0"
+              isDisabled = false
+              type       = "JsonTree"
             },
           ]
           queryPresentation = {
@@ -3439,7 +3450,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             {
               customName    = "Input"
               customSummary = "dbResource"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3461,31 +3471,8 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               type              = "InputStep"
             },
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  log_Name     = "count"
-                  log_Source   = "count"
-                  project_id   = "count"
-                  protoPayload = "count"
-                  region       = "count"
-                  severity     = "count"
-                  textPayload  = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-gjdr8j4s"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "follow (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3511,7 +3498,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -3547,27 +3533,28 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               "2" = "Valid From"
               "3" = "Valid To"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1313
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1313
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -3576,7 +3563,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -3625,9 +3611,14 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                       fn         = "count"
                       resolution = "SINGLE"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "keyvalue"
-                    valueField    = "gceZone"
+                    valueField    = "A_gceZone_count"
+                  }
+                  topK = {
+                    k     = 100
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -3647,49 +3638,21 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               "ResultKindSchema",
             ]
             rollup = {}
+            sort = [
+              {
+                ascending  = false
+                columnName = "A_gceZone_count"
+              },
+            ]
+            wantBuckets = 1
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  availabilityType         = "count"
-                  backendType              = "count"
-                  backupConfiguration      = "count"
-                  createTime               = "count"
-                  dataDiskSizeGb           = "count"
-                  dataDiskType             = "count"
-                  databaseFlags            = "count"
-                  databaseInstalledVersion = "count"
-                  databaseVersion          = "count"
-                  database_id              = "count"
-                  gceZone                  = "count"
-                  ipAddressPrimary         = "count"
-                  ipAddresses              = "count"
-                  ipConfiguration          = "count"
-                  name                     = "count"
-                  project_id               = "count"
-                  region                   = "count"
-                  state                    = "count"
-                  tier                     = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-s65ahr2g"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
               customSummary = "dbResource"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3710,10 +3673,101 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               queryPresentation = {}
               type              = "InputStep"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "gceZone"
+                        dataVis = {
+                          config = {
+                            innerRadius = 0.6
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type = "arc"
+                          }
+                          source = {
+                            table = {
+                              keyField = [
+                                "gceZone",
+                              ]
+                              statsBy = {
+                                fn = "count"
+                              }
+                              timechart = {
+                                fn         = "count"
+                                resolution = "SINGLE"
+                              }
+                              transformType = "none"
+                              type          = "keyvalue"
+                              valueField    = "A_gceZone_count"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "circular"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "gceZone",
+                        ]
+                        id              = "datasetQueryExpression-tu03bdo5"
+                        lookupActions   = []
+                        summarizeVerb   = "statsby"
+                        summaryFunction = "count"
+                        summaryMode     = "single"
+                        type            = "datasetQueryExpression"
+                        valueColumnId   = "A_gceZone_count"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-kttnjkbq"
+                      lookupActions = []
+                      type          = "multiExpression"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-tu03bdo5",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-0qiafic1"
+              index    = 1
+              isPinned = false
+              opal = [
+                "statsby A_gceZone_count:count(gceZone), group_by(gceZone)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -3725,7 +3779,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = "statsby A_gceZone_count:count(gceZone), group_by(gceZone)"
       },
       {
         id = "stage-bv986tcd"
@@ -3749,27 +3803,28 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               "2" = "Valid From"
               "3" = "Valid To"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1311
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = true
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1504
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = true
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 33
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells = {
                 name = {
@@ -3782,7 +3837,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               rows                 = {}
               selectionType        = "cell"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -3801,9 +3855,14 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           managers = [
             {
               id                     = "lvkob97u"
-              isDisabled             = true
+              isDisabled             = false
               isResourceCountEnabled = false
               type                   = "Timescrubber"
+            },
+            {
+              id         = "s332gcqs"
+              isDisabled = false
+              type       = "JsonTree"
             },
           ]
           queryPresentation = {
@@ -3827,43 +3886,8 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  availabilityType         = "count"
-                  backendType              = "count"
-                  backupConfiguration      = "count"
-                  dataDiskSizeGb           = "count"
-                  dataDiskType             = "count"
-                  databaseFlags            = "count"
-                  databaseInstalledVersion = "count"
-                  databaseVersion          = "count"
-                  database_id              = "count"
-                  deleted                  = "count"
-                  gceZone                  = "count"
-                  ipAddressPrimary         = "count"
-                  ipAddresses              = "count"
-                  ipConfiguration          = "count"
-                  name                     = "count"
-                  project_id               = "count"
-                  region                   = "count"
-                  tier                     = "count"
-                  ttl                      = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-qo2q3bp3"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
               customSummary = "dbResource"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3885,43 +3909,8 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               type              = "InputStep"
             },
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  availabilityType         = "count"
-                  backendType              = "count"
-                  backupConfiguration      = "count"
-                  dataDiskSizeGb           = "count"
-                  dataDiskType             = "count"
-                  databaseFlags            = "count"
-                  databaseInstalledVersion = "count"
-                  databaseVersion          = "count"
-                  database_id              = "count"
-                  deleted                  = "count"
-                  gceZone                  = "count"
-                  ipAddressPrimary         = "count"
-                  ipAddresses              = "count"
-                  ipConfiguration          = "count"
-                  name                     = "count"
-                  project_id               = "count"
-                  region                   = "count"
-                  tier                     = "count"
-                  ttl                      = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-t9an11y7"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "pick_col (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3954,7 +3943,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -3981,9 +3969,23 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
         id = "stage-perdox7c"
         input = [
           {
+            datasetId   = local.cloud_sql_metrics
+            datasetPath = null
+            inputName   = "database_disk_bytes_used_by_data_type"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
             datasetId   = null
             datasetPath = null
             inputName   = "dbResource"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "filter_Cloud SQL Metrics"
             inputRole   = "Data"
             stageId     = null
           },
@@ -3996,30 +3998,33 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             columnHeaderHeight = 29
             columnOrderOverride = {
               "0" = "name"
-              "2" = "Valid From"
-              "3" = "Valid To"
+              "1" = "database_id"
+              "2" = "valid_from"
+              "3" = "valid_to"
+              "5" = "Valid To"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1313
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1313
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -4028,7 +4033,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -4036,6 +4040,12 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           }
           index = 15
           inputList = [
+            {
+              datasetId   = local.cloud_sql_metrics
+              inputName   = "database_disk_bytes_used_by_data_type"
+              inputRole   = "Data"
+              isUserInput = false
+            },
             {
               inputName   = "dbResource"
               inputRole   = "Data"
@@ -4069,117 +4079,27 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                     visible = true
                   }
                   yConfig = {
+                    unit    = "bit"
                     visible = true
                   }
                 }
                 source = {
-                  metric = {
-                    aggregate   = "sum"
-                    datasetId   = local.cloud_sql_metrics
-                    description = "Auto Detected Metric"
-                    groupBy = [
+                  table = {
+                    groupFields = [
                       "metric_labels",
                       "database_id",
                     ]
-                    heuristics = {
-                      __typename = "MetricHeuristics"
-                      tags = [
-                        {
-                          __typename = "MetricTag"
-                          column     = "database_id"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "database_platform"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "label"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_category"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_kind"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_kind_text"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_type"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "project_id"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "region"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "value_type"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "value_type_text"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "instance_state_label"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_labels"
-                          path       = "data_type"
-                        },
-                      ]
-                      validLinkLabels = [
-                        "Cloud SQL Metrics",
-                      ]
-                    }
-                    id = {
-                      datasetId = local.cloud_sql_metrics
-                      name      = "database_disk_bytes_used_by_data_type"
-                    }
-                    interval = null
-                    link = {
-                      __typename = "ForeignKey"
-                      dstFields = [
-                        "database_id",
-                      ]
-                      label = "Cloud SQL Metrics"
-                      srcFields = [
-                        "database_id",
-                      ]
-                      targetDataset    = local.cloud_sql_instance
-                      targetStageLabel = null
-                      type             = "foreign"
-                    }
-                    name        = "database_disk_bytes_used_by_data_type"
-                    resolution  = "AUTO"
-                    rollup      = "sum"
-                    type        = "gauge"
-                    unit        = "bit"
-                    userDefined = false
+                    transformType = "none"
+                    type          = "xy"
+                    x             = "valid_from"
+                    y             = "A_database_disk_bytes_used_by_data_type_sum"
                   }
-                  type = "metric"
+                  topK = {
+                    k     = 25
+                    order = "Top"
+                    type  = "Auto"
+                  }
+                  type = "table"
                 }
                 type = "timeseries"
               }
@@ -4196,50 +4116,16 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  availabilityType         = "count"
-                  backendType              = "count"
-                  backupConfiguration      = "count"
-                  dataDiskSizeGb           = "count"
-                  dataDiskType             = "count"
-                  databaseFlags            = "count"
-                  databaseInstalledVersion = "count"
-                  databaseVersion          = "count"
-                  database_id              = "count"
-                  deleted                  = "count"
-                  gceZone                  = "count"
-                  ipAddressPrimary         = "count"
-                  ipAddresses              = "count"
-                  ipConfiguration          = "count"
-                  name                     = "count"
-                  project_id               = "count"
-                  region                   = "count"
-                  tier                     = "count"
-                  ttl                      = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-d7bw0cc9"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
-              customSummary = "dbResource"
-              datasetQuery  = null
+              customSummary = "database_disk_bytes_used_by_data_type"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4260,10 +4146,243 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               queryPresentation = {}
               type              = "InputStep"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        dataVis = {
+                          config = {
+                            color         = "Default"
+                            hideGridLines = true
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = false
+                            }
+                            type = "xy"
+                            xConfig = {
+                              visible = true
+                            }
+                            yConfig = {
+                              unit    = "bit"
+                              visible = true
+                            }
+                          }
+                          source = {
+                            table = {
+                              groupFields = [
+                                "metric_labels",
+                                "database_id",
+                              ]
+                              transformType = "none"
+                              type          = "xy"
+                              x             = "valid_from"
+                              y             = "A_database_disk_bytes_used_by_data_type_sum"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "timeseries"
+                        }
+                        disableAggregate = false
+                        filterActions = [
+                          {
+                            params = {
+                              foreignKey = {
+                                __typename = "ForeignKey"
+                                dstFields = [
+                                  "database_id",
+                                ]
+                                label = "Cloud SQL Metrics"
+                                srcFields = [
+                                  "database_id",
+                                ]
+                                targetDataset    = local.cloud_sql_instance
+                                targetStageLabel = null
+                                type             = "foreign"
+                              }
+                              joinInput = {
+                                inputName   = "dbResource"
+                                inputRole   = "Data"
+                                isUserInput = false
+                                parameterId = "dbResource"
+                              }
+                            }
+                            summary = null
+                            type    = "ExistsInFilter"
+                          },
+                        ]
+                        frameDuration = {
+                          num  = 2
+                          unit = "minute"
+                        }
+                        groupBy = [
+                          "metric_labels",
+                          "database_id",
+                        ]
+                        id = "metricExpression-o3laree6"
+                        inputSource = {
+                          stageId = "stage-perdox7c"
+                        }
+                        lookupActions = []
+                        metric = {
+                          aggregate   = "sum"
+                          datasetId   = local.cloud_sql_metrics
+                          description = "Auto Detected Metric"
+                          heuristics = {
+                            __typename = "MetricHeuristics"
+                            tags = [
+                              {
+                                __typename = "MetricTag"
+                                column     = "database_id"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "database_platform"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "label"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "metric_category"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "metric_kind"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "metric_kind_text"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "metric_type"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "project_id"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "region"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "value_type"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "value_type_text"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "instance_state_label"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "metric_labels"
+                                path       = "data_type"
+                              },
+                            ]
+                            validLinkLabels = [
+                              "Cloud SQL Metrics",
+                            ]
+                          }
+                          interval    = null
+                          name        = "database_disk_bytes_used_by_data_type"
+                          rollup      = "sum"
+                          type        = "gauge"
+                          unit        = "bit"
+                          userDefined = false
+                        }
+                        metricLink = {
+                          __typename = "ForeignKey"
+                          dstFields = [
+                            "database_id",
+                          ]
+                          label = "Cloud SQL Metrics"
+                          srcFields = [
+                            "database_id",
+                          ]
+                          targetDataset    = local.cloud_sql_instance
+                          targetStageLabel = null
+                          type             = "foreign"
+                        }
+                        metricLinkInputSource = {
+                          inputName   = "dbResource"
+                          inputRole   = "Data"
+                          isUserInput = false
+                          parameterId = "dbResource"
+                        }
+                        showAlignment  = false
+                        showResolution = false
+                        summaryMode    = "over-time"
+                        type           = "metricExpression"
+                        valueColumnId  = "A_database_disk_bytes_used_by_data_type_sum"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-57yqxhei"
+                      lookupActions = []
+                      type          = "multiExpression"
+                    }
+                    selectedExpressionIds = [
+                      "metricExpression-o3laree6",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-6xma9rx6"
+              index    = 1
+              isPinned = false
+              opal = [
+                "exists database_id = @\"filter_Cloud SQL Metrics\".database_id",
+                "align frame(back: 2m), A_database_disk_bytes_used_by_data_type_sum:sum(m(\"database_disk_bytes_used_by_data_type\"))",
+                "aggregate A_database_disk_bytes_used_by_data_type_sum:sum(A_database_disk_bytes_used_by_data_type_sum), group_by(metric_labels, database_id)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -4275,15 +4394,33 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = <<-EOT
+                    exists database_id = @"filter_Cloud SQL Metrics".database_id
+                    align frame(back: 2m), A_database_disk_bytes_used_by_data_type_sum:sum(m("database_disk_bytes_used_by_data_type"))
+                    aggregate A_database_disk_bytes_used_by_data_type_sum:sum(A_database_disk_bytes_used_by_data_type_sum), group_by(metric_labels, database_id)
+                EOT
       },
       {
         id = "stage-wy53129b"
         input = [
           {
+            datasetId   = local.cloud_sql_metrics_wide
+            datasetPath = null
+            inputName   = "percent_disk_used"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
             datasetId   = null
             datasetPath = null
             inputName   = "dbResource"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
+            datasetId   = null
+            datasetPath = null
+            inputName   = "filter_Cloud SQL Metrics Wide"
             inputRole   = "Data"
             stageId     = null
           },
@@ -4295,31 +4432,35 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "name"
-              "2" = "Valid From"
-              "3" = "Valid To"
+              "0" = "database_id"
+              "1" = "valid_from"
+              "2" = "valid_to"
+              "3" = "name"
+              "4" = "Valid From"
+              "5" = "Valid To"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1313
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1313
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -4328,7 +4469,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -4337,9 +4477,21 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           index = 16
           inputList = [
             {
+              datasetId   = local.cloud_sql_metrics_wide
+              inputName   = "percent_disk_used"
+              inputRole   = "Data"
+              isUserInput = false
+            },
+            {
               inputName   = "dbResource"
               inputRole   = "Data"
               isUserInput = false
+              parameterId = "dbResource"
+            },
+            {
+              inputName   = "filter_Cloud SQL Metrics Wide"
+              inputRole   = "Data"
+              isUserInput = true
               parameterId = "dbResource"
             },
           ]
@@ -4374,73 +4526,21 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                   }
                 }
                 source = {
-                  metric = {
-                    aggregate   = "sum"
-                    datasetId   = local.cloud_sql_metrics_wide
-                    description = <<-EOT
-                                            Percentage of disk quota used
-                                        EOT
-                    groupBy = [
+                  table = {
+                    groupFields = [
                       "database_id",
                     ]
-                    heuristics = {
-                      __typename = "MetricHeuristics"
-                      tags = [
-                        {
-                          __typename = "MetricTag"
-                          column     = "database_id"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "database_platform"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_category"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "project_id"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "region"
-                          path       = ""
-                        },
-                      ]
-                      validLinkLabels = [
-                        "Cloud SQL Metrics Wide",
-                      ]
-                    }
-                    id = {
-                      datasetId = local.cloud_sql_metrics_wide
-                      name      = "percent_disk_used"
-                    }
-                    interval = 60000
-                    link = {
-                      __typename = "ForeignKey"
-                      dstFields = [
-                        "database_id",
-                      ]
-                      label = "Cloud SQL Metrics Wide"
-                      srcFields = [
-                        "database_id",
-                      ]
-                      targetDataset    = local.cloud_sql_instance
-                      targetStageLabel = null
-                      type             = "foreign"
-                    }
-                    name        = "percent_disk_used"
-                    rollup      = "avg"
-                    type        = "gauge"
-                    unit        = ""
-                    userDefined = true
+                    transformType = "none"
+                    type          = "xy"
+                    x             = "valid_from"
+                    y             = "A_percent_disk_used_sum"
                   }
-                  type = "metric"
+                  topK = {
+                    k     = 25
+                    order = "Top"
+                    type  = "Auto"
+                  }
+                  type = "table"
                 }
                 type = "timeseries"
               }
@@ -4457,50 +4557,16 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup = {}
+            rollup      = {}
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  availabilityType         = "count"
-                  backendType              = "count"
-                  backupConfiguration      = "count"
-                  dataDiskSizeGb           = "count"
-                  dataDiskType             = "count"
-                  databaseFlags            = "count"
-                  databaseInstalledVersion = "count"
-                  databaseVersion          = "count"
-                  database_id              = "count"
-                  deleted                  = "count"
-                  gceZone                  = "count"
-                  ipAddressPrimary         = "count"
-                  ipAddresses              = "count"
-                  ipConfiguration          = "count"
-                  name                     = "count"
-                  project_id               = "count"
-                  region                   = "count"
-                  tier                     = "count"
-                  ttl                      = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-gxryzkot"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
-              customSummary = "dbResource"
-              datasetQuery  = null
+              customSummary = "percent_disk_used"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4521,10 +4587,35 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               queryPresentation = {}
               type              = "InputStep"
             },
+            {
+              customSummary = ""
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-blddovzv"
+              index    = 1
+              isPinned = false
+              opal = [
+                "exists database_id = @\"filter_Cloud SQL Metrics Wide\".database_id",
+                "align A_percent_disk_used_sum:avg(m(\"percent_disk_used\"))",
+                "aggregate A_percent_disk_used_sum:sum(A_percent_disk_used_sum), group_by(database_id)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -4536,7 +4627,11 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = <<-EOT
+                    exists database_id = @"filter_Cloud SQL Metrics Wide".database_id
+                    align A_percent_disk_used_sum:avg(m("percent_disk_used"))
+                    aggregate A_percent_disk_used_sum:sum(A_percent_disk_used_sum), group_by(database_id)
+                EOT
       },
       {
         id = "stage-9zde4fcc"
@@ -4551,50 +4646,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
         ]
         layout = {
           appearance = "HIDDEN"
-          dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
-            columnOrderOverride = {
-              "0" = "name"
-              "2" = "Valid From"
-              "3" = "Valid To"
-            }
-            columnVisibility            = {}
-            columnWidths                = {}
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
-            selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
-            }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
-          }
-          index = 17
+          index      = 17
           inputList = [
             {
               datasetId   = local.cloud_sql_instance
@@ -4623,7 +4675,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             {
               customName    = "Input"
               customSummary = "GCP/Cloud SQL Jobs"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4649,7 +4700,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -4685,26 +4735,28 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               "1" = "valid_from"
               "2" = "valid_to"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = null
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -4713,7 +4765,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -4762,6 +4813,11 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                     x             = "valid_from"
                     y             = "metric_database_instance_state_jx859pfh"
                   }
+                  topK = {
+                    k     = 25
+                    order = "Top"
+                    type  = "Auto"
+                  }
                   type = "table"
                 }
                 type = "bar"
@@ -4776,7 +4832,7 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 50
+            wantBuckets = 400
           }
           selectedStepId = null
           serializable   = true
@@ -4784,7 +4840,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
             {
               customName    = "Input"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4845,6 +4900,10 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                               type          = "xy"
                               x             = "valid_from"
                               y             = "metric_database_instance_state_jx859pfh"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
                             }
                             type = "table"
                           }
@@ -4947,18 +5006,26 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
                         }
                         showAlignment  = false
                         showResolution = false
+                        summaryMode    = "over-time"
                         type           = "metricExpression"
                         valueColumnId  = "metric_database_instance_state_jx859pfh"
                       },
                     ]
-                    selectedExpressionId = "metric-expression-l3gdvq6y"
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-xmz9qsh5"
+                      lookupActions = []
+                      type          = "multiExpression"
+                    }
+                    selectedExpressionIds = [
+                      "metric-expression-l3gdvq6y",
+                    ]
                   }
                 }
                 summary = null
                 type    = "ExpressionBuilder"
               }
               customSummary = "Expression Builder"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4985,10 +5052,6 @@ resource "observe_dashboard" "cloud_sql_monitoring" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = <<-EOT
-                            align frame(back: 2m), metric_database_instance_state_jx859pfh:avg(m("database_instance_state"))
-                            aggregate metric_database_instance_state_jx859pfh:sum(metric_database_instance_state_jx859pfh), group_by(instance_state_label)
-                        EOT
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
