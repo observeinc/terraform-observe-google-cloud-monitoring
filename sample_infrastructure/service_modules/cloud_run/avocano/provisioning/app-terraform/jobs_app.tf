@@ -112,6 +112,3 @@ resource "google_cloud_run_v2_job" "client" {
     google_project_service.enabled
   ]
 }
-
-
-
