@@ -27,6 +27,9 @@ resource "observe_dataset" "cloud_functions_metrics" {
         region:string(resource_labels.region),
         metric: replace(split_part(metric_type, "googleapis.com/", 2), "/", "_")
 
+      // ex - //cloudfunctions.googleapis.com/projects/content-eng-sample-infra/locations/us-central1/functions/infra-coll-env
+      make_col cloudFunctionInstanceAssetKey: concat_strings("//cloudfunctions.googleapis.com/projects/",project_id,"/locations/",region,"/functions/",function_name)
+
       pick_col
         end_time,
         metric,
@@ -36,7 +39,9 @@ resource "observe_dataset" "cloud_functions_metrics" {
         value_type,
         project_id,
         region,
-        function_name   
+        function_name,
+        cloudFunctionInstanceAssetKey
+
     EOF
   }
 
@@ -107,7 +112,7 @@ resource "observe_link" "function_metrics" {
   for_each = length(observe_dataset.cloud_functions_metrics) > 0 ? {
     "Cloud Function" = {
       target = observe_dataset.cloud_functions_instances.oid
-      fields = ["project_id:projectId", "region", "function_name:functionName"]
+      fields = ["cloudFunctionInstanceAssetKey"]
     }
   } : {}
   workspace = var.workspace.oid

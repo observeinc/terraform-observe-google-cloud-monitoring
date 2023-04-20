@@ -15,10 +15,12 @@ resource "observe_dataset" "cloud_functions_instances" {
     pipeline = <<-EOF
       filter asset_type = "cloudfunctions.googleapis.com/CloudFunction"
       make_col
+        cloudFunctionInstanceAssetKey:name,
         assetInventoryName:name,
         name:string(data.name)
       make_resource options(expiry:${var.max_expiry}),
         name,
+        assetInventoryName,
         availableMemoryMb:int64(data.availableMemoryMb),
         buildId:string(data.buildId),
         buildName:string(data.buildName),
@@ -37,14 +39,14 @@ resource "observe_dataset" "cloud_functions_instances" {
         timeout:string(data.timeout),
         updateTime:parse_isotime(string(data.updateTime)),
         versionId:string(data.versionId),
-        primary_key(assetInventoryName),
+        primary_key(cloudFunctionInstanceAssetKey),
         valid_for(if(deleted, 1ns, ${var.max_expiry}))
 
       add_key name
       set_label name
       extract_regex name, /projects\/(?P<projectId>[^\/+]+)\/locations\/(?P<region>[^\/+]+)\/functions\/(?P<functionName>[^\/+]+)/
-      add_key projectId, region, functionName
-      //add_key projectId
+
+      set_col_visible assetInventoryName: false
     EOF
   }
 }
