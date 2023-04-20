@@ -71,8 +71,8 @@ function deploy {
   echo "Setting up database"
   gcloud beta run jobs execute setup --wait --region $REGION
 
-  echo "Runing UI tests" 
-  gcloud builds submit --config provisioning/test-deployment.yaml  --substitutions _REGION="${REGION}"
+  echo "Runing UI tests"
+  gcloud builds submit --config provisioning/test-deployment.yaml --substitutions _REGION="${REGION}"
 
   echo "Website now available at https://${PROJECT_ID}.firebaseapp.com"
 }
@@ -88,7 +88,7 @@ function destroy {
     --region us-east1 \
     --job loadtest \
     --format json | jq -r '.[] | select(.status.completionTime | . == null) | objects | .metadata.name' |
-    xargs -I {} gcloud beta run jobs executions delete --region $REGION "{}" --quiet
+    xargs -I {} gcloud beta run jobs executions delete --region us-east1 "{}" --quiet
 
   echo "Configuring Terraform"
   export TFSTATE_BUCKET=terraform-${PROJECT_ID}-avocano

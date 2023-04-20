@@ -25,7 +25,7 @@ there was additional parameters added to the initialization of Terraform to stor
 rather than your local machine: 
 
 ```
-terraform init -backend-config="bucket=terraform-${PROJECT_ID}" 
+terraform init -backend-config="bucket=terraform-${PROJECT_ID}-avocano" 
 ```
 
 This is automatically included in any `terraform init` calls, so if you're calling this yourself, be sure to add it.
