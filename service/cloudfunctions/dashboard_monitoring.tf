@@ -1,16 +1,17 @@
-
-# terraform import observe_dashboard.cloud_functions_monitoring 41565518
-resource "observe_dashboard" "cloud_functions_monitoring" {
-  description = "Dashboard for monitoring Cloud Function resources"
+# terraform import observe_dashboard.cloud_functions_monitoring_v2 42203237
+resource "observe_dashboard" "cloud_functions_monitoring_v2" {
+  count       = local.cloud_functions_monitoring_v2_dashboard_enable
+  description = local.cloud_functions_monitoring_v2_dashboard_description
   layout = jsonencode(
     {
+      autoPack = true
       gridLayout = {
         sections = [
           {
             card = {
               cardType = "section"
               closed   = false
-              id       = "section-y1ei6ido"
+              id       = "card-8zstqlty"
               title    = "Dashboard Content"
             }
             items        = []
@@ -20,62 +21,50 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-izdoi58y"
+              id       = "card-7hou5xoe"
               title    = "Overview"
             }
             items = [
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-ny6q89y0"
+                  id       = "card-ynwr3sr4"
                   stageId  = "stage-j3zdwc7r"
                 }
                 layout = {
-                  h           = 12
-                  i           = "card-ny6q89y0"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 4
-                  x           = 0
-                  y           = 0
+                  h = 12
+                  i = "card-ynwr3sr4"
+                  w = 4
+                  x = 0
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-vi2u9xub"
+                  id       = "card-pr4sn3gg"
                   stageId  = "stage-ziasm4uf"
                 }
                 layout = {
-                  h           = 12
-                  i           = "card-vi2u9xub"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 4
-                  x           = 4
-                  y           = 0
+                  h = 12
+                  i = "card-pr4sn3gg"
+                  w = 4
+                  x = 4
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-yfie6mjm"
+                  id       = "card-0jh27dtc"
                   stageId  = "stage-367tr336"
                 }
                 layout = {
-                  h           = 12
-                  i           = "card-yfie6mjm"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 4
-                  x           = 8
-                  y           = 0
+                  h = 12
+                  i = "card-0jh27dtc"
+                  w = 4
+                  x = 8
+                  y = 0
                 }
               },
             ]
@@ -84,134 +73,106 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-z6nwx8ox"
+              id       = "card-7grl8ytz"
               title    = "Monitoring"
             }
             items = [
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-zuqt7268"
+                  id       = "card-o5mist15"
                   stageId  = "stage-v80el32j"
                 }
                 layout = {
-                  h           = 24
-                  i           = "card-zuqt7268"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 9
-                  x           = 0
-                  y           = 0
+                  h = 24
+                  i = "card-o5mist15"
+                  w = 9
+                  x = 0
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-do23e8ir"
+                  id       = "card-9w0xtk8o"
                   stageId  = "stage-ifk44t3v"
                 }
                 layout = {
-                  h           = 12
-                  i           = "card-do23e8ir"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
-                  x           = 9
-                  y           = 0
+                  h = 12
+                  i = "card-9w0xtk8o"
+                  w = 3
+                  x = 9
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-sxenabbe"
+                  id       = "card-54slsrv9"
                   stageId  = "stage-ra65e7v9"
                 }
                 layout = {
-                  h           = 12
-                  i           = "card-sxenabbe"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
-                  x           = 9
-                  y           = 12
+                  h = 12
+                  i = "card-54slsrv9"
+                  w = 3
+                  x = 9
+                  y = 12
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-qslh7ns1"
+                  id       = "card-l1s61paw"
                   stageId  = "stage-hmpks85q"
                 }
                 layout = {
-                  h           = 17
-                  i           = "card-qslh7ns1"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 6
-                  x           = 0
-                  y           = 24
+                  h = 17
+                  i = "card-l1s61paw"
+                  w = 6
+                  x = 0
+                  y = 24
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-6xvlifbk"
+                  id       = "card-u3wkn567"
                   stageId  = "stage-f0whobgm"
                 }
                 layout = {
-                  h           = 17
-                  i           = "card-6xvlifbk"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 6
-                  x           = 6
-                  y           = 24
+                  h = 17
+                  i = "card-u3wkn567"
+                  w = 6
+                  x = 6
+                  y = 24
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-bcrd1nub"
+                  id       = "card-rfd12ief"
                   stageId  = "stage-4jcselfm"
                 }
                 layout = {
-                  h           = 15
-                  i           = "card-bcrd1nub"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 6
-                  x           = 0
-                  y           = 41
+                  h = 15
+                  i = "card-rfd12ief"
+                  w = 6
+                  x = 0
+                  y = 41
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-e0wr5mqu"
+                  id       = "card-uaup7rum"
                   stageId  = "stage-r41eirof"
                 }
                 layout = {
-                  h           = 15
-                  i           = "card-e0wr5mqu"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 6
-                  x           = 6
-                  y           = 41
+                  h = 15
+                  i = "card-uaup7rum"
+                  w = 6
+                  x = 6
+                  y = 41
                 }
               },
             ]
@@ -220,14 +181,14 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-oahpdg5k"
+              id       = "card-df36lsj4"
               title    = "Documentation"
             }
             items = [
               {
                 card = {
                   cardType = "text"
-                  id       = "card-fizc14w0"
+                  id       = "card-y2w35dg3"
                   text     = <<-EOT
                                         # Google Cloud Functions
                                         Google Cloud Functions is a lightweight compute solution for developers to create single-purpose, stand-alone functions that respond to Cloud events without the need to manage a server or runtime environment.  With Observe, you can get quick insights into:
@@ -240,40 +201,32 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                   title    = "Untitled Text"
                 }
                 layout = {
-                  h           = 13
-                  i           = "card-fizc14w0"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 8
-                  x           = 0
-                  y           = 0
+                  h = 13
+                  i = "card-y2w35dg3"
+                  w = 8
+                  x = 0
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "text"
-                  id       = "card-zn0rccpm"
+                  id       = "card-ecmdk197"
                   text     = <<-EOT
                                         # Notes
-                                                                                                                        
+                                                                                                                                                                
                                         **Metrics**
-                                                                                                                        
+                                                                                                                                                                
                                         Enable data collection for this app by enabling Observe’s GCP app and adding `cloudfunctions.googleapis.com/` to the `include_metric_type_prefixes` option (this is added by default in the standard configuration).
                                     EOT
                   title    = "Untitled Text"
                 }
                 layout = {
-                  h           = 13
-                  i           = "card-zn0rccpm"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 4
-                  x           = 8
-                  y           = 0
+                  h = 13
+                  i = "card-ecmdk197"
+                  w = 4
+                  x = 8
+                  y = 0
                 }
               },
             ]
@@ -285,7 +238,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
         isModified = false
         parameters = [
           {
-            controlledFilterStageId = "stage-1pcbjwdr"
+            controlledFilterStageId = "stage-jjzyl2fz"
             datasetId               = local.cloud_functions_instances
             defaultValue = {
               datasetref = {
@@ -294,32 +247,31 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             }
             emptyValueEncoding    = "null"
             emptyValueLabelOption = "null"
-            id                    = "cloudFunctions"
-            name                  = "cloudFunctions"
+            id                    = "input-parameter-te16nn3x"
+            name                  = "cloudFunctionDataset"
             valueKind = {
               type = "DATASETREF"
             }
             viewType = "input"
           },
         ]
-        selectedStageId = "stage-4jcselfm"
+        selectedStageId = "stage-r41eirof"
         timeRange = {
-          display               = "Past 4 hours"
-          endTime               = null
-          millisFromCurrentTime = 14400000
-          originalDisplay       = "Past 4 hours"
-          startTime             = null
+          display               = "Today 12:05:39 → 12:13:51"
+          endTime               = 1682018031961
+          millisFromCurrentTime = null
+          originalDisplay       = "2023-04-20 12:05:39 ~ 2023-04-20 12:13:51"
+          startTime             = 1682017539601.8193
           timeRangeInfo = {
-            key        = "PRESETS"
-            name       = "Presets"
-            presetType = "PAST_4_HOURS"
+            key  = "DATE_RANGE"
+            name = "Date Range"
           }
           timeZone = null
         }
       }
     }
   )
-  name = local.dashboard_name
+  name = local.cloud_functions_monitoring_v2_dashboard_name
   parameters = jsonencode(
     [
       {
@@ -328,8 +280,8 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             datasetId = local.cloud_functions_instances
           }
         }
-        id   = "cloudFunctions"
-        name = "cloudFunctions"
+        id   = "input-parameter-te16nn3x"
+        name = "cloudFunctionDataset"
         valueKind = {
           arrayItemType   = null
           keyForDatasetId = null
@@ -344,6 +296,13 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
         id = "stage-hmpks85q"
         input = [
           {
+            datasetId   = local.cloud_functions_metrics
+            datasetPath = null
+            inputName   = "function_active_instances"
+            inputRole   = "Data"
+            stageId     = null
+          },
+          {
             datasetId   = local.cloud_functions_instances
             datasetPath = null
             inputName   = "content-eng-1/Cloud Functions Function"
@@ -357,6 +316,13 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             inputRole   = "Data"
             stageId     = null
           },
+          {
+            datasetId   = local.cloud_functions_instances
+            datasetPath = null
+            inputName   = "filter_Cloud Function"
+            inputRole   = "Data"
+            stageId     = null
+          },
         ]
         layout = {
           appearance = "VISIBLE"
@@ -367,29 +333,32 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             columnOrderOverride = {
               "0" = "name"
               "2" = "Valid From"
-              "3" = "Valid To"
+              "3" = "valid_from"
+              "4" = "valid_to"
+              "5" = "Valid To"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1324
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1324
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -398,7 +367,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -406,6 +374,12 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           }
           index = 0
           inputList = [
+            {
+              datasetId   = local.cloud_functions_metrics
+              inputName   = "function_active_instances"
+              inputRole   = "Data"
+              isUserInput = false
+            },
             {
               datasetId   = local.cloud_functions_instances
               inputName   = "content-eng-1/Cloud Functions Function"
@@ -416,7 +390,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               inputName   = "cloudFunctions"
               inputRole   = "Data"
               isUserInput = true
-              parameterId = "cloudFunctions"
+              parameterId = "input-parameter-te16nn3x"
             },
           ]
           label = "Active Instances"
@@ -450,77 +424,23 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                   }
                 }
                 source = {
-                  metric = {
-                    aggregate   = "sum"
-                    datasetId   = local.cloud_functions_metrics
-                    description = "Auto Detected Metric"
-                    groupBy = [
+                  table = {
+                    groupFields = [
                       "project_id",
                       "region",
                       "function_name",
                     ]
-                    heuristics = {
-                      __typename = "MetricHeuristics"
-                      tags = [
-                        {
-                          __typename = "MetricTag"
-                          column     = "function_name"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "region"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_kind"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "project_id"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "value_type"
-                          path       = ""
-                        },
-                      ]
-                      validLinkLabels = [
-                        "Cloud Function",
-                      ]
-                    }
-                    id = {
-                      datasetId = local.cloud_functions_metrics
-                      name      = "function_active_instances"
-                    }
-                    interval = null
-                    link = {
-                      __typename = "ForeignKey"
-                      dstFields = [
-                        "projectId",
-                        "region",
-                        "functionName",
-                      ]
-                      label = "Cloud Function"
-                      srcFields = [
-                        "project_id",
-                        "region",
-                        "function_name",
-                      ]
-                      targetDataset    = local.cloud_functions_instances
-                      targetStageLabel = null
-                      type             = "foreign"
-                    }
-                    name        = "function_active_instances"
-                    rollup      = "avg"
-                    type        = "gauge"
-                    unit        = ""
-                    userDefined = false
+                    transformType = "none"
+                    type          = "xy"
+                    x             = "valid_from"
+                    y             = "A_function_active_instances_sum"
                   }
-                  type = "metric"
+                  topK = {
+                    k     = 25
+                    order = "Top"
+                    type  = "Auto"
+                  }
+                  type = "table"
                 }
                 type = "timeseries"
               }
@@ -545,45 +465,8 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  assetInventoryName   = "count"
-                  availableMemoryMb    = "count"
-                  buildId              = "count"
-                  buildName            = "count"
-                  description          = "count"
-                  dockerRegistry       = "count"
-                  entryPoint           = "count"
-                  environmentVariables = "count"
-                  eventTrigger         = "count"
-                  functionName         = "count"
-                  httpsTrigger         = "count"
-                  ingressSettings      = "count"
-                  maxInstances         = "count"
-                  name                 = "count"
-                  region               = "count"
-                  runtime              = "count"
-                  serviceAccountEmail  = "count"
-                  sourceArchiveUrl     = "count"
-                  status               = "count"
-                  timeout              = "count"
-                  versionId            = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-xgxo054x"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
-              customSummary = "content-eng-1/Cloud Functions Function"
-              datasetQuery  = null
+              customSummary = "function_active_instances"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -605,9 +488,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               type              = "InputStep"
             },
             {
-              customName    = "exists (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -621,11 +502,214 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-c2i53j2r"
+              id       = "step-6eq5t40v"
               index    = 1
               isPinned = false
               opal = [
-                "exists functionName = @cloudFunctions.functionName",
+                "exists cloudFunctionInstanceAssetKey = @cloudFunctions.cloudFunctionInstanceAssetKey",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        dataVis = {
+                          config = {
+                            color         = "Default"
+                            hideGridLines = true
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = false
+                            }
+                            type = "xy"
+                            xConfig = {
+                              visible = true
+                            }
+                            yConfig = {
+                              unit    = ""
+                              visible = true
+                            }
+                          }
+                          source = {
+                            table = {
+                              groupFields = [
+                                "project_id",
+                                "region",
+                                "function_name",
+                              ]
+                              transformType = "none"
+                              type          = "xy"
+                              x             = "valid_from"
+                              y             = "A_function_active_instances_sum"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "timeseries"
+                        }
+                        disableAggregate = false
+                        filterActions = [
+                          {
+                            params = {
+                              foreignKey = {
+                                __typename = "ForeignKey"
+                                dstFields = [
+                                  "projectId",
+                                  "region",
+                                  "functionName",
+                                ]
+                                label = "Cloud Function"
+                                srcFields = [
+                                  "project_id",
+                                  "region",
+                                  "function_name",
+                                ]
+                                targetDataset    = local.cloud_functions_instances
+                                targetStageLabel = null
+                                type             = "foreign"
+                              }
+                              joinInput = {
+                                datasetId   = local.cloud_functions_instances
+                                inputName   = "content-eng-1/Cloud Functions Function"
+                                inputRole   = "Data"
+                                isUserInput = false
+                              }
+                            }
+                            summary = null
+                            type    = "ExistsInFilter"
+                          },
+                        ]
+                        frameDuration = {
+                          num  = 2
+                          unit = "minute"
+                        }
+                        groupBy = [
+                          "project_id",
+                          "region",
+                          "function_name",
+                        ]
+                        id = "metricExpression-vguwxfbk"
+                        inputSource = {
+                          stageId = "stage-hmpks85q"
+                        }
+                        lookupActions = []
+                        metric = {
+                          aggregate   = "sum"
+                          datasetId   = local.cloud_functions_metrics
+                          description = "Auto Detected Metric"
+                          heuristics = {
+                            __typename = "MetricHeuristics"
+                            tags = [
+                              {
+                                __typename = "MetricTag"
+                                column     = "function_name"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "region"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "metric_kind"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "project_id"
+                                path       = ""
+                              },
+                              {
+                                __typename = "MetricTag"
+                                column     = "value_type"
+                                path       = ""
+                              },
+                            ]
+                            validLinkLabels = [
+                              "Cloud Function",
+                            ]
+                          }
+                          interval    = null
+                          name        = "function_active_instances"
+                          rollup      = "avg"
+                          type        = "gauge"
+                          unit        = ""
+                          userDefined = false
+                        }
+                        metricLink = {
+                          __typename = "ForeignKey"
+                          dstFields = [
+                            "projectId",
+                            "region",
+                            "functionName",
+                          ]
+                          label = "Cloud Function"
+                          srcFields = [
+                            "project_id",
+                            "region",
+                            "function_name",
+                          ]
+                          targetDataset    = local.cloud_functions_instances
+                          targetStageLabel = null
+                          type             = "foreign"
+                        }
+                        metricLinkInputSource = {
+                          datasetId   = local.cloud_functions_instances
+                          inputName   = "content-eng-1/Cloud Functions Function"
+                          inputRole   = "Data"
+                          isUserInput = false
+                        }
+                        showAlignment  = false
+                        showResolution = false
+                        summaryMode    = "over-time"
+                        type           = "metricExpression"
+                        valueColumnId  = "A_function_active_instances_sum"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-nzp2z8eb"
+                      lookupActions = []
+                      type          = "multiExpression"
+                    }
+                    selectedExpressionIds = [
+                      "metricExpression-vguwxfbk",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-yahe6eie"
+              index    = 2
+              isPinned = false
+              opal = [
+                "exists project_id = @\"filter_Cloud Function\".projectId, region = @\"filter_Cloud Function\".region, function_name = @\"filter_Cloud Function\".functionName",
+                "align frame(back: 2m), A_function_active_instances_sum:avg(m(\"function_active_instances\"))",
+                "aggregate A_function_active_instances_sum:sum(A_function_active_instances_sum), group_by(project_id, region, function_name)",
               ]
               queryPresentation = {}
               type              = "unknown"
@@ -633,7 +717,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -645,7 +728,12 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           }
         }
         params   = null
-        pipeline = "exists functionName = @cloudFunctions.functionName"
+        pipeline = <<-EOT
+                    exists cloudFunctionInstanceAssetKey = @cloudFunctions.cloudFunctionInstanceAssetKey
+                    exists project_id = @"filter_Cloud Function".projectId, region = @"filter_Cloud Function".region, function_name = @"filter_Cloud Function".functionName
+                    align frame(back: 2m), A_function_active_instances_sum:avg(m("function_active_instances"))
+                    aggregate A_function_active_instances_sum:sum(A_function_active_instances_sum), group_by(project_id, region, function_name)
+                EOT
       },
       {
         id = "stage-f0whobgm"
@@ -672,33 +760,34 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "function_name"
-              "1" = "project_id"
-              "2" = "region"
+              "0" = "project_id"
+              "1" = "region"
+              "2" = "function_name"
               "3" = "_c_valid_from"
               "4" = "_c_valid_to"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1313
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1313
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -707,7 +796,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -725,7 +813,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               inputName   = "cloudFunctions"
               inputRole   = "Data"
               isUserInput = true
-              parameterId = "cloudFunctions"
+              parameterId = "input-parameter-te16nn3x"
             },
           ]
           label = "Memory Used"
@@ -774,9 +862,15 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                       fn         = "avg"
                       resolution = "AUTO"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "xy"
-                    y             = "_ob_value"
+                    x             = "_c_valid_from"
+                    y             = "A__ob_value_avg"
+                  }
+                  topK = {
+                    k     = 25
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -803,29 +897,8 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  metric        = "count"
-                  metric_kind   = "count"
-                  metric_labels = "count"
-                  value         = "count"
-                  value_type    = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-amw9xfv5"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
               customSummary = "content-eng-1/Cloud Functions Function Metrics"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -849,7 +922,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             {
               customName    = "filter (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -876,10 +948,118 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               queryPresentation = {}
               type              = "unknown"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "_ob_value"
+                        dataVis = {
+                          config = {
+                            color         = "Default"
+                            hideGridLines = false
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = false
+                            }
+                            type = "xy"
+                            xConfig = {
+                              visible = true
+                            }
+                            yConfig = {
+                              unit    = "bytes"
+                              visible = true
+                            }
+                          }
+                          source = {
+                            table = {
+                              groupFields = [
+                                [
+                                  "project_id",
+                                  "region",
+                                  "function_name",
+                                ],
+                              ]
+                              statsBy = {
+                                fn = "avg"
+                              }
+                              timechart = {
+                                fn         = "avg"
+                                resolution = "AUTO"
+                              }
+                              transformType = "none"
+                              type          = "xy"
+                              x             = "_c_valid_from"
+                              y             = "A__ob_value_avg"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "timeseries"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          [
+                            "project_id",
+                            "region",
+                            "function_name",
+                          ],
+                        ]
+                        id              = "datasetQueryExpression-8pvl6om2"
+                        lookupActions   = []
+                        summarizeVerb   = "statsby"
+                        summaryFunction = "avg"
+                        summaryMode     = "over-time"
+                        type            = "datasetQueryExpression"
+                        valueColumnId   = "A__ob_value_avg"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-tpow2byr"
+                      lookupActions = []
+                      type          = "multiExpression"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-8pvl6om2",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-x1ywuj3f"
+              index    = 2
+              isPinned = false
+              opal = [
+                "timechart options(empty_bins:true), A__ob_value_avg:avg(_ob_value), group_by(project_id, region, function_name)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -896,11 +1076,20 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                     exists project_id = @cloudFunctions.projectId
                     timechart options(empty_bins: true), duration(from_seconds(60)), _ob_value:avg(value), group_by(function_name, project_id, region)
                     make_col _ob_value:if_null(_ob_value, 0)
+                    
+                    timechart options(empty_bins:true), A__ob_value_avg:avg(_ob_value), group_by(project_id, region, function_name)
                 EOT
       },
       {
         id = "stage-r41eirof"
         input = [
+          {
+            datasetId   = local.cloud_functions_metrics
+            datasetPath = null
+            inputName   = "function_network_egress"
+            inputRole   = "Data"
+            stageId     = null
+          },
           {
             datasetId   = local.cloud_functions_instances
             datasetPath = null
@@ -915,6 +1104,13 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             inputRole   = "Data"
             stageId     = null
           },
+          {
+            datasetId   = local.cloud_functions_instances
+            datasetPath = null
+            inputName   = "filter_Cloud Function"
+            inputRole   = "Data"
+            stageId     = null
+          },
         ]
         layout = {
           appearance = "VISIBLE"
@@ -925,28 +1121,32 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             columnOrderOverride = {
               "0" = "name"
               "2" = "Valid From"
-              "3" = "Valid To"
+              "3" = "valid_from"
+              "4" = "valid_to"
+              "5" = "Valid To"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = null
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -955,7 +1155,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -963,6 +1162,12 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           }
           index = 2
           inputList = [
+            {
+              datasetId   = local.cloud_functions_metrics
+              inputName   = "function_network_egress"
+              inputRole   = "Data"
+              isUserInput = false
+            },
             {
               datasetId   = local.cloud_functions_instances
               inputName   = "content-eng-1/Cloud Functions Function"
@@ -973,7 +1178,13 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               inputName   = "cloudFunctions"
               inputRole   = "Data"
               isUserInput = true
-              parameterId = "cloudFunctions"
+              parameterId = "input-parameter-te16nn3x"
+            },
+            {
+              datasetId   = local.cloud_functions_instances
+              inputName   = "filter_Cloud Function"
+              inputRole   = "Data"
+              isUserInput = true
             },
           ]
           label = "Egress"
@@ -1002,94 +1213,28 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                     visible = true
                   }
                   yConfig = {
-                    unit    = "bytes/second"
+                    unit    = "By"
                     visible = true
                   }
                 }
                 source = {
-                  metric = {
-                    aggregate   = "sum"
-                    datasetId   = local.cloud_functions_metrics
-                    description = <<-EOT
-                                            Outgoing network traffic of function, in bytes. Sampled every 60s and may take up to 240s to display.
-                                        EOT
-                    groupBy = [
+                  table = {
+                    groupFields = [
                       "project_id",
                       "region",
                       "function_name",
                     ]
-                    heuristics = {
-                      __typename = "MetricHeuristics"
-                      tags = [
-                        {
-                          __typename = "MetricTag"
-                          column     = "function_name"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "region"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_kind"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "project_id"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "value_type"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_labels"
-                          path       = "memory"
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_labels"
-                          path       = "trigger_type"
-                        },
-                      ]
-                      validLinkLabels = [
-                        "Cloud Function",
-                      ]
-                    }
-                    id = {
-                      datasetId = local.cloud_functions_metrics
-                      name      = "function_network_egress"
-                    }
-                    interval = 60000
-                    link = {
-                      __typename = "ForeignKey"
-                      dstFields = [
-                        "projectId",
-                        "region",
-                        "functionName",
-                      ]
-                      label = "Cloud Function"
-                      srcFields = [
-                        "project_id",
-                        "region",
-                        "function_name",
-                      ]
-                      targetDataset    = local.cloud_functions_instances
-                      targetStageLabel = null
-                      type             = "foreign"
-                    }
-                    name        = "function_network_egress"
-                    rollup      = "avg"
-                    type        = "delta"
-                    unit        = "By"
-                    userDefined = true
+                    transformType = "none"
+                    type          = "xy"
+                    x             = "valid_from"
+                    y             = "A_function_network_egress_sum"
                   }
-                  type = "metric"
+                  topK = {
+                    k     = 25
+                    order = "Top"
+                    type  = "Auto"
+                  }
+                  type = "table"
                 }
                 type = "timeseries"
               }
@@ -1115,8 +1260,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "content-eng-1/Cloud Functions Function"
-              datasetQuery  = null
+              customSummary = "function_network_egress"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1138,9 +1282,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               type              = "InputStep"
             },
             {
-              customName    = "exists (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1154,11 +1296,14 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-8dc94c4u"
+              id       = "step-bz6d32ao"
               index    = 1
               isPinned = false
               opal = [
-                "exists functionName = @cloudFunctions.functionName",
+                "exists cloudFunctionInstanceAssetKey = @cloudFunctions.cloudFunctionInstanceAssetKey",
+                "",
+                "align A_function_network_egress_sum:avg(m(\"function_network_egress\"))",
+                "aggregate A_function_network_egress_sum:sum(A_function_network_egress_sum), group_by(project_id, region, function_name)",
               ]
               queryPresentation = {}
               type              = "unknown"
@@ -1166,7 +1311,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -1178,11 +1322,23 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           }
         }
         params   = null
-        pipeline = "exists functionName = @cloudFunctions.functionName"
+        pipeline = <<-EOT
+                    exists cloudFunctionInstanceAssetKey = @cloudFunctions.cloudFunctionInstanceAssetKey
+                    
+                    align A_function_network_egress_sum:avg(m("function_network_egress"))
+                    aggregate A_function_network_egress_sum:sum(A_function_network_egress_sum), group_by(project_id, region, function_name)
+                EOT
       },
       {
         id = "stage-4jcselfm"
         input = [
+          {
+            datasetId   = local.cloud_functions_metrics
+            datasetPath = null
+            inputName   = "function_execution_count"
+            inputRole   = "Data"
+            stageId     = null
+          },
           {
             datasetId   = local.cloud_functions_instances
             datasetPath = null
@@ -1207,28 +1363,32 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             columnOrderOverride = {
               "0" = "name"
               "2" = "Valid From"
-              "3" = "Valid To"
+              "3" = "valid_from"
+              "4" = "valid_to"
+              "5" = "Valid To"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = null
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -1237,7 +1397,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -1245,6 +1404,12 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           }
           index = 3
           inputList = [
+            {
+              datasetId   = local.cloud_functions_metrics
+              inputName   = "function_execution_count"
+              inputRole   = "Data"
+              isUserInput = false
+            },
             {
               datasetId   = local.cloud_functions_instances
               inputName   = "content-eng-1/Cloud Functions Function"
@@ -1255,7 +1420,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               inputName   = "cloudFunctions"
               inputRole   = "Data"
               isUserInput = true
-              parameterId = "cloudFunctions"
+              parameterId = "input-parameter-te16nn3x"
             },
           ]
           label = "Execution Rate"
@@ -1284,99 +1449,28 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                     visible = true
                   }
                   yConfig = {
-                    unit    = "#/second"
+                    unit    = ""
                     visible = true
                   }
                 }
                 source = {
-                  metric = {
-                    aggregate   = "sum"
-                    datasetId   = local.cloud_functions_metrics
-                    description = <<-EOT
-                                            Count of function executions broken down by status. Sampled every 60s and may take up to 240s to display.
-                                        EOT
-                    groupBy = [
+                  table = {
+                    groupFields = [
                       "project_id",
                       "region",
                       "function_name",
                     ]
-                    heuristics = {
-                      __typename = "MetricHeuristics"
-                      tags = [
-                        {
-                          __typename = "MetricTag"
-                          column     = "function_name"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "region"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_kind"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "project_id"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "value_type"
-                          path       = ""
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_labels"
-                          path       = "memory"
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_labels"
-                          path       = "status"
-                        },
-                        {
-                          __typename = "MetricTag"
-                          column     = "metric_labels"
-                          path       = "trigger_type"
-                        },
-                      ]
-                      validLinkLabels = [
-                        "Cloud Function",
-                      ]
-                    }
-                    id = {
-                      datasetId = local.cloud_functions_metrics
-                      name      = "function_execution_count"
-                    }
-                    interval = 60000
-                    link = {
-                      __typename = "ForeignKey"
-                      dstFields = [
-                        "projectId",
-                        "region",
-                        "functionName",
-                      ]
-                      label = "Cloud Function"
-                      srcFields = [
-                        "project_id",
-                        "region",
-                        "function_name",
-                      ]
-                      targetDataset    = local.cloud_functions_instances
-                      targetStageLabel = null
-                      type             = "foreign"
-                    }
-                    name        = "function_execution_count"
-                    rollup      = "avg"
-                    type        = "delta"
-                    unit        = ""
-                    userDefined = true
+                    transformType = "none"
+                    type          = "xy"
+                    x             = "valid_from"
+                    y             = "A_function_execution_count_sum"
                   }
-                  type = "metric"
+                  topK = {
+                    k     = 25
+                    order = "Top"
+                    type  = "Auto"
+                  }
+                  type = "table"
                 }
                 type = "timeseries"
               }
@@ -1402,8 +1496,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "content-eng-1/Cloud Functions Function"
-              datasetQuery  = null
+              customSummary = "function_execution_count"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1425,9 +1518,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               type              = "InputStep"
             },
             {
-              customName    = "exists (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1441,11 +1532,14 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-l22ux62w"
+              id       = "step-zom2yho0"
               index    = 1
               isPinned = false
               opal = [
-                "exists functionName = @cloudFunctions.functionName",
+                "exists cloudFunctionInstanceAssetKey = @cloudFunctions.cloudFunctionInstanceAssetKey",
+                "",
+                "align A_function_execution_count_sum:avg(m(\"function_execution_count\"))",
+                "aggregate A_function_execution_count_sum:sum(A_function_execution_count_sum), group_by(project_id, region, function_name)",
               ]
               queryPresentation = {}
               type              = "unknown"
@@ -1453,7 +1547,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -1465,7 +1558,12 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           }
         }
         params   = null
-        pipeline = "exists functionName = @cloudFunctions.functionName"
+        pipeline = <<-EOT
+                    exists cloudFunctionInstanceAssetKey = @cloudFunctions.cloudFunctionInstanceAssetKey
+                    
+                    align A_function_execution_count_sum:avg(m("function_execution_count"))
+                    aggregate A_function_execution_count_sum:sum(A_function_execution_count_sum), group_by(project_id, region, function_name)
+                EOT
       },
       {
         id = "stage-v80el32j"
@@ -1492,33 +1590,34 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "function_name"
-              "1" = "project_id"
-              "2" = "region"
+              "0" = "project_id"
+              "1" = "region"
+              "2" = "function_name"
               "3" = "_c_valid_from"
               "4" = "_c_valid_to"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1313
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1313
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -1527,7 +1626,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -1545,7 +1643,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               inputName   = "cloudFunctions"
               inputRole   = "Data"
               isUserInput = true
-              parameterId = "cloudFunctions"
+              parameterId = "input-parameter-te16nn3x"
             },
           ]
           label = "Execution Times"
@@ -1595,9 +1693,15 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                       fnArgs     = []
                       resolution = "AUTO"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "xy"
-                    y             = "_ob_value"
+                    x             = "_c_valid_from"
+                    y             = "A__ob_value_sum"
+                  }
+                  topK = {
+                    k     = 25
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -1624,29 +1728,8 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  metric        = "count"
-                  metric_kind   = "count"
-                  metric_labels = "count"
-                  value         = "count"
-                  value_type    = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-gd84ob9s"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
               customSummary = "content-eng-1/Cloud Functions Function Metrics"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1668,30 +1751,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               type              = "InputStep"
             },
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  _ob_value     = "count"
-                  metric        = "count"
-                  metric_kind   = "count"
-                  metric_labels = "count"
-                  value         = "count"
-                  value_type    = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-fv0fnloz"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
-              customName    = "exists (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1705,11 +1765,11 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-iuuszoum"
+              id       = "step-frwgrh7t"
               index    = 1
               isPinned = false
               opal = [
-                "exists function_name = @cloudFunctions.functionName",
+                "exists cloudFunctionInstanceAssetKey = @cloudFunctions.cloudFunctionInstanceAssetKey",
                 "filter metric = \"function_execution_times\"",
                 "timechart options(empty_bins: true), duration(from_seconds(60)), _ob_value:avg(value), group_by(function_name, project_id, region)",
                 "make_col _ob_value:if_null(_ob_value, 0)",
@@ -1718,10 +1778,120 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               queryPresentation = {}
               type              = "unknown"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "_ob_value"
+                        dataVis = {
+                          config = {
+                            color         = "Blue"
+                            hideGridLines = false
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = false
+                            }
+                            type = "xy"
+                            xConfig = {
+                              visible = true
+                            }
+                            yConfig = {
+                              unit    = "nanoseconds"
+                              visible = true
+                            }
+                          }
+                          source = {
+                            table = {
+                              groupFields = [
+                                [
+                                  "project_id",
+                                  "region",
+                                  "function_name",
+                                ],
+                              ]
+                              statsBy = {
+                                fn = "avg"
+                              }
+                              timechart = {
+                                fn         = "sum"
+                                fnArgs     = []
+                                resolution = "AUTO"
+                              }
+                              transformType = "none"
+                              type          = "xy"
+                              x             = "_c_valid_from"
+                              y             = "A__ob_value_sum"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "timeseries"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          [
+                            "project_id",
+                            "region",
+                            "function_name",
+                          ],
+                        ]
+                        id                  = "datasetQueryExpression-ke9yfkhh"
+                        lookupActions       = []
+                        summarizeVerb       = "statsby"
+                        summaryFunction     = "sum"
+                        summaryFunctionArgs = []
+                        summaryMode         = "over-time"
+                        type                = "datasetQueryExpression"
+                        valueColumnId       = "A__ob_value_sum"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-eof4r50o"
+                      lookupActions = []
+                      type          = "multiExpression"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-ke9yfkhh",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-7ybtq1oo"
+              index    = 2
+              isPinned = false
+              opal = [
+                "timechart options(empty_bins:true), A__ob_value_sum:sum(_ob_value), group_by(project_id, region, function_name)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -1734,10 +1904,12 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
         }
         params   = null
         pipeline = <<-EOT
-                    exists function_name = @cloudFunctions.functionName
+                    exists cloudFunctionInstanceAssetKey = @cloudFunctions.cloudFunctionInstanceAssetKey
                     filter metric = "function_execution_times"
                     timechart options(empty_bins: true), duration(from_seconds(60)), _ob_value:avg(value), group_by(function_name, project_id, region)
                     make_col _ob_value:if_null(_ob_value, 0)
+                    
+                    timechart options(empty_bins:true), A__ob_value_sum:sum(_ob_value), group_by(project_id, region, function_name)
                 EOT
       },
       {
@@ -1761,31 +1933,32 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight             = true
-            columnFooterHeight          = 0
-            columnHeaderHeight          = 29
-            columnOrderOverride         = {}
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1745
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            autoTableHeight              = true
+            columnFooterHeight           = 0
+            columnHeaderHeight           = 29
+            columnOrderOverride          = {}
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1745
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -1794,7 +1967,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -1812,7 +1984,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               inputName   = "cloudFunctions"
               inputRole   = "Data"
               isUserInput = true
-              parameterId = "cloudFunctions"
+              parameterId = "input-parameter-te16nn3x"
             },
           ]
           label = "Total Errors"
@@ -1848,7 +2020,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                 }
                 source = {
                   table = {
-                    field = "is_error"
+                    field = "A_is_error_sum"
                     groupFields = [
                       "board_label",
                     ]
@@ -1861,8 +2033,13 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                       fnArgs     = null
                       resolution = "AUTO"
                     }
-                    transformType = "statsby"
+                    transformType = "none"
                     type          = "singlefield"
+                  }
+                  topK = {
+                    k     = 25
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -1886,7 +2063,13 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup      = {}
+            rollup = {}
+            sort = [
+              {
+                ascending  = true
+                columnName = "A_is_error_sum"
+              },
+            ]
             wantBuckets = 400
           }
           renderType     = "TABLE"
@@ -1894,27 +2077,8 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  logName     = "count"
-                  severity    = "count"
-                  textPayload = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-r3nar0ob"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
               customSummary = "content-eng-1/Cloud Functions Function Logs"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1936,26 +2100,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               type              = "InputStep"
             },
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  logName     = "count"
-                  severity    = "count"
-                  textPayload = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-72tlhg03"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1969,14 +2114,117 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-zcm4u1rf"
+              id       = "step-6y84qbo6"
               index    = 1
               isPinned = false
               opal = [
-                "exists functionName = @cloudFunctions.functionName, region = @cloudFunctions.region, projectId = @cloudFunctions.projectId",
+                "exists cloudFunctionInstanceAssetKey = @cloudFunctions.cloudFunctionInstanceAssetKey",
                 "make_col ",
-                "\tboard_label: \"Total Errors\",",
+                "    board_label: \"Total Errors\",",
                 "    is_error: if(severity = \"ERROR\", 1, 0)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        columnId = "is_error"
+                        dataVis = {
+                          config = {
+                            color           = "Default"
+                            colorConfigType = "Threshold"
+                            fieldConfig = {
+                              unit    = null
+                              visible = false
+                            }
+                            thresholds = {
+                              startingColor = "Green"
+                              thresholds = [
+                                {
+                                  exceedsColor = "Default"
+                                  value        = 1
+                                },
+                              ]
+                            }
+                            type = "singlefield"
+                          }
+                          source = {
+                            table = {
+                              field = "A_is_error_sum"
+                              groupFields = [
+                                "board_label",
+                              ]
+                              statsBy = {
+                                fn     = "sum"
+                                fnArgs = []
+                              }
+                              timechart = {
+                                fn         = "avg"
+                                fnArgs     = null
+                                resolution = "AUTO"
+                              }
+                              transformType = "none"
+                              type          = "singlefield"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "singlevalue"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "board_label",
+                        ]
+                        id                  = "datasetQueryExpression-jp0kjuas"
+                        lookupActions       = []
+                        summarizeVerb       = "statsby"
+                        summaryFunction     = "sum"
+                        summaryFunctionArgs = []
+                        summaryMode         = "single"
+                        type                = "datasetQueryExpression"
+                        valueColumnId       = "A_is_error_sum"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-ffui4lw4"
+                      lookupActions = []
+                      type          = "multiExpression"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-jp0kjuas",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-oa5x0qde"
+              index    = 2
+              isPinned = false
+              opal = [
+                "statsby A_is_error_sum:sum(is_error), group_by(board_label)",
               ]
               queryPresentation = {}
               type              = "unknown"
@@ -1984,7 +2232,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -1997,10 +2244,11 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
         }
         params   = null
         pipeline = <<-EOT
-                    exists functionName = @cloudFunctions.functionName, region = @cloudFunctions.region, projectId = @cloudFunctions.projectId
+                    exists cloudFunctionInstanceAssetKey = @cloudFunctions.cloudFunctionInstanceAssetKey
                     make_col 
-                    \tboard_label: "Total Errors",
+                        board_label: "Total Errors",
                         is_error: if(severity = "ERROR", 1, 0)
+                    statsby A_is_error_sum:sum(is_error), group_by(board_label)
                 EOT
       },
       {
@@ -2036,25 +2284,26 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               logName      = 263
               severity     = 124
             }
-            containerWidth              = 1745
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            containerWidth               = 1745
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -2063,7 +2312,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -2081,7 +2329,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               inputName   = "cloudFunctions"
               inputRole   = "Data"
               isUserInput = true
-              parameterId = "cloudFunctions"
+              parameterId = "input-parameter-te16nn3x"
             },
           ]
           label = "Functions With Errors"
@@ -2117,7 +2365,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                 }
                 source = {
                   table = {
-                    field = "has_errors"
+                    field = "A_has_errors_sum"
                     groupFields = [
                       "board_label",
                     ]
@@ -2130,8 +2378,13 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                       fnArgs     = null
                       resolution = "AUTO"
                     }
-                    transformType = "statsby"
+                    transformType = "none"
                     type          = "singlefield"
+                  }
+                  topK = {
+                    k     = 25
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -2155,7 +2408,13 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup      = {}
+            rollup = {}
+            sort = [
+              {
+                ascending  = true
+                columnName = "A_has_errors_sum"
+              },
+            ]
             wantBuckets = 400
           }
           renderType     = "TABLE"
@@ -2165,7 +2424,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             {
               customName    = "Input"
               customSummary = "content-eng-1/Cloud Functions Function Logs"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2187,22 +2445,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               type              = "InputStep"
             },
             {
-              columnStatsTable = {
-                columnFunctions = {}
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-nlo21f3i"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2216,15 +2459,15 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-oj6x53pj"
+              id       = "step-42usowiu"
               index    = 1
               isPinned = false
               opal = [
-                "exists functionName = @cloudFunctions.functionName, region = @cloudFunctions.region, projectId = @cloudFunctions.projectId",
+                "exists cloudFunctionInstanceAssetKey = @cloudFunctions.cloudFunctionInstanceAssetKey",
                 "",
                 "// Check each message to see if it's an error",
                 "make_col ",
-                "\tboard_label: \"Functions With Errors\",",
+                "    board_label: \"Functions With Errors\",",
                 "    is_error: if(severity = \"ERROR\", 1, 0)",
                 "",
                 "// aggregate the errors for each function",
@@ -2234,10 +2477,112 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               queryPresentation = {}
               type              = "unknown"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        columnId = "has_errors"
+                        dataVis = {
+                          config = {
+                            color           = "Default"
+                            colorConfigType = "Threshold"
+                            fieldConfig = {
+                              unit    = null
+                              visible = false
+                            }
+                            thresholds = {
+                              startingColor = "Green"
+                              thresholds = [
+                                {
+                                  exceedsColor = "Default"
+                                  value        = 1
+                                },
+                              ]
+                            }
+                            type = "singlefield"
+                          }
+                          source = {
+                            table = {
+                              field = "A_has_errors_sum"
+                              groupFields = [
+                                "board_label",
+                              ]
+                              statsBy = {
+                                fn     = "sum"
+                                fnArgs = []
+                              }
+                              timechart = {
+                                fn         = "avg"
+                                fnArgs     = null
+                                resolution = "AUTO"
+                              }
+                              transformType = "none"
+                              type          = "singlefield"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "singlevalue"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "board_label",
+                        ]
+                        id                  = "datasetQueryExpression-wz96yop0"
+                        lookupActions       = []
+                        summarizeVerb       = "statsby"
+                        summaryFunction     = "sum"
+                        summaryFunctionArgs = []
+                        summaryMode         = "single"
+                        type                = "datasetQueryExpression"
+                        valueColumnId       = "A_has_errors_sum"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-vpyisy92"
+                      lookupActions = []
+                      type          = "multiExpression"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-wz96yop0",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-sah1km15"
+              index    = 2
+              isPinned = false
+              opal = [
+                "statsby A_has_errors_sum:sum(has_errors), group_by(board_label)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -2250,16 +2595,17 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
         }
         params   = null
         pipeline = <<-EOT
-                    exists functionName = @cloudFunctions.functionName, region = @cloudFunctions.region, projectId = @cloudFunctions.projectId
-                                        
+                    exists cloudFunctionInstanceAssetKey = @cloudFunctions.cloudFunctionInstanceAssetKey
+                    
                     // Check each message to see if it's an error
                     make_col 
-                    \tboard_label: "Functions With Errors",
+                        board_label: "Functions With Errors",
                         is_error: if(severity = "ERROR", 1, 0)
-                                        
+                    
                     // aggregate the errors for each function
                     statsby has_errors: if(sum(is_error) > 0, 1, 0),
                       group_by(functionName, board_label)
+                    statsby A_has_errors_sum:sum(has_errors), group_by(board_label)
                 EOT
       },
       {
@@ -2280,31 +2626,34 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             columnFooterHeight = 0
             columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "name"
-              "2" = "Valid From"
-              "3" = "Valid To"
+              "0" = "projectId"
+              "1" = "_c_valid_from"
+              "2" = "_c_valid_to"
+              "3" = "name"
+              "4" = "Valid From"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1313
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1313
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -2313,7 +2662,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -2325,7 +2673,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               inputName   = "cloudFunctions"
               inputRole   = "Data"
               isUserInput = false
-              parameterId = "cloudFunctions"
+              parameterId = "input-parameter-te16nn3x"
             },
           ]
           label = "Projects"
@@ -2362,9 +2710,14 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                       fn         = "count"
                       resolution = "AUTO"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "keyvalue"
-                    valueField    = "projectId"
+                    valueField    = "A_projectId_count"
+                  }
+                  topK = {
+                    k     = 25
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -2391,45 +2744,8 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  assetInventoryName   = "count"
-                  availableMemoryMb    = "count"
-                  buildId              = "count"
-                  buildName            = "count"
-                  description          = "count"
-                  dockerRegistry       = "count"
-                  entryPoint           = "count"
-                  environmentVariables = "count"
-                  eventTrigger         = "count"
-                  functionName         = "count"
-                  httpsTrigger         = "count"
-                  ingressSettings      = "count"
-                  maxInstances         = "count"
-                  name                 = "count"
-                  region               = "count"
-                  runtime              = "count"
-                  serviceAccountEmail  = "count"
-                  sourceArchiveUrl     = "count"
-                  status               = "count"
-                  timeout              = "count"
-                  versionId            = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-i17kbruv"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
               customSummary = "cloudFunctions"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2450,10 +2766,101 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               queryPresentation = {}
               type              = "InputStep"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "projectId"
+                        dataVis = {
+                          config = {
+                            innerRadius = 0.6
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type = "arc"
+                          }
+                          source = {
+                            table = {
+                              keyField = [
+                                "projectId",
+                              ]
+                              statsBy = {
+                                fn = "count"
+                              }
+                              timechart = {
+                                fn         = "count"
+                                resolution = "AUTO"
+                              }
+                              transformType = "none"
+                              type          = "keyvalue"
+                              valueField    = "A_projectId_count"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "circular"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "projectId",
+                        ]
+                        id              = "datasetQueryExpression-k2o5zxgs"
+                        lookupActions   = []
+                        summarizeVerb   = "statsby"
+                        summaryFunction = "count"
+                        summaryMode     = "over-time"
+                        type            = "datasetQueryExpression"
+                        valueColumnId   = "A_projectId_count"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-b49ruqbs"
+                      lookupActions = []
+                      type          = "multiExpression"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-k2o5zxgs",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-8e6w5jcd"
+              index    = 1
+              isPinned = false
+              opal = [
+                "timechart options(empty_bins:true), A_projectId_count:count(projectId), group_by(projectId)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -2465,7 +2872,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = "timechart options(empty_bins:true), A_projectId_count:count(projectId), group_by(projectId)"
       },
       {
         id = "stage-367tr336"
@@ -2486,29 +2893,31 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             columnHeaderHeight = 29
             columnOrderOverride = {
               "0" = "name"
-              "2" = "Valid From"
-              "3" = "Valid To"
+              "1" = "_c_valid_from"
+              "2" = "_c_valid_to"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = null
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -2517,7 +2926,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -2529,7 +2937,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               inputName   = "cloudFunctions"
               inputRole   = "Data"
               isUserInput = false
-              parameterId = "cloudFunctions"
+              parameterId = "input-parameter-te16nn3x"
             },
           ]
           label = "Runtime"
@@ -2566,9 +2974,14 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                       fn         = "count"
                       resolution = "AUTO"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "keyvalue"
-                    valueField    = "runtime"
+                    valueField    = "A_runtime_count"
+                  }
+                  topK = {
+                    k     = 25
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -2597,7 +3010,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             {
               customName    = "Input"
               customSummary = "cloudFunctions"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2618,10 +3030,101 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               queryPresentation = {}
               type              = "InputStep"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "runtime"
+                        dataVis = {
+                          config = {
+                            innerRadius = 0.6
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type = "arc"
+                          }
+                          source = {
+                            table = {
+                              keyField = [
+                                "runtime",
+                              ]
+                              statsBy = {
+                                fn = "count"
+                              }
+                              timechart = {
+                                fn         = "count"
+                                resolution = "AUTO"
+                              }
+                              transformType = "none"
+                              type          = "keyvalue"
+                              valueField    = "A_runtime_count"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "circular"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "runtime",
+                        ]
+                        id              = "datasetQueryExpression-spuzm285"
+                        lookupActions   = []
+                        summarizeVerb   = "statsby"
+                        summaryFunction = "count"
+                        summaryMode     = "over-time"
+                        type            = "datasetQueryExpression"
+                        valueColumnId   = "A_runtime_count"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-7rgztt2d"
+                      lookupActions = []
+                      type          = "multiExpression"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-spuzm285",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-zlhu9vsp"
+              index    = 1
+              isPinned = false
+              opal = [
+                "timechart options(empty_bins:true), A_runtime_count:count(runtime), group_by(runtime)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -2633,7 +3136,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = "timechart options(empty_bins:true), A_runtime_count:count(runtime), group_by(runtime)"
       },
       {
         id = "stage-ziasm4uf"
@@ -2654,29 +3157,31 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             columnHeaderHeight = 29
             columnOrderOverride = {
               "0" = "name"
-              "2" = "Valid From"
-              "3" = "Valid To"
+              "1" = "_c_valid_from"
+              "2" = "_c_valid_to"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = null
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -2685,7 +3190,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -2697,7 +3201,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               inputName   = "cloudFunctions"
               inputRole   = "Data"
               isUserInput = false
-              parameterId = "cloudFunctions"
+              parameterId = "input-parameter-te16nn3x"
             },
           ]
           label = "Region"
@@ -2734,9 +3238,14 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                       fn         = "count"
                       resolution = "AUTO"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "keyvalue"
-                    valueField    = "region"
+                    valueField    = "A_region_count"
+                  }
+                  topK = {
+                    k     = 25
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -2770,7 +3279,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
             {
               customName    = "Input"
               customSummary = "cloudFunctions"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2791,10 +3299,101 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
               queryPresentation = {}
               type              = "InputStep"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "region"
+                        dataVis = {
+                          config = {
+                            innerRadius = 0.6
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type = "arc"
+                          }
+                          source = {
+                            table = {
+                              keyField = [
+                                "region",
+                              ]
+                              statsBy = {
+                                fn = "count"
+                              }
+                              timechart = {
+                                fn         = "count"
+                                resolution = "AUTO"
+                              }
+                              transformType = "none"
+                              type          = "keyvalue"
+                              valueField    = "A_region_count"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "circular"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "region",
+                        ]
+                        id              = "datasetQueryExpression-jvgxupuh"
+                        lookupActions   = []
+                        summarizeVerb   = "statsby"
+                        summaryFunction = "count"
+                        summaryMode     = "over-time"
+                        type            = "datasetQueryExpression"
+                        valueColumnId   = "A_region_count"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-3jr3s3kw"
+                      lookupActions = []
+                      type          = "multiExpression"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-jvgxupuh",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-93014qwr"
+              index    = 1
+              isPinned = false
+              opal = [
+                "timechart options(empty_bins:true), A_region_count:count(region), group_by(region)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -2806,69 +3405,26 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = "timechart options(empty_bins:true), A_region_count:count(region), group_by(region)"
       },
       {
-        id = "stage-1pcbjwdr"
+        id = "stage-jjzyl2fz"
         input = [
           {
             datasetId   = local.cloud_functions_instances
             datasetPath = null
-            inputName   = "Google/Cloud Functions Instances"
+            inputName   = "test_gcp_sound-sculpin/Cloud Functions Instances"
             inputRole   = "Data"
             stageId     = null
           },
         ]
         layout = {
           appearance = "HIDDEN"
-          dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
-            columnOrderOverride = {
-              "0" = "name"
-              "2" = "Valid From"
-              "3" = "Valid To"
-            }
-            columnVisibility            = {}
-            columnWidths                = {}
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
-            selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
-            }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
-          }
-          index = 10
+          index      = 10
           inputList = [
             {
               datasetId   = local.cloud_functions_instances
-              inputName   = "Google/Cloud Functions Instances"
+              inputName   = "test_gcp_sound-sculpin/Cloud Functions Instances"
               inputRole   = "Data"
               isUserInput = false
             },
@@ -2892,8 +3448,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           steps = [
             {
               customName    = "Input"
-              customSummary = "Google/Cloud Functions Instances"
-              datasetQuery  = null
+              customSummary = "test_gcp_sound-sculpin/Cloud Functions Instances"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2907,7 +3462,7 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-17whd990"
+              id       = "step-e2g8b2dd"
               index    = 0
               isPinned = false
               opal = [
@@ -2919,7 +3474,6 @@ resource "observe_dashboard" "cloud_functions_monitoring" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false

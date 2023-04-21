@@ -18,7 +18,7 @@ resource "observe_dataset" "cloud_functions_function_logs" {
         projectId:string(resourceLabels.project_id),
         region:string(resourceLabels.region)
 
-      make_col assetInventoryName: string_concat("//cloudfunctions.googleapis.com/projects/",projectId,"/locations/",region,"/functions/",functionName)
+      make_col cloudFunctionInstanceAssetKey: string_concat("//cloudfunctions.googleapis.com/projects/",projectId,"/locations/",region,"/functions/",functionName)
       // ex - //cloudfunctions.googleapis.com/projects/content-testpproj-stage-1/locations/us-west1/functions/extension-export-cloud-scheduler-v2
 
       pick_col 
@@ -29,10 +29,11 @@ resource "observe_dataset" "cloud_functions_function_logs" {
         textPayload,
         projectId,
         region,
-        assetInventoryName,
+        cloudFunctionInstanceAssetKey,
+        assetInventoryName:cloudFunctionInstanceAssetKey,
         functionName
 
-      add_key assetInventoryName
+      set_col_visible assetInventoryName: false
     EOF
   }
 }
@@ -57,6 +58,10 @@ resource "observe_dataset" "cloud_functions_audit_logs" {
         projectId:string(resourceLabels.project_id),
         region:string(resourceLabels.region)
 
+      make_col cloudFunctionInstanceAssetKey: string_concat("//cloudfunctions.googleapis.com/projects/",projectId,"/locations/",region,"/functions/",functionName)
+      // ex - //cloudfunctions.googleapis.com/projects/content-testpproj-stage-1/locations/us-west1/functions/extension-export-cloud-scheduler-v2
+
+
       pick_col 
         timestamp,
         receiveTimestamp,
@@ -65,7 +70,9 @@ resource "observe_dataset" "cloud_functions_audit_logs" {
         protoPayload,
         projectId,
         region,
-        functionName
+        functionName,
+        cloudFunctionInstanceAssetKey
+        
     EOF
   }
 }
@@ -80,7 +87,7 @@ resource "observe_link" "function_logs" {
   for_each = {
     "Cloud Function" = {
       target = observe_dataset.cloud_functions_instances.oid
-      fields = ["projectId", "region", "functionName"]
+      fields = ["cloudFunctionInstanceAssetKey"]
     }
   }
 }
@@ -95,7 +102,7 @@ resource "observe_link" "audit_logs" {
   for_each = {
     "Cloud Function" = {
       target = observe_dataset.cloud_functions_instances.oid
-      fields = ["projectId", "region", "functionName"]
+      fields = ["cloudFunctionInstanceAssetKey"]
     }
   }
 }
