@@ -1,5 +1,7 @@
 # Assumptions
+You have a GCP Project
 
+You have installed gcloud cli and have logged in to create a credentials file
 
 ## Deployment
 Need to set environment variables for google provider
