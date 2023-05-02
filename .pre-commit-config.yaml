@@ -5,12 +5,13 @@ repos:
       - id: terraform_fmt
       - id: terraform_validate
         args:
-        - '--envs=OBSERVE_CUSTOMER="test"'
+          - '--envs=OBSERVE_CUSTOMER="test"'
       - id: terraform_docs
         args:
           - '--args=--lockfile=false'
       - id: terraform_tflint
         args:
+          - '--args=--config=__GIT_WORKING_DIR__/.tflint.hcl'
           - '--args=--only=terraform_deprecated_interpolation'
           - '--args=--only=terraform_deprecated_index'
           - '--args=--only=terraform_unused_declarations'
