@@ -1,0 +1,159 @@
+run-name: Cypress - ${{ github.event_name }} by @${{ github.actor }}
+# name: Fabric Build
+concurrency: gcp-workflow-cypress
+on: 
+  workflow_dispatch:
+    # inputs:
+    #   this_repo_branch:
+    #     type: string
+    #     description: Select the branch to use from this repo
+    #     default: main
+    #   terraform_run_destroy:
+    #     type: choice
+    #     options:
+    #     - true
+    #     - false
+    #   fail_first_test:
+    #     type: choice
+    #     options:
+    #     - false
+    #     - true
+    #   fail_second_test:
+    #     type: choice
+    #     options:
+    #     - false
+    #     - true
+  push:
+    branches:    
+      - 'arthur/sample-env-deploy'
+  pull_request:
+
+  schedule:
+    # only runs on default branch
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '5 */12 * * *'
+
+jobs:
+  
+  Run-Test-Build:
+    strategy:
+      max-parallel: 30
+      fail-fast: false
+      matrix:
+        test_groups: ['base_defaults']
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+      pull-requests: write
+      issues: read
+      checks: write
+    env:
+      TF_VAR_REGION: "us-west-2"
+      TF_VAR_USE_BRANCH_NAME: main
+      THIS_REPO_BRANCH: main
+      TERRAFORM_RUN_DESTROY: true
+      FAIL_FIRST_TEST: false
+      FAIL_SECOND_TEST: false
+      WORK_DIR: test_code
+      CLOUD: gcp
+      MODULE: gcp_machines
+      # TF_LOG: DEBUG
+
+    steps:
+      - name: Set code repo
+        run: |
+          if ${{ github.event.inputs.this_repo_branch != '' }}; then
+            echo "THIS_REPO_BRANCH=refs/heads/${{ github.event.inputs.this_repo_branch }}" >> $GITHUB_ENV
+          elif ${{ github.event_name == 'pull_request' }}; then
+            echo "THIS_REPO_BRANCH=refs/heads/${{ github.head_ref }}" >> $GITHUB_ENV
+          fi
+
+      - name: Check out repository code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ env.THIS_REPO_BRANCH }}
+
+      # GCP Login
+      # This is key generated in GCP console for service account
+      - id: 'auth'
+        uses: 'google-github-actions/auth@v0'
+        with:
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v0'
+        with:
+          project_id: content-eng-testing-env
+  
+      - id: 'secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v1'
+        with:
+          secrets: |-
+            CYPRESS_RECORD_KEY:content-eng-linux-host-test/CYPRESS_RECORD_KEY
+            CYPRESS_PROJECT_ID:content-eng-linux-host-test/CYPRESS_PROJECT_ID
+
+      - name: Print Environment Variables - troubleshooting
+        run: |
+          env | sort -f
+
+      # Run tests
+      - name: run cypress tests
+        run: |
+          # create output directory for archive files
+          mkdir file_outputs
+          mkdir log_outputs
+
+          # install dependencies
+          pip3 install -r requirements.txt
+
+          # run tests 
+          fab test -a ${{ env.FAIL_FIRST_TEST }} -b ${{ env.THIS_REPO_BRANCH }} -o "1: run fabric tests python script"
+        working-directory: "${{ env.WORK_DIR }}/python_scripts"
+
+      - name: Retry tests
+        if: ${{ env.TEST_RESULT == 'FAIL' }} 
+        run: |
+          # run tests
+          fab test -a ${{ env.FAIL_SECOND_TEST }} -o "2: Retry tests"  -b ${{ env.THIS_REPO_BRANCH }}
+          
+        working-directory: "${{ env.WORK_DIR }}/python_scripts" 
+
+      - name: cleanup
+        if: always()
+        run: |
+          rm -f python_scripts/config.ini
+
+          sed -i 's/${{ steps.secrets.outputs.STAGE_DATASTREAM_TOKEN }}/******/g' ./python_scripts/file_outputs/*
+          sed -i 's/${{ steps.secrets.outputs.STAGE_CUSTOMER_ID }}/******/g' ./python_scripts/file_outputs/*
+
+          sed -i 's/${{ steps.secrets.outputs.STAGE_DATASTREAM_TOKEN }}/******/g' ./python_scripts/log_outputs/*
+          sed -i 's/${{ steps.secrets.outputs.STAGE_CUSTOMER_ID }}/******/g' ./python_scripts/log_outputs/*
+
+        working-directory: "${{ env.WORK_DIR }}"
+
+      - name: Archive test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: file_outputs
+          path: | 
+            /home/runner/work/linux-host-configuration-scripts/linux-host-configuration-scripts/test_code/python_scripts/file_outputs/
+            /home/runner/work/linux-host-configuration-scripts/linux-host-configuration-scripts/test_code/python_scripts/log_outputs/
+          retention-days: 1
+
+      - name: terraform destroy
+        if: always()
+        run: |
+          echo "Value of input ${{ env.TERRAFORM_RUN_DESTROY == 'true' }}"
+          
+          if ${{ env.TERRAFORM_RUN_DESTROY == 'true' }}; then
+            terraform destroy -auto-approve
+          fi
+        working-directory: "${{ env.WORK_DIR }}"
+
+      - name: Fail Check
+        if: ${{ env.TEST_RESULT == 'FAIL' }} 
+        uses: actions/github-script@v3
+        with:
+          script: |
+              core.setFailed('Fabric tests failed')
