@@ -1,0 +1,1 @@
+source arthur.env; docker-compose run cypress cy:run:record --spec "cypress/e2e/content-team/gcp/*.spec.ts" --browser=electron

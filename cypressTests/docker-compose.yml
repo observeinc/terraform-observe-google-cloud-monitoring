@@ -1,0 +1,18 @@
+version: '3'
+services:
+  # this container will run Cypress tests.
+  cypress:
+    image: us-west1-docker.pkg.dev/content-eng-testing-env/content-team/cypress-tests:latest
+    volumes:
+      - ./gcp:/content-eng-cypress-tests/cypress/e2e/content-team/gcp
+    environment:
+      - CYPRESS_PROJECT_ID=$CYPRESS_PROJECT_ID
+      - CYPRESS_RECORD_KEY=$CYPRESS_RECORD_KEY
+      - OBSERVE_BASE_DOMAIN=$OBSERVE_BASE_DOMAIN
+      - OBSERVE_CUSTOMER_ID=$OBSERVE_CUSTOMER_ID
+      - OBSERVE_WORKSPACE_ID=$OBSERVE_WORKSPACE_ID
+      - OBSERVE_WRITER_EMAIL=$OBSERVE_WRITER_EMAIL
+      - OBSERVE_WRITER_PASSWORD=$OBSERVE_WRITER_PASSWORD
+      - OBSERVE_READER_EMAIL=$OBSERVE_READER_EMAIL
+      - OBSERVE_READER_PASSWORD=$OBSERVE_READER_PASSWORD
+    command: "cy:run --env grepTags=@content-team"
