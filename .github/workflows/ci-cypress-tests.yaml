@@ -55,7 +55,7 @@ jobs:
       TERRAFORM_RUN_DESTROY: true
       FAIL_FIRST_TEST: false
       FAIL_SECOND_TEST: false
-      WORK_DIR: test_code
+      WORK_DIR: cypressTests
       CLOUD: gcp
       MODULE: gcp_machines
       # TF_LOG: DEBUG
@@ -90,8 +90,18 @@ jobs:
         uses: 'google-github-actions/get-secretmanager-secrets@v1'
         with:
           secrets: |-
-            CYPRESS_RECORD_KEY:content-eng-linux-host-test/CYPRESS_RECORD_KEY
-            CYPRESS_PROJECT_ID:content-eng-linux-host-test/CYPRESS_PROJECT_ID
+            CYPRESS_RECORD_KEY:content-eng-linux-host-test/TERRAFORM_OBSERVE_GOOGLE_CYPRESS_RECORD_KEY
+            CYPRESS_PROJECT_ID:content-eng-linux-host-test/TERRAFORM_OBSERVE_GOOGLE_CYPRESS_PROJECT_ID
+            OBSERVE_CLUSTER:content-eng-linux-host-test/TERRAFORM_OBSERVE_GOOGLE_OBSERVE_CLUSTER
+            OBSERVE_BASE_DOMAIN:content-eng-linux-host-test/TERRAFORM_OBSERVE_GOOGLE_OBSERVE_BASE_DOMAIN
+            OBSERVE_CUSTOMER_ID:content-eng-linux-host-test/TERRAFORM_OBSERVE_GOOGLE_OBSERVE_CUSTOMER_ID
+            OBSERVE_WORKSPACE_ID:content-eng-linux-host-test/TERRAFORM_OBSERVE_GOOGLE_OBSERVE_WORKSPACE_ID
+            OBSERVE_ADMIN_EMAIL:content-eng-linux-host-test/TERRAFORM_OBSERVE_GOOGLE_OBSERVE_ADMIN_EMAIL
+            OBSERVE_ADMIN_PASSWORD:content-eng-linux-host-test/TERRAFORM_OBSERVE_GOOGLE_OBSERVE_ADMIN_PASSWORD
+            OBSERVE_WRITER_EMAIL:content-eng-linux-host-test/TERRAFORM_OBSERVE_GOOGLE_OBSERVE_WRITER_EMAIL
+            OBSERVE_WRITER_PASSWORD:content-eng-linux-host-test/TERRAFORM_OBSERVE_GOOGLE_OBSERVE_WRITER_PASSWORD
+            OBSERVE_READER_EMAIL:content-eng-linux-host-test/TERRAFORM_OBSERVE_GOOGLE_OBSERVE_READER_EMAIL
+            OBSERVE_READER_PASSWORD:content-eng-linux-host-test/TERRAFORM_OBSERVE_GOOGLE_OBSERVE_READER_PASSWORD
 
       - name: Print Environment Variables - troubleshooting
         run: |
@@ -100,24 +110,21 @@ jobs:
       # Run tests
       - name: run cypress tests
         run: |
-          # create output directory for archive files
-          mkdir file_outputs
-          mkdir log_outputs
-
-          # install dependencies
-          pip3 install -r requirements.txt
-
-          # run tests 
-          fab test -a ${{ env.FAIL_FIRST_TEST }} -b ${{ env.THIS_REPO_BRANCH }} -o "1: run fabric tests python script"
-        working-directory: "${{ env.WORK_DIR }}/python_scripts"
-
-      - name: Retry tests
-        if: ${{ env.TEST_RESULT == 'FAIL' }} 
-        run: |
-          # run tests
-          fab test -a ${{ env.FAIL_SECOND_TEST }} -o "2: Retry tests"  -b ${{ env.THIS_REPO_BRANCH }}
-          
-        working-directory: "${{ env.WORK_DIR }}/python_scripts" 
+          docker-compose run cypress cy:run:record --spec "cypress/e2e/content-team/gcp/*.spec.ts" --browser=electron
+        working-directory: "${{ env.WORK_DIR }}"
+        env:
+          CYPRESS_RECORD_KEY: ${{ steps.secrets.outputs.CYPRESS_RECORD_KEY }}
+          CYPRESS_PROJECT_ID: ${{ steps.secrets.outputs.CYPRESS_PROJECT_ID }}
+          OBSERVE_CLUSTER: ${{ steps.secrets.outputs.OBSERVE_CLUSTER }}
+          OBSERVE_BASE_DOMAIN: ${{ steps.secrets.outputs.OBSERVE_BASE_DOMAIN }}
+          OBSERVE_CUSTOMER_ID: ${{ steps.secrets.outputs.OBSERVE_CUSTOMER_ID }}
+          OBSERVE_WORKSPACE_ID: ${{ steps.secrets.outputs.OBSERVE_WORKSPACE_ID }}
+          OBSERVE_ADMIN_EMAIL: ${{ steps.secrets.outputs.OBSERVE_ADMIN_EMAIL }}
+          OBSERVE_ADMIN_PASSWORD: ${{ steps.secrets.outputs.OBSERVE_ADMIN_PASSWORD }}
+          OBSERVE_WRITER_EMAIL: ${{ steps.secrets.outputs.OBSERVE_WRITER_EMAIL }}
+          OBSERVE_WRITER_PASSWORD: ${{ steps.secrets.outputs.OBSERVE_WRITER_PASSWORD }}
+          OBSERVE_READER_EMAIL: ${{ steps.secrets.outputs.OBSERVE_READER_EMAIL }}
+          OBSERVE_READER_PASSWORD: ${{ steps.secrets.outputs.OBSERVE_READER_PASSWORD }}
 
 
       # - name: Archive test results
