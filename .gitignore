@@ -58,11 +58,5 @@ sample_infrastructure/cloud_run_containers/python_otel_example/content-eng-sampl
 sample_infrastructure/service_modules/gke/microservices-demo/
 /sample_infrastructure/collection/vendor_compare
 *.env*
-cypressTests/gcp/events.json
-cypressTests/gcp/instances.json
-cypressTests/gcp/monitoring.json
-cypressTests/gcp/resources.json
-cypressTests/gcp/data/events.json
-cypressTests/gcp/data/instances.json
-cypressTests/gcp/data/monitoring.json
-cypressTests/gcp/data/resources.json
+cypressTests/gcp/data
+node_modules
