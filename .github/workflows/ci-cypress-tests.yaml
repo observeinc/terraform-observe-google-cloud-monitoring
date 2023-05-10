@@ -109,8 +109,8 @@ jobs:
         if: steps.cache-docker-cypress.outputs.cache-hit == 'true'
         run: docker image load --input ./ci/cache/docker/cypress/cypress-tests-latest.tar
 
-      # Run tests
-      - name: run cypress tests
+      # get data
+      - name: get data for cypress tests
         run: |
           mkdir -p gcp/data
           
@@ -124,6 +124,26 @@ jobs:
 
           cp -R ../.git .git
 
+        working-directory: "${{ env.WORK_DIR }}"
+        env:
+          CYPRESS_RECORD_KEY: ${{ steps.secrets.outputs.CYPRESS_RECORD_KEY }}
+          CYPRESS_PROJECT_ID: ${{ steps.secrets.outputs.CYPRESS_PROJECT_ID }}
+          OBSERVE_CLUSTER: ${{ steps.secrets.outputs.OBSERVE_CLUSTER }}
+          OBSERVE_BASE_DOMAIN: ${{ steps.secrets.outputs.OBSERVE_BASE_DOMAIN }}
+          OBSERVE_CUSTOMER_ID: ${{ steps.secrets.outputs.OBSERVE_CUSTOMER_ID }}
+          OBSERVE_WORKSPACE_ID: ${{ steps.secrets.outputs.OBSERVE_WORKSPACE_ID }}
+          OBSERVE_ADMIN_EMAIL: ${{ steps.secrets.outputs.OBSERVE_ADMIN_EMAIL }}
+          OBSERVE_ADMIN_PASSWORD: ${{ steps.secrets.outputs.OBSERVE_ADMIN_PASSWORD }}
+          OBSERVE_WRITER_EMAIL: ${{ steps.secrets.outputs.OBSERVE_WRITER_EMAIL }}
+          OBSERVE_WRITER_PASSWORD: ${{ steps.secrets.outputs.OBSERVE_WRITER_PASSWORD }}
+          OBSERVE_READER_EMAIL: ${{ steps.secrets.outputs.OBSERVE_READER_EMAIL }}
+          OBSERVE_READER_PASSWORD: ${{ steps.secrets.outputs.OBSERVE_READER_PASSWORD }}
+          GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+          ARTIFACT_REGISTRY: ${{ steps.secrets.outputs.ARTIFACT_REGISTRY }}
+
+      # Run tests
+      - name: run cypress tests
+        run: |
           docker-compose run cypress cy:run:record --spec "cypress/e2e/content-team/gcp/*.spec.ts" --browser=electron  --ci-build-id ${{ github.run_id }} --parallel
 
         working-directory: "${{ env.WORK_DIR }}"
