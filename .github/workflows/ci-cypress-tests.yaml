@@ -48,22 +48,11 @@ jobs:
       issues: read
       checks: write
     env:
-      THIS_REPO_BRANCH: main
       WORK_DIR: cypressTests
 
     steps:
-      # - name: Set code repo
-      #   run: |
-      #     if ${{ github.event.inputs.this_repo_branch != '' }}; then
-      #       echo "THIS_REPO_BRANCH=refs/heads/${{ github.event.inputs.this_repo_branch }}" >> $GITHUB_ENV
-      #     elif ${{ github.event_name == 'pull_request' }}; then
-      #       echo "THIS_REPO_BRANCH=refs/heads/${{ github.head_ref }}" >> $GITHUB_ENV
-      #     fi
-
       - name: Check out repository code
         uses: actions/checkout@v3
-        with:
-          ref: ${{ env.THIS_REPO_BRANCH }}
 
       # GCP Login
       # This is key generated in GCP console for service account
@@ -104,7 +93,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ci/cache/docker/cypress
-          key: cache-docker-cypress-latest
+          key: cache-docker-cypress-latest-${{ vars.IMAGE_CACHE_KEY }}
 
       - name: Update Cypress Image Cache if cache miss
         if: steps.cache-docker-cypress.outputs.cache-hit != 'true'
