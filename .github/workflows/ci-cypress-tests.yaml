@@ -19,9 +19,6 @@ jobs:
   Run-Test-Build:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
-      data_events: ${{ steps.set-matrix.outputs.data_events }}
-      data_resources: ${{ steps.set-matrix.outputs.data_resources }}
-      data_monitoring:  ${{ steps.set-matrix.outputs.data_monitoring }}
 
     runs-on: ubuntu-latest
     permissions:
@@ -157,6 +154,7 @@ jobs:
       matrix:
         test_file: ${{ fromJson(needs.list-manifests.outputs.matrix) }}
     runs-on: ubuntu-latest
+
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
