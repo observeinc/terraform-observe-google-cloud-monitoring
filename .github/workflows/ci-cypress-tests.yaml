@@ -99,14 +99,14 @@ jobs:
         if: steps.cache-docker-cypress.outputs.cache-hit == 'true'
         run: docker image load --input ./ci/cache/docker/cypress/cypress-tests-latest.tar
 
-      - name: Pull Image
-        run: |
-          echo "$GCP_CREDENTIALS" | base64 | docker login -u _json_key_base64 --password-stdin "https://$ARTIFACT_REGISTRY"
+      # - name: Pull Image
+      #   run: |
+      #     echo "$GCP_CREDENTIALS" | base64 | docker login -u _json_key_base64 --password-stdin "https://$ARTIFACT_REGISTRY"
 
-          docker pull $ARTIFACT_REGISTRY/cypress-tests:latest && mkdir -p ci/cache/docker/cypress && docker image save $ARTIFACT_REGISTRY/cypress-tests:latest --output ./ci/cache/docker/cypress/cypress-tests-latest.tar
-        env:
-          GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
-          ARTIFACT_REGISTRY: ${{ steps.secrets.outputs.ARTIFACT_REGISTRY }}
+      #     docker pull $ARTIFACT_REGISTRY/cypress-tests:latest && mkdir -p ci/cache/docker/cypress && docker image save $ARTIFACT_REGISTRY/cypress-tests:latest --output ./ci/cache/docker/cypress/cypress-tests-latest.tar
+      #   env:
+      #     GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+      #     ARTIFACT_REGISTRY: ${{ steps.secrets.outputs.ARTIFACT_REGISTRY }}
 
       # Run tests
       - name: run cypress tests
