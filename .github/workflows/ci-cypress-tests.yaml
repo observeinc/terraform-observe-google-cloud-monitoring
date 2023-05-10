@@ -17,11 +17,12 @@ on:
 jobs:
   
   Run-Test-Build:
-    strategy:
-      max-parallel: 30
-      fail-fast: false
-      matrix:
-        test_groups: ['base_defaults']
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+      data_events: ${{ steps.set-matrix.outputs.data_events }}
+      data_resources: ${{ steps.set-matrix.outputs.data_resources }}
+      data_monitoring:  ${{ steps.set-matrix.outputs.data_monitoring }}
+
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -114,9 +115,10 @@ jobs:
       # Run tests
       - name: run cypress tests
         run: |
+          mkdir -p gcp/data
           # echo "$GCP_CREDENTIALS" | base64 | docker login -u _json_key_base64 --password-stdin "https://$ARTIFACT_REGISTRY"
 
-          docker-compose run cypress cy:run:record --spec "cypress/e2e/content-team/gcp/*.spec.ts" --browser=electron
+          docker-compose run cypress cy:run:record --spec "cypress/e2e/content-team/gcp/01*.spec.ts" --browser=electron
 
         working-directory: "${{ env.WORK_DIR }}"
         env:
@@ -136,20 +138,37 @@ jobs:
           ARTIFACT_REGISTRY: ${{ steps.secrets.outputs.ARTIFACT_REGISTRY }}
 
 
-      # - name: Archive test results
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: file_outputs
-      #     path: | 
-      #       /home/runner/work/linux-host-configuration-scripts/linux-host-configuration-scripts/test_code/python_scripts/file_outputs/
-      #       /home/runner/work/linux-host-configuration-scripts/linux-host-configuration-scripts/test_code/python_scripts/log_outputs/
-      #     retention-days: 1
+      - id: set-matrix
+        run: |
+          echo "::set-output name=matrix::$(ls *.spec.ts | grep -v '01_GetDatasets.spec.ts' | jq -R -s -c 'split("\n")[:-1]')"
 
-      # - name: Fail Check
-      #   if: ${{ env.TEST_RESULT == 'FAIL' }} 
-      #   uses: actions/github-script@v3
-      #   with:
-      #     script: |
-      #         core.setFailed('Fabric tests failed')
+      - name: Cache data
+        id: cache-cypress-cypress
+        uses: actions/cache@v3
+        with:
+          path: /home/runner/work/terraform-observe-google/terraform-observe-google/cypressTests/gcp/data
+          key: cache-cypress-test-data-${{ github.run_id }}
 
 
+  Run-Rest:
+    strategy:
+      max-parallel: 30
+      fail-fast: false
+      matrix:
+        test_file: ${{ fromJson(needs.list-manifests.outputs.matrix) }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: Restore Cache data
+        id: cache-cypress-cypress
+        uses: actions/cache@v3
+        with:
+          path: /home/runner/work/terraform-observe-google/terraform-observe-google/cypressTests/gcp/data
+          key: cache-cypress-test-data-${{ github.run_id }}
+     
+      - name: Print
+      run: |
+        echo "File = ${{ matrix.test_file }}
+        ls /home/runner/work/terraform-observe-google/terraform-observe-google/cypressTests/gcp/data
