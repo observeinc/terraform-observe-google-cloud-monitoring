@@ -8,11 +8,11 @@ import { ICypressDatasetMatchStub } from "../../../lib/CypressDatasetMatchStub";
 
 const DATASET_SEARCH_TIMEOUT = 30 * 1000;
 const DATASET_STARTS_WITH="GCP/"
-const EVENTS_FILE_NAME="cypress/e2e/content-team/gcp/events.json"
-const RESOURCES_FILE_NAME="cypress/e2e/content-team/gcp/resources.json"
+const EVENTS_FILE_NAME="cypress/e2e/content-team/gcp/data/events.json"
+const RESOURCES_FILE_NAME="cypress/e2e/content-team/gcp/data/resources.json"
 
-const MONITORING_FILE_NAME="cypress/e2e/content-team/gcp/monitoring.json"
-const INSTANCES_FILE_NAME="cypress/e2e/content-team/gcp/instances.json"
+const MONITORING_FILE_NAME="cypress/e2e/content-team/gcp/data/monitoring.json"
+const INSTANCES_FILE_NAME="cypress/e2e/content-team/gcp/data/instances.json"
 
 describe("Event Dataset Page", () => {
     beforeAfterSuppressLogs();

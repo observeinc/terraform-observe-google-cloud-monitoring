@@ -62,3 +62,7 @@ cypressTests/gcp/events.json
 cypressTests/gcp/instances.json
 cypressTests/gcp/monitoring.json
 cypressTests/gcp/resources.json
+cypressTests/gcp/data/events.json
+cypressTests/gcp/data/instances.json
+cypressTests/gcp/data/monitoring.json
+cypressTests/gcp/data/resources.json
