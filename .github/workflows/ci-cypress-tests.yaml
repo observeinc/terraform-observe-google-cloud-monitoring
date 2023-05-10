@@ -113,9 +113,17 @@ jobs:
       - name: run cypress tests
         run: |
           mkdir -p gcp/data
-   
-          docker-compose run cypress cy:run:record --spec "cypress/e2e/content-team/gcp/01_GetDatasets.spec.ts" --browser=electron  --ci-build-id ${{ github.run_id }}
-          docker-compose run cypress cy:run:record --spec "cypress/e2e/content-team/gcp/${{ matrix.test_file }}" --browser=electron --ci-build-id ${{ github.run_id }}
+          
+          cd dataFetch
+
+          yarn install
+
+          node getDatasets.js
+
+          cd ../
+
+          docker-compose run cypress cy:run:record --spec "cypress/e2e/content-team/gcp/*.spec.ts" --browser=electron  --ci-build-id ${{ github.run_id }} --parallel
+
         working-directory: "${{ env.WORK_DIR }}"
         env:
           CYPRESS_RECORD_KEY: ${{ steps.secrets.outputs.CYPRESS_RECORD_KEY }}
