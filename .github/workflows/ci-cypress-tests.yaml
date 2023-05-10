@@ -4,26 +4,6 @@ run-name: Cypress - ${{ github.event_name }} by @${{ github.actor }}
 concurrency: gcp-workflow-cypress
 on: 
   workflow_dispatch:
-    # inputs:
-    #   this_repo_branch:
-    #     type: string
-    #     description: Select the branch to use from this repo
-    #     default: main
-    #   terraform_run_destroy:
-    #     type: choice
-    #     options:
-    #     - true
-    #     - false
-    #   fail_first_test:
-    #     type: choice
-    #     options:
-    #     - false
-    #     - true
-    #   fail_second_test:
-    #     type: choice
-    #     options:
-    #     - false
-    #     - true
   push:
     branches:    
       - 'arthur/sample-env-deploy'
@@ -109,10 +89,32 @@ jobs:
         run: |
           env | sort -f
 
+      - name: Restore Cypress Image Cache if it exists
+        id: cache-docker-cypress
+        uses: actions/cache@v3
+        with:
+          path: ci/cache/docker/cypress
+          key: cache-docker-cypress-latest
+
+      - name: Update Cypress Image Cache if cache miss
+        if: steps.cache-docker-cypress.outputs.cache-hit != 'true'
+        run: |
+          echo "$GCP_CREDENTIALS" | base64 | docker login -u _json_key_base64 --password-stdin "https://$ARTIFACT_REGISTRY"
+
+          docker pull $ARTIFACT_REGISTRY/cypress-tests:latest && mkdir -p ci/cache/docker/cypress && docker image save $ARTIFACT_REGISTRY/cypress-tests:latest --output ./ci/cache/docker/cypress/cypress-tests-latest.tar
+        env:
+          GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+          ARTIFACT_REGISTRY: ${{ steps.secrets.outputs.ARTIFACT_REGISTRY }}
+
+      - name: Use Cypress Image Cache if cache hit
+        if: steps.cache-docker-cypress.outputs.cache-hit == 'true'
+        run: docker image load --input ./ci/cache/docker/cypress/cypress-tests-latest.tar
+
+  
       # Run tests
       - name: run cypress tests
         run: |
-          echo "$GCP_CREDENTIALS" | base64 | docker login -u _json_key_base64 --password-stdin "https://$ARTIFACT_REGISTRY"
+          # echo "$GCP_CREDENTIALS" | base64 | docker login -u _json_key_base64 --password-stdin "https://$ARTIFACT_REGISTRY"
 
           docker-compose run cypress cy:run:record --spec "cypress/e2e/content-team/gcp/*.spec.ts" --browser=electron
 
@@ -149,3 +151,5 @@ jobs:
       #   with:
       #     script: |
       #         core.setFailed('Fabric tests failed')
+
+
