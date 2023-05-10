@@ -148,6 +148,7 @@ jobs:
 
 
   Run-Rest:
+    needs: Run-Test-Build
     strategy:
       max-parallel: 30
       fail-fast: false
