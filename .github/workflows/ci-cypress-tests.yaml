@@ -167,6 +167,6 @@ jobs:
           key: cache-cypress-test-data-${{ github.run_id }}
      
       - name: Print
-      run: |
-        echo "File = ${{ matrix.test_file }}
-        ls /home/runner/work/terraform-observe-google/terraform-observe-google/cypressTests/gcp/data
+        run: |
+          echo "File = ${{ matrix.test_file }}
+          ls /home/runner/work/terraform-observe-google/terraform-observe-google/cypressTests/gcp/data
