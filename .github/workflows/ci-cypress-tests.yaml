@@ -29,7 +29,7 @@ jobs:
 
       - id: set-matrix
         run: |
-          echo "::set-output name=matrix::$(ls *.spec.ts | grep -v '01_GetDatasets.spec.ts' | jq -R -s -c 'split("\n")[:-1]')"
+          echo "::set-output name=matrix::$(ls *.spec.ts | grep -v '01_GetDatasets.spec.ts' | jq -R -s -c 'split("\n")[:-1] | keys[] ')"
         working-directory: "${{ env.WORK_DIR }}/gcp"
 
 
