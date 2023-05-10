@@ -34,7 +34,7 @@ jobs:
 
 
   Run-Test-Build:
-    needs: Run-Test-Build
+    needs: Enter-The-Matrix
     strategy:
       max-parallel: 30
       fail-fast: false
