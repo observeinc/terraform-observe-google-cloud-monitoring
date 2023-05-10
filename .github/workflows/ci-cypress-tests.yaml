@@ -16,9 +16,30 @@ on:
 
 jobs:
   
-  Run-Test-Build:
+  Enter-The-Matrix:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
+    runs-on: ubuntu-latest
+    env:
+      WORK_DIR: cypressTests
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - id: set-matrix
+        run: |
+          echo "::set-output name=matrix::$(ls *.spec.ts | grep -v '01_GetDatasets.spec.ts' | jq -R -s -c 'split("\n")[:-1]')"
+        working-directory: "${{ env.WORK_DIR }}/gcp"
+
+
+  Run-Test-Build:
+    needs: Run-Test-Build
+    strategy:
+      max-parallel: 30
+      fail-fast: false
+      matrix:
+        test_file: ${{ fromJson(needs.Enter-The-Matrix.outputs.matrix) }}
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -31,13 +52,13 @@ jobs:
       WORK_DIR: cypressTests
 
     steps:
-      - name: Set code repo
-        run: |
-          if ${{ github.event.inputs.this_repo_branch != '' }}; then
-            echo "THIS_REPO_BRANCH=refs/heads/${{ github.event.inputs.this_repo_branch }}" >> $GITHUB_ENV
-          elif ${{ github.event_name == 'pull_request' }}; then
-            echo "THIS_REPO_BRANCH=refs/heads/${{ github.head_ref }}" >> $GITHUB_ENV
-          fi
+      # - name: Set code repo
+      #   run: |
+      #     if ${{ github.event.inputs.this_repo_branch != '' }}; then
+      #       echo "THIS_REPO_BRANCH=refs/heads/${{ github.event.inputs.this_repo_branch }}" >> $GITHUB_ENV
+      #     elif ${{ github.event_name == 'pull_request' }}; then
+      #       echo "THIS_REPO_BRANCH=refs/heads/${{ github.head_ref }}" >> $GITHUB_ENV
+      #     fi
 
       - name: Check out repository code
         uses: actions/checkout@v3
@@ -103,10 +124,8 @@ jobs:
       - name: run cypress tests
         run: |
           mkdir -p gcp/data
-          # echo "$GCP_CREDENTIALS" | base64 | docker login -u _json_key_base64 --password-stdin "https://$ARTIFACT_REGISTRY"
-
-          docker-compose run cypress cy:run:record --spec "cypress/e2e/content-team/gcp/01*.spec.ts" --browser=electron
-
+   
+          docker-compose run cypress cy:run:record --spec "cypress/e2e/content-team/gcp/01_GetDatasets.spec.ts,cypress/e2e/content-team/gcp/${{ matrix.test_file }}" --browser=electron --group baseline --ci-build-id ${{ github.run_id }}
         working-directory: "${{ env.WORK_DIR }}"
         env:
           CYPRESS_RECORD_KEY: ${{ steps.secrets.outputs.CYPRESS_RECORD_KEY }}
@@ -123,115 +142,3 @@ jobs:
           OBSERVE_READER_PASSWORD: ${{ steps.secrets.outputs.OBSERVE_READER_PASSWORD }}
           GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
           ARTIFACT_REGISTRY: ${{ steps.secrets.outputs.ARTIFACT_REGISTRY }}
-
-
-      - id: set-matrix
-        run: |
-          echo "::set-output name=matrix::$(ls *.spec.ts | grep -v '01_GetDatasets.spec.ts' | jq -R -s -c 'split("\n")[:-1]')"
-        working-directory: "${{ env.WORK_DIR }}/gcp"
-
-      - name: Cache data
-        id: cache-cypress-cypress
-        uses: actions/cache@v3
-        with:
-          path: /home/runner/work/terraform-observe-google/terraform-observe-google/cypressTests/gcp/data
-          key: cache-cypress-test-data-${{ github.run_id }}
-
-
-  Run-Rest:
-    needs: Run-Test-Build
-    strategy:
-      max-parallel: 30
-      fail-fast: false
-      matrix:
-        test_file: ${{ fromJson(needs.Run-Test-Build.outputs.matrix) }}
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v3
-
-      # GCP Login
-      # This is key generated in GCP console for service account
-      - id: 'auth'
-        uses: 'google-github-actions/auth@v0'
-        with:
-          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
-
-      - name: 'Set up Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v0'
-        with:
-          project_id: content-eng-testing-env
-  
-      - id: 'secrets'
-        uses: 'google-github-actions/get-secretmanager-secrets@v1'
-        with:
-          secrets: |-
-            CYPRESS_RECORD_KEY:content-eng-linux-host-test/TERRAFORM_OBSERVE_GOOGLE_CYPRESS_RECORD_KEY
-            CYPRESS_PROJECT_ID:content-eng-linux-host-test/TERRAFORM_OBSERVE_GOOGLE_CYPRESS_PROJECT_ID
-            OBSERVE_CLUSTER:content-eng-linux-host-test/TERRAFORM_OBSERVE_GOOGLE_OBSERVE_CLUSTER
-            OBSERVE_BASE_DOMAIN:content-eng-linux-host-test/TERRAFORM_OBSERVE_GOOGLE_OBSERVE_BASE_DOMAIN
-            OBSERVE_CUSTOMER_ID:content-eng-linux-host-test/TERRAFORM_OBSERVE_GOOGLE_OBSERVE_CUSTOMER_ID
-            OBSERVE_WORKSPACE_ID:content-eng-linux-host-test/TERRAFORM_OBSERVE_GOOGLE_OBSERVE_WORKSPACE_ID
-            OBSERVE_ADMIN_EMAIL:content-eng-linux-host-test/TERRAFORM_OBSERVE_GOOGLE_OBSERVE_ADMIN_EMAIL
-            OBSERVE_ADMIN_PASSWORD:content-eng-linux-host-test/TERRAFORM_OBSERVE_GOOGLE_OBSERVE_ADMIN_PASSWORD
-            OBSERVE_WRITER_EMAIL:content-eng-linux-host-test/TERRAFORM_OBSERVE_GOOGLE_OBSERVE_WRITER_EMAIL
-            OBSERVE_WRITER_PASSWORD:content-eng-linux-host-test/TERRAFORM_OBSERVE_GOOGLE_OBSERVE_WRITER_PASSWORD
-            OBSERVE_READER_EMAIL:content-eng-linux-host-test/TERRAFORM_OBSERVE_GOOGLE_OBSERVE_READER_EMAIL
-            OBSERVE_READER_PASSWORD:content-eng-linux-host-test/TERRAFORM_OBSERVE_GOOGLE_OBSERVE_READER_PASSWORD
-            ARTIFACT_REGISTRY:content-eng-linux-host-test/TERRAFORM_OBSERVE_GOOGLE_ARTIFACT_REGISTRY
-
-      - name: Restore Cache data
-        id: cache-cypress-cypress
-        uses: actions/cache@v3
-        with:
-          path: /home/runner/work/terraform-observe-google/terraform-observe-google/cypressTests/gcp/data
-          key: cache-cypress-test-data-${{ github.run_id }}
-     
-      - name: Print
-        run: |
-          echo "File = ${{ matrix.test_file }}"
-          ls /home/runner/work/terraform-observe-google/terraform-observe-google/cypressTests/gcp/data
-
-      - name: Restore Cypress Image Cache if it exists
-        id: cache-docker-cypress
-        uses: actions/cache@v3
-        with:
-          path: ci/cache/docker/cypress
-          key: cache-docker-cypress-latest
-      
-      - name: Update Cypress Image Cache if cache miss
-        if: steps.cache-docker-cypress.outputs.cache-hit != 'true'
-        run: |
-          echo "$GCP_CREDENTIALS" | base64 | docker login -u _json_key_base64 --password-stdin "https://$ARTIFACT_REGISTRY"
-
-          docker pull $ARTIFACT_REGISTRY/cypress-tests:latest && mkdir -p ci/cache/docker/cypress && docker image save $ARTIFACT_REGISTRY/cypress-tests:latest --output ./ci/cache/docker/cypress/cypress-tests-latest.tar
-        env:
-          GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
-          ARTIFACT_REGISTRY: ${{ steps.secrets.outputs.ARTIFACT_REGISTRY }}
-
-      - name: Use Cypress Image Cache if cache hit
-        if: steps.cache-docker-cypress.outputs.cache-hit == 'true'
-        run: docker image load --input ./ci/cache/docker/cypress/cypress-tests-latest.tar
-
-      # Run tests
-      - name: run cypress tests
-      run: |
-        docker-compose run cypress cy:run:record --spec "cypress/e2e/content-team/gcp/${{ matrix.test_file }}" --browser=electron
-
-      working-directory: "${{ env.WORK_DIR }}"
-      env:
-        CYPRESS_RECORD_KEY: ${{ steps.secrets.outputs.CYPRESS_RECORD_KEY }}
-        CYPRESS_PROJECT_ID: ${{ steps.secrets.outputs.CYPRESS_PROJECT_ID }}
-        OBSERVE_CLUSTER: ${{ steps.secrets.outputs.OBSERVE_CLUSTER }}
-        OBSERVE_BASE_DOMAIN: ${{ steps.secrets.outputs.OBSERVE_BASE_DOMAIN }}
-        OBSERVE_CUSTOMER_ID: ${{ steps.secrets.outputs.OBSERVE_CUSTOMER_ID }}
-        OBSERVE_WORKSPACE_ID: ${{ steps.secrets.outputs.OBSERVE_WORKSPACE_ID }}
-        OBSERVE_ADMIN_EMAIL: ${{ steps.secrets.outputs.OBSERVE_ADMIN_EMAIL }}
-        OBSERVE_ADMIN_PASSWORD: ${{ steps.secrets.outputs.OBSERVE_ADMIN_PASSWORD }}
-        OBSERVE_WRITER_EMAIL: ${{ steps.secrets.outputs.OBSERVE_WRITER_EMAIL }}
-        OBSERVE_WRITER_PASSWORD: ${{ steps.secrets.outputs.OBSERVE_WRITER_PASSWORD }}
-        OBSERVE_READER_EMAIL: ${{ steps.secrets.outputs.OBSERVE_READER_EMAIL }}
-        OBSERVE_READER_PASSWORD: ${{ steps.secrets.outputs.OBSERVE_READER_PASSWORD }}
-        GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
-        ARTIFACT_REGISTRY: ${{ steps.secrets.outputs.ARTIFACT_REGISTRY }}

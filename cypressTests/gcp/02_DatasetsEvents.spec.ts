@@ -2,7 +2,7 @@ import {beforeAfterSuppressLogs} from "../../../lib/CypressLogUtils";
 import {ICypressDatasetMatchStub} from "../../../lib/CypressDatasetMatchStub"
 import {eventDatasetTest} from "./reusable_tests"
 
-import raw_events from "./events.json";
+import raw_events from "./data/events.json";
 
 import SECTIONS from "./sections";
 

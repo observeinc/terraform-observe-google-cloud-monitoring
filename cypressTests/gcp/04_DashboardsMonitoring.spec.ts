@@ -2,7 +2,7 @@ import {beforeAfterSuppressLogs} from "../../../lib/CypressLogUtils";
 import {ICypressDatasetMatchStub} from "../../../lib/CypressDatasetMatchStub"
 import {dashboardMonitoringTest} from "./reusable_tests"
 
-import monitoring from "./monitoring.json";
+import monitoring from "./data/monitoring.json";
 
 import SECTIONS from "./sections";
 
