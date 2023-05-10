@@ -145,7 +145,7 @@ jobs:
       max-parallel: 30
       fail-fast: false
       matrix:
-        test_file: ${{ fromJson(needs.list-manifests.outputs.matrix) }}
+        test_file: ${{ fromJson(needs.Run-Test-Build.outputs.matrix) }}
     runs-on: ubuntu-latest
 
     steps:
