@@ -58,7 +58,7 @@ resource "observe_dataset" "compute_logs_raw" {
 
       add_key computeInstanceAssetKey
       add_key computeDiskInstanceAssetKey
-        
+      interface "log"
     EOF
   }
 }

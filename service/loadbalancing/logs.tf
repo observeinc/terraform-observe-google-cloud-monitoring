@@ -69,6 +69,8 @@ resource "observe_dataset" "load_balancing_logs" {
         resourceType,
         logName,
         logType
+      
+      interface "log"
     EOF
   }
 }
@@ -106,6 +108,8 @@ resource "observe_dataset" "health_check_logs" {
         resourceLabels,
         insertId,
         messageId
+
+      interface "log"
     EOF
   }
 }
@@ -143,6 +147,8 @@ resource "observe_dataset" "load_balancing_config_audit_logs" {
         "regionBackendServices",
         "backendBuckets",
         "healthChecks")
+        
+    interface "log"
     EOF
   }
 }

@@ -37,6 +37,7 @@ resource "observe_dataset" "sql_logs" {
         database_id
 
       colshow receiveTimestamp: false, logName: false
+      interface "log", "log": textPayload
     EOF
   }
 }
@@ -100,6 +101,7 @@ resource "observe_dataset" "activity_logs" {
         database_id
 
       colshow receiveTimestamp: false, log_Name: false
+      interface "log", "log": message
     EOF
   }
 }

@@ -45,6 +45,7 @@ resource "observe_dataset" "cloudscheduler_logs" {
             url
             
         add_key asset_inventory_name
+        interface "log"
     EOF
   }
 }

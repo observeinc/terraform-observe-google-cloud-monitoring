@@ -34,6 +34,7 @@ resource "observe_dataset" "cloud_functions_function_logs" {
         functionName
 
       set_col_visible assetInventoryName: false
+      interface "log", "log": textPayload
     EOF
   }
 }
@@ -72,7 +73,8 @@ resource "observe_dataset" "cloud_functions_audit_logs" {
         region,
         functionName,
         cloudFunctionInstanceAssetKey
-        
+
+      interface "log", "structured_log": protoPayload
     EOF
   }
 }
