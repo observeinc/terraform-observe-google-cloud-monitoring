@@ -4,9 +4,9 @@ run-name: Cypress - ${{ github.event_name }} by @${{ github.actor }}
 concurrency: gcp-workflow-cypress
 on: 
   workflow_dispatch:
-  push:
-    branches:    
-      - 'arthur/sample-env-deploy'
+  # push:
+  #   branches:    
+  #     - 'arthur/sample-env-deploy'
   pull_request:
 
   schedule:
@@ -31,6 +31,13 @@ jobs:
         run: |
           echo "::set-output name=matrix::$(ls *.spec.ts | grep -v '01_GetDatasets.spec.ts' | jq -R -s -c 'split("\n")[:-1] | keys[]' | jq -R -s -c 'split("\n")[:-1]')"
         working-directory: "${{ env.WORK_DIR }}/gcp"
+
+      - id: diagnostic-info
+        run: |
+          echo "Github Event = ${{ github.event }}"
+          echo "Head Ref = ${{ github.head_ref }}"
+          echo "Base Ref = ${{ github.base_ref }}"
+
 
 
   Run-Test-Build:
