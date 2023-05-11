@@ -24,8 +24,16 @@ jobs:
       WORK_DIR: cypressTests
 
     steps:
-      - name: Check out repository code
+      - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+      # if pr then checkout source branch
+      - name: Checkout PR Head
+        uses: actions/checkout@v3
+        if: github.head_ref != ''
+        with:
+          ref: ${{ github.head_ref }}
 
       # Counts test files and creates an array of numbers as strings that will govern the number of runners used to run tests
       - id: set-matrix
@@ -44,10 +52,11 @@ jobs:
 
   Run-Test-Build:
     needs: Enter-The-Matrix
-    if: false 
+    if: true 
     strategy:
       max-parallel: 30
       fail-fast: false
+      # creates a machine for each test file
       matrix:
         test_file: ${{ fromJson(needs.Enter-The-Matrix.outputs.matrix) }}
     runs-on: ubuntu-latest
@@ -61,8 +70,16 @@ jobs:
       WORK_DIR: cypressTests
 
     steps:
-      - name: Check out repository code
+      - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+      # if pr then checkout source branch
+      - name: Checkout PR Head
+        uses: actions/checkout@v3
+        if: github.head_ref != ''
+        with:
+          ref: ${{ github.head_ref }}
 
       # GCP Login
       # This is key generated in GCP console for service account
@@ -158,7 +175,7 @@ jobs:
           GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
           ARTIFACT_REGISTRY: ${{ steps.secrets.outputs.ARTIFACT_REGISTRY }}
 
-      # Run tests
+      # Run tests - this uses cypress cloud parrallel function so it choses what tests to run on a given action runner
       - name: run cypress tests
         run: |
           docker-compose run cypress cy:run:record --spec "cypress/e2e/content-team/gcp/*.spec.ts" --browser=electron  --ci-build-id ${{ github.run_id }} --parallel
