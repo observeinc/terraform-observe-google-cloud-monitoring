@@ -1,7 +1,7 @@
 name: Cypress Tests
 run-name: Cypress - ${{ github.event_name }} by @${{ github.actor }}
 # name: Fabric Build
-concurrency: gcp-workflow-cypress
+# concurrency: gcp-workflow-cypress
 on: 
   workflow_dispatch:
   # push:
@@ -27,6 +27,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
 
+      # Counts test files and creates an array of numbers as strings that will govern the number of runners used to run tests
       - id: set-matrix
         run: |
           echo "::set-output name=matrix::$(ls *.spec.ts | grep -v '01_GetDatasets.spec.ts' | jq -R -s -c 'split("\n")[:-1] | keys[]' | jq -R -s -c 'split("\n")[:-1]')"
@@ -34,7 +35,8 @@ jobs:
 
       - id: diagnostic-info
         run: |
-          echo "Github Event = ${{ github.event }}"
+          echo "Github Event = "
+          echo "${{ toJson(github.event) }}"
           echo "Head Ref = ${{ github.head_ref }}"
           echo "Base Ref = ${{ github.base_ref }}"
 
@@ -42,6 +44,7 @@ jobs:
 
   Run-Test-Build:
     needs: Enter-The-Matrix
+    if: false 
     strategy:
       max-parallel: 30
       fail-fast: false
@@ -95,6 +98,7 @@ jobs:
         run: |
           env | sort -f
 
+      # Check if image cache is present - change vars.IMAGE_CACHE_KEY to a different number when you want to cache a new image
       - name: Restore Cypress Image Cache if it exists
         id: cache-docker-cypress
         uses: actions/cache@v3
@@ -102,6 +106,7 @@ jobs:
           path: ci/cache/docker/cypress
           key: cache-docker-cypress-latest-${{ vars.IMAGE_CACHE_KEY }}
 
+      # if no cache then fetch image
       - name: Update Cypress Image Cache if cache miss
         if: steps.cache-docker-cypress.outputs.cache-hit != 'true'
         run: |
@@ -111,24 +116,29 @@ jobs:
         env:
           GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
           ARTIFACT_REGISTRY: ${{ steps.secrets.outputs.ARTIFACT_REGISTRY }}
-
+      # if cache exists then load image
       - name: Use Cypress Image Cache if cache hit
         if: steps.cache-docker-cypress.outputs.cache-hit == 'true'
         run: docker image load --input ./ci/cache/docker/cypress/cypress-tests-latest.tar
 
-      # get data
+      # get data from graphql for datasets and dashboards
       - name: get data for cypress tests
         run: |
+          # make dir for data
           mkdir -p gcp/data
           
+          # switch to dir with code for data fetch
           cd dataFetch
 
+          # Create node modules and fetch data
           yarn install
 
+          # get data and save to files
           node getDatasets.js
 
           cd ../
 
+          # copy git directory so cypress tests can use it for recording in cypress cloud
           cp -R ../.git .git
 
         working-directory: "${{ env.WORK_DIR }}"
