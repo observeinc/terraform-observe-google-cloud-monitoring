@@ -175,7 +175,6 @@ jobs:
           ARTIFACT_REGISTRY: ${{ steps.secrets.outputs.ARTIFACT_REGISTRY }}
 
       - name: Tag Value
-        if: github.event_name == 'schedule'
         run: |
           if ${{ github.event_name == 'schedule' }}; then
             echo "TAG_VALUE=Scheduled_Run_${OBSERVE_CUSTOMER_ID}.${OBSERVE_BASE_DOMAIN}" >> $GITHUB_ENV
