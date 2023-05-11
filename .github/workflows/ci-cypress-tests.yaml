@@ -1,12 +1,11 @@
 name: Cypress Tests
 run-name: Cypress - ${{ github.event_name }} by @${{ github.actor }}
-# name: Fabric Build
-# concurrency: gcp-workflow-cypress
+concurrency: gcp-workflow-cypress
 on: 
   workflow_dispatch:
-  # push:
-  #   branches:    
-  #     - 'arthur/sample-env-deploy'
+  push:
+    branches:    
+      - 'main'
   pull_request:
 
   schedule:
@@ -175,10 +174,23 @@ jobs:
           GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
           ARTIFACT_REGISTRY: ${{ steps.secrets.outputs.ARTIFACT_REGISTRY }}
 
+      - name: Tag Value
+        if: github.event_name == 'schedule'
+        run: |
+          if ${{ github.event_name == 'schedule' }}; then
+            echo "TAG_VALUE=Scheduled_Run_${OBSERVE_CUSTOMER_ID}.${OBSERVE_BASE_DOMAIN}" >> $GITHUB_ENV
+          elif ${{ github.event_name == 'pull_request' }}; then
+            echo "TAG_VALUE=PR_Run_${OBSERVE_CUSTOMER_ID}.${OBSERVE_BASE_DOMAIN}" >> $GITHUB_ENV
+          else
+            echo "TAG_VALUE=Main_Run_${OBSERVE_CUSTOMER_ID}.${OBSERVE_BASE_DOMAIN}" >> $GITHUB_ENV
+          fi
+        env:
+          OBSERVE_BASE_DOMAIN: ${{ steps.secrets.outputs.OBSERVE_BASE_DOMAIN }}
+          OBSERVE_CUSTOMER_ID: ${{ steps.secrets.outputs.OBSERVE_CUSTOMER_ID }}
       # Run tests - this uses cypress cloud parrallel function so it choses what tests to run on a given action runner
       - name: run cypress tests
         run: |
-          docker-compose run cypress cy:run:record --spec "cypress/e2e/content-team/gcp/*.spec.ts" --browser=electron  --ci-build-id ${{ github.run_id }} --parallel
+          docker-compose run cypress cy:run:record --spec "cypress/e2e/content-team/gcp/*.spec.ts" --browser=electron  --ci-build-id ${{ github.run_id }} --parallel --tag ${{ env.TAG_VALUE }}
 
         working-directory: "${{ env.WORK_DIR }}"
         env:
