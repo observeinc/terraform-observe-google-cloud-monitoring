@@ -148,7 +148,7 @@ resource "observe_dataset" "load_balancing_config_audit_logs" {
         "backendBuckets",
         "healthChecks")
         
-    interface "log"
+      interface "log"
     EOF
   }
 }
