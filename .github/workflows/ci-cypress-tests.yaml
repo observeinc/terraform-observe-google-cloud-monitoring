@@ -35,8 +35,8 @@ jobs:
 
       - id: diagnostic-info
         run: |
-          echo "Github Event = "
-          echo "${{ toJson(github.event) }}"
+          echo "Github Event Name= "
+          echo "${{ toJson(github.event_name) }}"
           echo "Head Ref = ${{ github.head_ref }}"
           echo "Base Ref = ${{ github.base_ref }}"
 
