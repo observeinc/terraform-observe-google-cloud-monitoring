@@ -18,10 +18,8 @@ module "gcp_ubuntu_box" {
   compute_filter = ["UBUNTU_20_04_LTS"]
   open_ports     = ["22", "4317", "4318"]
 
-
   # https://opentelemetry.io/docs/collector/getting-started/#deb-installation
   metadata_startup_script = <<-EOF
-
 echo "
 receivers:
   otlp:
@@ -38,11 +36,11 @@ exporters:
   otlphttp:
     endpoint: "https://collect.${var.observe.domain}/v1/otel"
     headers:
-      'Authorization': 'Bearer ${var.observe.customer_id} ${var.observe.otel_datastream_token}'
+      'Authorization': 'Bearer ${var.observe.customer_id} ${var.observe.datastream_token}'
   prometheusremotewrite:
     endpoint: "https://collect.${var.observe.domain}/v1/prometheus"
     headers:
-      'Authorization': 'Bearer ${var.observe.customer_id} ${var.observe.otel_datastream_token}'
+      'Authorization': 'Bearer ${var.observe.customer_id} ${var.observe.datastream_token}'
 
 extensions:
   health_check:
@@ -77,9 +75,5 @@ sudo mv /etc/otelcol/config.yaml /etc/otelcol/config.yaml.OLD
 sudo cp /home/ubuntu/otel-collector-config.yaml /etc/otelcol/config.yaml
 
 sudo systemctl restart otelcol
-
-# Install host app monitoring
-curl https://raw.githubusercontent.com/observeinc/linux-host-configuration-scripts/main/observe_configure_script.sh  | bash -s -- --customer_id ${var.observe.customer_id} --ingest_token "${var.observe.host_datastream_token}" --observe_host_name https://${var.observe.customer_id}.collect.${var.observe.domain}/ --config_files_clean TRUE --ec2metadata FALSE --datacenter GCP --appgroup compute_host_app_sample_env
-
   EOF
 }

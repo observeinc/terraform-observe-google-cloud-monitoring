@@ -48,7 +48,7 @@ module "observe_gcp_collection" {
 #------------------------------------------------------------------------#
 # create a compute based otel collector pointed at observe
 #------------------------------------------------------------------------#
-module "compute_otel_collector_with_host_monitoring" {
+module "compute_otel_collector" {
   source     = "../service_modules/compute_otel_collector"
   project_id = var.project_id
   # region      = var.region
@@ -86,7 +86,7 @@ module "function_bigquery" {
   environment_variables = {
     CONSOLE_LOGGING    = "TRUE"
     COLLECTOR_LOGGING  = "TRUE"
-    COLLECTOR_ENDPOINT = "http://${module.compute_otel_collector_with_host_monitoring.gcp_ubuntu_box.compute_instances.UBUNTU_20_04_LTS_0.public_ip}:4317"
+    COLLECTOR_ENDPOINT = "http://${module.compute_otel_collector.gcp_ubuntu_box.compute_instances.UBUNTU_20_04_LTS_0.public_ip}:4317"
   }
   source_dir  = "../python_scripts/function_code/bigquery"
   output_path = "../python_scripts/function_code/bigquery/zip_files/bigquery_func_code.zip"
@@ -160,7 +160,7 @@ module "function_mysql" {
     MYSQL_PASSWORD     = module.cloudsql.connection_string.MYSQL_8_0.password
     CONSOLE_LOGGING    = "TRUE"
     COLLECTOR_LOGGING  = "TRUE"
-    COLLECTOR_ENDPOINT = "http://${module.compute_otel_collector_with_host_monitoring.gcp_ubuntu_box.compute_instances.UBUNTU_20_04_LTS_0.public_ip}:4317"
+    COLLECTOR_ENDPOINT = "http://${module.compute_otel_collector.gcp_ubuntu_box.compute_instances.UBUNTU_20_04_LTS_0.public_ip}:4317"
   }
   source_dir  = "../python_scripts/function_code/mysql"
   output_path = "../python_scripts/function_code/mysql/zip_files/mysql_func_code.zip"
@@ -236,7 +236,7 @@ module "function_postgres" {
     POSTGRES_PASSWORD  = module.cloudsql.connection_string.POSTGRES_14.password
     CONSOLE_LOGGING    = "TRUE"
     COLLECTOR_LOGGING  = "TRUE"
-    COLLECTOR_ENDPOINT = "http://${module.compute_otel_collector_with_host_monitoring.gcp_ubuntu_box.compute_instances.UBUNTU_20_04_LTS_0.public_ip}:4317"
+    COLLECTOR_ENDPOINT = "http://${module.compute_otel_collector.gcp_ubuntu_box.compute_instances.UBUNTU_20_04_LTS_0.public_ip}:4317"
   }
   source_dir  = "../python_scripts/function_code/postgres"
   output_path = "../python_scripts/function_code/postgres/zip_files/postgres_func_code.zip"
@@ -295,10 +295,6 @@ resource "google_artifact_registry_repository" "my_repo" {
   repository_id = "sockshop-registry"
   description   = "sockshop docker repository"
   format        = "DOCKER"
-
-  lifecycle {
-    prevent_destroy = true
-  }
 }
 
 #------------------------------------------------------------------------#
@@ -346,7 +342,7 @@ module "function_redis" {
     REDIS_PORT         = module.redis.port
     CONSOLE_LOGGING    = "TRUE"
     COLLECTOR_LOGGING  = "TRUE"
-    COLLECTOR_ENDPOINT = "http://${module.compute_otel_collector_with_host_monitoring.gcp_ubuntu_box.compute_instances.UBUNTU_20_04_LTS_0.public_ip}:4317"
+    COLLECTOR_ENDPOINT = "http://${module.compute_otel_collector.gcp_ubuntu_box.compute_instances.UBUNTU_20_04_LTS_0.public_ip}:4317"
   }
   source_dir       = "../python_scripts/function_code/redis"
   output_path      = "../python_scripts/function_code/postgres/zip_files/redis_func_code.zip"

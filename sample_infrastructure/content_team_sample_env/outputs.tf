@@ -7,7 +7,7 @@ output "bigquery" {
 # tf output -json | jq -r '.bigquery.value.bigquery_selflink2'
 
 output "compute_otel_collector" {
-  value     = module.compute_otel_collector_with_host_monitoring
+  value     = module.compute_otel_collector
   sensitive = true
 }
 # tf output -json | jq -r '.compute_otel_collector.value.gcp_ubuntu_box.compute_instances'
@@ -27,7 +27,7 @@ output "function_bigquery_write_payload" {
 # tf output -json | jq -r '.function_bigquery_write_payload.value'
 
 output "collector_endpoint" {
-  value     = "http://${module.compute_otel_collector_with_host_monitoring.gcp_ubuntu_box.compute_instances.UBUNTU_20_04_LTS_0.public_ip}:4317"
+  value     = "http://${module.compute_otel_collector.gcp_ubuntu_box.compute_instances.UBUNTU_20_04_LTS_0.public_ip}:4317"
   sensitive = true
 }
 # tf output -json | jq -r '.collector_endpoint.value'

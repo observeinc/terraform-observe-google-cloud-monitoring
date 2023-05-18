@@ -21,7 +21,7 @@ It is designed to be read from top to bottom and you can comment out everything 
 
 Modules and their dependencies should be self explanatory.
 
-If you comment out modules in main.tf look at corresponding values in output.tf
+If you comment out modules in main.tf look at correspondiong values in output.tf
 
 The collection folder contains terraform to deploy collection resources to GCP using either local path or remote registry.
 
