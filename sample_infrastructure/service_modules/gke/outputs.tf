@@ -17,6 +17,6 @@ output "sockshop_commands" {
     apply_ingress    = "kubectl apply -f ingress/ingress_gke.yaml"
     describe_ingress = "kubectl describe ingress --namespace=sock-shop"
     notion           = "https://www.notion.so/observeinc/Multi-Cloud-K8-Environment-Setup-52d435d52556480f95bcb32de0a7b60d#befae42f8a9647989f0abd0787025c8b"
-    id               = google_container_cluster.primary.id
+
   }
 }
