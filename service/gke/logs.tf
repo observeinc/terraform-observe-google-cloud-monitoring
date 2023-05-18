@@ -58,7 +58,7 @@ resource "observe_dataset" "gke_logs" {
             gkeClusterAssetKey
 
         add_key gkeClusterAssetKey
-
+        interface "log"
     EOF
   }
 }

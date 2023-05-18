@@ -55,6 +55,8 @@ resource "observe_dataset" "bigquery_audit_logs" {
           project_id,
           dataset_id,
           location
+      
+      interface "log"
     EOF
   }
 }
@@ -87,6 +89,8 @@ resource "observe_dataset" "bigquery_job_logs" {
         message:string(jsonPayload.message),
         project_id,
         location
+
+    interface "log", "log": message
     EOF
   }
 }

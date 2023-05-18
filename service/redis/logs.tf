@@ -24,6 +24,7 @@ resource "observe_dataset" "logs" {
       make_col instance_pkey: string_concat("//redis.googleapis.com/projects/",project_id,"/locations/",region,"/instances/",instance_id)
 
       add_key instance_pkey
+      interface "log"
     EOF
   }
 }

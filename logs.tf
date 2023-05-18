@@ -36,6 +36,7 @@ resource "observe_dataset" "logs" {
           insertId:string(data.insertId),
           trace:string(data.trace),
           messageId:id
+      interface "log"
     EOF
   }
 }
