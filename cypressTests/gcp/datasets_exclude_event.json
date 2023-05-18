@@ -1,0 +1,12 @@
+[
+    "GCP/BigQuery Job Logs",
+    "GCP/Load Balancing Access Logs",
+    "GCP/Load Balancing Config Audit Logs",
+    "GCP/Load Balancing Health Check Logs",
+    "GCP/PubSub Service API Metrics",
+    "GCP/Redis Logs",
+    "GCP/Storage Logs",
+    "GCP/Cloud Functions Audit Logs",
+    "GCP/Cloud SQL Logs Activity",
+    "GCP/Compute Raw Logs"
+]

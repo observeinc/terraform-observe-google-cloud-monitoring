@@ -57,3 +57,6 @@ sample_infrastructure/rust_scripts
 sample_infrastructure/cloud_run_containers/python_otel_example/content-eng-sample-infra-b630a54f29d8.json
 sample_infrastructure/service_modules/gke/microservices-demo/
 /sample_infrastructure/collection/vendor_compare
+*.env*
+cypressTests/gcp/data
+node_modules
