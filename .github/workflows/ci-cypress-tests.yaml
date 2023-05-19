@@ -3,10 +3,10 @@ run-name: Cypress - ${{ github.event_name }} by @${{ github.actor }}
 concurrency: gcp-workflow-cypress
 on: 
   workflow_dispatch:
-  push:
-    branches:    
-      - 'main'
-  pull_request:
+  # push:
+  #   branches:    
+  #     - 'main'
+  # pull_request:
 
   schedule:
     # only runs on default branch

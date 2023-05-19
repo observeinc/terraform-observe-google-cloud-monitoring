@@ -130,7 +130,7 @@ const GetData = async () => {
             console.log(dashboards)
 
             // "kind": "Dashboard"
-            dashboards_data_raw = dashboards.filter(dashboard => { console.log(dashboard.dashboard); return dashboard.dashboard.name.includes('Monitoring')} )
+            dashboards_data_raw = dashboards.filter(dashboard => { console.log(dashboard.dashboard); return dashboard.dashboard.name.includes('Monitoring') || dashboard.dashboard.name.includes('App Home')} )
             dashboards_data_raw.forEach(dashboard => {dashboard.dashboard.kind = "Dashboard"; monitoring_file.push(dashboard.dashboard)})
             fs.writeFileSync('../gcp/data/monitoring.json', JSON.stringify(monitoring_file, null, 2), 'utf-8');
 
