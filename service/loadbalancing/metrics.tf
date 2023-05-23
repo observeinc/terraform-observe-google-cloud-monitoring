@@ -18,7 +18,7 @@ resource "observe_dataset" "load_balancing_metrics" {
       union @distributions
       filter left(metric_type,13) = "loadbalancing"
       make_col
-        url_map_name:string(if(starts_with(resource_labels.url_map_name, "URL_MAP/"), split_part(string(resource_labels.url_map_name), "_", 3), string(resource_labels.url_map_name)))
+        url_map_name:string(if(starts_with(string(resource_labels.url_map_name), "URL_MAP/"), split_part(string(resource_labels.url_map_name), "_", 3), string(resource_labels.url_map_name)))
       make_col 
         backend_name:string(resource_labels.backend_name),
         backend_target_name:string(resource_labels.backend_target_name),
@@ -95,7 +95,7 @@ resource "observe_dataset" "load_balancing_metrics" {
 
   # We filter the outer for loop checking whether options.launchStage is in the array defined by var.metric_launch_stages 
   # in the inner for loop we iterate through the fields in the options objects and check if the field is in the array defined by var.metric_interface_fields
-  ##  and if so 
+  ##  and if so fd
   /* Example output
   set_metric options(
     aggregate: "sum",
