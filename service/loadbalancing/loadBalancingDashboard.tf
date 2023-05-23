@@ -6,41 +6,38 @@ locals {
   load_balancing_config_audit_logs = observe_dataset.load_balancing_config_audit_logs.id
   load_balancing_health_checks     = observe_dataset.load_balancing_health_check.id
 }
-# terraform import observe_dashboard.load_balancing_monitoring_old_tf 41146438
+
 resource "observe_dashboard" "load_balancing_monitoring" {
   count       = local.enable_metrics ? 1 : 0
   description = "Dashboard for monitoring Load Balancing resources"
   layout = jsonencode(
     {
+      autoPack = true
       gridLayout = {
         sections = [
           {
             card = {
               cardType = "section"
               closed   = false
-              id       = "section-rdg13moy"
+              id       = "card-yprx9nci"
               title    = "Dashboard Content"
             }
             items = [
               {
                 card = {
                   cardType    = "parameter"
-                  id          = "card-mzacka5y"
+                  id          = "card-2vgp9o1k"
                   parameterId = "loadBalancer"
                 }
                 layout = {
-                  h           = 4
-                  i           = "card-mzacka5y"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
+                  h = 4
+                  i = "card-2vgp9o1k"
                   resizeHandles = [
                     "e",
                   ]
-                  static = false
-                  w      = 4
-                  x      = 0
-                  y      = 0
+                  w = 4
+                  x = 0
+                  y = 0
                 }
               },
             ]
@@ -49,80 +46,64 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-ey5ihwgg"
+              id       = "card-t7b4x2wz"
               title    = "Overview"
             }
             items = [
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-c1i8jcdl"
+                  id       = "card-wfv778t0"
                   stageId  = "stage-ymij9guj"
                 }
                 layout = {
-                  h           = 9
-                  i           = "card-c1i8jcdl"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
-                  x           = 6
-                  y           = 0
+                  h = 9
+                  i = "card-wfv778t0"
+                  w = 3
+                  x = 6
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-ja13bhbw"
+                  id       = "card-ghr9cflt"
                   stageId  = "stage-tx1rkfnd"
                 }
                 layout = {
-                  h           = 9
-                  i           = "card-ja13bhbw"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
-                  x           = 0
-                  y           = 0
+                  h = 9
+                  i = "card-ghr9cflt"
+                  w = 3
+                  x = 0
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-1zp0tq3q"
+                  id       = "card-bmd2qpx4"
                   stageId  = "stage-9ft6c9cp"
                 }
                 layout = {
-                  h           = 9
-                  i           = "card-1zp0tq3q"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
-                  x           = 3
-                  y           = 0
+                  h = 9
+                  i = "card-bmd2qpx4"
+                  w = 3
+                  x = 3
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-zu7d3blq"
+                  id       = "card-3koza9dn"
                   stageId  = "stage-uho2b7y5"
                 }
                 layout = {
-                  h           = 9
-                  i           = "card-zu7d3blq"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
-                  x           = 9
-                  y           = 0
+                  h = 9
+                  i = "card-3koza9dn"
+                  w = 3
+                  x = 9
+                  y = 0
                 }
               },
             ]
@@ -131,212 +112,168 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-zzx5eq4c"
+              id       = "card-5z0y5ake"
               title    = "Application (L7) Load Balancing"
             }
             items = [
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-pet6344k"
+                  id       = "card-iry8jlwo"
                   stageId  = "stage-6x2c0fqw"
                 }
                 layout = {
-                  h           = 15
-                  i           = "card-pet6344k"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 10
-                  x           = 2
-                  y           = 0
+                  h = 15
+                  i = "card-iry8jlwo"
+                  w = 10
+                  x = 2
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-cdq2ain3"
+                  id       = "card-tlunetrw"
                   stageId  = "stage-rrq0jgcr"
                 }
                 layout = {
-                  h           = 10
-                  i           = "card-cdq2ain3"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 2
-                  x           = 0
-                  y           = 0
+                  h = 10
+                  i = "card-tlunetrw"
+                  w = 2
+                  x = 0
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-6zjpn7w2"
+                  id       = "card-cajrm1je"
                   stageId  = "stage-bkt8och9"
                 }
                 layout = {
-                  h           = 10
-                  i           = "card-6zjpn7w2"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 2
-                  x           = 0
-                  y           = 10
+                  h = 10
+                  i = "card-cajrm1je"
+                  w = 2
+                  x = 0
+                  y = 10
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-vnkbm16h"
+                  id       = "card-axlaqeuc"
                   stageId  = "stage-y2e5spse"
                 }
                 layout = {
-                  h           = 15
-                  i           = "card-vnkbm16h"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 5
-                  x           = 7
-                  y           = 15
+                  h = 15
+                  i = "card-axlaqeuc"
+                  w = 5
+                  x = 7
+                  y = 15
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-1drrcg6d"
+                  id       = "card-czwt40d4"
                   stageId  = "stage-s77mb9b4"
                 }
                 layout = {
-                  h           = 15
-                  i           = "card-1drrcg6d"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 5
-                  x           = 2
-                  y           = 15
+                  h = 15
+                  i = "card-czwt40d4"
+                  w = 5
+                  x = 2
+                  y = 15
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-guavqswj"
+                  id       = "card-onbb8bhc"
                   stageId  = "stage-r21aa1ok"
                 }
                 layout = {
-                  h           = 10
-                  i           = "card-guavqswj"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 2
-                  x           = 0
-                  y           = 20
+                  h = 10
+                  i = "card-onbb8bhc"
+                  w = 2
+                  x = 0
+                  y = 20
                 }
               },
               {
                 card = {
                   cardType    = "parameter"
-                  id          = "card-dkdx4d1o"
+                  id          = "card-vif6b54v"
                   parameterId = "latencyType"
                 }
                 layout = {
-                  h           = 4
-                  i           = "card-dkdx4d1o"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
+                  h = 4
+                  i = "card-vif6b54v"
                   resizeHandles = [
                     "e",
                   ]
-                  static = false
-                  w      = 2
-                  x      = 0
-                  y      = 30
+                  w = 2
+                  x = 0
+                  y = 30
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-iv7tqke5"
+                  id       = "card-8a7zifzz"
                   stageId  = "stage-tww25crx"
                 }
                 layout = {
-                  h           = 18
-                  i           = "card-iv7tqke5"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 10
-                  x           = 2
-                  y           = 30
+                  h = 18
+                  i = "card-8a7zifzz"
+                  w = 10
+                  x = 2
+                  y = 30
                 }
               },
               {
                 card = {
                   cardType    = "parameter"
-                  id          = "card-zs6k4ka5"
+                  id          = "card-chcle1gy"
                   parameterId = "percentile"
                 }
                 layout = {
-                  h           = 4
-                  i           = "card-zs6k4ka5"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
+                  h = 4
+                  i = "card-chcle1gy"
                   resizeHandles = [
                     "e",
                   ]
-                  static = false
-                  w      = 2
-                  x      = 0
-                  y      = 34
+                  w = 2
+                  x = 0
+                  y = 34
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-3xucb1ez"
+                  id       = "card-zqe3zwlu"
                   stageId  = "stage-3zbaxk0o"
                 }
                 layout = {
-                  h           = 11
-                  i           = "card-3xucb1ez"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 6
-                  x           = 6
-                  y           = 48
+                  h = 11
+                  i = "card-zqe3zwlu"
+                  w = 6
+                  x = 6
+                  y = 48
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-4eq8wggn"
+                  id       = "card-anylf4db"
                   stageId  = "stage-uywqiqvc"
                 }
                 layout = {
-                  h           = 11
-                  i           = "card-4eq8wggn"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 6
-                  x           = 0
-                  y           = 48
+                  h = 11
+                  i = "card-anylf4db"
+                  w = 6
+                  x = 0
+                  y = 48
                 }
               },
             ]
@@ -345,158 +282,126 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-nzgdessb"
+              id       = "card-o8k1m5j0"
               title    = "Network (L4) Load Balancing"
             }
             items = [
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-854b9mq1"
+                  id       = "card-j1zlwp1t"
                   stageId  = "stage-q1xd6oka"
                 }
                 layout = {
-                  h           = 11
-                  i           = "card-854b9mq1"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 6
-                  x           = 0
-                  y           = 0
+                  h = 11
+                  i = "card-j1zlwp1t"
+                  w = 6
+                  x = 0
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-rrd2pjng"
+                  id       = "card-6s4m4no7"
                   stageId  = "stage-gcfx82a3"
                 }
                 layout = {
-                  h           = 11
-                  i           = "card-rrd2pjng"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 6
-                  x           = 6
-                  y           = 0
+                  h = 11
+                  i = "card-6s4m4no7"
+                  w = 6
+                  x = 6
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-f8wesspp"
+                  id       = "card-si8f5uxq"
                   stageId  = "stage-pmkx32rn"
                 }
                 layout = {
-                  h           = 11
-                  i           = "card-f8wesspp"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 6
-                  x           = 6
-                  y           = 11
+                  h = 11
+                  i = "card-si8f5uxq"
+                  w = 6
+                  x = 6
+                  y = 11
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-olt4ydzv"
+                  id       = "card-2dijkidx"
                   stageId  = "stage-167x70ol"
                 }
                 layout = {
-                  h           = 11
-                  i           = "card-olt4ydzv"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 6
-                  x           = 0
-                  y           = 11
+                  h = 11
+                  i = "card-2dijkidx"
+                  w = 6
+                  x = 0
+                  y = 11
                 }
               },
               {
                 card = {
                   cardType    = "parameter"
-                  id          = "card-2yiq2zz0"
+                  id          = "card-5lc0gft4"
                   parameterId = "percentileL4"
                 }
                 layout = {
-                  h           = 4
-                  i           = "card-2yiq2zz0"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
+                  h = 4
+                  i = "card-5lc0gft4"
                   resizeHandles = [
                     "e",
                   ]
-                  static = false
-                  w      = 6
-                  x      = 0
-                  y      = 22
+                  w = 6
+                  x = 0
+                  y = 22
                 }
               },
               {
                 card = {
                   cardType    = "parameter"
-                  id          = "card-73ud7guo"
+                  id          = "card-bfcg6akk"
                   parameterId = "connectionsType"
                 }
                 layout = {
-                  h           = 4
-                  i           = "card-73ud7guo"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
+                  h = 4
+                  i = "card-bfcg6akk"
                   resizeHandles = [
                     "e",
                   ]
-                  static = false
-                  w      = 6
-                  x      = 6
-                  y      = 22
+                  w = 6
+                  x = 6
+                  y = 22
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-3fbqwekc"
+                  id       = "card-ed8by381"
                   stageId  = "stage-1jze8q9d"
                 }
                 layout = {
-                  h           = 15
-                  i           = "card-3fbqwekc"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 6
-                  x           = 0
-                  y           = 26
+                  h = 15
+                  i = "card-ed8by381"
+                  w = 6
+                  x = 0
+                  y = 26
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-ynoljyix"
+                  id       = "card-z5mtngjf"
                   stageId  = "stage-vvzswmar"
                 }
                 layout = {
-                  h           = 15
-                  i           = "card-ynoljyix"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 6
-                  x           = 6
-                  y           = 26
+                  h = 15
+                  i = "card-z5mtngjf"
+                  w = 6
+                  x = 6
+                  y = 26
                 }
               },
             ]
@@ -505,62 +410,50 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-r6b6nqam"
+              id       = "card-8i7gse7z"
               title    = "Configurations"
             }
             items = [
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-t7znarvq"
+                  id       = "card-lgpmtjgb"
                   stageId  = "stage-vhllr1sq"
                 }
                 layout = {
-                  h           = 13
-                  i           = "card-t7znarvq"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 12
-                  x           = 0
-                  y           = 0
+                  h = 13
+                  i = "card-lgpmtjgb"
+                  w = 12
+                  x = 0
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-3vtfeo8j"
+                  id       = "card-x61x4sqk"
                   stageId  = "stage-23rf8rsr"
                 }
                 layout = {
-                  h           = 12
-                  i           = "card-3vtfeo8j"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 6
-                  x           = 0
-                  y           = 13
+                  h = 12
+                  i = "card-x61x4sqk"
+                  w = 6
+                  x = 0
+                  y = 13
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-ckuk672s"
+                  id       = "card-p7rydv1n"
                   stageId  = "stage-dvse0ocl"
                 }
                 layout = {
-                  h           = 12
-                  i           = "card-ckuk672s"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 6
-                  x           = 6
-                  y           = 13
+                  h = 12
+                  i = "card-p7rydv1n"
+                  w = 6
+                  x = 6
+                  y = 13
                 }
               },
             ]
@@ -569,68 +462,60 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-f3sx8yoe"
+              id       = "card-ngdipeyk"
               title    = "Note & Documentation"
             }
             items = [
               {
                 card = {
                   cardType = "text"
-                  id       = "card-zj5yjyba"
+                  id       = "card-c2nhkgbe"
                   text     = <<-EOT
                                         # Cloud Load Balancing
-                                        
+                                                                                
                                         A load balancer distributes user traffic across multiple instances of your applications. By spreading the load, load balancing reduces the risk that your applications experience performance issues.
-                                        
+                                                                                
                                         ![Sample Overview](https://cloud.google.com/static/load-balancing/images/lb-simple-overview.svg)
-                                        
+                                                                                
                                         https://cloud.google.com/load-balancing/docs/load-balancing-overview
                                     EOT
                   title    = "Untitled Text"
                 }
                 layout = {
-                  h           = 27
-                  i           = "card-zj5yjyba"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 6
-                  x           = 0
-                  y           = 0
+                  h = 27
+                  i = "card-c2nhkgbe"
+                  w = 6
+                  x = 0
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "text"
-                  id       = "card-2ks1qsqn"
+                  id       = "card-b83hm84u"
                   text     = <<-EOT
                                         # Notes
-                                        
+                                                                                
                                         **Metrics**
-                                        
+                                                                                
                                         Enable data collection for this app by enabling Observe’s GCP app and adding `loadbalancing.googleapis.com` to the `include_metric_type_prefixes` option (this is added by default in the standard configuration).
-                                        
+                                                                                
                                         **Logs**
-                                        
+                                                                                
                                         To enable logs [edit your backend service and select "enable logging."](https://cloud.google.com/load-balancing/docs/https/https-logging-monitoring#logging) Logs for backend buckets are enabled by default.  
-                                        
+                                                                                
                                         **Health Check Logs**
-                                        
+                                                                                
                                         Health check logs capture state-changes of your LB backend groups. To enable them, [edit your health check and set the "Logs" radio button to "on".](https://cloud.google.com/load-balancing/docs/health-check-logging#enabling_and_disabling_logging)
                                     EOT
                   title    = "Untitled Text"
                 }
                 layout = {
-                  h           = 27
-                  i           = "card-2ks1qsqn"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 6
-                  x           = 6
-                  y           = 0
+                  h = 27
+                  i = "card-b83hm84u"
+                  w = 6
+                  x = 6
+                  y = 0
                 }
               },
             ]
@@ -757,17 +642,17 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             viewType = "single-select"
           },
         ]
-        selectedStageId = "stage-ymij9guj"
+        selectedStageId = "stage-tww25crx"
         timeRange = {
-          display               = "Past 4 hours"
+          display               = "Past 30 days"
           endTime               = null
-          millisFromCurrentTime = 14400000
-          originalDisplay       = "Past 4 hours"
+          millisFromCurrentTime = 2592000000
+          originalDisplay       = "Past 30 days"
           startTime             = null
           timeRangeInfo = {
             key        = "PRESETS"
             name       = "Presets"
-            presetType = "PAST_4_HOURS"
+            presetType = "PAST_30_DAYS"
           }
           timeZone = null
         }
@@ -885,27 +770,28 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               "2" = "_c_valid_from"
               "3" = "_c_valid_to"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1243
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1243
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -914,7 +800,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -980,9 +865,14 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                       fn         = "avg"
                       resolution = "AUTO"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "xy"
-                    y             = "value"
+                    y             = "A_value_avg"
+                  }
+                  topK = {
+                    k     = 40
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -1002,38 +892,15 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 250
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  backend_name    = "count"
-                  metric          = "count"
-                  metric_labels   = "count"
-                  project_id      = "count"
-                  region          = "count"
-                  resource_labels = "count"
-                  value           = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-nt8bqdup"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
               customSummary = "Google/GCP/Load Balancing Metrics"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1057,7 +924,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             {
               customName    = "exists (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1085,17 +951,123 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               queryPresentation = {}
               type              = "unknown"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "value"
+                        dataVis = {
+                          config = {
+                            color         = "Default"
+                            hideGridLines = false
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type = "xy"
+                            xConfig = {
+                              visible = true
+                            }
+                            yConfig = {
+                              unit    = "bytes"
+                              visible = true
+                            }
+                          }
+                          source = {
+                            table = {
+                              groupFields = [
+                                "load_balancer_name",
+                                [
+                                  "backend_target_name",
+                                ],
+                              ]
+                              statsBy = {
+                                fn = "avg"
+                              }
+                              timechart = {
+                                fn         = "avg"
+                                resolution = "AUTO"
+                              }
+                              transformType = "none"
+                              type          = "xy"
+                              y             = "A_value_avg"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "timeseries"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "load_balancer_name",
+                          [
+                            "backend_target_name",
+                          ],
+                        ]
+                        id              = "datasetQueryExpression-vv4y6jxd"
+                        lookupActions   = []
+                        summarizeVerb   = "statsby"
+                        summaryFunction = "avg"
+                        summaryMode     = "over-time"
+                        type            = "datasetQueryExpression"
+                        valueColumnId   = "A_value_avg"
+                        viewTab         = "visualize"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-073l6gm7"
+                      lookupActions = []
+                      type          = "multiExpression"
+                      viewTab       = "visualize"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-vv4y6jxd",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-sgz3uh5f"
+              index    = 2
+              isPinned = false
+              opal = [
+                "timechart options(empty_bins:true), A_value_avg:avg(value), group_by(load_balancer_name, backend_target_name)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -1108,6 +1080,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                     	and not metric = "https_backend_request_bytes_count"
                     
                     timechart value:sum(value), group_by(load_balancer_name, backend_target_name)
+                    timechart options(empty_bins:true), A_value_avg:avg(value), group_by(load_balancer_name, backend_target_name)
                 EOT
       },
       {
@@ -1140,27 +1113,28 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               "2" = "_c_valid_from"
               "3" = "_c_valid_to"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1253
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1253
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -1169,7 +1143,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -1235,9 +1208,14 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                       fn         = "avg"
                       resolution = "AUTO"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "xy"
-                    y             = "value"
+                    y             = "A_value_avg"
+                  }
+                  topK = {
+                    k     = 40
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -1257,7 +1235,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 250
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -1266,7 +1244,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             {
               customName    = "Input"
               customSummary = "Google/GCP/Load Balancing Metrics"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1288,26 +1265,8 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               type              = "InputStep"
             },
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  load_balancer_name = "count"
-                  value              = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-izl8qx3i"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "exists (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1335,17 +1294,123 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               queryPresentation = {}
               type              = "unknown"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "value"
+                        dataVis = {
+                          config = {
+                            color         = "Default"
+                            hideGridLines = false
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type = "xy"
+                            xConfig = {
+                              visible = true
+                            }
+                            yConfig = {
+                              unit    = "bytes"
+                              visible = true
+                            }
+                          }
+                          source = {
+                            table = {
+                              groupFields = [
+                                "load_balancer_name",
+                                [
+                                  "backend_target_name",
+                                ],
+                              ]
+                              statsBy = {
+                                fn = "avg"
+                              }
+                              timechart = {
+                                fn         = "avg"
+                                resolution = "AUTO"
+                              }
+                              transformType = "none"
+                              type          = "xy"
+                              y             = "A_value_avg"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "timeseries"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "load_balancer_name",
+                          [
+                            "backend_target_name",
+                          ],
+                        ]
+                        id              = "datasetQueryExpression-y7x7az80"
+                        lookupActions   = []
+                        summarizeVerb   = "statsby"
+                        summaryFunction = "avg"
+                        summaryMode     = "over-time"
+                        type            = "datasetQueryExpression"
+                        valueColumnId   = "A_value_avg"
+                        viewTab         = "visualize"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-p1vm9ntd"
+                      lookupActions = []
+                      type          = "multiExpression"
+                      viewTab       = "visualize"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-y7x7az80",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-eeti7rcp"
+              index    = 2
+              isPinned = false
+              opal = [
+                "timechart options(empty_bins:true), A_value_avg:avg(value), group_by(load_balancer_name, backend_target_name)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -1358,6 +1423,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                     	and not metric = "https_backend_response_bytes_count"
                     
                     timechart value:sum(value), group_by(load_balancer_name, backend_target_name)
+                    timechart options(empty_bins:true), A_value_avg:avg(value), group_by(load_balancer_name, backend_target_name)
                 EOT
       },
       {
@@ -1390,27 +1456,28 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               "2" = "_c_valid_to"
               "3" = "backend_target_name"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1253
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1253
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -1419,7 +1486,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -1483,9 +1549,14 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                       fnArgs     = []
                       resolution = "AUTO"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "xy"
-                    y             = "value"
+                    y             = "A_value_sum"
+                  }
+                  topK = {
+                    k     = 40
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -1505,38 +1576,15 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 250
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  backend_name    = "count"
-                  metric          = "count"
-                  metric_labels   = "count"
-                  project_id      = "count"
-                  region          = "count"
-                  resource_labels = "count"
-                  value           = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-56gwrw01"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
               customSummary = "Google/GCP/Load Balancing Metrics"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1558,31 +1606,8 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               type              = "InputStep"
             },
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  backend_name    = "count"
-                  metric          = "count"
-                  metric_labels   = "count"
-                  project_id      = "count"
-                  region          = "count"
-                  resource_labels = "count"
-                  value           = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-i6dy9gbm"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "// (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1611,17 +1636,119 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               queryPresentation = {}
               type              = "unknown"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "value"
+                        dataVis = {
+                          config = {
+                            color         = "Default"
+                            hideGridLines = false
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type = "xy"
+                            xConfig = {
+                              visible = true
+                            }
+                            yConfig = {
+                              unit    = "bytes"
+                              visible = true
+                            }
+                          }
+                          source = {
+                            table = {
+                              groupFields = [
+                                "load_balancer_name",
+                              ]
+                              statsBy = {
+                                fn = "avg"
+                              }
+                              timechart = {
+                                fn         = "sum"
+                                fnArgs     = []
+                                resolution = "AUTO"
+                              }
+                              transformType = "none"
+                              type          = "xy"
+                              y             = "A_value_sum"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "timeseries"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "load_balancer_name",
+                        ]
+                        id                  = "datasetQueryExpression-dir1bb22"
+                        lookupActions       = []
+                        summarizeVerb       = "statsby"
+                        summaryFunction     = "sum"
+                        summaryFunctionArgs = []
+                        summaryMode         = "over-time"
+                        type                = "datasetQueryExpression"
+                        valueColumnId       = "A_value_sum"
+                        viewTab             = "visualize"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-ohxuouv9"
+                      lookupActions = []
+                      type          = "multiExpression"
+                      viewTab       = "visualize"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-dir1bb22",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-9h8qux62"
+              index    = 2
+              isPinned = false
+              opal = [
+                "timechart options(empty_bins:true), A_value_sum:sum(value), group_by(load_balancer_name)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -1634,6 +1761,8 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                     
                     exists load_balancer_name = @loadBalancer.name
                     filter ends_with(metric, "ingress_bytes_count")
+                    
+                    timechart options(empty_bins:true), A_value_sum:sum(value), group_by(load_balancer_name)
                 EOT
       },
       {
@@ -1666,27 +1795,28 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               "2" = "_c_valid_to"
               "3" = "backend_target_name"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1253
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1253
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -1695,7 +1825,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -1758,9 +1887,13 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                       fnArgs     = []
                       resolution = "AUTO"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "xy"
-                    y             = "value"
+                    y             = "A_value_sum"
+                  }
+                  topK = {
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -1780,7 +1913,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 250
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -1789,7 +1922,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             {
               customName    = "Input"
               customSummary = "Google/GCP/Load Balancing Metrics"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1811,23 +1943,8 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               type              = "InputStep"
             },
             {
-              columnStatsTable = {
-                columnFunctions = {}
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-4w2okj2h"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "// (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1856,17 +1973,118 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               queryPresentation = {}
               type              = "unknown"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "value"
+                        dataVis = {
+                          config = {
+                            color         = "Default"
+                            hideGridLines = false
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type = "xy"
+                            xConfig = {
+                              visible = true
+                            }
+                            yConfig = {
+                              visible = true
+                            }
+                          }
+                          source = {
+                            table = {
+                              groupFields = [
+                                "load_balancer_name",
+                              ]
+                              statsBy = {
+                                fn = "avg"
+                              }
+                              timechart = {
+                                fn         = "sum"
+                                fnArgs     = []
+                                resolution = "AUTO"
+                              }
+                              transformType = "none"
+                              type          = "xy"
+                              y             = "A_value_sum"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "timeseries"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "load_balancer_name",
+                        ]
+                        id                  = "datasetQueryExpression-lyjtu635"
+                        lookupActions       = []
+                        summarizeVerb       = "statsby"
+                        summaryFunction     = "sum"
+                        summaryFunctionArgs = []
+                        summaryMode         = "over-time"
+                        type                = "datasetQueryExpression"
+                        valueColumnId       = "A_value_sum"
+                        viewTab             = "visualize"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-uard1v2e"
+                      lookupActions = []
+                      type          = "multiExpression"
+                      viewTab       = "visualize"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-lyjtu635",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-lojrpmlf"
+              index    = 2
+              isPinned = false
+              opal = [
+                "timechart options(empty_bins:true), A_value_sum:sum(value), group_by(load_balancer_name)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -1879,6 +2097,8 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                     
                     exists load_balancer_name = @loadBalancer.name
                     filter ends_with(metric, "ingress_packets_count")
+                    
+                    timechart options(empty_bins:true), A_value_sum:sum(value), group_by(load_balancer_name)
                 EOT
       },
       {
@@ -1911,27 +2131,28 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               "2" = "_c_valid_to"
               "3" = "backend_target_name"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1243
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1243
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -1940,7 +2161,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -2004,9 +2224,14 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                       fnArgs     = []
                       resolution = "AUTO"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "xy"
-                    y             = "value"
+                    y             = "A_value_sum"
+                  }
+                  topK = {
+                    k     = 40
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -2026,7 +2251,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 250
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -2035,7 +2260,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             {
               customName    = "Input"
               customSummary = "Google/GCP/Load Balancing Metrics"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2059,7 +2283,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             {
               customName    = "// (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2088,17 +2311,119 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               queryPresentation = {}
               type              = "unknown"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "value"
+                        dataVis = {
+                          config = {
+                            color         = "Default"
+                            hideGridLines = false
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type = "xy"
+                            xConfig = {
+                              visible = true
+                            }
+                            yConfig = {
+                              unit    = "bytes"
+                              visible = true
+                            }
+                          }
+                          source = {
+                            table = {
+                              groupFields = [
+                                "load_balancer_name",
+                              ]
+                              statsBy = {
+                                fn = "avg"
+                              }
+                              timechart = {
+                                fn         = "sum"
+                                fnArgs     = []
+                                resolution = "AUTO"
+                              }
+                              transformType = "none"
+                              type          = "xy"
+                              y             = "A_value_sum"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "timeseries"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "load_balancer_name",
+                        ]
+                        id                  = "datasetQueryExpression-rfv5vv1w"
+                        lookupActions       = []
+                        summarizeVerb       = "statsby"
+                        summaryFunction     = "sum"
+                        summaryFunctionArgs = []
+                        summaryMode         = "over-time"
+                        type                = "datasetQueryExpression"
+                        valueColumnId       = "A_value_sum"
+                        viewTab             = "visualize"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-tpue553e"
+                      lookupActions = []
+                      type          = "multiExpression"
+                      viewTab       = "visualize"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-rfv5vv1w",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-loxdxr7b"
+              index    = 2
+              isPinned = false
+              opal = [
+                "timechart options(empty_bins:true), A_value_sum:sum(value), group_by(load_balancer_name)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -2111,6 +2436,8 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                     
                     exists load_balancer_name = @loadBalancer.name
                     filter ends_with(metric, "egress_bytes_count")
+                    
+                    timechart options(empty_bins:true), A_value_sum:sum(value), group_by(load_balancer_name)
                 EOT
       },
       {
@@ -2143,27 +2470,28 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               "2" = "_c_valid_to"
               "3" = "backend_target_name"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1253
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1253
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -2172,7 +2500,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -2235,9 +2562,13 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                       fnArgs     = []
                       resolution = "AUTO"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "xy"
-                    y             = "value"
+                    y             = "A_value_sum"
+                  }
+                  topK = {
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -2257,7 +2588,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 250
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -2266,7 +2597,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             {
               customName    = "Input"
               customSummary = "Google/GCP/Load Balancing Metrics"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2288,23 +2618,8 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               type              = "InputStep"
             },
             {
-              columnStatsTable = {
-                columnFunctions = {}
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-1n4pp6xf"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "// (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2334,24 +2649,118 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               queryPresentation = {}
               type              = "unknown"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "value"
+                        dataVis = {
+                          config = {
+                            color         = "Default"
+                            hideGridLines = false
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type = "xy"
+                            xConfig = {
+                              visible = true
+                            }
+                            yConfig = {
+                              visible = true
+                            }
+                          }
+                          source = {
+                            table = {
+                              groupFields = [
+                                "load_balancer_name",
+                              ]
+                              statsBy = {
+                                fn = "avg"
+                              }
+                              timechart = {
+                                fn         = "sum"
+                                fnArgs     = []
+                                resolution = "AUTO"
+                              }
+                              transformType = "none"
+                              type          = "xy"
+                              y             = "A_value_sum"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "timeseries"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "load_balancer_name",
+                        ]
+                        id                  = "datasetQueryExpression-6xt57ifo"
+                        lookupActions       = []
+                        summarizeVerb       = "statsby"
+                        summaryFunction     = "sum"
+                        summaryFunctionArgs = []
+                        summaryMode         = "over-time"
+                        type                = "datasetQueryExpression"
+                        valueColumnId       = "A_value_sum"
+                        viewTab             = "visualize"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-ckljjhu0"
+                      lookupActions = []
+                      type          = "multiExpression"
+                      viewTab       = "visualize"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-6xt57ifo",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-az6cu7i0"
+              index    = 2
+              isPinned = false
+              opal = [
+                "timechart options(empty_bins:true), A_value_sum:sum(value), group_by(load_balancer_name)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = <<-EOT
-                            // todo: add a hidden stage to list available group_by options from available metric_label values
-                            // todo: add parameter for those labels
-                            // todo: group this graph by that parameter
-                            
-                            exists load_balancer_name = @loadBalancer.name
-                            filter ends_with(metric, "egress_packets_count")
-                        EOT
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -2366,6 +2775,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                     filter ends_with(metric, "egress_packets_count")
                     
                     timechart value:sum(value), group_by(load_balancer_name)
+                    timechart options(empty_bins:true), A_value_sum:sum(value), group_by(load_balancer_name)
                 EOT
       },
       {
@@ -2398,26 +2808,28 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               "2" = "_c_valid_to"
               "3" = "backend_target_name"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = null
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -2426,7 +2838,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -2488,9 +2899,13 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                       fn         = "avg"
                       resolution = "AUTO"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "xy"
-                    y             = "value"
+                    y             = "A_value_avg"
+                  }
+                  topK = {
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -2510,7 +2925,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 250
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -2519,7 +2934,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             {
               customName    = "Input"
               customSummary = "Google/GCP/Load Balancing Metrics"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2543,7 +2957,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             {
               customName    = "// (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2573,17 +2986,116 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               queryPresentation = {}
               type              = "unknown"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "value"
+                        dataVis = {
+                          config = {
+                            color         = "Default"
+                            hideGridLines = false
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type = "xy"
+                            xConfig = {
+                              visible = true
+                            }
+                            yConfig = {
+                              visible = true
+                            }
+                          }
+                          source = {
+                            table = {
+                              groupFields = [
+                                "load_balancer_name",
+                              ]
+                              statsBy = {
+                                fn = "avg"
+                              }
+                              timechart = {
+                                fn         = "avg"
+                                resolution = "AUTO"
+                              }
+                              transformType = "none"
+                              type          = "xy"
+                              y             = "A_value_avg"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "timeseries"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "load_balancer_name",
+                        ]
+                        id              = "datasetQueryExpression-pym70qtl"
+                        lookupActions   = []
+                        summarizeVerb   = "statsby"
+                        summaryFunction = "avg"
+                        summaryMode     = "over-time"
+                        type            = "datasetQueryExpression"
+                        valueColumnId   = "A_value_avg"
+                        viewTab         = "visualize"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-2aw2eft6"
+                      lookupActions = []
+                      type          = "multiExpression"
+                      viewTab       = "visualize"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-pym70qtl",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-06k36z8u"
+              index    = 2
+              isPinned = false
+              opal = [
+                "timechart options(empty_bins:true), A_value_avg:avg(value), group_by(load_balancer_name)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -2598,6 +3110,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                     filter metric = strcat("tcp_ssl_proxy_", $connectionsType)
                     
                     timechart value:sum(value), group_by(load_balancer_name)
+                    timechart options(empty_bins:true), A_value_avg:avg(value), group_by(load_balancer_name)
                 EOT
       },
       {
@@ -2643,25 +3156,26 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               original_value         = 115
               percentile_aggregation = 139
             }
-            containerWidth              = 1253
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = "percentiles"
-            scrollToRow                 = 2
+            containerWidth               = 1253
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = "percentiles"
+            scrollToRow                  = 2
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -2670,7 +3184,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -2740,9 +3253,14 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                       fnArgs     = []
                       resolution = "AUTO"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "xy"
-                    y             = "value"
+                    y             = "A_value_any"
+                  }
+                  topK = {
+                    k     = 25
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -2762,7 +3280,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -2771,7 +3289,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             {
               customName    = "Input"
               customSummary = "Google/GCP/Load Balancing Metrics"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2793,26 +3310,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               type              = "InputStep"
             },
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  groupByField = "count"
-                  value        = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-k2308v59"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
-              customName    = "exists (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2826,7 +3324,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                   "SUMMARY",
                 ]
               }
-              id       = "step-ymu8xdyt"
+              id       = "step-pfa5hjyh"
               index    = 1
               isPinned = false
               opal = [
@@ -2835,28 +3333,29 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                 "rename_col original_value:value",
                 "make_col distribution_metadata:if_null(distribution_metadata, make_object(avg:true))",
                 "make_col percentiles:make_object(",
-                "\tp99:if(float64(distribution_metadata.p_low) <= 0.99 and 0.99 < float64(distribution_metadata.p_up), ",
-                "\t\tdistribution_metadata.bucket_low + ((float64(distribution_metadata.bucket_up) - distribution_metadata.bucket_low)*(0.99-distribution_metadata.p_low)/(float64(distribution_metadata.p_up)-distribution_metadata.p_low)), ",
+                "    p99:if(float64(distribution_metadata.p_low) <= 0.99 and 0.99 < float64(distribution_metadata.p_up), ",
+                "        distribution_metadata.bucket_low + ((float64(distribution_metadata.bucket_up) - distribution_metadata.bucket_low)*(0.99-distribution_metadata.p_low)/(float64(distribution_metadata.p_up)-distribution_metadata.p_low)), ",
                 "        float64_null()),",
                 "    p95:if(distribution_metadata.p_low <= 0.95 and 0.95 < distribution_metadata.p_up, ",
-                "\t\tdistribution_metadata.bucket_low + ((float64(distribution_metadata.bucket_up) - distribution_metadata.bucket_low)*(0.95-distribution_metadata.p_low)/(float64(distribution_metadata.p_up)-distribution_metadata.p_low)), ",
+                "        distribution_metadata.bucket_low + ((float64(distribution_metadata.bucket_up) - distribution_metadata.bucket_low)*(0.95-distribution_metadata.p_low)/(float64(distribution_metadata.p_up)-distribution_metadata.p_low)), ",
                 "        float64_null()),",
                 "    p50:if(distribution_metadata.p_low <= 0.50 and 0.50 < distribution_metadata.p_up, ",
-                "\t\tdistribution_metadata.bucket_low + ((float64(distribution_metadata.bucket_up) - distribution_metadata.bucket_low)*(0.50-distribution_metadata.p_low)/(float64(distribution_metadata.p_up)-distribution_metadata.p_low)), ",
+                "        distribution_metadata.bucket_low + ((float64(distribution_metadata.bucket_up) - distribution_metadata.bucket_low)*(0.50-distribution_metadata.p_low)/(float64(distribution_metadata.p_up)-distribution_metadata.p_low)), ",
                 "        float64_null()),",
                 "    p05:if(distribution_metadata.p_low <= 0.05 and 0.05 < distribution_metadata.p_up, ",
-                "\t\tdistribution_metadata.bucket_low + ((float64(distribution_metadata.bucket_up) - distribution_metadata.bucket_low)*(0.05-distribution_metadata.p_low)/(float64(distribution_metadata.p_up)-distribution_metadata.p_low)), ",
+                "        distribution_metadata.bucket_low + ((float64(distribution_metadata.bucket_up) - distribution_metadata.bucket_low)*(0.05-distribution_metadata.p_low)/(float64(distribution_metadata.p_up)-distribution_metadata.p_low)), ",
                 "        float64_null()),",
                 "    avg:if(distribution_metadata.avg = true, float64(original_value), float64_null()))",
                 "",
                 "flatten_single percentiles",
                 "make_col lb_count:window(count_distinct_exact(load_balancer_name))",
                 "rename_col percentile_aggregation:_c_percentiles_path",
-                "filter if(lb_count = 1, not is_null(percentile_aggregation), percentile_aggregation = $percentile)",
+                "make_col percAggFilter: if(lb_count = 1, not is_null(percentile_aggregation), percentile_aggregation = $percentile)",
+                "filter percAggFilter",
                 "make_col ",
-                "\tvalue:@.\"_c_percentiles_value\",",
+                "    value:@.\"_c_percentiles_value\",",
                 "    groupByField:case(",
-                "    \tlb_count = 1, percentile_aggregation,",
+                "        lb_count = 1, percentile_aggregation,",
                 "        true, load_balancer_name)",
                 "timechart value:avg(float64(value)), group_by(groupByField)",
                 "",
@@ -2864,17 +3363,119 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               queryPresentation = {}
               type              = "unknown"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "value"
+                        dataVis = {
+                          config = {
+                            color         = "Default"
+                            hideGridLines = false
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type = "xy"
+                            xConfig = {
+                              visible = true
+                            }
+                            yConfig = {
+                              unit    = "milliseconds"
+                              visible = true
+                            }
+                          }
+                          source = {
+                            table = {
+                              groupFields = [
+                                "groupByField",
+                              ]
+                              statsBy = {
+                                fn = "avg"
+                              }
+                              timechart = {
+                                fn         = "any"
+                                fnArgs     = []
+                                resolution = "AUTO"
+                              }
+                              transformType = "none"
+                              type          = "xy"
+                              y             = "A_value_any"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "timeseries"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "groupByField",
+                        ]
+                        id                  = "datasetQueryExpression-il1onxwj"
+                        lookupActions       = []
+                        summarizeVerb       = "statsby"
+                        summaryFunction     = "any"
+                        summaryFunctionArgs = []
+                        summaryMode         = "over-time"
+                        type                = "datasetQueryExpression"
+                        valueColumnId       = "A_value_any"
+                        viewTab             = "visualize"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-oykttekv"
+                      lookupActions = []
+                      type          = "multiExpression"
+                      viewTab       = "visualize"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-il1onxwj",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-qpvfdnt7"
+              index    = 2
+              isPinned = false
+              opal = [
+                "timechart options(empty_bins:true), A_value_any:any(value), group_by(groupByField)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -2886,30 +3487,33 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                     rename_col original_value:value
                     make_col distribution_metadata:if_null(distribution_metadata, make_object(avg:true))
                     make_col percentiles:make_object(
-                    	p99:if(float64(distribution_metadata.p_low) <= 0.99 and 0.99 < float64(distribution_metadata.p_up), 
-                    		distribution_metadata.bucket_low + ((float64(distribution_metadata.bucket_up) - distribution_metadata.bucket_low)*(0.99-distribution_metadata.p_low)/(float64(distribution_metadata.p_up)-distribution_metadata.p_low)), 
+                        p99:if(float64(distribution_metadata.p_low) <= 0.99 and 0.99 < float64(distribution_metadata.p_up), 
+                            distribution_metadata.bucket_low + ((float64(distribution_metadata.bucket_up) - distribution_metadata.bucket_low)*(0.99-distribution_metadata.p_low)/(float64(distribution_metadata.p_up)-distribution_metadata.p_low)), 
                             float64_null()),
                         p95:if(distribution_metadata.p_low <= 0.95 and 0.95 < distribution_metadata.p_up, 
-                    		distribution_metadata.bucket_low + ((float64(distribution_metadata.bucket_up) - distribution_metadata.bucket_low)*(0.95-distribution_metadata.p_low)/(float64(distribution_metadata.p_up)-distribution_metadata.p_low)), 
+                            distribution_metadata.bucket_low + ((float64(distribution_metadata.bucket_up) - distribution_metadata.bucket_low)*(0.95-distribution_metadata.p_low)/(float64(distribution_metadata.p_up)-distribution_metadata.p_low)), 
                             float64_null()),
                         p50:if(distribution_metadata.p_low <= 0.50 and 0.50 < distribution_metadata.p_up, 
-                    		distribution_metadata.bucket_low + ((float64(distribution_metadata.bucket_up) - distribution_metadata.bucket_low)*(0.50-distribution_metadata.p_low)/(float64(distribution_metadata.p_up)-distribution_metadata.p_low)), 
+                            distribution_metadata.bucket_low + ((float64(distribution_metadata.bucket_up) - distribution_metadata.bucket_low)*(0.50-distribution_metadata.p_low)/(float64(distribution_metadata.p_up)-distribution_metadata.p_low)), 
                             float64_null()),
                         p05:if(distribution_metadata.p_low <= 0.05 and 0.05 < distribution_metadata.p_up, 
-                    		distribution_metadata.bucket_low + ((float64(distribution_metadata.bucket_up) - distribution_metadata.bucket_low)*(0.05-distribution_metadata.p_low)/(float64(distribution_metadata.p_up)-distribution_metadata.p_low)), 
+                            distribution_metadata.bucket_low + ((float64(distribution_metadata.bucket_up) - distribution_metadata.bucket_low)*(0.05-distribution_metadata.p_low)/(float64(distribution_metadata.p_up)-distribution_metadata.p_low)), 
                             float64_null()),
                         avg:if(distribution_metadata.avg = true, float64(original_value), float64_null()))
                     
                     flatten_single percentiles
                     make_col lb_count:window(count_distinct_exact(load_balancer_name))
                     rename_col percentile_aggregation:_c_percentiles_path
-                    filter if(lb_count = 1, not is_null(percentile_aggregation), percentile_aggregation = $percentile)
+                    make_col percAggFilter: if(lb_count = 1, not is_null(percentile_aggregation), percentile_aggregation = $percentile)
+                    filter percAggFilter
                     make_col 
-                    	value:@."_c_percentiles_value",
+                        value:@."_c_percentiles_value",
                         groupByField:case(
-                        	lb_count = 1, percentile_aggregation,
+                            lb_count = 1, percentile_aggregation,
                             true, load_balancer_name)
                     timechart value:avg(float64(value)), group_by(groupByField)
+                    
+                    timechart options(empty_bins:true), A_value_any:any(value), group_by(groupByField)
                 EOT
       },
       {
@@ -2942,27 +3546,28 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               "2" = "_c_valid_to"
               "3" = "backend_target_name"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1253
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1253
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -2971,7 +3576,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -3035,9 +3639,13 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                       fnArgs     = []
                       resolution = "AUTO"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "xy"
-                    y             = "value"
+                    y             = "A_value_any"
+                  }
+                  topK = {
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -3057,7 +3665,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 250
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -3066,7 +3674,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             {
               customName    = "Input"
               customSummary = "Google/GCP/Load Balancing Metrics"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3088,23 +3695,8 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               type              = "InputStep"
             },
             {
-              columnStatsTable = {
-                columnFunctions = {}
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-9kzdwwrl"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "// (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3206,54 +3798,119 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               queryPresentation = {}
               type              = "unknown"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "value"
+                        dataVis = {
+                          config = {
+                            color         = "Default"
+                            hideGridLines = false
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type = "xy"
+                            xConfig = {
+                              visible = true
+                            }
+                            yConfig = {
+                              unit    = "milliseconds"
+                              visible = true
+                            }
+                          }
+                          source = {
+                            table = {
+                              groupFields = [
+                                "groupByField",
+                              ]
+                              statsBy = {
+                                fn = "avg"
+                              }
+                              timechart = {
+                                fn         = "any"
+                                fnArgs     = []
+                                resolution = "AUTO"
+                              }
+                              transformType = "none"
+                              type          = "xy"
+                              y             = "A_value_any"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "timeseries"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "groupByField",
+                        ]
+                        id                  = "datasetQueryExpression-sayh6n4k"
+                        lookupActions       = []
+                        summarizeVerb       = "statsby"
+                        summaryFunction     = "any"
+                        summaryFunctionArgs = []
+                        summaryMode         = "over-time"
+                        type                = "datasetQueryExpression"
+                        valueColumnId       = "A_value_any"
+                        viewTab             = "visualize"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-080cs5cj"
+                      lookupActions = []
+                      type          = "multiExpression"
+                      viewTab       = "visualize"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-sayh6n4k",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-uaupapry"
+              index    = 2
+              isPinned = false
+              opal = [
+                "timechart options(empty_bins:true), A_value_any:any(value), group_by(groupByField)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = <<-EOT
-                            // todo: add a hidden stage to list available group_by options from available metric_label values
-                            // todo: add parameter for those labels
-                            // todo: group this graph by that parameter
-                            
-                            exists load_balancer_name = @loadBalancer.name
-                            filter in(metric, "tcp_ssl_proxy_frontend_tcp_rtt", "l3_external_rtt_latencies", "l3_internal_rtt_latencies")
-                            
-                            //timechart value:sum(value), group_by(load_balancer_name)
-                            
-                            rename_col original_value:value
-                            make_col distribution_metadata:if_null(distribution_metadata, make_object(avg:true))
-                            make_col percentiles:make_object(
-                            	p99:if(float64(distribution_metadata.p_low) <= 0.99 and 0.99 < float64(distribution_metadata.p_up), 
-                            		distribution_metadata.bucket_low + ((float64(distribution_metadata.bucket_up) - distribution_metadata.bucket_low)*(0.99-distribution_metadata.p_low)/(float64(distribution_metadata.p_up)-distribution_metadata.p_low)), 
-                                    float64_null()),
-                                p95:if(distribution_metadata.p_low <= 0.95 and 0.95 < distribution_metadata.p_up, 
-                            		distribution_metadata.bucket_low + ((float64(distribution_metadata.bucket_up) - distribution_metadata.bucket_low)*(0.95-distribution_metadata.p_low)/(float64(distribution_metadata.p_up)-distribution_metadata.p_low)), 
-                                    float64_null()),
-                                p50:if(distribution_metadata.p_low <= 0.50 and 0.50 < distribution_metadata.p_up, 
-                            		distribution_metadata.bucket_low + ((float64(distribution_metadata.bucket_up) - distribution_metadata.bucket_low)*(0.50-distribution_metadata.p_low)/(float64(distribution_metadata.p_up)-distribution_metadata.p_low)), 
-                                    float64_null()),
-                                p05:if(distribution_metadata.p_low <= 0.05 and 0.05 < distribution_metadata.p_up, 
-                            		distribution_metadata.bucket_low + ((float64(distribution_metadata.bucket_up) - distribution_metadata.bucket_low)*(0.05-distribution_metadata.p_low)/(float64(distribution_metadata.p_up)-distribution_metadata.p_low)), 
-                                    float64_null()),
-                                avg:if(distribution_metadata.avg = true, float64(original_value), float64_null()))
-                            
-                            flatten_single percentiles
-                            make_col lb_count:window(count_distinct_exact(load_balancer_name))
-                            rename_col percentile_aggregation:_c_percentiles_path
-                            filter if(lb_count = 1, not is_null(percentile_aggregation), percentile_aggregation = $percentileL4)
-                            make_col 
-                            	value:@."_c_percentiles_value",
-                                groupByField:case(
-                                	lb_count = 1, percentile_aggregation,
-                                    true, load_balancer_name)
-                            timechart value:avg(float64(value)), group_by(groupByField)
-                        EOT
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -3340,6 +3997,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                     timechart value:sum(value), group_by(load_balancer_name)
                     */
                     //filter (load_balancer_name = "estib-cloudrun-url-map" and forwarding_rule_name = "estib-cloudrun" and backend_name = "serverless-neg")
+                    timechart options(empty_bins:true), A_value_any:any(value), group_by(groupByField)
                 EOT
       },
       {
@@ -3363,27 +4021,28 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               "1" = "Valid From"
               "2" = "Valid To"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1253
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1253
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -3392,7 +4051,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -3442,9 +4100,14 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                       fnArgs     = []
                       resolution = "SINGLE"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "keyvalue"
-                    valueField    = "name"
+                    valueField    = "A_name_count_distinct"
+                  }
+                  topK = {
+                    k     = 100
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -3463,7 +4126,13 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup      = {}
+            rollup = {}
+            sort = [
+              {
+                ascending  = false
+                columnName = "A_name_count_distinct"
+              },
+            ]
             wantBuckets = 1
           }
           renderType     = "TABLE"
@@ -3471,42 +4140,8 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  IPAddress           = "count"
-                  IPProtocol          = "count"
-                  IPVersion           = "count"
-                  creationTimestamp   = "count"
-                  description         = "count"
-                  frontEnd            = "count"
-                  hostRules           = "count"
-                  id                  = "count"
-                  loadBalancingScheme = "count"
-                  name                = "count"
-                  networkTier         = "count"
-                  pathMatchers        = "count"
-                  portRange           = "count"
-                  project_id          = "count"
-                  region              = "count"
-                  selfLink            = "count"
-                  targetProxyName     = "count"
-                  urlMapName          = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-zndq9r0c"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
               customSummary = "loadBalancer"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3527,23 +4162,117 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               queryPresentation = {}
               type              = "InputStep"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "name"
+                        dataVis = {
+                          config = {
+                            innerRadius = 0.6
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type = "arc"
+                          }
+                          source = {
+                            table = {
+                              keyField = [
+                                "project_id",
+                              ]
+                              statsBy = {
+                                fn = "count"
+                              }
+                              timechart = {
+                                fn         = "count_distinct"
+                                fnArgs     = []
+                                resolution = "SINGLE"
+                              }
+                              transformType = "none"
+                              type          = "keyvalue"
+                              valueField    = "A_name_count_distinct"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "circular"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "project_id",
+                        ]
+                        id                  = "datasetQueryExpression-23igc6ef"
+                        lookupActions       = []
+                        summarizeVerb       = "statsby"
+                        summaryFunction     = "count_distinct"
+                        summaryFunctionArgs = []
+                        summaryMode         = "single"
+                        type                = "datasetQueryExpression"
+                        valueColumnId       = "A_name_count_distinct"
+                        viewTab             = "visualize"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-gak8ja51"
+                      lookupActions = []
+                      type          = "multiExpression"
+                      viewTab       = "visualize"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-23igc6ef",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-zbqyneuv"
+              index    = 1
+              isPinned = false
+              opal = [
+                "statsby A_name_count_distinct:count_distinct(name), group_by(project_id)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = "statsby A_name_count_distinct:count_distinct(name), group_by(project_id)"
       },
       {
         id = "stage-9ft6c9cp"
@@ -3566,26 +4295,28 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               "1" = "Valid From"
               "2" = "Valid To"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = null
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -3594,7 +4325,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -3644,9 +4374,14 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                       fnArgs     = []
                       resolution = "SINGLE"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "keyvalue"
-                    valueField    = "name"
+                    valueField    = "A_name_count_distinct"
+                  }
+                  topK = {
+                    k     = 100
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -3665,7 +4400,13 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup      = {}
+            rollup = {}
+            sort = [
+              {
+                ascending  = false
+                columnName = "A_name_count_distinct"
+              },
+            ]
             wantBuckets = 1
           }
           renderType     = "TABLE"
@@ -3675,7 +4416,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             {
               customName    = "Input"
               customSummary = "loadBalancer"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3696,23 +4436,117 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               queryPresentation = {}
               type              = "InputStep"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "name"
+                        dataVis = {
+                          config = {
+                            innerRadius = 0.6
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type = "arc"
+                          }
+                          source = {
+                            table = {
+                              keyField = [
+                                "region",
+                              ]
+                              statsBy = {
+                                fn = "count"
+                              }
+                              timechart = {
+                                fn         = "count_distinct"
+                                fnArgs     = []
+                                resolution = "SINGLE"
+                              }
+                              transformType = "none"
+                              type          = "keyvalue"
+                              valueField    = "A_name_count_distinct"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "circular"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "region",
+                        ]
+                        id                  = "datasetQueryExpression-71ddrpz6"
+                        lookupActions       = []
+                        summarizeVerb       = "statsby"
+                        summaryFunction     = "count_distinct"
+                        summaryFunctionArgs = []
+                        summaryMode         = "single"
+                        type                = "datasetQueryExpression"
+                        valueColumnId       = "A_name_count_distinct"
+                        viewTab             = "visualize"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-xnwws4rm"
+                      lookupActions = []
+                      type          = "multiExpression"
+                      viewTab       = "visualize"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-71ddrpz6",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-69bshx3n"
+              index    = 1
+              isPinned = false
+              opal = [
+                "statsby A_name_count_distinct:count_distinct(name), group_by(region)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = "statsby A_name_count_distinct:count_distinct(name), group_by(region)"
       },
       {
         id = "stage-vqzhut38"
@@ -3735,26 +4569,28 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               "1" = "Valid From"
               "2" = "Valid To"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = null
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -3763,7 +4599,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -3813,9 +4648,14 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                       fnArgs     = []
                       resolution = "SINGLE"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "keyvalue"
-                    valueField    = "name"
+                    valueField    = "A_name_count_distinct"
+                  }
+                  topK = {
+                    k     = 100
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -3834,7 +4674,13 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup      = {}
+            rollup = {}
+            sort = [
+              {
+                ascending  = false
+                columnName = "A_name_count_distinct"
+              },
+            ]
             wantBuckets = 1
           }
           renderType     = "TABLE"
@@ -3844,7 +4690,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             {
               customName    = "Input"
               customSummary = "loadBalancer"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3865,23 +4710,117 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               queryPresentation = {}
               type              = "InputStep"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "name"
+                        dataVis = {
+                          config = {
+                            innerRadius = 0.6
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type = "arc"
+                          }
+                          source = {
+                            table = {
+                              keyField = [
+                                "loadBalancingScheme",
+                              ]
+                              statsBy = {
+                                fn = "count"
+                              }
+                              timechart = {
+                                fn         = "count_distinct"
+                                fnArgs     = []
+                                resolution = "SINGLE"
+                              }
+                              transformType = "none"
+                              type          = "keyvalue"
+                              valueField    = "A_name_count_distinct"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "circular"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "loadBalancingScheme",
+                        ]
+                        id                  = "datasetQueryExpression-tbz91fzk"
+                        lookupActions       = []
+                        summarizeVerb       = "statsby"
+                        summaryFunction     = "count_distinct"
+                        summaryFunctionArgs = []
+                        summaryMode         = "single"
+                        type                = "datasetQueryExpression"
+                        valueColumnId       = "A_name_count_distinct"
+                        viewTab             = "visualize"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-fe8gv4hy"
+                      lookupActions = []
+                      type          = "multiExpression"
+                      viewTab       = "visualize"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-tbz91fzk",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-6ii2ormf"
+              index    = 1
+              isPinned = false
+              opal = [
+                "statsby A_name_count_distinct:count_distinct(name), group_by(loadBalancingScheme)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = "statsby A_name_count_distinct:count_distinct(name), group_by(loadBalancingScheme)"
       },
       {
         id = "stage-uho2b7y5"
@@ -3904,27 +4843,28 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               "1" = "Valid From"
               "2" = "Valid To"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1253
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1253
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -3933,7 +4873,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -3983,9 +4922,14 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                       fn         = "avg"
                       resolution = "SINGLE"
                     }
-                    transformType = "statsby"
+                    transformType = "none"
                     type          = "keyvalue"
-                    valueField    = "value"
+                    valueField    = "A_value_sum"
+                  }
+                  topK = {
+                    k     = 100
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -4004,7 +4948,13 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup      = {}
+            rollup = {}
+            sort = [
+              {
+                ascending  = false
+                columnName = "A_value_sum"
+              },
+            ]
             wantBuckets = 1
           }
           renderType     = "TABLE"
@@ -4012,45 +4962,8 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  IPAddress                           = "count"
-                  IPProtocol                          = "count"
-                  IPVersion                           = "count"
-                  creationTimestamp                   = "count"
-                  defaultServiceHealthyStatusGroups   = "count"
-                  defaultServiceNullStatusGroups      = "count"
-                  defaultServiceUnhealthyStatusGroups = "count"
-                  defaultServiceUnknownStatusGroups   = "count"
-                  description                         = "count"
-                  frontEnd                            = "count"
-                  hostRules                           = "count"
-                  id                                  = "count"
-                  loadBalancingScheme                 = "count"
-                  name                                = "count"
-                  networkTier                         = "count"
-                  pathMatchers                        = "count"
-                  portRange                           = "count"
-                  region                              = "count"
-                  selfLink                            = "count"
-                  targetProxyName                     = "count"
-                  urlMapName                          = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-p4c59637"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
               customSummary = "loadBalancer"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4074,7 +4987,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             {
               customName    = "make_col (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4111,31 +5023,110 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               queryPresentation = {}
               type              = "unknown"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        columnId = "value"
+                        dataVis = {
+                          config = {
+                            innerRadius = 0.6
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type = "arc"
+                          }
+                          source = {
+                            table = {
+                              keyField = [
+                                "healthState",
+                              ]
+                              statsBy = {
+                                fn     = "sum"
+                                fnArgs = []
+                              }
+                              timechart = {
+                                fn         = "avg"
+                                resolution = "SINGLE"
+                              }
+                              transformType = "none"
+                              type          = "keyvalue"
+                              valueField    = "A_value_sum"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "circular"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "healthState",
+                        ]
+                        id                  = "datasetQueryExpression-skjfbadf"
+                        lookupActions       = []
+                        summarizeVerb       = "statsby"
+                        summaryFunction     = "sum"
+                        summaryFunctionArgs = []
+                        summaryMode         = "single"
+                        type                = "datasetQueryExpression"
+                        valueColumnId       = "A_value_sum"
+                        viewTab             = "visualize"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-yxm5ffb0"
+                      lookupActions = []
+                      type          = "multiExpression"
+                      viewTab       = "visualize"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-skjfbadf",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-dukecoqx"
+              index    = 2
+              isPinned = false
+              opal = [
+                "statsby A_value_sum:sum(value), group_by(healthState)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = <<-EOT
-                            make_col 
-                            	backendHealthStates:make_object(
-                                	healthy:defaultServiceHealthyStatusGroups,
-                                    unhealthy:defaultServiceUnhealthyStatusGroups,
-                                    unknown:defaultServiceUnknownStatusGroups,
-                                    null:defaultServiceNullStatusGroups)
-                            flatten_single backendHealthStates
-                            
-                            rename_col 
-                            	value:@."_c_backendHealthStates_value",
-                                healthState:@."_c_backendHealthStates_path"
-                            
-                            statsby value:last(int64(value)), group_by(name, healthState)    
-                        EOT
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -4157,6 +5148,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                     
                     statsby value:last(int64(value)), group_by(name, healthState)    
                     //statsby value:sum(int64(value)), group_by(name, healthState)
+                    statsby A_value_sum:sum(value), group_by(healthState)
                 EOT
       },
       {
@@ -4180,31 +5172,32 @@ resource "observe_dashboard" "load_balancing_monitoring" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight             = true
-            columnFooterHeight          = 0
-            columnHeaderHeight          = 29
-            columnOrderOverride         = {}
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1253
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            autoTableHeight              = true
+            columnFooterHeight           = 0
+            columnHeaderHeight           = 29
+            columnOrderOverride          = {}
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1253
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -4213,7 +5206,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -4279,9 +5271,14 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                       fnArgs     = []
                       resolution = "AUTO"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "xy"
-                    y             = "value"
+                    y             = "A_value_sum"
+                  }
+                  topK = {
+                    k     = 25
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -4301,39 +5298,15 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 400
           }
           renderType     = "TABLE"
           selectedStepId = null
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  backend_name          = "count"
-                  distribution_metadata = "count"
-                  metric                = "count"
-                  metric_labels         = "count"
-                  project_id            = "count"
-                  region                = "count"
-                  resource_labels       = "count"
-                  value                 = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-fx709o1n"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
               customSummary = "Backup_Google/GCP/Load Balancing Metrics"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4357,7 +5330,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             {
               customName    = "exists (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4386,17 +5358,124 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               queryPresentation = {}
               type              = "unknown"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "value"
+                        dataVis = {
+                          config = {
+                            color         = "Default"
+                            hideGridLines = false
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type = "xy"
+                            xConfig = {
+                              visible = true
+                            }
+                            yConfig = {
+                              visible = true
+                            }
+                          }
+                          source = {
+                            table = {
+                              groupFields = [
+                                [
+                                  "backend_target_name",
+                                ],
+                                "load_balancer_name",
+                              ]
+                              statsBy = {
+                                fn = "avg"
+                              }
+                              timechart = {
+                                fn         = "sum"
+                                fnArgs     = []
+                                resolution = "AUTO"
+                              }
+                              transformType = "none"
+                              type          = "xy"
+                              y             = "A_value_sum"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "timeseries"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          [
+                            "backend_target_name",
+                          ],
+                          "load_balancer_name",
+                        ]
+                        id                  = "datasetQueryExpression-vj3f78gs"
+                        lookupActions       = []
+                        summarizeVerb       = "statsby"
+                        summaryFunction     = "sum"
+                        summaryFunctionArgs = []
+                        summaryMode         = "over-time"
+                        type                = "datasetQueryExpression"
+                        valueColumnId       = "A_value_sum"
+                        viewTab             = "visualize"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-1bbx99gh"
+                      lookupActions = []
+                      type          = "multiExpression"
+                      viewTab       = "visualize"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-vj3f78gs",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-0a8rbrd6"
+              index    = 2
+              isPinned = false
+              opal = [
+                "timechart options(empty_bins:true), A_value_sum:sum(value), group_by(backend_target_name, load_balancer_name)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -4409,6 +5488,8 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                         and in(string(metric_labels.response_code_class), "200", "300")
                     make_col 
                         response_code_class:string(metric_labels.response_code_class)
+                    
+                    timechart options(empty_bins:true), A_value_sum:sum(value), group_by(backend_target_name, load_balancer_name)
                 EOT
       },
       {
@@ -4440,26 +5521,28 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               "2" = "_c_valid_from"
               "3" = "_c_valid_to"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = null
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -4468,7 +5551,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -4534,9 +5616,14 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                       fnArgs     = []
                       resolution = "AUTO"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "xy"
-                    y             = "value"
+                    y             = "A_value_sum"
+                  }
+                  topK = {
+                    k     = 66
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -4556,7 +5643,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 150
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -4565,7 +5652,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             {
               customName    = "Input"
               customSummary = "Backup_Google/GCP/Load Balancing Metrics"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4589,7 +5675,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             {
               customName    = "exists (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4618,17 +5703,124 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               queryPresentation = {}
               type              = "unknown"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "value"
+                        dataVis = {
+                          config = {
+                            color         = "Default"
+                            hideGridLines = false
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type = "xy"
+                            xConfig = {
+                              visible = true
+                            }
+                            yConfig = {
+                              visible = true
+                            }
+                          }
+                          source = {
+                            table = {
+                              groupFields = [
+                                [
+                                  "backend_target_name",
+                                ],
+                                "load_balancer_name",
+                              ]
+                              statsBy = {
+                                fn = "avg"
+                              }
+                              timechart = {
+                                fn         = "sum"
+                                fnArgs     = []
+                                resolution = "AUTO"
+                              }
+                              transformType = "none"
+                              type          = "xy"
+                              y             = "A_value_sum"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "timeseries"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          [
+                            "backend_target_name",
+                          ],
+                          "load_balancer_name",
+                        ]
+                        id                  = "datasetQueryExpression-qq1ohy4s"
+                        lookupActions       = []
+                        summarizeVerb       = "statsby"
+                        summaryFunction     = "sum"
+                        summaryFunctionArgs = []
+                        summaryMode         = "over-time"
+                        type                = "datasetQueryExpression"
+                        valueColumnId       = "A_value_sum"
+                        viewTab             = "visualize"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-2iatn4wv"
+                      lookupActions = []
+                      type          = "multiExpression"
+                      viewTab       = "visualize"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-qq1ohy4s",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-n0azwm78"
+              index    = 2
+              isPinned = false
+              opal = [
+                "timechart options(empty_bins:true), A_value_sum:sum(value), group_by(backend_target_name, load_balancer_name)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -4641,6 +5833,8 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                         and metric_labels.response_code_class = "400"
                     make_col 
                         response_code_class:string(metric_labels.response_code_class)
+                    
+                    timechart options(empty_bins:true), A_value_sum:sum(value), group_by(backend_target_name, load_balancer_name)
                 EOT
       },
       {
@@ -4672,26 +5866,28 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               "2" = "_c_valid_from"
               "3" = "_c_valid_to"
             }
-            columnVisibility            = {}
-            columnWidths                = {}
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = null
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -4700,7 +5896,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -4766,9 +5961,14 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                       fnArgs     = []
                       resolution = "AUTO"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "xy"
-                    y             = "value"
+                    y             = "A_value_sum"
+                  }
+                  topK = {
+                    k     = 66
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -4788,7 +5988,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 150
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -4797,7 +5997,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             {
               customName    = "Input"
               customSummary = "Backup_Google/GCP/Load Balancing Metrics"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4821,7 +6020,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             {
               customName    = "exists (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4850,17 +6048,124 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               queryPresentation = {}
               type              = "unknown"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "value"
+                        dataVis = {
+                          config = {
+                            color         = "Default"
+                            hideGridLines = false
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type = "xy"
+                            xConfig = {
+                              visible = true
+                            }
+                            yConfig = {
+                              visible = true
+                            }
+                          }
+                          source = {
+                            table = {
+                              groupFields = [
+                                [
+                                  "backend_target_name",
+                                ],
+                                "load_balancer_name",
+                              ]
+                              statsBy = {
+                                fn = "avg"
+                              }
+                              timechart = {
+                                fn         = "sum"
+                                fnArgs     = []
+                                resolution = "AUTO"
+                              }
+                              transformType = "none"
+                              type          = "xy"
+                              y             = "A_value_sum"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "timeseries"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          [
+                            "backend_target_name",
+                          ],
+                          "load_balancer_name",
+                        ]
+                        id                  = "datasetQueryExpression-zailn1zd"
+                        lookupActions       = []
+                        summarizeVerb       = "statsby"
+                        summaryFunction     = "sum"
+                        summaryFunctionArgs = []
+                        summaryMode         = "over-time"
+                        type                = "datasetQueryExpression"
+                        valueColumnId       = "A_value_sum"
+                        viewTab             = "visualize"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-ul53aezm"
+                      lookupActions = []
+                      type          = "multiExpression"
+                      viewTab       = "visualize"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-zailn1zd",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-bwhzcn2y"
+              index    = 2
+              isPinned = false
+              opal = [
+                "timechart options(empty_bins:true), A_value_sum:sum(value), group_by(backend_target_name, load_balancer_name)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -4873,6 +6178,8 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                         and metric_labels.response_code_class = "500"
                     make_col 
                         response_code_class:string(metric_labels.response_code_class)
+                    
+                    timechart options(empty_bins:true), A_value_sum:sum(value), group_by(backend_target_name, load_balancer_name)
                 EOT
       },
       {
@@ -4904,24 +6211,26 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             columnWidths = {
               backend_name = 360
             }
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            containerWidth               = null
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -4930,7 +6239,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -4977,7 +6285,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                 }
                 source = {
                   table = {
-                    field = "value"
+                    field = "A_value_sum"
                     groupFields = [
                       "label",
                     ]
@@ -4989,8 +6297,13 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                       fnArgs     = []
                       resolution = "SINGLE"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "singlefield"
+                  }
+                  topK = {
+                    k     = 100
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -5009,7 +6322,13 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup      = {}
+            rollup = {}
+            sort = [
+              {
+                ascending  = true
+                columnName = "A_value_sum"
+              },
+            ]
             wantBuckets = 1
           }
           renderType     = "TABLE"
@@ -5019,7 +6338,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             {
               customName    = "Input"
               customSummary = "Google/GCP/Load Balancing Metrics"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -5043,7 +6361,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             {
               customName    = "exists (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -5073,17 +6390,113 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               queryPresentation = {}
               type              = "unknown"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "value"
+                        dataVis = {
+                          config = {
+                            color           = "Green"
+                            colorConfigType = "Color"
+                            fieldConfig = {
+                              unit    = null
+                              visible = false
+                            }
+                            singleStatLabel = "2xx & 3xx"
+                            thresholds      = null
+                            type            = "singlefield"
+                          }
+                          source = {
+                            table = {
+                              field = "A_value_sum"
+                              groupFields = [
+                                "label",
+                              ]
+                              statsBy = {
+                                fn = "avg"
+                              }
+                              timechart = {
+                                fn         = "sum"
+                                fnArgs     = []
+                                resolution = "SINGLE"
+                              }
+                              transformType = "none"
+                              type          = "singlefield"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "singlevalue"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "label",
+                        ]
+                        id                  = "datasetQueryExpression-d7t2dnut"
+                        lookupActions       = []
+                        summarizeVerb       = "statsby"
+                        summaryFunction     = "sum"
+                        summaryFunctionArgs = []
+                        summaryMode         = "single"
+                        type                = "datasetQueryExpression"
+                        valueColumnId       = "A_value_sum"
+                        viewTab             = "visualize"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-10pl0gnz"
+                      lookupActions = []
+                      type          = "multiExpression"
+                      viewTab       = "visualize"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-d7t2dnut",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-uts7ht7d"
+              index    = 2
+              isPinned = false
+              opal = [
+                "statsby A_value_sum:sum(value), group_by(label)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -5097,6 +6510,8 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                         response_code_class:string(metric_labels.response_code_class),
                         label:""
                     filter in(response_code_class, "200", "300")
+                    
+                    statsby A_value_sum:sum(value), group_by(label)
                 EOT
       },
       {
@@ -5128,24 +6543,26 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             columnWidths = {
               backend_name = 360
             }
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            containerWidth               = null
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -5154,7 +6571,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -5209,7 +6625,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                 }
                 source = {
                   table = {
-                    field = "value"
+                    field = "A_value_sum"
                     groupFields = [
                       "label",
                     ]
@@ -5221,8 +6637,13 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                       fnArgs     = []
                       resolution = "SINGLE"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "singlefield"
+                  }
+                  topK = {
+                    k     = 100
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -5241,7 +6662,13 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup      = {}
+            rollup = {}
+            sort = [
+              {
+                ascending  = true
+                columnName = "A_value_sum"
+              },
+            ]
             wantBuckets = 1
           }
           renderType     = "TABLE"
@@ -5251,7 +6678,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             {
               customName    = "Input"
               customSummary = "Google/GCP/Load Balancing Metrics"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -5275,7 +6701,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             {
               customName    = "exists (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -5305,17 +6730,121 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               queryPresentation = {}
               type              = "unknown"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "value"
+                        dataVis = {
+                          config = {
+                            color           = "Yellow"
+                            colorConfigType = "Color"
+                            fieldConfig = {
+                              unit    = null
+                              visible = false
+                            }
+                            singleStatLabel = "4xx Counts"
+                            thresholds = {
+                              startingColor = "Green"
+                              thresholds = [
+                                {
+                                  exceedsColor = "Yellow"
+                                  value        = 0
+                                },
+                              ]
+                            }
+                            type = "singlefield"
+                          }
+                          source = {
+                            table = {
+                              field = "A_value_sum"
+                              groupFields = [
+                                "label",
+                              ]
+                              statsBy = {
+                                fn = "avg"
+                              }
+                              timechart = {
+                                fn         = "sum"
+                                fnArgs     = []
+                                resolution = "SINGLE"
+                              }
+                              transformType = "none"
+                              type          = "singlefield"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "singlevalue"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "label",
+                        ]
+                        id                  = "datasetQueryExpression-hvxkxsta"
+                        lookupActions       = []
+                        summarizeVerb       = "statsby"
+                        summaryFunction     = "sum"
+                        summaryFunctionArgs = []
+                        summaryMode         = "single"
+                        type                = "datasetQueryExpression"
+                        valueColumnId       = "A_value_sum"
+                        viewTab             = "visualize"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-vov38z7g"
+                      lookupActions = []
+                      type          = "multiExpression"
+                      viewTab       = "visualize"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-hvxkxsta",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-pim50vhb"
+              index    = 2
+              isPinned = false
+              opal = [
+                "statsby A_value_sum:sum(value), group_by(label)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -5329,6 +6858,8 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                     make_col 
                         response_code_class:string(metric_labels.response_code_class),
                         label:""
+                    
+                    statsby A_value_sum:sum(value), group_by(label)
                 EOT
       },
       {
@@ -5360,24 +6891,26 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             columnWidths = {
               backend_name = 360
             }
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            containerWidth               = null
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -5386,7 +6919,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -5441,7 +6973,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                 }
                 source = {
                   table = {
-                    field = "value"
+                    field = "A_value_sum"
                     groupFields = [
                       "label",
                     ]
@@ -5453,8 +6985,13 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                       fnArgs     = []
                       resolution = "SINGLE"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "singlefield"
+                  }
+                  topK = {
+                    k     = 100
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -5473,7 +7010,13 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup      = {}
+            rollup = {}
+            sort = [
+              {
+                ascending  = true
+                columnName = "A_value_sum"
+              },
+            ]
             wantBuckets = 1
           }
           renderType     = "TABLE"
@@ -5483,7 +7026,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             {
               customName    = "Input"
               customSummary = "Google/GCP/Load Balancing Metrics"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -5507,7 +7049,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             {
               customName    = "exists (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -5537,17 +7078,121 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               queryPresentation = {}
               type              = "unknown"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "value"
+                        dataVis = {
+                          config = {
+                            color           = "Red"
+                            colorConfigType = "Color"
+                            fieldConfig = {
+                              unit    = null
+                              visible = false
+                            }
+                            singleStatLabel = "5xx Counts"
+                            thresholds = {
+                              startingColor = "Green"
+                              thresholds = [
+                                {
+                                  exceedsColor = "Yellow"
+                                  value        = 0
+                                },
+                              ]
+                            }
+                            type = "singlefield"
+                          }
+                          source = {
+                            table = {
+                              field = "A_value_sum"
+                              groupFields = [
+                                "label",
+                              ]
+                              statsBy = {
+                                fn = "avg"
+                              }
+                              timechart = {
+                                fn         = "sum"
+                                fnArgs     = []
+                                resolution = "SINGLE"
+                              }
+                              transformType = "none"
+                              type          = "singlefield"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "singlevalue"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "label",
+                        ]
+                        id                  = "datasetQueryExpression-pm1ouaht"
+                        lookupActions       = []
+                        summarizeVerb       = "statsby"
+                        summaryFunction     = "sum"
+                        summaryFunctionArgs = []
+                        summaryMode         = "single"
+                        type                = "datasetQueryExpression"
+                        valueColumnId       = "A_value_sum"
+                        viewTab             = "visualize"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-n0or30m6"
+                      lookupActions = []
+                      type          = "multiExpression"
+                      viewTab       = "visualize"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-pm1ouaht",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-218i4gt3"
+              index    = 2
+              isPinned = false
+              opal = [
+                "statsby A_value_sum:sum(value), group_by(label)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
@@ -5561,6 +7206,8 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                     make_col 
                         response_code_class:string(metric_labels.response_code_class),
                         label:""
+                    
+                    statsby A_value_sum:sum(value), group_by(label)
                 EOT
       },
       {
@@ -5584,31 +7231,32 @@ resource "observe_dashboard" "load_balancing_monitoring" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight             = true
-            columnFooterHeight          = 0
-            columnHeaderHeight          = 29
-            columnOrderOverride         = {}
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 285
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = true
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            autoTableHeight              = true
+            columnFooterHeight           = 0
+            columnHeaderHeight           = 29
+            columnOrderOverride          = {}
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1288
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 33
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -5617,7 +7265,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -5642,9 +7289,14 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           managers = [
             {
               id                     = "kr97nzxt"
-              isDisabled             = true
+              isDisabled             = false
               isResourceCountEnabled = false
               type                   = "Timescrubber"
+            },
+            {
+              id         = "drz4sdmu"
+              isDisabled = false
+              type       = "JsonTree"
             },
           ]
           queryPresentation = {
@@ -5668,38 +7320,8 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  httpRequest    = "count"
-                  insertId       = "count"
-                  jsonPayload    = "count"
-                  labels         = "count"
-                  logName        = "count"
-                  messageId      = "count"
-                  protoPayload   = "count"
-                  resourceKind   = "count"
-                  resourceLabels = "count"
-                  resourceName   = "count"
-                  resourceType   = "count"
-                  severity       = "count"
-                  textPayload    = "count"
-                  trace          = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-yqon26us"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
               customSummary = "Backup_Google/GCP/Load Balancing Config Audit Logs"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -5721,38 +7343,8 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               type              = "InputStep"
             },
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  httpRequest    = "count"
-                  insertId       = "count"
-                  jsonPayload    = "count"
-                  labels         = "count"
-                  logName        = "count"
-                  messageId      = "count"
-                  protoPayload   = "count"
-                  resourceKind   = "count"
-                  resourceLabels = "count"
-                  resourceName   = "count"
-                  resourceType   = "count"
-                  severity       = "count"
-                  textPayload    = "count"
-                  trace          = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-tpw9m475"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "filter (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -5780,14 +7372,12 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "table"
           }
@@ -5820,31 +7410,32 @@ resource "observe_dashboard" "load_balancing_monitoring" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight             = true
-            columnFooterHeight          = 0
-            columnHeaderHeight          = 29
-            columnOrderOverride         = {}
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 285
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = true
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            autoTableHeight              = true
+            columnFooterHeight           = 0
+            columnHeaderHeight           = 29
+            columnOrderOverride          = {}
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1288
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 33
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -5853,7 +7444,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -5878,9 +7468,14 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           managers = [
             {
               id                     = "kr97nzxt"
-              isDisabled             = true
+              isDisabled             = false
               isResourceCountEnabled = false
               type                   = "Timescrubber"
+            },
+            {
+              id         = "mddgyiax"
+              isDisabled = false
+              type       = "JsonTree"
             },
           ]
           queryPresentation = {
@@ -5906,7 +7501,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             {
               customName    = "Input"
               customSummary = "Backup_Google/GCP/Load Balancing Config Audit Logs"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -5928,23 +7522,8 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               type              = "InputStep"
             },
             {
-              columnStatsTable = {
-                columnFunctions = {}
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-v4ujp1q1"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "filter (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -5972,14 +7551,12 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "table"
           }
@@ -6012,31 +7589,32 @@ resource "observe_dashboard" "load_balancing_monitoring" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight             = true
-            columnFooterHeight          = 0
-            columnHeaderHeight          = 29
-            columnOrderOverride         = {}
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 285
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = true
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            autoTableHeight              = true
+            columnFooterHeight           = 0
+            columnHeaderHeight           = 29
+            columnOrderOverride          = {}
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1288
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 33
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -6045,7 +7623,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -6070,9 +7647,14 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           managers = [
             {
               id                     = "kr97nzxt"
-              isDisabled             = true
+              isDisabled             = false
               isResourceCountEnabled = false
               type                   = "Timescrubber"
+            },
+            {
+              id         = "dzeeadf7"
+              isDisabled = false
+              type       = "JsonTree"
             },
           ]
           queryPresentation = {
@@ -6098,7 +7680,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             {
               customName    = "Input"
               customSummary = "Backup_Google/GCP/Load Balancing Config Audit Logs"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -6120,23 +7701,8 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               type              = "InputStep"
             },
             {
-              columnStatsTable = {
-                columnFunctions = {}
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-smcwrt27"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "filter (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -6164,14 +7730,12 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "table"
           }
@@ -6204,31 +7768,32 @@ resource "observe_dashboard" "load_balancing_monitoring" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight             = true
-            columnFooterHeight          = 0
-            columnHeaderHeight          = 29
-            columnOrderOverride         = {}
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 285
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = true
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            autoTableHeight              = true
+            columnFooterHeight           = 0
+            columnHeaderHeight           = 29
+            columnOrderOverride          = {}
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1288
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 33
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -6237,7 +7802,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -6262,9 +7826,14 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           managers = [
             {
               id                     = "kr97nzxt"
-              isDisabled             = true
+              isDisabled             = false
               isResourceCountEnabled = false
               type                   = "Timescrubber"
+            },
+            {
+              id         = "d19az8pe"
+              isDisabled = false
+              type       = "JsonTree"
             },
           ]
           queryPresentation = {
@@ -6290,7 +7859,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             {
               customName    = "Input"
               customSummary = "Backup_Google/GCP/Load Balancing Config Audit Logs"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -6312,23 +7880,8 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               type              = "InputStep"
             },
             {
-              columnStatsTable = {
-                columnFunctions = {}
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-pwkgjy3q"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "filter (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -6356,14 +7909,12 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "table"
           }
@@ -6410,31 +7961,32 @@ resource "observe_dashboard" "load_balancing_monitoring" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight             = true
-            columnFooterHeight          = 0
-            columnHeaderHeight          = 29
-            columnOrderOverride         = {}
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = 1265
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            autoTableHeight              = true
+            columnFooterHeight           = 0
+            columnHeaderHeight           = 29
+            columnOrderOverride          = {}
+            columnVisibility             = {}
+            columnWidths                 = {}
+            containerWidth               = 1288
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 33
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -6443,7 +7995,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -6480,9 +8031,14 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           managers = [
             {
               id                     = "6chx5svk"
-              isDisabled             = true
+              isDisabled             = false
               isResourceCountEnabled = false
               type                   = "Timescrubber"
+            },
+            {
+              id         = "n4sic814"
+              isDisabled = false
+              type       = "JsonTree"
             },
           ]
           queryPresentation = {
@@ -6495,38 +8051,8 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  httpRequest    = "count"
-                  insertId       = "count"
-                  jsonPayload    = "count"
-                  labels         = "count"
-                  logName        = "count"
-                  messageId      = "count"
-                  protoPayload   = "count"
-                  resourceKind   = "count"
-                  resourceLabels = "count"
-                  resourceName   = "count"
-                  resourceType   = "count"
-                  severity       = "count"
-                  textPayload    = "count"
-                  trace          = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-dkpglknm"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
               customSummary = "audit logs - backendservices_-rnz8"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -6548,41 +8074,8 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               type              = "InputStep"
             },
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  authenticationInfo = "count"
-                  httpRequest        = "count"
-                  insertId           = "count"
-                  jsonPayload        = "count"
-                  labels             = "count"
-                  logName            = "count"
-                  messageId          = "count"
-                  methodName         = "count"
-                  protoPayload       = "count"
-                  resourceKind       = "count"
-                  resourceLabels     = "count"
-                  resourceName       = "count"
-                  resourceType       = "count"
-                  response           = "count"
-                  severity           = "count"
-                  textPayload        = "count"
-                  trace              = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-0n3jygna"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "union (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -6624,14 +8117,12 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "table"
           }
@@ -6694,25 +8185,26 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               logConfig                          = 215
               name                               = 220
             }
-            containerWidth              = 626
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = "defaultServiceHeathchecks"
-            scrollToRow                 = 3
+            containerWidth               = 1288
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 33
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = "defaultServiceHeathchecks"
+            scrollToRow                  = 3
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -6721,7 +8213,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -6746,9 +8237,14 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           managers = [
             {
               id                     = "axqybbt8"
-              isDisabled             = true
+              isDisabled             = false
               isResourceCountEnabled = false
               type                   = "Timescrubber"
+            },
+            {
+              id         = "7ruizb4o"
+              isDisabled = false
+              type       = "JsonTree"
             },
           ]
           queryPresentation = {
@@ -6772,47 +8268,8 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  IPAddress                           = "count"
-                  IPProtocol                          = "count"
-                  IPVersion                           = "count"
-                  creationTimestamp                   = "count"
-                  defaultServiceHealthyStatusGroups   = "count"
-                  defaultServiceHeathchecks           = "count"
-                  defaultServiceNullStatusGroups      = "count"
-                  defaultServiceProtocol              = "count"
-                  defaultServiceUnhealthyStatusGroups = "count"
-                  defaultServiceUnknownStatusGroups   = "count"
-                  description                         = "count"
-                  frontEnd                            = "count"
-                  hostRules                           = "count"
-                  id                                  = "count"
-                  loadBalancingScheme                 = "count"
-                  name                                = "count"
-                  networkTier                         = "count"
-                  pathMatchers                        = "count"
-                  portRange                           = "count"
-                  region                              = "count"
-                  selfLink                            = "count"
-                  targetProxyName                     = "count"
-                  urlMapName                          = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-172yvjyt"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
               customSummary = "loadBalancer"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -6834,49 +8291,8 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               type              = "InputStep"
             },
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  IPAddress                           = "count"
-                  IPProtocol                          = "count"
-                  IPVersion                           = "count"
-                  creationTimestamp                   = "count"
-                  defaultServiceHealthyStatusGroups   = "count"
-                  defaultServiceHeathchecks           = "count"
-                  defaultServiceNullStatusGroups      = "count"
-                  defaultServiceProtocol              = "count"
-                  defaultServiceUnhealthyStatusGroups = "count"
-                  defaultServiceUnknownStatusGroups   = "count"
-                  description                         = "count"
-                  frontEnd                            = "count"
-                  healthcheck                         = "count"
-                  hostRules                           = "count"
-                  id                                  = "count"
-                  loadBalancingScheme                 = "count"
-                  load_balancer_name                  = "count"
-                  name                                = "count"
-                  networkTier                         = "count"
-                  pathMatchers                        = "count"
-                  portRange                           = "count"
-                  region                              = "count"
-                  selfLink                            = "count"
-                  targetProxyName                     = "count"
-                  urlMapName                          = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-a2qvpsyk"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "pick_col (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -6920,33 +8336,12 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = <<-EOT
-                            pick_col
-                            	name,
-                                @."Valid From",
-                                @."Valid To",
-                                defaultServiceHeathchecks
-                                
-                            flatten_single defaultServiceHeathchecks
-                            make_col 
-                            	_c_defaultServiceHeathchecks_value:string(_c_defaultServiceHeathchecks_value),
-                                healthcheck:split_part(string(_c_defaultServiceHeathchecks_value),"/",-1)
-                            
-                            lookup @."_c_defaultServiceHeathchecks_value"=@"Backup_Google/GCP/Load Balancing Health Checks".selfLink, logConfig:@"Backup_Google/GCP/Load Balancing Health Checks".logConfig
-                            filter is_null(logConfig) and not is_null(healthcheck)
-                            rename_col load_balancer_name:name
-                            colshow 
-                            	_c_defaultServiceHeathchecks_path:false,
-                                _c_defaultServiceHeathchecks_value:false,
-                                logConfig:false
-                        EOT
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "table"
           }
@@ -6999,25 +8394,26 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               load_balancer_name = 233
               logging            = 227
             }
-            containerWidth              = 626
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            containerWidth               = 1288
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 33
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -7026,7 +8422,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -7045,9 +8440,14 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           managers = [
             {
               id                     = "f7fiubwg"
-              isDisabled             = true
+              isDisabled             = false
               isResourceCountEnabled = false
               type                   = "Timescrubber"
+            },
+            {
+              id         = "rp2fgxdp"
+              isDisabled = false
+              type       = "JsonTree"
             },
           ]
           queryPresentation = {
@@ -7071,48 +8471,8 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  IPAddress                           = "count"
-                  IPProtocol                          = "count"
-                  IPVersion                           = "count"
-                  creationTimestamp                   = "count"
-                  defaultServiceHealthyStatusGroups   = "count"
-                  defaultServiceHeathchecks           = "count"
-                  defaultServiceLogConfig             = "count"
-                  defaultServiceNullStatusGroups      = "count"
-                  defaultServiceProtocol              = "count"
-                  defaultServiceUnhealthyStatusGroups = "count"
-                  defaultServiceUnknownStatusGroups   = "count"
-                  description                         = "count"
-                  frontEnd                            = "count"
-                  hostRules                           = "count"
-                  id                                  = "count"
-                  loadBalancingScheme                 = "count"
-                  name                                = "count"
-                  networkTier                         = "count"
-                  pathMatchers                        = "count"
-                  portRange                           = "count"
-                  region                              = "count"
-                  selfLink                            = "count"
-                  targetProxyName                     = "count"
-                  urlMapName                          = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-aky7w5uu"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
               customSummary = "loadBalancer"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -7134,50 +8494,8 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               type              = "InputStep"
             },
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  IPAddress                           = "count"
-                  IPProtocol                          = "count"
-                  IPVersion                           = "count"
-                  creationTimestamp                   = "count"
-                  defaultServiceHealthyStatusGroups   = "count"
-                  defaultServiceHeathchecks           = "count"
-                  defaultServiceLogConfig             = "count"
-                  defaultServiceNullStatusGroups      = "count"
-                  defaultServiceProtocol              = "count"
-                  defaultServiceUnhealthyStatusGroups = "count"
-                  defaultServiceUnknownStatusGroups   = "count"
-                  description                         = "count"
-                  frontEnd                            = "count"
-                  hostRules                           = "count"
-                  id                                  = "count"
-                  loadBalancingScheme                 = "count"
-                  load_balancer_name                  = "count"
-                  logging                             = "count"
-                  name                                = "count"
-                  networkTier                         = "count"
-                  pathMatchers                        = "count"
-                  portRange                           = "count"
-                  region                              = "count"
-                  selfLink                            = "count"
-                  targetProxyName                     = "count"
-                  urlMapName                          = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-rfxnu0ms"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "filter (custom)"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -7218,14 +8536,12 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "table"
           }
@@ -7275,25 +8591,26 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             columnWidths = {
               defaultServiceProtocol = 170
             }
-            containerWidth              = 1253
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
+            containerWidth               = 1253
+            contextMenuXCoord            = null
+            contextMenuYCoord            = null
+            defaultColumnWidth           = 70
+            disableFixedLeftColumns      = false
+            eventLinkColumnId            = null
+            fetchPageSize                = 100
+            hasCalculatedColumnWidths    = false
+            maxColumnWidth               = 400
+            maxMeasuredColumnHeaderWidth = {}
+            maxMeasuredColumnWidth       = {}
+            maxMeasuredRowHeight         = {}
+            minColumnWidth               = 60
+            minRowHeight                 = 30
+            preserveCellAndRowSelection  = true
+            rowHeaderWidth               = 50
+            rowHeights                   = {}
+            rowSizeIncrement             = 1
+            scrollToColumn               = null
+            scrollToRow                  = 0
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -7302,7 +8619,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
             summaryColumnOrderOverride = {}
             summaryColumnVisibility    = {}
             tableHeight                = 0
@@ -7352,9 +8668,14 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                       fnArgs     = []
                       resolution = "SINGLE"
                     }
-                    transformType = "timechart"
+                    transformType = "none"
                     type          = "keyvalue"
-                    valueField    = "name"
+                    valueField    = "A_name_count_distinct"
+                  }
+                  topK = {
+                    k     = 100
+                    order = "Top"
+                    type  = "Auto"
                   }
                   type = "table"
                 }
@@ -7373,7 +8694,13 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             resultKinds = [
               "ResultKindSchema",
             ]
-            rollup      = {}
+            rollup = {}
+            sort = [
+              {
+                ascending  = false
+                columnName = "A_name_count_distinct"
+              },
+            ]
             wantBuckets = 1
           }
           renderType     = "TABLE"
@@ -7381,48 +8708,8 @@ resource "observe_dashboard" "load_balancing_monitoring" {
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  IPAddress                           = "count"
-                  IPProtocol                          = "count"
-                  IPVersion                           = "count"
-                  creationTimestamp                   = "count"
-                  defaultServiceHealthyStatusGroups   = "count"
-                  defaultServiceHeathchecks           = "count"
-                  defaultServiceLogConfig             = "count"
-                  defaultServiceNullStatusGroups      = "count"
-                  defaultServiceProtocol              = "count"
-                  defaultServiceUnhealthyStatusGroups = "count"
-                  defaultServiceUnknownStatusGroups   = "count"
-                  description                         = "count"
-                  frontEnd                            = "count"
-                  hostRules                           = "count"
-                  id                                  = "count"
-                  loadBalancingScheme                 = "count"
-                  name                                = "count"
-                  networkTier                         = "count"
-                  pathMatchers                        = "count"
-                  portRange                           = "count"
-                  region                              = "count"
-                  selfLink                            = "count"
-                  targetProxyName                     = "count"
-                  urlMapName                          = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-ae4xgp8j"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
               customSummary = "loadBalancer"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -7443,23 +8730,117 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               queryPresentation = {}
               type              = "InputStep"
             },
+            {
+              action = {
+                params = {
+                  expressionList = {
+                    expressions = [
+                      {
+                        autoResolution = true
+                        columnId       = "name"
+                        dataVis = {
+                          config = {
+                            innerRadius = 0.6
+                            legend = {
+                              placement = "right"
+                              type      = "list"
+                              visible   = true
+                            }
+                            type = "arc"
+                          }
+                          source = {
+                            table = {
+                              keyField = [
+                                "defaultServiceProtocol",
+                              ]
+                              statsBy = {
+                                fn = "count"
+                              }
+                              timechart = {
+                                fn         = "count_distinct"
+                                fnArgs     = []
+                                resolution = "SINGLE"
+                              }
+                              transformType = "none"
+                              type          = "keyvalue"
+                              valueField    = "A_name_count_distinct"
+                            }
+                            topK = {
+                              order = "Top"
+                              type  = "Auto"
+                            }
+                            type = "table"
+                          }
+                          type = "circular"
+                        }
+                        filterActions = []
+                        groupBy = [
+                          "defaultServiceProtocol",
+                        ]
+                        id                  = "datasetQueryExpression-al5t6tye"
+                        lookupActions       = []
+                        summarizeVerb       = "statsby"
+                        summaryFunction     = "count_distinct"
+                        summaryFunctionArgs = []
+                        summaryMode         = "single"
+                        type                = "datasetQueryExpression"
+                        valueColumnId       = "A_name_count_distinct"
+                        viewTab             = "visualize"
+                      },
+                    ]
+                    multiExpression = {
+                      filterActions = []
+                      id            = "multiExpression-dpq129wm"
+                      lookupActions = []
+                      type          = "multiExpression"
+                      viewTab       = "visualize"
+                    }
+                    selectedExpressionIds = [
+                      "datasetQueryExpression-al5t6tye",
+                    ]
+                  }
+                }
+                summary = null
+                type    = "ExpressionBuilder"
+              }
+              customSummary = "Expression Builder"
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-nhc2pzt8"
+              index    = 1
+              isPinned = false
+              opal = [
+                "statsby A_name_count_distinct:count_distinct(name), group_by(defaultServiceProtocol)",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "vis"
           }
         }
         params   = null
-        pipeline = ""
+        pipeline = "statsby A_name_count_distinct:count_distinct(name), group_by(defaultServiceProtocol)"
       },
       {
         id = "stage-g03tiiey"
@@ -7474,50 +8855,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
         ]
         layout = {
           appearance = "HIDDEN"
-          dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
-            columnOrderOverride = {
-              "1" = "Valid From"
-              "2" = "Valid To"
-            }
-            columnVisibility            = {}
-            columnWidths                = {}
-            containerWidth              = null
-            contextMenuXCoord           = null
-            contextMenuYCoord           = null
-            defaultColumnWidth          = 70
-            disableFixedLeftColumns     = false
-            eventLinkColumnId           = null
-            fetchPageSize               = 100
-            hasCalculatedColumnWidths   = false
-            hasDoneAutoLayout           = false
-            maxColumnWidth              = 400
-            maxMeasuredColumnWidth      = {}
-            minColumnWidth              = 60
-            minRowHeight                = 30
-            preserveCellAndRowSelection = true
-            rowHeaderWidth              = 20
-            rowHeights                  = {}
-            rowSizeIncrement            = 1
-            scrollToColumn              = null
-            scrollToRow                 = 0
-            selection = {
-              cells                = {}
-              columnSelectSequence = []
-              columns              = {}
-              highlightState       = {}
-              rows                 = {}
-              selectionType        = "table"
-            }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
-          }
-          index = 27
+          index      = 27
           inputList = [
             {
               datasetId   = local.load_balancing_load_balancers
@@ -7546,7 +8884,6 @@ resource "observe_dashboard" "load_balancing_monitoring" {
             {
               customName    = "Input"
               customSummary = "dev/Load Balancing Load Balancers"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -7569,23 +8906,56 @@ resource "observe_dashboard" "load_balancing_monitoring" {
               queryPresentation = {}
               type              = "InputStep"
             },
+            {
+              action = {
+                params = {
+                  disabled = false
+                  hint     = "#hint{skipExistsNoFilter:true}"
+                }
+                summary = null
+                type    = "Hint"
+              }
+              customSummary = ""
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+                tableTypes = [
+                  "TABULAR",
+                  "SUMMARY",
+                ]
+              }
+              id       = "step-6blx7255"
+              index    = 1
+              isPinned = false
+              opal = [
+                "#hint{skipExistsNoFilter:true}",
+              ]
+              queryPresentation = {}
+              type              = "unknown"
+            },
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
               note          = true
               script        = true
             }
-            scriptTab     = "SCRIPT"
             showTimeRuler = true
             stageTab      = "table"
           }
         }
         params   = null
-        pipeline = "// Filtered Dataset Controlled Filter Stage"
+        pipeline = <<-EOT
+                    // Filtered Dataset Controlled Filter Stage
+                    #hint{skipExistsNoFilter:true}
+                EOT
       },
     ]
   )
