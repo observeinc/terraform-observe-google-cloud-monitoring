@@ -15,5 +15,4 @@ terraform init
 
 terraform state list
 
-terraform apply
-
+terraform apply --auto-approve
