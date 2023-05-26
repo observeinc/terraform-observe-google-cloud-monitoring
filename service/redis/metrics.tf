@@ -107,6 +107,7 @@ resource "observe_dataset" "redis_metrics" {
   stage {
     pipeline = <<-EOF
       interface "metric", metric:metric, value:value
+      set_dataset_alias "gcp_redis"
       ${join("\n\n",
     [for metric, options in local.merged_metrics_definitions :
       indent(2,
