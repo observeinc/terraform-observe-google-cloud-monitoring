@@ -19,9 +19,8 @@ variable "name_format" {
   description = "Format string to use for infra names."
 }
 
-variable "metric_prefixes" {
-  description = "Default metric prefixes to poll"
-  type        = list(string)
+variable "include_metric_type_prefixes" {
+  type = list(string)
   default = [
     "cloudfunctions.googleapis.com/",
     "cloudsql.googleapis.com/",
@@ -36,6 +35,23 @@ variable "metric_prefixes" {
     "loadbalancing.googleapis.com",
     "kubernetes.io/",
     "redis.googleapis.com",
+    "memcache.googleapis.com",
     "vpcaccess.googleapis.com"
   ]
+  description = <<-EOF
+    Metrics with these Metric Types with these prefixes will be fetched.
+    
+    See https://cloud.google.com/monitoring/api/metrics_gcp for a list of Metric Types.
+  EOF
+}
+
+variable "exclude_metric_type_prefixes" {
+  type        = list(string)
+  default     = []
+  description = <<-EOF
+    Metrics with these Metric Types with these prefixes will not be fetched. This
+    variable takes precendence over "metrics_poller_include_metric_type_prefixes".
+    
+    See https://cloud.google.com/monitoring/api/metrics_gcp for a list of Metric Types.
+  EOF
 }
