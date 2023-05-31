@@ -107,7 +107,9 @@ resource "observe_dataset" "compute_metrics" {
   stage {
     pipeline = <<-EOF
       interface "metric", metric:metric, value:value
+      %{if local.enable_metric_dataset_alias}
       set_dataset_alias "gcp_compute"
+      %{endif}
       ${join("\n\n",
     [for metric, options in local.merged_metrics_definitions :
       indent(2,

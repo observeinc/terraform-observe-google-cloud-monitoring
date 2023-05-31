@@ -119,7 +119,9 @@ resource "observe_dataset" "pubsub_service_api_metrics" {
   stage {
     pipeline = <<-EOF
       interface "metric", metric:metric, value:value
+      %{if local.enable_metric_dataset_alias}
       set_dataset_alias "gcp_pubsub_api"
+      %{endif}
       ${join("\n\n",
     [for metric, options in local.service_metrics_definitions :
       indent(2,
@@ -134,7 +136,9 @@ if(contains(var.metric_launch_stages, options.launchStage) && options.metricBin 
 stage {
   pipeline = <<-EOF
       interface "metric", metric:metric, value:value
+      %{if local.enable_metric_dataset_alias}
       set_dataset_alias "gcp_pubsub_api"
+      %{endif}
       ${join("\n\n",
   [for metric, options in local.merged_metrics_definitions_service :
     indent(2,
@@ -220,7 +224,9 @@ resource "observe_dataset" "pubsub_service_quota_metrics" {
   stage {
     pipeline = <<-EOF
       interface "metric", metric:metric, value:value
+      %{if local.enable_metric_dataset_alias}
       set_dataset_alias "gcp_pubsub_quota"
+      %{endif}
       ${join("\n\n",
     [for metric, options in local.merged_metrics_definitions_service :
       indent(2,
