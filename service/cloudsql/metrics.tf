@@ -74,7 +74,9 @@ resource "observe_dataset" "cloud_sql_metrics" {
   stage {
     pipeline = <<-EOF
       interface "metric", metric:metric, value:value
+      %{if local.enable_metric_dataset_alias}
       set_dataset_alias "gcp_sql"
+      %{endif}
       ${join("\n\n",
     [for metric, options in local.merged_metrics_definitions :
       indent(2,
@@ -116,7 +118,9 @@ resource "observe_dataset" "cloud_sql_metrics_combo" {
       make_col combo_metric: "all_database_network_connections"
 
       interface "metric", metric:combo_metric, value:value
+      %{if local.enable_metric_dataset_alias}
       set_dataset_alias "gcp_sql_comb"
+      %{endif}
       set_metric options(
         aggregate: "sum",
         description: "Combination of network connection metrics.\n",
@@ -209,7 +213,9 @@ resource "observe_dataset" "cloud_sql_metrics_wide" {
   stage {
     pipeline = <<-EOF
         interface "metric", metric:metric, value:value
+        %{if local.enable_metric_dataset_alias}
         set_dataset_alias "gcp_sql_wide"
+        %{endif}
         set_metric options(
           aggregate: "sum",
           description: "Percentage of disk quota used\n",

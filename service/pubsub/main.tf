@@ -1,7 +1,8 @@
 
 locals {
   # tflint-ignore: terraform_unused_declarations
-  enable_metrics = lookup(var.feature_flags, "metrics", true)
+  enable_metrics              = lookup(var.feature_flags, "metrics", true)
+  enable_metric_dataset_alias = lookup(var.feature_flags, "metric_explorer", false)
   # tflint-ignore: terraform_unused_declarations
   enable_monitors = lookup(var.feature_flags, "monitors", true)
   # tflint-ignore: terraform_unused_declarations
