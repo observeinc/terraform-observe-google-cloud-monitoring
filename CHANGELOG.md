@@ -1,3 +1,22 @@
+# [1.4.0](https://github.com/observeinc/terraform-observe-google/compare/v1.3.0...v1.4.0) (2023-05-31)
+
+
+### Bug Fixes
+
+* cloud functions monitoring dashboard ([#171](https://github.com/observeinc/terraform-observe-google/issues/171)) ([73d0b90](https://github.com/observeinc/terraform-observe-google/commit/73d0b90f43998c5b89728f0e554a98163ab05496))
+* cloud run sample infra tfstate conflict ([#170](https://github.com/observeinc/terraform-observe-google/issues/170)) ([d2e2117](https://github.com/observeinc/terraform-observe-google/commit/d2e21175ccf5152968a16c6535ec958a732b7c37))
+* **dashboard:** remove frame that is causing bucketing issue for metrics on cloudsql monitoring dashboard ([#169](https://github.com/observeinc/terraform-observe-google/issues/169)) ([ffb8b9e](https://github.com/observeinc/terraform-observe-google/commit/ffb8b9e7b8a83de691023800545ef1752df539ea))
+* **loadbalancer:** latency card in dashboard ([#181](https://github.com/observeinc/terraform-observe-google/issues/181)) ([0e6f0d6](https://github.com/observeinc/terraform-observe-google/commit/0e6f0d63d623f3a99b573328ff0b935bc8669802))
+
+
+### Features
+
+* add support for Metrics Explorer ([#182](https://github.com/observeinc/terraform-observe-google/issues/182)) ([f95cf3d](https://github.com/observeinc/terraform-observe-google/commit/f95cf3df95e214ed877720f085f9bae67d3f418e))
+* Implement interface log for GCP apps ([#175](https://github.com/observeinc/terraform-observe-google/issues/175)) ([e3ac50c](https://github.com/observeinc/terraform-observe-google/commit/e3ac50cb0e33e08300ff4a9c4f69bc4695460f8f))
+* surround metrics alias with feature flag ([#184](https://github.com/observeinc/terraform-observe-google/issues/184)) ([33d4500](https://github.com/observeinc/terraform-observe-google/commit/33d4500c679f9f2ab7321fc4423386eeb948f43e))
+
+
+
 # [1.3.0](https://github.com/observeinc/terraform-observe-google/compare/v1.2.0...v1.3.0) (2023-04-14)
 
 
