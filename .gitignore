@@ -34,7 +34,8 @@ override.tf.json
 
 *metrics.json
 
-*.auto.tfvars
+*.tfvars
+*.tfvars.json
 *.tfstate
 .terraform
 

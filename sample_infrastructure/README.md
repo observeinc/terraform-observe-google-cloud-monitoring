@@ -1,9 +1,120 @@
-# What is this
-Contents of this folder have terraform and other code needed to deploy sample infrastructure for all of the services in GCP.
+# Terraform Sample Infrastructure for GCP
 
+This repository contains Terraform configurations to deploy a sample infrastructure on Google Cloud Platform (GCP).
 
 ![Sample Infrastructure](./images/GCP_Sample_Infra.jpeg)
 
+## Prerequisites
+
+1. **Google Cloud Project**: You must have a GCP project with the appropriate permissions. You can create a new project on GCP through the [Google Cloud Console](https://console.cloud.google.com/projectcreate).
+2. **Billing Account**: Ensure that the project is associated with a billing account.
+3. **Terraform**: Install Terraform on your local machine. You can download Terraform from [here](https://www.terraform.io/downloads.html).
+
+### IAM Service Account & Role Setup
+
+Follow these steps to create IAM Service Account & Role using Google Cloud Shell:
+
+1. **Export your project id**:
+    ```
+    export PROJECT_ID=your_project_id
+    ```
+
+2. **Create the service account**:
+    ```
+    gcloud iam service-accounts create terraform \
+    --description="Service account for the terraform sample infrastructure" \
+    --display-name="sampleInfrastructureTerraform"
+    ```
+
+3. **Create the custom role**:
+    Create the following file `role-permissions.json`
+    ```
+    {
+      "title": "sampleInfrastructureTerraformRole",
+      "description": "A custom role with permissions from BigQuery and Resource Manager",
+      "stage": "ALPHA",
+      "includedPermissions": [
+        "resourcemanager.projects.get",
+        "bigquery.jobs.create",
+        "bigquery.jobs.get",
+        "bigquery.jobs.update",
+        "bigquery.datasets.create",
+        "bigquery.datasets.get",
+        "bigquery.datasets.update",
+        "bigquery.tables.create",
+        "bigquery.tables.get",
+        "bigquery.tables.update",
+        "bigquery.tables.updateData",
+        "bigquery.tables.getData",
+        "bigquery.tables.list",
+        "compute.networks.get",
+        "compute.subnetworks.get"
+      ]
+    }
+    ```
+
+    Then creat the role
+    ```
+    gcloud iam roles create gcpSampleInfrastructureTerraformRole --project=$PROJECT_ID --file=role-permissions.json
+    ```
+
+4. **Assign the custom role to the service account**:
+    ```
+    gcloud projects add-iam-policy-binding $PROJECT_ID --member="serviceAccount:terraform@$PROJECT_ID.iam.gserviceaccount.com" --role="projects/$PROJECT_ID/roles/gcpSampleInfrastructureTerraformRole"
+    ```
+
+5. **Create & Download a JSON Key for the Service Account**:
+
+  - Open the Google Cloud Console (https://console.cloud.google.com/).
+  - Select your project from the drop-down list in the header bar.
+  - In the left-side menu, go to "IAM & Admin" and then "Service accounts".
+  - You will see a list of all service accounts for this project. Look for the service account you just created, then go to the rightmost column in its row, labeled "Actions". Click on the three-dot menu icon there.
+  - In the drop-down menu that appears, select "Manage keys".
+  - A new window will open up. In this window, click on the "Add Key" button at the top of the window, then select "Create new key".
+  - A dialog box will appear. Here, select the "JSON" option, then click "Create".
+  - A JSON key will be automatically generated and downloaded to your computer. Be sure to save this in a secure location, as it contains sensitive information that could be used to access your resources on GCP.
+
+## How to Deploy Sample Infrastructure
+
+1. **Clone this repository**:
+    ```
+    git clone git@github.com:observeinc/terraform-observe-google.git
+    cd terraform-observe-google/sample_infrastructure
+    ```
+
+2. **Configure your GCP Credentials**:
+    - Create a new Service Account on GCP through the [Google Cloud Console](https://console.cloud.google.com/iam-admin/serviceaccounts).
+    - Download the JSON key file for the Service Account.
+    - Set an environment variable named `GOOGLE_APPLICATION_CREDENTIALS` pointing to the path of the JSON key file.
+    ```
+    export GOOGLE_APPLICATION_CREDENTIALS=/path/to/keyfile.json
+    ```
+
+3. **Initialize Terraform**:
+    ```
+    terraform init
+    ```
+
+4. **Configure your variables**:
+    Create a `terraform.tfvars` file with the following structure:
+    ```
+    project_id = "your-gcp-project-id"
+    region = "your-gcp-region"
+    zone1 = "your-primary-gcp-zone"
+    zone2 = "your-secondary-gcp-zone"
+    name_format = "name-format-for-infrastructure"
+    observe = {
+      domain = "your-observe-domain"
+      customer_id = "your-observe-customer-id"
+      datastream_token = "your-observe-datastream-token"
+    }
+    ```
+    Replace your-gcp-project-id, your-gcp-region, your-primary-gcp-zone, your-secondary-gcp-zone, name-format-for-infrastructure, your-observe-domain, your-observe-customer-id, and your-observe-datastream-token with your actual values.
+
+5. **Apply Terraform**:
+    ```
+    terraform apply
+    ```
 
 # How to deploy sample infrastructure
 
