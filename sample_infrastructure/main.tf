@@ -43,7 +43,7 @@ module "compute_otel_collector" {
   source     = "./service_modules/compute_otel_collector"
   project_id = var.project_id
   # region      = var.region
-  zone        = "${var.region}-a"
+  zone        = "${var.zone1}"
   name_format = format(var.name_format, "otel-%s")
   observe     = var.observe
 }
