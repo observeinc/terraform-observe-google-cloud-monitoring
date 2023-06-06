@@ -1,33 +1,31 @@
 # What is this
-Contents of this folder have terraform and other code needed to deploy sample infrastructure for all of the services in GCP.
-
+Contents of this folder have the terraform and other code needed to deploy sample infrastructure for all of the services in GCP.
 
 ![Sample Infrastructure](./images/GCP_Sample_Infra.jpeg)
 
 
 # How to deploy sample infrastructure
 
-!!!Code assumes you have a project set up with proper permissions!!!
+!!!The Terraform code in sample_infrastructure assumes you have a GCP Project set up with proper permissions!!!
 See "Sample project creation terraform" below for example
 
 KNOWN ISSUE - If you get the error "Error: Provider produced inconsistent final plan" referencing cloud scheduler change the local variable string in main.tf
 ```
 hack = "${module.function_bigquery.bucket_object.md5hash}=1234"
 ```
-
-main.tf file in this directory contains modules to deploy infrastructure
+main.tf file in this directory contains all the modules contained and will deploy all infrastructure contained. 
 
 It is designed to be read from top to bottom and you can comment out everything and deploy modules one at a time working from top to bottom.
 
-Modules and their dependencies should be self explanatory.
+Modules and their dependencies should be self-explanatory.
 
-If you comment out modules in main.tf look at corresponding values in output.tf
+If you comment out modules in main.tf look at corresponding values in output.tf.
 
-The collection folder contains terraform to deploy collection resources to GCP using either local path or remote registry.
+The collection folder contains terraform to deploy collection resources to GCP using either the local path or remote registry.
 
 
 # Deploying sock-shop on GKE instance
-Current code is here - https://github.com/observeinc/content-eng-sock-shop-temp/tree/main/sockshop
+The current code is here - https://github.com/observeinc/content-eng-sock-shop-temp/tree/main/sockshop
 
 Sock-shop deployment with OTEL instrumentation is under development and will change but there should be a link to deployable versions here
 

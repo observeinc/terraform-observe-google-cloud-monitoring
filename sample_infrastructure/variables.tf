@@ -25,9 +25,11 @@ variable "name_format" {
 
 variable "observe" {
   type = object({
-    domain           = optional(string)
-    customer_id      = optional(string)
-    datastream_token = optional(string)
+    domain                = optional(string)
+    customer_id           = optional(string)
+    datastream_token      = optional(string)
+    otel_datastream_token = optional(string)
+    host_datastream_token = optional(string)
   })
   default     = null
   description = "Object with Observe credentials"

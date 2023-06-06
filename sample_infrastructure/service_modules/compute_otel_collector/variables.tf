@@ -28,9 +28,10 @@ variable "observe" {
     host_datastream_token = optional(string)
   })
   default = {
-    domain           = "YOURS"
-    customer_id      = "YOURS"
-    datastream_token = "YOURS"
+    domain                = "YOURS"
+    customer_id           = "YOURS"
+    otel_datastream_token = "YOURS"
+    host_datastream_token = "YOURS"
   }
   description = "observe environment datastream connection details"
 }

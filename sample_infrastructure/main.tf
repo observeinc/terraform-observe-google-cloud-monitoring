@@ -37,6 +37,47 @@ Function code is organized here - sample_infrastructure/python_scripts
 
 
 #------------------------------------------------------------------------#
+# Create a Compute Instance that Load Balancing can front
+#------------------------------------------------------------------------#
+module "compute" {
+  source      = "./service_modules/compute"
+  project_id  = var.project_id
+  region      = var.region
+  name_format = format(var.name_format, "compute-%s")
+  observe = {
+    domain : var.observe.domain
+    install_linux_host_monitoring : true,
+    customer_id : var.observe.customer_id
+    datastream_token : var.observe.datastream_token
+  }
+  # use_branch_name        = "main"
+  compute_instance_count = 1
+  config_bucket_name     = module.config_bucket.bucket_name
+}
+
+module "config_bucket" {
+  source     = "./service_modules/config_bucket"
+  project_id = var.project_id
+  # region      = var.region
+  name_format = format(var.name_format, "config_bucket-%s")
+}
+
+#------------------------------------------------------------------------#
+# Create a Load Balancer
+#------------------------------------------------------------------------#
+module "loadbalancing" {
+  #   depends_on  = [module.project]
+  #   count       = local.modules_var["loadbalancing"].create == true ? 1 : 0
+  source      = "./service_modules/loadbalancing"
+  project_id  = var.project_id
+  region      = var.region
+  name_format = var.name_format
+  # these instances have to be in the same region as the load balancer target group
+  # using a filter in compute module to produce a list in the same region even though we produce instances in other regions
+  target_group_instances = module.compute.target_group_instances
+}
+
+#------------------------------------------------------------------------#
 # create a compute based otel collector pointed at observe
 #------------------------------------------------------------------------#
 module "compute_otel_collector" {
@@ -79,8 +120,8 @@ module "function_bigquery" {
     COLLECTOR_LOGGING  = "TRUE"
     COLLECTOR_ENDPOINT = "http://${module.compute_otel_collector.gcp_ubuntu_box.compute_instances.UBUNTU_20_04_LTS_0.public_ip}:4317"
   }
-  source_dir  = "./python_scripts/function_code/bigquery"
-  output_path = "./python_scripts/function_code/bigquery/zip_files/bigquery_func_code.zip"
+  source_dir  = "${path.module}/python_scripts/function_code/bigquery"
+  output_path = "${path.module}/python_scripts/function_code/bigquery/zip_files/bigquery_func_code.zip"
 }
 
 #------------------------------------------------------------------------#
@@ -153,8 +194,8 @@ module "function_mysql" {
     COLLECTOR_LOGGING  = "TRUE"
     COLLECTOR_ENDPOINT = "http://${module.compute_otel_collector.gcp_ubuntu_box.compute_instances.UBUNTU_20_04_LTS_0.public_ip}:4317"
   }
-  source_dir  = "./python_scripts/function_code/mysql"
-  output_path = "./python_scripts/function_code/mysql/zip_files/mysql_func_code.zip"
+  source_dir  = "${path.module}/python_scripts/function_code/mysql"
+  output_path = "${path.module}/python_scripts/function_code/mysql/zip_files/mysql_func_code.zip"
 }
 
 
@@ -229,8 +270,8 @@ module "function_postgres" {
     COLLECTOR_LOGGING  = "TRUE"
     COLLECTOR_ENDPOINT = "http://${module.compute_otel_collector.gcp_ubuntu_box.compute_instances.UBUNTU_20_04_LTS_0.public_ip}:4317"
   }
-  source_dir  = "./python_scripts/function_code/postgres"
-  output_path = "./python_scripts/function_code/postgres/zip_files/postgres_func_code.zip"
+  source_dir  = "${path.module}/python_scripts/function_code/postgres"
+  output_path = "${path.module}/python_scripts/function_code/postgres/zip_files/postgres_func_code.zip"
 }
 
 #------------------------------------------------------------------------#
@@ -335,8 +376,9 @@ module "function_redis" {
     COLLECTOR_LOGGING  = "TRUE"
     COLLECTOR_ENDPOINT = "http://${module.compute_otel_collector.gcp_ubuntu_box.compute_instances.UBUNTU_20_04_LTS_0.public_ip}:4317"
   }
-  source_dir       = "./python_scripts/function_code/redis"
-  output_path      = "./python_scripts/function_code/postgres/zip_files/redis_func_code.zip"
+
+  source_dir       = "${path.module}/python_scripts/function_code/redis"
+  output_path      = "${path.module}/python_scripts/function_code/postgres/zip_files/redis_func_code.zip"
   vpc_connector_id = google_vpc_access_connector.connector.id
 }
 
