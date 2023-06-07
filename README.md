@@ -96,7 +96,7 @@ module "google" {
 | <a name="input_enable_service_pubsub"></a> [enable\_service\_pubsub](#input\_enable\_service\_pubsub) | Enable Pub Sub service. | `bool` | `true` | no |
 | <a name="input_enable_service_redis"></a> [enable\_service\_redis](#input\_enable\_service\_redis) | Enable Redis service. | `bool` | `true` | no |
 | <a name="input_enable_service_storage"></a> [enable\_service\_storage](#input\_enable\_service\_storage) | Enable Cloud Storage service. | `bool` | `true` | no |
-| <a name="input_feature_flags"></a> [feature\_flags](#input\_feature\_flags) | Toggle features which are being rolled out or phased out. | `map(bool)` | `{}` | no |
+| <a name="input_feature_flags"></a> [feature\_flags](#input\_feature\_flags) | List of feature flags. This field is experimental, please contact support for guidance. | `list(string)` | `[]` | no |
 | <a name="input_freshness_default_duration"></a> [freshness\_default\_duration](#input\_freshness\_default\_duration) | Default dataset freshness. Can be overridden with freshness input | `string` | `"5m"` | no |
 | <a name="input_freshness_overrides"></a> [freshness\_overrides](#input\_freshness\_overrides) | Freshness overrides by dataset. If absent, fall back to freshness\_duration\_default | `map(string)` | `{}` | no |
 | <a name="input_max_expiry"></a> [max\_expiry](#input\_max\_expiry) | Maximum expiry time for resources. | `string` | `"4h"` | no |

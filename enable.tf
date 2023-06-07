@@ -6,6 +6,10 @@
 # - enable_service_* variable usages in apps/main.tf
 locals {
 
+  # generate local.feature_flags map from var.feature_flags list(string) 
+  # ["foo", "!bar"] turns into {foo: true, bar: false}
+  feature_flags = { for item in var.feature_flags : trimprefix(item, "!") => trimprefix(item, "!") == item }
+
   enable_service_bigquery = (
     var.enable_service_bigquery == true ||
     # var.enable_service_bigquery ||
@@ -106,7 +110,7 @@ module "cloudfunctions" {
   name_format                = format(var.name_format, local.name_format_cloudfunctions)
   max_expiry                 = var.max_expiry
   freshness_default_duration = var.freshness_default_duration
-  feature_flags              = var.feature_flags
+  feature_flags              = local.feature_flags
 
   google = local.base_module
 }
@@ -119,7 +123,7 @@ module "cloudsql" {
   name_format                = format(var.name_format, local.name_format_cloudsql)
   max_expiry                 = var.max_expiry
   freshness_default_duration = var.freshness_default_duration
-  feature_flags              = var.feature_flags
+  feature_flags              = local.feature_flags
 
   google = local.base_module
 }
@@ -132,7 +136,7 @@ module "compute" {
   name_format                = format(var.name_format, local.name_format_compute)
   max_expiry                 = var.max_expiry
   freshness_default_duration = var.freshness_default_duration
-  feature_flags              = var.feature_flags
+  feature_flags              = local.feature_flags
   # iam_asset_binding          = one(module.iam[*].asset_binding)
 
   google = local.base_module
@@ -147,7 +151,7 @@ module "storage" {
   max_expiry                 = var.max_expiry
   freshness_default_duration = var.freshness_default_duration
   freshness_overrides        = var.freshness_overrides
-  feature_flags              = var.feature_flags
+  feature_flags              = local.feature_flags
 
   google = local.base_module
 }
@@ -161,7 +165,7 @@ module "load_balancing" {
   max_expiry                 = var.max_expiry
   freshness_default_duration = var.freshness_default_duration
   freshness_overrides        = var.freshness_overrides
-  feature_flags              = var.feature_flags
+  feature_flags              = local.feature_flags
 
   google = local.base_module
 }
@@ -174,7 +178,7 @@ module "bigquery" {
   max_expiry                 = var.max_expiry
   freshness_default_duration = var.freshness_default_duration
   # freshness_overrides = var.freshness_overrides
-  feature_flags = var.feature_flags
+  feature_flags = local.feature_flags
   google        = local.base_module
 }
 module "pubsub" {
@@ -186,7 +190,7 @@ module "pubsub" {
   max_expiry                 = var.max_expiry
   freshness_default_duration = var.freshness_default_duration
   freshness_overrides        = var.freshness_overrides
-  feature_flags              = var.feature_flags
+  feature_flags              = local.feature_flags
 
   google = local.base_module
 }
@@ -213,7 +217,7 @@ module "gke" {
   max_expiry                 = var.max_expiry
   freshness_default_duration = var.freshness_default_duration
   freshness_overrides        = var.freshness_overrides
-  feature_flags              = var.feature_flags
+  feature_flags              = local.feature_flags
 
   google = merge(local.base_module, {
     compute_instance_group                  = one(module.compute[*].compute_instance_group)
@@ -259,7 +263,7 @@ module "redis" {
   name_format                = format(var.name_format, local.name_format_redis)
   max_expiry_duration        = var.max_expiry
   freshness_default_duration = var.freshness_default_duration
-  feature_flags              = var.feature_flags
+  feature_flags              = local.feature_flags
 
   google = local.base_module
 }
@@ -272,7 +276,7 @@ module "redis" {
 #   name_format                = format(var.name_format, local.name_format_memcache)
 #   max_expiry_duration        = var.max_expiry
 #   freshness_default_duration = var.freshness_default_duration
-#   feature_flags              = var.feature_flags
+#   feature_flags              = local.feature_flags
 
 #   google = local.base_module
 # }
