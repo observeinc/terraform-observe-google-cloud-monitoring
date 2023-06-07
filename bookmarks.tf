@@ -1,6 +1,6 @@
 
 locals {
-  enable_bookmarks = lookup(var.feature_flags, "bookmarks", true)
+  enable_bookmarks = lookup(local.feature_flags, "bookmarks", true)
 }
 
 

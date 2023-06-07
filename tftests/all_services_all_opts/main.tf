@@ -27,8 +27,10 @@ module "all_services_all_opts" {
   enable_service_redis          = true
   # enable_service_memcache       = true
 
-  feature_flags = {
-    "use_name_format_in_preferred_path" = true
-  }
+  feature_flags = [
+    "use_name_format_in_preferred_path",
+    "metrics_explorer"
+  ]
+
   freshness_default_duration = var.freshness_default_duration
 }

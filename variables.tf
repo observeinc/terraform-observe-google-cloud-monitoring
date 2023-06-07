@@ -45,9 +45,9 @@ variable "freshness_overrides" {
 }
 
 variable "feature_flags" {
-  type        = map(bool)
-  description = "Toggle features which are being rolled out or phased out."
-  default     = {}
+  type        = list(string)
+  description = "List of feature flags. This field is experimental, please contact support for guidance."
+  default     = []
 }
 
 variable "services" {
