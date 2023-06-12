@@ -55,3 +55,11 @@ variable "exclude_metric_type_prefixes" {
     See https://cloud.google.com/monitoring/api/metrics_gcp for a list of Metric Types.
   EOF
 }
+
+variable "interval_duration" {
+  type        = string
+  default     = "5m0s"
+  description = <<-EOF
+    How frequently to poll for metrics from Google Cloud Monitoring.  Minimum value is 1m0s.
+  EOF
+}

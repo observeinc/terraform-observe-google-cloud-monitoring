@@ -41,7 +41,7 @@ resource "observe_poller" "gcp_monitoring" {
   datastream = local.datastream.oid
 
   gcp_monitoring {
-    project_id = local.project
+    project_id = local.project_id
     json_key   = local.json_key
 
     include_metric_type_prefixes = var.include_metric_type_prefixes
@@ -59,7 +59,7 @@ resource "observe_poller" "pubsub_poller" {
   datastream = local.datastream
 
   pubsub {
-    project_id      = local.project
+    project_id      = local.project_id
     subscription_id = local.subscription_id
     json_key        = local.json_key
   }

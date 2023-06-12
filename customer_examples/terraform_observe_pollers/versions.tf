@@ -1,3 +1,10 @@
+locals {
+  customer      = "126329491179"
+  domain        = "observeinc.com"
+  user_email    = ""
+  user_password = ""
+}
+
 terraform {
   required_providers {
     observe = {
@@ -14,7 +21,8 @@ terraform {
 }
 
 provider "observe" {
-  customer_id   = local.customer_id
+  customer      = local.customer
+  domain        = local.domain
   user_email    = local.user_email
   user_password = local.user_password
 }
