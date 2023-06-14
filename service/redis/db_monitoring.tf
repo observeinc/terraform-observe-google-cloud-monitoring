@@ -1111,7 +1111,7 @@ resource "observe_dashboard" "redis_monitoring" {
                 "@A <- @\"commands_calls_from_GCP/Redis Metrics\" {",
                 "    filter role = \"primary\" ",
                 "    join instance_pkey = @redis.instance_pkey",
-                "    align frame(back: 2m), metric_commands_calls_ybcszjy4:avg(m(\"commands_calls\"))",
+                "    align 2m, metric_commands_calls_ybcszjy4:avg(m(\"commands_calls\"))",
                 "    aggregate metric_commands_calls_ybcszjy4:sum(metric_commands_calls_ybcszjy4), group_by(hostname)",
                 "}",
                 "<- @A {}",
@@ -1138,7 +1138,7 @@ resource "observe_dashboard" "redis_monitoring" {
                     @A <- @"commands_calls_from_GCP/Redis Metrics" {
                         filter role = "primary" 
                         join instance_pkey = @redis.instance_pkey
-                        align frame(back: 2m), metric_commands_calls_ybcszjy4:avg(m("commands_calls"))
+                        align 2m, metric_commands_calls_ybcszjy4:avg(m("commands_calls"))
                         aggregate metric_commands_calls_ybcszjy4:sum(metric_commands_calls_ybcszjy4), group_by(hostname)
                     }
                     <- @A {}
@@ -1328,7 +1328,7 @@ resource "observe_dashboard" "redis_monitoring" {
                 "@A <- @\"stats_cpu_utilization_from_GCP/Redis Metrics\" {",
                 "    filter role = \"primary\"",
                 "    join instance_pkey = @redis.instance_pkey",
-                "    align frame(back: 5m), metric_stats_cpu_utilization_8ieslylf:rate(m(\"stats_cpu_utilization\"))",
+                "    align 2m, metric_stats_cpu_utilization_8ieslylf:rate(m(\"stats_cpu_utilization\"))",
                 "    aggregate metric_stats_cpu_utilization_8ieslylf:sum(metric_stats_cpu_utilization_8ieslylf), group_by(hostname)",
                 "}",
                 "<- @A {}",
@@ -1355,7 +1355,7 @@ resource "observe_dashboard" "redis_monitoring" {
                     @A <- @"stats_cpu_utilization_from_GCP/Redis Metrics" {
                         filter role = "primary"
                         join instance_pkey = @redis.instance_pkey
-                        align frame(back: 5m), metric_stats_cpu_utilization_8ieslylf:rate(m("stats_cpu_utilization"))
+                        align 2m, metric_stats_cpu_utilization_8ieslylf:rate(m("stats_cpu_utilization"))
                         aggregate metric_stats_cpu_utilization_8ieslylf:sum(metric_stats_cpu_utilization_8ieslylf), group_by(hostname)
                     }
                     <- @A {}
@@ -1550,7 +1550,7 @@ resource "observe_dashboard" "redis_monitoring" {
                 "@A <- @\"keyspace_keys_from_GCP/Redis Metrics\" {",
                 "    filter role = \"primary\"",
                 "    join instance_pkey = @redis.instance_pkey",
-                "    align frame(back: 2m), metric_keyspace_keys_gutc2399:avg(m(\"keyspace_keys\"))",
+                "    align 2m, metric_keyspace_keys_gutc2399:avg(m(\"keyspace_keys\"))",
                 "    aggregate metric_keyspace_keys_gutc2399:sum(metric_keyspace_keys_gutc2399), group_by(hostname)",
                 "}",
                 "<- @A {}",
@@ -1577,7 +1577,7 @@ resource "observe_dashboard" "redis_monitoring" {
                     @A <- @"keyspace_keys_from_GCP/Redis Metrics" {
                         filter role = "primary"
                         join instance_pkey = @redis.instance_pkey
-                        align frame(back: 2m), metric_keyspace_keys_gutc2399:avg(m("keyspace_keys"))
+                        align 2m, metric_keyspace_keys_gutc2399:avg(m("keyspace_keys"))
                         aggregate metric_keyspace_keys_gutc2399:sum(metric_keyspace_keys_gutc2399), group_by(hostname)
                     }
                     <- @A {}
@@ -1777,7 +1777,7 @@ resource "observe_dashboard" "redis_monitoring" {
                 "@A <- @\"clients_connected_from_GCP/Redis Metrics\" {",
                 "    filter role = \"primary\"",
                 "    join instance_pkey = @redis.instance_pkey",
-                "    align frame(back: 2m), metric_clients_connected_3x4tfwpv:avg(m(\"clients_connected\"))",
+                "    align 2m, metric_clients_connected_3x4tfwpv:avg(m(\"clients_connected\"))",
                 "    aggregate metric_clients_connected_3x4tfwpv:sum(metric_clients_connected_3x4tfwpv), group_by(hostname)",
                 "}",
                 "<- @A {}",
@@ -1804,7 +1804,7 @@ resource "observe_dashboard" "redis_monitoring" {
                     @A <- @"clients_connected_from_GCP/Redis Metrics" {
                         filter role = "primary"
                         join instance_pkey = @redis.instance_pkey
-                        align frame(back: 2m), metric_clients_connected_3x4tfwpv:avg(m("clients_connected"))
+                        align 2m, metric_clients_connected_3x4tfwpv:avg(m("clients_connected"))
                         aggregate metric_clients_connected_3x4tfwpv:sum(metric_clients_connected_3x4tfwpv), group_by(hostname)
                     }
                     <- @A {}
@@ -1997,7 +1997,7 @@ resource "observe_dashboard" "redis_monitoring" {
               opal = [
                 "filter role = \"primary\"",
                 "join instance_pkey = @redis.instance_pkey",
-                "align frame(back: 2m), metric_stats_memory_usage_ratio_44v2388h:avg(m(\"stats_memory_usage_ratio\"))",
+                "align 2m, metric_stats_memory_usage_ratio_44v2388h:avg(m(\"stats_memory_usage_ratio\"))",
                 "aggregate metric_stats_memory_usage_ratio_44v2388h:sum(metric_stats_memory_usage_ratio_44v2388h*100), group_by(hostname)",
                 "",
               ]
@@ -2022,7 +2022,7 @@ resource "observe_dashboard" "redis_monitoring" {
         pipeline = <<-EOT
                     filter role = "primary"
                     join instance_pkey = @redis.instance_pkey
-                    align frame(back: 2m), metric_stats_memory_usage_ratio_44v2388h:avg(m("stats_memory_usage_ratio"))
+                    align 2m, metric_stats_memory_usage_ratio_44v2388h:avg(m("stats_memory_usage_ratio"))
                     aggregate metric_stats_memory_usage_ratio_44v2388h:sum(metric_stats_memory_usage_ratio_44v2388h*100), group_by(hostname)
                 EOT
       },
@@ -2216,7 +2216,7 @@ resource "observe_dashboard" "redis_monitoring" {
                 "@A <- @\"stats_network_traffic_from_GCP/Redis Metrics\" {",
                 "    filter role = \"primary\"",
                 "    join instance_pkey = @redis.instance_pkey",
-                "    align frame(back: 2m), metric_stats_network_traffic_5me9224l:avg(m(\"stats_network_traffic\"))",
+                "    align 2m, metric_stats_network_traffic_5me9224l:avg(m(\"stats_network_traffic\"))",
                 "    aggregate metric_stats_network_traffic_5me9224l:sum(metric_stats_network_traffic_5me9224l), group_by(hostname)",
                 "}",
                 "<- @A {}",
@@ -2243,7 +2243,7 @@ resource "observe_dashboard" "redis_monitoring" {
                     @A <- @"stats_network_traffic_from_GCP/Redis Metrics" {
                         filter role = "primary"
                         join instance_pkey = @redis.instance_pkey
-                        align frame(back: 2m), metric_stats_network_traffic_5me9224l:avg(m("stats_network_traffic"))
+                        align 2m, metric_stats_network_traffic_5me9224l:avg(m("stats_network_traffic"))
                         aggregate metric_stats_network_traffic_5me9224l:sum(metric_stats_network_traffic_5me9224l), group_by(hostname)
                     }
                     <- @A {}
@@ -2439,7 +2439,7 @@ resource "observe_dashboard" "redis_monitoring" {
                 "@A <- @\"stats_connections_total_from_GCP/Redis Metrics\" {",
                 "    filter role = \"primary\"",
                 "    join instance_pkey = @redis.instance_pkey",
-                "    align frame(back: 2m), metric_stats_connections_total_46w7dr1w:avg(m(\"stats_connections_total\"))",
+                "    align 2m, metric_stats_connections_total_46w7dr1w:avg(m(\"stats_connections_total\"))",
                 "    aggregate metric_stats_connections_total_46w7dr1w:sum(metric_stats_connections_total_46w7dr1w), group_by(hostname)",
                 "}",
                 "<- @A {}",
@@ -2466,7 +2466,7 @@ resource "observe_dashboard" "redis_monitoring" {
                     @A <- @"stats_connections_total_from_GCP/Redis Metrics" {
                         filter role = "primary"
                         join instance_pkey = @redis.instance_pkey
-                        align frame(back: 2m), metric_stats_connections_total_46w7dr1w:avg(m("stats_connections_total"))
+                        align 2m, metric_stats_connections_total_46w7dr1w:avg(m("stats_connections_total"))
                         aggregate metric_stats_connections_total_46w7dr1w:sum(metric_stats_connections_total_46w7dr1w), group_by(hostname)
                     }
                     <- @A {}
@@ -2661,7 +2661,7 @@ resource "observe_dashboard" "redis_monitoring" {
                 "@A <- @\"keyspace_avg_ttl_from_GCP/Redis Metrics\" {",
                 "    filter role = \"primary\"",
                 "    join instance_pkey = @redis.instance_pkey",
-                "    align frame(back: 2m), metric_keyspace_avg_ttl_7s5qqdnq:avg(m(\"keyspace_avg_ttl\"))",
+                "    align 2m, metric_keyspace_avg_ttl_7s5qqdnq:avg(m(\"keyspace_avg_ttl\"))",
                 "    aggregate metric_keyspace_avg_ttl_7s5qqdnq:sum(metric_keyspace_avg_ttl_7s5qqdnq), group_by(hostname)",
                 "}",
                 "<- @A {}",
@@ -2688,7 +2688,7 @@ resource "observe_dashboard" "redis_monitoring" {
                     @A <- @"keyspace_avg_ttl_from_GCP/Redis Metrics" {
                         filter role = "primary"
                         join instance_pkey = @redis.instance_pkey
-                        align frame(back: 2m), metric_keyspace_avg_ttl_7s5qqdnq:avg(m("keyspace_avg_ttl"))
+                        align 2m, metric_keyspace_avg_ttl_7s5qqdnq:avg(m("keyspace_avg_ttl"))
                         aggregate metric_keyspace_avg_ttl_7s5qqdnq:sum(metric_keyspace_avg_ttl_7s5qqdnq), group_by(hostname)
                     }
                     <- @A {}
@@ -2883,7 +2883,7 @@ resource "observe_dashboard" "redis_monitoring" {
                 "@A <- @\"stats_expired_keys_from_GCP/Redis Metrics\" {",
                 "    filter role = \"primary\"",
                 "    join instance_pkey = @redis.instance_pkey",
-                "    align frame(back: 2m), metric_stats_expired_keys_wbhf0r7g:avg(m(\"stats_expired_keys\"))",
+                "    align 2m, metric_stats_expired_keys_wbhf0r7g:avg(m(\"stats_expired_keys\"))",
                 "    aggregate metric_stats_expired_keys_wbhf0r7g:sum(metric_stats_expired_keys_wbhf0r7g), group_by(hostname)",
                 "}",
                 "<- @A {}",
@@ -2910,7 +2910,7 @@ resource "observe_dashboard" "redis_monitoring" {
                     @A <- @"stats_expired_keys_from_GCP/Redis Metrics" {
                         filter role = "primary"
                         join instance_pkey = @redis.instance_pkey
-                        align frame(back: 2m), metric_stats_expired_keys_wbhf0r7g:avg(m("stats_expired_keys"))
+                        align 2m, metric_stats_expired_keys_wbhf0r7g:avg(m("stats_expired_keys"))
                         aggregate metric_stats_expired_keys_wbhf0r7g:sum(metric_stats_expired_keys_wbhf0r7g), group_by(hostname)
                     }
                     <- @A {}
@@ -3106,7 +3106,7 @@ resource "observe_dashboard" "redis_monitoring" {
                 "@A <- @\"stats_keyspace_hits_from_GCP/Redis Metrics\" {",
                 "    filter role = \"primary\"",
                 "    join instance_pkey = @redis.instance_pkey",
-                "    align frame(back: 2m), metric_stats_keyspace_hits_zk0gg3ud:avg(m(\"stats_keyspace_hits\"))",
+                "    align 2m, metric_stats_keyspace_hits_zk0gg3ud:avg(m(\"stats_keyspace_hits\"))",
                 "    aggregate metric_stats_keyspace_hits_zk0gg3ud:sum(metric_stats_keyspace_hits_zk0gg3ud), group_by(hostname)",
                 "}",
                 "<- @A {}",
@@ -3133,7 +3133,7 @@ resource "observe_dashboard" "redis_monitoring" {
                     @A <- @"stats_keyspace_hits_from_GCP/Redis Metrics" {
                         filter role = "primary"
                         join instance_pkey = @redis.instance_pkey
-                        align frame(back: 2m), metric_stats_keyspace_hits_zk0gg3ud:avg(m("stats_keyspace_hits"))
+                        align 2m, metric_stats_keyspace_hits_zk0gg3ud:avg(m("stats_keyspace_hits"))
                         aggregate metric_stats_keyspace_hits_zk0gg3ud:sum(metric_stats_keyspace_hits_zk0gg3ud), group_by(hostname)
                     }
                     <- @A {}
@@ -3331,7 +3331,7 @@ resource "observe_dashboard" "redis_monitoring" {
                 "@A <- @\"stats_keyspace_misses_from_GCP/Redis Metrics\" {",
                 "    filter role = \"primary\"",
                 "    join instance_pkey = @redis.instance_pkey",
-                "    align frame(back: 2m), metric_stats_keyspace_misses_85e379pl:avg(m(\"stats_keyspace_misses\"))",
+                "    align 2m, metric_stats_keyspace_misses_85e379pl:avg(m(\"stats_keyspace_misses\"))",
                 "    aggregate metric_stats_keyspace_misses_85e379pl:sum(metric_stats_keyspace_misses_85e379pl), group_by(instance_pkey)",
                 "}",
                 "<- @A {}",
@@ -3358,7 +3358,7 @@ resource "observe_dashboard" "redis_monitoring" {
                     @A <- @"stats_keyspace_misses_from_GCP/Redis Metrics" {
                         filter role = "primary"
                         join instance_pkey = @redis.instance_pkey
-                        align frame(back: 2m), metric_stats_keyspace_misses_85e379pl:avg(m("stats_keyspace_misses"))
+                        align 2m, metric_stats_keyspace_misses_85e379pl:avg(m("stats_keyspace_misses"))
                         aggregate metric_stats_keyspace_misses_85e379pl:sum(metric_stats_keyspace_misses_85e379pl), group_by(instance_pkey)
                     }
                     <- @A {}
@@ -3554,7 +3554,7 @@ resource "observe_dashboard" "redis_monitoring" {
                 "@A <- @\"keyspace_keys_with_expiration_from_GCP/Redis Metrics\" {",
                 "    filter role = \"primary\"",
                 "    join instance_pkey = @redis.instance_pkey",
-                "    align frame(back: 2m), metric_keyspace_keys_with_expiration_ov8o9z71:avg(m(\"keyspace_keys_with_expiration\"))",
+                "    align 2m, metric_keyspace_keys_with_expiration_ov8o9z71:avg(m(\"keyspace_keys_with_expiration\"))",
                 "    aggregate metric_keyspace_keys_with_expiration_ov8o9z71:sum(metric_keyspace_keys_with_expiration_ov8o9z71), group_by(hostname)",
                 "}",
                 "<- @A {}",
@@ -3581,7 +3581,7 @@ resource "observe_dashboard" "redis_monitoring" {
                     @A <- @"keyspace_keys_with_expiration_from_GCP/Redis Metrics" {
                         filter role = "primary"
                         join instance_pkey = @redis.instance_pkey
-                        align frame(back: 2m), metric_keyspace_keys_with_expiration_ov8o9z71:avg(m("keyspace_keys_with_expiration"))
+                        align 2m, metric_keyspace_keys_with_expiration_ov8o9z71:avg(m("keyspace_keys_with_expiration"))
                         aggregate metric_keyspace_keys_with_expiration_ov8o9z71:sum(metric_keyspace_keys_with_expiration_ov8o9z71), group_by(hostname)
                     }
                     <- @A {}
