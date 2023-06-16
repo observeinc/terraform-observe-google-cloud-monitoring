@@ -3,7 +3,7 @@ locals {
 
   # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   # There is a stupid bug that makes permissions for cloud scheduler not work right unless I change this when it has inconsitent plan
-  hack = "${module.function_bigquery.bucket_object.md5hash}=123456"
+  hack = "${module.function_bigquery.bucket_object.md5hash}=1234"
 }
 
 #------------------------------------------------------------------------#
@@ -354,6 +354,7 @@ resource "google_vpc_access_connector" "connector" {
   network       = data.google_compute_network.default.name
   project       = var.project_id
   region        = var.region
+  machine_type  = "e2-standard-4"
 }
 
 #------------------------------------------------------------------------#
