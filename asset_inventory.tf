@@ -79,7 +79,7 @@ resource "observe_dataset" "resource_asset_inventory_records" {
   stage {
     input    = "events"
     pipeline = <<-EOF
-          filter not is_null(resource)
+          filter (resource != object(parse_json("{}"))) and not is_null(resource)
 
           make_col 
             ttl: case(deleted, 1ns, true, 4h),
