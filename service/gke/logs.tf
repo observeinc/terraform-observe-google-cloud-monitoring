@@ -30,8 +30,9 @@ resource "observe_dataset" "gke_logs" {
             k8sio_deprecated:string(labels['k8s.io/deprecated']),
             k8sio_removed_release:string(labels['k8s.io/removed-release'])
             
+        make_col cluster_type:if(match_regex(location, /[^\-]*-[^\-]*-/, "i"), "/zones/", "/locations/")
 
-        make_col gkeClusterAssetKey: string_concat("//container.googleapis.com/projects/", project_id, "/locations/", location, "/clusters/",cluster_name)
+        make_col gkeClusterAssetKey: concat_strings("//container.googleapis.com/projects/", project_id, cluster_type, location, "/clusters/",cluster_name)
     EOF
   }
 
