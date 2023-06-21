@@ -1,3 +1,15 @@
+## [1.4.1](https://github.com/observeinc/terraform-observe-google/compare/v1.4.0...v1.4.1) (2023-06-21)
+
+
+### Bug Fixes
+
+* add user facing feature_flag input var ([#187](https://github.com/observeinc/terraform-observe-google/issues/187)) ([cb27e14](https://github.com/observeinc/terraform-observe-google/commit/cb27e14c61606c42c0bc3c19f08dad9fb7b55dee))
+* gkeClusterAssetKey in GKE Logs ([#192](https://github.com/observeinc/terraform-observe-google/issues/192)) ([9b6c02f](https://github.com/observeinc/terraform-observe-google/commit/9b6c02f07e9f78ab0c8aa7afbc36386b6b4d513e))
+* remove duplicates from resource assets ([#191](https://github.com/observeinc/terraform-observe-google/issues/191)) ([646ba45](https://github.com/observeinc/terraform-observe-google/commit/646ba45936809742f1b89520cb0bba3f3d69d043))
+* sample infra deployment errors for vpc connector ([#190](https://github.com/observeinc/terraform-observe-google/issues/190)) ([990a89f](https://github.com/observeinc/terraform-observe-google/commit/990a89f2e8aeade122be177c328f08e761d7b452))
+
+
+
 # [1.4.0](https://github.com/observeinc/terraform-observe-google/compare/v1.3.0...v1.4.0) (2023-05-31)
 
 
