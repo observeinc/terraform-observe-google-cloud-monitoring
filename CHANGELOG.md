@@ -1,3 +1,18 @@
+# [1.5.0](https://github.com/observeinc/terraform-observe-google/compare/v1.4.1...v1.5.0) (2023-06-22)
+
+
+### Bug Fixes
+
+* align metric visualizations to fixed buckets to match GCP default behavior (Redis Monitoring) ([#189](https://github.com/observeinc/terraform-observe-google/issues/189)) ([ef3b64f](https://github.com/observeinc/terraform-observe-google/commit/ef3b64f8f68f624d50f2d994a44cf36c4bf0e74b))
+* statically extracted region in GKE Clusters ([#194](https://github.com/observeinc/terraform-observe-google/issues/194)) ([952a54d](https://github.com/observeinc/terraform-observe-google/commit/952a54dbcfaaee28c81453f92da23703419deddd))
+
+
+### Features
+
+* ability to handle data from GCP Collection's exportAssets API ([#193](https://github.com/observeinc/terraform-observe-google/issues/193)) ([155c1d7](https://github.com/observeinc/terraform-observe-google/commit/155c1d771ce1f415c04f44d7ce599b507b90ec5a))
+
+
+
 ## [1.4.1](https://github.com/observeinc/terraform-observe-google/compare/v1.4.0...v1.4.1) (2023-06-21)
 
 
