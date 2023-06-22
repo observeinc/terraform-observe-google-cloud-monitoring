@@ -70,7 +70,7 @@ resource "observe_dataset" "gke_events" {
         make_col ttl: case(deleted, 1ns, true, 4h)
 
         extract_regex name, /projects\/(?P<project_id>[^\/]+)/
-        extract_regex name, /locations\/(?P<region>[^\/]+)/
+        extract_regex name, /\/\/([^\/]*\/){4}(?P<region>[^\-]*-[^\-]*).*\//
 
     EOF
   }
