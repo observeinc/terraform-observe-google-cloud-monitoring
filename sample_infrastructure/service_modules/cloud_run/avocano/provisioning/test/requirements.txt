@@ -1,6 +1,0 @@
-pytest
-google-api-python-client
-httpx
-google-api-core
-google-cloud-secret-manager
-pytest-playwright
