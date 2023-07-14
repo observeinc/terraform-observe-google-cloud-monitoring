@@ -1,0 +1,62 @@
+name: Cypress Tests 
+
+on:  
+  workflow_dispatch:
+  push:
+    branches:
+      - 'main' #triggers on release to main 
+  schedule:  
+    - cron:  '0 0 * * 0' #triggers 5pm on Sundays PST
+      
+    
+jobs:  
+  dispatch-cypress-tests:     
+    runs-on: ubuntu-latest
+    steps:
+    - name: Workflow Dispatch to Cypress Repo 
+      id: trigger-step
+      uses: aurelien-baudet/workflow-dispatch@v2.1.1
+      with:
+        workflow: cypress-ci
+        repo: observeinc/content-eng-cypress-tests
+        token: ${{ secrets.CYPRESS_PAT }}
+        inputs: '{"tags": "@gcp", "custom_tags": "terraform-observe-google"}'       
+    - name: Output of Cypress Job 
+      if: always()
+      run: |
+        echo "Job conclusion is: ${{ steps.trigger-step.outputs.workflow-conclusion }}"
+
+
+
+####    WORKFLOW DISPATCH USING ANOTHER ACTION. DOESN'T SUPPORT LOGGING OF LIVE URL    ### 
+
+    # - name: Workflow Dispatch to Cypress Repo 
+    #   id: trigger-step
+    #   uses: convictional/trigger-workflow-and-wait@v1.6.5
+    #   with:
+    #     owner: observeinc
+    #     repo: content-eng-cypress-tests
+    #     github_token: ${{ secrets.CYPRESS_PAT }}
+    #     workflow_file_name: cypress-ci-action.yml
+    #     wait_interval: 10
+    #     client_payload: '{"tags": "@gcp", "custom_tags": "terraform-observe-google"}'         
+    # - name: Output of Cypress Job 
+    #   if: always()
+    #   run: |
+    #     echo "Job conclusion is: ${{ steps.trigger-step.outputs.conclusion }}" 
+    #     echo "Triggered workflow URL is: ${{ steps.trigger-step.outputs.workflow_url }}"
+
+
+
+
+####    ALTERNATIVE WAY OF DISPATCH TO CYPRESS REPO. INCLUDES EVENT_TYPE BUT NO JOB CONCLUSION   ### 
+      # - name: Repository Dispatch
+      #   uses: peter-evans/repository-dispatch@v2
+      #   with:
+      #     token: ${{ secrets.CYPRESS_PAT }}
+      #     repository: observeinc/content-eng-cypress-tests
+      #     event-type: terraform-observe-google 
+      #     client-payload: '{"tags": "@gcp", "custom_tags": "gh-release-test"}'     
+      
+    
+      
