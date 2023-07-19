@@ -29,7 +29,7 @@ module "all_services_all_opts" {
 
   feature_flags = [
     "use_name_format_in_preferred_path",
-    "metrics_explorer"
+    "metrics_explorer:false"
   ]
 
   freshness_default_duration = var.freshness_default_duration
