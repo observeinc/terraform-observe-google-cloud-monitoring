@@ -2,7 +2,7 @@ locals {
   cloud_functions_monitoring_v2_dashboard_enable      = 1
   cloud_functions_monitoring_v2_dashboard_description = "Cloud Functions Monitoring Dashboard"
   cloud_functions_monitoring_v2_dashboard_name        = format(var.name_format, "Monitoring")
-  enable_metric_dataset_alias                         = lookup(var.feature_flags, "metric_explorer", false)
+  enable_metric_dataset_alias                         = lookup(var.feature_flags, "metric_explorer", true)
 
   cloud_functions_instances = resource.observe_dataset.cloud_functions_instances.id
   cloud_functions_metrics   = resource.observe_dataset.cloud_functions_metrics[0].id

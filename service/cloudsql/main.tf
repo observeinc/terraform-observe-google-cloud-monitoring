@@ -2,7 +2,7 @@ locals {
   freshness = merge({}, var.freshness_overrides)
 
   enable_metrics              = lookup(var.feature_flags, "metrics", true)
-  enable_metric_dataset_alias = lookup(var.feature_flags, "metric_explorer", false)
+  enable_metric_dataset_alias = lookup(var.feature_flags, "metric_explorer", true)
   enable_monitors             = lookup(var.feature_flags, "monitors", true)
   enable_both                 = local.enable_monitors && local.enable_metrics
 
