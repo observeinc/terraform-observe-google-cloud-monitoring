@@ -1,6 +1,6 @@
 locals {
   enable_metrics              = lookup(var.feature_flags, "metrics", true)
-  enable_metric_dataset_alias = lookup(var.feature_flags, "metric_explorer", true)
+  enable_metric_dataset_alias = lookup(var.feature_flags, "metric_explorer", false)
   freshness = merge({
     bigquery = "5m",
     metrics  = "1m",
