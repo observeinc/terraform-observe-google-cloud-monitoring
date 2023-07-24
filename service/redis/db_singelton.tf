@@ -1,4 +1,4 @@
-# terraform import observe_dashboard.redis_instance_v2 41743168
+# terraform import observe_dashboard.redis_instance 42909070
 resource "observe_dashboard" "redis_instance_v2" {
   description = local.dashboard_description_singleton
   layout = jsonencode(
@@ -10,29 +10,25 @@ resource "observe_dashboard" "redis_instance_v2" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-ll37bbel"
+              id       = "card-eemom99l"
               title    = "Dashboard Content"
             }
             items = [
               {
                 card = {
                   cardType    = "parameter"
-                  id          = "card-ve17w7ql"
+                  id          = "card-0aq6hhmv"
                   parameterId = "redis"
                 }
                 layout = {
-                  h           = 4
-                  i           = "card-ve17w7ql"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
+                  h = 4
+                  i = "card-0aq6hhmv"
                   resizeHandles = [
                     "e",
                   ]
-                  static = false
-                  w      = 4
-                  x      = 0
-                  y      = 0
+                  w = 4
+                  x = 0
+                  y = 0
                 }
               },
             ]
@@ -41,44 +37,36 @@ resource "observe_dashboard" "redis_instance_v2" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "section-oaa8j6kq"
+              id       = "card-60lg2aqn"
               title    = "Memory & CPU"
             }
             items = [
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-njbtt6ok"
+                  id       = "card-fmn50o5v"
                   stageId  = "stage-0ho2ak92"
                 }
                 layout = {
-                  h           = 8
-                  i           = "card-njbtt6ok"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 6
-                  x           = 0
-                  y           = 0
+                  h = 8
+                  i = "card-fmn50o5v"
+                  w = 6
+                  x = 0
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-483oye1k"
+                  id       = "card-l33i141z"
                   stageId  = "stage-kblmpc8o"
                 }
                 layout = {
-                  h           = 8
-                  i           = "card-483oye1k"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 6
-                  x           = 6
-                  y           = 0
+                  h = 8
+                  i = "card-l33i141z"
+                  w = 6
+                  x = 6
+                  y = 0
                 }
               },
             ]
@@ -87,62 +75,50 @@ resource "observe_dashboard" "redis_instance_v2" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "section-nd8q4myb"
+              id       = "card-nucrccym"
               title    = "Network & Connections"
             }
             items = [
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-65zx3ap9"
+                  id       = "card-kpwo1cm4"
                   stageId  = "stage-kuf5r7f3"
                 }
                 layout = {
-                  h           = 10
-                  i           = "card-65zx3ap9"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 4
-                  x           = 0
-                  y           = 0
+                  h = 10
+                  i = "card-kpwo1cm4"
+                  w = 4
+                  x = 0
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-c3w5whl3"
+                  id       = "card-mp1k4f73"
                   stageId  = "stage-xbo28v7v"
                 }
                 layout = {
-                  h           = 10
-                  i           = "card-c3w5whl3"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 4
-                  x           = 4
-                  y           = 0
+                  h = 10
+                  i = "card-mp1k4f73"
+                  w = 4
+                  x = 4
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-3jsqv0cj"
+                  id       = "card-4k68ccly"
                   stageId  = "stage-kp5jhjdv"
                 }
                 layout = {
-                  h           = 10
-                  i           = "card-3jsqv0cj"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 4
-                  x           = 8
-                  y           = 0
+                  h = 10
+                  i = "card-4k68ccly"
+                  w = 4
+                  x = 8
+                  y = 0
                 }
               },
             ]
@@ -151,62 +127,50 @@ resource "observe_dashboard" "redis_instance_v2" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "section-dgbwgl03"
+              id       = "card-d1dtmmel"
               title    = "Commands"
             }
             items = [
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-c8fm3s2a"
+                  id       = "card-d302luc9"
                   stageId  = "stage-r3msr1xk"
                 }
                 layout = {
-                  h           = 17
-                  i           = "card-c8fm3s2a"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 4
-                  x           = 8
-                  y           = 0
+                  h = 17
+                  i = "card-d302luc9"
+                  w = 4
+                  x = 8
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-0ofx2hd3"
+                  id       = "card-qoptv89o"
                   stageId  = "stage-8ibk9wow"
                 }
                 layout = {
-                  h           = 9
-                  i           = "card-0ofx2hd3"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 8
-                  x           = 0
-                  y           = 0
+                  h = 9
+                  i = "card-qoptv89o"
+                  w = 8
+                  x = 0
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-3o5u6gxo"
+                  id       = "card-4vgbbm8x"
                   stageId  = "stage-9mulnsts"
                 }
                 layout = {
-                  h           = 8
-                  i           = "card-3o5u6gxo"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 8
-                  x           = 0
-                  y           = 9
+                  h = 8
+                  i = "card-4vgbbm8x"
+                  w = 8
+                  x = 0
+                  y = 9
                 }
               },
             ]
@@ -215,98 +179,78 @@ resource "observe_dashboard" "redis_instance_v2" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "section-th0miqd8"
+              id       = "card-2906a7i8"
               title    = "Keys"
             }
             items = [
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-7g60of0m"
+                  id       = "card-ppp9uaqi"
                   stageId  = "stage-ehr1gzq0"
                 }
                 layout = {
-                  h           = 22
-                  i           = "card-7g60of0m"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 6
-                  x           = 0
-                  y           = 0
+                  h = 22
+                  i = "card-ppp9uaqi"
+                  w = 6
+                  x = 0
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-rvkvgo40"
+                  id       = "card-t41afjsy"
                   stageId  = "stage-yothkrri"
                 }
                 layout = {
-                  h           = 11
-                  i           = "card-rvkvgo40"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
-                  x           = 6
-                  y           = 0
+                  h = 11
+                  i = "card-t41afjsy"
+                  w = 3
+                  x = 6
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-9mwr2q64"
+                  id       = "card-jz4k06sk"
                   stageId  = "stage-wds98m8p"
                 }
                 layout = {
-                  h           = 11
-                  i           = "card-9mwr2q64"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
-                  x           = 9
-                  y           = 0
+                  h = 11
+                  i = "card-jz4k06sk"
+                  w = 3
+                  x = 9
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-z148u0h2"
+                  id       = "card-7r7h0ptr"
                   stageId  = "stage-yb1taje8"
                 }
                 layout = {
-                  h           = 11
-                  i           = "card-z148u0h2"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
-                  x           = 6
-                  y           = 11
+                  h = 11
+                  i = "card-7r7h0ptr"
+                  w = 3
+                  x = 6
+                  y = 11
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-vr1h2bz0"
+                  id       = "card-m9h9a3cy"
                   stageId  = "stage-t1p8enlp"
                 }
                 layout = {
-                  h           = 11
-                  i           = "card-vr1h2bz0"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
-                  x           = 9
-                  y           = 11
+                  h = 11
+                  i = "card-m9h9a3cy"
+                  w = 3
+                  x = 9
+                  y = 11
                 }
               },
             ]
@@ -315,62 +259,50 @@ resource "observe_dashboard" "redis_instance_v2" {
             card = {
               cardType = "section"
               closed   = true
-              id       = "section-pit132ks"
+              id       = "card-ovvwcpos"
               title    = "Details"
             }
             items = [
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-6oehbzvm"
+                  id       = "card-btjhzxy5"
                   stageId  = "stage-pajoygss"
                 }
                 layout = {
-                  h           = 14
-                  i           = "card-6oehbzvm"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 2
-                  x           = 0
-                  y           = 0
+                  h = 14
+                  i = "card-btjhzxy5"
+                  w = 2
+                  x = 0
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-tqy84zjl"
+                  id       = "card-siehy6sb"
                   stageId  = "stage-zmb32x6w"
                 }
                 layout = {
-                  h           = 14
-                  i           = "card-tqy84zjl"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 3
-                  x           = 2
-                  y           = 0
+                  h = 14
+                  i = "card-siehy6sb"
+                  w = 3
+                  x = 2
+                  y = 0
                 }
               },
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-ig4axjv0"
+                  id       = "card-gsvpxa0v"
                   stageId  = "stage-rp98umdc"
                 }
                 layout = {
-                  h           = 14
-                  i           = "card-ig4axjv0"
-                  isDraggable = true
-                  isResizable = true
-                  moved       = false
-                  static      = false
-                  w           = 4
-                  x           = 5
-                  y           = 0
+                  h = 14
+                  i = "card-gsvpxa0v"
+                  w = 4
+                  x = 5
+                  y = 0
                 }
               },
             ]
@@ -413,9 +345,9 @@ resource "observe_dashboard" "redis_instance_v2" {
             viewType = "resource-input"
           },
         ]
-        selectedStageId = "stage-rp98umdc"
+        selectedStageId = "stage-kuf5r7f3"
         timeRange = {
-          display               = "Today 15:04:48 → 16:04:48"
+          display               = "Past 60 minutes"
           endTime               = null
           millisFromCurrentTime = 3600000
           originalDisplay       = "Past 60 minutes"
@@ -479,58 +411,31 @@ resource "observe_dashboard" "redis_instance_v2" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight    = false
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
             columnOrderOverride = {
-              "1" = "Valid From"
-              "2" = "Valid To"
+              "0" = "Valid From"
+              "1" = "Valid To"
             }
             columnVisibility = {
               _c_nodes_path  = false
               _c_nodes_value = false
               instance_pkey  = false
             }
-            columnWidths                 = {}
-            containerWidth               = 2143
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = true
-            hasDoneAutoLayout            = false
-            maxColumnWidth               = 600
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 20
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
+            columnWidths                = {}
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            minColumnWidth              = 60
+            preserveCellAndRowSelection = true
+            rowHeights                  = {}
+            rowSizing                   = "Compact"
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 144
-            tableView                  = "TABULAR"
+            tableHeight = 144
           }
           index = 0
           inputList = [
@@ -545,9 +450,14 @@ resource "observe_dashboard" "redis_instance_v2" {
           managers = [
             {
               id                     = "ngwgqnkj"
-              isDisabled             = true
+              isDisabled             = false
               isResourceCountEnabled = false
               type                   = "Timescrubber"
+            },
+            {
+              id         = "c27at1lt"
+              isDisabled = false
+              type       = "JsonTree"
             },
           ]
           queryPresentation = {
@@ -571,47 +481,8 @@ resource "observe_dashboard" "redis_instance_v2" {
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  authorizedNetwork     = "count"
-                  connectMode           = "count"
-                  createTime            = "count"
-                  currentLocationId     = "count"
-                  displayName           = "count"
-                  host                  = "count"
-                  instance_pkey         = "count"
-                  location              = "count"
-                  locationId            = "count"
-                  name                  = "count"
-                  nodes                 = "count"
-                  persistenceMode       = "count"
-                  port                  = "count"
-                  project_id            = "count"
-                  readReplicasMode      = "count"
-                  redisVersion          = "count"
-                  replicaCount          = "count"
-                  reservedIpRange       = "count"
-                  state                 = "count"
-                  tier                  = "count"
-                  transitEncryptionMode = "count"
-                  ttl                   = "count"
-                  version               = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-cl17529h"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
               customSummary = "test_gcp_learning-bedbug/Redis Instance"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -619,10 +490,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id                = "step-mb5wx51n"
@@ -633,46 +500,7 @@ resource "observe_dashboard" "redis_instance_v2" {
               type              = "InputStep"
             },
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  authorizedNetwork     = "count"
-                  connectMode           = "count"
-                  createTime            = "count"
-                  currentLocationId     = "count"
-                  displayName           = "count"
-                  host                  = "count"
-                  instance_pkey         = "count"
-                  location              = "count"
-                  locationId            = "count"
-                  name                  = "count"
-                  nodes                 = "count"
-                  persistenceMode       = "count"
-                  port                  = "count"
-                  project_id            = "count"
-                  readReplicasMode      = "count"
-                  redisVersion          = "count"
-                  replicaCount          = "count"
-                  reservedIpRange       = "count"
-                  state                 = "count"
-                  tier                  = "count"
-                  transitEncryptionMode = "count"
-                  ttl                   = "count"
-                  version               = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-ch7996ng"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -680,10 +508,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id       = "step-lu1es50a"
@@ -708,7 +532,6 @@ resource "observe_dashboard" "redis_instance_v2" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -724,10 +547,10 @@ resource "observe_dashboard" "redis_instance_v2" {
                     filter instance_pkey = $redis.instance_pkey
                     
                     pick_col
-                    	@."Valid From",
-                     	@."Valid To",
-                     	instance_pkey,
-                     	nodes
+                      @."Valid From",
+                      @."Valid To",
+                      instance_pkey,
+                      nodes
                     
                     flatten_single nodes
                     make_col Node:string(_c_nodes_value.id)
@@ -748,54 +571,27 @@ resource "observe_dashboard" "redis_instance_v2" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
             columnOrderOverride = {
-              "1" = "Valid From"
-              "2" = "Valid To"
+              "0" = "Valid From"
+              "1" = "Valid To"
             }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            containerWidth               = 285
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = true
-            hasDoneAutoLayout            = false
-            maxColumnWidth               = 600
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 20
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
+            columnVisibility            = {}
+            columnWidths                = {}
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            minColumnWidth              = 60
+            preserveCellAndRowSelection = true
+            rowHeights                  = {}
+            rowSizing                   = "Compact"
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
+            tableHeight = 0
           }
           index = 1
           inputList = [
@@ -810,14 +606,14 @@ resource "observe_dashboard" "redis_instance_v2" {
           managers = [
             {
               id                     = "d3jh1epf"
-              isDisabled             = true
+              isDisabled             = false
               isResourceCountEnabled = false
               type                   = "Timescrubber"
             },
             {
-              id         = "a05ez3f0"
-              isDisabled = true
-              type       = "Vis"
+              id         = "5dt0427i"
+              isDisabled = false
+              type       = "JsonTree"
             },
           ]
           queryPresentation = {
@@ -841,47 +637,8 @@ resource "observe_dashboard" "redis_instance_v2" {
           serializable   = true
           steps = [
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  authorizedNetwork     = "count"
-                  connectMode           = "count"
-                  createTime            = "count"
-                  currentLocationId     = "count"
-                  displayName           = "count"
-                  host                  = "count"
-                  instance_pkey         = "count"
-                  location              = "count"
-                  locationId            = "count"
-                  name                  = "count"
-                  nodes                 = "count"
-                  persistenceMode       = "count"
-                  port                  = "count"
-                  project_id            = "count"
-                  readReplicasMode      = "count"
-                  redisVersion          = "count"
-                  replicaCount          = "count"
-                  reservedIpRange       = "count"
-                  state                 = "count"
-                  tier                  = "count"
-                  transitEncryptionMode = "count"
-                  ttl                   = "count"
-                  version               = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-5ki8kjwf"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customName    = "Input"
               customSummary = "test_gcp_learning-bedbug/Redis Instance"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -889,10 +646,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id                = "step-khwznicp"
@@ -903,46 +656,7 @@ resource "observe_dashboard" "redis_instance_v2" {
               type              = "InputStep"
             },
             {
-              columnStatsTable = {
-                columnFunctions = {
-                  authorizedNetwork     = "count"
-                  connectMode           = "count"
-                  createTime            = "count"
-                  currentLocationId     = "count"
-                  displayName           = "count"
-                  host                  = "count"
-                  instance_pkey         = "count"
-                  location              = "count"
-                  locationId            = "count"
-                  name                  = "count"
-                  nodes                 = "count"
-                  persistenceMode       = "count"
-                  port                  = "count"
-                  project_id            = "count"
-                  readReplicasMode      = "count"
-                  redisVersion          = "count"
-                  replicaCount          = "count"
-                  reservedIpRange       = "count"
-                  state                 = "count"
-                  tier                  = "count"
-                  transitEncryptionMode = "count"
-                  ttl                   = "count"
-                  version               = "count"
-                }
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-g0a7e318"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -950,10 +664,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id       = "step-599xhajb"
@@ -969,7 +679,6 @@ resource "observe_dashboard" "redis_instance_v2" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -982,7 +691,7 @@ resource "observe_dashboard" "redis_instance_v2" {
         }
         params   = null
         pipeline = <<-EOT
-                    filter instance_pkey = $redis.instance_pkey 
+                    filter instance_pkey = $redis.instance_pkey
                 EOT
       },
       {
@@ -1006,54 +715,28 @@ resource "observe_dashboard" "redis_instance_v2" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_pkey"
-              "1" = "valid_from"
-              "2" = "valid_to"
+              "0" = "valid_from"
+              "1" = "valid_to"
+              "2" = "instance_pkey"
             }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            hasDoneAutoLayout            = false
-            maxColumnWidth               = 600
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 20
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
+            columnVisibility            = {}
+            columnWidths                = {}
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            minColumnWidth              = 60
+            preserveCellAndRowSelection = true
+            rowHeights                  = {}
+            rowSizing                   = "Compact"
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
+            tableHeight = 0
           }
           index = 2
           inputList = [
@@ -1105,7 +788,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                     y             = "metric_commands_calls_1zbspxjt"
                   }
                   topK = {
-                    k     = 16
+                    k     = 66
                     order = "Top"
                     type  = "Auto"
                   }
@@ -1123,15 +806,14 @@ resource "observe_dashboard" "redis_instance_v2" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 150
           }
           selectedStepId = null
           serializable   = true
           steps = [
             {
               customName    = "Input"
-              customSummary = ""
-              datasetQuery  = null
+              customSummary = "commands_calls_from_test_gcp_learning-bedbug/Redis Metrics"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1139,10 +821,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id                = "step-61yyniv6"
@@ -1154,7 +832,6 @@ resource "observe_dashboard" "redis_instance_v2" {
             },
             {
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1162,10 +839,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id       = "step-k6lo3wnn"
@@ -1182,7 +855,6 @@ resource "observe_dashboard" "redis_instance_v2" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -1221,54 +893,28 @@ resource "observe_dashboard" "redis_instance_v2" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_pkey"
-              "1" = "valid_from"
-              "2" = "valid_to"
+              "0" = "valid_from"
+              "1" = "valid_to"
+              "2" = "instance_pkey"
             }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            hasDoneAutoLayout            = false
-            maxColumnWidth               = 600
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 20
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
+            columnVisibility            = {}
+            columnWidths                = {}
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            minColumnWidth              = 60
+            preserveCellAndRowSelection = true
+            rowHeights                  = {}
+            rowSizing                   = "Compact"
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
+            tableHeight = 0
           }
           index = 3
           inputList = [
@@ -1320,7 +966,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                     y             = "metric_commands_total_time_1vx369kl"
                   }
                   topK = {
-                    k     = 16
+                    k     = 33
                     order = "Top"
                     type  = "Auto"
                   }
@@ -1338,15 +984,14 @@ resource "observe_dashboard" "redis_instance_v2" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 300
           }
           selectedStepId = null
           serializable   = true
           steps = [
             {
               customName    = "Input"
-              customSummary = ""
-              datasetQuery  = null
+              customSummary = "commands_total_time_from_test_gcp_learning-bedbug/Redis Metrics"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1354,10 +999,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id                = "step-v2jud9qz"
@@ -1369,7 +1010,6 @@ resource "observe_dashboard" "redis_instance_v2" {
             },
             {
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1377,10 +1017,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id       = "step-903u02hd"
@@ -1398,7 +1034,6 @@ resource "observe_dashboard" "redis_instance_v2" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -1438,54 +1073,28 @@ resource "observe_dashboard" "redis_instance_v2" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_pkey"
-              "1" = "valid_from"
-              "2" = "valid_to"
+              "0" = "valid_from"
+              "1" = "valid_to"
+              "2" = "instance_pkey"
             }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            hasDoneAutoLayout            = false
-            maxColumnWidth               = 600
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 20
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
+            columnVisibility            = {}
+            columnWidths                = {}
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            minColumnWidth              = 60
+            preserveCellAndRowSelection = true
+            rowHeights                  = {}
+            rowSizing                   = "Compact"
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
+            tableHeight = 0
           }
           index = 4
           inputList = [
@@ -1537,7 +1146,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                     y             = "metric_commands_usec_per_call_ywai7d9t"
                   }
                   topK = {
-                    k     = 16
+                    k     = 33
                     order = "Top"
                     type  = "Auto"
                   }
@@ -1555,15 +1164,14 @@ resource "observe_dashboard" "redis_instance_v2" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 300
           }
           selectedStepId = null
           serializable   = true
           steps = [
             {
               customName    = "Input"
-              customSummary = ""
-              datasetQuery  = null
+              customSummary = "commands_usec_per_call_from_test_gcp_learning-bedbug/Redis Metrics"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1571,10 +1179,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id                = "step-kni8afq7"
@@ -1586,7 +1190,6 @@ resource "observe_dashboard" "redis_instance_v2" {
             },
             {
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1594,10 +1197,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id       = "step-a6cr9jme"
@@ -1615,7 +1214,6 @@ resource "observe_dashboard" "redis_instance_v2" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -1640,7 +1238,7 @@ resource "observe_dashboard" "redis_instance_v2" {
           {
             datasetId   = local.redis_metrics
             datasetPath = null
-            inputName   = "keyspace_keys_from_test_gcp_learning-bedbug/Redis Metrics"
+            inputName   = "keyspace_keys_from_GCP/Redis Metrics"
             inputRole   = "Data"
             stageId     = null
           },
@@ -1655,54 +1253,28 @@ resource "observe_dashboard" "redis_instance_v2" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_pkey"
-              "1" = "valid_from"
-              "2" = "valid_to"
+              "0" = "valid_from"
+              "1" = "valid_to"
+              "2" = "instance_pkey"
             }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            hasDoneAutoLayout            = false
-            maxColumnWidth               = 600
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 20
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
+            columnVisibility            = {}
+            columnWidths                = {}
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            minColumnWidth              = 60
+            preserveCellAndRowSelection = true
+            rowHeights                  = {}
+            rowSizing                   = "Compact"
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
+            tableHeight = 0
           }
           index     = 5
           inputList = []
@@ -1726,6 +1298,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                     visible = true
                   }
                   yConfig = {
+                    unit    = "1"
                     visible = true
                   }
                 }
@@ -1755,7 +1328,7 @@ resource "observe_dashboard" "redis_instance_v2" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 100
           }
           selectedStepId = null
           serializable   = true
@@ -1763,7 +1336,6 @@ resource "observe_dashboard" "redis_instance_v2" {
             {
               customName    = "Input"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1771,10 +1343,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id                = "step-57tod424"
@@ -1804,6 +1372,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                               visible = true
                             }
                             yConfig = {
+                              unit    = "1"
                               visible = true
                             }
                           }
@@ -1823,7 +1392,8 @@ resource "observe_dashboard" "redis_instance_v2" {
                           }
                           type = "timeseries"
                         }
-                        disableAggregate = false
+                        disableAggregate     = false
+                        expressionIdentifier = "A"
                         filterActions = [
                           {
                             params = {
@@ -1849,12 +1419,14 @@ resource "observe_dashboard" "redis_instance_v2" {
                           },
                           {
                             params = {
-                              columnId    = "role"
-                              columnType  = "string"
-                              filterVerb  = "filter"
-                              isExcluding = false
+                              columnId   = "role"
+                              columnType = "string"
+                              filterVerb = "filter"
                               values = [
-                                "primary",
+                                {
+                                  isExcluding = false
+                                  value       = "primary"
+                                },
                               ]
                             }
                             summary = null
@@ -1875,7 +1447,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                                                         Number of keys stored in this database.
                                                     EOT
                           heuristics  = null
-                          interval    = null
                           name        = "keyspace_keys"
                           rollup      = "avg"
                           type        = "gauge"
@@ -1903,16 +1474,26 @@ resource "observe_dashboard" "redis_instance_v2" {
                         summaryMode    = "over-time"
                         type           = "metricExpression"
                         valueColumnId  = "metric_keyspace_keys_6fdw8por"
+                        viewTab        = "visualize"
                       },
                     ]
-                    selectedExpressionId = "metricExpression-uwlpmugf"
+                    multiExpression = {
+                      expressionIdentifier = "A"
+                      filterActions        = []
+                      id                   = "multiExpression-k9lrilcq"
+                      lookupActions        = []
+                      type                 = "multiExpression"
+                      viewTab              = "visualize"
+                    }
+                    selectedExpressionIds = [
+                      "metricExpression-uwlpmugf",
+                    ]
                   }
                 }
                 summary = null
                 type    = "ExpressionBuilder"
               }
               customSummary = "Expression Builder"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -1920,10 +1501,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id       = "step-85clp81i"
@@ -1941,12 +1518,6 @@ resource "observe_dashboard" "redis_instance_v2" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = <<-EOT
-                            exists instance_pkey = @"filter_Redis Instance".instance_pkey
-                            filter role = "primary"
-                            align frame(back: 2m), metric_keyspace_keys_6fdw8por:avg(m("keyspace_keys"))
-                            aggregate metric_keyspace_keys_6fdw8por:sum(metric_keyspace_keys_6fdw8por), group_by(instance_pkey)
-                        EOT
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -1971,7 +1542,7 @@ resource "observe_dashboard" "redis_instance_v2" {
           {
             datasetId   = local.redis_metrics
             datasetPath = null
-            inputName   = "stats_expired_keys_from_test_gcp_learning-bedbug/Redis Metrics"
+            inputName   = "stats_expired_keys_from_GCP/Redis Metrics"
             inputRole   = "Data"
             stageId     = null
           },
@@ -1986,35 +1557,19 @@ resource "observe_dashboard" "redis_instance_v2" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_pkey"
-              "1" = "valid_from"
-              "2" = "valid_to"
+              "0" = "valid_from"
+              "1" = "valid_to"
+              "2" = "instance_pkey"
             }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            hasDoneAutoLayout            = false
-            maxColumnWidth               = 600
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 20
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
+            columnVisibility            = {}
+            columnWidths                = {}
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            minColumnWidth              = 60
+            preserveCellAndRowSelection = true
+            rowHeights                  = {}
+            rowSizing                   = "Compact"
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -2023,11 +1578,7 @@ resource "observe_dashboard" "redis_instance_v2" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
+            tableHeight = 0
           }
           index     = 6
           inputList = []
@@ -2051,6 +1602,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                     visible = true
                   }
                   yConfig = {
+                    unit    = "1"
                     visible = true
                   }
                 }
@@ -2065,7 +1617,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                     y             = "metric_stats_expired_keys_clr7f3tz"
                   }
                   topK = {
-                    k     = 16
+                    k     = 100
                     order = "Top"
                     type  = "Auto"
                   }
@@ -2083,7 +1635,7 @@ resource "observe_dashboard" "redis_instance_v2" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 100
           }
           selectedStepId = null
           serializable   = true
@@ -2091,7 +1643,6 @@ resource "observe_dashboard" "redis_instance_v2" {
             {
               customName    = "Input"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2099,10 +1650,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id                = "step-1ggmqaco"
@@ -2132,6 +1679,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                               visible = true
                             }
                             yConfig = {
+                              unit    = "1"
                               visible = true
                             }
                           }
@@ -2153,7 +1701,8 @@ resource "observe_dashboard" "redis_instance_v2" {
                           }
                           type = "timeseries"
                         }
-                        disableAggregate = false
+                        disableAggregate     = false
+                        expressionIdentifier = "A"
                         filterActions = [
                           {
                             params = {
@@ -2179,12 +1728,14 @@ resource "observe_dashboard" "redis_instance_v2" {
                           },
                           {
                             params = {
-                              columnId    = "role"
-                              columnType  = "string"
-                              filterVerb  = "filter"
-                              isExcluding = false
+                              columnId   = "role"
+                              columnType = "string"
+                              filterVerb = "filter"
                               values = [
-                                "primary",
+                                {
+                                  isExcluding = false
+                                  value       = "primary"
+                                },
                               ]
                             }
                             summary = null
@@ -2299,7 +1850,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                               "Redis Instance",
                             ]
                           }
-                          interval    = null
                           name        = "stats_expired_keys"
                           rollup      = "avg"
                           type        = "delta"
@@ -2327,16 +1877,26 @@ resource "observe_dashboard" "redis_instance_v2" {
                         summaryMode    = "over-time"
                         type           = "metricExpression"
                         valueColumnId  = "metric_stats_expired_keys_clr7f3tz"
+                        viewTab        = "visualize"
                       },
                     ]
-                    selectedExpressionId = "metricExpression-y2pkuirl"
+                    multiExpression = {
+                      expressionIdentifier = "A"
+                      filterActions        = []
+                      id                   = "multiExpression-ghg2aypo"
+                      lookupActions        = []
+                      type                 = "multiExpression"
+                      viewTab              = "visualize"
+                    }
+                    selectedExpressionIds = [
+                      "metricExpression-y2pkuirl",
+                    ]
                   }
                 }
                 summary = null
                 type    = "ExpressionBuilder"
               }
               customSummary = "Expression Builder"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2344,10 +1904,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id       = "step-mnw0khml"
@@ -2365,7 +1921,6 @@ resource "observe_dashboard" "redis_instance_v2" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -2390,7 +1945,7 @@ resource "observe_dashboard" "redis_instance_v2" {
           {
             datasetId   = local.redis_metrics
             datasetPath = null
-            inputName   = "stats_keyspace_hits_from_test_gcp_learning-bedbug/Redis Metrics"
+            inputName   = "stats_keyspace_hits_from_GCP/Redis Metrics"
             inputRole   = "Data"
             stageId     = null
           },
@@ -2405,54 +1960,28 @@ resource "observe_dashboard" "redis_instance_v2" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
             columnOrderOverride = {
               "0" = "valid_from"
               "1" = "valid_to"
               "2" = "instance_pkey"
             }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            hasDoneAutoLayout            = false
-            maxColumnWidth               = 600
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 20
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
+            columnVisibility            = {}
+            columnWidths                = {}
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            minColumnWidth              = 60
+            preserveCellAndRowSelection = true
+            rowHeights                  = {}
+            rowSizing                   = "Compact"
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
+            tableHeight = 0
           }
           index     = 7
           inputList = []
@@ -2476,6 +2005,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                     visible = true
                   }
                   yConfig = {
+                    unit    = "1"
                     visible = true
                   }
                 }
@@ -2505,7 +2035,7 @@ resource "observe_dashboard" "redis_instance_v2" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 100
           }
           selectedStepId = null
           serializable   = true
@@ -2513,7 +2043,6 @@ resource "observe_dashboard" "redis_instance_v2" {
             {
               customName    = "Input"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2521,10 +2050,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id                = "step-n39fgge3"
@@ -2554,6 +2079,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                               visible = true
                             }
                             yConfig = {
+                              unit    = "1"
                               visible = true
                             }
                           }
@@ -2573,7 +2099,8 @@ resource "observe_dashboard" "redis_instance_v2" {
                           }
                           type = "timeseries"
                         }
-                        disableAggregate = false
+                        disableAggregate     = false
+                        expressionIdentifier = "A"
                         filterActions = [
                           {
                             params = {
@@ -2599,12 +2126,14 @@ resource "observe_dashboard" "redis_instance_v2" {
                           },
                           {
                             params = {
-                              columnId    = "role"
-                              columnType  = "string"
-                              filterVerb  = "filter"
-                              isExcluding = false
+                              columnId   = "role"
+                              columnType = "string"
+                              filterVerb = "filter"
                               values = [
-                                "primary",
+                                {
+                                  isExcluding = false
+                                  value       = "primary"
+                                },
                               ]
                             }
                             summary = null
@@ -2717,7 +2246,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                               "Redis Instance",
                             ]
                           }
-                          interval    = null
                           name        = "stats_keyspace_hits"
                           rollup      = "avg"
                           type        = "delta"
@@ -2745,16 +2273,26 @@ resource "observe_dashboard" "redis_instance_v2" {
                         summaryMode    = "over-time"
                         type           = "metricExpression"
                         valueColumnId  = "metric_stats_keyspace_hits_n6hey7pl"
+                        viewTab        = "visualize"
                       },
                     ]
-                    selectedExpressionId = "metricExpression-7br0iwuc"
+                    multiExpression = {
+                      expressionIdentifier = "A"
+                      filterActions        = []
+                      id                   = "multiExpression-uvatl4wg"
+                      lookupActions        = []
+                      type                 = "multiExpression"
+                      viewTab              = "visualize"
+                    }
+                    selectedExpressionIds = [
+                      "metricExpression-7br0iwuc",
+                    ]
                   }
                 }
                 summary = null
                 type    = "ExpressionBuilder"
               }
               customSummary = "Expression Builder"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2762,10 +2300,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id       = "step-hid85kwz"
@@ -2783,7 +2317,6 @@ resource "observe_dashboard" "redis_instance_v2" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -2808,7 +2341,7 @@ resource "observe_dashboard" "redis_instance_v2" {
           {
             datasetId   = local.redis_metrics
             datasetPath = null
-            inputName   = "stats_keyspace_misses_from_test_gcp_learning-bedbug/Redis Metrics"
+            inputName   = "stats_keyspace_misses_from_GCP/Redis Metrics"
             inputRole   = "Data"
             stageId     = null
           },
@@ -2823,54 +2356,28 @@ resource "observe_dashboard" "redis_instance_v2" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
             columnOrderOverride = {
               "0" = "valid_from"
               "1" = "valid_to"
               "2" = "instance_pkey"
             }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            hasDoneAutoLayout            = false
-            maxColumnWidth               = 600
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 20
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
+            columnVisibility            = {}
+            columnWidths                = {}
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            minColumnWidth              = 60
+            preserveCellAndRowSelection = true
+            rowHeights                  = {}
+            rowSizing                   = "Compact"
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
+            tableHeight = 0
           }
           index     = 8
           inputList = []
@@ -2894,6 +2401,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                     visible = true
                   }
                   yConfig = {
+                    unit    = "1"
                     visible = true
                   }
                 }
@@ -2923,7 +2431,7 @@ resource "observe_dashboard" "redis_instance_v2" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 100
           }
           selectedStepId = null
           serializable   = true
@@ -2931,7 +2439,6 @@ resource "observe_dashboard" "redis_instance_v2" {
             {
               customName    = "Input"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -2939,10 +2446,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id                = "step-38d44nsv"
@@ -2972,6 +2475,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                               visible = true
                             }
                             yConfig = {
+                              unit    = "1"
                               visible = true
                             }
                           }
@@ -2991,7 +2495,8 @@ resource "observe_dashboard" "redis_instance_v2" {
                           }
                           type = "timeseries"
                         }
-                        disableAggregate = false
+                        disableAggregate     = false
+                        expressionIdentifier = "A"
                         filterActions = [
                           {
                             params = {
@@ -3017,12 +2522,14 @@ resource "observe_dashboard" "redis_instance_v2" {
                           },
                           {
                             params = {
-                              columnId    = "role"
-                              columnType  = "string"
-                              filterVerb  = "filter"
-                              isExcluding = false
+                              columnId   = "role"
+                              columnType = "string"
+                              filterVerb = "filter"
                               values = [
-                                "primary",
+                                {
+                                  isExcluding = false
+                                  value       = "primary"
+                                },
                               ]
                             }
                             summary = null
@@ -3135,7 +2642,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                               "Redis Instance",
                             ]
                           }
-                          interval    = null
                           name        = "stats_keyspace_misses"
                           rollup      = "avg"
                           type        = "delta"
@@ -3163,16 +2669,26 @@ resource "observe_dashboard" "redis_instance_v2" {
                         summaryMode    = "over-time"
                         type           = "metricExpression"
                         valueColumnId  = "metric_stats_keyspace_misses_f1jy5fad"
+                        viewTab        = "visualize"
                       },
                     ]
-                    selectedExpressionId = "metricExpression-x9m3dor7"
+                    multiExpression = {
+                      expressionIdentifier = "A"
+                      filterActions        = []
+                      id                   = "multiExpression-7b9g6ov5"
+                      lookupActions        = []
+                      type                 = "multiExpression"
+                      viewTab              = "visualize"
+                    }
+                    selectedExpressionIds = [
+                      "metricExpression-x9m3dor7",
+                    ]
                   }
                 }
                 summary = null
                 type    = "ExpressionBuilder"
               }
               customSummary = "Expression Builder"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3180,10 +2696,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id       = "step-m8zamc7f"
@@ -3201,7 +2713,6 @@ resource "observe_dashboard" "redis_instance_v2" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -3241,36 +2752,19 @@ resource "observe_dashboard" "redis_instance_v2" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
             columnOrderOverride = {
               "0" = "valid_from"
               "1" = "valid_to"
               "2" = "instance_pkey"
             }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            containerWidth               = 2143
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            hasDoneAutoLayout            = false
-            maxColumnWidth               = 600
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 20
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
+            columnVisibility            = {}
+            columnWidths                = {}
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            minColumnWidth              = 60
+            preserveCellAndRowSelection = true
+            rowHeights                  = {}
+            rowSizing                   = "Compact"
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -3279,11 +2773,7 @@ resource "observe_dashboard" "redis_instance_v2" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
+            tableHeight = 0
           }
           index = 9
           inputList = [
@@ -3355,15 +2845,14 @@ resource "observe_dashboard" "redis_instance_v2" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 250
           }
           selectedStepId = null
           serializable   = true
           steps = [
             {
               customName    = "Input"
-              customSummary = ""
-              datasetQuery  = null
+              customSummary = "stats_cache_hit_ratio_from_test_gcp_learning-bedbug/Redis Metrics"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3371,10 +2860,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id                = "step-swky5537"
@@ -3385,22 +2870,7 @@ resource "observe_dashboard" "redis_instance_v2" {
               type              = "InputStep"
             },
             {
-              columnStatsTable = {
-                columnFunctions = {}
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-sj1hjvzb"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3408,10 +2878,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id       = "step-fwbjsxzv"
@@ -3429,7 +2895,6 @@ resource "observe_dashboard" "redis_instance_v2" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -3469,35 +2934,19 @@ resource "observe_dashboard" "redis_instance_v2" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_pkey"
-              "1" = "valid_from"
-              "2" = "valid_to"
+              "0" = "valid_from"
+              "1" = "valid_to"
+              "2" = "instance_pkey"
             }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            hasDoneAutoLayout            = false
-            maxColumnWidth               = 600
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 20
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
+            columnVisibility            = {}
+            columnWidths                = {}
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            minColumnWidth              = 60
+            preserveCellAndRowSelection = true
+            rowHeights                  = {}
+            rowSizing                   = "Compact"
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -3506,11 +2955,7 @@ resource "observe_dashboard" "redis_instance_v2" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
+            tableHeight = 0
           }
           index = 10
           inputList = [
@@ -3561,7 +3006,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                     y             = "metric_stats_memory_usage_ratio_753dc9fz"
                   }
                   topK = {
-                    k     = 16
+                    k     = 40
                     order = "Top"
                     type  = "Auto"
                   }
@@ -3579,15 +3024,14 @@ resource "observe_dashboard" "redis_instance_v2" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 250
           }
           selectedStepId = null
           serializable   = true
           steps = [
             {
               customName    = "Input"
-              customSummary = ""
-              datasetQuery  = null
+              customSummary = "stats_memory_usage_ratio_from_test_gcp_learning-bedbug/Redis Metrics"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3595,10 +3039,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id                = "step-y1rvwqst"
@@ -3610,7 +3050,6 @@ resource "observe_dashboard" "redis_instance_v2" {
             },
             {
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3618,10 +3057,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id       = "step-m2w6vlvm"
@@ -3639,7 +3074,6 @@ resource "observe_dashboard" "redis_instance_v2" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -3679,38 +3113,21 @@ resource "observe_dashboard" "redis_instance_v2" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_pkey"
-              "1" = "space"
-              "2" = "valid_from"
-              "3" = "valid_to"
+              "0" = "valid_from"
+              "1" = "valid_to"
+              "2" = "instance_pkey"
+              "3" = "space"
               "4" = "relationship"
             }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            containerWidth               = 2143
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            hasDoneAutoLayout            = false
-            maxColumnWidth               = 600
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 20
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
+            columnVisibility            = {}
+            columnWidths                = {}
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            minColumnWidth              = 60
+            preserveCellAndRowSelection = true
+            rowHeights                  = {}
+            rowSizing                   = "Compact"
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -3719,11 +3136,7 @@ resource "observe_dashboard" "redis_instance_v2" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
+            tableHeight = 0
           }
           index = 11
           inputList = [
@@ -3776,7 +3189,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                     y             = "metric_stats_cpu_utilization_790asu9w"
                   }
                   topK = {
-                    k     = 16
+                    k     = 40
                     order = "Top"
                     type  = "Auto"
                   }
@@ -3800,15 +3213,14 @@ resource "observe_dashboard" "redis_instance_v2" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 250
           }
           selectedStepId = null
           serializable   = true
           steps = [
             {
               customName    = "Input"
-              customSummary = ""
-              datasetQuery  = null
+              customSummary = "stats_cpu_utilization_from_test_gcp_learning-bedbug/Redis Metrics"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3816,10 +3228,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id                = "step-sh6p4bbf"
@@ -3831,7 +3239,6 @@ resource "observe_dashboard" "redis_instance_v2" {
             },
             {
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -3839,10 +3246,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id       = "step-ljtf2g9w"
@@ -3860,7 +3263,6 @@ resource "observe_dashboard" "redis_instance_v2" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -3885,7 +3287,7 @@ resource "observe_dashboard" "redis_instance_v2" {
           {
             datasetId   = local.redis_metrics
             datasetPath = null
-            inputName   = "stats_network_traffic_from_test_gcp_learning-bedbug/Redis Metrics"
+            inputName   = "stats_network_traffic_from_GCP/Redis Metrics"
             inputRole   = "Data"
             stageId     = null
           },
@@ -3900,35 +3302,19 @@ resource "observe_dashboard" "redis_instance_v2" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_pkey"
-              "1" = "valid_from"
-              "2" = "valid_to"
+              "0" = "valid_from"
+              "1" = "valid_to"
+              "2" = "instance_pkey"
             }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            hasDoneAutoLayout            = false
-            maxColumnWidth               = 600
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 20
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
+            columnVisibility            = {}
+            columnWidths                = {}
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            minColumnWidth              = 60
+            preserveCellAndRowSelection = true
+            rowHeights                  = {}
+            rowSizing                   = "Compact"
             selection = {
               anchoredCellSelection   = null
               anchoredColumnSelection = null
@@ -3943,15 +3329,24 @@ resource "observe_dashboard" "redis_instance_v2" {
               rows                    = {}
               selectionType           = "table"
             }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
+            tableHeight = 0
           }
-          index     = 12
-          inputList = []
-          label     = "Total number of bytes sent to/from redis"
+          index = 12
+          inputList = [
+            {
+              datasetId   = local.redis_metrics
+              inputName   = "stats_network_traffic_from_GCP/Redis Metrics"
+              inputRole   = "Data"
+              isUserInput = true
+            },
+            {
+              inputName   = "filter_Redis Instance"
+              inputRole   = "Data"
+              isUserInput = true
+              stageId     = "stage-jt6xxmm2"
+            },
+          ]
+          label = "Total number of bytes sent to/from redis"
           managers = [
             {
               id         = "qsgn01tt"
@@ -3971,8 +3366,9 @@ resource "observe_dashboard" "redis_instance_v2" {
                     visible = true
                   }
                   yConfig = {
-                    unit    = "bytes"
-                    visible = true
+                    axisLabel = "Bytes/Second"
+                    unit      = "By"
+                    visible   = true
                   }
                 }
                 source = {
@@ -3986,7 +3382,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                     y             = "metric_stats_network_traffic_qe2motyy"
                   }
                   topK = {
-                    k     = 16
+                    k     = 66
                     order = "Top"
                     type  = "Auto"
                   }
@@ -4004,15 +3400,14 @@ resource "observe_dashboard" "redis_instance_v2" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 150
           }
           selectedStepId = null
           serializable   = true
           steps = [
             {
               customName    = "Input"
-              customSummary = ""
-              datasetQuery  = null
+              customSummary = "stats_network_traffic_from_GCP/Redis Metrics"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4020,10 +3415,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id                = "step-l6ig60kz"
@@ -4034,223 +3425,7 @@ resource "observe_dashboard" "redis_instance_v2" {
               type              = "InputStep"
             },
             {
-              action = {
-                params = {
-                  expressionList = {
-                    expressions = [
-                      {
-                        dataVis = {
-                          config = {
-                            color         = "Default"
-                            hideGridLines = false
-                            legend = {
-                              placement = "right"
-                              type      = "list"
-                              visible   = false
-                            }
-                            type = "xy"
-                            xConfig = {
-                              visible = true
-                            }
-                            yConfig = {
-                              unit    = "bytes"
-                              visible = true
-                            }
-                          }
-                          source = {
-                            table = {
-                              groupFields = [
-                                "instance_pkey",
-                              ]
-                              transformType = "none"
-                              type          = "xy"
-                              x             = "valid_from"
-                              y             = "metric_stats_network_traffic_qe2motyy"
-                            }
-                            topK = {
-                              order = "Top"
-                              type  = "Auto"
-                            }
-                            type = "table"
-                          }
-                          type = "timeseries"
-                        }
-                        disableAggregate = false
-                        filterActions = [
-                          {
-                            params = {
-                              foreignKey = {
-                                __typename = "ForeignKey"
-                                dstFields = [
-                                  "instance_pkey",
-                                ]
-                                label = "Redis Instance"
-                                srcFields = [
-                                  "instance_pkey",
-                                ]
-                                targetDataset    = local.redis_instance
-                                targetStageLabel = null
-                                type             = "foreign"
-                              }
-                              joinInput = {
-                                stageId = "stage-jt6xxmm2"
-                              }
-                            }
-                            summary = null
-                            type    = "ExistsInFilter"
-                          },
-                        ]
-                        frameDuration = {
-                          num  = 2
-                          unit = "minute"
-                        }
-                        groupBy = [
-                          "instance_pkey",
-                        ]
-                        id            = "metricExpression-v29zhmyn"
-                        lookupActions = []
-                        metric = {
-                          aggregate   = "sum"
-                          datasetId   = local.redis_metrics
-                          description = <<-EOT
-                                                        Total number of bytes sent to/from redis includes bytes from commands themselves, payload data, and delimiters.
-                                                    EOT
-                          heuristics = {
-                            __typename = "MetricHeuristics"
-                            tags = [
-                              {
-                                __typename = "MetricTag"
-                                column     = "displayName"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "hostname"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "instance_pkey"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "region"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "role"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "label"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_category"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_kind"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_kind_text"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_type"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "project_id"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "value_type"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "value_type_text"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "command"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "relationship"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "space"
-                                path       = ""
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_labels"
-                                path       = "direction"
-                              },
-                              {
-                                __typename = "MetricTag"
-                                column     = "metric_labels"
-                                path       = "role"
-                              },
-                            ]
-                            validLinkLabels = [
-                              "Redis Instance",
-                            ]
-                          }
-                          interval    = null
-                          name        = "stats_network_traffic"
-                          rollup      = "avg"
-                          type        = "delta"
-                          unit        = "By"
-                          userDefined = true
-                        }
-                        metricLink = {
-                          __typename = "ForeignKey"
-                          dstFields = [
-                            "instance_pkey",
-                          ]
-                          label = "Redis Instance"
-                          srcFields = [
-                            "instance_pkey",
-                          ]
-                          targetDataset    = local.redis_instance
-                          targetStageLabel = null
-                          type             = "foreign"
-                        }
-                        metricLinkInputSource = {
-                          stageId = "stage-jt6xxmm2"
-                        }
-                        showAlignment  = false
-                        showResolution = false
-                        summaryMode    = "over-time"
-                        type           = "metricExpression"
-                        valueColumnId  = "metric_stats_network_traffic_qe2motyy"
-                      },
-                    ]
-                    selectedExpressionId = "metricExpression-v29zhmyn"
-                  }
-                }
-                summary = null
-                type    = "ExpressionBuilder"
-              }
-              customSummary = "Expression Builder"
-              datasetQuery  = null
+              customSummary = ""
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4259,17 +3434,13 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindData",
                   "ResultKindStats",
                 ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
               }
-              id       = "step-0w3u5geq"
+              id       = "step-23je2ank"
               index    = 1
               isPinned = false
               opal = [
                 "exists instance_pkey = @\"filter_Redis Instance\".instance_pkey",
-                "align frame(back: 2m), metric_stats_network_traffic_qe2motyy:avg(m(\"stats_network_traffic\"))",
+                "align metric_stats_network_traffic_qe2motyy:rate(m(\"stats_network_traffic\"))",
                 "aggregate metric_stats_network_traffic_qe2motyy:sum(metric_stats_network_traffic_qe2motyy), group_by(instance_pkey)",
               ]
               queryPresentation = {}
@@ -4278,7 +3449,6 @@ resource "observe_dashboard" "redis_instance_v2" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -4292,7 +3462,7 @@ resource "observe_dashboard" "redis_instance_v2" {
         params   = null
         pipeline = <<-EOT
                     exists instance_pkey = @"filter_Redis Instance".instance_pkey
-                    align frame(back: 2m), metric_stats_network_traffic_qe2motyy:avg(m("stats_network_traffic"))
+                    align metric_stats_network_traffic_qe2motyy:rate(m("stats_network_traffic"))
                     aggregate metric_stats_network_traffic_qe2motyy:sum(metric_stats_network_traffic_qe2motyy), group_by(instance_pkey)
                 EOT
       },
@@ -4302,7 +3472,7 @@ resource "observe_dashboard" "redis_instance_v2" {
           {
             datasetId   = local.redis_metrics
             datasetPath = null
-            inputName   = "stats_connections_total_from_test_gcp_learning-bedbug/Redis Metrics"
+            inputName   = "stats_connections_total_from_GCP/Redis Metrics"
             inputRole   = "Data"
             stageId     = null
           },
@@ -4317,54 +3487,28 @@ resource "observe_dashboard" "redis_instance_v2" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_pkey"
-              "1" = "valid_from"
-              "2" = "valid_to"
+              "0" = "valid_from"
+              "1" = "valid_to"
+              "2" = "instance_pkey"
             }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            hasDoneAutoLayout            = false
-            maxColumnWidth               = 600
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 20
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
+            columnVisibility            = {}
+            columnWidths                = {}
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            minColumnWidth              = 60
+            preserveCellAndRowSelection = true
+            rowHeights                  = {}
+            rowSizing                   = "Compact"
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
+            tableHeight = 0
           }
           index     = 13
           inputList = []
@@ -4388,7 +3532,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                     visible = true
                   }
                   yConfig = {
-                    unit    = "bytes"
+                    unit    = "1"
                     visible = true
                   }
                 }
@@ -4418,15 +3562,14 @@ resource "observe_dashboard" "redis_instance_v2" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 150
           }
-          selectedStepId = "step-wd5qezql"
+          selectedStepId = null
           serializable   = true
           steps = [
             {
               customName    = "Input"
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4434,10 +3577,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id                = "step-4l56kbzu"
@@ -4467,7 +3606,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                               visible = true
                             }
                             yConfig = {
-                              unit    = "bytes"
+                              unit    = "1"
                               visible = true
                             }
                           }
@@ -4487,7 +3626,8 @@ resource "observe_dashboard" "redis_instance_v2" {
                           }
                           type = "timeseries"
                         }
-                        disableAggregate = false
+                        disableAggregate     = false
+                        expressionIdentifier = "A"
                         filterActions = [
                           {
                             params = {
@@ -4618,7 +3758,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                               "Redis Instance",
                             ]
                           }
-                          interval    = null
                           name        = "stats_connections_total"
                           rollup      = "avg"
                           type        = "delta"
@@ -4646,16 +3785,26 @@ resource "observe_dashboard" "redis_instance_v2" {
                         summaryMode    = "over-time"
                         type           = "metricExpression"
                         valueColumnId  = "metric_stats_connections_total_0ajegqu4"
+                        viewTab        = "visualize"
                       },
                     ]
-                    selectedExpressionId = "metricExpression-v29zhmyn"
+                    multiExpression = {
+                      expressionIdentifier = "A"
+                      filterActions        = []
+                      id                   = "multiExpression-4vdg1na7"
+                      lookupActions        = []
+                      type                 = "multiExpression"
+                      viewTab              = "visualize"
+                    }
+                    selectedExpressionIds = [
+                      "metricExpression-v29zhmyn",
+                    ]
                   }
                 }
                 summary = null
                 type    = "ExpressionBuilder"
               }
               customSummary = "Expression Builder"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4663,10 +3812,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id       = "step-wd5qezql"
@@ -4683,11 +3828,6 @@ resource "observe_dashboard" "redis_instance_v2" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = <<-EOT
-                            exists instance_pkey = @"filter_Redis Instance".instance_pkey
-                            align frame(back: 2m), metric_stats_connections_total_0ajegqu4:avg(m("stats_connections_total"))
-                            aggregate metric_stats_connections_total_0ajegqu4:sum(metric_stats_connections_total_0ajegqu4), group_by()
-                        EOT
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -4726,35 +3866,19 @@ resource "observe_dashboard" "redis_instance_v2" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "instance_pkey"
-              "1" = "valid_from"
-              "2" = "valid_to"
+              "0" = "valid_from"
+              "1" = "valid_to"
+              "2" = "instance_pkey"
             }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            hasDoneAutoLayout            = false
-            maxColumnWidth               = 600
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 20
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
+            columnVisibility            = {}
+            columnWidths                = {}
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            minColumnWidth              = 60
+            preserveCellAndRowSelection = true
+            rowHeights                  = {}
+            rowSizing                   = "Compact"
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -4763,11 +3887,7 @@ resource "observe_dashboard" "redis_instance_v2" {
               rows                 = {}
               selectionType        = "table"
             }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
+            tableHeight = 0
           }
           index = 14
           inputList = [
@@ -4818,7 +3938,7 @@ resource "observe_dashboard" "redis_instance_v2" {
                     y             = "metric_clients_connected_e3qjll1a"
                   }
                   topK = {
-                    k     = 16
+                    k     = 66
                     order = "Top"
                     type  = "Auto"
                   }
@@ -4836,15 +3956,14 @@ resource "observe_dashboard" "redis_instance_v2" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 600
+            wantBuckets = 150
           }
           selectedStepId = null
           serializable   = true
           steps = [
             {
               customName    = "Input"
-              customSummary = ""
-              datasetQuery  = null
+              customSummary = "clients_connected_from_test_gcp_learning-bedbug/Redis Metrics"
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4852,10 +3971,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id                = "step-6xc2yfb9"
@@ -4867,7 +3982,6 @@ resource "observe_dashboard" "redis_instance_v2" {
             },
             {
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -4875,10 +3989,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id       = "step-d0f4t8o4"
@@ -4896,7 +4006,6 @@ resource "observe_dashboard" "redis_instance_v2" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -4929,57 +4038,30 @@ resource "observe_dashboard" "redis_instance_v2" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
             columnOrderOverride = {
-              "1" = "Valid From"
-              "2" = "Valid To"
+              "0" = "Valid From"
+              "1" = "Valid To"
             }
             columnVisibility = {
               _c_instance_properties_path = false
               instance_pkey               = false
             }
-            columnWidths                 = {}
-            containerWidth               = 2143
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = true
-            hasDoneAutoLayout            = false
-            maxColumnWidth               = 600
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 20
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
+            columnWidths                = {}
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            minColumnWidth              = 60
+            preserveCellAndRowSelection = true
+            rowHeights                  = {}
+            rowSizing                   = "Compact"
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
+            tableHeight = 0
           }
           index = 15
           inputList = [
@@ -4994,14 +4076,14 @@ resource "observe_dashboard" "redis_instance_v2" {
           managers = [
             {
               id                     = "874dqnjh"
-              isDisabled             = true
+              isDisabled             = false
               isResourceCountEnabled = false
               type                   = "Timescrubber"
             },
             {
-              id         = "1cw8fys5"
-              isDisabled = true
-              type       = "Vis"
+              id         = "xupmofha"
+              isDisabled = false
+              type       = "JsonTree"
             },
           ]
           queryPresentation = {
@@ -5027,7 +4109,6 @@ resource "observe_dashboard" "redis_instance_v2" {
             {
               customName    = "Input"
               customSummary = "test_gcp_learning-bedbug/Redis Instance"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -5035,10 +4116,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id                = "step-ggplevzw"
@@ -5049,22 +4126,7 @@ resource "observe_dashboard" "redis_instance_v2" {
               type              = "InputStep"
             },
             {
-              columnStatsTable = {
-                columnFunctions = {}
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-tmp5uw00"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -5072,10 +4134,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id       = "step-4q606eh4"
@@ -5101,7 +4159,6 @@ resource "observe_dashboard" "redis_instance_v2" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -5121,9 +4178,9 @@ resource "observe_dashboard" "redis_instance_v2" {
                     flatten instance_properties
                     
                     pick_col
-                    	@."Valid From",
-                     	@."Valid To",
-                      	instance_pkey,_c_instance_properties_path,
+                      @."Valid From",
+                      @."Valid To",
+                        instance_pkey,_c_instance_properties_path,
                        Property: replace(_c_instance_properties_path,'_',' '),
                        Value: _c_instance_properties_value
                 EOT
@@ -5142,13 +4199,10 @@ resource "observe_dashboard" "redis_instance_v2" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
             columnOrderOverride = {
-              "1" = "_c_instance_properties_path"
-              "2" = "Valid From"
-              "3" = "Valid To"
+              "0" = "Valid From"
+              "1" = "Valid To"
+              "3" = "_c_instance_properties_path"
             }
             columnVisibility = {
               _c_instance_properties_path = false
@@ -5157,45 +4211,21 @@ resource "observe_dashboard" "redis_instance_v2" {
             columnWidths = {
               Value = 462
             }
-            containerWidth               = 285
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = true
-            hasDoneAutoLayout            = false
-            maxColumnWidth               = 600
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 20
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            minColumnWidth              = 60
+            preserveCellAndRowSelection = true
+            rowHeights                  = {}
+            rowSizing                   = "Compact"
             selection = {
-              anchoredCellSelection   = null
-              anchoredColumnSelection = null
-              anchoredRowSelection    = null
-              cells                   = {}
-              columnSelectSequence    = []
-              columns                 = {}
-              highlightState          = {}
-              lastCellSelection       = null
-              lastColumnSelection     = null
-              lastRowSelection        = null
-              rows                    = {}
-              selectionType           = "table"
+              cells                = {}
+              columnSelectSequence = []
+              columns              = {}
+              highlightState       = {}
+              rows                 = {}
+              selectionType        = "table"
             }
-            shouldAutoLayout           = false
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
+            tableHeight = 0
           }
           index = 16
           inputList = [
@@ -5210,14 +4240,14 @@ resource "observe_dashboard" "redis_instance_v2" {
           managers = [
             {
               id                     = "qy4a8j7m"
-              isDisabled             = true
+              isDisabled             = false
               isResourceCountEnabled = false
               type                   = "Timescrubber"
             },
             {
-              id         = "o0c71dzx"
-              isDisabled = true
-              type       = "Vis"
+              id         = "bdxdvm6c"
+              isDisabled = false
+              type       = "JsonTree"
             },
           ]
           queryPresentation = {
@@ -5243,7 +4273,6 @@ resource "observe_dashboard" "redis_instance_v2" {
             {
               customName    = "Input"
               customSummary = "test_gcp_learning-bedbug/Redis Instance"
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -5251,10 +4280,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id                = "step-etkccztz"
@@ -5265,22 +4290,7 @@ resource "observe_dashboard" "redis_instance_v2" {
               type              = "InputStep"
             },
             {
-              columnStatsTable = {
-                columnFunctions = {}
-                datasetQueryId = {
-                  ignoreCompress = false
-                  queryId        = "q-pphydqqk"
-                  resultKinds = [
-                    "ResultKindSchema",
-                    "ResultKindData",
-                  ]
-                  tableTypes = [
-                    "TABULAR",
-                  ]
-                }
-              }
               customSummary = ""
-              datasetQuery  = null
               datasetQueryId = {
                 ignoreCompress = false
                 queryId        = null
@@ -5288,10 +4298,6 @@ resource "observe_dashboard" "redis_instance_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id       = "step-8xlmk08h"
@@ -5317,7 +4323,6 @@ resource "observe_dashboard" "redis_instance_v2" {
           ]
           type = "table"
           viewModel = {
-            consoleValue = null
             railCollapseState = {
               inputsOutputs = false
               minimap       = false
@@ -5337,9 +4342,9 @@ resource "observe_dashboard" "redis_instance_v2" {
                     flatten instance_properties
                     
                     pick_col
-                    	@."Valid From",
-                     	@."Valid To",
-                      	instance_pkey,_c_instance_properties_path,
+                      @."Valid From",
+                      @."Valid To",
+                        instance_pkey,_c_instance_properties_path,
                        Property: replace(_c_instance_properties_path,'_',' '),
                        Value: _c_instance_properties_value
                 EOT
