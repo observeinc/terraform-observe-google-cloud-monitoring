@@ -60,3 +60,7 @@ sample_infrastructure/service_modules/gke/microservices-demo/
 *.env*
 cypressTests/gcp/data
 node_modules
+
+.cq
+cloudquery.log
+cloudquery_output/*

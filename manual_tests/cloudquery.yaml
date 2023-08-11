@@ -1,0 +1,20 @@
+kind: source
+spec:
+  # Source spec section
+  name: "gcp"
+  path: "cloudquery/gcp"
+  version: "v9.4.4"
+  tables: ["gcp_compute_instances", "gcp_sql_instances", "gcp_container_clusters", "gcp_storage_buckets", "gcp_functions_functions", "gcp_serviceusage_services", "gcp_cloudscheduler_jobs"]
+  destinations: ["file"]
+  spec:
+    # GCP Spec section described below
+    project_ids: ["${PROJECT_ID}"]
+---
+kind: destination
+spec:
+  name: "file"
+  path: "cloudquery/file"
+  version: "v3.4.1"
+  spec:
+    path: "cloudquery_output/{{TABLE}}/{{UUID}}.{{FORMAT}}"
+    format: "csv" # options: parquet, json, csv
