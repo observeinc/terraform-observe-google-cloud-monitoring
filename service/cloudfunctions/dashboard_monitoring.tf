@@ -1,5 +1,5 @@
-# terraform import observe_dashboard.cloud_functions_monitoring_v2 42203237
-resource "observe_dashboard" "cloud_functions_monitoring_v2" {
+# terraform import observe_dashboard.cloud_functions_monitoring 43244669
+resource "observe_dashboard" "cloud_functions_monitoring" {
   count       = local.cloud_functions_monitoring_v2_dashboard_enable
   description = local.cloud_functions_monitoring_v2_dashboard_description
   layout = jsonencode(
@@ -11,7 +11,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-8zstqlty"
+              id       = "card-b50m0cdr"
               title    = "Dashboard Content"
             }
             items        = []
@@ -21,19 +21,19 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-7hou5xoe"
+              id       = "card-wdfd996u"
               title    = "Overview"
             }
             items = [
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-ynwr3sr4"
+                  id       = "card-66btphwy"
                   stageId  = "stage-j3zdwc7r"
                 }
                 layout = {
                   h = 12
-                  i = "card-ynwr3sr4"
+                  i = "card-66btphwy"
                   w = 4
                   x = 0
                   y = 0
@@ -42,12 +42,12 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-pr4sn3gg"
+                  id       = "card-4jul02hb"
                   stageId  = "stage-ziasm4uf"
                 }
                 layout = {
                   h = 12
-                  i = "card-pr4sn3gg"
+                  i = "card-4jul02hb"
                   w = 4
                   x = 4
                   y = 0
@@ -56,12 +56,12 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-0jh27dtc"
+                  id       = "card-m3fvncc1"
                   stageId  = "stage-367tr336"
                 }
                 layout = {
                   h = 12
-                  i = "card-0jh27dtc"
+                  i = "card-m3fvncc1"
                   w = 4
                   x = 8
                   y = 0
@@ -73,19 +73,19 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-7grl8ytz"
+              id       = "card-gkhrcj80"
               title    = "Monitoring"
             }
             items = [
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-o5mist15"
+                  id       = "card-kq1h026y"
                   stageId  = "stage-v80el32j"
                 }
                 layout = {
                   h = 24
-                  i = "card-o5mist15"
+                  i = "card-kq1h026y"
                   w = 9
                   x = 0
                   y = 0
@@ -94,12 +94,12 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-9w0xtk8o"
+                  id       = "card-x2qiv0wv"
                   stageId  = "stage-ifk44t3v"
                 }
                 layout = {
                   h = 12
-                  i = "card-9w0xtk8o"
+                  i = "card-x2qiv0wv"
                   w = 3
                   x = 9
                   y = 0
@@ -108,12 +108,12 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-54slsrv9"
+                  id       = "card-53yq080f"
                   stageId  = "stage-ra65e7v9"
                 }
                 layout = {
                   h = 12
-                  i = "card-54slsrv9"
+                  i = "card-53yq080f"
                   w = 3
                   x = 9
                   y = 12
@@ -122,12 +122,12 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-l1s61paw"
+                  id       = "card-zxbz44hs"
                   stageId  = "stage-hmpks85q"
                 }
                 layout = {
                   h = 17
-                  i = "card-l1s61paw"
+                  i = "card-zxbz44hs"
                   w = 6
                   x = 0
                   y = 24
@@ -136,12 +136,12 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-u3wkn567"
+                  id       = "card-1l8wuqx3"
                   stageId  = "stage-f0whobgm"
                 }
                 layout = {
                   h = 17
-                  i = "card-u3wkn567"
+                  i = "card-1l8wuqx3"
                   w = 6
                   x = 6
                   y = 24
@@ -150,12 +150,12 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-rfd12ief"
+                  id       = "card-8vuqqdsh"
                   stageId  = "stage-4jcselfm"
                 }
                 layout = {
                   h = 15
-                  i = "card-rfd12ief"
+                  i = "card-8vuqqdsh"
                   w = 6
                   x = 0
                   y = 41
@@ -164,12 +164,12 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               {
                 card = {
                   cardType = "stage"
-                  id       = "card-uaup7rum"
+                  id       = "card-ot79t7wi"
                   stageId  = "stage-r41eirof"
                 }
                 layout = {
                   h = 15
-                  i = "card-uaup7rum"
+                  i = "card-ot79t7wi"
                   w = 6
                   x = 6
                   y = 41
@@ -181,14 +181,14 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
             card = {
               cardType = "section"
               closed   = false
-              id       = "card-df36lsj4"
+              id       = "card-w2ugkzjh"
               title    = "Documentation"
             }
             items = [
               {
                 card = {
                   cardType = "text"
-                  id       = "card-y2w35dg3"
+                  id       = "card-n6h3vok2"
                   text     = <<-EOT
                                         # Google Cloud Functions
                                         Google Cloud Functions is a lightweight compute solution for developers to create single-purpose, stand-alone functions that respond to Cloud events without the need to manage a server or runtime environment.  With Observe, you can get quick insights into:
@@ -202,7 +202,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                 }
                 layout = {
                   h = 13
-                  i = "card-y2w35dg3"
+                  i = "card-n6h3vok2"
                   w = 8
                   x = 0
                   y = 0
@@ -211,19 +211,19 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               {
                 card = {
                   cardType = "text"
-                  id       = "card-ecmdk197"
+                  id       = "card-a18sgqzb"
                   text     = <<-EOT
                                         # Notes
-                                                                                                                                                                
+                                                                                                                                                                                                        
                                         **Metrics**
-                                                                                                                                                                
+                                                                                                                                                                                                        
                                         Enable data collection for this app by enabling Observe’s GCP app and adding `cloudfunctions.googleapis.com/` to the `include_metric_type_prefixes` option (this is added by default in the standard configuration).
                                     EOT
                   title    = "Untitled Text"
                 }
                 layout = {
                   h = 13
-                  i = "card-ecmdk197"
+                  i = "card-a18sgqzb"
                   w = 4
                   x = 8
                   y = 0
@@ -255,9 +255,8 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
             viewType = "input"
           },
         ]
-        selectedStageId = "stage-r41eirof"
         timeRange = {
-          display               = "Today 12:05:39 → 12:13:51"
+          display               = "20 Apr 12:05:39 → 12:13:51"
           endTime               = 1682018031961
           millisFromCurrentTime = null
           originalDisplay       = "2023-04-20 12:05:39 ~ 2023-04-20 12:13:51"
@@ -327,38 +326,21 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "name"
-              "2" = "Valid From"
-              "3" = "valid_from"
-              "4" = "valid_to"
+              "0" = "valid_from"
+              "1" = "valid_to"
+              "2" = "name"
+              "4" = "Valid From"
               "5" = "Valid To"
             }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            containerWidth               = 1324
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            maxColumnWidth               = 400
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            maxMeasuredRowHeight         = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 50
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
+            columnVisibility            = {}
+            columnWidths                = {}
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            minColumnWidth              = 60
+            preserveCellAndRowSelection = true
+            rowHeights                  = {}
+            rowSizing                   = "Compact"
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -367,10 +349,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               rows                 = {}
               selectionType        = "table"
             }
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
+            tableHeight = 0
           }
           index = 0
           inputList = [
@@ -436,7 +415,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                     y             = "A_function_active_instances_sum"
                   }
                   topK = {
-                    k     = 25
+                    k     = 100
                     order = "Top"
                     type  = "Auto"
                   }
@@ -458,7 +437,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 400
+            wantBuckets = 250
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -475,17 +454,12 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                   "ResultKindData",
                   "ResultKindStats",
                 ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
               }
-              id                = "step-r840e8lw"
-              index             = 0
-              isPinned          = false
-              opal              = []
-              queryPresentation = {}
-              type              = "InputStep"
+              id       = "step-r840e8lw"
+              index    = 0
+              isPinned = false
+              opal     = []
+              type     = "InputStep"
             },
             {
               customSummary = ""
@@ -497,10 +471,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                   "ResultKindData",
                   "ResultKindStats",
                 ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
               }
               id       = "step-6eq5t40v"
               index    = 1
@@ -508,8 +478,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               opal = [
                 "exists cloudFunctionInstanceAssetKey = @cloudFunctions.cloudFunctionInstanceAssetKey",
               ]
-              queryPresentation = {}
-              type              = "unknown"
+              type = "unknown"
             },
             {
               action = {
@@ -555,7 +524,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                           }
                           type = "timeseries"
                         }
-                        disableAggregate = false
+                        expressionIdentifier = "A"
                         filterActions = [
                           {
                             params = {
@@ -596,10 +565,8 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                           "region",
                           "function_name",
                         ]
-                        id = "metricExpression-vguwxfbk"
-                        inputSource = {
-                          stageId = "stage-hmpks85q"
-                        }
+                        id            = "metricExpression-vguwxfbk"
+                        inputSource   = "parentStageInputSource"
                         lookupActions = []
                         metric = {
                           aggregate   = "sum"
@@ -638,7 +605,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                               "Cloud Function",
                             ]
                           }
-                          interval    = null
                           name        = "function_active_instances"
                           rollup      = "avg"
                           type        = "gauge"
@@ -673,13 +639,16 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                         summaryMode    = "over-time"
                         type           = "metricExpression"
                         valueColumnId  = "A_function_active_instances_sum"
+                        viewTab        = "visualize"
                       },
                     ]
                     multiExpression = {
-                      filterActions = []
-                      id            = "multiExpression-nzp2z8eb"
-                      lookupActions = []
-                      type          = "multiExpression"
+                      expressionIdentifier = "B"
+                      filterActions        = []
+                      id                   = "multiExpression-nzp2z8eb"
+                      lookupActions        = []
+                      type                 = "multiExpression"
+                      viewTab              = "visualize"
                     }
                     selectedExpressionIds = [
                       "metricExpression-vguwxfbk",
@@ -698,10 +667,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                   "ResultKindData",
                   "ResultKindStats",
                 ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
               }
               id       = "step-yahe6eie"
               index    = 2
@@ -711,8 +676,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                 "align frame(back: 2m), A_function_active_instances_sum:avg(m(\"function_active_instances\"))",
                 "aggregate A_function_active_instances_sum:sum(A_function_active_instances_sum), group_by(project_id, region, function_name)",
               ]
-              queryPresentation = {}
-              type              = "unknown"
+              type = "unknown"
             },
           ]
           type = "table"
@@ -756,9 +720,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
             columnOrderOverride = {
               "0" = "project_id"
               "1" = "region"
@@ -766,28 +727,14 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               "3" = "_c_valid_from"
               "4" = "_c_valid_to"
             }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            containerWidth               = 1313
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            maxColumnWidth               = 400
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            maxMeasuredRowHeight         = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 50
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
+            columnVisibility            = {}
+            columnWidths                = {}
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            minColumnWidth              = 60
+            preserveCellAndRowSelection = true
+            rowHeights                  = {}
+            rowSizing                   = null
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -796,10 +743,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               rows                 = {}
               selectionType        = "table"
             }
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
+            tableHeight = 0
           }
           index = 1
           inputList = [
@@ -848,13 +792,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                 }
                 source = {
                   table = {
-                    groupFields = [
-                      [
-                        "project_id",
-                        "region",
-                        "function_name",
-                      ],
-                    ]
                     statsBy = {
                       fn = "avg"
                     }
@@ -868,7 +805,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                     y             = "A__ob_value_avg"
                   }
                   topK = {
-                    k     = 25
                     order = "Top"
                     type  = "Auto"
                   }
@@ -890,7 +826,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 400
+            wantBuckets = 250
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -907,17 +843,12 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                   "ResultKindData",
                   "ResultKindStats",
                 ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
               }
-              id                = "step-oc9s5vgc"
-              index             = 0
-              isPinned          = false
-              opal              = []
-              queryPresentation = {}
-              type              = "InputStep"
+              id       = "step-oc9s5vgc"
+              index    = 0
+              isPinned = false
+              opal     = []
+              type     = "InputStep"
             },
             {
               customName    = "filter (custom)"
@@ -930,10 +861,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                   "ResultKindData",
                   "ResultKindStats",
                 ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
               }
               id       = "step-hg0fvq0s"
               index    = 1
@@ -945,8 +872,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                 "make_col _ob_value:if_null(_ob_value, 0)",
                 "",
               ]
-              queryPresentation = {}
-              type              = "unknown"
+              type = "unknown"
             },
             {
               action = {
@@ -955,7 +881,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                     expressions = [
                       {
                         autoResolution = true
-                        columnId       = "_ob_value"
                         dataVis = {
                           config = {
                             color         = "Default"
@@ -976,13 +901,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                           }
                           source = {
                             table = {
-                              groupFields = [
-                                [
-                                  "project_id",
-                                  "region",
-                                  "function_name",
-                                ],
-                              ]
                               statsBy = {
                                 fn = "avg"
                               }
@@ -1003,28 +921,37 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                           }
                           type = "timeseries"
                         }
-                        filterActions = []
+                        expressionIdentifier = "A"
+                        field                = "_ob_value"
+                        filterActions        = []
                         groupBy = [
-                          [
-                            "project_id",
-                            "region",
-                            "function_name",
-                          ],
+                          {
+                            isPrimaryKey = true
+                            srcFields = [
+                              "project_id",
+                              "region",
+                              "function_name",
+                            ]
+                          },
                         ]
                         id              = "datasetQueryExpression-8pvl6om2"
+                        inputSource     = "parentStageInputSource"
                         lookupActions   = []
                         summarizeVerb   = "statsby"
                         summaryFunction = "avg"
                         summaryMode     = "over-time"
                         type            = "datasetQueryExpression"
                         valueColumnId   = "A__ob_value_avg"
+                        viewTab         = "visualize"
                       },
                     ]
                     multiExpression = {
-                      filterActions = []
-                      id            = "multiExpression-tpow2byr"
-                      lookupActions = []
-                      type          = "multiExpression"
+                      expressionIdentifier = "B"
+                      filterActions        = []
+                      id                   = "multiExpression-tpow2byr"
+                      lookupActions        = []
+                      type                 = "multiExpression"
+                      viewTab              = "visualize"
                     }
                     selectedExpressionIds = [
                       "datasetQueryExpression-8pvl6om2",
@@ -1043,10 +970,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                   "ResultKindData",
                   "ResultKindStats",
                 ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
               }
               id       = "step-x1ywuj3f"
               index    = 2
@@ -1054,8 +977,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               opal = [
                 "timechart options(empty_bins:true), A__ob_value_avg:avg(_ob_value), group_by(project_id, region, function_name)",
               ]
-              queryPresentation = {}
-              type              = "unknown"
+              type = "unknown"
             },
           ]
           type = "table"
@@ -1115,38 +1037,21 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "name"
-              "2" = "Valid From"
-              "3" = "valid_from"
-              "4" = "valid_to"
+              "0" = "valid_from"
+              "1" = "valid_to"
+              "2" = "name"
+              "4" = "Valid From"
               "5" = "Valid To"
             }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            containerWidth               = null
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            maxColumnWidth               = 400
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            maxMeasuredRowHeight         = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 50
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
+            columnVisibility            = {}
+            columnWidths                = {}
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            minColumnWidth              = 60
+            preserveCellAndRowSelection = true
+            rowHeights                  = {}
+            rowSizing                   = "Compact"
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -1155,10 +1060,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               rows                 = {}
               selectionType        = "table"
             }
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
+            tableHeight = 0
           }
           index = 2
           inputList = [
@@ -1230,7 +1132,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                     y             = "A_function_network_egress_sum"
                   }
                   topK = {
-                    k     = 25
+                    k     = 100
                     order = "Top"
                     type  = "Auto"
                   }
@@ -1252,7 +1154,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 400
+            wantBuckets = 250
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -1269,17 +1171,12 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                   "ResultKindData",
                   "ResultKindStats",
                 ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
               }
-              id                = "step-t50292ms"
-              index             = 0
-              isPinned          = false
-              opal              = []
-              queryPresentation = {}
-              type              = "InputStep"
+              id       = "step-t50292ms"
+              index    = 0
+              isPinned = false
+              opal     = []
+              type     = "InputStep"
             },
             {
               customSummary = ""
@@ -1291,10 +1188,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                   "ResultKindData",
                   "ResultKindStats",
                 ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
               }
               id       = "step-bz6d32ao"
               index    = 1
@@ -1305,8 +1198,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                 "align A_function_network_egress_sum:avg(m(\"function_network_egress\"))",
                 "aggregate A_function_network_egress_sum:sum(A_function_network_egress_sum), group_by(project_id, region, function_name)",
               ]
-              queryPresentation = {}
-              type              = "unknown"
+              type = "unknown"
             },
           ]
           type = "table"
@@ -1357,38 +1249,21 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "name"
-              "2" = "Valid From"
-              "3" = "valid_from"
-              "4" = "valid_to"
+              "0" = "valid_from"
+              "1" = "valid_to"
+              "2" = "name"
+              "4" = "Valid From"
               "5" = "Valid To"
             }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            containerWidth               = null
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            maxColumnWidth               = 400
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            maxMeasuredRowHeight         = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 50
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
+            columnVisibility            = {}
+            columnWidths                = {}
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            minColumnWidth              = 60
+            preserveCellAndRowSelection = true
+            rowHeights                  = {}
+            rowSizing                   = "Compact"
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -1397,10 +1272,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               rows                 = {}
               selectionType        = "table"
             }
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
+            tableHeight = 0
           }
           index = 3
           inputList = [
@@ -1466,7 +1338,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                     y             = "A_function_execution_count_sum"
                   }
                   topK = {
-                    k     = 25
+                    k     = 100
                     order = "Top"
                     type  = "Auto"
                   }
@@ -1488,7 +1360,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 400
+            wantBuckets = 250
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -1505,17 +1377,12 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                   "ResultKindData",
                   "ResultKindStats",
                 ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
               }
-              id                = "step-3k47l8cd"
-              index             = 0
-              isPinned          = false
-              opal              = []
-              queryPresentation = {}
-              type              = "InputStep"
+              id       = "step-3k47l8cd"
+              index    = 0
+              isPinned = false
+              opal     = []
+              type     = "InputStep"
             },
             {
               customSummary = ""
@@ -1527,10 +1394,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                   "ResultKindData",
                   "ResultKindStats",
                 ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
               }
               id       = "step-zom2yho0"
               index    = 1
@@ -1541,8 +1404,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                 "align A_function_execution_count_sum:avg(m(\"function_execution_count\"))",
                 "aggregate A_function_execution_count_sum:sum(A_function_execution_count_sum), group_by(project_id, region, function_name)",
               ]
-              queryPresentation = {}
-              type              = "unknown"
+              type = "unknown"
             },
           ]
           type = "table"
@@ -1586,38 +1448,21 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "project_id"
-              "1" = "region"
-              "2" = "function_name"
-              "3" = "_c_valid_from"
-              "4" = "_c_valid_to"
+              "0" = "_c_valid_from"
+              "1" = "_c_valid_to"
+              "2" = "project_id"
+              "3" = "region"
+              "4" = "function_name"
             }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            containerWidth               = 1313
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            maxColumnWidth               = 400
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            maxMeasuredRowHeight         = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 50
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
+            columnVisibility            = {}
+            columnWidths                = {}
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            minColumnWidth              = 60
+            preserveCellAndRowSelection = true
+            rowHeights                  = {}
+            rowSizing                   = "Compact"
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -1626,10 +1471,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               rows                 = {}
               selectionType        = "table"
             }
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
+            tableHeight = 0
           }
           index = 4
           inputList = [
@@ -1678,13 +1520,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                 }
                 source = {
                   table = {
-                    groupFields = [
-                      [
-                        "project_id",
-                        "region",
-                        "function_name",
-                      ],
-                    ]
                     statsBy = {
                       fn = "avg"
                     }
@@ -1699,7 +1534,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                     y             = "A__ob_value_sum"
                   }
                   topK = {
-                    k     = 25
                     order = "Top"
                     type  = "Auto"
                   }
@@ -1721,7 +1555,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 400
+            wantBuckets = 300
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -1738,17 +1572,12 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                   "ResultKindData",
                   "ResultKindStats",
                 ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
               }
-              id                = "step-gx6aqoqd"
-              index             = 0
-              isPinned          = false
-              opal              = []
-              queryPresentation = {}
-              type              = "InputStep"
+              id       = "step-gx6aqoqd"
+              index    = 0
+              isPinned = false
+              opal     = []
+              type     = "InputStep"
             },
             {
               customSummary = ""
@@ -1759,10 +1588,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id       = "step-frwgrh7t"
@@ -1775,8 +1600,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                 "make_col _ob_value:if_null(_ob_value, 0)",
                 "",
               ]
-              queryPresentation = {}
-              type              = "unknown"
+              type = "unknown"
             },
             {
               action = {
@@ -1785,7 +1609,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                     expressions = [
                       {
                         autoResolution = true
-                        columnId       = "_ob_value"
                         dataVis = {
                           config = {
                             color         = "Blue"
@@ -1806,13 +1629,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                           }
                           source = {
                             table = {
-                              groupFields = [
-                                [
-                                  "project_id",
-                                  "region",
-                                  "function_name",
-                                ],
-                              ]
                               statsBy = {
                                 fn = "avg"
                               }
@@ -1834,15 +1650,21 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                           }
                           type = "timeseries"
                         }
-                        filterActions = []
+                        expressionIdentifier = "A"
+                        field                = "_ob_value"
+                        filterActions        = []
                         groupBy = [
-                          [
-                            "project_id",
-                            "region",
-                            "function_name",
-                          ],
+                          {
+                            isPrimaryKey = true
+                            srcFields = [
+                              "project_id",
+                              "region",
+                              "function_name",
+                            ]
+                          },
                         ]
                         id                  = "datasetQueryExpression-ke9yfkhh"
+                        inputSource         = "parentStageInputSource"
                         lookupActions       = []
                         summarizeVerb       = "statsby"
                         summaryFunction     = "sum"
@@ -1850,13 +1672,16 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                         summaryMode         = "over-time"
                         type                = "datasetQueryExpression"
                         valueColumnId       = "A__ob_value_sum"
+                        viewTab             = "visualize"
                       },
                     ]
                     multiExpression = {
-                      filterActions = []
-                      id            = "multiExpression-eof4r50o"
-                      lookupActions = []
-                      type          = "multiExpression"
+                      expressionIdentifier = "B"
+                      filterActions        = []
+                      id                   = "multiExpression-eof4r50o"
+                      lookupActions        = []
+                      type                 = "multiExpression"
+                      viewTab              = "visualize"
                     }
                     selectedExpressionIds = [
                       "datasetQueryExpression-ke9yfkhh",
@@ -1875,10 +1700,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                   "ResultKindData",
                   "ResultKindStats",
                 ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
               }
               id       = "step-7ybtq1oo"
               index    = 2
@@ -1886,8 +1707,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               opal = [
                 "timechart options(empty_bins:true), A__ob_value_sum:sum(_ob_value), group_by(project_id, region, function_name)",
               ]
-              queryPresentation = {}
-              type              = "unknown"
+              type = "unknown"
             },
           ]
           type = "table"
@@ -1933,32 +1753,15 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight              = true
-            columnFooterHeight           = 0
-            columnHeaderHeight           = 29
-            columnOrderOverride          = {}
-            columnVisibility             = {}
-            columnWidths                 = {}
-            containerWidth               = 1745
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            maxColumnWidth               = 400
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            maxMeasuredRowHeight         = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 50
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
+            columnOrderOverride         = {}
+            columnVisibility            = {}
+            columnWidths                = {}
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            minColumnWidth              = 60
+            preserveCellAndRowSelection = true
+            rowHeights                  = {}
+            rowSizing                   = "Compact"
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -1967,10 +1770,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               rows                 = {}
               selectionType        = "table"
             }
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
+            tableHeight = 0
           }
           index = 5
           inputList = [
@@ -2037,7 +1837,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                     type          = "singlefield"
                   }
                   topK = {
-                    k     = 25
+                    k     = 100
                     order = "Top"
                     type  = "Auto"
                   }
@@ -2070,7 +1870,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                 columnName = "A_is_error_sum"
               },
             ]
-            wantBuckets = 400
+            wantBuckets = 100
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -2087,17 +1887,12 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                   "ResultKindData",
                   "ResultKindStats",
                 ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
               }
-              id                = "step-s0wc8jns"
-              index             = 0
-              isPinned          = false
-              opal              = []
-              queryPresentation = {}
-              type              = "InputStep"
+              id       = "step-s0wc8jns"
+              index    = 0
+              isPinned = false
+              opal     = []
+              type     = "InputStep"
             },
             {
               customSummary = ""
@@ -2109,10 +1904,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                   "ResultKindData",
                   "ResultKindStats",
                 ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
               }
               id       = "step-6y84qbo6"
               index    = 1
@@ -2123,8 +1914,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                 "    board_label: \"Total Errors\",",
                 "    is_error: if(severity = \"ERROR\", 1, 0)",
               ]
-              queryPresentation = {}
-              type              = "unknown"
+              type = "unknown"
             },
             {
               action = {
@@ -2132,7 +1922,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                   expressionList = {
                     expressions = [
                       {
-                        columnId = "is_error"
                         dataVis = {
                           config = {
                             color           = "Default"
@@ -2178,11 +1967,14 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                           }
                           type = "singlevalue"
                         }
-                        filterActions = []
+                        expressionIdentifier = "A"
+                        field                = "is_error"
+                        filterActions        = []
                         groupBy = [
                           "board_label",
                         ]
                         id                  = "datasetQueryExpression-jp0kjuas"
+                        inputSource         = "parentStageInputSource"
                         lookupActions       = []
                         summarizeVerb       = "statsby"
                         summaryFunction     = "sum"
@@ -2190,13 +1982,16 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                         summaryMode         = "single"
                         type                = "datasetQueryExpression"
                         valueColumnId       = "A_is_error_sum"
+                        viewTab             = "visualize"
                       },
                     ]
                     multiExpression = {
-                      filterActions = []
-                      id            = "multiExpression-ffui4lw4"
-                      lookupActions = []
-                      type          = "multiExpression"
+                      expressionIdentifier = "B"
+                      filterActions        = []
+                      id                   = "multiExpression-ffui4lw4"
+                      lookupActions        = []
+                      type                 = "multiExpression"
+                      viewTab              = "visualize"
                     }
                     selectedExpressionIds = [
                       "datasetQueryExpression-jp0kjuas",
@@ -2215,10 +2010,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                   "ResultKindData",
                   "ResultKindStats",
                 ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
               }
               id       = "step-oa5x0qde"
               index    = 2
@@ -2226,8 +2017,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               opal = [
                 "statsby A_is_error_sum:sum(is_error), group_by(board_label)",
               ]
-              queryPresentation = {}
-              type              = "unknown"
+              type = "unknown"
             },
           ]
           type = "table"
@@ -2272,9 +2062,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight     = true
-            columnFooterHeight  = 0
-            columnHeaderHeight  = 29
             columnOrderOverride = {}
             columnVisibility    = {}
             columnWidths = {
@@ -2284,26 +2071,12 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               logName      = 263
               severity     = 124
             }
-            containerWidth               = 1745
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            maxColumnWidth               = 400
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            maxMeasuredRowHeight         = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 50
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            minColumnWidth              = 60
+            preserveCellAndRowSelection = true
+            rowHeights                  = {}
+            rowSizing                   = "Compact"
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -2312,10 +2085,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               rows                 = {}
               selectionType        = "table"
             }
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
+            tableHeight = 0
           }
           index = 6
           inputList = [
@@ -2382,7 +2152,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                     type          = "singlefield"
                   }
                   topK = {
-                    k     = 25
+                    k     = 100
                     order = "Top"
                     type  = "Auto"
                   }
@@ -2415,7 +2185,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                 columnName = "A_has_errors_sum"
               },
             ]
-            wantBuckets = 400
+            wantBuckets = 100
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -2432,17 +2202,12 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                   "ResultKindData",
                   "ResultKindStats",
                 ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
               }
-              id                = "step-fdlrr341"
-              index             = 0
-              isPinned          = false
-              opal              = []
-              queryPresentation = {}
-              type              = "InputStep"
+              id       = "step-fdlrr341"
+              index    = 0
+              isPinned = false
+              opal     = []
+              type     = "InputStep"
             },
             {
               customSummary = ""
@@ -2453,10 +2218,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                   "ResultKindSchema",
                   "ResultKindData",
                   "ResultKindStats",
-                ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
                 ]
               }
               id       = "step-42usowiu"
@@ -2474,8 +2235,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                 "statsby has_errors: if(sum(is_error) > 0, 1, 0),",
                 "  group_by(functionName, board_label)",
               ]
-              queryPresentation = {}
-              type              = "unknown"
+              type = "unknown"
             },
             {
               action = {
@@ -2483,7 +2243,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                   expressionList = {
                     expressions = [
                       {
-                        columnId = "has_errors"
                         dataVis = {
                           config = {
                             color           = "Default"
@@ -2529,11 +2288,14 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                           }
                           type = "singlevalue"
                         }
-                        filterActions = []
+                        expressionIdentifier = "A"
+                        field                = "has_errors"
+                        filterActions        = []
                         groupBy = [
                           "board_label",
                         ]
                         id                  = "datasetQueryExpression-wz96yop0"
+                        inputSource         = "parentStageInputSource"
                         lookupActions       = []
                         summarizeVerb       = "statsby"
                         summaryFunction     = "sum"
@@ -2541,13 +2303,16 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                         summaryMode         = "single"
                         type                = "datasetQueryExpression"
                         valueColumnId       = "A_has_errors_sum"
+                        viewTab             = "visualize"
                       },
                     ]
                     multiExpression = {
-                      filterActions = []
-                      id            = "multiExpression-vpyisy92"
-                      lookupActions = []
-                      type          = "multiExpression"
+                      expressionIdentifier = "B"
+                      filterActions        = []
+                      id                   = "multiExpression-vpyisy92"
+                      lookupActions        = []
+                      type                 = "multiExpression"
+                      viewTab              = "visualize"
                     }
                     selectedExpressionIds = [
                       "datasetQueryExpression-wz96yop0",
@@ -2566,10 +2331,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                   "ResultKindData",
                   "ResultKindStats",
                 ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
               }
               id       = "step-sah1km15"
               index    = 2
@@ -2577,8 +2338,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               opal = [
                 "statsby A_has_errors_sum:sum(has_errors), group_by(board_label)",
               ]
-              queryPresentation = {}
-              type              = "unknown"
+              type = "unknown"
             },
           ]
           type = "table"
@@ -2622,38 +2382,21 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "projectId"
-              "1" = "_c_valid_from"
-              "2" = "_c_valid_to"
+              "0" = "_c_valid_from"
+              "1" = "_c_valid_to"
+              "2" = "projectId"
               "3" = "name"
               "4" = "Valid From"
             }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            containerWidth               = 1313
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            maxColumnWidth               = 400
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            maxMeasuredRowHeight         = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 50
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
+            columnVisibility            = {}
+            columnWidths                = {}
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            minColumnWidth              = 60
+            preserveCellAndRowSelection = true
+            rowHeights                  = {}
+            rowSizing                   = "Compact"
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -2662,10 +2405,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               rows                 = {}
               selectionType        = "table"
             }
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
+            tableHeight = 0
           }
           index = 7
           inputList = [
@@ -2715,7 +2455,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                     valueField    = "A_projectId_count"
                   }
                   topK = {
-                    k     = 25
+                    k     = 100
                     order = "Top"
                     type  = "Auto"
                   }
@@ -2737,7 +2477,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 400
+            wantBuckets = 150
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -2754,17 +2494,12 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                   "ResultKindData",
                   "ResultKindStats",
                 ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
               }
-              id                = "step-5sfi6ep1"
-              index             = 0
-              isPinned          = false
-              opal              = []
-              queryPresentation = {}
-              type              = "InputStep"
+              id       = "step-5sfi6ep1"
+              index    = 0
+              isPinned = false
+              opal     = []
+              type     = "InputStep"
             },
             {
               action = {
@@ -2773,7 +2508,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                     expressions = [
                       {
                         autoResolution = true
-                        columnId       = "projectId"
                         dataVis = {
                           config = {
                             innerRadius = 0.6
@@ -2808,24 +2542,30 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                           }
                           type = "circular"
                         }
-                        filterActions = []
+                        expressionIdentifier = "A"
+                        field                = "projectId"
+                        filterActions        = []
                         groupBy = [
                           "projectId",
                         ]
                         id              = "datasetQueryExpression-k2o5zxgs"
+                        inputSource     = "parentStageInputSource"
                         lookupActions   = []
                         summarizeVerb   = "statsby"
                         summaryFunction = "count"
                         summaryMode     = "over-time"
                         type            = "datasetQueryExpression"
                         valueColumnId   = "A_projectId_count"
+                        viewTab         = "visualize"
                       },
                     ]
                     multiExpression = {
-                      filterActions = []
-                      id            = "multiExpression-b49ruqbs"
-                      lookupActions = []
-                      type          = "multiExpression"
+                      expressionIdentifier = "B"
+                      filterActions        = []
+                      id                   = "multiExpression-b49ruqbs"
+                      lookupActions        = []
+                      type                 = "multiExpression"
+                      viewTab              = "visualize"
                     }
                     selectedExpressionIds = [
                       "datasetQueryExpression-k2o5zxgs",
@@ -2844,10 +2584,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                   "ResultKindData",
                   "ResultKindStats",
                 ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
               }
               id       = "step-8e6w5jcd"
               index    = 1
@@ -2855,8 +2591,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               opal = [
                 "timechart options(empty_bins:true), A_projectId_count:count(projectId), group_by(projectId)",
               ]
-              queryPresentation = {}
-              type              = "unknown"
+              type = "unknown"
             },
           ]
           type = "table"
@@ -2888,36 +2623,19 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "name"
-              "1" = "_c_valid_from"
-              "2" = "_c_valid_to"
+              "0" = "_c_valid_from"
+              "1" = "_c_valid_to"
+              "2" = "name"
             }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            containerWidth               = null
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            maxColumnWidth               = 400
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            maxMeasuredRowHeight         = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 50
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
+            columnVisibility            = {}
+            columnWidths                = {}
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            minColumnWidth              = 60
+            preserveCellAndRowSelection = true
+            rowHeights                  = {}
+            rowSizing                   = "Compact"
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -2926,10 +2644,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               rows                 = {}
               selectionType        = "table"
             }
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
+            tableHeight = 0
           }
           index = 8
           inputList = [
@@ -2979,7 +2694,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                     valueField    = "A_runtime_count"
                   }
                   topK = {
-                    k     = 25
+                    k     = 100
                     order = "Top"
                     type  = "Auto"
                   }
@@ -3001,7 +2716,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 400
+            wantBuckets = 150
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -3018,17 +2733,12 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                   "ResultKindData",
                   "ResultKindStats",
                 ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
               }
-              id                = "step-gdte94jw"
-              index             = 0
-              isPinned          = false
-              opal              = []
-              queryPresentation = {}
-              type              = "InputStep"
+              id       = "step-gdte94jw"
+              index    = 0
+              isPinned = false
+              opal     = []
+              type     = "InputStep"
             },
             {
               action = {
@@ -3037,7 +2747,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                     expressions = [
                       {
                         autoResolution = true
-                        columnId       = "runtime"
                         dataVis = {
                           config = {
                             innerRadius = 0.6
@@ -3072,24 +2781,30 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                           }
                           type = "circular"
                         }
-                        filterActions = []
+                        expressionIdentifier = "A"
+                        field                = "runtime"
+                        filterActions        = []
                         groupBy = [
                           "runtime",
                         ]
                         id              = "datasetQueryExpression-spuzm285"
+                        inputSource     = "parentStageInputSource"
                         lookupActions   = []
                         summarizeVerb   = "statsby"
                         summaryFunction = "count"
                         summaryMode     = "over-time"
                         type            = "datasetQueryExpression"
                         valueColumnId   = "A_runtime_count"
+                        viewTab         = "visualize"
                       },
                     ]
                     multiExpression = {
-                      filterActions = []
-                      id            = "multiExpression-7rgztt2d"
-                      lookupActions = []
-                      type          = "multiExpression"
+                      expressionIdentifier = "B"
+                      filterActions        = []
+                      id                   = "multiExpression-7rgztt2d"
+                      lookupActions        = []
+                      type                 = "multiExpression"
+                      viewTab              = "visualize"
                     }
                     selectedExpressionIds = [
                       "datasetQueryExpression-spuzm285",
@@ -3108,10 +2823,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                   "ResultKindData",
                   "ResultKindStats",
                 ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
               }
               id       = "step-zlhu9vsp"
               index    = 1
@@ -3119,8 +2830,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               opal = [
                 "timechart options(empty_bins:true), A_runtime_count:count(runtime), group_by(runtime)",
               ]
-              queryPresentation = {}
-              type              = "unknown"
+              type = "unknown"
             },
           ]
           type = "table"
@@ -3152,36 +2862,19 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
         layout = {
           appearance = "VISIBLE"
           dataTableViewState = {
-            autoTableHeight    = true
-            columnFooterHeight = 0
-            columnHeaderHeight = 29
             columnOrderOverride = {
-              "0" = "name"
-              "1" = "_c_valid_from"
-              "2" = "_c_valid_to"
+              "0" = "_c_valid_from"
+              "1" = "_c_valid_to"
+              "2" = "name"
             }
-            columnVisibility             = {}
-            columnWidths                 = {}
-            containerWidth               = null
-            contextMenuXCoord            = null
-            contextMenuYCoord            = null
-            defaultColumnWidth           = 70
-            disableFixedLeftColumns      = false
-            eventLinkColumnId            = null
-            fetchPageSize                = 100
-            hasCalculatedColumnWidths    = false
-            maxColumnWidth               = 400
-            maxMeasuredColumnHeaderWidth = {}
-            maxMeasuredColumnWidth       = {}
-            maxMeasuredRowHeight         = {}
-            minColumnWidth               = 60
-            minRowHeight                 = 30
-            preserveCellAndRowSelection  = true
-            rowHeaderWidth               = 50
-            rowHeights                   = {}
-            rowSizeIncrement             = 1
-            scrollToColumn               = null
-            scrollToRow                  = 0
+            columnVisibility            = {}
+            columnWidths                = {}
+            defaultColumnWidth          = 70
+            disableFixedLeftColumns     = false
+            minColumnWidth              = 60
+            preserveCellAndRowSelection = true
+            rowHeights                  = {}
+            rowSizing                   = "Compact"
             selection = {
               cells                = {}
               columnSelectSequence = []
@@ -3190,10 +2883,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               rows                 = {}
               selectionType        = "table"
             }
-            summaryColumnOrderOverride = {}
-            summaryColumnVisibility    = {}
-            tableHeight                = 0
-            tableView                  = "TABULAR"
+            tableHeight = 0
           }
           index = 9
           inputList = [
@@ -3243,7 +2933,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                     valueField    = "A_region_count"
                   }
                   topK = {
-                    k     = 25
+                    k     = 100
                     order = "Top"
                     type  = "Auto"
                   }
@@ -3270,7 +2960,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               "ResultKindSchema",
             ]
             rollup      = {}
-            wantBuckets = 400
+            wantBuckets = 150
           }
           renderType     = "TABLE"
           selectedStepId = null
@@ -3287,17 +2977,12 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                   "ResultKindData",
                   "ResultKindStats",
                 ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
               }
-              id                = "step-neblalxm"
-              index             = 0
-              isPinned          = false
-              opal              = []
-              queryPresentation = {}
-              type              = "InputStep"
+              id       = "step-neblalxm"
+              index    = 0
+              isPinned = false
+              opal     = []
+              type     = "InputStep"
             },
             {
               action = {
@@ -3306,7 +2991,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                     expressions = [
                       {
                         autoResolution = true
-                        columnId       = "region"
                         dataVis = {
                           config = {
                             innerRadius = 0.6
@@ -3341,24 +3025,30 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                           }
                           type = "circular"
                         }
-                        filterActions = []
+                        expressionIdentifier = "A"
+                        field                = "region"
+                        filterActions        = []
                         groupBy = [
                           "region",
                         ]
                         id              = "datasetQueryExpression-jvgxupuh"
+                        inputSource     = "parentStageInputSource"
                         lookupActions   = []
                         summarizeVerb   = "statsby"
                         summaryFunction = "count"
                         summaryMode     = "over-time"
                         type            = "datasetQueryExpression"
                         valueColumnId   = "A_region_count"
+                        viewTab         = "visualize"
                       },
                     ]
                     multiExpression = {
-                      filterActions = []
-                      id            = "multiExpression-3jr3s3kw"
-                      lookupActions = []
-                      type          = "multiExpression"
+                      expressionIdentifier = "B"
+                      filterActions        = []
+                      id                   = "multiExpression-3jr3s3kw"
+                      lookupActions        = []
+                      type                 = "multiExpression"
+                      viewTab              = "visualize"
                     }
                     selectedExpressionIds = [
                       "datasetQueryExpression-jvgxupuh",
@@ -3377,10 +3067,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                   "ResultKindData",
                   "ResultKindStats",
                 ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
               }
               id       = "step-93014qwr"
               index    = 1
@@ -3388,8 +3074,7 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               opal = [
                 "timechart options(empty_bins:true), A_region_count:count(region), group_by(region)",
               ]
-              queryPresentation = {}
-              type              = "unknown"
+              type = "unknown"
             },
           ]
           type = "table"
@@ -3457,10 +3142,6 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
                   "ResultKindData",
                   "ResultKindStats",
                 ]
-                tableTypes = [
-                  "TABULAR",
-                  "SUMMARY",
-                ]
               }
               id       = "step-e2g8b2dd"
               index    = 0
@@ -3468,8 +3149,34 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
               opal = [
                 "// Filtered Dataset Controlled Filter Stage",
               ]
-              queryPresentation = {}
-              type              = "InputStep"
+              type = "InputStep"
+            },
+            {
+              action = {
+                params = {
+                  disabled = false
+                  hint     = "#hint{skipExistsNoFilter:true}"
+                }
+                summary = null
+                type    = "Hint"
+              }
+              customSummary = ""
+              datasetQueryId = {
+                ignoreCompress = false
+                queryId        = null
+                resultKinds = [
+                  "ResultKindSchema",
+                  "ResultKindData",
+                  "ResultKindStats",
+                ]
+              }
+              id       = "step-9p8n9lb3"
+              index    = 1
+              isPinned = false
+              opal = [
+                "#hint{skipExistsNoFilter:true}",
+              ]
+              type = "unknown"
             },
           ]
           type = "table"
@@ -3485,7 +3192,10 @@ resource "observe_dashboard" "cloud_functions_monitoring_v2" {
           }
         }
         params   = null
-        pipeline = "// Filtered Dataset Controlled Filter Stage"
+        pipeline = <<-EOT
+                    // Filtered Dataset Controlled Filter Stage
+                    #hint{skipExistsNoFilter:true}
+                EOT
       },
     ]
   )
