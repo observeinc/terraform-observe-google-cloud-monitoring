@@ -29,7 +29,7 @@ resource "observe_dataset" "storage_logs" {
         region,
         bucket_name
       
-      interface "log", "structured_log": protoPayload
+      interface "log", "log": protoPayload
     EOF
   }
 }

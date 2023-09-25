@@ -74,7 +74,7 @@ resource "observe_dataset" "cloud_functions_audit_logs" {
         functionName,
         cloudFunctionInstanceAssetKey
 
-      interface "log", "structured_log": protoPayload
+      interface "log", "log": protoPayload
     EOF
   }
 }
