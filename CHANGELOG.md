@@ -1,3 +1,15 @@
+## [1.5.1](https://github.com/observeinc/terraform-observe-google/compare/v1.5.0...v1.5.1) (2023-10-11)
+
+
+### Bug Fixes
+
+* metric prefixes, remove unnecessary files moved to terraform-google-collection ([#195](https://github.com/observeinc/terraform-observe-google/issues/195)) ([bdd98e9](https://github.com/observeinc/terraform-observe-google/commit/bdd98e9dba2cc18f73276712cbe9412891f5d6a3))
+* set redis network traffic graphs to rate ([#201](https://github.com/observeinc/terraform-observe-google/issues/201)) ([3ff4e81](https://github.com/observeinc/terraform-observe-google/commit/3ff4e81c1d03120b5c91817220ac7e36c0575cb1))
+* update metrics_alias flag to false ([#200](https://github.com/observeinc/terraform-observe-google/issues/200)) ([dab94d5](https://github.com/observeinc/terraform-observe-google/commit/dab94d5344f7fe6dba5e69aac2d3a3f6e8bca0e8))
+* update metrics_alias flag to true ([#198](https://github.com/observeinc/terraform-observe-google/issues/198)) ([85b2920](https://github.com/observeinc/terraform-observe-google/commit/85b2920b7203d3e3fd233cc97215e83bcc5be738))
+
+
+
 # [1.5.0](https://github.com/observeinc/terraform-observe-google/compare/v1.4.1...v1.5.0) (2023-06-22)
 
 
