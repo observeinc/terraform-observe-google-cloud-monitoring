@@ -55,6 +55,7 @@ variable "include_metric_type_prefixes" {
   default = [
     "cloudfunctions.googleapis.com",
     "cloudasset.googleapis.com",
+    "cloudsql.googleapis.com/",
     "logging.googleapis.com",
     "iam.googleapis.com",
     "monitoring.googleapis.com",
