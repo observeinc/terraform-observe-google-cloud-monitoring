@@ -1,3 +1,12 @@
+## [1.5.2](https://github.com/observeinc/terraform-observe-google/compare/v1.5.1...v1.5.2) (2023-10-19)
+
+
+### Bug Fixes
+
+* add cloudsql metrics back into default poller config ([#206](https://github.com/observeinc/terraform-observe-google/issues/206)) ([4edbea2](https://github.com/observeinc/terraform-observe-google/commit/4edbea2e75a8732e01e44083ab69128271f70f03))
+
+
+
 ## [1.5.1](https://github.com/observeinc/terraform-observe-google/compare/v1.5.0...v1.5.1) (2023-10-11)
 
 
