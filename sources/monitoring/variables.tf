@@ -67,7 +67,10 @@ variable "include_metric_type_prefixes" {
     "servicenetworking.googleapis.com",
     "container.googleapis.com",
     "redis.googleapis.com",
-    "run.googleapis.com"
+    "run.googleapis.com",
+    "serviceruntime.googleapis.com",
+    "loadbalancing.googleapis.com",
+    "bigquery.googleapis.com"
   ]
   description = <<-EOF
     Metrics with these Metric Types with these prefixes will be fetched.
