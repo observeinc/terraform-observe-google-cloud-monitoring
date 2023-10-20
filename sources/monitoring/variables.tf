@@ -53,24 +53,26 @@ variable "interval_duration" {
 variable "include_metric_type_prefixes" {
   type = list(string)
   default = [
+    "bigquery.googleapis.com",
     "cloudfunctions.googleapis.com",
     "cloudasset.googleapis.com",
     "cloudsql.googleapis.com/",
-    "logging.googleapis.com",
+    "compute.googleapis.com",
+    "container.googleapis.com",
+    "loadbalancing.googleapis.com",
     "iam.googleapis.com",
+    "logging.googleapis.com",
     "monitoring.googleapis.com",
     "pubsub.googleapis.com",
-    "storage.googleapis.com",
-    "sql-component.googleapis.com",
-    "compute.googleapis.com",
-    "serviceusage.googleapis.com",
-    "servicenetworking.googleapis.com",
-    "container.googleapis.com",
     "redis.googleapis.com",
     "run.googleapis.com",
+    "storage.googleapis.com",
+    "sql-component.googleapis.com",
+    "serviceusage.googleapis.com",
+    "servicenetworking.googleapis.com",
     "serviceruntime.googleapis.com",
-    "loadbalancing.googleapis.com",
-    "bigquery.googleapis.com"
+
+
   ]
   description = <<-EOF
     Metrics with these Metric Types with these prefixes will be fetched.
