@@ -1,3 +1,17 @@
+# [1.6.0](https://github.com/observeinc/terraform-observe-google/compare/v1.5.2...v1.6.0) (2023-12-01)
+
+
+### Bug Fixes
+
+* add missing services ([#207](https://github.com/observeinc/terraform-observe-google/issues/207)) ([3980df8](https://github.com/observeinc/terraform-observe-google/commit/3980df885a658bc98465c5c0e373d0a5d528e17a))
+
+
+### Features
+
+* add support for cloud run ([#160](https://github.com/observeinc/terraform-observe-google/issues/160)) ([d26e87e](https://github.com/observeinc/terraform-observe-google/commit/d26e87ef7ad773c5b4371cba316d4bb5d7dbc1d9))
+
+
+
 ## [1.5.2](https://github.com/observeinc/terraform-observe-google/compare/v1.5.1...v1.5.2) (2023-10-19)
 
 
