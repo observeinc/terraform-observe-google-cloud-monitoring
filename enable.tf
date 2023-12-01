@@ -24,6 +24,13 @@ locals {
   )
   name_format_cloudfunctions = lookup(var.service_name_formats, "cloudfunctions", "Cloud Functions %s")
 
+  enable_service_cloudrun = (
+    var.enable_service_cloudrun == true ||
+    # (var.enable_service_all == true && var.enable_service_cloudrun != false) ||
+    lookup(var.services, "cloudrun", false)
+  )
+  name_format_cloudrun = lookup(var.service_name_formats, "cloudrun", "Cloud Run %s")
+
   enable_service_cloudsql = (
     var.enable_service_cloudsql == true ||
     # (var.enable_service_all == true && var.enable_service_cloudsql != false) ||
@@ -113,6 +120,21 @@ module "cloudfunctions" {
   feature_flags              = local.feature_flags
 
   google = local.base_module
+}
+
+module "cloudrun" {
+  count = local.enable_service_cloudrun ? 1 : 0
+
+  source                     = "./service/cloudrun"
+  workspace                  = var.workspace
+  name_format                = format(var.name_format, local.name_format_cloudrun)
+  max_expiry                 = var.max_expiry
+  freshness_default_duration = var.freshness_default_duration
+  feature_flags              = local.feature_flags
+
+  google = merge(local.base_module, {
+    cloudsql = one(module.cloudsql[*].cloudsql)
+  })
 }
 
 module "cloudsql" {

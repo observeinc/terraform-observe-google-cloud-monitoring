@@ -40,6 +40,7 @@ module "google" {
 | <a name="module_bigquery"></a> [bigquery](#module\_bigquery) | ./service/bigquery | n/a |
 | <a name="module_billing"></a> [billing](#module\_billing) | ./service/billing | n/a |
 | <a name="module_cloudfunctions"></a> [cloudfunctions](#module\_cloudfunctions) | ./service/cloudfunctions | n/a |
+| <a name="module_cloudrun"></a> [cloudrun](#module\_cloudrun) | ./service/cloudrun | n/a |
 | <a name="module_cloudscheduler"></a> [cloudscheduler](#module\_cloudscheduler) | ./service/cloudscheduler | n/a |
 | <a name="module_cloudsql"></a> [cloudsql](#module\_cloudsql) | ./service/cloudsql | n/a |
 | <a name="module_compute"></a> [compute](#module\_compute) | ./service/compute | n/a |
@@ -88,6 +89,7 @@ module "google" {
 | <a name="input_datastream"></a> [datastream](#input\_datastream) | Datastream to derive resources from. | <pre>object({<br>    oid     = string<br>    dataset = string<br>    name    = string<br>  })</pre> | n/a | yes |
 | <a name="input_enable_service_bigquery"></a> [enable\_service\_bigquery](#input\_enable\_service\_bigquery) | Enable BigQuery service. | `bool` | `true` | no |
 | <a name="input_enable_service_cloudfunctions"></a> [enable\_service\_cloudfunctions](#input\_enable\_service\_cloudfunctions) | Enable Cloud Functions service. | `bool` | `true` | no |
+| <a name="input_enable_service_cloudrun"></a> [enable\_service\_cloudrun](#input\_enable\_service\_cloudrun) | Enable Cloud Run service. | `bool` | `true` | no |
 | <a name="input_enable_service_cloudscheduler"></a> [enable\_service\_cloudscheduler](#input\_enable\_service\_cloudscheduler) | Enable Cloud Scheduler service. | `bool` | `true` | no |
 | <a name="input_enable_service_cloudsql"></a> [enable\_service\_cloudsql](#input\_enable\_service\_cloudsql) | Enable Cloud SQL service. | `bool` | `true` | no |
 | <a name="input_enable_service_compute"></a> [enable\_service\_compute](#input\_enable\_service\_compute) | Enable Compute service. | `bool` | `true` | no |
@@ -113,6 +115,7 @@ module "google" {
 | <a name="output_asset_inventory_records"></a> [asset\_inventory\_records](#output\_asset\_inventory\_records) | n/a |
 | <a name="output_audit_logs"></a> [audit\_logs](#output\_audit\_logs) | n/a |
 | <a name="output_cloud_functions"></a> [cloud\_functions](#output\_cloud\_functions) | n/a |
+| <a name="output_cloud_run"></a> [cloud\_run](#output\_cloud\_run) | n/a |
 | <a name="output_cloud_sql"></a> [cloud\_sql](#output\_cloud\_sql) | n/a |
 | <a name="output_compute"></a> [compute](#output\_compute) | n/a |
 | <a name="output_distribution_metrics"></a> [distribution\_metrics](#output\_distribution\_metrics) | n/a |
