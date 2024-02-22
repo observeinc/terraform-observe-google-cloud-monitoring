@@ -4,6 +4,7 @@ TMP:=.test.zip
 LEGACY_BUCKET:=observeinc
 BUCKET:=observeinc-terraform-registry
 TAG?=$(shell git describe --tags --always)
+# changed repository name for terraform registry - this keeps release artifacts consistent for s3 and app flows
 REPO:=terraform-observe-google
 MODULE_NAMESPACE:=observeinc
 MODULE_NAME:=$(subst terraform-observe-,,$(REPO))
