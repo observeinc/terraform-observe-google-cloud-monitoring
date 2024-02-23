@@ -9,5 +9,5 @@ jobs:
   publish:
     uses: observeinc/.github/.github/workflows/terraform-observe_prerelease.yaml@arthur/release-fix-rename
     secrets: inherit
-  with:
+    with:
       repo-name-slack: "terraform-observe-google"
