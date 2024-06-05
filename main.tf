@@ -29,13 +29,16 @@ resource "observe_dataset" "base_pubsub_events" {
     input    = "observation"
     pipeline = <<-EOF
       filter OBSERVATION_KIND = "pubsub"
+      make_col data:parse_json(FIELDS.message.Data)
+      make_col data:if(is_null(data),decode_base64(FIELDS.message.Data),data)
+
       pick_col BUNDLE_TIMESTAMP,
         id:string(FIELDS.message.ID),
         attributes:object(FIELDS.message.Attributes),
         publishTime:parse_isotime(string(FIELDS.message.PublishTime)),
         orderingKey:string(FIELDS.message.OrderingKey),
         deliveryAttempt:int64(FIELDS.message.DeliveryAttempt),
-        data:decode_base64(string(FIELDS.message.Data)),
+        data,
         subscription:string(FIELDS.subscription)
     EOF
   }
