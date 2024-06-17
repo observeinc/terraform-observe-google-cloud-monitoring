@@ -1,4 +1,10 @@
-# Google Cloud Platform (GCP) App
+# Google Cloud Platform (GCP) App [Legacy]
+
+---
+
+***This content is being DEPRECATED in favor of [Google Cloud Platform Quickstart Integration](https://docs.observeinc.com/en/latest/content/integrations/gcp/quickstart.html) and will be removed in a future release.***
+
+---
 
 The GCP app provides the base models for GCP infrastructure such as:
 
