@@ -1,4 +1,10 @@
-# Observe Google module
+# Observe Google module [Legacy]
+
+---
+
+***This content is being DEPRECATED in favor of [Google Cloud Platform Quickstart Integration](https://docs.observeinc.com/en/latest/content/integrations/gcp/quickstart.html) and will be removed in a future release.***
+
+---
 
 This terraform module instantiates data from Google Cloud Platform as
 and datasets, metrics, and boards in Observe. 

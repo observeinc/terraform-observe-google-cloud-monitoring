@@ -1,5 +1,5 @@
 name: Google Cloud Platform (GCP)
-description: Track all of your resources across GCP services such as Compute Engine, Cloud Storage, Cloud Functions, and more.
+description: DEPRECATED - This content is being deprecated in favor of the Google Cloud Platform Quickstart Integration and will be removed in a future release.  
 defaultfolder: gcp
 defaultdatastream: GCP
 iconurl: https://assets.observeinc.com/icons/apps/terraform-observe-google/gcp-icon.jpg
