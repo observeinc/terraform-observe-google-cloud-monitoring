@@ -61,32 +61,32 @@ module "google" {
 
 | Name | Type |
 |------|------|
-| observe_bookmark.asset_inventory_events | resource |
-| observe_bookmark.cloudfunction | resource |
-| observe_bookmark.cloudsql | resource |
-| observe_bookmark.compute | resource |
-| observe_bookmark.gke | resource |
-| observe_bookmark.home_dashboard | resource |
-| observe_bookmark.logs | resource |
-| observe_bookmark_group.start | resource |
-| observe_dashboard.app_home | resource |
-| observe_dashboard.project_input | resource |
-| observe_dashboard.resource_monitoring | resource |
-| observe_dashboard.total_cost_of_ownership | resource |
-| observe_dataset.audit_logs | resource |
-| observe_dataset.base_asset_inventory_records | resource |
-| observe_dataset.base_pubsub_events | resource |
-| observe_dataset.distribution_metrics | resource |
-| observe_dataset.iam_policy_asset_inventory_records | resource |
-| observe_dataset.logs | resource |
-| observe_dataset.metric_points | resource |
-| observe_dataset.metrics | resource |
-| observe_dataset.process_distribution_metrics | resource |
-| observe_dataset.projects_collection_enabled | resource |
-| observe_dataset.resource_asset_inventory_records | resource |
-| observe_dataset.resources_asset_inventory | resource |
-| observe_dataset.string_metrics | resource |
-| observe_default_dashboard.default_project_dash | resource |
+| [observe_bookmark.asset_inventory_events](https://registry.terraform.io/providers/observeinc/observe/latest/docs/resources/bookmark) | resource |
+| [observe_bookmark.cloudfunction](https://registry.terraform.io/providers/observeinc/observe/latest/docs/resources/bookmark) | resource |
+| [observe_bookmark.cloudsql](https://registry.terraform.io/providers/observeinc/observe/latest/docs/resources/bookmark) | resource |
+| [observe_bookmark.compute](https://registry.terraform.io/providers/observeinc/observe/latest/docs/resources/bookmark) | resource |
+| [observe_bookmark.gke](https://registry.terraform.io/providers/observeinc/observe/latest/docs/resources/bookmark) | resource |
+| [observe_bookmark.home_dashboard](https://registry.terraform.io/providers/observeinc/observe/latest/docs/resources/bookmark) | resource |
+| [observe_bookmark.logs](https://registry.terraform.io/providers/observeinc/observe/latest/docs/resources/bookmark) | resource |
+| [observe_bookmark_group.start](https://registry.terraform.io/providers/observeinc/observe/latest/docs/resources/bookmark_group) | resource |
+| [observe_dashboard.app_home](https://registry.terraform.io/providers/observeinc/observe/latest/docs/resources/dashboard) | resource |
+| [observe_dashboard.project_input](https://registry.terraform.io/providers/observeinc/observe/latest/docs/resources/dashboard) | resource |
+| [observe_dashboard.resource_monitoring](https://registry.terraform.io/providers/observeinc/observe/latest/docs/resources/dashboard) | resource |
+| [observe_dashboard.total_cost_of_ownership](https://registry.terraform.io/providers/observeinc/observe/latest/docs/resources/dashboard) | resource |
+| [observe_dataset.audit_logs](https://registry.terraform.io/providers/observeinc/observe/latest/docs/resources/dataset) | resource |
+| [observe_dataset.base_asset_inventory_records](https://registry.terraform.io/providers/observeinc/observe/latest/docs/resources/dataset) | resource |
+| [observe_dataset.base_pubsub_events](https://registry.terraform.io/providers/observeinc/observe/latest/docs/resources/dataset) | resource |
+| [observe_dataset.distribution_metrics](https://registry.terraform.io/providers/observeinc/observe/latest/docs/resources/dataset) | resource |
+| [observe_dataset.iam_policy_asset_inventory_records](https://registry.terraform.io/providers/observeinc/observe/latest/docs/resources/dataset) | resource |
+| [observe_dataset.logs](https://registry.terraform.io/providers/observeinc/observe/latest/docs/resources/dataset) | resource |
+| [observe_dataset.metric_points](https://registry.terraform.io/providers/observeinc/observe/latest/docs/resources/dataset) | resource |
+| [observe_dataset.metrics](https://registry.terraform.io/providers/observeinc/observe/latest/docs/resources/dataset) | resource |
+| [observe_dataset.process_distribution_metrics](https://registry.terraform.io/providers/observeinc/observe/latest/docs/resources/dataset) | resource |
+| [observe_dataset.projects_collection_enabled](https://registry.terraform.io/providers/observeinc/observe/latest/docs/resources/dataset) | resource |
+| [observe_dataset.resource_asset_inventory_records](https://registry.terraform.io/providers/observeinc/observe/latest/docs/resources/dataset) | resource |
+| [observe_dataset.resources_asset_inventory](https://registry.terraform.io/providers/observeinc/observe/latest/docs/resources/dataset) | resource |
+| [observe_dataset.string_metrics](https://registry.terraform.io/providers/observeinc/observe/latest/docs/resources/dataset) | resource |
+| [observe_default_dashboard.default_project_dash](https://registry.terraform.io/providers/observeinc/observe/latest/docs/resources/default_dashboard) | resource |
 
 ## Inputs
 
