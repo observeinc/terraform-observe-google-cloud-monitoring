@@ -12,6 +12,8 @@ resource "observe_dataset" "base_asset_inventory_records" {
   stage {
     alias    = "feed_events"
     pipeline = <<-EOF
+
+      #hint{allowVariantColumn:"data"} 
       filter is_null(attributes["logging.googleapis.com/timestamp"])
 
       make_col data:parse_json(data)
@@ -40,6 +42,8 @@ resource "observe_dataset" "base_asset_inventory_records" {
     input    = "events"
     alias    = "list_assets_events"
     pipeline = <<-EOF
+      #hint{allowVariantColumn:"data"} 
+
       filter attributes.observe_gcp_kind = "https://cloud.google.com/asset-inventory/docs/reference/rest/v1/assets"
       make_col data:parse_json(data)
 
@@ -61,6 +65,8 @@ resource "observe_dataset" "base_asset_inventory_records" {
   stage {
     input    = "events"
     pipeline = <<-EOF
+      #hint{allowVariantColumn:"data"} 
+
       filter attributes.observe_gcp_kind = "https://cloud.google.com/asset-inventory/docs/reference/rest/v1/TopLevel/exportAssets"
       make_col data:parse_json(data)
 
