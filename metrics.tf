@@ -51,14 +51,13 @@ resource "observe_dataset" "metric_points" {
   }
   stage {
     pipeline = <<-EOF
-	    #hint{allowVariantColumn:"value"} 
        
       flatten_single points
 
       make_col 
         start_time:timestamp_s(int64(@."_c_points_value".interval.start_time.seconds)) + duration(if_null(int64(@."_c_points_value".interval.start_time.nanos), 0)),
         end_time:timestamp_s(int64(@."_c_points_value".interval.end_time.seconds)) + duration(if_null(int64(@."_c_points_value".interval.end_time.nanos), 0)),
-        value:@."_c_points_value".value
+        value:object(@."_c_points_value".value)
 
       make_col
         metric_collection_period: end_time - start_time
