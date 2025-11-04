@@ -68,7 +68,13 @@ resource "observe_dataset" "redis_instance" {
   }
   stage {
     # alias = "GCP"
+
+
     pipeline = <<-EOF
+
+      #hint{allowVariantColumn:"nodes"} 
+      #hint{allowVariantColumn:"labels"}
+
       make_col instance_pkey:name,
         authorizedNetwork:string(data.authorizedNetwork), //b
         connectMode:string(data.connectMode), //r

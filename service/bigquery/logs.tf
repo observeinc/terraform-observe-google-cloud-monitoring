@@ -34,6 +34,12 @@ resource "observe_dataset" "bigquery_audit_logs" {
 
   stage {
     pipeline = <<-EOF
+      #hint{allowVariantColumn:"authorizationInfo"} 
+      #hint{allowVariantColumn:"requestMetadata"} 
+      #hint{allowVariantColumn:"serviceData"}
+      #hint{allowVariantColumn:"metadata"}
+      
+
       make_col principalEmail:string(protoPayload.authenticationInfo.principalEmail),
           authorizationInfo:protoPayload.authorizationInfo,
           metadata:protoPayload.metadata,

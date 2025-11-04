@@ -11,6 +11,8 @@ resource "observe_dataset" "pubsub_subscriptions" {
     input    = "events"
     pipeline = <<-EOF
 
+        #hint{allowVariantColumn:"retryPolicy"} 
+
         filter asset_type = "pubsub.googleapis.com/Subscription"
 
         extract_regex name, /projects\/(?P<project_id>[^\/+]+)/

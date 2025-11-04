@@ -12,6 +12,30 @@ resource "observe_dataset" "gke_events" {
     input    = "events"
     pipeline = <<-EOF
 
+        #hint{allowVariantColumn:"addonsConfig"}
+        #hint{allowVariantColumn:"autopilot"}
+        #hint{allowVariantColumn:"autoscaling"}
+        #hint{allowVariantColumn:"binaryAuthorization"}
+        #hint{allowVariantColumn:"databaseEncryption"}
+        #hint{allowVariantColumn:"defaultMaxPodsConstraint"}
+        #hint{allowVariantColumn:"instanceGroupUrls"}
+        #hint{allowVariantColumn:"ipAllocationPolicy"}
+        #hint{allowVariantColumn:"legacyAbac"}
+        #hint{allowVariantColumn:"locations"}
+        #hint{allowVariantColumn:"loggingConfig"}
+        #hint{allowVariantColumn:"maintenancePolicy"}
+        #hint{allowVariantColumn:"masterAuth"}
+        #hint{allowVariantColumn:"masterAuthorizedNetworksConfig"}
+        #hint{allowVariantColumn:"monitoringConfig"}
+        #hint{allowVariantColumn:"networkConfig"}
+        #hint{allowVariantColumn:"nodeConfig"}
+        #hint{allowVariantColumn:"nodePoolAutoConfig"}
+        #hint{allowVariantColumn:"nodePoolDefaults"}
+        #hint{allowVariantColumn:"nodePools"}
+        #hint{allowVariantColumn:"notificationConfig"}
+        #hint{allowVariantColumn:"releaseChannel"}
+        #hint{allowVariantColumn:"shieldedNodes"}
+                
 
         filter asset_type = "container.googleapis.com/Cluster"
 
@@ -90,6 +114,9 @@ resource "observe_dataset" "gke_clusters" {
     input    = "events"
     pipeline = <<-EOF
     
+        #hint{allowVariantColumn:"databaseEncryption"}
+        #hint{allowVariantColumn:"defaultMaxPodsConstraint"}
+        
         make_resource options(expiry:${var.max_expiry}),
             project_id,
             region,

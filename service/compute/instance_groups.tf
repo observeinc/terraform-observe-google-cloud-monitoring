@@ -32,6 +32,7 @@ resource "observe_dataset" "instance_group" {
     input    = "asset_events"
     alias    = "cluster_instance_group_manager"
     pipeline = <<-EOF
+      #hint{allowVariantColumn:"instanceGroupUrls"} 
       filter asset_type = "container.googleapis.com/Cluster"
 
       pick_col 
@@ -57,6 +58,13 @@ resource "observe_dataset" "instance_group" {
     input = "events"
     # alias    = "instanceGroupAssetKey_manager_base"
     pipeline = <<-EOF
+      #hint{allowVariantColumn:"currentActions"}
+      #hint{allowVariantColumn:"status"} 
+      #hint{allowVariantColumn:"versions"}
+      #hint{allowVariantColumn:"updatePolicy"}
+      #hint{allowVariantColumn:"maxSurge"} 
+      #hint{allowVariantColumn:"maxUnavailable"}
+
       filter asset_type = "compute.googleapis.com/InstanceGroupManager"
 
       make_col instanceGroup:string(data.instanceGroup),
@@ -132,6 +140,20 @@ resource "observe_dataset" "instance_group" {
 
   stage {
     pipeline = <<-EOF
+
+      #hint{allowVariantColumn:"igm_baseInstanceName"}
+      #hint{allowVariantColumn:"igm_creationTimestamp"}
+      #hint{allowVariantColumn:"igm_currentActions"}
+      #hint{allowVariantColumn:"igm_status"}
+      #hint{allowVariantColumn:"igm_targetSize"}
+      #hint{allowVariantColumn:"igm_updatePolicy"}
+      #hint{allowVariantColumn:"igm_type"}
+      #hint{allowVariantColumn:"igm_replacementMethod"}
+      #hint{allowVariantColumn:"igm_minimalAction"}
+      #hint{allowVariantColumn:"igm_maxSurge"} 
+      #hint{allowVariantColumn:"igm_maxUnavailable"}
+      #hint{allowVariantColumn:"igm_versions"}
+      #hint{allowVariantColumn:"igm_instanceGroupManagerAssetKey"}
 
       leftjoin instanceGroupAssetKey=@instanceGroupAssetKey_manager.instanceGroupAssetKey, 
           igm_baseInstanceName:@instanceGroupAssetKey_manager.baseInstanceName,

@@ -19,6 +19,7 @@ resource "observe_dataset" "cloud_run_revision_instances" {
   stage {
     alias    = "revision_instances_from_asset_records"
     pipeline = <<-EOF
+      #hint{allowVariantColumn:"env"}
       make_col
         // General
         creationTimestamp:parse_isotime(string(data.metadata.creationTimestamp)),
