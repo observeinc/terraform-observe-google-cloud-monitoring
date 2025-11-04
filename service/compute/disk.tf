@@ -12,6 +12,11 @@ resource "observe_dataset" "compute_disk" {
     input    = "events"
     pipeline = <<-EOF
 
+        #hint{allowVariantColumn:"users"} 
+        #hint{allowVariantColumn:"guestOsFeatures"}
+        #hint{allowVariantColumn:"licenses"}
+        #hint{allowVariantColumn:"licenseCodes"}
+
 
         filter asset_type = "compute.googleapis.com/Disk"
 

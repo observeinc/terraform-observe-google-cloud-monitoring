@@ -368,6 +368,9 @@ resource "observe_dataset" "load_balancing_health_check" {
     input    = "events"
     pipeline = <<-EOF
 
+      #hint{allowVariantColumn:"httpHealthCheck"}
+      #hint{allowVariantColumn:"logConfig"}  
+
       filter asset_type = "compute.googleapis.com/HealthCheck"
       make_col
         name:string(data.name), 

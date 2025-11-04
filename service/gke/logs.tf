@@ -12,6 +12,12 @@ resource "observe_dataset" "gke_logs" {
     pipeline = <<-EOF
         filter resourceType = "k8s_cluster"
 
+        #hint{allowVariantColumn:"authenticationInfo"}
+        #hint{allowVariantColumn:"requestMetadata"}
+        #hint{allowVariantColumn:"request"}
+        #hint{allowVariantColumn:"response"}
+        #hint{allowVariantColumn:"authorizationInfo"}
+        
         make_col cluster_name:string(resourceLabels.cluster_name),
             location:string(resourceLabels.location),
             project_id:string(resourceLabels.project_id)

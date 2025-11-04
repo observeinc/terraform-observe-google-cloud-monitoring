@@ -51,7 +51,6 @@ resource "observe_dataset" "metric_points" {
   }
   stage {
     pipeline = <<-EOF
-       
       flatten_single points
 
       make_col 
@@ -78,8 +77,7 @@ resource "observe_dataset" "metric_points" {
         value_type_text,
         metric_collection_period,
         value
-  
-    EOF
+      EOF
   }
 }
 

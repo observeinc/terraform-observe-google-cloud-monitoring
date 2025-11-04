@@ -102,6 +102,7 @@ resource "observe_dataset" "cloud_sql_instance" {
   # https://cloud.google.com/sql/docs
   stage {
     pipeline = <<-EOF
+      
       filter asset_type = "sqladmin.googleapis.com/Instance"
       make_col
         assetInventoryName:name,
@@ -118,6 +119,12 @@ resource "observe_dataset" "cloud_sql_instance" {
 
   stage {
     pipeline = <<-EOF
+
+      #hint{allowVariantColumn:"backupConfiguration"}
+      #hint{allowVariantColumn:"databaseFlags"}
+      #hint{allowVariantColumn:"ipConfiguration"}
+      #hint{allowVariantColumn:"ipAddressPrimary"} 
+      
       make_resource options(expiry:${var.max_expiry}),
         name,
         databaseVersion: string(data.databaseVersion),

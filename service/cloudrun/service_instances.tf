@@ -20,6 +20,9 @@ resource "observe_dataset" "cloud_run_service_instances" {
   stage {
     alias    = "service_instances_from_asset_records"
     pipeline = <<-EOF
+
+      #hint{allowVariantColumn:"env"}
+      #hint{allowVariantColumn:"traffic"}
       make_col
         // General
         creationTimestamp:parse_isotime(string(data.metadata.creationTimestamp)),
@@ -51,6 +54,8 @@ resource "observe_dataset" "cloud_run_service_instances" {
   }
   stage {
     pipeline = <<-EOF
+      #hint{allowVariantColumn:"env"}
+      #hint{allowVariantColumn:"traffic"}
       @services <- @ {
         make_resource options(expiry:${var.max_expiry}),
           creationTimestamp,

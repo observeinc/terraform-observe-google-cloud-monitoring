@@ -45,6 +45,8 @@ resource "observe_dataset" "bigquery_table" {
   stage {
     input    = "events"
     pipeline = <<-EOF
+        #hint{allowVariantColumn:"schema"} 
+
         filter asset_type = "bigquery.googleapis.com/Table"
         make_col dataset_id:string(data.tableReference.datasetId),
             project_id:string(data.tableReference.projectId),
