@@ -11,25 +11,25 @@ resource "observe_dataset" "metric_points" {
 
   stage {
     pipeline = <<-EOF
-filter OBSERVATION_KIND = "gcpmetrics"
+      filter OBSERVATION_KIND = "gcpmetrics"
 
-make_col 
-  metric:object(FIELDS.timeseries.metric),
-  metric_kind:int64(FIELDS.timeseries.metric_kind),
-  resource_type:string(FIELDS.timeseries.resource.type),
-  resource_labels:object(FIELDS.timeseries.resource.labels),
-  value_type:int64(FIELDS.timeseries.value_type),
-  points:array(FIELDS.timeseries.points)
-    
-make_col 
-  metric_type:string(metric.type),
-  metric_labels:object(metric.labels),
-  value_type_text: case (value_type=1, 'BOOL', value_type=2, 'INT64', value_type=3, 'DOUBLE', value_type=4, 'STRING', value_type=5, 'DISTRIBUTION'),
-  metric_kind_text: case (metric_kind=1, 'GAUGE', metric_kind=2, 'DELTA', metric_kind=3, 'CUMULATIVE')
+      make_col 
+        metric:object(FIELDS.timeseries.metric),
+        metric_kind:int64(FIELDS.timeseries.metric_kind),
+        resource_type:string(FIELDS.timeseries.resource.type),
+        resource_labels:object(FIELDS.timeseries.resource.labels),
+        value_type:int64(FIELDS.timeseries.value_type),
+        points:array(FIELDS.timeseries.points)
+          
+      make_col 
+        metric_type:string(metric.type),
+        metric_labels:object(metric.labels),
+        value_type_text: case (value_type=1, 'BOOL', value_type=2, 'INT64', value_type=3, 'DOUBLE', value_type=4, 'STRING', value_type=5, 'DISTRIBUTION'),
+        metric_kind_text: case (metric_kind=1, 'GAUGE', metric_kind=2, 'DELTA', metric_kind=3, 'CUMULATIVE')
 
-make_col
-  metric_namespace: split_part(metric_type, '/', 1)
-      EOF
+      make_col
+        metric_namespace: split_part(metric_type, '/', 1)
+    EOF
   }
 
   stage {
@@ -51,7 +51,7 @@ make_col
   }
   stage {
     pipeline = <<-EOF
-	  #hint{allowVariantColumn:"value"} 
+	    #hint{allowVariantColumn:"value"} 
        
       flatten_single points
 

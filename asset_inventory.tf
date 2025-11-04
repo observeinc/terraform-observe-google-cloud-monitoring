@@ -219,6 +219,8 @@ resource "observe_dataset" "iam_policy_asset_inventory_records" {
   # https://cloud.google.com/asset-inventory/docs/reference/rpc/google.iam.v1#google.iam.v1.Policy
   stage {
     pipeline = <<-EOF
+      #hint{allowVariantColumn:"bindings"} 
+
       filter not is_null(iam_policy)
       extract_regex string(ancestors), /projects\/(?P<projectNumber>[^"]*)/
       pick_col
