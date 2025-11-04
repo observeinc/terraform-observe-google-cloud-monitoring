@@ -51,6 +51,8 @@ make_col
   }
   stage {
     pipeline = <<-EOF
+	  #hint{allowVariantColumn:"value"} 
+       
       flatten_single points
 
       make_col 
