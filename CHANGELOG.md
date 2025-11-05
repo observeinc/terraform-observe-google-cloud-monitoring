@@ -1,3 +1,12 @@
+## [1.7.1](https://github.com/observeinc/terraform-observe-google-cloud-monitoring/compare/v1.7.0...v1.7.1) (2025-11-05)
+
+
+### Bug Fixes
+
+* trigger release from opal changes ([5f997e1](https://github.com/observeinc/terraform-observe-google-cloud-monitoring/commit/5f997e1879cd90c3fb6563071ac484d803aab6a8))
+
+
+
 # [1.7.0](https://github.com/observeinc/terraform-observe-google-cloud-monitoring/compare/v1.6.0...v1.7.0) (2024-06-24)
 
 
