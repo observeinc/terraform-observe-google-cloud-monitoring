@@ -23,8 +23,7 @@ resource "observe_dataset" "cloud_run_service_logs" {
         requestMethod:string(httpRequest.requestMethod),
         requestUrl:string(httpRequest.requestUrl),
         responseSize:float64(httpRequest.responseSize),
-        status:int64(httpRequest.status),
-        null:httpRequest.null
+        status:int64(httpRequest.status)
 
       pick_col 
         timestamp,
