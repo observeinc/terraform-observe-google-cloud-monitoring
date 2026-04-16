@@ -5009,7 +5009,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                 "    \thealthy:defaultServiceHealthyStatusGroups,",
                 "        unhealthy:defaultServiceUnhealthyStatusGroups,",
                 "        unknown:defaultServiceUnknownStatusGroups,",
-                "        null:defaultServiceNullStatusGroups)",
+                "        \"null\":defaultServiceNullStatusGroups)",
                 "flatten_single backendHealthStates",
                 "",
                 "rename_col ",
@@ -5138,7 +5138,7 @@ resource "observe_dashboard" "load_balancing_monitoring" {
                         	healthy:defaultServiceHealthyStatusGroups,
                             unhealthy:defaultServiceUnhealthyStatusGroups,
                             unknown:defaultServiceUnknownStatusGroups,
-                            null:defaultServiceNullStatusGroups)
+                            "null":defaultServiceNullStatusGroups)
                     flatten_single backendHealthStates
                     
                     rename_col 
