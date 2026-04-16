@@ -1,3 +1,12 @@
+## [1.7.2](https://github.com/observeinc/terraform-observe-google-cloud-monitoring/compare/v1.7.1...v1.7.2) (2026-04-16)
+
+
+### Bug Fixes
+
+* remove and quote bare null column/key names in OPAL ([#213](https://github.com/observeinc/terraform-observe-google-cloud-monitoring/issues/213)) ([e07c5d3](https://github.com/observeinc/terraform-observe-google-cloud-monitoring/commit/e07c5d3bec99971e1327cedf05b8d80e8ec25237))
+
+
+
 ## [1.7.1](https://github.com/observeinc/terraform-observe-google-cloud-monitoring/compare/v1.7.0...v1.7.1) (2025-11-05)
 
 
