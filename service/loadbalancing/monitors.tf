@@ -1,10 +1,12 @@
 
-resource "observe_monitor" "healthcheck_logs_non_healthy" {
-  count       = local.enable_monitors ? 1 : 0
-  disabled    = true
-  is_template = true
-  workspace   = var.workspace.oid
-  name        = format("(TEMPLATE) %s", format(var.name_format, "LB Backend in non-healthy state"))
+resource "observe_monitor_v2" "healthcheck_logs_non_healthy" {
+  count                    = local.enable_monitors ? 1 : 0
+  disabled                 = true
+  workspace                = var.workspace.oid
+  name                     = format("(TEMPLATE) %s", format(var.name_format, "LB Backend in non-healthy state"))
+  rule_kind                = "promote"
+  lookback_time            = "0s"
+  data_stabilization_delay = local.datasets.health_check_logs.freshness
   inputs = {
     "Logs" = observe_dataset.health_check_logs.oid
   }
@@ -12,19 +14,20 @@ resource "observe_monitor" "healthcheck_logs_non_healthy" {
     An LB Backend is in a non-healthy state. 
   EOF
 
-  notification_spec {
-    importance = "informational"
-    merge      = "separate"
+  groupings {
+    column_path {
+      name = "instance_group_name"
+    }
   }
+  groupings {
+    column_path {
+      name = "messageId"
+    }
+  }
+  rules {
+    level = "informational"
 
-  rule {
     promote {
-      description_field = "description"
-      kind_field        = "timestamp"
-      primary_key = [
-        "instance_group_name",
-        "messageId",
-      ]
     }
   }
 
@@ -37,12 +40,14 @@ resource "observe_monitor" "healthcheck_logs_non_healthy" {
   }
 }
 
-resource "observe_monitor" "high_4xx_rate" {
-  count       = local.enable_metrics && local.enable_monitors ? 1 : 0
-  disabled    = true
-  is_template = true
-  workspace   = var.workspace.oid
-  name        = format("(TEMPLATE) %s", format(var.name_format, "High 4xx rate for an LB backend"))
+resource "observe_monitor_v2" "high_4xx_rate" {
+  count                    = local.enable_metrics && local.enable_monitors ? 1 : 0
+  disabled                 = true
+  workspace                = var.workspace.oid
+  name                     = format("(TEMPLATE) %s", format(var.name_format, "High 4xx rate for an LB backend"))
+  rule_kind                = "threshold"
+  lookback_time            = "10m0s"
+  data_stabilization_delay = local.datasets.load_balancing_metrics.freshness
   inputs = {
     "Metrics" = observe_dataset.load_balancing_metrics[0].oid
   }
@@ -50,67 +55,55 @@ resource "observe_monitor" "high_4xx_rate" {
     4xx responses were greater than 1% of the total responses for an LB backend
   EOF
 
-  notification_spec {
-    importance = "informational"
-    merge      = "separate"
+  groupings {
+    column_path {
+      name = "backend_target_name"
+    }
   }
-  rule {
-    source_column = "C"
+  groupings {
+    column_path {
+      name = "load_balancer_name"
+    }
+  }
+  groupings {
+    column_path {
+      name = "forwarding_rule_name"
+    }
+  }
 
-    group_by_group {
-      columns = ["backend_target_name"]
-      # group_name = "Backend Service"
-    }
-    group_by_group {
-      columns = [
-        "load_balancer_name",
-        "forwarding_rule_name",
-        "backend_target_name",
-      ]
-      # group_name = "Load Balancer"
-    }
+  rules {
+    level = "informational"
+
     threshold {
-      compare_function = "greater"
-      compare_values   = [1]
-      lookback_time    = "10m0s"
-      # threshold_agg_function = "in_total"
+      aggregation       = "max"
+      value_column_name = "C"
+
+      compare_values {
+        compare_fn = "greater"
+        value_float64 = [
+          1,
+        ]
+      }
     }
   }
 
   stage {
-    alias    = "A"
     pipeline = <<-EOT
-      filter metric_labels.response_code_class = "400"
-      align 1m, frame(back: 1m), "metric-https_request_count":avg(m("https_request_count"))
-      aggregate "metric-https_request_count":sum(@."metric-https_request_count"), group_by(backend_target_name, load_balancer_name, forwarding_rule_name)
-      make_event
-    EOT
-  }
-  stage {
-    alias    = "B"
-    input    = "Metrics"
-    pipeline = <<-EOT
-      align 1m, frame(back: 1m), "metric-https_request_count":avg(m("https_request_count"))
-      aggregate "metric-https_request_count":sum(@."metric-https_request_count"), group_by(backend_target_name, load_balancer_name, forwarding_rule_name)
-      make_event
-    EOT
-  }
-  stage {
-    input    = "A"
-    pipeline = <<-EOT
-      union @B
-      aggregate A: any_not_null(@."metric-https_request_count"), B: any_not_null(@."metric-https_request_count"), group_by(backend_target_name, load_balancer_name, forwarding_rule_name)
-      make_col C: A/B*100
+      align 1m, frame(back: 1m), request_count:avg(m("https_request_count"))
+      aggregate errors:sum(if(string(metric_labels.response_code_class) = "400", request_count, 0)), total:sum(request_count), group_by(backend_target_name, load_balancer_name, forwarding_rule_name)
+      make_col C:100 * float64(errors) / float64(total)
     EOT
   }
 }
 
-resource "observe_monitor" "high_5xx_rate" {
-  count       = local.enable_metrics && local.enable_monitors ? 1 : 0
-  disabled    = true
-  is_template = true
-  workspace   = var.workspace.oid
-  name        = format("(TEMPLATE) %s", format(var.name_format, "High 5xx rate for an LB backend"))
+resource "observe_monitor_v2" "high_5xx_rate" {
+  count                    = local.enable_metrics && local.enable_monitors ? 1 : 0
+  disabled                 = true
+  workspace                = var.workspace.oid
+  name                     = format("(TEMPLATE) %s", format(var.name_format, "High 5xx rate for an LB backend"))
+  rule_kind                = "threshold"
+  lookback_time            = "10m0s"
+  data_stabilization_delay = local.datasets.load_balancing_metrics.freshness
   inputs = {
     "Metrics" = observe_dataset.load_balancing_metrics[0].oid
   }
@@ -118,57 +111,43 @@ resource "observe_monitor" "high_5xx_rate" {
     5xx responses were greater than 1% of the total responses for an LB backend
   EOF
 
-  notification_spec {
-    importance = "informational"
-    merge      = "separate"
+  groupings {
+    column_path {
+      name = "backend_target_name"
+    }
   }
-  rule {
-    source_column = "C"
+  groupings {
+    column_path {
+      name = "load_balancer_name"
+    }
+  }
+  groupings {
+    column_path {
+      name = "forwarding_rule_name"
+    }
+  }
 
-    group_by_group {
-      columns = ["backend_target_name"]
-      # group_name = "Backend Service"
-    }
-    group_by_group {
-      columns = [
-        "load_balancer_name",
-        "forwarding_rule_name",
-        "backend_target_name",
-      ]
-      # group_name = "Load Balancer"
-    }
+  rules {
+    level = "informational"
+
     threshold {
-      compare_function = "greater"
-      compare_values   = [1]
-      lookback_time    = "10m0s"
-      # threshold_agg_function = "in_total"
+      aggregation       = "max"
+      value_column_name = "C"
+
+      compare_values {
+        compare_fn = "greater"
+        value_float64 = [
+          1,
+        ]
+      }
     }
   }
 
   stage {
-    alias    = "A"
     pipeline = <<-EOT
-      filter metric_labels.response_code_class = "500"
-      align 1m, frame(back: 1m), "metric-https_request_count":avg(m("https_request_count"))
-      aggregate "metric-https_request_count":sum(@."metric-https_request_count"), group_by(backend_target_name, load_balancer_name, forwarding_rule_name)
-      make_event
-    EOT
-  }
-  stage {
-    alias    = "B"
-    input    = "Metrics"
-    pipeline = <<-EOT
-      align 1m, frame(back: 1m), "metric-https_request_count":avg(m("https_request_count"))
-      aggregate "metric-https_request_count":sum(@."metric-https_request_count"), group_by(backend_target_name, load_balancer_name, forwarding_rule_name)
-      make_event
-    EOT
-  }
-  stage {
-    input    = "A"
-    pipeline = <<-EOT
-      union @B
-      aggregate A: any_not_null(@."metric-https_request_count"), B: any_not_null(@."metric-https_request_count"), group_by(backend_target_name, load_balancer_name, forwarding_rule_name)
-      make_col C: A/B*100
+      align 1m, frame(back: 1m), request_count:avg(m("https_request_count"))
+      aggregate errors:sum(if(string(metric_labels.response_code_class) = "500", request_count, 0)), total:sum(request_count), group_by(backend_target_name, load_balancer_name, forwarding_rule_name)
+      make_col C:100 * float64(errors) / float64(total)
     EOT
   }
 }

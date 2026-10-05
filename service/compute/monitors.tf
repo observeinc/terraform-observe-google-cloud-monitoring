@@ -1,42 +1,54 @@
 # observe_monitor.cloud-sql-metrics-threshold-database-id-check:
-resource "observe_monitor" "high_cpu" {
+resource "observe_monitor_v2" "high_cpu" {
   count       = local.enable_both ? 0 : 0
-  is_template = true
-  disabled    = var.metric_thresholds["CPU"].disabled
+  disabled    = true
   description = "This monitor will alert on CPU usage above a certain threshold"
   inputs = {
     "Compute Metrics" = observe_dataset.compute_metrics[0].oid
   }
-  name      = format("(TEMPLATE) %s", format(var.name_format, "CPU Threshold"))
-  workspace = var.workspace.oid
+  name                     = format("(TEMPLATE) %s", format(var.name_format, "Compute CPU Threshold"))
+  workspace                = var.workspace.oid
+  rule_kind                = "threshold"
+  lookback_time            = "5m0s"
+  data_stabilization_delay = local.datasets.compute_metrics.freshness
 
-  notification_spec {
-    importance = "informational"
-    merge      = "separate"
+  groupings {
+    column_path {
+      name = "computeInstanceAssetKey"
+    }
+  }
+  groupings {
+    column_path {
+      name = "project_id"
+    }
+  }
+  groupings {
+    column_path {
+      name = "region"
+    }
   }
 
-  rule {
-    source_column = "value"
-
-    group_by_group {
-      columns = [
-        "computeInstanceAssetKey",
-        "project_id",
-        "region"
-      ]
-    }
+  rules {
+    level = "informational"
 
     threshold {
-      compare_function = var.metric_thresholds["CPU"].compare_function
-      compare_values = [
-        var.metric_thresholds["CPU"].value,
-      ]
-      lookback_time = "5m0s"
+      aggregation       = "max"
+      value_column_name = "cpu_utilization"
+
+      compare_values {
+        compare_fn = var.metric_thresholds["CPU"].compare_function
+        value_float64 = [
+          var.metric_thresholds["CPU"].value,
+        ]
+      }
     }
   }
 
   stage {
-    pipeline = "filter metric = \"instance_cpu_utilization\""
+    pipeline = <<-EOT
+      align 1m, frame(back: 1m), cpu_utilization_value:avg(m("instance_cpu_utilization"))
+      aggregate cpu_utilization:avg(cpu_utilization_value), group_by(computeInstanceAssetKey, project_id, region)
+    EOT
   }
 }
 
