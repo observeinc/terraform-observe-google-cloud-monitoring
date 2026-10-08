@@ -1,9 +1,11 @@
-resource "observe_monitor" "public_access_granted" {
-  count       = local.enable_monitors ? 1 : 0
-  is_template = true
-  disabled    = true
-  workspace   = var.workspace.oid
-  name        = format("(TEMPLATE) %s", format(var.name_format, "Public Access granted to Google Cloud Storage object"))
+resource "observe_monitor_v2" "public_access_granted" {
+  count                    = local.enable_monitors ? 1 : 0
+  disabled                 = true
+  workspace                = var.workspace.oid
+  name                     = format("(TEMPLATE) %s", format(var.name_format, "Public Access granted to Google Cloud Storage object"))
+  rule_kind                = "promote"
+  lookback_time            = "0s"
+  data_stabilization_delay = lookup(var.freshness_overrides, "storage_logs", var.freshness_default_duration)
   inputs = {
     "Google/GCP/Storage Logs" = observe_dataset.storage_logs.oid
   }
@@ -11,17 +13,16 @@ resource "observe_monitor" "public_access_granted" {
     Some object received the 'ADD' action for member 'allUsers' or 'allAuthenticatedUsers'
   EOF
 
-  notification_spec {
-    importance = "informational"
-    merge      = "separate"
+  groupings {
+    column_path {
+      name = "message"
+    }
   }
 
-  rule {
-    promote {
-      description_field = "message"
-      kind_field        = "bucket_name"
-      primary_key       = ["message"]
-    }
+  rules {
+    level = "informational"
+
+    promote {}
   }
 
   stage {
@@ -52,12 +53,14 @@ resource "observe_monitor" "public_access_granted" {
   }
 }
 
-resource "observe_monitor" "high_request_errors" {
-  count       = local.enable_metrics && local.enable_monitors ? 1 : 0
-  disabled    = true
-  is_template = true
-  workspace   = var.workspace.oid
-  name        = format("(TEMPLATE) %s", format(var.name_format, "High Error Count for Google Cloud Storage requests"))
+resource "observe_monitor_v2" "high_request_errors" {
+  count                    = local.enable_metrics && local.enable_monitors ? 1 : 0
+  disabled                 = true
+  workspace                = var.workspace.oid
+  name                     = format("(TEMPLATE) %s", format(var.name_format, "High Error Count for Google Cloud Storage requests"))
+  rule_kind                = "threshold"
+  lookback_time            = "5m0s"
+  data_stabilization_delay = lookup(var.freshness_overrides, "storage_metrics", var.freshness_default_duration)
   inputs = {
     "Google/GCP/Storage Metrics" = observe_dataset.storage_metrics[0].oid
   }
@@ -65,31 +68,37 @@ resource "observe_monitor" "high_request_errors" {
     Many Google Cloud Storage requests are returning a non-OK response
   EOF
 
-  notification_spec {
-    importance = "informational"
-    merge      = "separate"
+  groupings {
+    column_path {
+      name = "metric"
+    }
   }
-  rule {
-    source_column = "value"
+  groupings {
+    column_path {
+      name = "bucket_name"
+    }
+  }
 
-    group_by_group {
-      columns = ["metric"]
-    }
-    group_by_group {
-      columns = ["bucket_name"]
-    }
+  rules {
+    level = "informational"
 
     threshold {
-      compare_function = "greater_or_equal"
-      compare_values   = [10]
-      lookback_time    = "5m0s"
+      aggregation       = "max"
+      value_column_name = "error_request_count"
+
+      compare_values {
+        compare_fn = "greater_or_equal"
+        value_float64 = [
+          10,
+        ]
+      }
     }
   }
   stage {
     pipeline = <<-EOT
-      filter metric = "api_request_count"
-      make_col response_code:string(metric_labels.response_code)
-      filter is_null(response_code) or (response_code != "OK")
+      filter is_null(metric_labels.response_code) or string(metric_labels.response_code) != "OK"
+      align 1m, frame(back: 1m), error_request_count:avg(m("api_request_count"))
+      aggregate error_request_count:sum(error_request_count), group_by(metric:"api_request_count", bucket_name)
     EOT
   }
 }
