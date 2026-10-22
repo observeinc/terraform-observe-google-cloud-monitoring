@@ -1,3 +1,17 @@
+# [1.8.0](https://github.com/observeinc/terraform-observe-google-cloud-monitoring/compare/v1.7.2...v1.8.0) (2026-10-22)
+
+
+### Bug Fixes
+
+* require Observe provider >= 0.14.73 for eMudhra security update ([#215](https://github.com/observeinc/terraform-observe-google-cloud-monitoring/issues/215)) ([51cbeb4](https://github.com/observeinc/terraform-observe-google-cloud-monitoring/commit/51cbeb4dcd57b3149d62f668d0c113fc0651e869))
+
+
+### Features
+
+* **monitors:** migrate legacy monitors to v2 (OB-68080) ([#214](https://github.com/observeinc/terraform-observe-google-cloud-monitoring/issues/214)) ([41ca01e](https://github.com/observeinc/terraform-observe-google-cloud-monitoring/commit/41ca01edde00650df60adea81109747554a157a1))
+
+
+
 ## [1.7.2](https://github.com/observeinc/terraform-observe-google-cloud-monitoring/compare/v1.7.1...v1.7.2) (2026-04-16)
 
 
